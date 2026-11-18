@@ -40,6 +40,8 @@ ol,ul.n{margin:6px 0 0;padding-inline-start:20px}
 .warn{border-inline-start:3px solid var(--accent);padding-inline-start:10px}
 </style>
 <body>
+<div id="errbar" hidden style="position:fixed;z-index:99;inset-inline:0;top:0;background:#8a1f11;color:#fff;padding:8px 14px;font:13px/1.4 system-ui,sans-serif;direction:ltr"></div>
+<script>window.addEventListener('error',function(e){var b=document.getElementById('errbar');if(b){b.hidden=false;b.textContent='Script error: '+(e.message||e.error)+' ('+(e.filename||'').split('/').pop()+':'+e.lineno+')';}});</script>
 <header>
   <div><h1 data-i="title"></h1><p class="sub" data-i="sub"></p></div>
   <div class="bar lang" role="group" aria-label="Language"><button id="lAr">عربي</button><button id="lEn">English</button></div>
@@ -167,10 +169,11 @@ const tr=k=>(L[lang][k]!==undefined?L[lang][k]:(L.en[k]!==undefined?L.en[k]:k));
 const T=THREE, host=document.getElementById('view'), cap=document.getElementById('cap'), badge=document.getElementById('badge');
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const scene=new T.Scene(), camera=new T.PerspectiveCamera(45,1,0.1,200);
-const renderer=new T.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.localClippingEnabled=true;
-host.insertBefore(renderer.domElement,host.firstChild);
-const controls=new T.OrbitControls(camera,renderer.domElement); controls.enableDamping=true;
+let renderer=null, GLFAIL=null;
+try{renderer=new T.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.localClippingEnabled=true; host.insertBefore(renderer.domElement,host.firstChild);}
+catch(e){GLFAIL=e; renderer=null;}
+const controls=renderer?new T.OrbitControls(camera,renderer.domElement):{target:new T.Vector3(),update(){},enableZoom:true,rotateSpeed:1,minDistance:0,maxDistance:0,autoRotate:false};
+controls.enableDamping=true;
 scene.add(new T.HemisphereLight(0xffffff,0x667788,0.9));
 const sun=new T.DirectionalLight(0xffffff,0.8); sun.position.set(6,12,8); scene.add(sun);
 const fill=new T.DirectionalLight(0xffffff,0.35); fill.position.set(-6,4,-6); scene.add(fill);
@@ -194,7 +197,7 @@ function pipe(a,b,r,m){const A=new T.Vector3(...a),B=new T.Vector3(...b),d=B.clo
 function rectPath(x0,z0,x1,z1){const p=new T.Path(); p.moveTo(x0,-z0);p.lineTo(x1,-z0);p.lineTo(x1,-z1);p.lineTo(x0,-z1);p.closePath();return p;}
 function extruded(shape,depth,m,y){const o=new T.Mesh(new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:64}),m);
   o.rotation.x=-Math.PI/2; o.position.y=y; root.add(o); return o;}
-function label(text,x,y,z,s){const c=document.createElement('canvas'); c.width=512;c.height=96; const g=c.getContext('2d');
+function label(text,x,y,z,s){const c=document.createElement('canvas'); c.width=512;c.height=96; const g=c.getContext('2d'); if(!g)return;
   g.font='600 40px system-ui,sans-serif'; g.fillStyle='rgba(20,24,30,.82)'; g.fillRect(0,0,512,96);
   g.fillStyle='#fff'; g.textBaseline='middle'; g.fillText(text,16,50);
   const sp=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c),depthTest:false,transparent:true}));
@@ -416,13 +419,14 @@ $('lAr').onclick=()=>{lang='ar';applyLang();}; $('lEn').onclick=()=>{lang='en';a
 try{const s=localStorage.getItem('lsv-lang'); if(s==='en'||s==='ar')lang=s;}catch(e){}
 
 /* ================= loop ================= */
-function resize(){const w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();}
+function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();}
 new ResizeObserver(resize).observe(host);
 function theme(){scene.background=new T.Color(css('--scene')||'#e7e5df');}
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',theme);
 new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 buildStatic(); theme(); setAxis(2,false); state.pos=0; pos.value=0; syncUI(); apply(); resize(); applyLang(); go(views[0]);
-renderer.setAnimationLoop(now=>{stepTween(now); controls.update(); renderer.render(scene,camera);});
+if(renderer)renderer.setAnimationLoop(now=>{stepTween(now); controls.update(); renderer.render(scene,camera);});
+else{host.insertAdjacentHTML('afterbegin','<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;line-height:1.7" id="nogl"></div>'); const ng=$('nogl'); const m=()=>{ng.textContent=lang==='ar'?'العرض ثلاثي الأبعاد مش شغال في المتصفح ده (WebGL مقفول). فعّل Hardware acceleration في إعدادات Chrome أو جرّب متصفح تاني. القطاعات والرسم 2D والتصدير شغالين.':'3D view is not available in this browser (WebGL is off). Turn on hardware acceleration in the browser settings, or try another browser. Sections, 2D drawing and exports still work.';}; m(); $('lAr').addEventListener('click',m); $('lEn').addEventListener('click',m);}
 window.__lsv={collect,slice,svg2d,dxf2d,dxf3d,ifc,obj,pdf2d,zip,state};
 })();
 </script>
