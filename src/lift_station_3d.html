@@ -1,0 +1,429 @@
+<title>Lift Station 3D Model</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: viewer + sections/export on the left, components and notes on the right. AR/EN switch flips direction. */
+:root{--bg:#f4f3ef;--fg:#1d2228;--muted:#5d6670;--line:#d3cec3;--card:#fff;--accent:#b5472c;--scene:#e7e5df;color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141820;--fg:#e8ecef;--muted:#9aa4ad;--line:#2d343d;--card:#1b2129;--accent:#e08a6d;--scene:#1a2028;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141820;--fg:#e8ecef;--muted:#9aa4ad;--line:#2d343d;--card:#1b2129;--accent:#e08a6d;--scene:#1a2028;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 "Inter",system-ui,-apple-system,"Segoe UI","Noto Naskh Arabic",Tahoma,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px}
+header{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+h1{font-size:21px;margin:0 0 2px;text-wrap:balance}
+h2{font-size:15px;margin:0 0 8px}
+h3{width:100%;margin:10px 0 0;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.sub{color:var(--muted);margin:0;max-width:70ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+#view{position:relative;width:100%;height:min(60vh,540px);min-height:340px;background:var(--scene);border-radius:8px;overflow:hidden;touch-action:none}
+#view canvas{display:block;width:100%;height:100%}
+#cap{position:absolute;left:10px;bottom:10px;right:10px;background:color-mix(in srgb,var(--card) 88%,transparent);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px}
+#badge{position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;display:none}
+.bar{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+button,select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:6px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang button{padding:4px 12px}
+input[type=range]{flex:1;min-width:140px;accent-color:var(--accent)}
+.val{font-variant-numeric:tabular-nums;min-width:11ch;color:var(--muted)}
+#prev{width:100%;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:8px;min-height:160px;overflow:hidden}
+#prev svg{display:block;width:100%;height:auto;max-height:420px}
+.msg{min-height:1.4em;color:var(--muted);font-size:13px;margin-top:8px}
+ul.cmp{list-style:none;margin:0;padding:0}
+ul.cmp li{padding:7px 0;border-bottom:1px solid var(--line)}
+ul.cmp b{display:block}
+ul.cmp span,.small{color:var(--muted);font-size:12.5px}
+ol,ul.n{margin:6px 0 0;padding-inline-start:20px}
+.small{margin:8px 0 0}
+.warn{border-inline-start:3px solid var(--accent);padding-inline-start:10px}
+</style>
+<body>
+<header>
+  <div><h1 data-i="title"></h1><p class="sub" data-i="sub"></p></div>
+  <div class="bar lang" role="group" aria-label="Language"><button id="lAr">عربي</button><button id="lEn">English</button></div>
+</header>
+<div class="grid">
+ <div class="col">
+  <div class="card">
+    <div id="view"><div id="badge" data-i="badge"></div><div id="cap"></div></div>
+    <div class="bar" id="views"></div>
+    <div class="bar" id="spots"></div>
+    <div class="bar" id="toggles"></div>
+  </div>
+  <div class="card">
+    <h2 data-i="sec_h"></h2>
+    <p class="small" data-i="sec_p"></p>
+    <div class="bar" id="axes"></div>
+    <div class="bar"><input type="range" id="pos" aria-label="Cut position"><span class="val" id="posv"></span></div>
+    <div class="bar" id="presets"></div>
+    <h3 data-i="prev_h"></h3>
+    <div id="prev"></div>
+  </div>
+  <div class="card">
+    <h2 data-i="ex_h"></h2>
+    <h3 data-i="ex2d"></h3>
+    <div class="bar" id="b2d"></div>
+    <h3 data-i="ex3d"></h3>
+    <div class="bar" id="b3d"></div>
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
+    <ol class="small" id="howto"></ol>
+  </div>
+ </div>
+ <div class="col">
+  <div class="card"><h2 data-i="cmp_h"></h2><ul class="cmp" id="cmp"></ul>
+   <p class="small warn" data-i="cmp_note"></p></div>
+  <div class="card"><h2 data-i="lim_h"></h2><ul class="n small" id="lim"></ul></div>
+ </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+/* ================= i18n ================= */
+const L={
+en:{title:'Sewage Lift Station: 3D model',
+ sub:'Built from sheets BIS-ME-LST-01 and 03. Drag to orbit, scroll or pinch to zoom. Concrete is 430 mm throughout.',
+ badge:'360° look-around',
+ v_ov:'Overview',v_plan:'Plan',v_secA:'Section A',v_side:'Side',v_pump:'Pumps',v_valve:'Chamber valves',
+ s_well:'360 Wet well',s_pl:'360 Pump level',s_ch:'360 Outlet chamber',s_dk:'360 Deck',
+ c_ov:'Whole station: wet well, outlet chamber, crane and odor unit.',c_plan:'Top view of the station.',
+ c_secA:'Longitudinal section through the middle pump axis (cut at Z = 0).',c_side:'Side view from the inlet side.',
+ c_pump:'Looking down on the pumps through the well opening.',c_valve:'Outlet chamber valves and the Ø150 header.',
+ c_well:'Inside the wet well. Drag to look around you: pumps, discharge pipes, ladder.',c_pl:'At the well floor beside the pumps.',
+ c_ch:'Inside the outlet chamber: valves and header.',c_dk:'On the deck: crane, well openings, odor unit and control shed.',
+ t_ghost:'Ghost concrete',t_cut:'Show cut in 3D',t_water:'Water',t_levels:'Levels',t_labels:'Labels',t_ground:'Ground',t_rot:'Auto-rotate',
+ sec_h:'Sections and 2D drawings',sec_p:'Pick the cutting plane and move it. The 2D drawing below is generated from the cut and can be exported.',
+ ax_x:'Section at X (side)',ax_z:'Section at Z (longitudinal)',ax_y:'Plan at level Y',flip:'Flip side',
+ p_a:'A–A (Z = 0)',p_b:'B–B (pump axis, X = 0.15)',p_pp:'Plan at pump level (Y = 0.8)',p_vv:'Plan at valves (Y = 3.65)',p_dd:'Plan at the slab (Y = 5.0)',
+ prev_h:'2D drawing from the current cut',empty:'Nothing is cut at this plane. Move the slider.',
+ pos:'Position',lvl:'level',
+ ex_h:'Export',ex2d:'2D drawing of the current section',ex3d:'Whole 3D model',
+ b_pdf:'PDF',b_svg:'SVG',b_dxf2:'DXF (zip)',b_dxf3:'DXF 3D (zip)',b_ifc:'IFC (zip)',b_obj:'OBJ (zip)',
+ st_ok:'Saved: ',st_no:'Save was declined.',st_na:'Downloads are not available in this view. Open the page from claude.ai.',st_ext:'This file type is not allowed in this view.',st_err:'Export failed: ',
+ how1:'DXF opens in every AutoCAD version (R12 format). To get DWG: open the DXF and use Save As DWG, or use the free ODA File Converter for any DWG version.',
+ how2:'IFC (IFC2X3) opens in Revit through Open IFC or Link IFC. It is imported as generic geometry, not as editable Revit families.',
+ how3:'Files are zipped (the viewer only saves a few file types). Unzip, then open the .dxf or .ifc.',
+ cmp_h:'Components',cmp_note:'Simplified where the sheets are silent: pipe lengths, valve bodies, ladder length, and the concrete fill under the outlet chamber are assumed. Not a construction drawing.',
+ lim_h:'Limits and honesty',
+ lim1:'DWG cannot be generated inside a web page. DXF is the closest open format and every CAD program can save it as DWG.',
+ lim2:'Native Revit files (.rvt) and Revit families cannot be generated here. Use IFC.',
+ lim3:'Exports were checked only with open-source readers. They were not opened in AutoCAD or Revit, so check them before use.',
+ lim4:'3D export is a surface mesh (3DFACE / faceted brep), not parametric solids. Units: millimetres in DXF and IFC, metres in OBJ.',
+ lim5:'PDF and SVG labels are in English only (no Arabic font is embedded).',
+ lim6:'The section drawing shows cut outlines only, with no hatching. Touching solids show their joint line.',
+ cm:[['Wet well, Ø3.00 m','Walls and slabs 430 mm, depth 5.25 m (+1159.76 to +1165.01).'],
+ ['Outlet chamber, 2.00 × 3.20 m','Floor +1162.91, header Ø150 with blind flange.'],
+ ['3 submersible pumps','2 duty + 1 standby, 7.5 kW, H = 10 m, 750 mm apart.'],
+ ['Discharge Ø100 and valves','Per pump: dismantling joint, non-return and sluice valve.'],
+ ['Inlet Ø315 and screen','I.L +1161.58, penstock Ø300, basket screen 700×500×1000.'],
+ ['Jib crane, 1 t','360° electric, beside the well opening.'],
+ ['Odor unit, 205 CFM','Pre-filter, activated carbon, suction fan, Ø100 GRP line.'],
+ ['Steel shed and control board','On the ground, next to the station.']]},
+ar:{title:'محطة طلمبات الصرف: موديل 3D',
+ sub:'مبني على الشيتات BIS-ME-LST-01 و03. اسحب للدوران، وكبّر بالعجلة أو بصباعين. الخرسانة 430 مم لكل العناصر.',
+ badge:'360° حوالين نفسك',
+ v_ov:'منظور عام',v_plan:'مسقط',v_secA:'قطاع A',v_side:'جانبي',v_pump:'المضخات',v_valve:'محابس الغرفة',
+ s_well:'360 داخل البئر',s_pl:'360 مستوى المضخات',s_ch:'360 غرفة المخرج',s_dk:'360 السطح',
+ c_ov:'المحطة كلها: بئر الطلمبات، غرفة المخرج، الونش ووحدة الرائحة.',c_plan:'مسقط أفقي للمحطة.',
+ c_secA:'قطاع طولي عند محور المضخة الوسطى (قطع عند Z = 0).',c_side:'منظور جانبي من ناحية المدخل.',
+ c_pump:'نظرة على المضخات من فوق من خلال فتحة البئر.',c_valve:'محابس غرفة المخرج وهيدر Ø150.',
+ c_well:'جوه البئر. اسحب للدوران: المضخات ومواسير التصريف والسلم.',c_pl:'عند قاع البئر جنب المضخات.',
+ c_ch:'جوه غرفة المخرج: المحابس والهيدر.',c_dk:'فوق السطح: الونش وفتحات البئر ووحدة الرائحة وشيد التحكم.',
+ t_ghost:'خرسانة شفافة',t_cut:'اعرض القطع في 3D',t_water:'المية',t_levels:'المناسيب',t_labels:'اللافتات',t_ground:'الأرض',t_rot:'دوران تلقائي',
+ sec_h:'القطاعات والرسومات ثنائية الأبعاد',sec_p:'اختار مستوى القطع وحرّكه. الرسم ثنائي الأبعاد تحت بيتولّد من القطع وتقدر تصدّره.',
+ ax_x:'قطاع عند X (جانبي)',ax_z:'قطاع عند Z (طولي)',ax_y:'مسقط عند منسوب Y',flip:'اعكس الجهة',
+ p_a:'A–A (Z = 0)',p_b:'B–B (محور المضخات، X = 0.15)',p_pp:'مسقط مستوى المضخات (Y = 0.8)',p_vv:'مسقط عند المحابس (Y = 3.65)',p_dd:'مسقط عند البلاطة (Y = 5.0)',
+ prev_h:'الرسم ثنائي الأبعاد من القطع الحالي',empty:'مفيش حاجة مقطوعة عند المستوى ده. حرّك السلايدر.',
+ pos:'الموضع',lvl:'منسوب',
+ ex_h:'التصدير',ex2d:'رسم ثنائي الأبعاد للقطاع الحالي',ex3d:'الموديل ثلاثي الأبعاد كله',
+ b_pdf:'PDF',b_svg:'SVG',b_dxf2:'DXF (zip)',b_dxf3:'DXF 3D (zip)',b_ifc:'IFC (zip)',b_obj:'OBJ (zip)',
+ st_ok:'اتحفظ: ',st_no:'الحفظ اترفض.',st_na:'التنزيل مش متاح في العرض ده. افتح الصفحة من claude.ai.',st_ext:'نوع الملف ده مش مسموح في العرض ده.',st_err:'التصدير فشل: ',
+ how1:'ملف DXF بيتفتح في كل إصدارات الأوتوكاد (صيغة R12). عشان تاخد DWG: افتح الـ DXF واعمل Save As DWG، أو استخدم ODA File Converter المجاني لأي إصدار DWG.',
+ how2:'ملف IFC (صيغة IFC2X3) بيتفتح في الريفت من Open IFC أو Link IFC. بيدخل كهندسة عامة، مش عائلات ريفت قابلة للتعديل.',
+ how3:'الملفات مضغوطة zip (العارض بيحفظ أنواع قليلة بس). فك الضغط وافتح ملف .dxf أو .ifc.',
+ cmp_h:'المكونات',cmp_note:'مبسّط في الحاجات اللي الشيتات ساكتة عنها: أطوال المواسير وأجسام المحابس وطول السلم والخرسانة تحت غرفة المخرج مفترضة. مش رسم تنفيذي.',
+ lim_h:'الحدود وبصراحة',
+ lim1:'مفيش طريقة توليد DWG جوه صفحة ويب. DXF أقرب صيغة مفتوحة، وأي برنامج CAD يحفظه DWG.',
+ lim2:'ملفات الريفت الأصلية (.rvt) وعائلات الريفت مش ممكن تتولد هنا. استخدم IFC.',
+ lim3:'التصدير اتفحص ببرامج قراءة مفتوحة المصدر بس. ما اتفتحش في أوتوكاد ولا ريفت، فراجعه قبل الاستخدام.',
+ lim4:'التصدير 3D شبكة أسطح (3DFACE / faceted brep) مش مجسمات بارامترية. الوحدات: مم في DXF وIFC، ومتر في OBJ.',
+ lim5:'عناوين PDF وSVG بالإنجليزي بس (مفيش خط عربي مدمج).',
+ lim6:'رسم القطاع بيعرض خطوط القطع بس من غير تهشير. العناصر الملاصقة بيظهر بينها خط الوصلة.',
+ cm:[['بئر الطلمبات Ø3.00 م','الجدران والبلاطات 430 مم، العمق 5.25 م (+1159.76 لحد +1165.01).'],
+ ['غرفة المخرج 2.00 × 3.20 م','الأرضية +1162.91، هيدر Ø150 بـ blind flange.'],
+ ['3 مضخات غاطسة','2 تشغيل + 1 احتياطي، 7.5 kW، H = 10 م، مسافة 750 مم.'],
+ ['تصريف Ø100 والمحابس','لكل مضخة: وصلة فك، non-return ومحبس سلويس.'],
+ ['مدخل Ø315 والسلة','I.L +1161.58، بوابة Ø300، سلة 700×500×1000.'],
+ ['ونش جرب 1 طن','كهربائي 360° جنب فتحة البئر.'],
+ ['وحدة الرائحة 205 CFM','فلتر أولي، كربون مفعّل، شفاط، ماسورة GRP Ø100.'],
+ ['شيد ستيل ولوحة التحكم','على الأرض جنب المحطة.']]}};
+let lang='ar';
+const tr=k=>(L[lang][k]!==undefined?L[lang][k]:(L.en[k]!==undefined?L.en[k]:k));
+
+/* ================= scene ================= */
+const T=THREE, host=document.getElementById('view'), cap=document.getElementById('cap'), badge=document.getElementById('badge');
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const scene=new T.Scene(), camera=new T.PerspectiveCamera(45,1,0.1,200);
+const renderer=new T.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.localClippingEnabled=true;
+host.insertBefore(renderer.domElement,host.firstChild);
+const controls=new T.OrbitControls(camera,renderer.domElement); controls.enableDamping=true;
+scene.add(new T.HemisphereLight(0xffffff,0x667788,0.9));
+const sun=new T.DirectionalLight(0xffffff,0.8); sun.position.set(6,12,8); scene.add(sun);
+const fill=new T.DirectionalLight(0xffffff,0.35); fill.position.set(-6,4,-6); scene.add(fill);
+
+const mats=[], concretes=[], cutPlane=new T.Plane(new T.Vector3(0,0,-1),0);
+function M(color,o,layer){const m=new T.MeshStandardMaterial(Object.assign({color,roughness:.65,metalness:.15},o||{}));m.userData.layer=layer||null;mats.push(m);return m;}
+const cCon=M(0xb9b4a8,{roughness:.9,metalness:0},'S-CONC'), cFill=M(0x9d988c,{roughness:.95,metalness:0},'S-CONC'); concretes.push(cCon,cFill);
+const cSteel=M(0xaab4bd,{metalness:.7,roughness:.35},'S-STEEL'), cDark=M(0x39424b,{metalness:.5},'M-EQUIP'), cPipe=M(0x3a7ca5,{metalness:.3},'M-PIPE');
+const cGal=M(0x8f9aa3,{metalness:.6},'S-STEEL'), cRed=M(0xc2452d,{},'M-EQUIP'), cGrn=M(0x4c9a6a,{},'M-EQUIP'), cYel=M(0xd9a441,{},'M-EQUIP'), cOdor=M(0x5c7f67,{},'M-EQUIP');
+const cWater=M(0x4aa3d8,{transparent:true,opacity:.35,depthWrite:false});
+const cGround=M(0x8c8a80,{transparent:true,opacity:.28,depthWrite:false,roughness:1,metalness:0});
+const root=new T.Group(); scene.add(root);
+const water=new T.Group(), levels=new T.Group(), labels=new T.Group(), ground=new T.Group();
+root.add(water,levels,labels,ground);
+function mesh(g,m,x,y,z){const o=new T.Mesh(g,m);o.position.set(x||0,y||0,z||0);root.add(o);return o;}
+function box(w,h,d,m,x,y,z){return mesh(new T.BoxGeometry(w,h,d),m,x,y,z);}
+function cyl(r,h,m,x,y,z,seg){return mesh(new T.CylinderGeometry(r,r,h,seg||24),m,x,y,z);}
+function pipe(a,b,r,m){const A=new T.Vector3(...a),B=new T.Vector3(...b),d=B.clone().sub(A),Ln=d.length();
+  const o=new T.Mesh(new T.CylinderGeometry(r,r,Ln,20),m); o.position.copy(A.clone().add(B).multiplyScalar(.5));
+  o.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),d.normalize()); root.add(o); return o;}
+function rectPath(x0,z0,x1,z1){const p=new T.Path(); p.moveTo(x0,-z0);p.lineTo(x1,-z0);p.lineTo(x1,-z1);p.lineTo(x0,-z1);p.closePath();return p;}
+function extruded(shape,depth,m,y){const o=new T.Mesh(new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:64}),m);
+  o.rotation.x=-Math.PI/2; o.position.y=y; root.add(o); return o;}
+function label(text,x,y,z,s){const c=document.createElement('canvas'); c.width=512;c.height=96; const g=c.getContext('2d');
+  g.font='600 40px system-ui,sans-serif'; g.fillStyle='rgba(20,24,30,.82)'; g.fillRect(0,0,512,96);
+  g.fillStyle='#fff'; g.textBaseline='middle'; g.fillText(text,16,50);
+  const sp=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c),depthTest:false,transparent:true}));
+  sp.scale.set(s||1.6,(s||1.6)*96/512,1); sp.position.set(x,y,z); sp.renderOrder=10; labels.add(sp);}
+
+const R0=1.5,R1=1.93,H=5.25,TH=0.43;
+{const s=new T.Shape(); s.absarc(0,0,R1,0,Math.PI*2,false); const h=new T.Path(); h.absarc(0,0,R0,0,Math.PI*2,true); s.holes.push(h); extruded(s,H,cCon,0);}
+mesh(new T.CylinderGeometry(R1,R1,TH,64),cCon,0,-TH/2,0);
+{const s=new T.Shape(); s.absarc(0,0,R1,0,Math.PI*2,false); s.holes.push(rectPath(-1.5,-0.4,1.5,0.4)); s.holes.push(rectPath(-0.4,0.7,0.4,1.5)); extruded(s,TH,cCon,H-TH);}
+box(2.86,2.72+TH,4.06,cFill,2.93,(-TH+2.72)/2,0);
+box(2.86,TH,4.06,cCon,2.93,2.935,0);
+box(0.43,2.10,4.06,cCon,1.715,4.2,0); box(0.43,2.10,4.06,cCon,4.145,4.2,0);
+box(2.0,2.10,0.43,cCon,2.93,4.2,1.815); box(2.0,2.10,0.43,cCon,2.93,4.2,-1.815);
+{const s=new T.Shape(); s.moveTo(1.5,-2.03); s.lineTo(4.36,-2.03); s.lineTo(4.36,2.03); s.lineTo(1.5,2.03); s.closePath(); s.holes.push(rectPath(2.6,0.8,3.4,1.6)); extruded(s,TH,cCon,H-TH);}
+const PX=0.15, VX=0.75, PY=3.65, HX=2.6;
+[-0.75,0,0.75].forEach(z=>{
+  cyl(0.17,0.55,cRed,PX,0.45,z); cyl(0.23,0.2,cDark,PX,0.12,z);
+  pipe([PX,0.25,z],[VX,0.25,z],0.05,cPipe); pipe([VX,0.25,z],[VX,PY,z],0.05,cPipe); pipe([VX,PY,z],[HX,PY,z],0.05,cPipe);
+  cyl(0.085,0.14,cDark,1.98,PY,z).rotation.z=Math.PI/2;
+  const nrv=new T.Mesh(new T.ConeGeometry(0.09,0.2,16),cYel); nrv.rotation.z=-Math.PI/2; nrv.position.set(2.2,PY,z); root.add(nrv);
+  box(0.12,0.2,0.2,cGrn,2.42,PY,z); cyl(0.07,0.02,cDark,2.42,PY+0.25,z); pipe([2.42,PY+0.1,z],[2.42,PY+0.25,z],0.012,cDark);
+  pipe([PX+0.2,0.7,z],[PX+0.2,H-0.1,z],0.012,cSteel); pipe([PX+0.35,0.9,z],[PX+0.35,H-0.1,z],0.006,cSteel);
+});
+pipe([HX,PY,-1.4],[HX,PY,1.3],0.075,cPipe); cyl(0.11,0.03,cDark,HX,PY,1.33).rotation.x=Math.PI/2; pipe([HX,PY,-1.4],[HX,PY,-3.4],0.075,cPipe);
+const IY=1.82+0.1575;
+pipe([-4.2,IY,0],[-1.5,IY,0],0.1575,cPipe);
+box(0.04,0.55,0.55,cSteel,-1.42,IY,0); pipe([-1.42,IY+0.28,0],[-1.42,H+0.6,0],0.015,cSteel); cyl(0.12,0.02,cDark,-1.42,H+0.6,0);
+box(0.5,1.0,0.7,cSteel,-1.0,1.45,0);
+cyl(0.2,H,M(0x7a8a95,{transparent:true,opacity:.55},'M-PIPE'),-0.55,H/2,-1.0,32);
+function ladder(x,z,y0,y1,m,w){pipe([x-w/2,y0,z],[x-w/2,y1,z],0.02,m); pipe([x+w/2,y0,z],[x+w/2,y1,z],0.02,m); for(let y=y0+0.3;y<y1;y+=0.3) pipe([x-w/2,y,z],[x+w/2,y,z],0.012,m);}
+ladder(-0.9,1.2,0.15,H+0.9,cSteel,0.4); ladder(3.5,1.55,3.15,H+0.9,cGal,0.4);
+const GY=4.95;
+{const cx=-1.4,cz=1.0; cyl(0.1,2.4,cYel,cx,H+1.2,cz); box(2.0,0.14,0.14,cYel,cx+1.0,H+2.35,cz); box(0.3,0.25,0.25,cDark,cx+1.6,H+2.2,cz);
+ pipe([cx+1.6,H+2.1,cz],[cx+1.6,H+0.9,cz],0.006,cDark); cyl(0.07,0.1,cDark,cx+1.6,H+0.85,cz);}
+{const sx=-3.0,sz=-1.6; box(1.3,0.06,0.9,cSteel,sx,GY+2.3,sz); [[-.6,-.4],[.6,-.4],[-.6,.4],[.6,.4]].forEach(p=>cyl(0.03,2.3,cSteel,sx+p[0],GY+1.15,sz+p[1])); box(0.9,1.5,0.25,cDark,sx,GY+0.95,sz-0.2);}
+{const ox=-1.6,oz=-4.3; box(2.4,0.1,1.4,cDark,ox,GY+0.05,oz); cyl(0.45,1.4,cOdor,ox-0.5,GY+0.8,oz,32); cyl(0.2,0.9,cOdor,ox+0.4,GY+0.55,oz,24);
+ box(0.45,0.4,0.4,cYel,ox+0.95,GY+0.3,oz); pipe([ox+0.4,GY+1.0,oz],[0.9,GY+1.0,oz],0.05,cPipe); pipe([0.9,GY+1.0,oz],[0.9,H,-1.3],0.05,cPipe);}
+pipe([3.0,H,1.1],[3.0,H+2.0,1.1],0.05,cPipe);
+{const g=new T.Mesh(new T.CircleGeometry(12,64),cGround); g.rotation.x=-Math.PI/2; g.position.y=GY; ground.add(g);
+ const gr=new T.GridHelper(24,24,0x888888,0x888888); gr.position.y=GY+0.01; gr.material.transparent=true; gr.material.opacity=.25; ground.add(gr);}
+water.add(new T.Mesh(new T.CylinderGeometry(R0-0.01,R0-0.01,1.62,48),cWater)); water.children[0].position.y=0.81;
+const LV=[['B.L',0],['LL.W.L',0.92],['L.W.L',1.02],['H.W.L',1.62],['H.H.W.L',1.72],['I.L inlet',1.82],['Chamber floor',3.15],['G.L',4.95],['Top',5.25]], BL=1159.76;
+[[0.92,'LL.W.L +1160.68',0xe57373],[1.02,'L.W.L +1160.78',0xffb74d],[1.62,'H.W.L +1161.38',0x4fc3f7],[1.72,'H.H.W.L +1161.48',0x81c784]].forEach(l=>{
+  const r=new T.Mesh(new T.RingGeometry(R0-0.18,R0-0.01,64),new T.MeshBasicMaterial({color:l[2],side:T.DoubleSide,transparent:true,opacity:.9}));
+  r.rotation.x=-Math.PI/2; r.position.y=l[0]; levels.add(r); label(l[1],-0.2,l[0]+0.07,-1.25,1.5);});
+label('Wet well Ø3.00 m',0,H+0.55,0,1.8); label('Outlet chamber 2.0 × 3.2',2.93,H+0.5,0,2.0); label('3 pumps 7.5 kW',0.15,1.35,0,1.5);
+label('Inlet Ø315 I.L +1161.58',-3.1,IY+0.35,0,2.3); label('Jib crane 1 t',-0.8,H+2.85,1.0,1.4); label('Odor unit 205 CFM',-1.6,GY+2.0,-4.3,1.9);
+label('Control board',-3.0,GY+2.7,-1.6,1.4); label('Outlet Ø150 to septic tank',HX,PY+0.3,-3.2,2.4); label('Blind flange',HX+0.2,PY+0.25,1.4,1.2);
+
+/* ================= views ================= */
+const V=(k,c,p,t,e)=>Object.assign({k,c,p,t},e||{});
+const views=[V('v_ov','c_ov',[9,8,10],[0.8,3,-0.5]),V('v_plan','c_plan',[0.5,17,0.01],[0.5,0,0]),
+ V('v_secA','c_secA',[0.8,3.5,12],[0.8,2.6,0],{sec:{ax:2,pos:0}}),V('v_side','c_side',[-12,5,1],[0.5,3,0]),
+ V('v_pump','c_pump',[-1.5,5.4,2.4],[0.2,0.7,0],{sec:{ax:2,pos:0}}),V('v_valve','c_valve',[3.2,6.4,4.6],[2.6,3.7,0],{sec:{ax:2,pos:0}})];
+const spots=[V('s_well','c_well',[-0.9,3.9,0.1],[0.5,3,0],{r360:1}),V('s_pl','c_pl',[-0.6,0.9,1.0],[0.6,0.7,0],{r360:1}),
+ V('s_ch','c_ch',[3.0,3.9,0.2],[2.6,3.65,0],{r360:1}),V('s_dk','c_dk',[-0.4,6.9,2.8],[-1.2,6,-1.5],{r360:1})];
+const state={cut:false,ghost:true,water:true,levels:true,labels:true,ground:true,rotate:false,ax:2,pos:0,flip:false};
+let tw=null, mode360=false, curView=views[0];
+const AXN=['x','y','z'], RANGE=[[-4.5,4.5],[-0.4,8.0],[-5.0,2.5]];
+function applyCut(){const e=[0,0,0]; e[state.ax]=state.flip?1:-1; cutPlane.normal.set(e[0],e[1],e[2]); cutPlane.constant=state.flip?-state.pos:state.pos;}
+function apply(){applyCut(); mats.forEach(m=>m.clippingPlanes=state.cut?[cutPlane]:[]);
+ concretes.forEach(m=>{m.transparent=state.ghost;m.opacity=state.ghost?.42:1;m.depthWrite=!state.ghost;m.needsUpdate=true;});
+ water.visible=state.water; levels.visible=state.levels; labels.visible=state.labels; ground.visible=state.ground; controls.autoRotate=state.rotate&&!mode360;}
+function go(v){const p=new T.Vector3(...v.p), t=new T.Vector3(...v.t); curView=v;
+ mode360=!!v.r360; badge.style.display=mode360?'block':'none'; setCap();
+ state.cut=!!v.sec; if(v.sec){setAxis(v.sec.ax,false);setPos(v.sec.pos,false);} syncUI();
+ camera.near=mode360?0.02:0.1; camera.updateProjectionMatrix();
+ if(mode360){controls.enableZoom=false;controls.rotateSpeed=-0.45;controls.minDistance=0.01;controls.maxDistance=0.01;
+   camera.position.copy(p); controls.target.copy(p).add(t.clone().sub(p).normalize().multiplyScalar(0.01)); controls.update(); apply(); mark(v.k); return;}
+ controls.enableZoom=true;controls.rotateSpeed=1;controls.minDistance=1;controls.maxDistance=60; apply();
+ tw={t0:performance.now(),from:{p:camera.position.clone(),t:controls.target.clone()},to:{p,t}}; mark(v.k);}
+function setCap(){cap.textContent=tr(curView.k)+': '+tr(curView.c);}
+function stepTween(now){if(!tw)return; const k=Math.min(1,(now-tw.t0)/800), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+ camera.position.lerpVectors(tw.from.p,tw.to.p,e); controls.target.lerpVectors(tw.from.t,tw.to.t,e); if(k>=1)tw=null;}
+
+/* ================= UI ================= */
+const $=id=>document.getElementById(id), btns={};
+function mk(el,key,fn){const b=document.createElement('button');b.dataset.i=key;b.onclick=fn;el.appendChild(b);return b;}
+function hd(el,key){const h=document.createElement('h3');h.dataset.i=key;el.appendChild(h);}
+views.forEach(v=>btns[v.k]=mk($('views'),v.k,()=>go(v))); spots.forEach(v=>btns[v.k]=mk($('spots'),v.k,()=>go(v)));
+function mark(k){for(const x in btns)btns[x].classList.toggle('on',x===k);}
+const togs={};[['ghost','t_ghost'],['cut','t_cut'],['water','t_water'],['levels','t_levels'],['labels','t_labels'],['ground','t_ground'],['rotate','t_rot']].forEach(([k,key])=>{
+ togs[k]=mk($('toggles'),key,()=>{state[k]=!state[k];syncUI();apply();if(k==='cut')sectionChanged();});});
+const axB=[];[[0,'ax_x'],[2,'ax_z'],[1,'ax_y']].forEach(([a,key])=>axB[a]=mk($('axes'),key,()=>{setAxis(a,true);}));
+const flipB=mk($('axes'),'flip',()=>{state.flip=!state.flip;syncUI();apply();});
+const presets=[['p_a',2,0],['p_b',0,0.15],['p_pp',1,0.8],['p_vv',1,3.65],['p_dd',1,5.0]];
+presets.forEach(([key,a,p])=>mk($('presets'),key,()=>{setAxis(a,false);setPos(p,true);state.cut=true;syncUI();apply();}));
+const pos=$('pos');
+function setAxis(a,redraw){state.ax=a;pos.min=RANGE[a][0];pos.max=RANGE[a][1];pos.step=0.05;state.pos=Math.min(Math.max(state.pos,RANGE[a][0]),RANGE[a][1]);pos.value=state.pos;syncUI();apply();if(redraw!==false)sectionChanged();}
+function setPos(p,redraw){state.pos=p;pos.value=p;posLabel();apply();if(redraw!==false)sectionChanged();}
+function posLabel(){const v=+state.pos; $('posv').textContent=tr('pos')+' '+AXN[state.ax].toUpperCase()+'='+v.toFixed(2)+' m'+(state.ax===1?' ('+tr('lvl')+' +'+(BL+v).toFixed(2)+')':'');}
+pos.oninput=()=>{state.pos=+pos.value;posLabel();apply();sectionChanged();};
+function syncUI(){for(const k in togs)togs[k].classList.toggle('on',!!state[k]); axB.forEach((b,i)=>b&&b.classList.toggle('on',state.ax===i)); flipB.classList.toggle('on',state.flip); posLabel();}
+
+/* ================= geometry for export ================= */
+let TRIS=null;
+function collect(){if(TRIS)return TRIS; root.updateMatrixWorld(true); TRIS=[]; let mi=0;
+ root.children.forEach(o=>{if(!o.isMesh||!o.material.userData.layer)return; const g=o.geometry,pa=g.attributes.position,ix=g.index; const v=[]; const P=new T.Vector3();
+   for(let i=0;i<pa.count;i++){P.fromBufferAttribute(pa,i).applyMatrix4(o.matrixWorld);v.push([P.x,P.y,P.z]);}
+   const n=ix?ix.count:pa.count; for(let i=0;i<n;i+=3){const a=ix?ix.getX(i):i,b=ix?ix.getX(i+1):i+1,c=ix?ix.getX(i+2):i+2; TRIS.push({p:[...v[a],...v[b],...v[c]],l:o.material.userData.layer,m:mi});}
+   mi++;});
+ return TRIS;}
+const proj=(ax,p)=>ax===2?[p[0],p[1]]:ax===0?[-p[2],p[1]]:[p[0],-p[2]];
+function slice(ax,d){const segs=[],seen=new Set(); const R=x=>Math.round(x*1000);
+ for(const t of collect()){const s=[t.p[ax]-d,t.p[3+ax]-d,t.p[6+ax]-d], n=[s[0]<0,s[1]<0,s[2]<0]; if(n[0]===n[1]&&n[1]===n[2])continue;
+  const q=[]; for(const [i,j] of [[0,1],[1,2],[2,0]]){if(n[i]!==n[j]){const k=s[i]/(s[i]-s[j]); const a=t.p.slice(3*i,3*i+3),b=t.p.slice(3*j,3*j+3); q.push(proj(ax,[a[0]+k*(b[0]-a[0]),a[1]+k*(b[1]-a[1]),a[2]+k*(b[2]-a[2])]));}}
+  if(q.length!==2)continue; let [A,B]=q; if(A[0]>B[0]||(A[0]===B[0]&&A[1]>B[1]))[A,B]=[B,A];
+  const key=R(A[0])+','+R(A[1])+','+R(B[0])+','+R(B[1])+t.l; if(seen.has(key)||(R(A[0])===R(B[0])&&R(A[1])===R(B[1])))continue; seen.add(key); segs.push([A[0],A[1],B[0],B[1],t.l]);}
+ return segs;}
+const LC={'S-CONC':'#2b3138','S-STEEL':'#4b7bb5','M-PIPE':'#2f8fb8','M-EQUIP':'#b5472c'};
+function bounds(segs){let a=1e9,b=1e9,c=-1e9,d=-1e9; segs.forEach(s=>{a=Math.min(a,s[0],s[2]);c=Math.max(c,s[0],s[2]);b=Math.min(b,s[1],s[3]);d=Math.max(d,s[1],s[3]);}); return [a,b,c,d];}
+const f1=x=>x.toFixed(1), f3=x=>x.toFixed(3);
+function secName(ax,d){return ax===1?'PLAN at Y = '+d.toFixed(2)+' m (level +'+(BL+d).toFixed(2)+')':'SECTION at '+AXN[ax].toUpperCase()+' = '+d.toFixed(2)+' m';}
+function levelsFor(ax,bb){return ax===1?[]:LV.filter(l=>l[1]>=bb[1]-0.05&&l[1]<=bb[3]+0.05);}
+function svg2d(segs,ax,d,forExport){const bb=bounds(segs); const m=0.5, x0=bb[0]-m-1.3, x1=bb[2]+m, y0=bb[1]-m-0.2, y1=bb[3]+m+0.5;
+ const W=(x1-x0)*1000,Hh=(y1-y0)*1000, sw=forExport?14:10; const X=x=>f1((x-x0)*1000), Y=y=>f1((y1-y)*1000);
+ let o='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+f1(W)+' '+f1(Hh)+'" role="img">'+(forExport?'<rect width="100%" height="100%" fill="#fff"/>':'');
+ const col=l=>forExport?(LC[l]||'#000'):(l==='S-CONC'?'currentColor':LC[l]);
+ levelsFor(ax,bb).forEach(l=>{o+='<line x1="'+X(x0+1.2)+'" y1="'+Y(l[1])+'" x2="'+X(x1)+'" y2="'+Y(l[1])+'" stroke="#e0903a" stroke-width="'+sw/2+'" stroke-dasharray="120 80"/><text x="'+X(x0+0.05)+'" y="'+Y(l[1]-0.03)+'" font-size="'+(forExport?95:80)+'" fill="'+(forExport?'#444':'#e0903a')+'" font-family="Arial,sans-serif">'+l[0]+' +'+(BL+l[1]).toFixed(2)+'</text>';});
+ segs.forEach(s=>{o+='<line x1="'+X(s[0])+'" y1="'+Y(s[1])+'" x2="'+X(s[2])+'" y2="'+Y(s[3])+'" stroke="'+col(s[4])+'" stroke-width="'+sw+'" stroke-linecap="round"/>';});
+ o+='<text x="'+X(x0+0.05)+'" y="'+Y(y0+0.12)+'" font-size="120" font-weight="700" fill="'+(forExport?'#000':'currentColor')+'" font-family="Arial,sans-serif">'+secName(ax,d)+'  (units: m, levels in m)</text></svg>';
+ return o;}
+function dxfHead(layers){let s='0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n9\n$INSUNITS\n70\n4\n0\nENDSEC\n0\nSECTION\n2\nTABLES\n0\nTABLE\n2\nLTYPE\n70\n1\n0\nLTYPE\n2\nCONTINUOUS\n70\n0\n3\nSolid line\n72\n65\n73\n0\n40\n0.0\n0\nENDTAB\n0\nTABLE\n2\nLAYER\n70\n'+layers.length+'\n';
+ layers.forEach(l=>{s+='0\nLAYER\n2\n'+l[0]+'\n70\n0\n62\n'+l[1]+'\n6\nCONTINUOUS\n';}); return s+'0\nENDTAB\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n';}
+const DXF_END='0\nENDSEC\n0\nEOF\n';
+const LAYC=[['S-CONC',8],['S-STEEL',5],['M-PIPE',4],['M-EQUIP',1],['SECT-LEVELS',30],['SECT-TEXT',7]];
+function dxf2d(segs,ax,d){const bb=bounds(segs); let s=dxfHead(LAYC); const e=(l,a,b,c,dd)=>'0\nLINE\n8\n'+l+'\n10\n'+f1(a*1000)+'\n20\n'+f1(b*1000)+'\n30\n0.0\n11\n'+f1(c*1000)+'\n21\n'+f1(dd*1000)+'\n31\n0.0\n';
+ const tx=(a,b,h,t)=>'0\nTEXT\n8\nSECT-TEXT\n10\n'+f1(a*1000)+'\n20\n'+f1(b*1000)+'\n30\n0.0\n40\n'+h+'\n1\n'+t+'\n';
+ segs.forEach(g=>{s+=e(g[4],g[0],g[1],g[2],g[3]);});
+ levelsFor(ax,bb).forEach(l=>{s+=e('SECT-LEVELS',bb[0]-1.2,l[1],bb[2]+0.5,l[1]); s+=tx(bb[0]-1.3,l[1]+0.03,80,l[0]+' +'+(BL+l[1]).toFixed(2));});
+ s+=tx(bb[0],bb[1]-0.4,120,secName(ax,d)+' (drawing units: mm)'); return s+DXF_END;}
+const cad=p=>[p[0]*1000,-p[2]*1000,p[1]*1000];
+function dxf3d(){const T3=collect(); let s=dxfHead(LAYC.slice(0,4));
+ T3.forEach(t=>{const a=cad(t.p.slice(0,3)),b=cad(t.p.slice(3,6)),c=cad(t.p.slice(6,9));
+  s+='0\n3DFACE\n8\n'+t.l+'\n10\n'+f1(a[0])+'\n20\n'+f1(a[1])+'\n30\n'+f1(a[2])+'\n11\n'+f1(b[0])+'\n21\n'+f1(b[1])+'\n31\n'+f1(b[2])+'\n12\n'+f1(c[0])+'\n22\n'+f1(c[1])+'\n32\n'+f1(c[2])+'\n13\n'+f1(c[0])+'\n23\n'+f1(c[1])+'\n33\n'+f1(c[2])+'\n';});
+ return s+DXF_END;}
+function obj(){const T3=collect(); const byL={}; T3.forEach(t=>(byL[t.l]=byL[t.l]||[]).push(t)); let s='# Sewage Lift Station, metres, Z up\n',n=0;
+ for(const l in byL){s+='g '+l+'\n'; byL[l].forEach(t=>{for(let k=0;k<3;k++){const c=t.p.slice(3*k,3*k+3);s+='v '+f3(c[0])+' '+f3(-c[2])+' '+f3(c[1])+'\n';} s+='f '+(n+1)+' '+(n+2)+' '+(n+3)+'\n'; n+=3;});} return s;}
+function guid(){const c='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$';let g=c[Math.floor(Math.random()*4)];for(let i=0;i<21;i++)g+=c[Math.floor(Math.random()*64)];return g;}
+function ifc(){const T3=collect(); let id=0; const o=[]; const E=s=>{o.push('#'+(++id)+'='+s+';');return id;}; const q=s=>"'"+s+"'";
+ const own=(()=>{const p=E('IFCPERSON($,$,'+q('User')+',$,$,$,$,$)'),og=E('IFCORGANIZATION($,'+q('Org')+',$,$,$)'),po=E('IFCPERSONANDORGANIZATION(#'+p+',#'+og+',$)'),ap=E('IFCAPPLICATION(#'+og+','+q('1.0')+','+q('Lift Station Viewer')+','+q('LSV')+')');return E('IFCOWNERHISTORY(#'+po+',#'+ap+',$,.NOCHANGE.,$,$,$,0)');})();
+ const u=[E('IFCSIUNIT(*,.LENGTHUNIT.,.MILLI.,.METRE.)'),E('IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.)'),E('IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.)'),E('IFCSIUNIT(*,.PLANEANGLEUNIT.,$,.RADIAN.)')];
+ const ua=E('IFCUNITASSIGNMENT((#'+u.join(',#')+'))'), o0=E('IFCCARTESIANPOINT((0.,0.,0.))'), ax=E('IFCAXIS2PLACEMENT3D(#'+o0+',$,$)');
+ const ctx=E('IFCGEOMETRICREPRESENTATIONCONTEXT($,'+q('Model')+',3,1.E-05,#'+ax+',$)');
+ const prj=E('IFCPROJECT('+q(guid())+',#'+own+','+q('Sewage Lift Station')+',$,$,$,$,(#'+ctx+'),#'+ua+')');
+ const pl=(rel)=>E('IFCLOCALPLACEMENT('+(rel?'#'+rel:'$')+',#'+ax+')');
+ const plS=pl(0), site=E('IFCSITE('+q(guid())+',#'+own+','+q('Site')+',$,$,#'+plS+',$,$,.ELEMENT.,$,$,$,$,$)');
+ const plB=pl(plS), bld=E('IFCBUILDING('+q(guid())+',#'+own+','+q('Lift Station')+',$,$,#'+plB+',$,$,.ELEMENT.,$,$,$)');
+ const plL=pl(plB), sto=E('IFCBUILDINGSTOREY('+q(guid())+',#'+own+','+q('Level 0')+',$,$,#'+plL+',$,$,.ELEMENT.,0.)');
+ E('IFCRELAGGREGATES('+q(guid())+',#'+own+',$,$,#'+prj+',(#'+site+'))'); E('IFCRELAGGREGATES('+q(guid())+',#'+own+',$,$,#'+site+',(#'+bld+'))'); E('IFCRELAGGREGATES('+q(guid())+',#'+own+',$,$,#'+bld+',(#'+sto+'))');
+ const names={'S-CONC':'Concrete structure','S-STEEL':'Steel, ladders and screen','M-PIPE':'Pipework','M-EQUIP':'Equipment'}, prox=[];
+ for(const l of Object.keys(names)){const meshes={}; T3.filter(t=>t.l===l).forEach(t=>(meshes[t.m]=meshes[t.m]||[]).push(t)); const breps=[];
+  for(const mk2 in meshes){const pts=new Map(), faces=[]; const P=c=>{const k=c.map(x=>Math.round(x)).join(','); if(!pts.has(k))pts.set(k,E('IFCCARTESIANPOINT(('+c.map(x=>x.toFixed(1)).join(',')+'))')); return pts.get(k);};
+   meshes[mk2].forEach(t=>{const a=cad(t.p.slice(0,3)),b=cad(t.p.slice(3,6)),c=cad(t.p.slice(6,9)); const ia=P(a),ib=P(b),ic=P(c); if(ia===ib||ib===ic||ia===ic)return;
+    const lp=E('IFCPOLYLOOP((#'+ia+',#'+ib+',#'+ic+'))'), bd=E('IFCFACEOUTERBOUND(#'+lp+',.T.)'); faces.push(E('IFCFACE((#'+bd+'))'));});
+   if(faces.length){const sh=E('IFCCLOSEDSHELL((#'+faces.join(',#')+'))'); breps.push(E('IFCFACETEDBREP(#'+sh+')'));}}
+  if(!breps.length)continue; const rep=E('IFCSHAPEREPRESENTATION(#'+ctx+','+q('Body')+','+q('Brep')+',(#'+breps.join(',#')+'))'), pd=E('IFCPRODUCTDEFINITIONSHAPE($,$,(#'+rep+'))');
+  prox.push(E('IFCBUILDINGELEMENTPROXY('+q(guid())+',#'+own+','+q(names[l])+',$,$,#'+pl(plL)+',#'+pd+',$,$)'));}
+ E('IFCRELCONTAINEDINSPATIALSTRUCTURE('+q(guid())+',#'+own+',$,$,(#'+prox.join(',#')+'),#'+sto+')');
+ return 'ISO-10303-21;\nHEADER;\nFILE_DESCRIPTION((\'ViewDefinition [CoordinationView]\'),\'2;1\');\nFILE_NAME(\'LiftStation.ifc\',\'2026-11-19T00:00:00\',(\'\'),(\'\'),\'Lift Station Viewer\',\'Lift Station Viewer\',\'\');\nFILE_SCHEMA((\'IFC2X3\'));\nENDSEC;\nDATA;\n'+o.join('\n')+'\nENDSEC;\nEND-ISO-10303-21;\n';}
+/* store-only zip */
+const CRC=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+function crc32(b){let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRC[(c^b[i])&255]^(c>>>8);return(c^0xFFFFFFFF)>>>0;}
+function zip(files){const enc=new TextEncoder(),parts=[],cd=[];let off=0;
+ files.forEach(f=>{const nm=enc.encode(f.name),d=typeof f.data==='string'?enc.encode(f.data):f.data,crc=crc32(d);
+  const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint16(10,0,true);h.setUint16(12,0x21,true);h.setUint32(14,crc,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);h.setUint16(26,nm.length,true);h.setUint16(28,0,true);
+  const c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(10,0,true);c.setUint16(12,0,true);c.setUint16(14,0x21,true);c.setUint32(16,crc,true);c.setUint32(20,d.length,true);c.setUint32(24,d.length,true);c.setUint16(28,nm.length,true);c.setUint32(42,off,true);
+  parts.push(new Uint8Array(h.buffer),nm,d);cd.push(new Uint8Array(c.buffer),nm);off+=30+nm.length+d.length;});
+ const cds=cd.reduce((a,b)=>a+b.length,0),e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cds,true);e.setUint32(16,off,true);
+ return new Blob([...parts,...cd,new Uint8Array(e.buffer)],{type:'application/zip'});}
+function pdf2d(segs,ax,d){const {jsPDF}=window.jspdf; const doc=new jsPDF({orientation:'landscape',unit:'mm',format:'a3'}); const bb=bounds(segs);
+ const w=(bb[2]-bb[0])*1000,h=(bb[3]-bb[1])*1000; const den=[5,10,20,25,50,75,100,200,500].find(k=>w/k<=330&&h/k<=190)||500;
+ const ox=20+(380-w/den)/2+0, oy=22+(190-h/den)/2; const X=x=>ox+(x-bb[0])*1000/den, Y=y=>oy+(bb[3]-y)*1000/den;
+ doc.setLineWidth(0.5); doc.rect(8,8,404,281); doc.setLineWidth(0.15);
+ levelsFor(ax,bb).forEach(l=>{doc.setDrawColor(224,144,58); doc.setLineDash([2,1.2],0); doc.line(X(bb[0])-25,Y(l[1]),X(bb[2])+5,Y(l[1])); doc.setLineDash([]); doc.setTextColor(90); doc.setFontSize(7); doc.text(l[0]+' +'+(BL+l[1]).toFixed(2),X(bb[0])-25,Y(l[1])-0.8);});
+ const rgb={'S-CONC':[43,49,56],'S-STEEL':[75,123,181],'M-PIPE':[47,143,184],'M-EQUIP':[181,71,44]};
+ segs.forEach(s=>{doc.setDrawColor(...(rgb[s[4]]||[0,0,0])); doc.line(X(s[0]),Y(s[1]),X(s[2]),Y(s[3]));});
+ doc.setDrawColor(0); doc.setLineWidth(0.4); doc.rect(8,245,404,44); doc.line(250,245,250,289);
+ doc.setTextColor(0); doc.setFontSize(14); doc.text('SEWAGE LIFT STATION',14,256); doc.setFontSize(11); doc.text(secName(ax,d),14,264);
+ doc.setFontSize(8); doc.text('Source: sheets BIS-ME-LST-01 and BIS-ME-LST-03. PRELIMINARY, generated from a simplified 3D model. Not for construction.',14,272);
+ doc.text('Wall and slab thickness 430 mm. Dimensions in mm, levels in m. Cut outlines only, no hatching.',14,277);
+ doc.setFontSize(12); doc.text('Scale 1:'+den+' (A3)',256,256); doc.setFontSize(8); doc.text('Generated 2026-11-19',256,264); doc.text('Colors: concrete dark, steel blue, pipe teal, equipment red',256,270);
+ return doc.output('blob');}
+
+/* ================= section UI + export ================= */
+let secTimer=null, curSegs=[];
+function sectionChanged(){clearTimeout(secTimer); secTimer=setTimeout(drawPrev,90);}
+function drawPrev(){curSegs=slice(state.ax,+state.pos); const el=$('prev'); if(!curSegs.length){el.innerHTML='<p class="small" style="padding:12px">'+tr('empty')+'</p>';return;} el.innerHTML=svg2d(curSegs,state.ax,+state.pos,false);}
+let dl=null; const b2=$('b2d'), b3=$('b3d'), msg=$('msg');
+function say(k,extra){msg.textContent=tr(k)+(extra||'');}
+const standalone=typeof claude==='undefined';   // opened as a plain file in a normal browser
+function direct(filename,data){const blob=data instanceof Blob?data:new Blob([data]); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); say('st_ok',filename);}
+// CAD text formats go raw when standalone; inside claude.ai the viewer only saves a few types, so they are zipped
+function pack(fname,data,zipName){return standalone?out(fname,data):out(zipName,zip([{name:fname,data}]));}
+async function out(filename,data){if(standalone){direct(filename,data);return;} if(!dl){say('st_na');return;} try{await dl.save({filename,data}); say('st_ok',filename);}catch(e){const c=e&&e.code; if(c==='declined')say('st_no'); else if(c==='rejected_extension'||c==='extension_not_enabled')say('st_ext'); else if(c==='unavailable'||c==='not_granted')say('st_na'); else say('st_err',(e&&e.message)||c||'');}}
+function safe(fn){return async()=>{try{await fn();}catch(e){say('st_err',(e&&e.message)||String(e));}};}
+const nm=()=>'LiftStation_'+(state.ax===1?'Plan_Y':'Section_'+AXN[state.ax].toUpperCase())+state.pos.toString().replace('.','_').replace('-','m');
+const needSeg=()=>{if(!curSegs.length)throw new Error(tr('empty'));};
+mk(b2,'b_pdf',safe(()=>{needSeg();return out(nm()+'.pdf',pdf2d(curSegs,state.ax,+state.pos));}));
+mk(b2,'b_svg',safe(()=>{needSeg();return out(nm()+'.svg',svg2d(curSegs,state.ax,+state.pos,true));}));
+mk(b2,'b_dxf2',safe(()=>{needSeg();return pack(nm()+'.dxf',dxf2d(curSegs,state.ax,+state.pos),nm()+'_dxf.zip');}));
+mk(b3,'b_dxf3',safe(()=>pack('LiftStation_3D_R12.dxf',dxf3d(),'LiftStation_3D_dxf.zip')));
+mk(b3,'b_ifc',safe(()=>pack('LiftStation_IFC2X3.ifc',ifc(),'LiftStation_ifc.zip')));
+mk(b3,'b_obj',safe(()=>pack('LiftStation.obj',obj(),'LiftStation_obj.zip')));
+(async()=>{if(standalone)return; try{dl=await claude.use('downloads');}catch(e){dl=null;} if(!dl)say('st_na');})();
+
+/* ================= language ================= */
+function buildStatic(){
+ $('howto').innerHTML=(typeof claude==='undefined'?['how1','how2']:['how1','how2','how3']).map(k=>'<li data-i="'+k+'"></li>').join('');
+ $('lim').innerHTML=['lim1','lim2','lim3','lim4','lim5','lim6'].map(k=>'<li data-i="'+k+'"></li>').join('');
+ $('cmp').innerHTML=L.en.cm.map((c,i)=>'<li><b data-cmt="'+i+'"></b><span data-cmd="'+i+'"></span></li>').join('');}
+function applyLang(){document.documentElement.lang=lang; document.body.dir=lang==='ar'?'rtl':'ltr';
+ document.querySelectorAll('[data-i]').forEach(e=>e.textContent=tr(e.dataset.i));
+ const cm=L[lang].cm; document.querySelectorAll('[data-cmt]').forEach(e=>e.textContent=cm[+e.dataset.cmt][0]); document.querySelectorAll('[data-cmd]').forEach(e=>e.textContent=cm[+e.dataset.cmd][1]);
+ $('lAr').classList.toggle('on',lang==='ar'); $('lEn').classList.toggle('on',lang==='en'); setCap(); posLabel(); drawPrev();
+ if(!dl&&!standalone)say('st_na'); document.title=lang==='ar'?'موديل 3D لمحطة الصرف':'Lift Station 3D Model';
+ try{localStorage.setItem('lsv-lang',lang);}catch(e){}}
+$('lAr').onclick=()=>{lang='ar';applyLang();}; $('lEn').onclick=()=>{lang='en';applyLang();};
+try{const s=localStorage.getItem('lsv-lang'); if(s==='en'||s==='ar')lang=s;}catch(e){}
+
+/* ================= loop ================= */
+function resize(){const w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(host);
+function theme(){scene.background=new T.Color(css('--scene')||'#e7e5df');}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',theme);
+new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+buildStatic(); theme(); setAxis(2,false); state.pos=0; pos.value=0; syncUI(); apply(); resize(); applyLang(); go(views[0]);
+renderer.setAnimationLoop(now=>{stepTween(now); controls.update(); renderer.render(scene,camera);});
+window.__lsv={collect,slice,svg2d,dxf2d,dxf3d,ifc,obj,pdf2d,zip,state};
+})();
+</script>
+</body>
