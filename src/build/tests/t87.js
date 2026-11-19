@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-hvac');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+const t=async(patch)=>JSON.parse(await E("(()=>{ Object.assign(HVD.g,{sf:0,DR:0,Tout:40,Tin:24,RHo:30,RHi:50}); HVD.rooms=[Object.assign({},HVR,{A:20,H:3,pp:0,lw:0,eq:0,ach:0,vp:0,va:0,SH:0},"+patch+")]; const C=hvCalc(); const x=C.rooms[0].peak; return JSON.stringify({sens:x.sens,lat:x.lat,Vs:C.rooms[0].Vs}); })()"));
+console.log('glass S 10 m2 (hand 448 sens):',JSON.stringify(await t("{gS:10}")));
+console.log('4 people (hand 300 sens, 220 lat):',JSON.stringify(await t("{pp:4}")));
+console.log('vent 20 L/s (hand 386.3 sens, 276.8 lat):',JSON.stringify(await t("{va:1}")));
+console.log('lighting 10 W/m2 x20 = 200:',JSON.stringify(await t("{lw:10}")));
+await E("wtNew('hv')"); await pg.waitForTimeout(1000); await E("HVD.rooms=[Object.assign({},HVR,{n:'Office',A:30,pp:5,lw:12,eq:800,gS:6,wS:12,rf:30})]; hvSave(); hvRender()"); await pg.waitForTimeout(600); await pg.screenshot({path:'/tmp/hv1.png'}); console.log(er.slice(0,4)); await b.close();})();
