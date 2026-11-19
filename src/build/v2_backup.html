@@ -105,7 +105,7 @@ ul.l{margin:6px 0;padding-inline-start:18px}ul.l li{margin:3px 0}
 'use strict';
 /* ====================== i18n ====================== */
 const DICT={}; let lang='ar';
-const d=(k,en,ar)=>{DICT[k]={en,ar};}; const tr=k=>DICT[k]?DICT[k][lang]:k; const b2=(e,a)=>lang==='ar'?a:e;
+const B2M={a2e:new Map(),e2a:new Map()}; const d=(k,en,ar)=>{DICT[k]={en,ar}; if(typeof en==='string'&&typeof ar==='string'&&en!==ar){B2M.a2e.set(ar,en);B2M.e2a.set(en,ar);}}; const tr=k=>DICT[k]?DICT[k][lang]:k; const b2=(e,a)=>{ if(e!==a&&typeof e==='string'&&typeof a==='string'){B2M.a2e.set(a,e);B2M.e2a.set(e,a);} return lang==='ar'?a:e; };
 d('title','Sewage Lift Station: 3D model','محطة طلمبات الصرف: موديل 3D');
 d('sub','Built from sheets BIS-ME-LST-01 and 03. Edit the dimensions, cut sections, play the disassembly, and export CAD files.','مبني على الشيتات BIS-ME-LST-01 و03. عدّل الأبعاد، خد قطاعات، شغّل حركة الفك والتركيب، وصدّر ملفات CAD.');
 d('badge','360° look-around','360° حوالين نفسك');
