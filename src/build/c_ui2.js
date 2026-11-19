@@ -3,11 +3,11 @@ const UI2={z:1,d:1,col:0,ready:false,auto:{t:'',busy:0,last:''}};
 try{ const j=JSON.parse(localStorage.getItem('xto-ui2')||'null'); if(j){ UI2.z=j.z||1; UI2.d=j.d==null?1:j.d; UI2.col=j.col||0; } }catch(e){}
 function ui2Save(){ try{ localStorage.setItem('xto-ui2',JSON.stringify({z:UI2.z,d:UI2.d,col:UI2.col})); }catch(e){} }
 (function(){ const st=document.createElement('style'); st.textContent=`
-#xto.xd1 #xBar{height:38px;gap:9px}#xto.xd1 #xBar .nm svg.mono{width:92px;height:38px}#xto.xd1 #xBar button svg{width:16px;height:16px}#xto.xd1 #xBar .pj{font-size:11.5px}#xto.xd1 #xBar .tk,#xto.xd1 #xBar .dt{font-size:11px}
+#xto.xd1 #xBar{height:38px;gap:9px}#xto.xd1 #xBar .nm svg.mono{width:83px;height:38px}#xto.xd1 #xBar button svg{width:16px;height:16px}#xto.xd1 #xBar .pj{font-size:11.5px}#xto.xd1 #xBar .tk,#xto.xd1 #xBar .dt{font-size:11px}
 #xto.xd1 #xTabs{height:26px}#xto.xd1 #xTabs button{padding:4px 13px;font-size:11.5px}
 #xto.xd1 #xRib{height:60px}#xto.xd1 .xg{padding:3px 8px 0}#xto.xd1 .xg .bs{gap:3px}#xto.xd1 .xb{width:58px;height:41px;font-size:9.5px;gap:0}#xto.xd1 .xb .xi{width:21px;height:21px}#xto.xd1 .xb span{max-width:56px}#xto.xd1 .xg .gt{height:14px;line-height:14px;font-size:9px}
 #xto.xd1 #xDocTabs{height:24px}#xto.xd1 #xDocTabs .dt{height:21px;font-size:11px;padding:0 9px}#xto.xd1 #xSt{height:17px;font-size:10px}
-#xto.xd2 #xBar{height:30px;gap:7px}#xto.xd2 #xBar .nm svg.mono{width:70px;height:30px}#xto.xd2 #xBar button svg{width:14px;height:14px}#xto.xd2 #xBar .tk{display:none}#xto.xd2 #xTabs{height:22px}#xto.xd2 #xTabs button{padding:3px 10px;font-size:10.5px}
+#xto.xd2 #xBar{height:30px;gap:7px}#xto.xd2 #xBar .nm svg.mono{width:66px;height:30px}#xto.xd2 #xBar button svg{width:14px;height:14px}#xto.xd2 #xBar .tk{display:none}#xto.xd2 #xTabs{height:22px}#xto.xd2 #xTabs button{padding:3px 10px;font-size:10.5px}
 #xto.xd2 #xRib{height:40px}#xto.xd2 .xg{padding:2px 6px 0}#xto.xd2 .xg .gt{display:none}#xto.xd2 .xb{width:40px;height:34px}#xto.xd2 .xb span{display:none}#xto.xd2 .xb .xi{width:20px;height:20px}#xto.xd2 #xDocTabs{height:22px}#xto.xd2 #xDocTabs .dt{height:19px;font-size:10.5px}#xto.xd2 #xSt{height:15px;font-size:9.5px}
 #xto.xcol #xBar,#xto.xcol #xTabs,#xto.xcol #xRib{display:none}
 #xDocTabs .ctl{margin-inline-start:auto;display:flex;gap:2px;align-items:center;padding-bottom:1px}#xDocTabs .ctl button{background:none;border:0;color:#aeb8c4;font-size:11px;padding:1px 6px;height:20px;cursor:pointer}#xDocTabs .ctl button:hover{color:#fff;background:#2a2f36}

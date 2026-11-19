@@ -1,0 +1,18 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--autoplay-policy=no-user-gesture-required','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:900}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('http://127.0.0.1:8791/site/index.html'); await pg.waitForTimeout(5000);
+await E("RAD.tab='mn'; wxOpen('player',[.55,.05,.42,.9]); radPanel();"); await pg.waitForTimeout(2500);
+console.log('mn list',await E("radVis().length+' '+radVis().map(s=>s.n).join(' | ')"));
+await E("mnPlay('r1',2)"); await pg.waitForTimeout(7000);
+console.log('vod',await E("RAD.st+' t='+RAD.audio.currentTime.toFixed(1)+' dur='+RAD.audio.duration+' n='+RAD.cur.n"));
+await E("mnPlay('r4',1)"); await pg.waitForTimeout(5000); console.log('old rec',await E("RAD.st+' t='+RAD.audio.currentTime.toFixed(1)"));
+await E("mnStep(1)"); await pg.waitForTimeout(4000); console.log('next surah',await E("RAD.cur.n+' '+RAD.st"));
+await pg.screenshot({path:'/tmp/mn1.png'});
+await E("wxOpen('yt',[.2,.1,.4,.5]); ytPanel(); ytLoad('hwWpWoOtsBY','Test video'); ytPanel();"); await pg.waitForTimeout(2500);
+await E("wtSwitch(WTAB.tabs[1].id)"); await pg.waitForTimeout(1500);
+console.log('after tab switch: radio',await E("RAD.st+' t='+RAD.audio.currentTime.toFixed(1)"),'video frame',await E("!!document.querySelector('#xMini iframe')+' src='+(document.querySelector('#xMini iframe')||{}).src.slice(0,60)+' display='+getComputedStyle(document.getElementById('xMini')).display"),'bar',await E("getComputedStyle(document.getElementById('xMedia')).display+' children='+document.getElementById('xMedia').children.length+' parentIsTop='+(document.getElementById('xMedia')===document.getElementById('xto').firstChild)"));
+await pg.screenshot({path:'/tmp/mn2.png'});
+await E("document.querySelector('#xMedia button:last-child').click()"); await pg.waitForTimeout(500); console.log('bar moved bottom',await E("MB.pos+' '+(document.getElementById('xMedia').nextSibling===document.getElementById('xSt'))"));
+await E("ytShow(false)"); console.log('hidden',await E("document.getElementById('xMini').classList.contains('off')"));
+console.log('ERR',er.slice(0,4)); await b.close();})();
