@@ -146,3 +146,6 @@ To do next (owner's latest requests, not started):
   4. A Projects tab: work on several projects, each with its own data, DC, calendar and room.
   5. Layers, groups and full options of AutoCAD, Revit, Civil 3D, Primavera and Navisworks; a research report on what those programs offer, and on consultancies, contractors and holding companies, to design the automation of our agents.
   6. A presentation dashboard for cost and project status.
+
+
+### 2026-11-19 (late): see docs/STATUS.md for the full done / not-done list.

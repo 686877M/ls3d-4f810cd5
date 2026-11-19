@@ -1,0 +1,22 @@
+# T.O X — master status (updated 2026-11-19, late)
+Short names: R.X model, C.X drafting, P.X schedule, S.X survey, N.X coordination, D.X detection, Q.X quantities, L.X levels, M.X simulation, E.X analysis, O.X office. Everything below was tested headless with mocks unless it says otherwise; nothing was checked in a real browser with a GPU or on live internet except radio streams and the YouTube search server.
+
+## Done
+- Shell: ribbon, dock windows, document tabs with Start page, command line, themes, density / zoom / collapsible bars, autosave every 5 s with 120 steps kept after a restart, ask-before-close dialog (saving is automatic), hover cards with a moving picture and a plain explanation (no code names), guide centre, right-click menus (3D, schedule rows, documents, tabs; on Mac ctrl-click or two-finger click).
+- Model and drawings: 3D model, sections, sheets, BOQ, IFC / DXF / OBJ / XLSX, rebar layout, site plan in 3D (button answers at once, zooms to it), measure, CAD window, undo covering cuts and measures, remove buttons tray.
+- Schedule and simulation: CPM schedule, timeline dock, link motion, playback indicator (activity, dates, float, critical path; matching rows light up and scroll), animation and display controls in the Views pane (rotate on / off, site plan, speed up to 16x).
+- Technical office / DC: register of 22 document types, tender, feasibility, IPC, soil and survey reports, reports, filing, CRM, glossary; project control (pulse, calendar, Telegram bot, collect, follow-up reports, assets); teams, versions, live session, search everywhere.
+- GIS and environment: sun, wind, seismic (ASCE 7 / SBC 301 and Eurocode 8 form), site class, liquefaction screening, simulated weather year, satellite and elevation sources, pump / motor / transformer / voltage-drop quick calcs.
+- Review workflows (new): structural and concrete, mechanical / electrical / power, quality before issue, handover; they run steps in order on real project data and can be registered as a report. Commands: wf_struct, wf_mep, wf_qa, wf_hand, or the agent ("شغّل مراجعة الإنشائي").
+- Agent hub (new): window.TOX API, optional WebSocket bridge for outside agents (secret required), top-line agent button; built-in agent understands many Arabic orders; model accounts through the Agent panel (Claude, Gemini, OpenRouter, Mistral, any OpenAI-compatible address).
+- Media: radio (Egypt, Saudi, Minshawi with recordings), YouTube search widget floating and resizable, media bar, radio drop-down on the top line. Ad skipping is not built.
+- Brand: T.O X mark (leaning 7, O, inverted-Y X), 6868 line, tab short names, entry screen with contours to the bottom.
+- Archive: project Markdown file and all 128 sessions exported on the Mac; sources in src/build/.
+
+## Not done yet (owner's requests)
+1. Source-program fidelity per tool (AutoCAD CAD window with command line, status bar, OSNAP / ORTHO / POLAR, ViewCube, selection windows, grips; Revit, Civil 3D, Primavera, Excel, Navisworks, Plant 3D layouts, layers and groups for all).
+2. Structural analysis tools in the spirit of SAFE / SAP / ETABS / Tekla: frame and slab analysis, load combinations, member design (RC and steel: bolts, welds, base plates), reinforcement and steel detailing, with Egyptian (ECP 201 / 203 / 205), Saudi (SBC) and US (ACI 318, AISC 360) rules. Reference books (for example Dr. Shaker El-Behairy's RC design and Egyptian civil curricula) are copyrighted: the tool can list them as references and implement the public formulas and code methods, but cannot copy their text or tables.
+3. Meeting-room desk: upload and analyse soil reports, photos, drawings; minutes; BIM matching; revision comparison; an agent dashboard that talks like colleagues; Projects tab with a separate data set per project.
+4. Google Drive folders: read through the assistant's connector when you send a folder link; direct page link needs an OAuth client id.
+5. Consultant mode for a new project from land and owner requirements (tender, feasibility, option comparison, cost), the Home / interior render module (library, brands, colours, 360 views), Plant 3D output, video studio presets, people and vehicles, project-type registry.
+6. Presentation dashboard for cost and status; research report on programs, consultancies, contractors and holding companies; code-quality and security review pass (started: the test hook is off by default, no outside data is sent by the page on its own).

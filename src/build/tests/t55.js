@@ -1,0 +1,16 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:900}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');localStorage.setItem('xto-test','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('console',m=>{if(m.type()==='error')er.push('C:'+m.text().slice(0,150));});
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000); await E("wtSwitch(WTAB.tabs[1].id)"); await pg.waitForTimeout(900);
+await E("schedOn=true; DAY=T0+8; PLAYING=false; applyDay(); tlRender();"); await pg.waitForTimeout(1200);
+console.log('ind',await E("document.getElementById('xInd').style.display+' | '+document.getElementById('xInd').innerText.replace(/\\n/g,' ; ').slice(0,300)"));
+console.log('rows lit',await E("document.querySelectorAll('.tlnow').length"));
+await pg.screenshot({path:'/tmp/ind1.png'});
+await E("PLAYING=true; DSPEED=5;"); await pg.waitForTimeout(2500); console.log('playing ->',await E("IND.rows+' day='+DAY.toFixed(1)"));
+await E("PLAYING=false"); 
+console.log('views card',await E("!!document.querySelector('#p-views .indv')+' buttons='+document.querySelectorAll('#p-views .indv button').length"));
+console.log('TOX api',await E("JSON.stringify([TOX.commands().length,TOX.state().docs,typeof TOX.run])"));
+await pg.click('.rdb'); await pg.waitForTimeout(400); console.log('radio menu',await E("document.querySelectorAll('.xmenu .xm').length"));
+await pg.screenshot({path:'/tmp/ind2.png'});
+const off=await pg.evaluate(()=>{ localStorage.setItem('xto-test','0'); try{ __lsv.ev('1'); return 'EVAL ALLOWED'; }catch(e){ return 'blocked: '+e.message; } }); console.log('eval guard',off);
+console.log('ERR',er.slice(0,5)); await b.close();})();
