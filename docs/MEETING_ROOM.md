@@ -212,3 +212,10 @@ Done and published (dba4da8): top bar shows project, file and tab; dock widgets 
 - New tab T.X Plant (AutoCAD Plant 3D style): ribbon tab Plant, colour by pipe system, iso views, lists, checks, A1 iso sheet (plant layout). Final output sheets like EG24SAD0012-PS-3D-AW-Z3-01/02 (key plan, notes, legend, title block) are the target; the existing sheet maker is the base. Not yet matched 1:1.
 - Coohom (interior design + render module) is NOT built. Render panel exists (tile on the dashboard).
 - Simulation / assembly review: still open. Need an audit of every part against the sequence (late, missing).
+
+## Simulation audit 2026-11-19
+Measured when each of the 36 model parts first moves in every sequence (pw/t82.js).
+- Full overhaul: only covers, pump, bolts, valves, screen move in the first 80 %; the other 25 parts (pipes, ladders, rails, odor unit, shed, board, slabs, crane...) only move in the last 20 % (exploded view). Five parts never move: wet-well wall and base, blinding, chamber floor and walls (structure).
+- Pump removal, valve removal and screen removal move 2-6 parts by design.
+- Step labels checked against c_dict.js: consistent.
+- Added mode "Construction order" (SEQ.build): all 36 parts appear one by one in a construction order (blinding, base, walls, slabs, pipework, rails and ladders, valves, crane, pumps lowered, covers and equipment). The order is my engineering assumption; the owner/consultant should confirm it. 3D text labels still show for parts not yet built.

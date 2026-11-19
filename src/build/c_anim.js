@@ -14,6 +14,7 @@ function applyAnim(){ if(!G)return;
   screen:()=>[0,sc*(H+1.8),0], penstock:()=>[0,sc*(H+1.8),0]};
  ['dj','nrv','slv','flg'].forEach(id=>{fn[id]=i=>(m.all||i===pi)?[0,vw*(H-G.PY+2.2),0]:null;});
  for(const id in parts){const f=fn[id], ex=EX[id]; parts[id].forEach((g,i)=>{const o=(f&&f(i))||[0,0,0], x=(ex&&(ex[i]||ex[0]))||[0,0,0]; g.position.set(o[0]+x[0]*e,o[1]+x[1]*e,o[2]+x[2]*e);});}
+ const BL=m.B; for(const id in parts){ parts[id].forEach(g=>{ if(BL){ const w=BL[id], uu=w?u(w[0],w[1]):1; g.visible=uu>0; g.position.y+=(1-uu)*(id==='pump'?6:3); g.userData._bh=1; } else if(g.userData._bh){ g.visible=true; g.userData._bh=0; } }); } if(G.J){ if(BL&&BL.crane)G.J.visible=u(BL.crane[0],BL.crane[1])>0; else G.J.visible=true; }
  if(G.J){G.J.rotation.y=a0*jib+phi2; const hookY=H+1.8-G.dh*hd+G.lift*lf; G.trol.position.x=rr; G.hook.position.set(rr,hookY,0); const top=hookY+.08,len=Math.max(.05,H+2.1-top); G.cable.scale.y=len; G.cable.position.set(rr,H+2.1-len/2,0);}
 }
 function stepIndex(){const st=SEQ[A.mode].steps; for(let i=st.length-1;i>=0;i--)if(A.s>=st[i][1])return i; return 0;}
