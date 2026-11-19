@@ -3366,7 +3366,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 /* ====== Technical Office X shell: top bar, ribbon, dock workspace, capture, project set-up, context menus. Add a command with XCMD(...), a ribbon group in RIB, a widget in WX.defs. ====== */
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H27M55 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="38.3" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="5.4" letter-spacing="1.3" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
-XTO.build='20261119-235604';
+XTO.build='20261120-003623';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -4472,8 +4472,8 @@ RIB.splice(RIB.findIndex(t=>t[0]==='anal')+1,0,['plant',['Plant','بلانت'],[
 const RIBSET={start:['home','ctrl','dc','team','set','ws'],model:['home','model','site','annot','anal','out','nav','team','set','ws'],draft:['home','annot','out','nav','team','set','ws'],sched:['home','sched','ctrl','out','team','set','ws'],survey:['home','site','env','out','nav','team','set','ws'],coord:['home','anal','out','nav','team','set','ws'],detect:['home','anal','nav','out','team','set','ws'],takeoff:['home','calc','out','team','set','ws'],levels:['home','site','annot','out','team','set','ws'],sim:['home','sched','nav','out','env','team','set','ws'],analysis:['home','anal','calc','env','out','team','set','ws'],office:['home','office','dc','out','team','set','ws'],plant:['home','plant','anal','out','nav','team','set','ws'],hx:['home','hm','out','nav','team','set','ws'],hv:['home','hvac','env','out','team','set','ws']};
 const RIBDEF={start:'home',model:'model',draft:'annot',sched:'sched',survey:'site',coord:'anal',detect:'anal',takeoff:'calc',levels:'site',sim:'sched',analysis:'anal',office:'office',plant:'plant',hx:'hm',hv:'hvac'};
 function ribType(){ try{ const t=WTAB.tabs.find(x=>x.id===WTAB.cur); return t?t.type:'start'; }catch(e){ return 'start'; } }
-function xRibbon(){ const tabs=$('xTabs'), rib=$('xRib'); if(!tabs)return; const vis=RIBSET[ribType()]||null, list=vis?RIB.filter(t=>vis.includes(t[0])):RIB; if(!list.some(t=>t[0]===XTAB))XTAB=(list.find(t=>t[0]===RIBDEF[ribType()])||list[0])[0]; tabs.innerHTML=''; list.forEach(t=>{ const b=el('button',{class:t[0]===XTAB?'on':'',text:t[1][L2()],onclick:()=>{ XTAB=t[0]; xRibbon(); }}); tabs.appendChild(b); }); rib.innerHTML=''; const cur=list.find(t=>t[0]===XTAB); cur[2].forEach(g=>{ const d=el('div',{class:'xg'}), bs=el('div',{class:'bs'}); g[1].forEach(id=>{ const b=xBtn(id); if(b)bs.appendChild(b); }); d.append(bs,el('div',{class:'gt',text:g[0][L2()]})); rib.appendChild(d); }); }
-{ const _ws=wtSwitch; wtSwitch=function(id){ _ws(id); try{ const d=RIBDEF[ribType()]; if(d)XTAB=d; xRibbon(); }catch(e){} }; }
+function xRibbon(){ const tabs=$('xTabs'), rib=$('xRib'); if(!tabs)return; const vis=RIBSET[ribType()]||null, PR=(typeof RIBP!=='undefined')?RIBP[ribType()]:null, list=PR?PR.tabs:(vis?RIB.filter(t=>vis.includes(t[0])):RIB); if(!list.some(t=>t[0]===XTAB))XTAB=(list.find(t=>t[0]===(PR?PR.dflt:RIBDEF[ribType()]))||list[0])[0]; rib.classList.toggle('prog',!!PR); tabs.innerHTML=''; list.forEach(t=>{ const b=el('button',{class:t[0]===XTAB?'on':'',text:t[1][L2()],onclick:()=>{ XTAB=t[0]; xRibbon(); }}); tabs.appendChild(b); }); rib.innerHTML=''; const cur=list.find(t=>t[0]===XTAB); cur[2].forEach(g=>{ const d=el('div',{class:'xg'}), bs=el('div',{class:'bs'}); g[1].forEach(id=>{ const b=xBtn(id); if(b)bs.appendChild(b); }); d.append(bs,el('div',{class:'gt',text:g[0][L2()]})); rib.appendChild(d); }); try{ let old=document.getElementById('xRibCount'); if(old)old.remove(); if(PR){ let b=0,t=0; cur[2].forEach(g=>g[1].forEach(id=>{ t++; if(!(XC[id]&&XC[id].stub))b++; })); const c=document.createElement('div'); c.id='xRibCount'; c.textContent=b2('Working '+b+' of '+t+' on this tab · all tabs '+PR.built+' of '+PR.tot,'شغّال '+b+' من '+t+' في التاب ده · كل التابات '+PR.built+' من '+PR.tot); rib.style.position='relative'; rib.appendChild(c); } }catch(e){} }
+{ const _ws=wtSwitch; wtSwitch=function(id){ _ws(id); try{ const PR=(typeof RIBP!=='undefined')?RIBP[ribType()]:null, d=PR?PR.dflt:RIBDEF[ribType()]; if(d)XTAB=d; xRibbon(); }catch(e){} }; }
 try{ xRibbon(); }catch(e){}
 /* ====== H.X Home: interior planning in the Coohom spirit. 2D plan editor (rooms, furniture, fixtures), live 3D, areas, render through the existing render panel. Furniture sizes are generic starting sizes you can edit; they are not product catalogue data. ====== */
 const HMC={bed:['Double bed','سرير مزدوج',1.6,2.0,.5,0x8d6e63],sofa:['Sofa','كنبة',2.0,.9,.8,0x607d8b],table:['Dining table','سفرة',1.6,.9,.75,0xa1887f],chair:['Chair','كرسي',.45,.45,.9,0x6d4c41],wardrobe:['Wardrobe','دولاب',1.2,.6,2.1,0xd7ccc8],desk:['Desk','مكتب',1.2,.6,.75,0x8d6e63],kitchen:['Kitchen unit','وحدة مطبخ',.6,.6,.9,0xeceff1],fridge:['Fridge','ثلاجة',.7,.7,1.8,0xb0bec5],toilet:['Toilet','مرحاض',.4,.7,.4,0xffffff],basin:['Basin','حوض',.55,.45,.85,0xffffff],shower:['Shower','دش',.9,.9,.05,0x90caf9],bath:['Bathtub','بانيو',1.7,.75,.55,0xffffff],tv:['TV unit','وحدة تلفزيون',1.6,.4,.5,0x455a64],rug:['Rug','سجادة',2.0,1.4,.02,0xbcaaa4],door:['Door','باب',.9,.12,2.1,0x795548],window:['Window','شباك',1.2,.12,1.2,0x81d4fa],light:['Ceiling light','إضاءة سقف',.3,.3,.05,0xfff59d]};
@@ -4596,6 +4596,171 @@ XCMD('du_load','layout','Duct flows from cooling load','تدفقات المجا�
 XCMD('du_csv','xlsx','Export duct sizes (CSV)','تصدير مقاسات المجاري (CSV)',duCsv);
 setTimeout(()=>Object.assign(XDESC,{du_sec:['Add a duct section to size','يضيف قطاع مجرى للتحجيم'],du_load:['Take each room supply airflow from the cooling-load table','ياخد هواء تغذية كل غرفة من جدول حمل التبريد'],du_csv:['Download the duct table as CSV','ينزّل جدول المجاري CSV']}),0);
 { const h=RIB.find(t=>t[0]==='hvac'); if(h)h[2].splice(1,0,[['Ducts','المجاري'],['du_sec','du_load','du_csv']]); }
+/* ====== Program shells: each tab shows the real program's ribbon (tabs, panels, commands) from the owner's list. Commands that already work in T.O X are wired and run; the others are listed, dimmed, and say "not built yet" when clicked. Names and groups are from memory of the current programs and are not Autodesk artwork. ====== */
+Object.assign(XI,{wall:'<rect x="3" y="9" width="18" height="7"/><path class="a" d="M3 12.5h18M9 9v3.5M15 12.5V16"/>',door:'<path d="M6 21V4h12v17"/><path class="a" d="M14 12.5h1M6 21h12"/>',window:'<rect x="5" y="5" width="14" height="14"/><path class="a" d="M12 5v14M5 12h14"/>',column:'<rect x="9" y="3" width="6" height="18"/><path class="a" d="M7 21h10M7 3h10"/>',beam:'<path d="M3 9h18v5H3z"/><path class="a" d="M3 19h18"/>',floor:'<path d="M3 14l9-5 9 5-9 5z"/><path class="a" d="M3 14v3l9 5 9-5v-3"/>',roof:'<path d="M3 14L12 5l9 9"/><path class="a" d="M6 14v6h12v-6"/>',stair:'<path d="M4 20h4v-4h4v-4h4V8h4"/>',ramp:'<path d="M3 19L21 9v10z"/>',curtain:'<path d="M4 4h16v16H4z"/><path class="a" d="M4 10h16M4 15h16M10 4v16M15 4v16"/>',railing:'<path d="M3 8h18M5 8v12M12 8v12M19 8v12"/><path class="a" d="M3 14h18"/>',ceiling:'<path d="M3 5h18"/><path class="a" d="M6 5v4M12 5v4M18 5v4M3 12h18"/>',level:'<path d="M3 12h18"/><path class="a" d="M8 12l4-5 4 5"/>',grid:'<path d="M7 3v18M17 3v18M3 8h18M3 16h18"/>',dim:'<path d="M4 7v10M20 7v10M4 12h16"/><path class="a" d="M7 10l-3 2 3 2M17 10l3 2-3 2"/>',text:'<path d="M5 6h14M12 6v13"/>',tag:'<path d="M4 12l8-8h8v8l-8 8z"/><circle class="a" cx="15.5" cy="8.5" r="1.5"/>',line:'<path d="M4 20L20 4"/>',poly:'<path d="M3 18l5-9 5 6 4-8 4 11"/>',rect:'<rect x="4" y="6" width="16" height="12"/>',circle:'<circle cx="12" cy="12" r="8"/>',arc:'<path d="M4 18a10 10 0 0 1 16 0"/>',ellipse:'<ellipse cx="12" cy="12" rx="9" ry="5.5"/>',spline:'<path d="M3 17c4-12 6 4 9-5s6 3 9-4"/>',hatch:'<rect x="4" y="5" width="16" height="14"/><path class="a" d="M4 15l8-10M4 19L16 5M10 19l10-12M16 19l4-5"/>',move:'<path d="M12 3v18M3 12h18"/><path class="a" d="M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3"/>',copy:'<rect x="8" y="8" width="12" height="12"/><path class="a" d="M4 16V4h12"/>',rot:'<path d="M20 12a8 8 0 1 1-3-6.2"/><path class="a" d="M20 4v5h-5"/>',mirror:'<path d="M12 3v18" stroke-dasharray="2 2"/><path class="a" d="M9 6L4 18h5zM15 6l5 12h-5z"/>',scale:'<rect x="4" y="12" width="8" height="8"/><path class="a" d="M12 12l8-8M14 4h6v6"/>',trim:'<path d="M4 12h16"/><path class="a" d="M12 4v8M9 17l6 3"/>',offset:'<path d="M4 16c4-8 12-8 16 0"/><path class="a" d="M4 11c4-8 12-8 16 0"/>',array:'<rect x="4" y="4" width="5" height="5"/><rect class="a" x="15" y="4" width="5" height="5"/><rect x="4" y="15" width="5" height="5"/><rect class="a" x="15" y="15" width="5" height="5"/>',erase:'<path d="M5 17l9-11 6 5-6 8z"/><path class="a" d="M8 20h12"/>',layer:'<path d="M12 4l9 5-9 5-9-5z"/><path class="a" d="M3 14l9 5 9-5"/>',block:'<rect x="5" y="5" width="14" height="14"/><path class="a" d="M5 12h14M12 5v14"/>',xref:'<path d="M5 4h9l5 5v11H5z"/><path class="a" d="M10 14h6M13 11l3 3-3 3"/>',pipe:'<path d="M3 9h12v6H3z"/><path class="a" d="M15 12h6"/>',duct:'<path d="M3 8h18v8H3z"/><path class="a" d="M7 8v8M13 8v8"/>',cable:'<path d="M4 18c0-8 16-4 16-12"/><circle class="a" cx="4" cy="18" r="1.5"/>',light:'<circle cx="12" cy="10" r="5"/><path class="a" d="M9 18h6M10 21h4"/>',panel:'<rect x="5" y="3" width="14" height="18"/><path class="a" d="M8 7h8M8 11h8M8 15h5"/>',terrain:'<path d="M3 18l5-8 4 5 4-9 5 12z"/>',point:'<circle cx="12" cy="12" r="2.5"/><path class="a" d="M12 3v4M12 17v4M3 12h4M17 12h4"/>',surface:'<path d="M3 14l6-8 6 5 6-6v11l-6 4-6-4-6 4z"/>',align:'<path d="M3 17c6 0 6-10 12-10h6"/><circle class="a" cx="3" cy="17" r="1.5"/><circle class="a" cx="21" cy="7" r="1.5"/>',profile:'<path d="M3 8l5 6 5-4 8 8"/><path class="a" d="M3 20h18"/>',parcel:'<path d="M4 6h10l6 4v8H4z"/><path class="a" d="M4 12h16"/>',gear:'<circle cx="12" cy="12" r="3"/><path class="a" d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>',eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle class="a" cx="12" cy="12" r="3"/>',link:'<path d="M10 14a4 4 0 0 1 0-6l3-3a4 4 0 0 1 6 6l-2 2"/><path class="a" d="M14 10a4 4 0 0 1 0 6l-3 3a4 4 0 0 1-6-6l2-2"/>',impt:'<path d="M12 3v12M7 10l5 5 5-5"/><path class="a" d="M4 20h16"/>',table:'<rect x="3" y="5" width="18" height="14"/><path class="a" d="M3 10h18M9 5v14"/>',cons:'<path d="M5 19L19 5"/><path class="a" d="M5 12h14M12 5v14" stroke-dasharray="2 2"/>',constr:'<path d="M5 19V5M5 19h14"/><circle class="a" cx="5" cy="19" r="1.6"/>'});
+const RIBP={}, PRGN={};
+function progReg(type,tabs,dflt){ const out=[]; let n=0, built=0, tot=0; tabs.forEach(t=>{ const groups=[]; t[3].forEach(p=>{ const ids=[]; p[2].forEach(sp=>{ const a=sp.split('|'), en=a[0], ar=a[1]||a[0], ic=a[2]||'gear', impl=a[3]||'', id=type+'_'+(++n); tot++; if(impl&&XC[impl]){ built++; const base=XC[impl]; XCMD(id,ic,en,ar,()=>base.run(),base.on); } else if(impl&&impl.charAt(0)==='='){ built++; const fn=impl.slice(1); XCMD(id,ic,en,ar,()=>{ try{ (new Function('return ('+fn+')'))()(); }catch(e){ xSt(e.message); } }); } else { XCMD(id,ic,en,ar,()=>xSt(b2('Not built yet: '+en+' (it is in the plan)','لسه مش متبنية: '+ar+' (في الخطة)'))); XC[id].stub=true; } ids.push(id); }); groups.push([[p[0],p[1]],ids]); }); out.push([t[0],[t[1],t[2]],groups]); }); RIBP[type]={tabs:out,dflt:dflt||out[0][0],built,tot}; }
+{ const _xb=xBtn; xBtn=function(id){ const b=_xb(id); if(b&&XC[id]&&XC[id].stub){ b.classList.add('stub'); b.title=b.title+' — '+b2('not built yet','لسه مش متبنية'); } return b; }; }
+(function(){ const st=document.createElement('style'); st.textContent='#xRib.prog{overflow-x:auto;overflow-y:hidden;height:auto!important;min-height:88px;padding-bottom:2px}#xRib.prog .xg .bs{display:grid!important;grid-auto-flow:column;grid-template-rows:repeat(3,19px);grid-auto-columns:max-content;gap:1px 4px;align-content:start}#xRib.prog .xg{flex:none!important}#xRib.prog .xb{flex-direction:row!important;align-items:center;justify-content:flex-start;height:19px!important;min-height:0!important;width:auto!important;min-width:0!important;max-width:none!important;flex:none!important;padding:0 6px!important;gap:5px;white-space:nowrap}#xRib.prog .xb svg{width:16px!important;height:16px!important;flex:none}#xRib.prog .xb span{font-size:11px!important;white-space:nowrap;max-width:none!important;overflow:visible!important}#xRib .xb.stub{opacity:.42}#xRib .xb.stub:hover{opacity:.7}#xRibCount{position:sticky;inset-inline-end:6px;align-self:flex-end;margin-inline-start:auto;white-space:nowrap;font:10px "Segoe UI",Arial;color:var(--muted);pointer-events:none}'; document.head.appendChild(st); })();
+/* Revit ribbon (R.X). Wired: views, zoom/orbit, sections, schedules/BOQ, sheets, render, rebar, coordination, loads, site, project info, export. Everything else is listed and marked not built. */
+progReg('model',[
+['arch','Architecture','العمارة',[
+ ['Build','البناء',['Wall|جدار|wall','Door|باب|door','Window|شباك|window','Component|مكوّن|block|p_fam','Column|عمود|column','Roof|سقف|roof','Ceiling|سقف معلق|ceiling','Floor|بلاطة|floor','Curtain System|نظام ستارة|curtain','Curtain Grid|شبكة ستارة|grid','Mullion|مليون|line']],
+ ['Circulation','الحركة',['Railing|درابزين|railing','Ramp|منحدر|ramp','Stair|سلم|stair']],
+ ['Model','النموذج',['Model Text|نص نموذج|text','Model Line|خط نموذج|line','Model Group|مجموعة نموذج|block','Parts|الأجزاء|parts|p_parts']],
+ ['Room & Area','الغرف والمساحات',['Room|غرفة|layout','Room Separator|فاصل غرف|line','Tag Room|وسم غرفة|tag','Area|مساحة|layout','Area Boundary|حد مساحة|line','Tag Area|وسم مساحة|tag']],
+ ['Opening','الفتحات',['By Face|بالوجه|block','Shaft|مشق|block','Wall|جدار|wall','Vertical|رأسي|block','Dormer|دورمر|roof']],
+ ['Datum','المراجع',['Level|منسوب|level|t_levels','Grid|شبكة|grid']],
+ ['Work Plane','مستوى العمل',['Set|تعيين|layout','Show|إظهار|eye','Ref Plane|مستوى مرجعي|cons','Viewer|عارض|eye']]]],
+['struct','Structure','الإنشائي',[
+ ['Structure','الإنشاء',['Beam|كمرة|beam','Brace|رباط|line','Column|عمود|column','Floor|بلاطة|floor','Truss|جمالون|poly','Beam System|نظام كمرات|beam']],
+ ['Foundation','الأساسات',['Isolated|منفصلة|block','Wall|حائط|wall','Slab|لبشة|floor']],
+ ['Reinforcement','التسليح',['Rebar|حديد تسليح|rebar|p_rebar','Area|مساحة|hatch','Path|مسار|line','Fabric Sheet|شبك لحام|grid','Cover|غطاء خرساني|layer','Rebar Couplers|وصلات حديد|link']],
+ ['Analytical Model','النموذج التحليلي',['Check|فحص|safety|p_calc','Loads|الأحمال|gear|p_calc','Boundary Conditions|ظروف الحدود|point','Load Combinations|توليفات الأحمال|table']]]],
+['steel','Steel','الحديد',[
+ ['Connection','الوصلات',['Connection|وصلة|link','Plate|صفيحة|rect','Bolt|مسمار|point','Anchor|أنكر|point','Weld|لحام|line']],
+ ['Fabrication','التصنيع',['Cut|قطع|trim','Cope|تفريز|trim','Shorten|تقصير|trim']]]],
+['sys','Systems','الأنظمة',[
+ ['HVAC','التكييف',['Mechanical Equipment|معدات ميكانيكية|duct','Air Terminal|مخارج هواء|duct','Duct|مجرى|duct','Duct Fitting|وصلة مجرى|duct','Duct Accessory|ملحق مجرى|duct','Flex Duct|مجرى مرن|duct','Duct Placeholder|مجرى مبدئي|duct','Heating and Cooling Loads|أحمال التبريد والتسخين|gear|=()=>wtNew("hv")']],
+ ['Electrical','الكهرباء',['Electrical Equipment|معدات كهربائية|panel','Device|جهاز|panel','Lighting Fixture|وحدة إنارة|light','Cable Tray|ممر كابلات|cable','Conduit|ماسورة كهرباء|cable','Wire|سلك|cable']],
+ ['Plumbing & Piping','السباكة والمواسير',['Pipe|ماسورة|pipe','Pipe Fitting|وصلة ماسورة|pipe','Plumbing Fixture|وحدة سباكة|pipe','Sprinkler|رشاش|pipe','Pipe Accessory|ملحق ماسورة|pipe','Pipe Placeholder|ماسورة مبدئية|pipe','Colour by system|تلوين حسب النظام|pipe|plant_sys']],
+ ['Mechanical','ميكانيكا',['Mechanical Settings|إعدادات ميكانيكية|gear','Pipe Sizing|مقاسات المواسير|gear','Duct Sizing|مقاسات المجاري|duct|=()=>wtNew("hv")']]]],
+['ins','Insert','إدراج',[
+ ['Link','ربط',['Link Revit|ربط Revit|link','Link IFC|ربط IFC|link','Link CAD|ربط CAD|link|open','Link Topography|ربط طبوغرافيا|terrain|p_survey','Decal|ملصق|rect','Point Cloud|سحابة نقاط|point','Coordination Model|نموذج تنسيق|link|p_coord']],
+ ['Import','استيراد',['Import CAD|استيراد CAD|impt|open','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
+ ['Load from Library','تحميل من المكتبة',['Load Family|تحميل عائلة|block|p_fam','Load as Group|تحميل كمجموعة|block','Insert Views from File|إدراج مناظير من ملف|impt']]]],
+['ann','Annotate','التوضيح',[
+ ['Dimension','الأبعاد',['Aligned|محاذٍ|dim|m_dist','Linear|خطي|dim','Angular|زاوي|dim|m_ang','Radial|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Spot Elevation|منسوب نقطة|level|m_lvl','Spot Coordinate|إحداثي نقطة|point','Spot Slope|ميل نقطة|line']],
+ ['Detail','التفاصيل',['Detail Line|خط تفصيل|line','Region|منطقة|hatch','Component|مكوّن|block','Revision Cloud|سحابة مراجعة|poly','Insulation|عزل|poly','Repeating Detail|تفصيل متكرر|array']],
+ ['Text','النص',['Text|نص|text|note','Check Spelling|فحص إملاء|text','Find/Replace|بحث واستبدال|text']],
+ ['Tag','الوسوم',['Tag by Category|وسم بالفئة|tag','Tag All|وسم الكل|tag','Beam Annotations|توضيحات كمرات|tag','Material Tag|وسم خامة|tag','Keynote|ملاحظة مفتاحية|tag']],
+ ['Symbol','الرموز',['Symbol|رمز|block','Stair Path|مسار سلم|line','Span Direction|اتجاه البحر|line']]]],
+['anl','Analyze','التحليل',[
+ ['Energy Analysis','تحليل الطاقة',['Heating and Cooling Loads|أحمال التبريد والتسخين|gear|=()=>wtNew("hv")','Energy Optimization|تحسين الطاقة|gear|env_en','Space|حيز|layout','Zone|منطقة|layout']],
+ ['Reports & Schedules','التقارير والجداول',['Quantities and cost|الكميات والتكلفة|table|p_bom','Pressure Loss Report|تقرير فقد الضغط|table|=()=>wtNew("hv")','Panel Schedules|جداول لوحات|table']],
+ ['Check Systems','فحص الأنظمة',['Check Duct Systems|فحص المجاري|safety','Check Pipe Systems|فحص المواسير|safety','Check Circuits|فحص الدوائر|safety','Interference Check|فحص التداخل|clash|clash']],
+ ['Review','المراجعة',['Structural review|مراجعة إنشائية|safety|wf_struct','MEP review|مراجعة MEP|safety|wf_mep','Quality review|مراجعة الجودة|safety|wf_qa','Handover|التسليم|safety|wf_hand']]]],
+['mass','Massing & Site','الكتل والموقع',[
+ ['Conceptual Mass','الكتل التصورية',['Show Mass|إظهار الكتلة|eye','In-Place Mass|كتلة في المكان|block','Place Mass|وضع كتلة|block']],
+ ['Model Site','نموذج الموقع',['Toposurface|سطح طبوغرافي|terrain|p_survey','Site Component|مكوّن موقع|block','Parking Component|مكوّن موقف|block','Building Pad|منصة مبنى|floor','Site plan in 3D|الموقع في 3D|terrain|site']],
+ ['Modify Site','تعديل الموقع',['Split Surface|تقسيم السطح|trim','Merge Surface|دمج السطح|link','Subregion|منطقة فرعية|hatch','Property Line|حد الملكية|parcel','Graded Region|منطقة تسوية|terrain']]]],
+['col','Collaborate','التعاون',[
+ ['Manage Collaboration','إدارة التعاون',['Collaborate|تعاون|link|p_team','Worksets|مجموعات العمل|layer','Live session|جلسة مباشرة|link|tm_live']],
+ ['Synchronize','المزامنة',['Versions and roll-back|النسخ والرجوع|save|tm_vers','Activity log|سجل النشاط|table|tm_log']],
+ ['Coordinate','التنسيق',['Copy/Monitor|نسخ/مراقبة|link','Coordination Review|مراجعة التنسيق|clash|p_coord','Interference Check|فحص التداخل|clash|clash','Reconcile Hosting|تسوية الاستضافة|link']],
+ ['Communicate','التواصل',['Share|مشاركة|link|p_share','Search everywhere|بحث شامل|eye|tm_find']]]],
+['view','View','عرض',[
+ ['Graphics','الرسوميات',['Visibility/Graphics|رؤية/رسوميات|eye|p_views','View Templates|قوالب العرض|layer','Filters|فلاتر|layer','Thin Lines|خطوط رفيعة|line','Show Hidden Lines|إظهار الخطوط المخفية|eye','Ghost concrete|خرسانة شفافة|eye|t_ghost','Water|المية|eye|t_water','Levels|المناسيب|level|t_levels','Ground|الأرض|terrain|t_ground']],
+ ['Visual style','نمط العرض',['Shaded|مظلل|iso|d_shaded','Wireframe|إطار سلكي|iso|d_wire','X-ray|أشعة|iso|d_xray']],
+ ['Presentation','العرض التقديمي',['Render|ريندر|camera|render','Screenshot|لقطة شاشة|camera|shot','Record video|تسجيل فيديو|record|rec']],
+ ['Create','إنشاء',['3D View|منظور 3D|view3d|v_iso','Section|قطاع|section|sA','Callout|وسيلة إيضاح|rect','Plan Views|مساقط|plan|v_plan','Elevation|واجهة|side|v_side','Drafting View|منظر رسم|cad|cad','Duplicate View|نسخ منظر|copy','Legends|مفاتيح|table','Schedules|جداول|table|p_bom','Scope Box|صندوق نطاق|rect']],
+ ['Sheet Composition','تكوين اللوحات',['Sheet|لوحة|sheet|sheet','Title Block|بلوك عنوان|rect','Revisions|مراجعات|table','Guide Grid|شبكة إرشاد|grid']],
+ ['Navigate','التنقل',['Orbit|تدوير|rot|n_orbit','Pan|إزاحة|move|n_pan','Walk|مشي|move|n_walk','Zoom all|تكبير الكل|zfit|zfit','Zoom in|تكبير|zin|zin','Zoom out|تصغير|zout|zout','Zoom selected|تكبير المحدد|zoomsel|zsel','Perspective|منظور|iso|n_persp','Orthographic|متعامد|iso|n_ortho']],
+ ['Windows','النوافذ',['Tile|تجانب|tile|w_tile','Cascade|تتالي|cascade|w_casc','Reset layout|إعادة الترتيب|layout|w_reset','Hide / show top bars|إخفاء/إظهار الأشرطة|layout|ui_bars']]]],
+['mgr','Manage','إدارة',[
+ ['Settings','الإعدادات',['Materials|الخامات|layer','Object Styles|أنماط الكائنات|layer','Snaps|المغانط|point','Project Information|معلومات المشروع|info|setup','Project Parameters|معاملات المشروع|table|p_edit','Global Parameters|معاملات عامة|table','Shared Parameters|معاملات مشتركة|table','Transfer Project Standards|نقل معايير|link','Purge Unused|حذف غير المستخدم|erase','Project Units|وحدات المشروع|gear','Structural Settings|إعدادات إنشائية|gear','MEP Settings|إعدادات MEP|gear']],
+ ['Manage Project','إدارة المشروع',['Manage Links|إدارة الروابط|link','Manage Images|إدارة الصور|rect','Starting View|منظر البدء|view3d','Phasing|المراحل|sched|p_sched','Design Options|خيارات التصميم|layer','Saved projects|المشاريع المحفوظة|projects|projects']],
+ ['Inquiry','استعلام',['Warnings|تحذيرات|safety|clash','Select by ID|تحديد بالرقم|point','Review Warnings|مراجعة التحذيرات|safety|p_safety']],
+ ['Control','المتابعة',['Pulse and handover|النبض والتسليم|bell|ct_pulse','Project cycle|دورة المشروع|sched|ct_life','Calendar|التقويم|cal|ct_cal']]]],
+['addin','Add-Ins','إضافات',[
+ ['External Tools','أدوات خارجية',['Agent hub|مركز الوكلاء|link|p_hub','Telegram bot|بوت تيليجرام|link|ct_tg']],
+ ['Dynamo','ديناميو',['Dynamo|ديناميو|gear','Dynamo Player|مشغّل ديناميو|play']]]],
+['mod','Modify','تعديل',[
+ ['Properties','الخصائص',['Properties|خصائص|edit|p_edit','Families|العائلات|block|p_fam','Parameters|المعاملات|table|p_edit']],
+ ['Clipboard','الحافظة',['Paste|لصق|copy','Cut|قص|trim','Copy|نسخ|copy','Match Type|مطابقة النوع|link']],
+ ['Geometry','الهندسة',['Cope|تفريز|trim','Cut|قطع|trim','Join|ربط|link']],
+ ['Modify','تعديل',['Align|محاذاة|move','Offset|إزاحة|offset','Mirror|مرآة|mirror','Move|نقل|move','Copy|نسخ|copy','Rotate|تدوير|rot','Trim/Extend|قص/مد|trim','Split|تقسيم|trim','Array|مصفوفة|array','Scale|مقياس|scale','Pin|تثبيت|point','Delete|حذف|erase|rm_last','Remove all cuts and measures|إزالة القطاعات والقياسات|erase|rm_all']],
+ ['Measure','القياس',['Distance|مسافة|mDist|m_dist','Between|بين|mBetween|m_btw','Angle|زاوية|mAngle|m_ang','Circle / hole|دائرة / فتحة|mCircle|m_circ','Level|منسوب|mLevel|m_lvl','Object|كائن|mObj|m_obj']]]],
+['out','Output','الإخراج',[
+ ['Drawings','الرسومات',['Sheet|لوحة|sheet|sheet','PDF|PDF|pdf|e_pdf','SVG|SVG|dxf|e_svg','DXF|DXF|dxf|e_dxf']],
+ ['3D models','نماذج 3D',['DXF 3D|DXF 3D|dxf|e_dxf3','IFC|IFC|ifc|e_ifc','OBJ|OBJ|obj|e_obj']],
+ ['Quantities','الكميات',['BOQ XLSX|حصر XLSX|xlsx|e_boq','BOQ CSV|حصر CSV|csv|e_csv']],
+ ['Package','الحزمة',['Project package ZIP|حزمة المشروع|export|pack']]]]
+],'arch');
+/* AutoCAD ribbon (C.X). Wired: the CAD editor drawing and modify commands, zoom, measure, undo, plot sheet and exports. */
+progReg('draft',[
+['home','Home','الرئيسية',[
+ ['Draw','الرسم',['Line|خط|line|c_line','Polyline|بوليلاين|poly|c_pl','Circle|دائرة|circle|c_circle','Arc|قوس|arc','Rectangle|مستطيل|rect|c_rect','Polygon|مضلع|poly','Ellipse|قطع ناقص|ellipse','Spline|منحنى|spline','Hatch|تهشير|hatch','Gradient|تدرج|hatch','Boundary|حد|rect','Region|منطقة|rect','Wipeout|ممحاة|rect','Revision Cloud|سحابة مراجعة|poly','Point|نقطة|point','Construction Line|خط إنشاء|cons','Ray|شعاع|line']],
+ ['Modify','التعديل',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Stretch|مط|scale','Rotate|تدوير|rot|c_rotate','Mirror|مرآة|mirror|c_mirror','Scale|مقياس|scale|c_scale','Trim|قص|trim','Extend|مد|trim','Fillet|تدوير زوايا|arc','Chamfer|شطف|line','Array|مصفوفة|array','Offset|إزاحة|offset|c_offset','Erase|مسح|erase|c_erase','Explode|تفجير|erase|c_explode','Join|ضم|link','Break|كسر|trim','Blend|دمج منحنى|spline','Lengthen|إطالة|line','Align|محاذاة|move','Edit Polyline|تحرير بوليلاين|poly']],
+ ['Annotation','التوضيح',['Text|نص|text|c_text','Dimension|بُعد|dim|c_dim','Leader|خط إيضاح|line','Table|جدول|table','Mtext|نص متعدد|text']],
+ ['Layers','الطبقات',['Layer Properties|خصائص الطبقات|layer','Layer Previous|الطبقة السابقة|layer','Isolate|عزل|layer','Freeze|تجميد|layer','Lock|قفل|layer','Make Current|تعيين كحالية|layer','Match|مطابقة|layer']],
+ ['Block','البلوك',['Insert|إدراج|block','Create|إنشاء|block','Edit|تحرير|block','Define Attributes|تعريف خصائص|block']],
+ ['Properties','الخصائص',['Match Properties|مطابقة الخصائص|link','Color|اللون|layer','Linetype|نوع الخط|line','Lineweight|سمك الخط|line']],
+ ['Groups','المجموعات',['Group|تجميع|block','Ungroup|فك التجميع|block']],
+ ['Utilities','الأدوات',['Measure Distance|قياس مسافة|mDist|m_dist','Area|المساحة|layout','ID Point|هوية نقطة|point','Quick Calc|حاسبة|gear|p_calc','Angle|زاوية|mAngle|m_ang']],
+ ['Clipboard','الحافظة',['Paste|لصق|copy','Copy Clip|نسخ للحافظة|copy','Cut|قص|trim','Undo|تراجع|undo|undo','Redo|إعادة|redo|redo']]]],
+['insert','Insert','إدراج',[
+ ['Block','البلوك',['Insert|إدراج|block','Create Block|إنشاء بلوك|block','Edit Block|تحرير بلوك|block']],
+ ['Reference','المرجع',['Attach|إرفاق|xref','Clip|قص مرجع|trim','Underlay|خلفية|xref']],
+ ['Import','استيراد',['Import|استيراد|impt|open','PDF Import|استيراد PDF|impt']],
+ ['Data','البيانات',['Data Extraction|استخراج بيانات|table|p_bom','Link Data|ربط بيانات|link']],
+ ['Linking','الربط',['Hyperlink|رابط|link','Location|الموقع|point|p_geo']]]],
+['annot','Annotate','التوضيح',[
+ ['Text','النص',['Multiline Text|نص متعدد|text|c_text','Single Line|سطر واحد|text','Check Spelling|فحص إملاء|text','Find|بحث|text']],
+ ['Dimensions','الأبعاد',['Linear|خطي|dim|c_dim','Aligned|محاذٍ|dim|m_dist','Angular|زاوي|dim|m_ang','Radius|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Baseline|خط أساس|dim','Continue|متابعة|dim','Update|تحديث|dim','Dim Style|نمط الأبعاد|gear']],
+ ['Leaders','خطوط الإيضاح',['Multileader|ملتي ليدر|line','Add Leader|إضافة|line','Align|محاذاة|line']],
+ ['Tables','الجداول',['Table|جدول|table','Link Table|ربط جدول|link']],
+ ['Markup','الملاحظات',['Revision Cloud|سحابة مراجعة|poly','Wipeout|ممحاة|rect','Note in 3D|ملاحظة 3D|note|note']]]],
+['param','Parametric','بارامتري',[
+ ['Geometric','هندسية',['Coincident|تطابق|point','Collinear|على خط واحد|line','Concentric|متحدة المركز|circle','Fix|تثبيت|point','Parallel|توازي|line','Perpendicular|تعامد|line','Horizontal|أفقي|line','Vertical|رأسي|line','Tangent|مماس|arc','Smooth|نعومة|spline','Symmetric|تماثل|mirror','Equal|تساوي|line']],
+ ['Dimensional','بُعدية',['Linear|خطي|dim','Aligned|محاذٍ|dim','Angular|زاوي|dim','Radius|نصف قطر|dim','Diameter|قطر|dim','Convert|تحويل|link']],
+ ['Manage','إدارة',['Delete Constraints|حذف القيود|erase','Show/Hide|إظهار/إخفاء|eye','Parameters Manager|مدير المعاملات|table']]]],
+['view','View','عرض',[
+ ['Navigate','التنقل',['Pan|إزاحة|move|n_pan','Zoom Extents|تكبير للكل|zfit|zfit','Zoom Window|تكبير نافذة|zoomsel|zsel','Zoom In|تكبير|zin|zin','Zoom Out|تصغير|zout|zout','Orbit|تدوير|rot|n_orbit']],
+ ['Visual Styles','أنماط العرض',['2D Wireframe|إطار سلكي 2D|iso|d_wire','Shaded|مظلل|iso|d_shaded','X-ray|أشعة|iso|d_xray','Hidden|مخفي|iso','Realistic|واقعي|iso|render','Conceptual|تصوري|iso','Sketchy|رسم يدوي|iso','Shades of Gray|تدرج رمادي|iso']],
+ ['Model Viewports','نوافذ العرض',['Named Views|مناظير مسماة|view3d|p_views','Viewport Configuration|ضبط النوافذ|layout','Top|علوي|plan|n_top','Iso|أيزو|iso|n_iso']],
+ ['Palettes','اللوحات',['Properties|الخصائص|edit|p_edit','Tool Palettes|لوحات الأدوات|layout','Sheet Set Manager|مدير مجموعات اللوحات|sheet|sheet','Layers|الطبقات|layer','Measure|قياس|measure|p_review']],
+ ['Interface','الواجهة',['Switch Windows|تبديل النوافذ|tile|w_tile','Cascade|تتالي|cascade|w_casc','Reset layout|إعادة الترتيب|layout|w_reset','Hide / show bars|إخفاء/إظهار الأشرطة|layout|ui_bars']]]],
+['manage','Manage','إدارة',[
+ ['Action Recorder','مسجل الأفعال',['Record|تسجيل|record|rec','Play|تشغيل|play|dis']],
+ ['Customization','التخصيص',['User Interface|الواجهة|gear|p_look','Tool Palettes|لوحات الأدوات|layout','Edit Aliases|تحرير الاختصارات|text']],
+ ['CAD Standards','معايير CAD',['Configure|ضبط|gear','Check|فحص|safety|p_safety','Layer Translator|مترجم الطبقات|layer']],
+ ['Applications','التطبيقات',['Load Application|تحميل تطبيق|impt','Run Script|تشغيل سكربت|play']]]],
+['output','Output','الإخراج',[
+ ['Plot','الطباعة',['Plot|طباعة|sheet|sheet','Batch Plot|طباعة دفعة|sheet','Preview|معاينة|eye|sheet','Page Setup Manager|إعداد الصفحة|gear','Plotter Manager|مدير الطابعات|gear']],
+ ['Export to DWF/PDF','تصدير DWF/PDF',['Export PDF|تصدير PDF|pdf|e_pdf','Export SVG|تصدير SVG|dxf|e_svg','Export DXF|تصدير DXF|dxf|e_dxf','DWF|DWF|dxf']],
+ ['Package','الحزمة',['Project package ZIP|حزمة المشروع|export|pack','Share|مشاركة|link|p_share']]]]
+],'home');
+/* Civil 3D ribbon (S.X). Wired: surface from points, contours, volumes, site plan, exports, drawing and measure commands. The rest is listed and marked not built (see docs/UI_SPEC_civil3d.md). */
+progReg('survey',[
+['home','Home','الرئيسية',[
+ ['Palettes','اللوحات',['Toolspace|مساحة الأدوات|layout|p_survey','Properties|الخصائص|edit|p_edit','Prospector|المستكشف|layout|p_survey','Panorama|بانوراما|layout','Tool Palettes|لوحات الأدوات|layout']],
+ ['Create Ground Data','بيانات الأرض',['Points|نقاط|point|p_survey','Surfaces|أسطح|surface|p_survey','Feature Lines|خطوط الميزات|line','Survey|مساحة|point|p_survey','Create TIN surface|إنشاء سطح TIN|surface|p_survey','Terrain map|خريطة|terrain|p_geo']],
+ ['Create Design','التصميم',['Parcels|قطع|parcel','Alignments|محاور|align','Profile|قطاع طولي|profile','Corridor|كوريدور|align','Intersections|تقاطعات|align','Pipe Network|شبكة مواسير|pipe','Pressure Network|شبكة ضغط|pipe','Grading|تسوية|terrain','Assembly|تجميعة|block']],
+ ['Profile & Section Views','قطاعات',['Profile View|منظر قطاع طولي|profile','Sample Lines|خطوط عينات|line','Section Views|مناظير مقاطع|section|sA']],
+ ['Draw','الرسم',['Line|خط|line|c_line','Polyline|بوليلاين|poly|c_pl','Circle|دائرة|circle|c_circle','Rectangle|مستطيل|rect|c_rect','Text|نص|text|c_text','Dimension|بُعد|dim|c_dim']],
+ ['Modify','التعديل',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Rotate|تدوير|rot|c_rotate','Mirror|مرآة|mirror|c_mirror','Scale|مقياس|scale|c_scale','Offset|إزاحة|offset|c_offset','Erase|مسح|erase|c_erase']]]],
+['insert','Insert','إدراج',[
+ ['Import','استيراد',['Import points|استيراد نقاط|impt|p_survey','Import CAD|استيراد CAD|impt|open','Import LandXML|استيراد LandXML|impt','Import survey data|استيراد بيانات رفع|impt']],
+ ['Map','الخريطة',['Map and GIS|الخريطة وGIS|terrain|p_geo','Satellites|الأقمار|terrain|env_sat','Attach image|إرفاق صورة|rect']]]],
+['annot','Annotate','التوضيح',[
+ ['Labels & Tables','وسوم وجداول',['Add Labels|إضافة وسوم|tag','Add Tables|إضافة جداول|table','Surface labels|وسوم السطح|tag']],
+ ['Dimension','الأبعاد',['Linear|خطي|dim|c_dim','Distance|مسافة|mDist|m_dist','Angle|زاوية|mAngle|m_ang','Level|منسوب|mLevel|m_lvl']],
+ ['Text','النص',['Text|نص|text|c_text','3D note|ملاحظة 3D|note|note']]]],
+['modify','Modify','تعديل',[
+ ['Ground Data','بيانات الأرض',['Surface|سطح|surface|p_survey','Points|نقاط|point|p_survey','Feature Line|خط ميزات|line','Grading|تسوية|terrain']],
+ ['Design','التصميم',['Alignment|محور|align','Profile|قطاع|profile','Corridor|كوريدور|align','Pipe Network|شبكة مواسير|pipe','Parcel|قطعة|parcel']],
+ ['Edit','التحرير',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Rotate|تدوير|rot|c_rotate','Erase|مسح|erase|c_erase','Remove last|إزالة الأخير|erase|rm_last']]]],
+['analyze','Analyze','التحليل',[
+ ['Ground Data','بيانات الأرض',['Volumes|حجوم|surface|p_survey','Contours|كنتور|terrain|p_survey','Slope analysis|تحليل الميل|terrain','Elevation analysis|تحليل المناسيب|terrain','Watershed|مستجمع مائي|terrain']],
+ ['Design','التصميم',['Check clashes|فحص التعارض|clash|clash','Site safety|سلامة الموقع|safety|p_safety','Calculations|حسابات|gear|p_calc','Seismic, wind, soil|زلازل رياح تربة|gear|env_qc']]]],
+['view','View','عرض',[
+ ['Navigate','التنقل',['Pan|إزاحة|move|n_pan','Zoom all|تكبير الكل|zfit|zfit','Zoom in|تكبير|zin|zin','Zoom out|تصغير|zout|zout','Orbit|تدوير|rot|n_orbit','Walk|مشي|move|n_walk']],
+ ['Views','المناظير',['Plan|مسقط|plan|v_plan','Iso|أيزو|iso|n_iso','Top|علوي|plan|n_top','Site plan|مسقط الموقع|terrain|site','Zoom to station|تكبير للمحطة|zfit|sitest','Zoom to site|تكبير للموقع|zfit|sitez']],
+ ['Visual Styles','أنماط العرض',['Shaded|مظلل|iso|d_shaded','Wireframe|إطار سلكي|iso|d_wire','X-ray|أشعة|iso|d_xray']],
+ ['Palettes','اللوحات',['Properties|الخصائص|edit|p_edit','Parameters|المعاملات|table|p_edit']]]],
+['output','Output','الإخراج',[
+ ['Export','التصدير',['Contours DXF|كنتور DXF|dxf|e_dxf','Surface DXF 3D|سطح DXF 3D|dxf|e_dxf3','LandXML|LandXML|export','IFC|IFC|ifc|e_ifc']],
+ ['Plot','الطباعة',['Drawing sheet|لوحة الرسم|sheet|sheet','PDF|PDF|pdf|e_pdf','Quantities|الكميات|xlsx|e_boq']]]],
+['survey','Survey','المساحة',[
+ ['Survey Toolspace','مساحة أدوات الرفع',['Survey Toolspace|أدوات الرفع|layout|p_survey','Survey Databases|قواعد الرفع|table']],
+ ['Points','النقاط',['Create points|إنشاء نقاط|point|p_survey','Edit points|تحرير نقاط|point|p_survey','Import points|استيراد نقاط|impt|p_survey','Point groups|مجموعات نقاط|layer']],
+ ['Figures and Networks','الأشكال والشبكات',['Figures|أشكال|line','Networks|شبكات|link','Linework codes|أكواد الخطوط|text']],
+ ['Query','استعلام',['Survey Query|استعلام الرفع|eye']]]],
+['manage','Manage','إدارة',[
+ ['Settings','الإعدادات',['Drawing settings|إعدادات الرسم|gear|setup','Surface settings|إعدادات السطح|gear|p_survey','Contour interval|فاصل الكنتور|gear|p_survey']],
+ ['Project','المشروع',['Project info|معلومات المشروع|info|setup','Saved projects|المشاريع المحفوظة|projects|projects','Team and versions|الفريق والنسخ|link|p_team']]]]
+],'home');
 /* ====== Language sweep: every string made with b2() or the base dictionary is remembered in both languages; when the language changes, every visible text, title and placeholder that still holds the other language is switched. ====== */
 function i18nReg(){ const add=(x)=>{ if(Array.isArray(x)&&typeof x[0]==='string'&&typeof x[1]==='string'&&x[0]!==x[1]){ B2M.a2e.set(x[1],x[0]); B2M.e2a.set(x[0],x[1]); } }; try{ Object.values(WX.defs).forEach(d=>add(d.t)); Object.values(XC).forEach(c=>add(c.t)); Object.values(XDESC).forEach(add); Object.values(WTYPES).forEach(t=>{add(t.n);add(t.d);}); Object.values(WTV).forEach(v=>add(v[3])); Object.values(ROLES).forEach(r=>{add(r.n);add(r.tip);}); Object.values(WTN).forEach(n=>{add([n[1],n[2]]);add([n[3],n[4]]);}); }catch(e){} }
 function i18nSweep(){ i18nReg(); const m=lang==='ar'?B2M.e2a:B2M.a2e, re=lang==='ar'?/[A-Za-z]/:/[؀-ۿ]/, sw=s=>{ const t=s.trim(); if(!t||!re.test(t))return null; const r=m.get(t); return r?s.replace(t,r):null; }; try{ const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); let n; const L=[]; while(n=w.nextNode()){ if(n.parentElement&&n.parentElement.closest('script,style,textarea,#xIdle'))continue; L.push(n); } L.forEach(n=>{ const r=sw(n.nodeValue); if(r!==null)n.nodeValue=r; }); document.querySelectorAll('[title],[placeholder],[aria-label]').forEach(e=>{ ['title','placeholder','aria-label'].forEach(a=>{ const v=e.getAttribute(a); if(v){ const r=sw(v); if(r!==null)e.setAttribute(a,r); } }); }); document.querySelectorAll('option').forEach(o=>{ const r=sw(o.textContent); if(r!==null)o.textContent=r; }); }catch(e){} }

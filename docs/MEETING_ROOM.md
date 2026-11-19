@@ -223,3 +223,11 @@ Measured when each of the 36 model parts first moves in every sequence (pw/t82.j
 ## Adhan and calculation checks 2026-11-19
 - Adhan videos downloaded from Drive folder TOX/X into Media_X and media/ (not in the repo): azan_drone_1080p.mp4 (78 s, landscape, adhan audio) and azan_haram_720p.mp4 (43 s, portrait, adhan audio). c_adhan.js: prayer times computed offline (PrayTimes method: Egyptian, Umm al-Qura, MWL, ISNA; Asr school), dashboard card, adhan plays on the idle screen at the prayer minute (toggle). Checked: Cairo and Makkah results match typical published times within a couple of minutes; not an official timetable. I could not listen to the audio: confirm which voice you want.
 - Calculation checks (pw/t86.js): sun (Cairo noon elevation 40.66, declination -19.29, sunrise 06:23, sunset 16:58), wind (Kz 1.0009 at 10 m exposure C, qh 834.5 N/m2 = hand value), ASCE 7-10 spectrum and base shear (Fa 1.56, Fv 2.4, SDS 0.312, SD1 0.16, Cs 0.0624, V 624 for W 10000). Missing: the extra minimum Cs for S1 >= 0.6 g; Eurocode 8 uses editable reference parameters; ECP 201 and SBC national tables are NOT typed in.
+
+## Program shells 2026-11-20
+Owner: each tab must feel like the real program (all menus, tools, tasks). Engine c_prog.js: a per-tab ribbon (RIBP) with the program's own tabs and panels, three rows of small buttons; commands that already work are wired, the rest are listed dimmed and answer "not built yet". A counter shows working / listed.
+- Revit (R.X): 14 ribbon tabs, 274 commands listed, 101 wired.
+- AutoCAD (C.X): 7 tabs, 172 listed, 59 wired.
+- Civil 3D (S.X): 9 tabs, 115 listed, 78 wired (many point to the same survey pane).
+Names and panels are from memory of current releases, not checked against Autodesk help page by page. Icons are our own line icons.
+Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Properties / command line / status bar per program; then build the dimmed commands one group at a time (walls, doors, levels, grids first).
