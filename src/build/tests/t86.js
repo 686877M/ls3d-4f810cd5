@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+console.log('sun Cairo 2026-11-19 11:40 (tz+2):',JSON.stringify(await E("sunPos(30.0444,31.2357,2,'2026-11-19',11.66)")));
+console.log('SIM keys:',JSON.stringify(await E("Object.keys(SIM)")));
+console.log('wind V=40 z=10 expo C Kzt1 Kd.85:',JSON.stringify(await E("(()=>{const W={...SIM.wd,V:40,h:10,expo:'C',Kzt:1,Kd:.85}; const r=simWindP(W); return {Kzh:r.Kzh,qh:r.qh,handCheck:.613*r.Kzh*.85*1600};})()")));
+console.log('base shear:',JSON.stringify(await E("(()=>{const E=SIM.eq; return {E:{Ss:E.Ss,S1:E.S1,cls:E.cls,R:E.R,Ie:E.Ie,Wt:E.Wt}, r:simBaseShear(E,'asce')};})()")));
+console.log(er.slice(0,3)); await b.close();})();
