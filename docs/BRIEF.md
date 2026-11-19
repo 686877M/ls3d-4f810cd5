@@ -11,3 +11,4 @@ Also: undo/redo 120 steps (Ctrl+Z/Y), Projects library (save/open/duplicate/uplo
 Roadmap (not built): widget workspace, structural/MEP/electrical analysis links (ETABS/SAP/Tekla via IFC/DXF/CSV), reinforcement schedules (needs structural design), specs and price comparison, data validation, Power BI export.
 Project calcs (amr.rar): pump selected 8 L/s; codes ACI 318-19 / ACI 350 / SBC 304; C40, fy 420; structural calc governs thicknesses (decided): 400/400/200/300/400/200. Details: MEETING_ROOM.md last section.
 Site plan tab (3D): ME-GLY-01.dxf linework + tanks + pipes; footprints approximate, heights assumed.
+App name: Technical Office X (XTO). Shell: top bar, ribbon (8 tabs), dockable widgets (3D view is one widget), right-click / long-press menus, screenshot and video, Ctrl+K command search. Add commands with XCMD, ribbon groups in RIB, widgets in WX.defs. Extension plan: docs/PLAN.md.
