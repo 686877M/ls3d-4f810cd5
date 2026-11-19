@@ -199,3 +199,10 @@ Done and published (dba4da8): top bar shows project, file and tab; dock widgets 
 - Intro after password: 2-3 shots (9-13 s) from the owner's own videos, full screen, object-fit cover, low volume; one of the two adhan sounds chosen per start. Waiting for the videos.
 - Idle screen after the wait: the three code scenes plus shots from the owner's videos, full screen (cropped to fill, keep quality); adhan sound at prayer time (prayer times from an offline calculation with the method shown, editable; never invented).
 - Videos go in a folder the owner names; files stay out of the repo unless the owner agrees (size, licence).
+
+## Plan additions 2026-11-19 (owner)
+- Logo as the browser tab icon (favicon, apple-touch icon, theme colour) - done in c_shell.js (drawn from the same mark).
+- Mobile view: the page must be usable on a phone (touch targets, single-column dashboard, easy access to every option). Started: dashboard collapses to one column under 1000 px. Still to do: ribbon and docks on small screens.
+- Later (not the online page): a mobile app and desktop software for every operating system (Windows, macOS, Linux, Android, iOS). Candidate route: package the same page (PWA first, then Tauri/Electron wrappers), no separate code base. Not started.
+- Another session was opened by the owner to convert the Drive files into the three models with quantities, reviewed; this session does not duplicate it.
+- Keep: sun, wind and seismic calculation option (offline code simulation, c_env/c_sim); review that it can compute and check.
