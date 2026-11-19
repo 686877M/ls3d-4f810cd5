@@ -2932,8 +2932,9 @@ function l3Show(intro){ if(L3.el)return; let r; try{ r=new T.WebGLRenderer({anti
  const loop=now=>{ if(!L3.el)return; const ms=L3.intro?now-L3.t0:DUR, u=Math.min(1,ms/DUR), e=l3Ease(u); const p=pc.getPoint(e), q=qc.getPoint(e); cam.position.copy(p); if(L3.done){ const s=now/9000; cam.position.x+=Math.sin(s)*.5; cam.position.y+=Math.sin(s*.7)*.06; } cam.lookAt(q); r.render(sc,cam); if(L3.intro){ if(ms>4300)logo.classList.add('small'); if(ms>4800)hi.classList.add('on'); if(ms>8600)hi.classList.remove('on'); } else { logo.classList.add('small'); logo.querySelector('.wipe').style.animation='none'; logo.querySelector('.wipe').style.clipPath='none'; } if(u>=1&&!L3.done){ L3.done=true; logo.classList.add('small'); l3UI(); ui.classList.add('on'); skip.style.display='none'; } L3.raf=requestAnimationFrame(loop); }; L3.raf=requestAnimationFrame(loop); }
 function l3Hide(){ if(!L3.el)return; const d=L3.el, r=L3.r; L3.el=null; cancelAnimationFrame(L3.raf); removeEventListener('resize',L3.rs); document.removeEventListener('keydown',L3.key,true); d.classList.remove('on'); setTimeout(()=>{ try{ r.dispose(); r.forceContextLoss(); }catch(e){} d.remove(); },800); }
 /* hook it in place of the flat lobby */
-(function(){ const _show=lbShow; lbShow=function(){ l3Show(!L3.shown); L3.shown=true; }; lbHide=function(){ l3Hide(); }; })();
-XCMD('lobby','layout','Lobby','اللوبي',()=>{ l3Show(false); });
+/* owner 2026-11-19: the walking 3D lobby is not wanted; the lobby now just goes to the Start page */
+(function(){ lbShow=function(){ try{ wtSwitch('start'); }catch(e){} }; lbHide=function(){}; })();
+XCMD('lobby','layout','Start page','صفحة البداية',()=>{ try{ wtSwitch('start'); }catch(e){} });
 /* ====== Command line (AutoCAD style): type a command or alias, Enter runs it; the arrow opens the full list grouped like the ribbon, with an icon and a short explanation in Arabic and English ====== */
 const XDESC={
  zfit:['Fit everything in the 3D view','يعرض الموديل كله في الشاشة'],zin:['Zoom in','تقريب'],zout:['Zoom out','تبعيد'],zsel:['Zoom to the selected element','زووم على العنصر المحدد'],dis:['Play the disassembly animation and the linked timeline','تشغيل حركة الفك والجدول الزمني المرتبط'],asm:['Play the assembly animation','تشغيل حركة التركيب'],pause:['Stop the animation','إيقاف الحركة'],
