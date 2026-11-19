@@ -206,3 +206,9 @@ Done and published (dba4da8): top bar shows project, file and tab; dock widgets 
 - Later (not the online page): a mobile app and desktop software for every operating system (Windows, macOS, Linux, Android, iOS). Candidate route: package the same page (PWA first, then Tauri/Electron wrappers), no separate code base. Not started.
 - Another session was opened by the owner to convert the Drive files into the three models with quantities, reviewed; this session does not duplicate it.
 - Keep: sun, wind and seismic calculation option (offline code simulation, c_env/c_sim); review that it can compute and check.
+
+## 2026-11-19 pm
+- Site "pipes" from ME-GLY-01.dxf were drawn as 0.12 m cylinders buried 1.2 m: both values were assumptions (the DXF has X/Y only) and many of the 100 pieces are 1 m squares (pits, manholes). Now thin lines on the ground, coloured by layer class; nothing sized or buried by assumption. Real diameters/inverts to come from the other session's annotation scan.
+- New tab T.X Plant (AutoCAD Plant 3D style): ribbon tab Plant, colour by pipe system, iso views, lists, checks, A1 iso sheet (plant layout). Final output sheets like EG24SAD0012-PS-3D-AW-Z3-01/02 (key plan, notes, legend, title block) are the target; the existing sheet maker is the base. Not yet matched 1:1.
+- Coohom (interior design + render module) is NOT built. Render panel exists (tile on the dashboard).
+- Simulation / assembly review: still open. Need an audit of every part against the sequence (late, missing).
