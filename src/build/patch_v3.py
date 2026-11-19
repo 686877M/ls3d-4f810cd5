@@ -1,6 +1,5 @@
 import re
-import os
-SP=os.path.dirname(os.path.abspath(__file__))+'/'
+SP='/private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/'
 s=open(SP+'v2_backup.html',encoding='utf-8').read()
 rd=lambda n:open(SP+n,encoding='utf-8').read()
 def between(s,a,b,new,keep_a=False):
@@ -41,7 +40,7 @@ s=between(s,'function collect(){','const proj=',rd('c_collect.js'))
 # ifc
 s=between(s,'function guid(){','function pdf2d(',rd('c_ifc.js')+'\n')
 # ui
-uiText=rd('c_ui.js').replace('/*@@C_DATA@@*/',rd('c_data.js')).replace('/*@@C_DRAFT@@*/',rd('c_draft.js')).replace('/*@@C_SHEET@@*/',rd('c_sheet.js')).replace('/*@@C_4D@@*/',rd('c_4d.js').replace('/*@@C_ACT@@*/',rd('c_act.js')).replace('/*@@C_P6@@*/',rd('c_p6.js'))+rd('c_4d_ui.js')+rd('c_p6_ui.js')).replace('/*@@C_FOLLOW@@*/',rd('c_follow.js')+rd('c_hist.js')+rd('c_cad.js')+rd('c_proj.js')+rd('c_ws.js')+rd('c_meas.js')+rd('c_site_data.js')+rd('c_site3d.js')+rd('c_rebar.js')+rd('c_tl.js')+rd('c_scen.js')+rd('c_codes.js')+rd('c_pack.js')+rd('c_help.js')+rd('c_nav.js')+rd('c_geo.js')+rd('c_icons.js')+rd('c_shell.js')+rd('c_agent.js')+rd('c_survey.js')+rd('c_bim.js')+rd('c_calc.js')+rd('c_coord.js')+rd('c_office.js')+rd('c_tabs.js')+rd('c_dc.js')+rd('c_pdata.js')+rd('c_social.js')+rd('c_media.js')+rd('c_media2.js')+rd('c_env.js')+rd('c_sim.js')+rd('c_ctrl.js')+rd('c_team.js')+rd('c_undo.js')+rd('c_ui2.js')+rd('c_ind.js')+rd('c_hub.js')+rd('c_flow.js')+rd('c_render.js')+rd('c_cmd.js')+rd('c_civil.js')+rd('c_idle.js')+rd('c_login.js'))
+uiText=rd('c_ui.js').replace('/*@@C_DATA@@*/',rd('c_data.js')).replace('/*@@C_DRAFT@@*/',rd('c_draft.js')).replace('/*@@C_SHEET@@*/',rd('c_sheet.js')).replace('/*@@C_4D@@*/',rd('c_4d.js').replace('/*@@C_ACT@@*/',rd('c_act.js')).replace('/*@@C_P6@@*/',rd('c_p6.js'))+rd('c_4d_ui.js')+rd('c_p6_ui.js')).replace('/*@@C_FOLLOW@@*/',rd('c_follow.js')+rd('c_hist.js')+rd('c_cad.js')+rd('c_proj.js')+rd('c_ws.js')+rd('c_meas.js')+rd('c_site_data.js')+rd('c_site3d.js')+rd('c_rebar.js')+rd('c_tl.js')+rd('c_scen.js')+rd('c_codes.js')+rd('c_pack.js')+rd('c_help.js')+rd('c_nav.js')+rd('c_geo.js')+rd('c_icons.js')+rd('c_shell.js')+rd('c_agent.js')+rd('c_survey.js')+rd('c_bim.js')+rd('c_calc.js')+rd('c_coord.js')+rd('c_office.js')+rd('c_tabs.js')+rd('c_dc.js')+rd('c_pdata.js')+rd('c_social.js')+rd('c_media.js')+rd('c_media2.js')+rd('c_tv.js')+rd('c_env.js')+rd('c_sim.js')+rd('c_ctrl.js')+rd('c_team.js')+rd('c_undo.js')+rd('c_ui2.js')+rd('c_ind.js')+rd('c_hub.js')+rd('c_flow.js')+rd('c_render.js')+rd('c_lobby.js')+rd('c_lobby3d.js')+rd('c_cmd.js')+rd('c_idle.js')+rd('c_login.js'))
 s=between(s,'/* ====================== quantities ====================== */','/* ====================== language, sync, loop ====================== */',uiText)
 s=s.replace("renderEdit([]); renderParts(); renderSaved(); const ng=","renderEdit([]); renderParts(); renderSaved(); renderBom(); renderSteps(); renderFams(); drawSheetPrev(); const ng=",1)
 s=s.replace("refreshSec(); renderEdit([]); renderParts(); applyLang(); resize(); go(views[0]);","refreshSec(); renderEdit([]); renderParts(); renderBom(); renderSteps(); renderFams(); applyLang(); resize(); go(views[0]);",1)
@@ -56,4 +55,4 @@ s=s.replace("function buildModel(){","/* ########## PROJECT BLOCK 2/4: model geo
 s=s.replace("function baseItems(){","/* ########## PROJECT BLOCK 3/4: items, quantities, families, IFC mapping (edit per project) ########## */\nfunction baseItems(){",1)
 s=s.replace("const PD=[['conc',","/* ########## PROJECT BLOCK 4/4: part specifications shown in the Parts tab (edit per project) ########## */\nconst PD=[['conc',",1)
 s=s.replace('<div class="row lang"','<div class="row lang" title="Template BVT-1"',1)
-open(SP+'../lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')
+open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')

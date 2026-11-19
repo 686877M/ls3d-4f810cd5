@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--autoplay-policy=no-user-gesture-required']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');localStorage.setItem('xto-test','1');sessionStorage.setItem('xto-splash','1');}catch(e){}});
+const pg=await ctx.newPage(); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+pg.on('requestfailed',r=>console.log('FAIL',r.url().slice(0,90),r.failure()&&r.failure().errorText));
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(4000); await E("try{l3Show(false)}catch(e){}; try{lbHide()}catch(e){}");
+await E("window.__ev=[]; tvPlay(TVC[0]); setTimeout(()=>{ if(TV.hls){ ['MANIFEST_PARSED','FRAG_LOADED','FRAG_BUFFERED','ERROR','BUFFER_APPENDED'].forEach(n=>TV.hls.on(Hls.Events[n],(e,d)=>__ev.push(n+':'+(d&&(d.details||'')))));} },50)");
+await pg.waitForTimeout(25000);
+console.log(JSON.stringify(await E("({ev:__ev.slice(0,10),rs:TV.v.readyState,ct:TV.v.currentTime,w:TV.v.videoWidth,buf:TV.v.buffered.length?TV.v.buffered.end(0):0})")));
+await pg.screenshot({path:'/tmp/tv1.png'}); await b.close();})();

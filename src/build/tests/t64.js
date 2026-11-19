@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist','--autoplay-policy=no-user-gesture-required']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');localStorage.setItem('xto-test','1');sessionStorage.setItem('xto-splash','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000); await E("try{l3Show(false)}catch(e){}; try{lbHide()}catch(e){}");
+await E("tvPlay(TVC[0])"); await pg.waitForTimeout(12000);
+console.log(JSON.stringify(await E("({can:TV.v.canPlayType(\"application/vnd.apple.mpegurl\"),err:TV.v.error&&TV.v.error.code,ns:TV.v.networkState,rs:TV.v.readyState,ct:TV.v.currentTime,w:TV.v.videoWidth,msg:TV.msg,hls:!!window.Hls})")));
+await pg.screenshot({path:'/tmp/tv1.png'});
+await E("tvAud(true)"); await pg.waitForTimeout(500); console.log('aud',JSON.stringify(await E("({h:TV.box.getBoundingClientRect().height,paused:TV.v.paused})")));
+await E("tvAud(false)");
+const bb=await pg.evaluate(()=>{const h=document.querySelector('#xTv .xrz.e').getBoundingClientRect();return [h.x+3,h.y+h.height/2]}); const w0=await pg.evaluate(()=>document.getElementById('xTv').offsetWidth); await pg.mouse.move(bb[0],bb[1]); await pg.mouse.down(); await pg.mouse.move(bb[0]+80,bb[1],{steps:4}); await pg.mouse.up(); console.log('w',w0,await pg.evaluate(()=>document.getElementById('xTv').offsetWidth)); console.log(er.slice(0,4)); await b.close();})();
