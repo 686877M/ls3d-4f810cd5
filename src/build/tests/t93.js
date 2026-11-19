@@ -1,0 +1,17 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-rv');localStorage.removeItem('xto-tabs');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('model')"); await pg.waitForTimeout(1500); await E("XC.n_top.run()"); await pg.waitForTimeout(1500);
+const r=await E("(()=>{const c=renderer.domElement.getBoundingClientRect(); return [c.left+c.width/2,c.top+c.height/2,c.width,c.height];})()"); const cx=r[0], cy=r[1]; console.log('canvas',r.map(Math.round));
+const click=async(x,y)=>{ await pg.mouse.move(x,y); await pg.mouse.down(); await pg.mouse.up(); await pg.waitForTimeout(120); };
+await E("rvTool('wall')"); for(const p of [[-120,-70],[120,-70],[120,70],[-120,70],[-120,-70]]) await click(cx+p[0],cy+p[1]);
+await pg.keyboard.press('Escape'); await pg.keyboard.press('Escape');
+console.log('walls',await E("RV.els.filter(e=>e.k==='wall').length"),JSON.stringify(await E("RV.els.filter(e=>e.k==='wall').map(e=>[e.a,e.b])")));
+await E("rvTool('door')"); await click(cx,cy-70); await E("rvTool('window')"); await click(cx+120,cy); await E("rvTool('col')"); await click(cx,cy); await pg.keyboard.press('Escape');
+await E("rvTool('grid')"); await click(cx-160,cy-100); await click(cx+160,cy-100); await pg.keyboard.press('Escape');
+console.log('els',JSON.stringify(await E("RV.els.map(e=>e.k)")),'grids',await E("RV.grids.length"),'qty',JSON.stringify(await E("rvQty()")));
+await E("XC.v_iso.run()"); await pg.waitForTimeout(1800); await pg.screenshot({path:'/tmp/rvt1.png'});
+await E("XC.n_top.run()"); await pg.waitForTimeout(1500); await click(cx,cy-70); console.log('selected',await E("RV.sel&&(RV.els.find(e=>e.id===RV.sel)||{}).k"));
+console.log(er.slice(0,4)); await b.close();})();
