@@ -135,3 +135,14 @@ To do next (owner's latest requests, not started):
 1. Make each tool window imitate its source program exactly (AutoCAD for the CAD window: command line, ribbon Home groups Draw / Modify / Annotation / Layers / Block / Properties, status bar OSNAP / ORTHO / POLAR / GRID, model and layout tabs, black canvas, crosshair, ViewCube, wheel zoom and pan, window / crossing selection, grips, right-click menus, command aliases; Revit, Civil 3D, Primavera, Excel, Navisworks, mechanical, architecture likewise). Needs a per-program spec and many passes; one program per session is realistic.
 2. Animation and simulation controls (play, pause, disassemble, assemble, walk) need a professional pass; add a Rotate on/off option; make the site plan and display options easy to find in the Views menu.
 3. Timeline playback must show an indicator: current activity name, highlight the matching row in the schedule table and scroll to it, highlight its dates, type, early / late start and finish and the critical path while it plays.
+
+
+### Update 2026-11-19 (night): logo final and the next requests
+- Logo: T as a leaning 7 whose bar enters a notch of the O; O as a leaning parallelogram ring; X as a leaning inverted Y (one long leaning stroke with a leg branching down-right); one lean (38 degrees) for every part; under it a line with "6 8 6 8" in the middle and the small caption "TECHNICAL OFFICE X". The owner approved the look ("جميل").
+- Requests received, not started (owner asked to begin with details and be told what comes next):
+  1. Google Drive link: pull files from the owner's Drive, analyse them and write a log per file (what it is, what data it holds, dates, key facts) into the DC register. The web page cannot sign in to Drive without an OAuth client id; the assistant session can read Drive through its connector.
+  2. A full Meeting Room / project desk: upload soil reports, photos, drawings, schedules; each upload is analysed, reviewed, archived and registered; minutes of meetings, incoming / outgoing, BIM matching, project management and risk management rules, recognised codes and engineering principles.
+  3. A "colleagues" dashboard: agents (quantity, schedule, structural, architectural, safety, DC, risk) that report what they did, what they found, what is missing (e.g. rebar detail sheet, section, quantity differs from BOQ, drawing revision differs from the previous one), as a chat-like brief.
+  4. A Projects tab: work on several projects, each with its own data, DC, calendar and room.
+  5. Layers, groups and full options of AutoCAD, Revit, Civil 3D, Primavera and Navisworks; a research report on what those programs offer, and on consultancies, contractors and holding companies, to design the automation of our agents.
+  6. A presentation dashboard for cost and project status.
