@@ -1,0 +1,22 @@
+const {chromium}=require('playwright-core'); const fs=require('fs');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({viewport:{width:1500,height:900}}); const er=[]; pg.on('pageerror',x=>er.push(x.stack.split('\n').slice(0,3).join('|')));
+pg.on('dialog',d=>d.accept(d.type()==='prompt'?'Pump 1':undefined));
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3000);
+const r=await pg.evaluate(()=>__lsv.ev(`(()=>{cadShow(true); CS.snap.grid=false; CS.snap.end=false; CS.snap.mid=false;
+ cadSetTool('line'); cadClick([0,0]); cadClick([100,0]); cadClick([100,50]); cadEsc();
+ cadSetTool('rect'); cadClick([10,10]); cadClick([40,30]);
+ cadSetTool('circle'); cadClick([70,25]); cadClick([80,25]);
+ cadSetTool('dim'); cadClick([0,0]); cadClick([100,0]); cadClick([50,-12]);
+ cadSetTool('text'); cadClick([5,60]);
+ cadSetTool('pl'); cadClick([0,70]); cadClick([30,80]); cadClick([60,70]); cadTyped('c');
+ const n1=cadD().ents.length;
+ cadSetTool('select'); cadPick([100,25]); /* pick line seg */
+ cadD().ents.forEach((e,i)=>CS.sel.add(i)); cadSetTool('move'); CS.sel=new Set([1]); cadClick([0,0]); cadClick([5,5]);
+ CS.sel=new Set([1]); cadSetTool('copy'); CS.sel=new Set([1]); cadClick([0,0]); cadClick([0,20]); cadEsc();
+ CS.sel=new Set([2]); cadSetTool('rotate'); CS.sel=new Set([2]); cadClick([70,25]); cadTyped('45');
+ cadSetTool('offset'); cadClick([100,25]); cadClick([120,25]);
+ const n2=cadD().ents.length; const dxf=cadExportDxf(); const svg=cadExportSvg(); window.__dxf=dxf;
+ const before=HI.st.length; hiGo(-1); const n3=cadD().ents.length; hiGo(1);
+ return {n1,n2,n3,steps:HI.st.length,dxfLen:dxf.length,svgLen:svg.length,dimTxt:(svg.match(/>100</)||[])[0]};})()`));
+console.log(JSON.stringify(r),er.slice(0,3));
+await pg.screenshot({path:'/tmp/cad.png'}); fs.writeFileSync('/tmp/cad.dxf',await pg.evaluate(()=>window.__dxf)); await b.close();})();

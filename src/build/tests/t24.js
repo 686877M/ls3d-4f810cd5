@@ -1,0 +1,5 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({viewport:{width:1700,height:980}});
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(4500);
+console.log(await pg.evaluate(()=>__lsv.ev(`(()=>{const T=(n,f)=>{const a=performance.now(); f(); return n+':'+Math.round(performance.now()-a);}; const o=[]; o.push(T('preset model',()=>wxPreset('model'))); o.push(T('preset site',()=>wxPreset('site'))); o.push(T('resize',()=>resize())); o.push(T('xSync',()=>xSync())); o.push(T('xRibbon',()=>xRibbon())); o.push(T('open pane meas',()=>wxOpen('pane:meas'))); o.push(T('open pane sched',()=>wxOpen('pane:sched'))); o.push(T('open pane geo',()=>wxOpen('pane:geo'))); o.push(T('computeSched',()=>computeSched())); o.push(T('p6Save',()=>p6Save())); o.push(T('applyFlags',()=>applyFlags())); o.push(T('spBuild',()=>{spShow(true); spBuild();})); return o.join(' | ');})()`)));
+await b.close();})();

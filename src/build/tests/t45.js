@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1400,height:800}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); let pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+const E=(p,s)=>p.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(4500);
+for(let i=0;i<5;i++){ await E(pg,"P.t=(+P.t||.4)+.01; persist()"); } await E(pg,"autoSave('flush')"); await pg.waitForTimeout(1500);
+console.log('before',await E(pg,"HI.st.length+'/'+HI.i+' t='+P.t.toFixed(2)"));
+await pg.close(); pg=await ctx.newPage(); pg.on('pageerror',x=>er.push(x.message)); await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000);
+console.log('after',await E(pg,"HI.st.length+'/'+HI.i+' t='+P.t.toFixed(2)+' ready='+UI2.ready"));
+await E(pg,"hiGo(-1)"); console.log('undo ->',await E(pg,"P.t.toFixed(2)"));
+console.log(er); await b.close();})();

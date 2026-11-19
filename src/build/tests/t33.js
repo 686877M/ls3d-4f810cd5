@@ -1,0 +1,6 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});
+let ctx=await b.newContext({viewport:{width:1400,height:800}}); let pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3000); await pg.screenshot({path:'/tmp/n1.png'}); await ctx.close();
+ctx=await b.newContext({viewport:{width:1400,height:800}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-splash','1');}catch(e){}}); pg=await ctx.newPage(); pg.on('pageerror',x=>er.push(x.message)); await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3200);
+await pg.evaluate(()=>__lsv.ev("idleStart()")); for(let i=0;i<4;i++){ await pg.evaluate(i=>__lsv.ev("IDLE.t0=performance.now()-("+(i*24+10)+")*1000"),i); await pg.waitForTimeout(900); await pg.screenshot({path:'/tmp/id'+i+'.png'}); }
+await pg.mouse.move(100,100); await pg.waitForTimeout(1500); console.log('idle closed',await pg.evaluate(()=>!document.getElementById('xIdle')),er.slice(0,3)); await b.close();})();

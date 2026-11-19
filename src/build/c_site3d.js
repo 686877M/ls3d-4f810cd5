@@ -1,0 +1,89 @@
+/* ====== Site plan in 3D: linework, masses, pipes, labels from ME-GLY-01.dxf (aligned to the well, rotated 6.5 degrees) ====== */
+const SP={on:false,cats:[true,true,true,true,true],grp:{tank:1,pit:1,manhole:1,bldg:1,equip:1,veh:1,pad:1},pipes:true,labels:true,mstyle:'transparent',op:.45,lstyle:'solid',lop:.85,zone:'all',ground:false,gop:.55,cut:{y:{on:0,v:1},x:{on:0,v:0},z:{on:0,v:0}},built:false};
+const spG=new T.Group(); spG.visible=false; scene.add(spG);
+const spLab=el('div',{style:'position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3'}); host.appendChild(spLab);
+const spTip=el('div',{style:'position:absolute;pointer-events:none;background:rgba(0,0,0,.82);color:#fff;padding:6px 9px;border-radius:7px;font:12px/1.4 Arial;max-width:300px;z-index:6',hidden:''}); host.appendChild(spTip);
+/* footprints read from the site plan (metres, model X and Z); heights and depths are assumptions */
+const SPS=[
+ ['UG sewage storage tank 1000 m3, cell A','خزان الصرف الأرضي 1000 م³، خلية A',8.9,-6.5,26.9,0,-4,4,0x8d6e63,'Depth 4.0 m assumed, top at G.L. Two cells with a middle wall.','العمق 4.0 م مفترض والسطح عند منسوب الأرض. خليتين بينهم حائط.'],
+ ['UG sewage storage tank 1000 m3, cell B','خزان الصرف الأرضي 1000 م³، خلية B',8.9,0,26.9,6.8,-4,4,0x8d6e63,'Depth 4.0 m assumed, top at G.L.','العمق 4.0 م مفترض والسطح عند منسوب الأرض.'],
+ ['Tank pit NW','غرفة الخزان NW',7.4,-3.1,9.1,-1.5,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit SW','غرفة الخزان SW',7.4,2.8,9.1,4.3,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit NE','غرفة الخزان NE',27,-3.1,28.8,-1.5,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit SE','غرفة الخزان SE',27,2.8,28.8,4.3,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Workshop & store / irrigation tank 500 m3 complex','مجمع الورشة والمخزن / خزان الري 500 م³',.6,17.8,33.4,46,0,4.5,0x90a4ae,'Footprint outlined from linework; the split between workshop and tank is not resolved. Height assumed.','المسقط من الخطوط؛ الفصل بين الورشة والخزان غير محسوم. الارتفاع مفترض.'],
+ ['Potable & firefighting water tank 2500 m3','خزان المياه والحريق 2500 م³',-11.9,49.2,30,75.1,0,3,0x4fc3f7,'Footprint from linework; height assumed 3.0 m.','المسقط من الخطوط؛ الارتفاع 3.0 م مفترض.'],
+ ['Electrical & control building','مبنى الكهرباء والتحكم',-27.5,5.5,-19,21.7,0,4.5,0xffb74d,'Footprint approximate; height assumed 4.5 m.','المسقط تقريبي؛ الارتفاع 4.5 م مفترض.']
+];
+
+/* small buildings, transformers, pads, manholes, trucks (approximate footprints read from the aligned plan; heights assumed) */
+const spA=(en,ar,x0,y1,x1,y0,h,col,grp,yb,note,rot)=>SPS.push([en,ar,x0,-y1,x1,-y0,yb||0,h,col,note||'Footprint approximate; height assumed.','المسقط تقريبي؛ الارتفاع مفترض.',grp,rot||0]);
+[[-27.7,10,-23.5,5],[-27.7,2.7,-23.5,-3.1],[-27.7,-5.5,-23.5,-13.2]].forEach((p,i)=>{spA('Equipment pad '+(i+1),'قاعدة معدات '+(i+1),p[0],p[1],p[2],p[3],.4,0x81c784,'pad'); const cx=(p[0]+p[2])/2, cy=(p[1]+p[3])/2; spA('Transformer / generator '+(i+1)+' (probable)','محول / مولد '+(i+1)+' (محتمل)',cx-1.6,cy+1.1,cx+1.6,cy-1.1,2.4,0xffa726,'equip',.4);});
+spA('Small building A','مبنى صغير A',-20.4,9.2,-16.8,4.4,3.2,0xb0bec5,'bldg');
+spA('Transformer (orange, probable)','محول (برتقالي، محتمل)',-19,.96,-17.8,-.43,2,0xff9800,'equip');
+spA('Panel / RMU (blue, probable)','لوحة / RMU (أزرق، محتمل)',-16.6,1.1,-14.2,-1.6,2.2,0x42a5f5,'equip');
+[[-19.2,-4.1,-17.8,-5.5],[-15.3,-4.1,-13.9,-5.5],[-15.3,-13.1,-13.9,-14.4],[-5.6,-13.1,-4.3,-14.4]].forEach((p,i)=>spA('Manhole / valve chamber '+(i+1),'مانهول / غرفة محابس '+(i+1),p[0],p[1],p[2],p[3],2.8,0x5c6bc0,'manhole',-2.5,'Depth 2.5 m assumed, cover 0.3 m above G.L.'));
+spA('Building C (unlabelled)','مبنى C (بدون اسم)',-24.3,-17.8,-10.4,-25.4,3.5,0x9ccc65,'bldg');
+spA('Building D','مبنى D',-26.5,-25.8,-20.6,-30.1,3.5,0xba68c8,'bldg');
+spA('Pad E','قاعدة E',-26.7,-31.8,-18.2,-34.9,.3,0xf48fb1,'pad');
+spA('Building F','مبنى F',-26.7,-36.8,-19,-40.4,3.5,0xba68c8,'bldg');
+spA('Room G','غرفة G',-28,-41.2,-23.2,-45,3,0x9ccc65,'bldg');
+spA('Unit block H1 (pump / generator room, probable)','وحدة H1 (غرفة مضخات / مولد، محتمل)',-17.1,-41.4,-11.3,-49.2,4,0x9ccc65,'bldg');
+spA('Unit block H2 (pump / generator room, probable)','وحدة H2 (غرفة مضخات / مولد، محتمل)',-9.5,-41.4,-3.6,-49.2,4,0x9ccc65,'bldg');
+spA('Building I','مبنى I',-28,-67.6,-23.2,-71.3,3,0x9ccc65,'bldg');
+spA('Unit block J1','وحدة J1',-17,-67.6,-11.2,-75.3,4,0x9ccc65,'bldg');
+spA('Unit block J2','وحدة J2',-9.4,-67.6,-3.5,-75.3,4,0x9ccc65,'bldg');
+[[-49.8,-52.4],[-52.7,-55.3],[-55.7,-58.2],[-58.5,-60.8],[-62.4,-64.7],[-65,-67.4]].forEach((p,i)=>spA('Filter / pump skid '+(i+1),'وحدة فلتر / مضخة '+(i+1),-8.6,p[0],-5.5,p[1],1.6,0x29b6f6,'equip'));
+spA('Sewer tanker truck 1','تانكر صرف 1',33.1,8,37.7,5,3,0xeceff1,'veh',0,'Vehicle shown on the site plan; size assumed 9 x 2.5 m.',35);
+spA('Sewer tanker truck 2','تانكر صرف 2',33.8,2.6,38.4,-.4,3,0xeceff1,'veh',0,'Vehicle shown on the site plan; size assumed 9 x 2.5 m.',35);
+SPS.forEach((s,i)=>{ if(!s[11])s[11]=i<2||i===7?'tank':i<6?'pit':'bldg'; });
+const SPC=[0xf59e0b,0xe5534b,0x4fa3ff,0xcfd8dc,0xb39ddb];
+const spMasses=[], spMats=[]; let spGround=null, spGrid=null;
+const spPlanes=()=>{const a=(typeof activePlanes==='function'?activePlanes():[]).slice(), C=SP.cut; if(C.y.on)a.push(new T.Plane(new T.Vector3(0,-1,0),C.y.v+(G?G.GY:0))); if(C.x.on)a.push(new T.Plane(new T.Vector3(C.x.f?1:-1,0,0),C.x.f?-C.x.v:C.x.v)); if(C.z.on)a.push(new T.Plane(new T.Vector3(0,0,C.z.f?1:-1),C.z.f?-C.z.v:C.z.v)); return a;};
+function spClip(){ const p=spPlanes(); spMats.forEach(m=>{m.clippingPlanes=p; m.needsUpdate=true;}); if(typeof rbMats!=='undefined')rbMats.forEach(m=>{m.clippingPlanes=p; m.needsUpdate=true;}); }
+function spMat(m){spMats.push(m); return m;}
+function spBuild(){ while(spG.children.length){const c=spG.children[0]; c.traverse(o=>{if(o.geometry)o.geometry.dispose();}); spG.remove(c);} spMasses.length=0; spMats.length=0; if(!G)return; const GY=G.GY, dash=SP.lstyle==='dotted';
+ const lg=[[],[],[],[],[]]; SITE.lines.forEach(l=>{const c=SITE.layers[l[0]][1]; lg[c].push(l[1],GY+.02,l[2],l[3],GY+.02,l[4]);});
+ lg.forEach((a,i)=>{const g=new T.BufferGeometry(); g.setAttribute('position',new T.Float32BufferAttribute(a,3)); const m=new T.LineSegments(g,spMat(dash?new T.LineDashedMaterial({color:SPC[i],dashSize:.9,gapSize:.6,transparent:true,opacity:SP.lop}):new T.LineBasicMaterial({color:SPC[i],transparent:true,opacity:SP.lop}))); if(dash)m.computeLineDistances(); m.userData.sp='cat'+i; spG.add(m);});
+ const pg=new T.Group(); pg.userData.sp='pipes'; SITE.pipes.forEach(p=>{const a=new T.Vector3(p[0],GY-1.2,p[1]), b=new T.Vector3(p[2],GY-1.2,p[3]), L=a.distanceTo(b); if(L<.2)return; const m=new T.Mesh(new T.CylinderGeometry(.06,.06,L,6),spMat(new T.MeshStandardMaterial({color:0x1e88e5,roughness:.5}))); m.position.copy(a).add(b).multiplyScalar(.5); m.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),b.clone().sub(a).normalize()); pg.add(m);}); spG.add(pg);
+ const mg=new T.Group(); mg.userData.sp='mass'; const ms=SP.mstyle;
+ SPS.forEach((s,i)=>{const w=s[4]-s[2], d=s[5]-s[3], h=s[7], geo=new T.BoxGeometry(w,h,d); const mat=spMat(new T.MeshStandardMaterial({color:s[8],roughness:.8,transparent:ms!=='solid',opacity:ms==='solid'?1:ms==='transparent'?SP.op:0,depthWrite:ms==='solid'})); const m=new T.Mesh(geo,mat); m.position.set((s[2]+s[4])/2,GY+s[6]+h/2,(s[3]+s[5])/2); m.rotation.y=(s[12]||0)*Math.PI/180; m.userData={spi:i,grp:s[11],under:s[6]<0};
+  const em=spMat(ms==='dotted'?new T.LineDashedMaterial({color:s[8],dashSize:.35,gapSize:.25}):new T.LineBasicMaterial({color:ms==='solid'?0x263238:s[8]})); const e=new T.LineSegments(new T.EdgesGeometry(geo),em); if(ms==='dotted')e.computeLineDistances(); m.add(e); mg.add(m); spMasses.push(m);}); spG.add(mg);
+ spGround=new T.Mesh(new T.PlaneGeometry(400,400),spMat(new T.MeshBasicMaterial({color:0xb7c0c7,transparent:true,opacity:SP.gop,side:T.DoubleSide,depthWrite:false}))); spGround.rotation.x=-Math.PI/2; spGround.position.y=GY-.01; spGround.userData.sp='ground'; spG.add(spGround);
+ spGrid=new T.GridHelper(400,80,0x607d8b,0x90a4ae); spGrid.position.y=GY-.02; spGrid.userData.sp='grid'; spGrid.material.transparent=true; spGrid.material.opacity=.35; spG.add(spGrid);
+ SP.built=true; spApply(); }
+function spApply(){ spG.visible=SP.on; spG.children.forEach(c=>{const k=c.userData.sp; if(!k)return; if(k.startsWith('cat'))c.visible=SP.cats[+k.slice(3)]; else if(k==='pipes')c.visible=SP.pipes&&SP.zone!=='above'; else if(k==='mass'){c.visible=true; c.children.forEach(m=>{const u=m.userData; m.visible=!!SP.grp[u.grp]&&(SP.zone==='all'||(SP.zone==='under'?u.under:!u.under));});} else if(k==='ground')c.visible=SP.ground; else if(k==='grid')c.visible=SP.grid;}); if(SP.on){camera.far=Math.max(camera.far,900); camera.updateProjectionMatrix(); controls.maxDistance=Math.max(controls.maxDistance||0,700);} spClip(); }
+function spShow(on){ SP.on=on; if(on&&!SP.built)spBuild(); spApply(); if(!on){spLab.innerHTML='';spTip.hidden=true;} }
+function spZoom(all){ if(all){controls.target.set(5,0,12); camera.position.set(75,110,-70);} else {controls.target.set(8,G?G.GY-2:3,0); camera.position.set(34,22,-30);} controls.update(); }
+function spPreset(k){ const c={plan:[[5,0,12],[5,170,12.01]],iso:[[5,0,12],[75,110,-70]],front:[[5,5,12],[5,12,-150]],side:[[5,5,12],[150,12,12]],station:[[8,3,0],[34,22,-30]]}[k]; controls.target.set(...c[0]); camera.position.set(...c[1]); controls.update(); }
+function spFrame(){ if(!SP.on||!SP.labels){if(spLab.innerHTML)spLab.innerHTML=''; return;} const r=renderer.domElement.getBoundingClientRect(), hr=host.getBoundingClientRect(); let h=''; const GY=G?G.GY:5; SITE.labels.forEach(l=>{if(!/BUILDING|TANK|STATION|UNIT|GATE|CAPACITY|WORKSHOP|FACILITY/i.test(l[0])||/VENT/i.test(l[0]))return; const p=new T.Vector3(l[1],GY+.5,l[2]).project(camera); if(p.z>1||Math.abs(p.x)>1.1||Math.abs(p.y)>1.1)return; if(camera.position.distanceTo(controls.target)>260)return; const x=(p.x+1)/2*r.width+r.left-hr.left, y=(1-p.y)/2*r.height+r.top-hr.top; h+='<div style="position:absolute;left:'+x+'px;top:'+y+'px;transform:translate(-50%,-50%);color:#ffe082;font:10px Arial;white-space:nowrap;text-shadow:0 0 3px #000">'+l[0].replace(/%%C/g,'Ø').replace(/</g,'&lt;')+'</div>';}); if(spLab._h!==h){spLab.innerHTML=h; spLab._h=h;} }
+renderer.domElement.addEventListener('pointermove',e=>{ if(!SP.on||e.buttons){spTip.hidden=true; return;} const r=renderer.domElement.getBoundingClientRect(), v=new T.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1), rc=new T.Raycaster(); rc.setFromCamera(v,camera); const h=rc.intersectObjects(spMasses.filter(m=>m.visible),false)[0]; if(!h){spTip.hidden=true; return;} const s=SPS[h.object.userData.spi], L2=lang==='ar'?1:0, w=s[4]-s[2], d=s[5]-s[3]; spTip.innerHTML='<b>'+s[L2]+'</b><div>'+w.toFixed(1)+' × '+d.toFixed(1)+' × '+s[7].toFixed(1)+' m</div><div>'+b2('Footprint','المسقط')+' '+(w*d).toFixed(0)+' m² · '+b2('Volume','الحجم')+' '+(w*d*s[7]).toFixed(0)+' m³</div><div style="opacity:.8">'+s[9+L2]+'</div>'; const hr=host.getBoundingClientRect(); spTip.style.left=Math.min(e.clientX-hr.left+14,hr.width-310)+'px'; spTip.style.top=(e.clientY-hr.top+14)+'px'; spTip.hidden=false; });
+const _rbSP=rebuild; rebuild=function(){_rbSP(); SP.built=false; if(SP.on)spBuild();};
+const _afSP=applyFlags; applyFlags=function(){_afSP(); spClip();};
+const spGrpName={tank:['Tanks','الخزانات'],pit:['Tank pits','غرف الخزان'],manhole:['Manholes / chambers','المانهولات'],bldg:['Buildings','المباني'],equip:['Transformers and equipment','المحولات والمعدات'],veh:['Vehicles','المركبات'],pad:['Pads','القواعد']};
+const pSite=$('p-site'); if(pSite){ pSite.appendChild(li(el('h2'),'sp_h')); const bx=el('div'); pSite.appendChild(bx); const L2=()=>lang==='ar'?1:0;
+ const row=(...k)=>el('div',{class:'row'},...k), ck=(txt,get,set)=>el('label',{class:'small',style:'display:block'},el('input',{type:'checkbox',checked:get()?'':null,onchange:e=>{set(e.target.checked); spApply();}}),' '+txt);
+ const sel=(opts,get,set)=>el('select',{onchange:e=>{set(e.target.value); spBuild();}},...opts.map(o=>el('option',{value:o[0],text:o[1],selected:get()===o[0]?'':null})));
+ const rng=(min,max,step,get,set)=>el('input',{type:'range',min,max,step,value:get(),style:'width:130px',oninput:e=>{set(+e.target.value);}});
+ bx.append(el('label',{class:'small',style:'display:block'},el('input',{type:'checkbox',onchange:e=>spShow(e.target.checked)}),' '+b2('Show the site plan','اعرض الموقع العام')),
+  row(el('button',{text:b2('Zoom to site','زووم على الموقع'),onclick:()=>{if(!SP.on){spShow(true); pSite.querySelector('input').checked=true;} spZoom(true);}}),el('button',{text:b2('Zoom to station','زووم على المحطة'),onclick:()=>spZoom(false)})),
+  el('h3',{text:b2('Display style','نمط العرض')}),
+  row(el('span',{class:'small',text:b2('Masses','الكتل')+': '}),sel([['solid',b2('Solid','سوليد')],['transparent',b2('Transparent','شفاف')],['edges',b2('Edges only','حواف فقط')],['dotted',b2('Dotted','منقط')]],()=>SP.mstyle,v=>{SP.mstyle=v;}),rng(.1,.9,.05,()=>SP.op,v=>{SP.op=v; spMasses.forEach(m=>{if(SP.mstyle==='transparent')m.material.opacity=v;});})),
+  row(el('span',{class:'small',text:b2('Lines','الخطوط')+': '}),sel([['solid',b2('Solid','متصل')],['dotted',b2('Dotted','منقط')]],()=>SP.lstyle,v=>{SP.lstyle=v;}),rng(.1,1,.05,()=>SP.lop,v=>{SP.lop=v; spG.children.forEach(c=>{if(c.userData.sp&&c.userData.sp.startsWith('cat'))c.material.opacity=v;});})),
+  el('h3',{text:b2('What to show','إيه اللي يظهر')}),
+  ...SITE.cats.map((c,i)=>ck(c,()=>SP.cats[i],v=>{SP.cats[i]=v;})),
+  ...Object.keys(spGrpName).map(k=>ck(spGrpName[k][L2()],()=>SP.grp[k],v=>{SP.grp[k]=v;})),
+  ck(b2('Pipes (buried 1.2 m, assumed)','المواسير (مدفونة 1.2 م، مفترض)'),()=>SP.pipes,v=>{SP.pipes=v;}),ck(b2('Labels','العناوين'),()=>SP.labels,v=>{SP.labels=v;}),
+  row(el('span',{class:'small',text:b2('Zone','المنطقة')+': '}),el('select',{onchange:e=>{SP.zone=e.target.value; spApply();}},...[['all',b2('All','الكل')],['above',b2('Above ground','فوق الأرض')],['under',b2('Underground only','تحت الأرض فقط')]].map(o=>el('option',{value:o[0],text:o[1]})))),
+  ck(b2('Ground plane','سطح الأرض'),()=>SP.ground,v=>{SP.ground=v;}),row(el('span',{class:'small',text:b2('Ground opacity','شفافية الأرض')}),rng(.1,1,.05,()=>SP.gop,v=>{SP.gop=v; if(spGround)spGround.material.opacity=v;})),ck(b2('Grid (5 m)','شبكة (5 م)'),()=>SP.grid,v=>{SP.grid=v;}),
+  el('h3',{text:b2('Section cuts','قطاعات')}));
+ [['y','Level (above G.L, m)','منسوب (فوق الأرض، م)',-6,8,.1],['x','Cut X (m)','قطع X (م)',-35,45,.5],['z','Cut Z (m)','قطع Z (م)',-90,90,.5]].forEach(([k,en,ar,mn,mx,st])=>{const C=SP.cut[k]; bx.append(row(el('label',{class:'small'},el('input',{type:'checkbox',onchange:e=>{C.on=e.target.checked?1:0; spClip();}}),' '+b2(en,ar)),rng(mn,mx,st,()=>C.v,v=>{C.v=v; spClip();}),k==='y'?'':el('label',{class:'small'},el('input',{type:'checkbox',onchange:e=>{C.f=e.target.checked?1:0; spClip();}}),' '+b2('flip','عكس'))));});
+ bx.append(el('h3',{text:b2('Camera and motion','الكاميرا والحركة')}),
+  row(...[['plan','Plan','مسقط'],['iso','Iso','ايزو'],['front','Front','أمام'],['side','Side','جنب'],['station','Station','المحطة']].map(p=>el('button',{text:b2(p[1],p[2]),onclick:()=>spPreset(p[0])}))),
+  row(el('label',{class:'small'},el('input',{type:'checkbox',onchange:e=>{state.rotate=e.target.checked; applyFlags();}}),' '+b2('Auto rotate','دوران تلقائي')),el('span',{class:'small',text:b2('Speed','السرعة')}),rng(.2,8,.2,()=>controls.autoRotateSpeed||2,v=>{controls.autoRotateSpeed=v;})),
+  row(el('span',{class:'small',text:b2('Orbit during play','أوربت أثناء التشغيل')}),rng(.05,1.2,.05,()=>FW.rate,v=>{FW.rate=v;})),
+  row(el('span',{class:'small',text:b2('Rotate','دوران')}),rng(.2,3,.1,()=>controls.rotateSpeed||1,v=>{controls.rotateSpeed=v;}),el('span',{class:'small',text:b2('Zoom','زووم')}),rng(.2,3,.1,()=>controls.zoomSpeed||1,v=>{controls.zoomSpeed=v;})),
+  row(el('span',{class:'small',text:b2('Pan','سحب')}),rng(.2,3,.1,()=>controls.panSpeed||1,v=>{controls.panSpeed=v;}),el('span',{class:'small',text:b2('Smooth','نعومة')}),rng(.02,.4,.02,()=>controls.dampingFactor||.05,v=>{controls.dampingFactor=v;})),
+  row(el('span',{class:'small',text:b2('Field of view','زاوية الرؤية')}),rng(20,90,1,()=>camera.fov,v=>{camera.fov=v; camera.updateProjectionMatrix();})),
+  el('div',{class:'small',text:b2('Source: site plan ME-GLY-01.dxf, aligned to the well centre and rotated 6.5°. Footprints are read from the linework; heights, depths and pipe depth are assumptions. Transformers and small buildings are probable identifications. Hover a mass for its data. Site parts are simple blocks; reinforcement is modelled only for the lift station (Rebar tab).','المصدر: لوحة الموقع العام ME-GLY-01.dxf، متوازية مع مركز البئر ومدارة 6.5°. المساقط من الخطوط؛ الارتفاعات والأعماق افتراضات. المحولات والمباني الصغيرة تحديد محتمل. مرر على الكتلة للبيانات. أجزاء الموقع كتل بسيطة؛ التسليح للمحطة بس (تاب التسليح).')}));
+ let tb='<table><thead><tr><th>'+b2('Object','العنصر')+'</th><th class="n">m</th><th class="n">m³</th></tr></thead><tbody>'; SPS.forEach(s=>{const w=s[4]-s[2], d=s[5]-s[3]; tb+='<tr><td>'+s[L2()]+'</td><td class="n">'+w.toFixed(1)+'×'+d.toFixed(1)+'×'+s[7]+'</td><td class="n">'+(w*d*s[7]).toFixed(0)+'</td></tr>';}); bx.appendChild(el('div',{html:tb+'</tbody></table>'})); }

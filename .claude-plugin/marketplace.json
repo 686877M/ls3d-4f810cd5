@@ -1,0 +1,11 @@
+{
+  "name": "technical-office-x",
+  "owner": { "name": "Technical Office X" },
+  "plugins": [
+    {
+      "name": "technical-office-x",
+      "source": "./",
+      "description": "Drive the T.O X engineering workspace from an agent."
+    }
+  ]
+}

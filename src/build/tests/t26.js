@@ -1,0 +1,3 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({viewport:{width:1400,height:800}}); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(1500); await pg.screenshot({path:'/tmp/s1.png'}); await pg.waitForTimeout(4500); await pg.screenshot({path:'/tmp/s2.png',clip:{x:0,y:0,width:1400,height:120}}); console.log(er); await b.close();})();

@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({viewport:{width:1500,height:900}}); const er=[]; pg.on('pageerror',x=>er.push(x.stack.split('\n').slice(0,3).join('|'))); pg.on('dialog',d=>d.accept());
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3600); await pg.screenshot({path:'/tmp/v1.png'});
+const r=await pg.evaluate(async()=>{ const o={}; await __lsv.ev("agSend('اعرض المسقط وفك')"); o.agent=await __lsv.ev("XAG.log.map(m=>m.t).join(' || ')"); o.link=await __lsv.ev("(()=>{ play(-1); return 'playing '+A.playing; })()"); return JSON.stringify(o); });
+console.log(r); await pg.waitForTimeout(1500); console.log(await pg.evaluate(()=>__lsv.ev("JSON.stringify({A:+A.s.toFixed(2),DAY:+DAY.toFixed(1),T0,TOTAL,sched:schedOn,tlopen:WX.lay.tl&&WX.lay.tl.open})")));
+await pg.evaluate(()=>__lsv.ev("CC.id='flex'; CC.vals={Mu:120,Vu:80,b:1000,h:400,cv:50,db:16,s:150,fc:32,fy:420}; calPanel(); document.querySelectorAll('#p-calc button')[0]&&0; const c=CALCS[0]; CC.sheet={rows:c.run({Mu:120,Vu:80,b:1000,h:400,cv:50,db:16,s:150,fc:32,fy:420}),c,code:'ACI 318',date:'x',v:{}}; calPanel();"));
+console.log(await pg.evaluate(()=>__lsv.ev("document.querySelector('#p-calc').innerText.slice(0,330).replace(/\\n/g,' | ')")));
+console.log(await pg.evaluate(()=>__lsv.ev("(()=>{coRun(); return CO.issues.map(i=>i.rule+':'+i.sev).join(',')})()")));
+console.log(await pg.evaluate(()=>__lsv.ev("(()=>{CC.sheet={review:calReview()}; return calReview().map(r=>r[3]).join(',')})()")));
+console.log(await pg.evaluate(()=>__lsv.ev(`(()=>{const d=svD(); d.pts='id,E,N,Z,desc\\n'+[[0,0,1164],[40,0,1164.5],[0,40,1165],[40,40,1164.2],[20,20,1164.8],[10,30,1164.6],[30,10,1164.4]].map((p,i)=>(i+1)+','+(252698.97-20+p[0])+','+(2212944.61-20+p[1])+','+p[2]).join('\\n'); svBuild(); const v=svVolume(1164); return JSON.stringify({tri:SV.res.tri.length,cont:SV.res.C.length,cut:+v.cut.toFixed(1),fill:+v.fill.toFixed(1),stn:v.stn&&+v.stn.v.toFixed(1)})})()`)));
+console.log('errs',er.slice(0,4)); await b.close();})();

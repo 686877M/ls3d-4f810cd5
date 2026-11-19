@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--autoplay-policy=no-user-gesture-required']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('http://127.0.0.1:8791/site/index.html'); await pg.waitForTimeout(5000);
+await E("wxOpen('player',[.55,.2,.42,.7]); plPanel();"); await E("plRadios()"); await pg.waitForTimeout(9000);
+console.log('radios',await E("PL.radios.length+' err='+PL.err"), JSON.stringify(await E("PL.radios.slice(0,10).map(r=>r.name)")));
+const r=await E("(async()=>{ const a=plAudio(); a.src=PL_PRE[0][1]; try{ await a.play(); await new Promise(r=>setTimeout(r,4000)); return 'playing t='+a.currentTime.toFixed(1)+' paused='+a.paused; }catch(e){ return 'ERR '+e.message+' code='+(a.error&&a.error.code); } })()");
+console.log('cairo',r);
+const r2=await E("(async()=>{ const a=plAudio(); a.src=PL_PRE[1][1]; try{ await a.play(); await new Promise(r=>setTimeout(r,4000)); return 'playing t='+a.currentTime.toFixed(1); }catch(e){ return 'ERR '+e.message; } })()"); console.log('saudi',r2);
+await E("PL.vid='dQw4w9WgXcQ'; plPanel();"); await pg.waitForTimeout(4000); await pg.screenshot({path:'/tmp/yt.png'});
+console.log(er); await b.close();})();

@@ -1,0 +1,12 @@
+const {chromium}=require('playwright-core'); const fs=require('fs');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({acceptDownloads:true,viewport:{width:1600,height:950}}); const er=[]; pg.on('pageerror',x=>er.push(x.stack.split('\n').slice(0,3).join('|')));
+const dls=[]; pg.on('download',async d=>{const p='/tmp/xdl_'+d.suggestedFilename(); await d.saveAs(p); dls.push([d.suggestedFilename(),fs.statSync(p).size]);});
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3500);
+await pg.evaluate(()=>__lsv.ev("xRec(true)")); await pg.waitForTimeout(2500); await pg.evaluate(()=>__lsv.ev("xRec(false)")); await pg.waitForTimeout(1500);
+await pg.evaluate(()=>__lsv.ev("xShot(1)")); await pg.waitForTimeout(1200);
+const pt=await pg.evaluate(()=>__lsv.ev(`(()=>{const g=parts.pump[0]; const bb=new T.Box3().setFromObject(g), c=bb.getCenter(new T.Vector3()).project(camera), r=renderer.domElement.getBoundingClientRect(); return [(c.x+1)/2*r.width+r.left,(1-c.y)/2*r.height+r.top];})()`));
+await pg.mouse.click(pt[0],pt[1],{button:'right'}); await pg.waitForTimeout(500); console.log('menu',await pg.$$eval('.xmenu .xm span',a=>a.map(x=>x.textContent).slice(0,8))); await pg.screenshot({path:'/tmp/x3.png'});
+await pg.keyboard.press('Escape'); await pg.mouse.click(pt[0],pt[1]); await pg.waitForTimeout(500); console.log('mini',await pg.$$eval('.xmini button',a=>a.length));
+const hd=await pg.$('.xw[data-id="view3d"] .hd'); const bb=await hd.boundingBox(); await pg.mouse.move(bb.x+200,bb.y+8); await pg.mouse.down(); await pg.mouse.move(bb.x+260,bb.y+60,{steps:4}); await pg.mouse.up();
+console.log('lay',await pg.evaluate(()=>__lsv.ev("JSON.stringify(WX.lay.view3d)")));
+console.log(dls,er.slice(0,3)); await b.close();})();

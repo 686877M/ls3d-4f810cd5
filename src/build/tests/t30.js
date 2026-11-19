@@ -1,0 +1,14 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const ctx=await b.newContext({viewport:{width:1500,height:900}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.stack.split('\n').slice(0,3).join('|'))); pg.on('dialog',d=>d.accept());
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3200); console.log('start',er.slice(0,3));
+await pg.fill('#xCmdIn','ze'); await pg.press('#xCmdIn','Enter'); await pg.waitForTimeout(300);
+await pg.fill('#xCmdIn','l'); await pg.press('#xCmdIn','Enter'); await pg.waitForTimeout(700);
+console.log('cad open',await pg.evaluate(()=>__lsv.ev("JSON.stringify({cad:CS.open,tool:CS.tool})")));
+await pg.evaluate(()=>__lsv.ev("cadShow(false)"));
+await pg.fill('#xCmdIn','sch'); await pg.waitForTimeout(300); console.log('suggest',await pg.$$eval('#xCmdSug .xm b',a=>a.map(x=>x.textContent)));
+await pg.fill('#xCmdIn',''); await pg.click('#xCmd button'); await pg.waitForTimeout(500); console.log('list rows',await pg.$$eval('#xCmdFull .xm',a=>a.length)); await pg.screenshot({path:'/tmp/c1.png'}); await pg.click('#xCmd button');
+console.log(await pg.evaluate(()=>__lsv.ev(`(()=>{const d=oD().cells; d.A1='10'; d.A2='20'; d.A3='=SUM(A1:A2)*2'; d.B1='=IF(A3>50,"big","small")'; d.B2='=ROUND(SQRT(A3)+PI(),2)'; d.B3='=A3/0'; d.C1='=C1'; return JSON.stringify([shVal('A3'),shVal('B1'),shVal('B2'),shVal('B3'),shVal('C1')])})()`)));
+await pg.evaluate(()=>__lsv.ev("wxOpen('pane:osheet'); document.querySelector('#p-osheet button:nth-of-type(1)')&&0")); await pg.waitForTimeout(500);
+console.log(await pg.evaluate(()=>__lsv.ev("(()=>{slidesGen(); wxOpen('pane:oslides'); repPanel(); wxOpen('pane:omedia'); return JSON.stringify({slides:oD().slides.map(s=>s.t),media:document.querySelectorAll('#p-omedia select').length})})()")));
+await pg.evaluate(()=>__lsv.ev("MD.dur=3; MD.clip='turn'; mdRecord()")); await pg.waitForTimeout(3800); console.log('rec state',await pg.evaluate(()=>__lsv.ev("JSON.stringify({rec:!!MD.rec,clips:MD.clips.length})")));
+await pg.screenshot({path:'/tmp/c2.png'}); console.log('errs',er.slice(0,4)); await b.close();})();

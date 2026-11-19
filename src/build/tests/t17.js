@@ -1,0 +1,5 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']}); const pg=await b.newPage({viewport:{width:1300,height:800}}); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(3500);
+console.log(await pg.evaluate(async()=>{const r={mr:typeof MediaRecorder, vp9:MediaRecorder.isTypeSupported('video/webm;codecs=vp9'), vp8:MediaRecorder.isTypeSupported('video/webm;codecs=vp8')}; const c=document.querySelector('#view canvas'); r.cs=typeof c.captureStream; const st=c.captureStream(30); r.tracks=st.getVideoTracks().length; const mr=new MediaRecorder(st,{mimeType:'video/webm;codecs=vp8'}); const ch=[]; mr.ondataavailable=e=>ch.push(e.data.size); const done=new Promise(rs=>mr.onstop=rs); mr.start(200); await new Promise(r2=>setTimeout(r2,2000)); mr.stop(); await done; r.chunks=ch; r.state=mr.state; return JSON.stringify(r);}));
+console.log(er); await b.close();})();

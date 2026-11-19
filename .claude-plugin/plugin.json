@@ -1,0 +1,7 @@
+{
+  "name": "technical-office-x",
+  "version": "0.1.0",
+  "description": "Skill for driving T.O X (Technical Office X), a browser engineering workspace: BIM model, drawings, schedule, quantities, codes, coordination, survey.",
+  "keywords": ["bim", "construction", "schedule", "quantities", "engineering", "ifc", "dxf"],
+  "license": "UNLICENSED"
+}
