@@ -1,0 +1,17 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--autoplay-policy=no-user-gesture-required']});
+const ctx=await b.newContext({viewport:{width:1500,height:900}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('http://127.0.0.1:8791/site/index.html'); await pg.waitForTimeout(5000);
+await E("wxOpen('player',[.55,.1,.4,.8]); radPanel();"); await pg.waitForTimeout(9000);
+console.log('list',await E("RAD.list.length+' loaded='+RAD.loaded+' eg='+RAD.list.filter(s=>s.g==='eg').length+' sa='+RAD.list.filter(s=>s.g==='sa').length"));
+await pg.click('#radPlay'); await pg.waitForTimeout(5000);
+console.log('status after play',await E("RAD.st+' t='+RAD.audio.currentTime.toFixed(1)+' cur='+(RAD.cur&&RAD.cur.n)"));
+await pg.screenshot({path:'/tmp/rad1.png'});
+await pg.click('#radPlay'); await pg.waitForTimeout(600); console.log('after pause',await E("RAD.st"));
+await E("radStep(1)"); await pg.waitForTimeout(5000); console.log('next',await E("RAD.st+' '+(RAD.cur&&RAD.cur.n)+' t='+RAD.audio.currentTime.toFixed(1)"));
+await E("RAD.tab='sa'; RAD.i=0; radPanel();"); await pg.waitForTimeout(300); await E("radPlay(radVis()[0])"); await pg.waitForTimeout(5000); console.log('saudi',await E("RAD.st+' '+RAD.cur.n+' t='+RAD.audio.currentTime.toFixed(1)"));
+await E("RAD.audio.pause()");
+await E("wxOpen('yt',[.3,.05,.45,.85]); ytPanel(); ytSearch('سورة الكهف')"); await pg.waitForTimeout(12000);
+console.log('yt',await E("YT.res.length+' inst='+YT.inst+' err='+YT.err"));
+await E("if(YT.res.length)ytPlay(YT.res[0].id)"); await pg.waitForTimeout(4000); await pg.screenshot({path:'/tmp/yt2.png'});
+console.log('ERR',er.slice(0,4)); await b.close();})();
