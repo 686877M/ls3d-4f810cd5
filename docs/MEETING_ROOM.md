@@ -193,3 +193,9 @@ Done and published (dba4da8): top bar shows project, file and tab; dock widgets 
 12. Project modes: create, follow, modify; agents per discipline plus a reviewer; checks for missing data, clash, duplicate, error.
 13. AI connection: user API key option, platform guide file (rules, prohibitions), MCP/WebSocket bridge (TOXAPI exists), GitHub and GitLab OAuth (needs client ID), n8n workflow; Jarvis/Hermes-like identity via the guide file.
 14. Older items: DWG clash run (42 tests), Revit/Navisworks/Primavera/AutoCAD/SketchUp/Coohom fidelity, DC forms and BIM 360 intake, structural analysis tools, H.O X home/render module, security and speed pass, kinetic typography for the idle screen, integrity check of the model.
+
+## Owner decisions 2026-11-19 (late)
+- Automatic 3D lobby walk after login REMOVED (looks like a car garage / obviously generated). The hall stays reachable only by the "lobby" command (no camera walk).
+- Intro after password: 2-3 shots (9-13 s) from the owner's own videos, full screen, object-fit cover, low volume; one of the two adhan sounds chosen per start. Waiting for the videos.
+- Idle screen after the wait: the three code scenes plus shots from the owner's videos, full screen (cropped to fill, keep quality); adhan sound at prayer time (prayer times from an offline calculation with the method shown, editable; never invented).
+- Videos go in a folder the owner names; files stay out of the repo unless the owner agrees (size, licence).
