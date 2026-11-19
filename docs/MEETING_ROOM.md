@@ -231,3 +231,4 @@ Owner: each tab must feel like the real program (all menus, tools, tasks). Engin
 - Civil 3D (S.X): 9 tabs, 115 listed, 78 wired (many point to the same survey pane).
 Names and panels are from memory of current releases, not checked against Autodesk help page by page. Icons are our own line icons.
 Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Properties / command line / status bar per program; then build the dimmed commands one group at a time (walls, doors, levels, grids first).
+- 2026-11-20: Plant 3D (T.X) 6 tabs, 84 listed, 50 wired. Primavera P6 (P.X) 7 menus, 92 listed, 40 wired. Navisworks (N.X) 6 tabs, 110 listed, 79 wired. Still to do: Office ribbon, side panels per program, then the dimmed commands.

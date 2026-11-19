@@ -1,0 +1,12 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+console.log(JSON.stringify(await E("({built:RIBP.model.built,tot:RIBP.model.tot})")));
+await E("wtSwitch(WTAB.tabs.find(t=>t.type==='model').id)"); await pg.waitForTimeout(1200);
+console.log(await pg.evaluate(()=>[...document.querySelectorAll('#xTabs button')].map(b=>b.textContent+(b.classList.contains('on')?'*':'')).join(' | ')));
+await pg.screenshot({path:'/tmp/rv1.png',clip:{x:0,y:30,width:1500,height:125}});
+await E("XTAB='view'; xRibbon()"); await pg.waitForTimeout(400); await pg.screenshot({path:'/tmp/rv2.png',clip:{x:0,y:30,width:1500,height:125}});
+await E("XC.model_1.run()"); console.log('stub status:',await pg.evaluate(()=>document.getElementById('xSt').innerText.slice(0,80)));
+console.log(er.slice(0,4)); await b.close();})();
