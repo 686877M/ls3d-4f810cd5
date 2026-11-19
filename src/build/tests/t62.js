@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:900},acceptDownloads:true}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');localStorage.setItem('xto-test','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000); await E("wtSwitch(WTAB.tabs[1].id)"); await pg.waitForTimeout(900);
+await E("XC.render.run()"); await pg.waitForTimeout(500);
+console.log('dims',await E("JSON.stringify(['hd','4k','8k','12k'].map(k=>{RN.size=k; return rnDims();}))"));
+await E("RN.size='hd'; RN.spp=2; RN.tile=1024; RN.light='gold'");
+const dl=pg.waitForEvent('download',{timeout:120000}); const t0=Date.now(); await E("rnRun()");
+const d=await dl; const path='/tmp/render_test.png'; await d.saveAs(path); console.log('download',d.suggestedFilename(),(Date.now()-t0)+'ms');
+console.log('msg',await E("RN.msg"),'busy',await E("RN.busy"),'view restored',await E("camera.aspect.toFixed(3)+' '+host.clientWidth+'x'+host.clientHeight"));
+console.log('ERR',er.slice(0,4)); await b.close();})();
