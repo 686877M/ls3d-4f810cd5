@@ -104,3 +104,12 @@ Read this first if you open the work from another account or machine. Full conve
 - Egyptian code (ECP) calculation methods; national seismic zone and wind maps as data; more engineering sheets (MEP, fire, drainage, irrigation).
 - Mobile layout, accessibility pass, performance on very large models, Arabic proofreading of all new text.
 - Decide when to publish: the deployed page (GitHub Pages) still shows the older build until the new one is pushed.
+
+
+### Update 2026-11-19 (later): offline code-based simulation (`c_sim.js`)
+The user asked for weather, wind, seismic and soil as code-based simulation, not internet data. Removed from the GIS tab: Open-Meteo wind archive, USGS earthquake list, NASA POWER, SoilGrids. Added, all offline:
+- Wind: ASCE 7 method (SBC 301 follows it): Kz, qh, windward / leeward / side wall pressures with Gf and GCpi. Synthetic wind rose (Weibull, prevailing direction and spread, seeded). ECP 201 wind chapter NOT implemented.
+- Seismic: ASCE 7 / SBC 301 spectrum and base shear (Fa, Fv default to the ASCE 7-10 tables, editable); Eurocode 8 form used by ECP 201 (ag, ground type, spectrum type 1 / 2, q, lower bound 0.2 ag, lambda 0.85). The EC8 reference spectrum parameters are the Eurocode 8 values; the ECP 201 edition in use may differ, so S, TB, TC, TD are editable. Seismic zone ag and Ss / S1 / SBC 301 city values are inputs from the code maps (no tables of national values were typed in, to avoid wrong numbers).
+- Site class from Vs30 / SPT N / su (ASCE 7 and Eurocode 8 tables), liquefaction screening (simplified SPT: CSR, CRR, magnitude scaling, FS).
+- Weather: synthetic year from user inputs (annual and daily temperature swing, sky clearness, Weibull wind) with exact sun position; monthly table, HDD / CDD, solar kWh/m2, PV yield estimate. It is a scenario, not recorded weather.
+- To do next on this thread: add ECP 201 / SBC 301 national tables once the user supplies the edition (seismic zones, wind speeds, soil classes), Egyptian wind chapter, ECP soil and foundation chapters, ASHRAE-style design-day tables if wanted.
