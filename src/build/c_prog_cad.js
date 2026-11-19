@@ -1,14 +1,14 @@
 /* AutoCAD ribbon (C.X). Wired: the CAD editor drawing and modify commands, zoom, measure, undo, plot sheet and exports. */
 progReg('draft',[
 ['home','Home','الرئيسية',[
- ['Draw','الرسم',['Line|خط|line|c_line','Polyline|بوليلاين|poly|c_pl','Circle|دائرة|circle|c_circle','Arc|قوس|arc','Rectangle|مستطيل|rect|c_rect','Polygon|مضلع|poly','Ellipse|قطع ناقص|ellipse','Spline|منحنى|spline','Hatch|تهشير|hatch','Gradient|تدرج|hatch','Boundary|حد|rect','Region|منطقة|rect','Wipeout|ممحاة|rect','Revision Cloud|سحابة مراجعة|poly','Point|نقطة|point','Construction Line|خط إنشاء|cons','Ray|شعاع|line']],
- ['Modify','التعديل',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Stretch|مط|scale','Rotate|تدوير|rot|c_rotate','Mirror|مرآة|mirror|c_mirror','Scale|مقياس|scale|c_scale','Trim|قص|trim','Extend|مد|trim','Fillet|تدوير زوايا|arc','Chamfer|شطف|line','Array|مصفوفة|array','Offset|إزاحة|offset|c_offset','Erase|مسح|erase|c_erase','Explode|تفجير|erase|c_explode','Join|ضم|link','Break|كسر|trim','Blend|دمج منحنى|spline','Lengthen|إطالة|line','Align|محاذاة|move','Edit Polyline|تحرير بوليلاين|poly']],
+ ['Draw','الرسم',['Line|خط|line|c_line','Polyline|بوليلاين|poly|c_pl','Circle|دائرة|circle|c_circle','Arc|قوس|arc|c_arc','Rectangle|مستطيل|rect|c_rect','Polygon|مضلع|poly|c_poly','Ellipse|قطع ناقص|ellipse|c_ell','Spline|منحنى|spline','Hatch|تهشير|hatch|c_hatch','Gradient|تدرج|hatch','Boundary|حد|rect','Region|منطقة|rect','Wipeout|ممحاة|rect','Revision Cloud|سحابة مراجعة|poly','Point|نقطة|point|c_point','Construction Line|خط إنشاء|cons|c_xline','Ray|شعاع|line']],
+ ['Modify','التعديل',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Stretch|مط|scale','Rotate|تدوير|rot|c_rotate','Mirror|مرآة|mirror|c_mirror','Scale|مقياس|scale|c_scale','Trim|قص|trim|c_trim','Extend|مد|trim|c_extend','Fillet|تدوير زوايا|arc|c_fillet','Chamfer|شطف|line|c_chamfer','Array|مصفوفة|array|c_array','Offset|إزاحة|offset|c_offset','Erase|مسح|erase|c_erase','Explode|تفجير|erase|c_explode','Join|ضم|link|c_join','Break|كسر|trim','Blend|دمج منحنى|spline','Lengthen|إطالة|line','Align|محاذاة|move','Edit Polyline|تحرير بوليلاين|poly']],
  ['Annotation','التوضيح',['Text|نص|text|c_text','Dimension|بُعد|dim|c_dim','Leader|خط إيضاح|line','Table|جدول|table','Mtext|نص متعدد|text']],
  ['Layers','الطبقات',['Layer Properties|خصائص الطبقات|layer|ly_mgr','Layer Previous|الطبقة السابقة|layer','Isolate|عزل|layer|ly_iso','Unisolate (all on)|إلغاء العزل|layer|ly_all','Freeze|تجميد|layer','Lock|قفل|layer|ly_lock','Make Current|تعيين كحالية|layer','Match|مطابقة|layer']],
  ['Block','البلوك',['Insert|إدراج|block','Create|إنشاء|block','Edit|تحرير|block','Define Attributes|تعريف خصائص|block']],
  ['Properties','الخصائص',['Match Properties|مطابقة الخصائص|link','Color|اللون|layer','Linetype|نوع الخط|line','Lineweight|سمك الخط|line']],
  ['Groups','المجموعات',['Group|تجميع|block','Ungroup|فك التجميع|block']],
- ['Utilities','الأدوات',['Measure Distance|قياس مسافة|mDist|m_dist','Area|المساحة|layout','ID Point|هوية نقطة|point','Quick Calc|حاسبة|gear|p_calc','Angle|زاوية|mAngle|m_ang']],
+ ['Utilities','الأدوات',['Measure Distance|قياس مسافة|mDist|m_dist','Area|المساحة|layout|c_area','ID Point|هوية نقطة|point|c_id','Quick Calc|حاسبة|gear|p_calc','Angle|زاوية|mAngle|m_ang']],
  ['Clipboard','الحافظة',['Paste|لصق|copy','Copy Clip|نسخ للحافظة|copy','Cut|قص|trim','Undo|تراجع|undo|undo','Redo|إعادة|redo|redo']]]],
 ['insert','Insert','إدراج',[
  ['Block','البلوك',['Insert|إدراج|block','Create Block|إنشاء بلوك|block','Edit Block|تحرير بلوك|block']],
