@@ -6,8 +6,8 @@ XCMD('c3_ts','layout','Toolspace','Toolspace',()=>{ C3.tab='pros'; c3Open(); c3P
 XCMD('c3_set','setup','Settings','الإعدادات',()=>{ C3.tab='set'; c3Open(); c3Panel(); });
 XCMD('c3_surv','site','Survey tab','تاب Survey',()=>{ C3.tab='surv'; c3Open(); c3Panel(); });
 XCMD('c3_pts','csv','Points (CSV)','النقاط (CSV)',()=>xpane('survey')());
-XCMD('c3_surf','site','Create TIN surface','إنشاء سطح TIN',()=>{ xpane('survey')(); svBuild(); svPanel(); c3Panel(); });
-XCMD('c3_iv','levels','Contour interval','فاصل الكنتور',()=>{ const v=prompt(b2('Contour interval (m)','فاصل الكنتور (م)'),SV.iv); if(v===null||!isFinite(+v)||+v<=0)return; SV.iv=+v; svBuild(); svPanel(); c3Panel(); });
+XCMD('c3_surf','site','Create TIN surface','إنشاء سطح TIN',()=>{ xpane('survey')(); svBuild(); svPanel(); c3Panel(); xRibbon(); });
+XCMD('c3_iv','levels','Contour interval','فاصل الكنتور',()=>{ const v=prompt(b2('Contour interval (m)','فاصل الكنتور (م)'),SV.iv); if(v===null||!isFinite(+v)||+v<=0)return; SV.iv=+v; svBuild(); svPanel(); c3Panel(); xRibbon(); });
 XCMD('c3_show','view3d','Show surface in 3D','اعرض السطح في 3D',()=>{ SV.show=!SV.show; svG.visible=SV.show&&!!SV.res; svPanel(); },()=>SV.show);
 XCMD('c3_wire','sEdges','Surface wireframe','السطح سلكي',()=>{ SV.wire=!SV.wire; svBuild(); svPanel(); },()=>SV.wire);
 XCMD('c3_vol','boq','Volumes','الحجوم',()=>xpane('survey')());

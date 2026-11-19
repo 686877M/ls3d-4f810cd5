@@ -1,7 +1,7 @@
 const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('console',m=>{if(m.type()==='error')er.push('C:'+m.text().slice(0,150));});
 const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
-await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'commit',timeout:90000}); await pg.waitForTimeout(12000);
 console.log('home tabs',JSON.stringify(await E("[...document.querySelectorAll('#xTabs button')].map(b=>b.textContent).slice(0,4)")));
 await E("wtNew('survey')"); await pg.waitForTimeout(1500);
 console.log('civil tabs',JSON.stringify(await E("[...document.querySelectorAll('#xTabs button')].map(b=>b.textContent)")));

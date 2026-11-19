@@ -3,6 +3,7 @@ const UI2={z:1,d:1,col:0,ready:false,auto:{t:'',busy:0,last:''}};
 try{ const j=JSON.parse(localStorage.getItem('xto-ui2')||'null'); if(j){ UI2.z=j.z||1; UI2.d=j.d==null?1:j.d; UI2.col=j.col||0; } }catch(e){}
 function ui2Save(){ try{ localStorage.setItem('xto-ui2',JSON.stringify({z:UI2.z,d:UI2.d,col:UI2.col})); }catch(e){} }
 (function(){ const st=document.createElement('style'); st.textContent=`
+html[lang=ar] body *:not(svg):not(svg *):not(#xIdle *):not(#xLogin *){letter-spacing:0!important;word-spacing:normal!important;text-transform:none!important;font-variant-ligatures:common-ligatures!important;font-feature-settings:"liga" 1,"calt" 1,"rlig" 1!important}html[lang=ar] body{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
 #xto.xd1 #xBar{height:38px;gap:9px}#xto.xd1 #xBar .nm svg.mono{width:68px;height:38px}#xto.xd1 #xBar button svg{width:16px;height:16px}#xto.xd1 #xBar .pj{font-size:11.5px}#xto.xd1 #xBar .tk,#xto.xd1 #xBar .dt{font-size:11px}
 #xto.xd1 #xTabs{height:26px}#xto.xd1 #xTabs button{padding:4px 13px;font-size:11.5px}
 #xto.xd1 #xRib{height:60px}#xto.xd1 .xg{padding:3px 8px 0}#xto.xd1 .xg .bs{gap:3px}#xto.xd1 .xb{width:58px;height:41px;font-size:9.5px;gap:0}#xto.xd1 .xb .xi{width:21px;height:21px}#xto.xd1 .xb span{max-width:56px}#xto.xd1 .xg .gt{height:14px;line-height:14px;font-size:9px}
