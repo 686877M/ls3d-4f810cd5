@@ -36,3 +36,30 @@ Live page: `index.html` (GitHub Pages). Source: `src/lift_station_3d.html`.
 - Water table level (dewatering) and soil data.
 - Reinforcement design and bar schedule (structural engineer).
 - Whether the concrete under the outlet chamber is solid (assumed solid).
+
+## 4D, safety, clashes, sharing, agents (added later)
+
+Agreed with the owner:
+- A 4D schedule drives the model: parts appear as activities progress. Durations, lags, supplier lead times and crews are editable assumptions.
+- Site simulation: workers, vehicles, supplier deliveries, materials on site and exclusion zones move with the timeline. Everything has hover data.
+- One icon hides all data overlays and tooltips; the model and its titles stay.
+- Clash detection: model clashes (mesh-level bounding boxes), clearances (maintenance, ladder, crane arm, headroom) and time-based conflicts (workers near vehicles, the crane swing radius, the open excavation).
+- Hazard register with ISO references (ISO 45001, ISO 12100, ISO 7010, ISO 3864-1, ISO 12480-1, ISO 9927-1, ISO 31000, local law); severity and likelihood are editable.
+- Accepting an item teaches the tool to ignore it next time. Lessons are recorded and exportable.
+- Notes: 3D note pins and pen/text markup on the 2D drawings (kept in exports).
+- Sharing: WhatsApp, Telegram, phone share, copy link. The link carries the state in the `#s=` hash.
+- Agents: `window.BVT.call(...)`, postMessage, and "Copy agent brief". See `docs/AGENTS.md`. Learning: `docs/LEARNING_LOG.md`.
+
+Not decided yet: real schedule data, real site layout, HSE officer review.
+
+## Project calculations received (amr.rar, 2026-11-19)
+
+- Mechanical calc: peak flow 14.70 L/s, 3 pumps (2 duty + 1 standby), calculated 7.35 L/s each, SELECTED 8.00 L/s. This settles 7 vs 8: use 8 L/s.
+- Structural calc (44 sheets, SAP plate model): ACI 318-19, ACI 350, ACI 350.3, ACI 224R, SBC 301/304, ASCE 7. Concrete C40, steel fy 420. Cover: 50 mm soil and internal water faces, 40 mm walls, 25 mm slabs. Bearing 200 kN/m2; water table not considered (base to water table: nil).
+- Thickness and bars in the calc: 400 mm with T16@150, 300 mm with T14@150, 200 mm with T12@150. DECIDED 2026-11-19: the structural calculation governs. The model now uses well wall 400, base 400, well top slab 200, chamber walls 300, chamber floor 400, chamber roof 200 mm (six editable parameters). The old 430 mm rule is replaced.
+- Earlier note about ECP 203 is replaced: the project design basis is ACI/SBC.
+- ME-GLY-01.dxf (174 MB) is the site plan; not loaded yet.
+
+Entered on the drawings (2026-11-19): water levels on the section now follow the mechanical calc (H.W.L start +1161.28, H.H.W.L +1161.38). Sheet page 2 carries three tables: mechanical design data, structural design data, site context (from ME-GLY-01.dxf, label-to-label distances). Sheet notes now state 8.00 L/S at 10.00 m head and the ACI/SBC basis. Thickness 430 vs calc 400/300/200 is flagged, not changed.
+
+Site plan in 3D (2026-11-19): new tab "Site plan" shows ME-GLY-01.dxf linework (4,164 segments in 5 categories), the UG sewage storage tank 1000 m3 (2 cells) with 4 pits, the potable and firefighting tank 2500 m3, the workshop/irrigation complex, the electrical building, pipes (100 runs, buried 1.2 m assumed) and labels, aligned to the well centre and rotated 6.5 degrees. Footprints are read from the linework; heights and depths are assumptions. Not resolved: split between workshop and irrigation tank, exact electrical building outline.
