@@ -4,7 +4,7 @@ progReg('draft',[
  ['Draw','الرسم',['Line|خط|line|c_line','Polyline|بوليلاين|poly|c_pl','Circle|دائرة|circle|c_circle','Arc|قوس|arc','Rectangle|مستطيل|rect|c_rect','Polygon|مضلع|poly','Ellipse|قطع ناقص|ellipse','Spline|منحنى|spline','Hatch|تهشير|hatch','Gradient|تدرج|hatch','Boundary|حد|rect','Region|منطقة|rect','Wipeout|ممحاة|rect','Revision Cloud|سحابة مراجعة|poly','Point|نقطة|point','Construction Line|خط إنشاء|cons','Ray|شعاع|line']],
  ['Modify','التعديل',['Move|نقل|move|c_move','Copy|نسخ|copy|c_copy','Stretch|مط|scale','Rotate|تدوير|rot|c_rotate','Mirror|مرآة|mirror|c_mirror','Scale|مقياس|scale|c_scale','Trim|قص|trim','Extend|مد|trim','Fillet|تدوير زوايا|arc','Chamfer|شطف|line','Array|مصفوفة|array','Offset|إزاحة|offset|c_offset','Erase|مسح|erase|c_erase','Explode|تفجير|erase|c_explode','Join|ضم|link','Break|كسر|trim','Blend|دمج منحنى|spline','Lengthen|إطالة|line','Align|محاذاة|move','Edit Polyline|تحرير بوليلاين|poly']],
  ['Annotation','التوضيح',['Text|نص|text|c_text','Dimension|بُعد|dim|c_dim','Leader|خط إيضاح|line','Table|جدول|table','Mtext|نص متعدد|text']],
- ['Layers','الطبقات',['Layer Properties|خصائص الطبقات|layer','Layer Previous|الطبقة السابقة|layer','Isolate|عزل|layer','Freeze|تجميد|layer','Lock|قفل|layer','Make Current|تعيين كحالية|layer','Match|مطابقة|layer']],
+ ['Layers','الطبقات',['Layer Properties|خصائص الطبقات|layer|ly_mgr','Layer Previous|الطبقة السابقة|layer','Isolate|عزل|layer|ly_iso','Unisolate (all on)|إلغاء العزل|layer|ly_all','Freeze|تجميد|layer','Lock|قفل|layer|ly_lock','Make Current|تعيين كحالية|layer','Match|مطابقة|layer']],
  ['Block','البلوك',['Insert|إدراج|block','Create|إنشاء|block','Edit|تحرير|block','Define Attributes|تعريف خصائص|block']],
  ['Properties','الخصائص',['Match Properties|مطابقة الخصائص|link','Color|اللون|layer','Linetype|نوع الخط|line','Lineweight|سمك الخط|line']],
  ['Groups','المجموعات',['Group|تجميع|block','Ungroup|فك التجميع|block']],
@@ -30,7 +30,7 @@ progReg('draft',[
  ['Navigate','التنقل',['Pan|إزاحة|move|n_pan','Zoom Extents|تكبير للكل|zfit|zfit','Zoom Window|تكبير نافذة|zoomsel|zsel','Zoom In|تكبير|zin|zin','Zoom Out|تصغير|zout|zout','Orbit|تدوير|rot|n_orbit']],
  ['Visual Styles','أنماط العرض',['2D Wireframe|إطار سلكي 2D|iso|d_wire','Shaded|مظلل|iso|d_shaded','X-ray|أشعة|iso|d_xray','Hidden|مخفي|iso','Realistic|واقعي|iso|render','Conceptual|تصوري|iso','Sketchy|رسم يدوي|iso','Shades of Gray|تدرج رمادي|iso']],
  ['Model Viewports','نوافذ العرض',['Named Views|مناظير مسماة|view3d|p_views','Viewport Configuration|ضبط النوافذ|layout','Top|علوي|plan|n_top','Iso|أيزو|iso|n_iso']],
- ['Palettes','اللوحات',['Properties|الخصائص|edit|p_edit','Tool Palettes|لوحات الأدوات|layout','Sheet Set Manager|مدير مجموعات اللوحات|sheet|sheet','Layers|الطبقات|layer','Measure|قياس|measure|p_review']],
+ ['Palettes','اللوحات',['Properties|الخصائص|edit|p_edit','Tool Palettes|لوحات الأدوات|layout','Sheet Set Manager|مدير مجموعات اللوحات|sheet|sheet','Layers|الطبقات|layer|ly_mgr','Measure|قياس|measure|p_review']],
  ['Interface','الواجهة',['Switch Windows|تبديل النوافذ|tile|w_tile','Cascade|تتالي|cascade|w_casc','Reset layout|إعادة الترتيب|layout|w_reset','Hide / show bars|إخفاء/إظهار الأشرطة|layout|ui_bars']]]],
 ['manage','Manage','إدارة',[
  ['Action Recorder','مسجل الأفعال',['Record|تسجيل|record|rec','Play|تشغيل|play|dis']],

@@ -1,0 +1,13 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-tabs');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('draft')"); await pg.waitForTimeout(1500);
+console.log('layers before',JSON.stringify(await E("cadD().layers.map(l=>l.n+':'+l.on)")));
+await pg.evaluate(()=>{ [...document.querySelectorAll('.xw[data-id="pane:lay"] button')].find(b=>/New Layer|طبقة جديدة/.test(b.textContent)).click(); }); await pg.waitForTimeout(300);
+await E("lyIso()"); console.log('after new+isolate',JSON.stringify(await E("cadD().layers.map(l=>l.n+':'+l.on)")),'cur',await E("cadD().cur")); await E("lyAll()");
+await pg.screenshot({path:'/tmp/pn_draft.png'});
+await E("wtNew('sched')"); await pg.waitForTimeout(1800); console.log('wbs rows',await pg.evaluate(()=>document.querySelectorAll('.xw[data-id="pane:wbs"] details').length),await pg.evaluate(()=>{const d=document.querySelector('.xw[data-id="pane:wbs"] details'); return d?d.innerText.replace(/\s+/g,' ').slice(0,160):'none';})); await pg.screenshot({path:'/tmp/pn_sched.png'});
+await E("wtNew('office')"); await pg.waitForTimeout(1200); console.log('office',JSON.stringify(await E("({built:RIBP.office.built,tot:RIBP.office.tot})")),await pg.evaluate(()=>[...document.querySelectorAll('#xTabs button')].map(b=>b.textContent).join(' | ')));
+console.log(er.slice(0,4)); await b.close();})();

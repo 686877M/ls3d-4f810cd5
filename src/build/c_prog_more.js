@@ -41,7 +41,7 @@ progReg('sched',[
  ['Show','إظهار',['Columns|أعمدة|table','Bars|أشرطة|sched','Timescale|مقياس الزمن|cal','Filters|فلاتر|layer','Group and Sort|تجميع وفرز|layer','Bottom Layout|التخطيط السفلي|layout','Progress Line|خط التقدم|line']],
  ['Zoom','تكبير',['Zoom In|تكبير|zin|zin','Zoom Out|تصغير|zout|zout','Zoom to Best Fit|ملاءمة|zfit|zfit']]]],
 ['project','Project','المشروع',[
- ['Structure','الهيكل',['WBS|هيكل تجزئة العمل|layout','Activities|الأنشطة|p6|p6','Resource Assignments|تعيينات الموارد|parts','Work Products and Documents|المستندات|sheet|dc_reg','Expenses|مصروفات|boq|p_bom','Thresholds|حدود|bell','Issues|مشاكل|safety|ct_pulse','Risks|مخاطر|safety|p_scen']],
+ ['Structure','الهيكل',['WBS|هيكل تجزئة العمل|layout|wbs_open','Activities|الأنشطة|p6|p6','Resource Assignments|تعيينات الموارد|parts','Work Products and Documents|المستندات|sheet|dc_reg','Expenses|مصروفات|boq|p_bom','Thresholds|حدود|bell','Issues|مشاكل|safety|ct_pulse','Risks|مخاطر|safety|p_scen']],
  ['Baselines','خطوط الأساس',['Maintain Baselines|إدارة خطوط الأساس|base|tm_vers','Assign Baselines|تعيين خط الأساس|base']],
  ['Settings','الإعدادات',['Set Default Project|المشروع الافتراضي|gear','Project details|تفاصيل المشروع|info|setup','Calendar|التقويم|cal|ct_cal']]]],
 ['enterprise','Enterprise','المؤسسة',[
@@ -86,4 +86,39 @@ progReg('coord',[
  ['Export Scene','تصدير المشهد',['IFC|IFC|ifc|e_ifc','OBJ|OBJ|obj|e_obj','DXF 3D|DXF 3D|dxf|e_dxf3','FBX|FBX|export','Google Earth KML|KML|export']],
  ['Visuals','مرئيات',['Image|صورة|camera|shot','Rendered Image|صورة ريندر|camera|render','Animation|فيديو|record|rec']],
  ['Export Data','تصدير البيانات',['Clash report|تقرير التعارض|table|p_coord','Quantities XLSX|الكميات XLSX|xlsx|e_boq','Schedule XER|الجدول XER|xer|xer','Viewpoints report|تقرير الزوايا|table']]]]
+],'home');
+
+progReg('office',[
+['file','File','ملف',[
+ ['File','ملف',['New|جديد|new|new','Open|فتح|open|open','Save|حفظ|save|save','Save As|حفظ باسم|saveas|saveas','Print|طباعة|sheet|sheet','Export PDF|تصدير PDF|pdf|e_pdf','Share|مشاركة|link|p_share','Project package ZIP|حزمة المشروع|export|pack']]]],
+['home','Home','الرئيسية',[
+ ['Documents','المستندات',['Spreadsheet (Excel)|جدول بيانات (Excel)|xlsx|o_sheet','Report (Word)|تقرير (Word)|sheet|o_report','Slides (PowerPoint)|شرائح (PowerPoint)|layout|o_slides','Media and share|ميديا ومشاركة|video|o_media']],
+ ['Clipboard','الحافظة',['Paste|لصق|copy','Cut|قص|trim','Copy|نسخ|copy','Format Painter|نسخ التنسيق|link']],
+ ['Font','الخط',['Bold|عريض|text','Italic|مائل|text','Underline|تسطير|text','Font Color|لون الخط|layer','Fill Color|لون التعبئة|layer','Borders|حدود|table']],
+ ['Alignment','المحاذاة',['Align Left|يسار|line','Center|توسيط|line','Align Right|يمين|line','Merge & Center|دمج وتوسيط|table','Wrap Text|التفاف النص|text']],
+ ['Number','الأرقام',['Number Format|تنسيق الأرقام|table','Percent|نسبة|table','Comma|فاصلة|table','Increase Decimal|زيادة الكسور|table']],
+ ['Editing','التحرير',['Undo|تراجع|undo|undo','Redo|إعادة|redo|redo','Find|بحث|eye|tm_find','Sort & Filter|فرز وتصفية|layer','AutoSum|جمع تلقائي|table']]]],
+['insert','Insert','إدراج',[
+ ['Tables','الجداول',['Table|جدول|table','PivotTable|جدول محوري|table','BOQ table|جدول الكميات|boq|p_bom']],
+ ['Illustrations','الرسوم',['Picture|صورة|rect','Screenshot of the 3D view|لقطة من الـ 3D|camera|shot','Shapes|أشكال|rect','Drawing sheet|لوحة رسم|sheet|sheet']],
+ ['Charts','المخططات',['Column Chart|مخطط أعمدة|table','Line Chart|مخطط خطي|poly','Pie Chart|مخطط دائري|circle','Dashboard|لوحة مؤشرات|layout|l_dash']],
+ ['Text','النص',['Text Box|مربع نص|text','Header & Footer|رأس وتذييل|text','Date & Time|التاريخ والوقت|cal']]]],
+['layout','Page Layout','تخطيط الصفحة',[
+ ['Page Setup','إعداد الصفحة',['Margins|الهوامش|rect','Orientation|الاتجاه|rect','Size|الحجم|rect','Print Area|منطقة الطباعة|rect','Breaks|فواصل|line']],
+ ['Themes','السمات',['Theme|السمة|theme|theme','Appearance|المظهر|theme|p_look','Language|اللغة|lang|lang']]]],
+['formulas','Formulas','الصيغ',[
+ ['Function Library','مكتبة الدوال',['Insert Function|إدراج دالة|gear','Math|رياضيات|gear','Lookup|بحث|eye','Date & Time|تاريخ ووقت|cal','Engineering calculations|حسابات هندسية|gear|p_calc','Review calculations|مراجعة الحسابات|safety|p_review']],
+ ['Formula Auditing','تدقيق الصيغ',['Trace Precedents|تتبع السوابق|link','Show Formulas|إظهار الصيغ|eye','Error Checking|فحص الأخطاء|safety']]]],
+['data','Data','البيانات',[
+ ['Get Data','جلب البيانات',['From the BOQ|من المقايسة|boq|p_bom','From the schedule|من الجدول الزمني|p6|p6','From the register|من سجل المستندات|table|dc_reg','From CSV|من CSV|impt|open']],
+ ['Export','تصدير',['BOQ XLSX|حصر XLSX|xlsx|e_boq','BOQ CSV|حصر CSV|csv|e_csv','Schedule XLSX|الجدول XLSX|xlsx|xlsxs','Activities CSV|الأنشطة CSV|csv|csvs']],
+ ['Sort & Filter','فرز وتصفية',['Sort|فرز|layer','Filter|تصفية|layer','Remove Duplicates|إزالة المكرر|erase','Data Validation|التحقق من البيانات|safety']]]],
+['review','Review','مراجعة',[
+ ['Proofing','التدقيق',['Spelling|الإملاء|text','Thesaurus|المرادفات|text','Terms|المصطلحات|text|dc_gl']],
+ ['Comments','التعليقات',['New Comment|تعليق جديد|note|note','Activity log|سجل النشاط|table|tm_log']],
+ ['Reports','التقارير',['Technical office reports|تقارير المكتب الفني|table|dc_rep','Follow-up reports|تقارير المتابعة|table|ct_rep','Quality review|مراجعة الجودة|safety|wf_qa']],
+ ['Protect','الحماية',['Protect Sheet|حماية الورقة|safety','Versions and roll-back|النسخ والرجوع|save|tm_vers']]]],
+['view','View','عرض',[
+ ['Workbook Views','طرق العرض',['Normal|عادي|layout','Page Layout|تخطيط الصفحة|sheet|sheet','Tile windows|تجانب النوافذ|tile|w_tile','Cascade|تتالي|cascade|w_casc']],
+ ['Zoom','تكبير',['Zoom in|تكبير|zin|ui_zoomin','Zoom out|تصغير|zout|ui_zoomout','Density|الكثافة|layout|ui_dens','Hide / show bars|إخفاء/إظهار الأشرطة|layout|ui_bars']]]]
 ],'home');
