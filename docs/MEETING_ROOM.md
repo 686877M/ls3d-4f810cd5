@@ -113,3 +113,9 @@ The user asked for weather, wind, seismic and soil as code-based simulation, not
 - Site class from Vs30 / SPT N / su (ASCE 7 and Eurocode 8 tables), liquefaction screening (simplified SPT: CSR, CRR, magnitude scaling, FS).
 - Weather: synthetic year from user inputs (annual and daily temperature swing, sky clearness, Weibull wind) with exact sun position; monthly table, HDD / CDD, solar kWh/m2, PV yield estimate. It is a scenario, not recorded weather.
 - To do next on this thread: add ECP 201 / SBC 301 national tables once the user supplies the edition (seismic zones, wind speeds, soil classes), Egyptian wind chapter, ECP soil and foundation chapters, ASHRAE-style design-day tables if wanted.
+
+
+### Update 2026-11-19 (later): remove buttons and undo for placed items (`c_undo.js`)
+- Tray at the bottom-left of the 3D view: one chip with × for each active section cut, each measurement, pending measure points, site cuts and the site plan, plus "Remove all". Ribbon Home → Edit has "Remove last placed item" and "Remove all cuts and measurements".
+- Undo / redo (120 steps) now covers section cuts, measurements and site cuts: the view state is saved in every history step and inside the project file (`view` key). Before this, only parametric data was in the history, so undo did nothing for cuts and measures.
+- Not covered: CAD window entities (they keep their own undo inside the CAD window), sheet callouts (edit them in the sheet notes).

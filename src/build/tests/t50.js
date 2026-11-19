@@ -1,0 +1,17 @@
+const {chromium}=require('playwright-core');(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-splash','1');}catch(e){}}); const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('console',m=>{if(m.type()==='error')er.push('C:'+m.text().slice(0,150));});
+const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html'); await pg.waitForTimeout(5000); await E("wtSwitch(WTAB.tabs[1].id)"); await pg.waitForTimeout(800);
+const st=()=>E("({steps:HI.st.length,i:HI.i,secOn:SEC.filter(s=>s.on).length,meas:MSR.list.length,chips:document.querySelectorAll('#xTray .chip').length})");
+console.log('start',JSON.stringify(await st()));
+await E("XC.sA.run()"); await pg.waitForTimeout(1200); console.log('after section',JSON.stringify(await st()));
+await E("measAdd({k:'dist',pts:[new T.Vector3(0,0,0),new T.Vector3(1,0,0)],rows:[['Distance','1.00 m']]})"); await pg.waitForTimeout(1200); console.log('after measure',JSON.stringify(await st()));
+await pg.screenshot({path:'/tmp/rm1.png'});
+await E("hiGo(-1)"); await pg.waitForTimeout(900); console.log('undo 1',JSON.stringify(await st()));
+await E("hiGo(-1)"); await pg.waitForTimeout(900); console.log('undo 2',JSON.stringify(await st()));
+await E("hiGo(1)"); await E("hiGo(1)"); await pg.waitForTimeout(900); console.log('redo 2',JSON.stringify(await st()));
+await E("document.querySelectorAll('#xTray .chip b')[1].click()"); await pg.waitForTimeout(1200); console.log('removed measure chip',JSON.stringify(await st()));
+await E("hiGo(-1)"); await pg.waitForTimeout(900); console.log('undo removal',JSON.stringify(await st()));
+await E("XC.rm_all.run()"); await pg.waitForTimeout(1200); console.log('remove all',JSON.stringify(await st()));
+const j=await E("projectJson().includes('\"view\"')"); console.log('view in project',j);
+console.log('ERR',er.slice(0,6)); await b.close();})();
