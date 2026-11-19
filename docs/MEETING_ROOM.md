@@ -165,3 +165,14 @@ Drive folder TOX (owner amrhamed913, shared): infra networks and Mechanical Wet 
 - A separate session was started for source-program fidelity (Civil 3D first, then Revit, Navisworks, Primavera, SketchUp, Coohom-style home module); it writes docs/UI_SPEC_<program>.md.
 - LibreDWG 0.13.3 is being built from source in /tmp/ldwg_src (install prefix /tmp/ldwg_install) to read the Drive DWG files; the clash-detection request (42-test plan in 08_Review/Clash_plan_2026-11-19.xlsx) waits for it. Nothing is claimed about clashes yet.
 - Open items: DWG reading and clash run, Drive enumeration of the network folders, structural analysis tools (SAFE / SAP / ETABS / Tekla style), meeting-room desk and Projects tab, consultant mode, H.O X home / render module (PBR, HDRI, 360), path tracing.
+
+
+### 2026-11-19 (last): lobby and pending list at the moment of compression
+Done: 3D lobby after the password (`c_lobby3d.js`): long hall, door and sign for each of 16 offices, round table, pendant lamps, camera walk (entrance, side, plan, final frame) of 14 s, logo drawing itself, greeting, then the choices grouped by department (Design, Planning and cost, Quality and coordination, Documents and office, Project management, Environment and studio); click a door or use the list; Esc or Skip jumps to the end; flat lobby (`c_lobby.js`) is the fallback; the lobby button in the top line and the command `lobby` reopen it. Tested headless (screenshots checked); not tested on a real GPU.
+Pending (owner's last messages):
+1. Make the lobby closer to the reference picture (glass offices with screens, light strips, central table, hanging lights), department doors named by management structure (do not copy the owner's examples literally, derive the best set), and keep it free of "generated" looks: no emoji icons (replace the robot, lobby, radio, TV, speaker emoji with drawn icons), no purple / blue glow gradients, plain wording.
+2. Reload shows stale builds: add a build stamp and a small "new version, reload" notice that checks `index.html` without cache every few minutes and on focus.
+3. 3D view sometimes shows missing or inconsistent items: add a cheap model integrity check (parts vs BOQ items vs drawings vs site masses) that runs at load and on demand, and keep reviews limited to what changed.
+4. Idle display after 7 minutes: logo at the bottom next to the "TECHNICAL OFFICE X" caption; large outlined moving text passing through horizontal and vertical bands in the middle third of the screen, cut by the bands (kinetic typography), more current motion ideas.
+5. From before: DWG reading (converter works, one storm profile file read), clash job, source-program fidelity session (Civil 3D ribbon done), structural analysis tools, meeting-room desk and Projects tab, consultant mode, render module, security and speed pass.
+Latest commits are local; the published page is several commits behind (needs a yes).
