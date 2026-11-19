@@ -176,3 +176,20 @@ Pending (owner's last messages):
 4. Idle display after 7 minutes: logo at the bottom next to the "TECHNICAL OFFICE X" caption; large outlined moving text passing through horizontal and vertical bands in the middle third of the screen, cut by the bands (kinetic typography), more current motion ideas.
 5. From before: DWG reading (converter works, one storm profile file read), clash job, source-program fidelity session (Civil 3D ribbon done), structural analysis tools, meeting-room desk and Projects tab, consultant mode, render module, security and speed pass.
 Latest commits are local; the published page is several commits behind (needs a yes).
+
+## Backlog after owner review 2026-11-19 (nothing below is built yet unless marked)
+Done and published (dba4da8): top bar shows project, file and tab; dock widgets resize from every edge; new-version banner (build.txt).
+1. Temporary auto-refresh every 15 min for today only, with a reminder to switch it off. Password: refresh keeps the session, closing the tab asks again (already so).
+2. Intro after password (about 9 s, smooth, light and shadow motion) then a cut to the lobby. No Makkah footage in the repo: owner supplies licensed aerial footage or photos, otherwise an abstract aerial scene from code (labelled abstract).
+3. Lobby merged with the Start page; each door: program name as small text (Revit, AutoCAD, Civil 3D, Tekla, SAP2000, ETABS, SAFE, Navisworks, Primavera P6, SketchUp, Coohom, Excel), one short line of abilities, hover card with 3-4 abilities; same text in the platform guide file. Vendor logos are trademarks: owner supplies official files, otherwise own neutral coloured icons.
+4. Live radio and TV as floating mini player (audio only or video, movable, resizable from any edge, keeps playing): Saudi Quran, Makkah, Madinah, Egyptian Quran. Official stream URLs must be opened and checked one by one, none typed from memory.
+5. YouTube mini widget: resize from every edge (still corner only).
+6. Review simulation (M.X) and the assemble/disassemble animation; screenshots at several steps with the lobby hidden.
+7. Right-click menus: each tool behaves like its program (CAD, Civil 3D, Excel, Primavera...).
+8. BIM 7D and LOD (LOD 100-500, 7D asset management): owner to confirm which; review and add.
+9. Library: official documents with references and screenshots, structural reinforcement, finishing, quantities, QC, site (ECP, SBC, ASCE, Eurocode, ACI; Shaker El-Behairy, Lacey). Owner supplies PDFs; nothing typed from memory. Two sources to mark "confirmed".
+10. Watch unit for code updates and news (scheduled check, writes to Drive file).
+11. Unified event log plus a log per item; storage and requests on Google Drive; e-mail link slot; periodic reminder to download a local backup.
+12. Project modes: create, follow, modify; agents per discipline plus a reviewer; checks for missing data, clash, duplicate, error.
+13. AI connection: user API key option, platform guide file (rules, prohibitions), MCP/WebSocket bridge (TOXAPI exists), GitHub and GitLab OAuth (needs client ID), n8n workflow; Jarvis/Hermes-like identity via the guide file.
+14. Older items: DWG clash run (42 tests), Revit/Navisworks/Primavera/AutoCAD/SketchUp/Coohom fidelity, DC forms and BIM 360 intake, structural analysis tools, H.O X home/render module, security and speed pass, kinetic typography for the idle screen, integrity check of the model.
