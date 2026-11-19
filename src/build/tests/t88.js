@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-duct');localStorage.removeItem('xto-hvac');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+console.log('hand: D=0.3 m, Q=0.5 m3/s -> ~1.86 Pa/m, v 7.07');
+console.log(JSON.stringify(await E("(()=>{ DUC.g.T=20; const a=duAir(); const r=duFric(.3,.5,a); return {rho:a.rho,mu:a.mu,v:r.v,Re:r.Re,f:r.f,R:r.R}; })()")));
+console.log('size for 500 L/s at 1 Pa/m round:',JSON.stringify(await E("(()=>{ const a=duAir(); const D=duRound(.5,1,20,a); return {D,R:duFric(D,.5,a).R}; })()")));
+console.log('De rect 600x300:',await E("duDe(.6,.3)"),' (Huebscher hand: 1.3*(0.18)^0.625/(0.9)^0.25 =',1.3*Math.pow(.18,.625)/Math.pow(.9,.25),')');
+await E("wtNew('hv')"); await pg.waitForTimeout(1200); await E("DUC.secs=[{n:'Main',Q:1200,L:20,K:.6,Le:0,sh:'rect',H:0,crit:true},{n:'Branch',Q:400,L:12,K:1.1,Le:0,sh:'rect',H:250,crit:true},{n:'Round',Q:150,L:8,K:.3,Le:0,sh:'round',H:0,crit:false}]; duSave(); duRender()"); await pg.waitForTimeout(800); await pg.screenshot({path:'/tmp/du1.png'}); console.log(er.slice(0,4)); await b.close();})();
