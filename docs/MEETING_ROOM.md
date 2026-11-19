@@ -158,3 +158,10 @@ Drive folder TOX (owner amrhamed913, shared): infra networks and Mechanical Wet 
 ### Update 2026-11-19 (night): logo and render
 - Logo: the first letter is now a true 7 (bar with rounded left end, stem flush at the bar's right end); every leaning stroke has the same width (3.8 horizontal = 3.0 perpendicular at the 38 degree lean, horizontal bars 3.0); O is a plain leaning ring; X is a leaning inverted Y.
 - Render (`c_render.js`, Output tab > Render): HD, 4K, 8K, 12K, square, current view x4; tile by tile with sub-pixel averaging (1 to 16 samples), light presets (current, day from the sun path, golden hour, soft, studio), transparent background, PNG or JPEG. Tested: 1920x1080 with 2 samples and golden hour (15 s in a software GL browser). 8K and 12K were NOT run (too slow in the test browser); the size limits were checked. It is a raster render, not path tracing; for V-Ray-like lighting export OBJ / IFC to Blender (Cycles). Next options: a path-tracing renderer in the page (needs a newer three.js), HDRI and PBR materials, 360 panorama capture, Blender script export.
+
+
+### 2026-11-19 (end of day): hand-over notes before the conversation is compressed
+- Latest build committed locally (site repo, last commit: idle scene with contours); published page is one commit behind (publish needs the owner's yes).
+- A separate session was started for source-program fidelity (Civil 3D first, then Revit, Navisworks, Primavera, SketchUp, Coohom-style home module); it writes docs/UI_SPEC_<program>.md.
+- LibreDWG 0.13.3 is being built from source in /tmp/ldwg_src (install prefix /tmp/ldwg_install) to read the Drive DWG files; the clash-detection request (42-test plan in 08_Review/Clash_plan_2026-11-19.xlsx) waits for it. Nothing is claimed about clashes yet.
+- Open items: DWG reading and clash run, Drive enumeration of the network folders, structural analysis tools (SAFE / SAP / ETABS / Tekla style), meeting-room desk and Projects tab, consultant mode, H.O X home / render module (PBR, HDRI, 360), path tracing.
