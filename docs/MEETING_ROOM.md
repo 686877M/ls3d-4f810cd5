@@ -149,3 +149,7 @@ To do next (owner's latest requests, not started):
 
 
 ### 2026-11-19 (late): see docs/STATUS.md for the full done / not-done list.
+
+
+### Update 2026-11-19 (night): Drive review
+Drive folder TOX (owner amrhamed913, shared): infra networks and Mechanical Wet utility, about 100 folders. The Lift Station branch holds 3 calculation PDFs and 4 DWG files. Read in full: SEWEGE TANK CALCULATIONS REV 01 (70 pages). Findings (10), reinforcement schedule and a model update (tank depth 6.45 m) are in the app (DC > التسريح) and in the Excel report kept on the Mac (08_Review/Drive_review_2026-11-19.xlsx, not in this repository). DWG files could not be read; export DXF or PDF. The page no longer flashes the old viewer at reload (the old container is hidden until the shell is ready). The red label with tag names on hover and the element chips in the chat come from the desktop app's element-selection tool (pointer icon in the browser pane toolbar), not from this page.

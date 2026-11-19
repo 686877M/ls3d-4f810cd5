@@ -5,12 +5,12 @@ const spLab=el('div',{style:'position:absolute;inset:0;pointer-events:none;overf
 const spTip=el('div',{style:'position:absolute;pointer-events:none;background:rgba(0,0,0,.82);color:#fff;padding:6px 9px;border-radius:7px;font:12px/1.4 Arial;max-width:300px;z-index:6',hidden:''}); host.appendChild(spTip);
 /* footprints read from the site plan (metres, model X and Z); heights and depths are assumptions */
 const SPS=[
- ['UG sewage storage tank 1000 m3, cell A','خزان الصرف الأرضي 1000 م³، خلية A',8.9,-6.5,26.9,0,-4,4,0x8d6e63,'Depth 4.0 m assumed, top at G.L. Two cells with a middle wall.','العمق 4.0 م مفترض والسطح عند منسوب الأرض. خليتين بينهم حائط.'],
- ['UG sewage storage tank 1000 m3, cell B','خزان الصرف الأرضي 1000 م³، خلية B',8.9,0,26.9,6.8,-4,4,0x8d6e63,'Depth 4.0 m assumed, top at G.L.','العمق 4.0 م مفترض والسطح عند منسوب الأرض.'],
- ['Tank pit NW','غرفة الخزان NW',7.4,-3.1,9.1,-1.5,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
- ['Tank pit SW','غرفة الخزان SW',7.4,2.8,9.1,4.3,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
- ['Tank pit NE','غرفة الخزان NE',27,-3.1,28.8,-1.5,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
- ['Tank pit SE','غرفة الخزان SE',27,2.8,28.8,4.3,-4,4.6,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['UG sewage storage tank 1000 m3, cell A','خزان الصرف الأرضي 1000 م³، خلية A',8.9,-6.5,26.9,0,-6.45,6.45,0x8d6e63,'Depth 6.45 m from the tank calculation REV 01 (water 5.50 + raft 0.60 + roof 0.35), top at G.L. assumed. The same calculation also shows 6.0 m of soil over the tank: confirm against the DWG.','العمق 6.45 م من حسابات الخزان REV 01 (مياه 5.50 + لبشة 0.60 + سقف 0.35) والسطح عند منسوب الأرض مفترض. نفس الحسابات بتذكر 6.0 م تربة فوق الخزان: راجع على الـDWG.'],
+ ['UG sewage storage tank 1000 m3, cell B','خزان الصرف الأرضي 1000 م³، خلية B',8.9,0,26.9,6.8,-6.45,6.45,0x8d6e63,'Depth 6.45 m from the tank calculation REV 01, top at G.L. assumed.','العمق 6.45 م من حسابات الخزان REV 01 والسطح عند منسوب الأرض مفترض.'],
+ ['Tank pit NW','غرفة الخزان NW',7.4,-3.1,9.1,-1.5,-6.45,7.05,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit SW','غرفة الخزان SW',7.4,2.8,9.1,4.3,-6.45,7.05,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit NE','غرفة الخزان NE',27,-3.1,28.8,-1.5,-6.45,7.05,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
+ ['Tank pit SE','غرفة الخزان SE',27,2.8,28.8,4.3,-6.45,7.05,0x5c6bc0,'Manhole / pump pit, 0.6 m above G.L assumed.','غرفة مانهول / مضخة، 0.6 م فوق الأرض مفترض.'],
  ['Workshop & store / irrigation tank 500 m3 complex','مجمع الورشة والمخزن / خزان الري 500 م³',.6,17.8,33.4,46,0,4.5,0x90a4ae,'Footprint outlined from linework; the split between workshop and tank is not resolved. Height assumed.','المسقط من الخطوط؛ الفصل بين الورشة والخزان غير محسوم. الارتفاع مفترض.'],
  ['Potable & firefighting water tank 2500 m3','خزان المياه والحريق 2500 م³',-11.9,49.2,30,75.1,0,3,0x4fc3f7,'Footprint from linework; height assumed 3.0 m.','المسقط من الخطوط؛ الارتفاع 3.0 م مفترض.'],
  ['Electrical & control building','مبنى الكهرباء والتحكم',-27.5,5.5,-19,21.7,0,4.5,0xffb74d,'Footprint approximate; height assumed 4.5 m.','المسقط تقريبي؛ الارتفاع 4.5 م مفترض.']
