@@ -1,16 +1,16 @@
 /* Revit ribbon (R.X). Wired: views, zoom/orbit, sections, schedules/BOQ, sheets, render, rebar, coordination, loads, site, project info, export. Everything else is listed and marked not built. */
 progReg('model',[
 ['arch','Architecture','العمارة',[
- ['Build','البناء',['Wall|جدار|wall|rv_wall','Door|باب|door|rv_door','Window|شباك|window|rv_window','Component|مكوّن|block|p_fam','Column|عمود|column|rv_col','Roof|سقف|roof','Ceiling|سقف معلق|ceiling','Floor|بلاطة|floor|rv_floor','Curtain System|نظام ستارة|curtain','Curtain Grid|شبكة ستارة|grid','Mullion|مليون|line']],
- ['Circulation','الحركة',['Railing|درابزين|railing','Ramp|منحدر|ramp','Stair|سلم|stair']],
- ['Model','النموذج',['Model Text|نص نموذج|text','Model Line|خط نموذج|line','Model Group|مجموعة نموذج|block','Parts|الأجزاء|parts|p_parts']],
- ['Room & Area','الغرف والمساحات',['Room|غرفة|layout','Room Separator|فاصل غرف|line','Tag Room|وسم غرفة|tag','Area|مساحة|layout','Area Boundary|حد مساحة|line','Tag Area|وسم مساحة|tag']],
+ ['Build','البناء',['Wall|جدار|wall|rv_wall','Door|باب|door|rv_door','Window|شباك|window|rv_window','Component|مكوّن|block|p_fam','Column|عمود|column|rv_col','Roof|سقف|roof|rv_roof','Ceiling|سقف معلق|ceiling|rv_ceil','Floor|بلاطة|floor|rv_floor','Curtain System|نظام ستارة|curtain','Curtain Grid|شبكة ستارة|grid','Mullion|مليون|line']],
+ ['Circulation','الحركة',['Railing|درابزين|railing|rv_rail','Ramp|منحدر|ramp|rv_ramp','Stair|سلم|stair|rv_stair']],
+ ['Model','النموذج',['Model Text|نص نموذج|text|rv_mtext','Model Line|خط نموذج|line|rv_mline','Model Group|مجموعة نموذج|block','Parts|الأجزاء|parts|p_parts']],
+ ['Room & Area','الغرف والمساحات',['Room|غرفة|layout|rv_room','Room Separator|فاصل غرف|line','Tag Room|وسم غرفة|tag','Area|مساحة|layout','Area Boundary|حد مساحة|line','Tag Area|وسم مساحة|tag']],
  ['Opening','الفتحات',['By Face|بالوجه|block','Shaft|مشق|block','Wall|جدار|wall','Vertical|رأسي|block','Dormer|دورمر|roof']],
  ['Datum','المراجع',['Level|منسوب|level|rv_level','Grid|شبكة|grid|rv_grid','Show levels|إظهار المناسيب|level|t_levels']],
  ['Work Plane','مستوى العمل',['Set|تعيين|layout','Show|إظهار|eye','Ref Plane|مستوى مرجعي|cons','Viewer|عارض|eye']]]],
 ['struct','Structure','الإنشائي',[
- ['Structure','الإنشاء',['Beam|كمرة|beam','Brace|رباط|line','Column|عمود|column|rv_col','Floor|بلاطة|floor|rv_floor','Truss|جمالون|poly','Beam System|نظام كمرات|beam']],
- ['Foundation','الأساسات',['Isolated|منفصلة|block','Wall|حائط|wall','Slab|لبشة|floor']],
+ ['Structure','الإنشاء',['Beam|كمرة|beam|rv_beam','Brace|رباط|line','Column|عمود|column|rv_col','Floor|بلاطة|floor|rv_floor','Truss|جمالون|poly','Beam System|نظام كمرات|beam']],
+ ['Foundation','الأساسات',['Isolated|منفصلة|block|rv_found','Wall|حائط|wall|rv_wall','Slab|لبشة|floor|rv_fslab']],
  ['Reinforcement','التسليح',['Rebar|حديد تسليح|rebar|p_rebar','Area|مساحة|hatch','Path|مسار|line','Fabric Sheet|شبك لحام|grid','Cover|غطاء خرساني|layer','Rebar Couplers|وصلات حديد|link']],
  ['Analytical Model','النموذج التحليلي',['Check|فحص|safety|p_calc','Loads|الأحمال|gear|p_calc','Boundary Conditions|ظروف الحدود|point','Load Combinations|توليفات الأحمال|table']]]],
 ['steel','Steel','الحديد',[
@@ -26,7 +26,7 @@ progReg('model',[
  ['Import','استيراد',['Import CAD|استيراد CAD|impt|open','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
  ['Load from Library','تحميل من المكتبة',['Load Family|تحميل عائلة|block|p_fam','Load as Group|تحميل كمجموعة|block','Insert Views from File|إدراج مناظير من ملف|impt']]]],
 ['ann','Annotate','التوضيح',[
- ['Dimension','الأبعاد',['Aligned|محاذٍ|dim|m_dist','Linear|خطي|dim','Angular|زاوي|dim|m_ang','Radial|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Spot Elevation|منسوب نقطة|level|m_lvl','Spot Coordinate|إحداثي نقطة|point','Spot Slope|ميل نقطة|line']],
+ ['Dimension','الأبعاد',['Aligned|محاذٍ|dim|rv_dim','Linear|خطي|dim|m_dist','Angular|زاوي|dim|m_ang','Radial|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Spot Elevation|منسوب نقطة|level|m_lvl','Spot Coordinate|إحداثي نقطة|point','Spot Slope|ميل نقطة|line']],
  ['Detail','التفاصيل',['Detail Line|خط تفصيل|line','Region|منطقة|hatch','Component|مكوّن|block','Revision Cloud|سحابة مراجعة|poly','Insulation|عزل|poly','Repeating Detail|تفصيل متكرر|array']],
  ['Text','النص',['Text|نص|text|note','Check Spelling|فحص إملاء|text','Find/Replace|بحث واستبدال|text']],
  ['Tag','الوسوم',['Tag by Category|وسم بالفئة|tag','Tag All|وسم الكل|tag','Beam Annotations|توضيحات كمرات|tag','Material Tag|وسم خامة|tag','Keynote|ملاحظة مفتاحية|tag']],
