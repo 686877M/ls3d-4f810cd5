@@ -1,0 +1,18 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-gis','xto-tabs'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept(d.defaultValue())); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+const R=async s=>JSON.stringify(await E(s));
+console.log('TM vs old UTM (Cairo 30.0444,31.2357):',await R("(()=>{ const a=toUTM(30.0444,31.2357), o=ll2utm(30.0444,31.2357); return [a.zone,+a.E.toFixed(3),+a.N.toFixed(3),o]; })()"));
+console.log('round trip UTM:',await R("(()=>{ const u=toUTM(24.7136,46.6753), b=fromUTM(u.E,u.N,u.zone,u.north); return [u.zone,+u.E.toFixed(2),+u.N.toFixed(2),b.map(v=>+v.toFixed(9))]; })()"));
+console.log('southern hemisphere round trip:',await R("(()=>{ const u=toUTM(-33.8688,151.2093), b=fromUTM(u.E,u.N,u.zone,u.north); return [u.zone,u.north,+u.E.toFixed(2),+u.N.toFixed(2),b.map(v=>+v.toFixed(9))]; })()"));
+console.log('Vincenty Flinders Peak -> Buninyong (expect 54972.271 m, 306.8681 deg):',await R("(()=>{ const a=[-(37+57/60+3.7203/3600),144+25/60+29.5244/3600], b=[-(37+39/60+10.1561/3600),143+55/60+35.3839/3600]; const r=vInv(a,b); const d=vDir(a,r.az,r.d); return [+r.d.toFixed(3),+r.az.toFixed(4),d.map(v=>+v.toFixed(7)),b.map(v=>+v.toFixed(7))]; })()"));
+console.log('Web Mercator round trip:',await R("(()=>{ const w=wmFwd(30,31), b=wmInv(w[0],w[1]); return [w.map(v=>+v.toFixed(2)),b]; })()"));
+console.log('area 1 deg x 1 deg at equator (expected ~12,308 km2):',await R("+(geoArea([[0,0],[0,1],[1,1],[1,0]])/1e6).toFixed(0)"));
+console.log('custom TM equals UTM when same params:',await R("(()=>{ const a=tmFwd(30.0444,31.2357,{ell:'wgs84',k0:.9996,FE:500000,FN:0,lon0:33,lat0:0}); const b=tmFwd(30.0444,31.2357,{ell:'wgs84',k0:.9996,FE:500000,FN:-1*tmFwd(30,33,{ell:'wgs84',k0:.9996,FE:0,FN:0,lon0:33,lat0:0})[1]+0,lon0:33,lat0:0}); return [a.map(v=>+v.toFixed(3)), tmInv(a[0],a[1],{ell:'wgs84',k0:.9996,FE:500000,FN:0,lon0:33,lat0:0}).map(v=>+v.toFixed(8))]; })()"));
+console.log('lat0 handling (round trip with lat0=30):',await R("(()=>{ const P={ell:'helmert',k0:1,FE:615000,FN:810000,lon0:31,lat0:30}; const r=tmFwd(30.0444,31.2357,P); return [r.map(v=>+v.toFixed(3)), tmInv(r[0],r[1],P).map(v=>+v.toFixed(8))]; })()"));
+console.log('datum shift round trip:',await R("(()=>{ const s=datumShift(30,31,ELL.wgs84,ELL.helmert,[-100,50,20]); const back=datumShift(s[0],s[1],ELL.helmert,ELL.wgs84,[100,-50,-20]); return [s.map(v=>+v.toFixed(7)),back.map(v=>+v.toFixed(7))]; })()"));
+console.log('parse DMS / DD:',await R("[parseCoord('30°02\\'39.8\"N 31°14\\'08.5\"E'),parseCoord('30.0444, 31.2357'),parseCoord('24.7136;46.6753')]"));
+await E("wtNew('gis')"); await pg.waitForTimeout(6000); await pg.screenshot({path:'/tmp/gis1.png'});
+console.log('tiles loaded:',await E("[...GM.cache.values()].filter(t=>t.__ok).length+' ok / '+GM.cache.size"),er.slice(0,4)); await b.close();})();
