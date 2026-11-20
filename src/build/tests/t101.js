@@ -1,0 +1,17 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-tabs','xto-acel','xto-duct','xto-dterm','xto-hvac'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+console.log('gpu renderer still used:',await E("!renderer.isSoft"));
+console.log('1ph 5kW COP3 230V pf.9 30m (hand: P 1.667, I 8.05, design 10.06, breaker 16, size 1.5, VD 2.60%):',JSON.stringify(await E("(()=>{ACE.g={f:1.25,vd:3,T:70,mat:'cu',amp:''}; const r=aceCalc({kw:5,cop:3,aux:0,ph:1,V:230,pf:.9,L:30}); return [r.P,r.I,r.Id,r.br,r.sz,r.vd].map(v=>+(+v).toFixed(3));})()")));
+console.log('3ph 30kW COP3 400V pf.85 60m:',JSON.stringify(await E("(()=>{const r=aceCalc({kw:30,cop:3,aux:0,ph:3,V:400,pf:.85,L:60}); return [r.P,r.I,r.Id,r.br,r.sz,r.vd].map(v=>+(+v).toFixed(3));})()")));
+console.log('with ampacity table 1.5:14,2.5:19,4:26 (breaker 16):',JSON.stringify(await E("(()=>{ACE.g.amp='1.5:14\\n2.5:19\\n4:26'; const r=aceCalc({kw:5,cop:3,aux:0,ph:1,V:230,pf:.9,L:30}); return [r.br,r.sz,r.note];})()")));
+await E("ACE.g.amp=''; wtNew('hv')"); await pg.waitForTimeout(1500);
+const bb=await pg.evaluate(()=>{const c=document.querySelector('.xw[data-id=\"pane:dplan\"] canvas'); const r=c.getBoundingClientRect(); return [r.left,r.top,r.width,r.height,c.width];});
+await pg.evaluate(()=>{ [...document.querySelectorAll('.xw[data-id=\"pane:dplan\"] button')].find(b=>/Draw duct|ارسم مجرى/.test(b.textContent)).click(); }); await pg.waitForTimeout(300);
+const bb2=await pg.evaluate(()=>{const c=document.querySelector('.xw[data-id=\"pane:dplan\"] canvas'); const r=c.getBoundingClientRect(); return [r.left,r.top,r.width,r.height,c.width];});
+const k=bb2[2]/bb2[4]; const at=async(x,z)=>{ await pg.mouse.click(bb2[0]+(30+x*30)*k,bb2[1]+(30+z*30)*k); await pg.waitForTimeout(150); };
+await at(1,2); await at(9,2); await at(9,6); await pg.keyboard.press('Escape');
+console.log('drawn runs:',JSON.stringify(await E("DUC.secs.map(s=>[s.n,s.L,s.g])")));
+await pg.screenshot({path:'/tmp/hv2.png'}); console.log(er.slice(0,4)); await b.close();})();

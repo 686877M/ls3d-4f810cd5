@@ -188,7 +188,7 @@ const f1=x=>x.toFixed(1), f2=x=>x.toFixed(2), f3=x=>x.toFixed(3);
 const T=THREE, host=$('view'), cap=$('cap'), badge=$('badge');
 const scene=new T.Scene(), camera=new T.PerspectiveCamera(42,1,.1,300);
 let renderer=null;
-try{renderer=new T.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio||1,2)); renderer.localClippingEnabled=true; host.insertBefore(renderer.domElement,host.firstChild);}catch(e){renderer=null;}
+try{ if(softWanted())throw new Error('soft'); renderer=new T.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio||1,2)); renderer.localClippingEnabled=true; host.insertBefore(renderer.domElement,host.firstChild);}catch(e){ try{ renderer=new SoftR(); renderer.setPixelRatio(1); host.insertBefore(renderer.domElement,host.firstChild); }catch(x){ renderer=null; } }
 const controls=renderer?new T.OrbitControls(camera,renderer.domElement):{target:new T.Vector3(),update(){},enableZoom:true,rotateSpeed:1,minDistance:0,maxDistance:0,autoRotate:false};
 controls.enableDamping=true; controls.screenSpacePanning=true;
 scene.add(new T.HemisphereLight(0xffffff,0x5a6672,.85));
