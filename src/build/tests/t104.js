@@ -1,0 +1,17 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-rv','xto-tabs'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('model')"); await pg.waitForTimeout(1500);
+console.log(await E(`(()=>{ const P=(x,z)=>[x,z], add=(t,a,b)=>{ const o=RVX.two[t](a,b); o.id=rvId(); o.k=t; o.lv=0; RV.els.push(o); return o; };
+ const ws=[[P(0,0),P(8,0)],[P(8,0),P(8,6)],[P(8,6),P(0,6)],[P(0,6),P(0,0)],[P(4,0),P(4,6)]].map(w=>({id:rvId(),k:'wall',a:w[0],b:w[1],h:3,t:.2,lv:0})); ws.forEach(w=>RV.els.push(w));
+ RV.els.push({id:rvId(),k:'door',w:ws[0].id,p:2,W:.9,H:2.1,lv:0}); RV.els.push({id:rvId(),k:'window',w:ws[1].id,p:3,W:1.2,H:1.2,sill:.9,lv:0}); RV.els.push({id:rvId(),k:'door',w:ws[4].id,p:3,W:.9,H:2.1,lv:0});
+ RV.els.push({id:rvId(),k:'col',p:P(4,3),w:.4,d:.4,h:3,lv:0}); RV.els.push({id:rvId(),k:'col',p:P(2,3),w:.4,d:.4,h:1,lv:0});
+ add('stair',P(5,1),P(5,4.3)); add('room',P(.1,.1),P(3.9,5.9)); add('roof',P(0,0),P(8,6)); add('beam',P(0,3),P(8,3)); add('dim',P(0,-.5),P(8,-.5)); add('rail',P(6,5),P(7.5,5));
+ RV.grids.push({id:rvId(),a:[0,-1.5],b:[0,7.5],hz:false,n:'1'},{id:rvId(),a:[8,-1.5],b:[8,7.5],hz:false,n:'2'}); rvChanged(); rvpOpen(0); const r=rvpSvg(), G=r.G;
+ return JSON.stringify({walls:G.walls.length,doors:G.doors.length,wins:G.wins.length,cols:G.cols.length,stairs:G.stairs.length,rooms:G.rooms.length,arcs:(r.svg.match(/ A/g)||[]).length,svgKB:Math.round(r.svg.length/1024)}); })()`));
+console.log('walls: 4 outer walls, 2 with openings split in 2 pieces, partition split in 2 => expect 4+2+... ');
+console.log('column of height 1.0 (below cut 1.2) is NOT cut ->',await E("rvpGeo(0,1.2).cols.length"),' with cut 0.5 ->',await E("rvpGeo(0,.5).cols.length"));
+console.log('to CAD ->',await E("(()=>{ cadD().ents=[]; rvpToCad(); const d=cadD(); return [d.ents.length,[...new Set(d.ents.map(e=>e.ly))].join(',')]; })()"));
+await pg.waitForTimeout(800); await pg.screenshot({path:'/tmp/rvp1.png'}); console.log(er.slice(0,4)); await b.close();})();

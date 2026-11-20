@@ -49,7 +49,7 @@ progReg('model',[
  ['Graphics','الرسوميات',['Visibility/Graphics|رؤية/رسوميات|eye|p_views','View Templates|قوالب العرض|layer','Filters|فلاتر|layer','Thin Lines|خطوط رفيعة|line','Show Hidden Lines|إظهار الخطوط المخفية|eye','Ghost concrete|خرسانة شفافة|eye|t_ghost','Water|المية|eye|t_water','Levels|المناسيب|level|t_levels','Ground|الأرض|terrain|t_ground']],
  ['Visual style','نمط العرض',['Shaded|مظلل|iso|d_shaded','Wireframe|إطار سلكي|iso|d_wire','X-ray|أشعة|iso|d_xray']],
  ['Presentation','العرض التقديمي',['Render|ريندر|camera|render','Screenshot|لقطة شاشة|camera|shot','Record video|تسجيل فيديو|record|rec']],
- ['Create','إنشاء',['3D View|منظور 3D|view3d|v_iso','Section|قطاع|section|sA','Callout|وسيلة إيضاح|rect','Plan Views|مساقط|plan|v_plan','Elevation|واجهة|side|v_side','Drafting View|منظر رسم|cad|cad','Duplicate View|نسخ منظر|copy','Legends|مفاتيح|table','Schedules|جداول|table|rv_sched','BOQ and cost|الكميات والتكلفة|table|p_bom','Scope Box|صندوق نطاق|rect']],
+ ['Create','إنشاء',['3D View|منظور 3D|view3d|v_iso','Section|قطاع|section|sA','Callout|وسيلة إيضاح|rect','Plan Views|مساقط|plan|rv_plan','Elevation|واجهة|side|v_side','Drafting View|منظر رسم|cad|cad','Duplicate View|نسخ منظر|copy','Legends|مفاتيح|table','Schedules|جداول|table|rv_sched','BOQ and cost|الكميات والتكلفة|table|p_bom','Scope Box|صندوق نطاق|rect']],
  ['Sheet Composition','تكوين اللوحات',['Sheet|لوحة|sheet|sheet','Title Block|بلوك عنوان|rect','Revisions|مراجعات|table','Guide Grid|شبكة إرشاد|grid']],
  ['Navigate','التنقل',['Orbit|تدوير|rot|n_orbit','Pan|إزاحة|move|n_pan','Walk|مشي|move|n_walk','Zoom all|تكبير الكل|zfit|zfit','Zoom in|تكبير|zin|zin','Zoom out|تصغير|zout|zout','Zoom selected|تكبير المحدد|zoomsel|zsel','Perspective|منظور|iso|n_persp','Orthographic|متعامد|iso|n_ortho']],
  ['Windows','النوافذ',['Tile|تجانب|tile|w_tile','Cascade|تتالي|cascade|w_casc','Reset layout|إعادة الترتيب|layout|w_reset','Hide / show top bars|إخفاء/إظهار الأشرطة|layout|ui_bars']]]],
@@ -62,7 +62,7 @@ progReg('model',[
  ['External Tools','أدوات خارجية',['Agent hub|مركز الوكلاء|link|p_hub','Telegram bot|بوت تيليجرام|link|ct_tg']],
  ['Dynamo','ديناميو',['Dynamo|ديناميو|gear','Dynamo Player|مشغّل ديناميو|play']]]],
 ['mod','Modify','تعديل',[
- ['Properties','الخصائص',['Properties|خصائص|edit|rv_props','Project Browser|متصفح المشروع|layout|rv_browser','Station parameters|معاملات المحطة|edit|p_edit','Families|العائلات|block|p_fam','Parameters|المعاملات|table|p_edit']],
+ ['Properties','الخصائص',['Properties|خصائص|edit|rv_props','Project Browser|متصفح المشروع|layout|rv_browser','Station parameters|معاملات المحطة|edit|p_edit','Plan to CAD|المسقط للـ CAD|cad|rv_plancad','Families|العائلات|block|p_fam','Parameters|المعاملات|table|p_edit']],
  ['Clipboard','الحافظة',['Paste|لصق|copy','Cut|قص|trim','Copy|نسخ|copy','Match Type|مطابقة النوع|link']],
  ['Geometry','الهندسة',['Cope|تفريز|trim','Cut|قطع|trim','Join|ربط|link']],
  ['Modify','تعديل',['Align|محاذاة|move','Offset|إزاحة|offset','Mirror|مرآة|mirror','Move|نقل|move','Copy|نسخ|copy','Rotate|تدوير|rot','Trim/Extend|قص/مد|trim','Split|تقسيم|trim','Array|مصفوفة|array','Scale|مقياس|scale','Pin|تثبيت|point','Delete|حذف|erase|rv_del','Undo model tools|تراجع أدوات النموذج|undo|rv_undo','Remove all cuts and measures|إزالة القطاعات والقياسات|erase|rm_all']],
