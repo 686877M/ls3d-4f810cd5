@@ -315,3 +315,8 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 - Start_TOX.command in the Viewer folder starts server + bridge + Whisper and opens http://127.0.0.1:8766/.
 - Merged: IFC viewer (web-ifc), PDF viewer (pdf.js 3.11.174), icons (favicon, manifest, apple-touch, maskable). Egypt: 3 real Giza aerials (Pexels, Blanka OG); procedural Egypt scenes removed on the owner's request.
 - Waiting: templates (blank project vs sewage template), H.X materials/furniture session.
+
+## 2026-11-21 (noon) — templates and H.X assets merged
+- c_templates.js: TEMPLATES blank / sewage / house2 / office3, chooser dialog (New command, hub card, agent "new project"), blank project hides the station (BOM 0), toolbar undo now carries R.X, GIS, issues, MOM (snapshot under "tp"). Known: Params tab and boq() still show station numbers when the station is hidden; DC register stays cross-project; GIS pane internal undo not snapshotted.
+- c_hxassets*: 40 CC0 textures, 25 GLB models, Materials pane, Furniture catalogue, better-lighting render (soft shadows, sky, ACES). Assets in vendor/hx-assets (9.4 MB, CREDITS.md). Tested only on software GL.
+- Merged-build checks: parity 126, rvx 203, cxsx 105, own smoke t140 (templates, undo, sewage back with BOM 46).
