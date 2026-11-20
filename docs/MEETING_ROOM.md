@@ -332,3 +332,10 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 - c_mediamenu.js: the radio button in the top bar now opens a small popover with TV / Radio / Video tabs, play/pause, stop, mute, volume and quick picks; full player kept.
 - c_menus.js: compact ribbon (groups with more than 4 commands become 2-3 row grids of small icon+label buttons), toggle ribbon_compact.
 - Pending: perf audit (mod-perf), render studio, libraries, haram footage, colour links and local STT deliveries.
+
+## 2026-11-21 (night) — idle rebuilt, adhan interlude, libraries merged
+- c_idle2.js: idle shots are plain video/img layers cross-faded by CSS (no canvas copy, normal playback speed, slow CSS zoom), next shot preloaded; generative scenes on a 45% canvas at ~24 fps. Adhan = adhan.m4a over 10 shots from inside Masjid al-Haram (5 videos, 8 photos, 10.5 MB, credits in ADH_CREDITS.txt). No Masa'a, Zamzam, roof or courtyard footage qualified. Tested: cross-fades, removal, adhan audio plays.
+- Libraries merged (c_lb_core/cad/rvsx/px/ox): 91 CAD blocks, 32 hatches, 13 linetypes, 45 R.X family types + 12 assemblies, S.X/P.X/T.X/V.X/O.X/G.X libraries. Session tests 119 checks in its copy; merged build only load-checked.
+- Stubs now: gis 7/86, model 67/280, draft 35/173, survey 4/115, plant 14/84, sched 8/92, coord 3/110, office 9/99. 1418 commands, 17 tab types.
+- Delivered, NOT merged: colour links (incoming5/c_link*.js, untested by its session), perf.js (in progress), render studio (stopped mid-way), local STT (benchmark unfinished; whisper-tiny WER 0.55).
+- Running: mod-navis. Rule: at most 2 heavy sessions at once.
