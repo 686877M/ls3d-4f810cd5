@@ -23,6 +23,7 @@ const R=[]; const ok=(n,c,x)=>{ R.push([n,!!c,x===undefined?'':String(x)]); cons
  const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('x'));
  const CL=s=>pg.evaluate(q=>document.querySelector(q).click(),s), E=s=>pg.evaluate(s=>__lsv.ev(s),s), W=ms=>pg.waitForTimeout(ms);
  await pg.goto(PAGE,{waitUntil:'domcontentloaded',timeout:240000}); await W(6000);
+ await E("(WTAB.tabs.find(t=>t.type==='model')?wtSwitch(WTAB.tabs.find(t=>t.type==='model').id):wtNew('model')); 0"); await W(1500);
  /* ---- 1 title bar control ---- */
  const c1=await E("(()=>{ const w=[...document.querySelectorAll('.xw')].filter(x=>x.style.display!=='none'); return JSON.stringify({n:w.length,withBtn:w.filter(x=>x.querySelector('.hd .lkb')).length,sameRow:w.filter(x=>{ const b=x.querySelector('.hd .lkb'); return b&&[...b.parentElement.querySelectorAll('button')].some(y=>y.textContent==='×'); }).length}); })()");
  const j1=JSON.parse(c1); ok('every open window has the link control in the title bar next to ×',j1.n>0&&j1.withBtn===j1.n&&j1.sameRow===j1.n,c1);
@@ -46,7 +47,8 @@ const R=[]; const ok=(n,c,x)=>{ R.push([n,!!c,x===undefined?'':String(x)]); cons
  ok('IFC test file loaded in the IFC viewer',ifcOk,await E("ifV.elems.length+' elems; '+[...new Set([...ifV.cls.values()])].join()+' | '+ifV.st.textContent"));
  /* ---- 3 colours: red group and a blue outsider ---- */
  await E("['view3d','pane:bom','pane:issues','pane:gantt','pane:rvplan','tl','pane:ifcview'].forEach(i=>LK.set(i,'red',true)); LK.set('pane:rvsec','blue',true); 0");
- await E("LK.foc='view3d'; RV.sel='tw1'; LK.poll(); 0"); await W(300);
+ console.log('DIAG',await E("JSON.stringify(['view3d','pane:bom','pane:issues','pane:gantt','pane:rvplan','tl','pane:ifcview','pane:rvsec'].map(i=>[i,lkOpen(i),LK.col(i)]))"));
+ await E("LK.foc='view3d'; RV.sel='tw1'; LK.poll(); 0"); await W(300); console.log('DIAGERR',await E("JSON.stringify(LK.log.filter(l=>l.err))"));
  const lastEl=JSON.parse(await E("JSON.stringify(LK.log.filter(l=>l.kind==='element').slice(-1)[0])"));
  ok('R.X selection reaches linked windows only (red), not the blue one',lastEl.to.includes('pane:bom')&&lastEl.to.includes('pane:issues')&&lastEl.to.includes('pane:gantt')&&lastEl.to.includes('pane:rvplan')&&!lastEl.to.includes('pane:rvsec'),JSON.stringify(lastEl.to));
  ok('BOQ: wall rows highlighted',(await E("LK.hit.bom.length"))>=1&&(await E("document.querySelectorAll('.xw[data-id=\"pane:bom\"] tr[data-code][style*=outline]').length"))>=1,await E("LK.hit.bom.join()"));
@@ -55,7 +57,7 @@ const R=[]; const ok=(n,c,x)=>{ R.push([n,!!c,x===undefined?'':String(x)]); cons
  if(ifcOk){ ok('IFC: matching class selected and isolated (GlobalId first, else class)',(await E("ifV.sel.length>=1&&ifV.sel.every(i=>ifV.cls.get(i)==='IFCWALLSTANDARDCASE'||ifV.cls.get(i)==='IfcWallStandardCase')"))&&(await E("ifvVisMeshes().length"))<=2,await E("ifV.sel.map(i=>ifV.cls.get(i)).join()+' visible '+ifvVisMeshes().length+' gid-hit '+LK.hit.ifc.length")); }
  /* none unlinks */
  await E("LK.set('pane:issues','')"); await E("LK.foc='view3d'; RV.sel='tc1'; LK.poll(); 0");
- ok('None unlinks: issues window unchanged, BOQ still follows',(await E("IS.fEl&&IS.fEl.id"))==='tw1'&&(await E("LK.hit.bom.length"))>=1&&(await E("PS.sel&&ACT.find(a=>a.id===PS.sel).n[0]")).startsWith('Columns'),await E("(IS.fEl&&IS.fEl.id)+' | '+ACT.find(a=>a.id===PS.sel).n[0]"));
+ const le2=JSON.parse(await E("JSON.stringify(LK.log.filter(l=>l.kind==='element').slice(-1)[0])")); ok('None unlinks: issues window unchanged, BOQ and Gantt still follow',(await E("IS.fEl&&IS.fEl.id"))==='tw1'&&le2.to.includes('pane:bom')&&!le2.to.includes('pane:issues')&&(await E("ACT.find(a=>a.id===PS.sel).n[0]")).startsWith('Columns'),JSON.stringify(le2.to));
  await E("LK.set('pane:issues','red')");
  /* reverse directions: Gantt row -> R.X, issue -> R.X + IFC, IFC -> R.X */
  await E("LK.foc='pane:gantt'; PS.sel=ACT.find(a=>a.src==='rx'&&a.n[0].startsWith('Walls')).id; LK.poll(); 0");
@@ -72,6 +74,7 @@ const R=[]; const ok=(n,c,x)=>{ R.push([n,!!c,x===undefined?'':String(x)]); cons
  await E("LK.foc='tl'; schedOn=true; DAY=7; LK.poll(); 0"); await W(150);
  ok('4D / timeline day -> Gantt data date',(await E("PS.dd"))===(await E("tlIso(tlDate(7))")),await E("PS.dd"));
  /* camera */
+ console.log('DIAGCAM',await E("JSON.stringify([LK.col('view3d'),LK.col('pane:ifcview'),lkOpen('view3d'),lkOpen('pane:ifcview'),LK.cams['pane:ifcview'].get(),LK.snap.cam])"));
  if(ifcOk){ await E("LK.set('pane:ifcview','red',true); LK.touch['view3d']=Date.now(); camera.position.set(11,12,13); controls.target.set(1,2,3); controls.update(); LK.poll(); 0"); await W(150);
   const cp=JSON.parse(await E("JSON.stringify(ifV.cam.position.toArray().concat(ifV.ctl.target.toArray()))")); ok('camera sync 3D view -> IFC viewer',Math.abs(cp[0]-11)<1e-3&&Math.abs(cp[1]-12)<1e-3&&Math.abs(cp[2]-13)<1e-3&&Math.abs(cp[4]-2)<1e-3,cp.map(x=>x.toFixed(2)).join());
   const n0=await E("LK.log.filter(l=>l.kind==='view').length"); await E("for(let i=0;i<30;i++)LK.poll(); 0"); await W(300); const n1=await E("LK.log.filter(l=>l.kind==='view').length"); ok('camera sync: idle polls cause no echo',n0===n1,n0+'->'+n1);
@@ -95,13 +98,13 @@ const R=[]; const ok=(n,c,x)=>{ R.push([n,!!c,x===undefined?'':String(x)]); cons
  for(const t of types.concat(['gantt','dc','ifc','issues'])){ const id=await E("TOXAPI.openAsWindow('"+t+"')"); await W(120); out[t]=id&&(await E("!!(WX.lay['"+id+"']&&WX.lay['"+id+"'].open)&&WX.win['"+id+"'].style.display!=='none'&&WX.win['"+id+"'].getBoundingClientRect().width>20")); }
  const good=Object.keys(out).filter(k=>out[k]); ok('open-as-window works for '+good.length+' of '+Object.keys(out).length+' types (need >=6)',good.length>=6,'ok: '+good.join()+' | failed: '+Object.keys(out).filter(k=>!out[k]).join());
  ok('open as window did not switch or create a tab',(await E("WTAB.cur"))===cur&&(await E("WTAB.tabs.length"))===tabsN,tabsN);
- await E("XC.mn_newtab.run()"); await W(300); const mnr=await E("JSON.stringify([...document.querySelectorAll('.mnr')].map(r=>r.firstElementChild&&r.firstElementChild.textContent))"); ok('New tab menu has the "Open as window" group',mnr.includes('Open as window'),mnr);
- const sub=await E("(()=>{ const r=[...document.querySelectorAll('.mnr')].find(r=>r.firstElementChild&&r.firstElementChild.textContent==='Open as window'); return r?r.querySelectorAll('.sub .mnr').length:0; })()"); ok('...with every tab type',sub===types.length,sub+'/'+types.length);
- await E("(()=>{ const r=[...document.querySelectorAll('.mnr')].find(r=>r.firstElementChild&&r.firstElementChild.textContent==='Open as window'); [...r.querySelectorAll('.sub .mnr')].find(x=>/GIS/.test(x.textContent)).click(); })()"); await W(200);
+ await E("XC.mn_newtab.run()"); await W(300); await E("wtSwitch('start')"); await W(700); await E("document.querySelector('#xRib [data-cmd=\"mn_tabs\"]').click()"); await W(300); const OAW="/^(Open as window|افتح كنافذة)$/"; const grp="(()=>{ const re="+OAW+"; return [...document.querySelectorAll('.mnr')].find(r=>{ const s=r.querySelectorAll(':scope>span'); return s.length&&re.test(s[0].textContent)&&r.querySelector('.sub'); }); })()"; const mnr=await E("!!"+grp); ok('New tab menu has the "Open as window" group',mnr===true,mnr);
+ const sub=await E("(()=>{ const r="+grp+"; return r?r.querySelectorAll('.sub .mnr').length:0; })()"); ok('...with every tab type',sub===types.length,sub+'/'+types.length);
+ await E("WX.lay['pane:gismap']&&(WX.lay['pane:gismap'].open=false,wxPlace('pane:gismap')); (()=>{ const r="+grp+"; [...r.querySelectorAll('.sub .mnr')][LK.types().indexOf('gis')].click(); })()"); await W(200);
  ok('clicking a type in that group opens it as a window',await E("WX.lay['pane:gismap']&&WX.lay['pane:gismap'].open"));
  await E("WTAB.tabs.length<3&&wtNew('gis'); 0"); await W(300); await E("wtSwitch('"+cur+"')"); await W(400);
- await pg.evaluate(()=>document.querySelector('#xDocTabs .dt:nth-child(3)').dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:300,clientY:40}))); await W(200); const cm=await E("JSON.stringify([...document.querySelectorAll('.xmenu .xm')].map(x=>x.textContent))"); ok('tab strip context menu has "Open as window"',cm.includes('Open as window'),cm);
- await E("[...document.querySelectorAll('.xmenu .xm')].find(x=>x.textContent==='Open as window').click()"); await W(300); ok('...and it opens that tab type here (current tab unchanged)',(await E("WTAB.cur"))===cur,await E("WTAB.tabs[2].type"));
+ await pg.evaluate(()=>document.querySelector('#xDocTabs .dt:nth-child(3)').dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:300,clientY:40}))); await W(200); const cm=await E("JSON.stringify([...document.querySelectorAll('.xmenu .xm')].map(x=>x.textContent))"); ok('tab strip context menu has "Open as window"',/Open as window|افتح كنافذة/.test(cm),cm);
+ await E("[...document.querySelectorAll('.xmenu .xm')].find(x=>/^(Open as window|افتح كنافذة)$/.test(x.textContent)).click()"); await W(300); ok('...and it opens that tab type here (current tab unchanged)',(await E("WTAB.cur"))===cur,await E("WTAB.tabs[2].type"));
  /* ---- 6 API and agent ---- */
  await E("Object.keys(WX.lay).forEach(k=>delete WX.lay[k].lk); 0");
  const c=await E("TOXAPI.link('view3d','pane:bom','teal')"); ok('TOXAPI.link(a,b,colour) links both',c==='teal'&&(await E("LK.col('view3d')+LK.col('pane:bom')"))==='tealteal',c);

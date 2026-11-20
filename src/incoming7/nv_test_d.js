@@ -1,0 +1,21 @@
+const {run}=require('./nv_h.js'); const W=+process.argv[2]||1500,H=+process.argv[3]||860;
+run('nv_test_d (layout '+W+'x'+H+' + ribbon)',async({pg,E,ok})=>{
+ const lay=JSON.parse(await E("JSON.stringify(Object.keys(WX.lay).filter(k=>WX.lay[k].open))")); ok('N.X opens exactly Navigator, 3D view, Properties, TimeLiner',lay.sort().join()==='pane:nvnav,pane:nvprops,pane:timeliner,view3d',lay);
+ await pg.waitForTimeout(1200);
+ const R=JSON.parse(await E("JSON.stringify((()=>{ const o={}; ['pane:nvnav','view3d','pane:nvprops','pane:timeliner'].forEach(k=>{ const w=WX.win[k]; const r=w.getBoundingClientRect(); o[k]=[Math.round(r.left),Math.round(r.top),Math.round(r.width),Math.round(r.height)]; }); o.vw=[innerWidth,innerHeight]; return o; })())"));
+ console.log(JSON.stringify(R)); const inside=k=>{ const r=R[k]; return r[0]>=-1&&r[1]>=0&&r[0]+r[2]<=R.vw[0]+1&&r[1]+r[3]<=R.vw[1]+1; };
+ ok('all four windows inside the viewport',['pane:nvnav','view3d','pane:nvprops','pane:timeliner'].every(inside),R);
+ const ov=(a,b)=>{ const x=R[a],y=R[b]; return Math.min(x[0]+x[2],y[0]+y[2])-Math.max(x[0],y[0])>4&&Math.min(x[1]+x[3],y[1]+y[3])-Math.max(x[1],y[1])>4; }; const ks=Object.keys(R).filter(k=>k!=='vw'); let bad=[]; for(let i=0;i<ks.length;i++)for(let j=i+1;j<ks.length;j++)if(ov(ks[i],ks[j]))bad.push(ks[i]+'/'+ks[j]); ok('no window overlaps another',!bad.length,bad);
+ ok('TimeLiner is at the bottom, full width',R['pane:timeliner'][1]>R.view3d[1]+200&&R['pane:timeliner'][2]>R.vw[0]*.95,R['pane:timeliner']); ok('3D view is the largest top area (>= 40% width, >= 250 px high)',R.view3d[2]>=R.vw[0]*.4&&R.view3d[3]>=250,R.view3d); ok('Navigator and Properties readable (>= 220 px wide)',R['pane:nvnav'][2]>=220&&R['pane:nvprops'][2]>=220,[R['pane:nvnav'][2],R['pane:nvprops'][2]]);
+ ok('Navigator shows the selection tree rows',(await pg.locator('.nvb .tr').count())>=30); const tlh=R['pane:timeliner'][3]; ok('TimeLiner tasks table visible with tabs',(await pg.locator('#nvTl .nvt button').count())===4&&tlh>=170,tlh);
+ const vis=await pg.evaluate(()=>{ const c=document.querySelector('.stage canvas'); const r=c&&c.getBoundingClientRect(); return r?[Math.round(r.width),Math.round(r.height)]:null; }); ok('3D canvas has size',vis&&vis[0]>300&&vis[1]>200,vis);
+ await pg.screenshot({path:'/private/tmp/mod_nv/out/nv_layout_'+W+'.png'});
+ /* stubs */
+ const st=await E("JSON.stringify([Object.keys(RIBM).filter(k=>RIBM[k].type==='coord'&&XC[k]&&XC[k].stub).map(k=>RIBM[k].en),RIBP.coord.built,RIBP.coord.tot,Object.keys(RIBM).filter(k=>RIBM[k].type==='coord').length])"); console.log('stubs',st);
+ const pr=JSON.parse(st); ok('stubs left <= 2 (FBX, KML)',pr[0].length<=2,pr[0]); ok('built counter equals entries - stubs',pr[1]===pr[3]-pr[0].length,[pr[1],pr[3],pr[0].length]);
+ /* ribbon: every rewired/new command opens its pane */
+ const cases=[['Home','Select & Search','Selection Tree','pane:nvnav'],['Home','Select & Search','Find Items','pane:nvnav'],['Home','Select & Search','Manage Sets','pane:nvnav'],['Home','Display','Properties','pane:nvnav'],['Home','Display','Appearance Profiler','pane:nvnav'],['Home','Tools','Clash Detective','pane:nvclash'],['Home','Tools','TimeLiner','pane:timeliner'],['Home','Tools','TimeLiner Simulate','pane:timeliner'],['Home','Tools','Animator','pane:nvview'],['Viewpoint','Save, Load & Playback','Views','pane:nvview'],['Viewpoint','Sectioning','Section Planes (3D)','pane:nvview'],['Animation','Create','Animator','pane:nvview'],['Output','Export Data','Clash report','pane:nvclash']];
+ for(const c of cases){ await E("Object.keys(WX.lay).forEach(k=>{ if(k.indexOf('pane:nv')===0||k==='pane:timeliner'){ WX.lay[k].open=false; wxPlace(k);} })"); const id=await E("nvRibId('"+c[0]+"','"+c[1]+"','"+c[2]+"')"); if(!id){ ok('ribbon entry exists '+c[2],false); continue; } await E("XC['"+id+"'].run()"); await pg.waitForTimeout(250); ok('ribbon '+c[0]+'>'+c[2]+' opens '+c[3],(await E("!!(WX.lay['"+c[3]+"']&&WX.lay['"+c[3]+"'].open)"))===true); }
+ /* ribbon actually shows new buttons */
+ const rb=await pg.evaluate(()=>[...document.querySelectorAll('#xRib .xb')].map(b=>b.dataset.cmd).filter(x=>/coord_nv/.test(x)).length); await E("XC.nv_timeliner.run()"); console.log('visible new ribbon buttons (current tab only):',rb);
+},{w:W,h:H});

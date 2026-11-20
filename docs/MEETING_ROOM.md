@@ -339,3 +339,9 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 - Stubs now: gis 7/86, model 67/280, draft 35/173, survey 4/115, plant 14/84, sched 8/92, coord 3/110, office 9/99. 1418 commands, 17 tab types.
 - Delivered, NOT merged: colour links (incoming5/c_link*.js, untested by its session), perf.js (in progress), render studio (stopped mid-way), local STT (benchmark unfinished; whisper-tiny WER 0.55).
 - Running: mod-navis. Rule: at most 2 heavy sessions at once.
+
+## 2026-11-21 (night) — Navisworks rebuild and Q.X spreadsheet merged
+- N.X (c_nv_core/tl/clash/view): Navigator (selection tree, sets, find items, properties, appearance profiler), TimeLiner (tasks, data sources, configure, simulate with date overlay, Gantt planned vs actual, TOXAPI.timelinerFrame for the render studio), Clash Detective (hard/clearance, grouping, status), viewpoints, sections, animator, Tag ID, default layout. Tests on the merged page: 48 + 32 + 38 + 24 (x2 sizes). Stubs for coord: 2 of 115 (FBX and Google Earth KML).
+- Q.X (c_qx_*): own grid engine (canvas, 20,000 rows in ~0.5 s, formulas with dependency graph, ~60 functions, pivot, charts, dashboard, xlsx with formulas, TSV paste, Excel shortcuts, Excel-style ribbon tabs for the takeoff tab, 83 commands). Browser test 75/75, engine 136/136 in Node. Not opened in real Excel.
+- Regression on the merged page: parity 126/126, px2 149/149.
+- Not merged: colour links (fixing), reality capture (running), local STT, perf audit.
