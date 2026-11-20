@@ -1,0 +1,18 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-tabs');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const ans=[]; pg.on('dialog',d=>{ const a=ans.shift(); d.accept(a!==undefined?a:d.defaultValue()); }); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('draft')"); await pg.waitForTimeout(1500);
+const R=async s=>JSON.stringify(await E(s));
+console.log('spline through (0,0)(10,10)(20,0): passes through points ->',await R("(()=>{ const q=c3Spl([[0,0],[10,10],[20,0]],false); const has=p=>q.some(v=>Math.hypot(v[0]-p[0],v[1]-p[1])<1e-6); return [q.length,has([0,0]),has([10,10]),has([20,0])]; })()"));
+console.log('stretch: rect+line, window around the right end, move +5 ->',await R("(()=>{const D=cadD(); D.ents=[{t:'l',x1:0,y1:0,x2:10,y2:0,ly:'0'}]; cadSetTool('stretch'); [[8,-2],[12,2],[10,0],[15,0]].forEach(p=>cadClick(p)); return [D.ents[0].x1,D.ents[0].x2];})()"));
+console.log('break line (0,0)-(10,0) at x=4 ->',await R("(()=>{const D=cadD(); D.ents=[{t:'l',x1:0,y1:0,x2:10,y2:0,ly:'0'}]; cadSetTool('break'); cadClick([4,0]); return D.ents.map(e=>[e.x1,e.x2]);})()"));
+ans.push('2'); console.log('lengthen end by +2 (10 -> 12) ->',await R("(()=>{const D=cadD(); D.ents=[{t:'l',x1:0,y1:0,x2:10,y2:0,ly:'0'}]; cadSetTool('lengthen'); cadClick([9,0]); return [D.ents[0].x1,D.ents[0].x2];})()"));
+console.log('align: line (0,0)-(10,0) to dest (5,5)-(5,15) (rotate 90, move) ->',await R("(()=>{const D=cadD(); D.ents=[{t:'l',x1:0,y1:0,x2:10,y2:0,ly:'0'}]; CS.sel=new Set([0]); cadSetTool('align'); CS.sel=new Set([0]); [[0,0],[5,5],[10,0],[5,15]].forEach(p=>cadClick(p)); return D.ents.map(e=>[e.x1,e.y1,e.x2,e.y2].map(v=>+v.toFixed(3)));})()"));
+ans.push('Col'); console.log('block create+insert (scale 2, rot 90):',await (async()=>{ await E("(()=>{const D=cadD(); D.ents=[{t:'l',x1:0,y1:0,x2:5,y2:0,ly:'0'}]; D.blocks={}; CS.sel=new Set([0]); cadSetTool('bcreate'); CS.sel=new Set([0]); cadClick([0,0]);})()"); ans.push('Col','2','90'); return R("(()=>{const D=cadD(); D.ents=[]; cadSetTool('binsert'); cadClick([10,10]); return D.ents.map(e=>[e.x1,e.y1,e.x2,e.y2].map(v=>+v.toFixed(3)));})()"); })());
+ans.push('2','3','5','20',';Name;Qty'); console.log('table 2x3 -> lines/text:',await R("(()=>{const D=cadD(); D.ents=[]; cadSetTool('table'); cadClick([0,0]); return [D.ents.filter(e=>e.t==='l').length,D.ents.filter(e=>e.t==='tx').length];})()"));
+console.log('cloud 20x10 ->',await R("(()=>{const D=cadD(); D.ents=[]; cadSetTool('cloud'); cadClick([0,0]); cadClick([20,10]); const e=D.ents[0]; return [e.t,e.cl,e.p.length];})()"));
+ans.push('Line type'); console.log('freeze/linetype/weight/previous ->',await R("(()=>{const D=cadD(); D.layers.push({n:'X',c:'#fff',on:1,lk:0}); D.cur='X'; c3Freeze(); const f=D.layers.find(l=>l.n==='X'); const a=[f.fz,f.on]; c3Freeze(); a.push(f.fz,f.on); D.cur='0'; return a;})()"));
+console.log('linetype svg dash:',await R("(()=>{const D=cadD(); D.layers.find(l=>l.n==='X').lt='dashed'; return /stroke-dasharray=\"8 4\"/.test(cadEntSvg({t:'l',x1:0,y1:0,x2:1,y2:1,ly:'X'},false));})()"));
+console.log(await R("({built:RIBP.draft.built,tot:RIBP.draft.tot})"),er.slice(0,4)); await b.close();})();
