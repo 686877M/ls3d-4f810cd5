@@ -1,0 +1,15 @@
+const {chromium}=require('playwright-core'); const fs=require('fs');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{localStorage.removeItem('xto-rv');localStorage.removeItem('xto-tabs');sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('model')"); await pg.waitForTimeout(1500);
+const r=await E(`(()=>{ const ox=20, P=(x,z)=>[ox+x,z]; const add=(t,a,b)=>{ const o=RVX.two[t](a,b); o.id=rvId(); o.k=t; o.lv=0; RV.els.push(o); };
+ const ws=[[P(0,0),P(8,0)],[P(8,0),P(8,6)],[P(8,6),P(0,6)],[P(0,6),P(0,0)]].map(w=>({id:rvId(),k:'wall',a:w[0],b:w[1],h:3,t:.2,lv:0})); ws.forEach(w=>RV.els.push(w));
+ RV.els.push({id:rvId(),k:'door',w:ws[0].id,p:4,W:.9,H:2.1,lv:0}); RV.els.push({id:rvId(),k:'window',w:ws[1].id,p:3,W:1.2,H:1.2,sill:.9,lv:0});
+ RV.els.push({id:rvId(),k:'floor',a:P(0,0),b:P(8,6),t:.2,lv:0}); RV.els.push({id:rvId(),k:'col',p:P(4,3),w:.4,d:.4,h:3,lv:0});
+ add('roof',P(0,0),P(8,6)); add('beam',P(0,3),P(8,3)); add('stair',P(10,0),P(13,0)); add('rail',P(10,5),P(14,5)); add('fslab',P(0,0),P(8,6)); add('room',P(0,0),P(8,6));
+ DATA.items=DATA.items||{}; DATA.items.R01={cost:100};
+ rvChanged(); const it=getItems().filter(x=>/^R\\d/.test(x.code)).map(x=>[x.code,x.qty,x.unit,x.cost,x.total]); const s=ifc(); return JSON.stringify({it,ifcLen:s.length,ifc:s}); })()`);
+const o=JSON.parse(r); console.log(JSON.stringify(o.it)); fs.writeFileSync('/tmp/rx_test.ifc',o.ifc); console.log('ifc bytes',o.ifcLen,er.slice(0,3));
+await b.close();})();
