@@ -351,3 +351,6 @@ c_link.js + c_link2.js at end of chain (after c_qx_bi.js). Colour dropdown per w
 
 ## 2026-11-20 — F.X Capture (reality capture) merged
 5 chunks c_rc_*.js at end of chain. Flight planner (grid/double grid/oblique/orbit/corridor), building planner (OSM, sun, wind, LOS), imports (GPX, NMEA, CSV, KML, GeoJSON, DXF, LandXML, EXIF, LAS), terrain/contours/cut-fill/accuracy, exports. rc_test 330/330, parity 126. Not tested: DJI KMZ/Litchi/QGC/Mission Planner in real apps; Overpass/Open-Meteo only mocked.
+
+## 2026-11-20 — free AI providers + local in-browser Whisper merged
+freeai_data.js + freeai.js after c_orb.js (28 presets with Free badges, free chain with 429 fallback, copy/paste relay, n8n webhook, WebLLM stub); sttlocal.js at end of chain (Whisper tiny/base via transformers.js, vendor/stt/ ~142 MB kept OUT of git, ship locally). Tests: freeai 88/88, parity 126, rc 330, link 43. Not tested: real providers/CORS, WebGPU, merged-page STT end-to-end (harness double-injects), n8n for real.

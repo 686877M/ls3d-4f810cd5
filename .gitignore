@@ -2,3 +2,4 @@ vendor/web-ifc/web-ifc.wasm
 vendor/web-ifc/web-ifc-api-iife.js.map
 vendor/pdfjs/pdf.worker.min.js
 media/
+vendor/stt/
