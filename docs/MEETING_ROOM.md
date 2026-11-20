@@ -345,3 +345,6 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 - Q.X (c_qx_*): own grid engine (canvas, 20,000 rows in ~0.5 s, formulas with dependency graph, ~60 functions, pivot, charts, dashboard, xlsx with formulas, TSV paste, Excel shortcuts, Excel-style ribbon tabs for the takeoff tab, 83 commands). Browser test 75/75, engine 136/136 in Node. Not opened in real Excel.
 - Regression on the merged page: parity 126/126, px2 149/149.
 - Not merged: colour links (fixing), reality capture (running), local STT, perf audit.
+
+## 2026-11-20 — colour-linked windows merged
+c_link.js + c_link2.js at end of chain (after c_qx_bi.js). Colour dropdown per window, same colour = linked (element/level/time/view/selection/camera), open any tab as a window, TOXAPI.link/unlink. Tests: link_test 43/43, parity 126, px2 149. Not tested: on the Start tab itself, real GPU.

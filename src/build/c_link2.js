@@ -1,0 +1,23 @@
+/* ====== MOD-LNK part 2: "Open any tab as a window inside this tab", TOXAPI.link / TOXAPI.openAsWindow, the agent phrases (link the schedule to the model) and menu entries. Needs c_link.js before it. Opening a tab type as a window never switches tab and never calls wtNew: it opens that tab type's MAIN pane in the CURRENT workspace (the windows of the current tab are saved with that tab's layout), first creating the data context the pane needs (P6 / CAD / dashboard host, computed schedule, Gantt DOM). ====== */
+LK.MAIN={model:'view3d',draft:'cad',sched:'p6',survey:'pane:survey',coord:'pane:coord',detect:'pane:safety',takeoff:'pane:bom',levels:'pane:sec',sim:'pane:scen',analysis:'pane:calc',office:'pane:osheet',plant:'pane:sheet',hx:'pane:home',hv:'pane:hvac',gis:'pane:gismap',hub:'pane:hubx',gantt:'pane:gantt',dc:'dc',ifc:'pane:ifcview',issues:'pane:issues',plan:'pane:rvplan',section:'pane:rvsec',render:'pane:render'};
+LK.types=()=>Object.keys(WTYPES).filter(k=>k!=='start'&&LK.MAIN[k]);
+LK.winId=t=>{ if(WX.defs[t])return t; let id=LK.MAIN[t]; if(t==='render'&&!WX.defs[id])id=WX.defs.render?'render':id; return id&&WX.defs[id]?id:''; };
+LK.ctx=id=>{ try{ if(id==='p6'){ try{ computeSched(); }catch(e){} p6Show(true); } else if(id==='cad')cadShow(true); else if(id==='dash')wsShow(true); else if(id==='pane:gantt'){ try{ computeSched(); }catch(e){} gtBuild(); } }catch(e){ LK.log.push({err:'ctx '+id+': '+(e&&e.message||e)}); } };
+LK.openWin=(t,rect)=>{ try{ wxDefs(); }catch(e){} const id=LK.winId(t); if(!id||!XTO.on)return ''; const was=lkOpen(id); if(!was)LK.ctx(id); if(was&&!rect){ wxRaise(id); return id; } const n=Object.keys(WX.lay).filter(k=>lkOpen(k)).length%6; wxOpen(id,rect||[.3+.03*n,.1+.04*n,.38,.52]); LK.decoAll(); return id; };
+LK.openAsWindow=LK.openWin;
+LK.linkAll=(ids,c)=>{ ids=ids.map(t=>LK.openWin(t)||'').filter(Boolean); if(ids.length<2)return ''; c=LK.norm(c)||ids.map(LK.col).find(Boolean)||LK.free(); ids.forEach(id=>LK.set(id,c,true)); ids.forEach(LK.catchUp); return c; };
+LK.nameOf=id=>{ try{ return WX.defs[id].t[lang==='ar'?1:0]; }catch(e){ return id; } };
+TOXAPI.link=(a,b,c)=>LK.link(LK.winId(a)||a,LK.winId(b)||b,c);
+TOXAPI.unlink=id=>LK.set(LK.winId(id)||id,'');
+TOXAPI.openAsWindow=(t,r)=>LK.openWin(t,r);
+TOXAPI.lk=LK;
+/* New tab menu (the ribbon button, c_menus.js mnOpen): one more group, "Open as window", with every tab type */
+{ const _mo=mnOpen; mnOpen=function(anchor,tree){ try{ if(anchor&&anchor.dataset&&anchor.dataset.cmd==='mn_tabs'&&Array.isArray(tree)&&!tree.some(g=>g.lk)){ const L=lang==='ar'?1:0; tree=tree.concat([{lk:1,n:lkT('Open as window','افتح كنافذة'),items:LK.types().map(k=>({n:(WTYPES[k]?WTYPES[k].n[L]:k),ic:WTYPES[k]&&WTYPES[k].ic,run:()=>LK.openWin(k)}))}]); } }catch(e){} return _mo.call(this,anchor,tree); }; }
+/* tab strip: right-click a tab -> Open as window (that tab's type, here) */
+document.addEventListener('contextmenu',e=>{ const d=e.target&&e.target.closest?e.target.closest('#xDocTabs .dt'):null; if(!d)return; const i=[...d.parentNode.querySelectorAll('.dt')].indexOf(d); LK.ctxTab=WTAB.tabs[i]||null; setTimeout(()=>{ LK.ctxTab=null; },0); },true);
+{ const _xm=xMenu; xMenu=function(x,y,items){ const t=LK.ctxTab; if(t&&t.type!=='start'&&LK.MAIN[t.type]){ LK.ctxTab=null; items=items.concat([{sep:1},{t:['Open as window','افتح كنافذة'],ic:'layout',fn:()=>LK.openWin(t.type)}]); } return _xm.call(this,x,y,items); }; }
+/* agent: link verb + two or more window words -> open them and link them with a free colour */
+LK.AGW=[[/(جدول|schedule|gantt|جانت|برنامج زمني)/,'pane:gantt'],[/(موديل|model|نموذج|الموديل)/,'view3d'],[/(كميات|boq|حصر)/,'pane:bom'],[/(ifc|اي اف سي)/,'pane:ifcview'],[/(مشاكل|issues|مشكله|ملاحظات)/,'pane:issues'],[/(مسقط|floor plan|plan view)/,'pane:rvplan'],[/(قطاع|section)/,'pane:rvsec']];
+LK.agent=s=>{ if(!/(اربط|ربط|link|sync|connect|وصل)/.test(s))return false; const ids=[]; LK.AGW.forEach(g=>{ if(g[0].test(s)&&!ids.includes(g[1]))ids.push(g[1]); }); if(ids.length<2)return false; const c=LK.linkAll(ids); if(!c)return false; const cn=(LK.cols.find(x=>x[0]===c)||[])[LK.L()]; say2(b2('Opened and linked: ','فتحت وربطت: ')+ids.map(LK.nameOf).join(' + ')+b2(' (colour ',' (اللون ')+cn+')','a'); return true; };
+{ const _pre=xaPre; xaPre=function(t){ try{ if(LK.agent(norm(t)))return true; }catch(e){} return _pre.apply(this,arguments); }; }
+XCMD('lk_sched','layout','Link the schedule to the model','اربط الجدول بالموديل',()=>{ const c=LK.linkAll(['view3d','pane:gantt']); if(c)say2(b2('Linked the model and the Gantt (colour ','ربطت الموديل والجانت (اللون ')+(LK.cols.find(x=>x[0]===c)||[])[LK.L()]+')','a'); });
