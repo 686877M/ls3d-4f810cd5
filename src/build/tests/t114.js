@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-rv','xto-tabs','xto-aggaps'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(4500);
+await E("XC.ag_open.run()"); await pg.waitForTimeout(500);
+await E("xaHandle('تشيك ليست المعماري')"); await pg.waitForTimeout(300); console.log(await E("XAS.chat.slice(-1)[0].t"));
+await E("xaBuild({kind:'house',W:10,D:8,floors:1,rooms:3,ok:1})"); await pg.waitForTimeout(9000);
+await E("xaHandle('check arch')"); await pg.waitForTimeout(300); console.log(await E("XAS.chat.slice(-1)[0].t.split('\\n')[0]"));
+await E("xaHandle('اعمل لي حاجة غريبة')"); await pg.waitForTimeout(300); console.log(await E("XAS.chat.slice(-1)[0].t.slice(0,60)"),'gaps',await E("XAS.gaps.length"));
+console.log(await E("xaTool('find_commands',{q:'wall'}).then(x=>JSON.stringify(x).slice(0,150))"),await E("JSON.stringify(xaState())"),er.slice(0,3)); await b.close();})();

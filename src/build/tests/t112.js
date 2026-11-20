@@ -1,0 +1,15 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-rv','xto-tabs','xto-gis','xto-hvac','xto-rxacts','xto-hm'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+await E("wtNew('gis'); wtNew('hx'); wtNew('model')"); await pg.waitForTimeout(800);
+await E(`(()=>{ const mk=o=>{ o.id=rvId(); o.lv=0; RV.els.push(o); return o; }; [[[0,0],[8,0]],[[8,0],[8,6]],[[8,6],[0,6]],[[0,6],[0,0]]].forEach(w=>mk({k:'wall',a:w[0],b:w[1],h:3,t:.2})); mk({k:'room',a:[.1,.1],b:[7.9,5.9],n:'Hall'}); rvChanged(); })()`);
+await pg.waitForTimeout(500);
+await pg.dragAndDrop('.xfcard','#xDocTabs .dt:has-text("G.X")',{timeout:20000}).catch(e=>console.log('drag err',e.message.slice(0,80)));
+await pg.waitForTimeout(1500);
+console.log('after dropping the card on the GIS tab: current tab =',await E("WTAB.tabs.find(t=>t.id===WTAB.cur).type"),'| layer R.X model features =',await E("(GM.layers.find(l=>l.n==='R.X model')||{feat:[]}).feat.length"));
+await pg.dragAndDrop('.xfcard','#xDocTabs .dt:has-text("H.X")').catch(e=>console.log('drag err2',e.message.slice(0,80)));
+await pg.waitForTimeout(800); console.log('current tab =',await E("WTAB.tabs.find(t=>t.id===WTAB.cur).type"));
+const order0=await E("WTAB.tabs.map(t=>t.type).join(',')"); await pg.dragAndDrop('#xDocTabs .dt:has-text("H.X")','#xDocTabs .dt:has-text("G.X")').catch(e=>console.log('drag err3',e.message.slice(0,80))); await pg.waitForTimeout(500);
+console.log('reorder by drag:',order0,'->',await E("WTAB.tabs.map(t=>t.type).join(',')"),er.slice(0,3)); await b.close();})();

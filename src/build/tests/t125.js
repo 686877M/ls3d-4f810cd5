@@ -1,0 +1,18 @@
+const {chromium}=require('playwright-core'); const {spawn,execSync}=require('child_process');
+(async()=>{ const srv=spawn('python3',[process.argv[3]+'/site/tools/tox_bridge.py','--http-only'],{env:Object.assign({},process.env,{TOX_TOKEN:'tt123',TOX_PORT:'8766'}),stdio:['ignore','ignore','pipe']}); await new Promise(r=>setTimeout(r,800));
+const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-tabs'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+const call=(tool,args,tok)=>{ try{ return execSync("curl -s -m 100 -H 'x-tox-token: "+(tok||'tt123')+"' -d '"+JSON.stringify({tool,args}).replace(/'/g,"'\\''")+"' http://127.0.0.1:8766/call").toString(); }catch(e){ return 'ERR '+e.message.slice(0,60); } };
+console.log('no page yet:',call('project_state',{}).slice(0,80));
+await E("TOXAPI.bridgeConnect('http://127.0.0.1:8766','tt123')"); await pg.waitForTimeout(1500);
+console.log('bad token:',call('project_state',{},'zzz'));
+const jobs=[new Promise(r=>r(call('say',{text:'افتح الخريطة'}))),new Promise(r=>r(call('project_state',{})))]; 
+console.log('say:',(await jobs[0]).slice(0,120)); console.log('state:',(await jobs[1]).slice(0,160));
+console.log('find:',call('find_commands',{q:'wall'}).slice(0,120));
+console.log('build:',call('say',{text:'ابني فيلا 10 في 8 دور واحد 3 غرف'}).slice(0,260));
+console.log('answer by word:',call('say',{text:'أيوه، ابنِ'}).slice(0,200));
+console.log('state after:',call('project_state',{}).slice(0,200));
+console.log('disallowed:',call('rm_rf',{}).slice(0,60));
+console.log('errors',er.slice(0,3)); await b.close(); srv.kill(); })();

@@ -1,0 +1,32 @@
+# Parity wave 2: Plant 3D T.X, Office O.X, GIS G.X (79 stubs made real, 4 commands added)
+
+Files: `p2tog_plant.js` (84 lines), `p2tog_office.js` (133), `p2tog_gis.js` (see wc); tests `p2tog_{office,plant,gis}_test.js` + `p2tog_harness.js` (95 + 56 + 61 = 212 checks, all pass, fetch mocked, no network). Lines are long, every chunk is far under 400 lines. All inside IIFEs; only globals: `window.P2OFF`, `P2PLT`, `P2GIS` (test hooks).
+
+## Integration
+In `patch_v3.py`, after `rd('c_parity_p6.js')` add `+rd('p2tog_office.js')+rd('p2tog_plant.js')+rd('p2tog_gis.js')`. Order among the three does not matter. They wrap `shGrid`/`shPanel` (office), `gmSave`/`gmPaint` (gis). If another wave also wraps those, keep this wave after it.
+Run: `NODE_PATH=<dir with playwright-core> node p2tog_office_test.js [file:///.../index.html]` (same for plant, gis; default page `../../index.html`).
+
+## Stubs before -> after
+| program | before | after | converted | added (not stubs) |
+|---|---|---|---|---|
+| Plant 3D T.X | 34 | 14 | 20 | 0 |
+| Office O.X | 51 | 9 | 42 | 2 (Freeze Panes, Conditional Formatting) |
+| GIS G.X | 24 | 7 | 17 | 2 (Attribute Table, Field Calculator) |
+Added commands extend RIBP.<type>.tot by 2 each (counter "working x of y" moves with them).
+
+## Data model (all inside DATA / GM, so save + Ctrl+Z follow, except GIS undo)
+- Office: `DATA.office.fmt{ref:{b,i,u,fc,bg,bd,al,wr,nf,dp}}, merges, freeze, filter, cf, dv, prot, page, charts, tbl, showF`. Range for commands = name box (new input next to the cell name) or Shift+click, else the selected cell. Formats are drawn by wrapping `shGrid`.
+- Plant: own `DATA.plantx = {runs, equip, custom, spec, sel}` (runs: tag, DN, spec, points in m, fittings, valves, supports, insulation, annotations). NOT linked to the lift-station meshes. Viewer = SVG iso + BOM, line list, spec table, PCF subset.
+- GIS: feature attributes `f.a`, multi-selection `GM.sels`; own undo stack of layer snapshots (GM is in localStorage, not DATA).
+
+## Implemented (each run from its ribbon id in a test with a numeric/structural assert)
+**O.X (42):** Bold, Italic, Underline, Font Color, Fill Color, Borders (all/box/none), Align Left/Center/Right, Wrap Text (textarea), Merge & Center (toggle), Number Format (general/number/currency/percent/comma/date), Percent, Comma, Increase Decimal, Copy, Cut, Paste (all/values/formats, formulas shift like Excel), Format Painter, AutoSum, Sort (data, with header), Sort & Filter (home, A-Z/Z-A toggle), Filter (`B>5`, `A~pipe`), Remove Duplicates, Data Validation (list/whole/decimal, checked on commit), Protect Sheet, Table (header + banding), Column / Line / Pie Chart (SVG from range, bar heights and pie shares asserted), Header & Footer, Margins, Orientation, Size, Print Area, Breaks (print preview with pages counted from paper, margins, area and breaks; HTML export / print), Trace Precedents, Show Formulas, Error Checking, Insert Function (only functions the engine has), Date & Time (writes today), Normal. Added: Freeze Panes, Conditional Formatting.
+**T.X (20):** Spec Viewer (11 sizes, 3 classes, weights = pi(OD-t)t*density), P&ID Line List (+ support span check), Route Pipe, Pipe Fitting (tee/reducer/flange/cap at a chainage), Valve, Custom Part, Insulation (area, volume), Create Equipment, Nozzle, Attach Equipment (moves the run end to the nozzle, refuses size mismatch), Create Support, Hide Selected/Others, Show All, Iso Message, Start Point, Break Point (sheet count), Flow Arrow (direction asserted), Insulation Symbol, PCF Export (PIPE/ELBOW/TEE/REDUCER/VALVE, mm, lengths asserted).
+**G.X (17):** Select by rectangle, Select by attributes (`area>5000`, `name~x`, own fields), Move feature, Edit vertices (add/move/delete), Split (line), Merge (lines), Undo, Multiple ring buffer, Near (link line), Generate near table (+CSV), Intersect, Clip (convex clip polygon), Spatial join (count + in_poly), Elevation profile (existing `gmElev`, SVG, climb, slope), Slope, Aspect, Hillshade (3x3 grid via `gmElev`, Horn). Added: Attribute Table, Field Calculator.
+
+## Not done / limits (honest)
+- **O.X, 9 left:** PivotTable, Picture, Shapes, Text Box (need an object layer on the sheet/report), Math / Lookup / Date & Time function groups (the built-in formula engine has no lookup or date functions and its `F` table is private to `shEval`; Insert Function covers what exists), Spelling, Thesaurus (no dictionary).
+- Sort moves raw cell text: formulas are not re-based when rows move (sort data columns). Paste shifts relative refs but has no `$` absolute refs (engine has none). Number formats are display only (CSV/XLSX export still writes raw values). Page preview uses fixed 6 mm rows / 22 mm columns, not real column widths. Conditional formatting: one-op rules only. Wrap Text swaps the input for a textarea. Spelling/Protect: protect blocks all cells (no unlocked cells).
+- **T.X, 14 left:** Structure tab (Grid, Member, Railing, Stairs, Ladder, Plate, Footing, Cut Member, Miter, Trim, Extend: need a structural member model), Convert Support, Adjacent View, Iso for the 3D scene meshes, Navisworks NWC (proprietary format). The pipe spec table is indicative standard-wall data, labelled PLACEHOLDER in the UI. PCF is a subset (no weights, no bolts, supports not written). Fittings other than elbows do not change the run geometry; no pipe-pipe interference or slope check was added (no ribbon slot; brief ideas only).
+- **G.X, 7 left:** Erase, Union (polygon difference/union of general polygons), Watershed (needs a DEM raster), Classify, NDVI, Band composite, Mosaic (no raster/imagery data model, tiles are display-only). Intersect/Clip need a CONVEX clip polygon (refused otherwise); subject polygons may be concave but Sutherland-Hodgman can leave zero-width bridges for concave subjects cut into several pieces. Split works on lines only; Merge on lines only; Edit vertices by index, not by mouse. Local-plane maths (not geodesic) except distances/areas via existing vInv/vDir/geoArea. Slope/Aspect/Hillshade/profile need network at run time (real `gmElev`); only mock-tested here, "mock-tested only" for the live service. GIS Undo covers edits made through `gmSave` after load, not map view moves.
+- Not tested: Arabic strings, ribbon button rendering of the added commands, mouse Shift+click range select (name box and data path tested), print dialog output (only the preview DOM and the HTML export function).

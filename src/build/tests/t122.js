@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-tabs','xto-theme2'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(6000);
+console.log('today:',await E("JSON.stringify(OCC.today)"),'hijri',await E("JSON.stringify(OCC.hijri)"));
+console.log('shots:',await E("INTRO.shots.map(s=>s[0].split('/')[1]).join(',')"),'|',await E("INTRO.shots.map(s=>s[2][0]).join(' / ')"));
+console.log('idle order:',await E("idOrd().join(',')"));
+for(const [d,n] of [['2026-03-01','ramadan'],['2026-03-20','eidfitr'],['2026-05-26','hajj'],['2026-05-28','eidadha'],['2026-09-23','saudinat'],['2026-10-06','egarmy']]) console.log(d,await E("(()=>{ const x=new Date('"+d+"T12:00:00'); const h=occHijri(x); const o=OCCS.find(o=>o[1](h))||OCCG.find(o=>o[1](x.getMonth()+1,x.getDate())); return (o?o[0]:'none')+' h='+h.day+'/'+h.month+'/'+h.year; })()"),'expect',n);
+await E("XC.hub_open.run()"); await pg.waitForTimeout(600); await E("XC.themes_open.run()"); await pg.waitForTimeout(500); await pg.screenshot({path:'out/occ.png'}); console.log(er.slice(0,3)); await b.close();})();

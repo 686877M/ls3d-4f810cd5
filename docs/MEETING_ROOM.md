@@ -246,3 +246,72 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 - 2026-11-20: c_rvsec.js. R.X elevations (N, S, E, W) and sections along X or Z at an offset, drawn as SVG (no WebGL): cut elements hatched, elements beyond the cut light, openings cut in walls, roof profile, stairs and ramps in profile, level lines, grids that run along the view direction, SVG export and "to CAD". Checked in pw/t105.js (z=3 section: 2 walls, column, floor, roof, beam, slab cut; z=0 section: south wall cut around the door and window). Limits: only axis-aligned cut lines, only four elevation directions, no section marks on the plan, no scale or print sheet.
 - 2026-11-20: c_gis.js + c_gis2.js. New tab G.X GIS (ArcGIS Pro / QGIS workflow): real interactive web map (OSM, Esri imagery / topo / street, CARTO, OpenTopoMap, Esri Wayback history, place-name and road overlays), project marker, cursor coordinates (WGS84 DD and DMS, UTM, Web Mercator, custom TM), Go-to / geocoder search (Nominatim), identify with elevation (Open-Meteo), geodesic distance (Vincenty) and area, point / line / polygon drawing, buffer (circle for a point, convex hull for a line or polygon), layers, bookmarks, import GeoJSON / KML / GPX / CSV, export GeoJSON / KML / CSV, coordinate converter (WGS84, DMS, UTM, Web Mercator, custom Transverse Mercator with ellipsoid and 3-parameter datum shift) and reference tables (coordinate system types, imaging satellites, GNSS). Ribbon Map / Edit / Analysis / Imagery / Coordinates / Share. Checked: Vincenty reproduces the Flinders Peak - Buninyong test line (54972.271 m); the Krüger TM agrees with the older Redfearn UTM code to under 1 mm for Cairo, Riyadh, Makkah, Sydney, Moscow; datum shift and TM with latitude of origin round-trip exactly; 21 of 21 tiles loaded. Not pre-filled: any national grid or datum parameters (enter yours). Not built: elevation profile along a line, raster analysis, true buffer for concave shapes, vector tiles, 3D scene, attribute tables.
 - 2026-11-20: Command reference. Four background research sessions wrote docs/research/ (BIM_ECOSYSTEM.md, AGENT_CONTROL.md, cmd_*.json with Arabic and English descriptions of 939 commands, gap_*.md per program, sketchup_tab_spec.md, coohom_tab_spec.md). c_cmddata.js embeds the descriptions (64 backed by a cited help page, the rest from memory and marked with a dot). c_cmdref.js adds the "Commands reference" button at the end of every program ribbon: table of tab, panel, command, real command key, status (works / not built), what it runs in T.O X and the Arabic or English explanation; search, filter, CSV; hover tooltips on ribbon buttons show the explanation. Coverage: 100 % of listed commands have a description (AutoCAD 173, Revit 280, Civil 3D 115, Plant 3D 84, Primavera 92, Navisworks 110, Office 97, GIS 84). Next: build from gap_*.md in priority order.
+
+## 2026-11-20 — One project many tabs + Agent studio
+- c_xfer.js: tab grouping, drag tabs/project card, transfers model>hx/gis/hv/sched (tested t111/t112).
+- c_agent2.js: agent panel (text/voice), visible agent cursors, brief wizard builds house via real R.X tools, screen record, action log CSV (t113).
+- c_agent3.js: 11 discipline checklists with auto-checks, gap list, optional Claude model bridge with tool loop (key in sessionStorage only, not tested against the live API) (t114).
+- Not done: richer tools for model, web research tool, learning memory, more agents' skills; reports from compare/security/tools sessions not yet acted on.
+
+## 2026-11-20 — Cinematic entry, Missions hub, news strip, smart save prompt
+- Entry: password → 3 cinematic shots (Kaaba, Green Dome, Kaaba; slow push-in, cross-dissolve, letterbox, drifting slogans, 6868 under Technical Office X) → logo card → Missions hub tab.
+- c_hubx.js: Missions tab (5 intents, roles owner/contractor/consultant, lifecycle, icon grid with drop of the project), news strip with x (XC.news_toggle), TOXAPI.addNews.
+- c_ind.js xAskSave: asks only for main project tabs with real changes; "do not ask again" per tab type.
+- Footage note: Kaaba is small in the source drone footage; clips are crops. A close Kaaba shot needs new footage. Source clips carry third-party watermarks (Ezzat photography, Ahmed Insta Design): check rights before publishing; cine_dome clips crop the watermark, the top-down haram_s clip may show one.
+- Pending: research session cde-opensource-research (OPENSOURCE_CDE_PLAN.md); real news feeds; parallel multi-cursor agent runs; hub icon colours.
+
+## 2026-11-20 (later) — CDE layer, menus, occasions, themes
+- c_cde.js (plan items 1-4): DC "Folders" tab (explorer, back/up/breadcrumb, counts, overdue), ISO-style states + revisions, role workflow (A/B/C/D codes), naming check, hash-chained audit, transmittal export/import with SHA-256 (tamper test passes). Roles are labels, no server. Tests t120.
+- c_menus.js: "New tab" written once as a drop-down with nested groups; any 3+ buttons sharing "X:" prefix collapse to "X ▾". t121.
+- c_occ.js: Hijri occasions (Ramadan, Eid, Hajj, Dhul-Hijjah, new year, Mawlid, Jumu'ah, Saudi and Egypt days), daily seed for intro shots/slogans/idle order, themes (accent, tab-open motion, icon weight) + auto-follow occasion. Hero card in the middle of the hub follows the occasion. t122.
+- Watermarks: Kaaba shots now from makkah_aerial (no mark), Madinah shots crop the bottom mark; haram_top_s1 ends before the AHMED logo (appears about 21-26 s).
+- Pending: media-sources-research (free-licence video list; owner approves downloads), plan items 5-10 (IFC viewer, BCF, Gantt, pdf.js, MOM, SQL), loading spinner variants, ribbon option parity per program, hub icon colours.
+
+## 2026-11-20 (evening) — icons, bridge, media pool, 7-second rhythm
+- Icons: global svg.xi style (no more black icons), settings icon added, hub cards use the line icons, hub tab has its own ribbon tab set.
+- tools/tox_bridge.py + c_bridge.js: MCP stdio and plain HTTP door for any agent (token, 127.0.0.1, page connects out). 13 tools incl. say (Arabic), run_command, build_house, view_snapshot. Typed or spoken answers to agent questions now work. Tested via HTTP (t125) and MCP initialize/tools/list; not tested inside Claude Code itself.
+- Media: 11 clips from the 12 approved downloads (a04 tawaf skipped: close-ups of people; a02 night skipped: washed out). Burned-in caption on Commons clip cropped. Credit line in Themes pane (CC BY 3.0 Amm Salim). Occasion pools pick the middle shot.
+- 7-second rhythm: shots 7 s, idle slot 21 s, slogan motion = one of 7 patterns by date, 7 s cycle.
+- Parallel sessions writing chunks into site/src/incoming/: mod-gantt, mod-mom-issues, mod-regq, mod-parity. Integrate when they report.
+
+## 2026-11-20 (night) — four modules merged
+- Merged into the chain: c_mom, c_issues, c_regq (after c_cde); c_parity_cad/rvt/p6 (after c_prog_more); c_gantt (after parity). Page 3.54 MB.
+- Merged-build checks: gantt 37/37, mom ALL PASS, issues ALL PASS, parity 126/126, regq 61/62 (the one miss is only tab order: MOM tab sits between Folders and Query).
+- Stubs now working: +14 AutoCAD, +14 Revit, +12 Primavera (+8 Primavera view commands wired by the Gantt chunk).
+- Not validated: BCF against a third-party reader; charts visuals/dark/mobile for the follow-up dashboard; Gantt in Safari/Firefox/touch.
+
+## 2026-11-20 (late night) — AI providers and always-on voice (c_ai.js)
+- Pane "AI and voice" (command ai_open): provider presets (rules, Ollama, LM Studio, Groq, OpenRouter, Gemini, any OpenAI-compatible, Claude by key), model name, key (tab only), test button. Egyptian persona system prompt, tool-calling loop over the same 8 studio tools.
+- Speech to text: browser, or any /v1/audio/transcriptions server (local faster-whisper, whisper.cpp, Groq...). Hands-free listening (ai_listen) with energy-based voice detection and a wake word = assistant name (default جارفيس).
+- Tested with a mock OpenAI server (tool call then reply, key header, wake word on/off, unreachable message) and a mock STT endpoint (multipart with language=ar). NOT tested: real Ollama/Groq/Gemini, real microphone, Web Speech continuous mode, speaking replies. Model tags and base URLs are suggestions from memory.
+- Research running: ai-stack-research -> site/docs/research/AI_STACK_PLAN.md.
+
+## 2026-11-21 (after midnight) — tab-to-Claude inbox, tab close motion, second parity wave
+- Bridge: POST /inbox (tab -> ~/.tox/inbox.jsonl + unread list), POST /reply and MCP tools tab_messages / reply_to_tab (reply shows in the tab chat). Provider "Claude Code session" in the AI pane. Tested end to end (t128). Live use needs the bridge running and a Monitor on the inbox file (expires every 30 min, must be re-armed by the session).
+- Tab close animation follows the theme motion (t129).
+- Second parity wave running: p2-cad-survey, p2-revit, p2-p6-nav, p2-plant-office-gis (chunks land in site/src/incoming2/).
+- Waiting for owner approval: web-ifc (MPL-2.0, npm 0.0.80) and pdfjs-dist (Apache-2.0, npm 6.5.438) to be fetched into the page for an IFC viewer and PDF markup. Sizes not verified (CDN gave no length).
+- Known test caveats: regq test expects a different tab order (MOM tab sits between Folders and Query); pw/t118.js points to a deleted temp page.
+
+## 2026-11-21 — orb, now-playing widget, clip pruning, libraries
+- c_orb.js: animated orange orb (idle breathing, listening ripples driven by the mic level, thinking = chasing dots, speaking pulse) in the agent panel, hub and the floating ball. Dictation: REC (red) fills the text box live, nothing is sent until Send (or "send when I stop"). "Talking to" picker: rules, Ollama, LM Studio, Groq, OpenRouter, ChatGPT/OpenAI, Gemini, any server, Claude key, Claude Code session. Tested with a fake microphone (t130).
+- c_nowplay.js: one control in the top bar next to search for radio, YouTube (hidden picture too), TV, playlist and any audio/video: pause, stop, back/forward 10 s, timeline, volume, skip, source link, switch when several play. YouTube ads cannot be skipped from outside the frame. Commands np_toggle/np_stop/np_back/np_fwd/np_skip for the agent.
+- Idle/intro clips pruned by measurement (jitter via phase correlation, brightness): removed haram_s2-4, cine_kaaba_b, madinah_s2, makkah_s1/s2, haram_top_s1, cine_dome_b, n_crescent, n_gold, n_topo, n_iftar. Kept 12.
+- Downloaded (owner approved): web-ifc 0.0.80 (MPL-2.0; iife js 6.3 MB, wasm 1.7 MB) and pdfjs-dist 3.11.174 (Apache-2.0; 0.32 + 1.09 MB) into site/vendor/. Older pdf.js chosen on purpose: the 6.x build is ES-module only and fails from file://.
+- Sessions running: mod-ifc, mod-pdf, mod-hx-assets, and the four p2-* parity sessions.
+
+## 2026-11-21 — calm HUD, REC fixes, local serve, Egypt scenes, wave 2 merged
+- Agent look: thin-line HUD orb (monochrome), neutral discipline chips with small line icons, one quiet colour for agent cursors, floating yellow ball removed, small monochrome agent icon in the top bar next to search. Model picker uses plain English API names.
+- REC: instant feedback, errors are shown (blocked mic / speech service, no mic, offline), speech starts before the mic level meter. Root cause of "nothing happens": Web Speech and the microphone are unreliable from a file:// page.
+- tools/tox_bridge.py --serve serves the site at http://127.0.0.1:8766/ (secure context, range requests for video, /boot hands the token only to same-origin requests, traversal and dotfiles refused) and the page connects by itself.
+- Idle: 5 procedural Egyptian scenes (pyramids and caravan, Cairo mosques skyline over the Nile, Ibn Tulun style arcade, geometric star lattice, felucca on the Nile) with a palette chosen by date.
+- Wave 2 merged: C.X 26, S.X 33, R.X 71, P.X 23, N.X 28, T.X 20, O.X 44, G.X 19 more commands. Test log: runall.log.
+
+## 2026-11-21 (morning) — missions, free typing, units, tiers, Whisper, icons, merges
+- c_mission.js: slow cursors (fast/normal/slow), highlight on touched controls, numbered narration card away from the cursor, dock with progress bars and pause/stop per mission, step-by-step mode (Do it / Skip / Stop), pause-all, chime + tab flash + title flash when a mission ends, split view of 4 tabs (ag_split), one undo step per mission (xaTxn; needs the template session's snapshot of R.X to restore it on toolbar undo).
+- c_agent4.js: every wizard question accepts typed or spoken answers; lengths in m/cm/mm/ft with the interpretation echoed; "3 houses" builds side by side; floors/rooms in digits or words.
+- c_ai.js: cheap model first with an escalate tool, strong model second (optional); providers ChatGPT/OpenAI added; STT provider "T.O X local Whisper (bridge)".
+- tools/tox_bridge.py: --whisper [auto|base|small|large-v3-turbo] (faster-whisper if installed, else the existing openai-whisper venv), POST /v1/audio/transcriptions. Measured on this Intel i7: base 3-4 s for a 6 s Arabic sentence with visible mistakes; small ~11 s; turbo too slow. Groq Whisper or faster-whisper int8 recommended for speed and accuracy.
+- Start_TOX.command in the Viewer folder starts server + bridge + Whisper and opens http://127.0.0.1:8766/.
+- Merged: IFC viewer (web-ifc), PDF viewer (pdf.js 3.11.174), icons (favicon, manifest, apple-touch, maskable). Egypt: 3 real Giza aerials (Pexels, Blanka OG); procedural Egypt scenes removed on the owner's request.
+- Waiting: templates (blank project vs sewage template), H.X materials/furniture session.

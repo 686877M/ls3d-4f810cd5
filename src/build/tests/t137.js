@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core'); const {spawn}=require('child_process'); const fs=require('fs');
+(async()=>{ const srv=spawn(process.env.HOME+'/.local/venvs/whisper/bin/python3',[process.argv[3]+'/site/tools/tox_bridge.py','--serve','--whisper','auto'],{env:Object.assign({},process.env,{TOX_TOKEN:'tw1',TOX_PORT:'18792',PATH:process.env.HOME+'/.local/bin:'+process.env.PATH}),stdio:['ignore','ignore','pipe']}); let log=''; srv.stderr.on('data',d=>log+=d); await new Promise(r=>setTimeout(r,9000));
+const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1400,height:800}}); await ctx.addInitScript(()=>{try{['xto-tabs','xto-ai'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('http://127.0.0.1:18792/',{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(13000);
+console.log('auto stt provider:',await E("AI.stt"),'| bridge connected:',await E("BR.on"));
+const b64=fs.readFileSync('/tmp/ar_test.webm').toString('base64');
+const t0=Date.now(); const txt=await E("(async()=>{ const bin=Uint8Array.from(atob(\""+b64+"\"),c=>c.charCodeAt(0)); return await aiTranscribe(new Blob([bin],{type:\"audio/webm\"})); })()");
+console.log('page -> bridge -> whisper:',JSON.stringify(txt),((Date.now()-t0)/1000).toFixed(1)+'s'); console.log(log.split('\n').filter(l=>/Whisper/.test(l)).join(' | '),'errors',er.slice(0,3)); await b.close(); srv.kill(); })();

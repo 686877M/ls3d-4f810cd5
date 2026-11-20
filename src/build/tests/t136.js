@@ -1,0 +1,16 @@
+const {chromium}=require('playwright-core'); const http=require('http');
+let hits=[]; const srv=http.createServer((q,s)=>{ s.setHeader('access-control-allow-origin','*'); s.setHeader('access-control-allow-headers','*'); if(q.method==='OPTIONS'){ s.writeHead(204); return s.end(); } let b=[]; q.on('data',d=>b.push(d)); q.on('end',()=>{ const j=JSON.parse(Buffer.concat(b)); const who=q.url.startsWith('/cheap')?'cheap':'strong'; const last=j.messages[j.messages.length-1]; hits.push(who+':'+(last.role)); s.setHeader('content-type','application/json'); if(who==='cheap'){ s.end(JSON.stringify({choices:[{message:{role:'assistant',content:null,tool_calls:[{id:'e1',type:'function',function:{name:'escalate',arguments:'{"reason":"needs design"}'}}]}}]})); } else s.end(JSON.stringify({choices:[{message:{role:'assistant',content:'رد النموذج القوي'}}]})); }); }).listen(8798);
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2]});
+const ctx=await b.newContext({viewport:{width:1400,height:800}}); await ctx.addInitScript(()=>{try{['xto-tabs','xto-ai'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');localStorage.setItem('xto-msspeed','0');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+const T=[['12 x 10','xaDims("12 x 10")'],['7.35 م في 5.8 م','xaDims("7.35 م في 5.8 م")'],['800 x 600 cm','xaDims("800 x 600 cm")'],['800 × 600 (no unit)','xaDims("800 × 600")'],['طوله 9 م وعرضه 6.5 م','xaDims("طوله 9 م وعرضه 6.5 م")'],['length 4500 mm width 3200 mm','xaDims("length 4500 mm width 3200 mm")'],['mech 450 x 300 default mm','xaDims("450 x 300","mech")'],['words','[xaInt("دورين"),xaInt("تلات غرف"),xaInt("5 rooms"),xaCountOf("3 بيوت 4 اوض"),xaCountOf("اعمل 2 فيلا")]']];
+for(const [k,e] of T) console.log(k.padEnd(30),JSON.stringify(await E(e)));
+console.log('nums:',JSON.stringify(await E("xaNums('ابني 3 بيوت طول البيت 7.35 م وعرضه 5.8 م دورين 4 غرف')")));
+/* free typed answer in the wizard */
+await E("xaHandle('ابني بيت')"); await pg.waitForTimeout(500); console.log('asked:',(await E("XAS.q?XAS.q.opts.map(o=>o[0]).join('|')+' parse:'+(!!XAS.q.parse):'none'")));
+await E("xaHandle('900 × 650 سم')"); await pg.waitForTimeout(400); console.log('after typing dims ->',JSON.stringify(await E("XAS.brief")), (await E("XAS.chat.slice(-1)[0].t")).slice(0,50));
+await E("xaHandle('دورين')"); await E("xaHandle('اربع')"); await pg.waitForTimeout(300); console.log('confirm text:',(await E("XAS.chat.slice(-1)[0].t")).slice(0,140));
+/* tiers */
+await E("TOXAPI.aiConfig({provider:'custom',base:'http://localhost:8798/strong/v1',model:'big',cheapOn:true,cheap:{provider:'custom',base:'http://localhost:8798/cheap/v1',model:'tiny',key:''}})"); await E("XAS.q=null"); await E("xaHandle('محتاج تصميم مبدئي لمحطة ضخ كاملة')"); await pg.waitForTimeout(1500); console.log('tier path:',hits.join(' > '),'| reply:',(await E("XAS.chat.slice(-1)[0].t")));
+console.log('errors',er.slice(0,3)); await b.close(); srv.close(); })();

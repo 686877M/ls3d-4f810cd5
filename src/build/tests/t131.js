@@ -1,0 +1,13 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
+const ctx=await b.newContext({viewport:{width:1500,height:860},permissions:['microphone']}); await ctx.addInitScript(()=>{try{['xto-tabs','xto-ai'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('http://127.0.0.1:8766/',{waitUntil:'domcontentloaded',timeout:60000}); await pg.waitForTimeout(7000);
+console.log('secure context:',await pg.evaluate(()=>isSecureContext),'| auto-connected:',await E("BR.on+' '+BR.st"));
+console.log('floating ball gone:',await pg.evaluate(()=>!document.querySelector('.agmic')),'| top-bar agent icon:',await pg.evaluate(()=>!!document.getElementById('xAgBtn')));
+await pg.click('#xAgBtn'); await pg.waitForTimeout(800);
+console.log('chips:',await pg.evaluate(()=>[...document.querySelectorAll('.wx span')].filter(s=>s.querySelector('svg')).length>=5),'| select labels:',await pg.evaluate(()=>[...document.querySelectorAll('select option')].map(o=>o.textContent).filter(t=>/API|Ollama|Rules|Claude|LM/.test(t)).join(' | ')));
+await pg.click('.orbrec'); await pg.waitForTimeout(2500); console.log('REC status text:',JSON.stringify(await pg.evaluate(()=>document.getElementById('orbst').textContent)),'class rec:',await pg.evaluate(()=>document.querySelector('.orbrec').classList.contains('rec')));
+await pg.screenshot({path:'out/hud.png'}); 
+await E("TOXAPI.aiConfig({provider:'claudecode'})"); await E("xaHandle('اختبار الإرسال من صفحة الـbridge')"); await pg.waitForTimeout(1200); console.log('inbox via same-origin bridge:',require('fs').readFileSync(require('os').homedir()+'/.tox/inbox.jsonl','utf8').trim().split('\n').slice(-1)[0].slice(0,120));
+console.log('errors',er.slice(0,3)); await b.close();})();

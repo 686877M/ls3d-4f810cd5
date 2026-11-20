@@ -1,0 +1,18 @@
+const {chromium}=require('playwright-core');
+(async()=>{const b=await chromium.launch({executablePath:process.argv[2],args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{['xto-rv','xto-tabs','xto-gis','xto-hvac','xto-rxacts','xto-hm'].forEach(k=>localStorage.removeItem(k));sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-splash','1');localStorage.setItem('xto-test','1');}catch(e){}});
+const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept(d.defaultValue())); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+await pg.goto('file:///tmp/ls_index.html',{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+const R=async s=>JSON.stringify(await E(s));
+console.log('tab order after opening hv, gis, model, hv, gis, sched:'); for(const t of ['hv','gis','model','hv','gis','sched','office','draft']){ await E("wtNew('"+t+"')"); await pg.waitForTimeout(500); } console.log(await R("WTAB.tabs.map(t=>t.type)"));
+await E("wtSwitch(WTAB.tabs.find(t=>t.type==='model').id)"); await pg.waitForTimeout(800);
+console.log(await E(`(()=>{ const P=(x,z)=>[x,z], mk=o=>{ o.id=rvId(); o.lv=0; RV.els.push(o); return o; }; const ws=[[P(0,0),P(8,0)],[P(8,0),P(8,6)],[P(8,6),P(0,6)],[P(0,6),P(0,0)]].map(w=>mk({k:'wall',a:w[0],b:w[1],h:3,t:.2})); mk({k:'door',w:ws[0].id,p:2,W:.9,H:2.1}); mk({k:'window',w:ws[0].id,p:5.5,W:1.2,H:1.2,sill:.9}); mk({k:'window',w:ws[1].id,p:3,W:1.2,H:1.2,sill:.9}); mk({k:'floor',a:P(0,0),b:P(8,6),t:.2}); mk({k:'col',p:P(4,3),w:.4,d:.4,h:3}); mk({k:'room',a:P(.1,.1),b:P(7.9,5.9),n:'Hall'}); rvChanged(); return 'ok'; })()`));
+console.log('model>hv (S wall 8 m x 3 minus door .9*2.1 and window 1.44 -> 24-1.89-1.44=20.67; E wall 6x3=18 minus window 1.44=16.56):',await R("(()=>{ XF.reg['model>hv'](); const r=HVD.rooms.find(x=>x.rx); return [r.A,r.wN,r.wS,r.wE,r.wW,r.gS,r.gE]; })()"));
+console.log('model>hx:',await R("(()=>{ const m=XF.reg['model>hx'](); return [HM.rooms.length,HM.items.length,HM.items.map(i=>i.t+'@'+i.x+','+i.z+' r'+i.r)]; })()"));
+console.log('hx>model round trip (counts):',await R("(()=>{ const before=RV.els.length; const m=XF.reg['hx>model'](); return [before,RV.els.length,RV.els.filter(e=>e.src==='hx').map(e=>e.k).join(',')]; })()"));
+console.log('model>gis:',await R("(()=>{ const m=XF.reg['model>gis'](); const L=GM.layers.find(l=>l.n==='R.X model'); const p=L.feat.find(f=>f.t==='poly'); return [L.feat.length, p.g.length, p.g[0].map(v=>+v.toFixed(6))]; })()"));
+console.log('GIS footprint size check (8 m wall): distance between first two points of the wall line =',await R("(()=>{ const L=GM.layers.find(l=>l.n==='R.X model'); const w=L.feat.find(f=>f.t==='line'); return +vInv(w.g[0],w.g[1]).d.toFixed(3); })()"));
+console.log('model>sched:',await R("(()=>{ const before=ACT.length; xfSchedGo(xfQty(),RXP.map(r=>r[4]),1); const rx=ACT.filter(a=>a.src==='rx'); return [before,ACT.length,rx.map(a=>a.id+':'+a.d+'d:'+a.n[0].slice(0,24)), rx.map(a=>a.sDate?new Date(a.sDate).toISOString().slice(0,10):'-')]; })()"));
+console.log('sched renders:',await pg.evaluate(()=>!!document.querySelector('.xw[data-id="p6"]')||!!document.querySelector('#p6box')), er.slice(0,5));
+await E("XF.reg['model>hx'](); wtSwitch(WTAB.tabs.find(t=>t.type==='model').id)"); await pg.waitForTimeout(800); await pg.screenshot({path:'/tmp/xf1.png',clip:{x:0,y:120,width:1500,height:60}});
+await b.close();})();

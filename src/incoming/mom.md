@@ -1,0 +1,6 @@
+# mom.js (prefix mm) - Minutes of Meeting tab of the DC panel
+1. Insert in the chunk chain right AFTER `c_cde.js` (needs dcTabs/dcPanel/dcAdd/DCT/CDEF/cdeAudit; wraps dcTabs (new tab "mom" at index 2) and dcPanel the same way c_cde does). Globals: MM, MMR, mm* only.
+2. Commands: `mom_open` (open DC panel on the MOM tab), `mom_new` (new meeting). API for tests: `TOXAPI.mm`. Storage key `xto-mom`.
+3. Overrides/mutations: pushes new type `MOMA` (MOM-ACTION) into `DCT` and into the MOM folder entry of `CDEF` (so actions show under 10 Correspondence/MOM). Ball-in-court = `d.bic` (role) on the register doc; the CDE table column still shows the workflow-based CDEBIC, not `d.bic` (not changed).
+4. Behaviour: each action -> dcAdd(type MOMA, status sent); done closes the doc; new meeting copies open actions (marked carried, no new doc) and attendees; print / HTML sheet (EN+AR) / "Register as MOM document" (re-register updates the same doc).
+5. Tested (Playwright, mom_test.js, 27 checks): all of the above incl. UI add-action form, overdue, carry, close-from-carried, persistence. NOT tested: real print dialog, mailto/Drive, RTL visual layout, interaction with other sibling chunks, other browsers than Chrome.
