@@ -1,0 +1,442 @@
+{
+ "sched|New": {
+  "en": "Create a new project (opens New Project wizard in P6: EPS node, name, planned start, responsible manager, rate type).",
+  "ar": "بتعمل مشروع جديد فاضي. بتحدد اسمه وتاريخ البداية المخطط ومكانه في هيكل المشاريع. استخدمها أول ما تبدأ جدول جديد.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Open": {
+  "en": "Open an existing project from the database.",
+  "ar": "بتفتح مشروع محفوظ. تقدر تفتح أكتر من مشروع مع بعض لو عايز تقارن أو تشوف الموارد المشتركة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Save": {
+  "en": "Save the open project data (P6 saves to the database as you edit; here it saves the project file).",
+  "ar": "بتحفظ الشغل بتاعك. اضغطها كل شوية قبل ما تقفل علشان ماتضيعش التعديلات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Projects": {
+  "en": "Projects window (Enterprise > Projects / File > Open list): list of all projects under the EPS.",
+  "ar": "شاشة قايمة كل المشاريع. منها تفتح مشروع أو تعمل واحد جديد أو تشوف بياناته العامة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Page Setup": {
+  "en": "Set paper size, orientation, margins, header/footer before printing.",
+  "ar": "بتظبط شكل الورقة قبل الطباعة: المقاس والاتجاه والهوامش والعنوان.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Print": {
+  "en": "Print the current layout (Gantt, table, network) or print preview.",
+  "ar": "بتطبع الشاشة الحالية (الجدول أو الجانت). اعمل معاينة الأول علشان الأعمدة ماتتقطعش.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Export XER": {
+  "en": "Export projects to Primavera XER, the native exchange file format.",
+  "ar": "بتطلّع المشروع في ملف XER، وده الصيغة الأصلية لبرايمفيرا. استخدمها لتبعت الجدول لحد عنده P6 أو لعمل نسخة احتياطية.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Export MS Project XML": {
+  "en": "Export a project as Microsoft Project XML.",
+  "ar": "بتطلّع الجدول بصيغة تفتح في مايكروسوفت بروجكت. مفيدة لو العميل بيشتغل بيه.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Export XLSX": {
+  "en": "Export activity data to an Excel workbook.",
+  "ar": "بتطلّع الأنشطة في ملف إكسل علشان تراجعها أو تعمل عليها تقارير.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Export CSV": {
+  "en": "Export activity data as comma-separated text.",
+  "ar": "بتطلّع الأنشطة كنص مفصول بفواصل. أخف ملف وبيفتح في أي برنامج.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Import XER": {
+  "en": "Import projects from an XER file.",
+  "ar": "بتدخل مشروع من ملف XER. اتأكد من التقويمات والأكواد بعد الاستيراد.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Import XLSX": {
+  "en": "Import activities from an Excel file using a column mapping.",
+  "ar": "بتدخل أنشطة من إكسل. لازم تربط أعمدة الملف بحقول الأنشطة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Undo": {
+  "en": "Undo the last edit (Edit menu).",
+  "ar": "بترجّع آخر تعديل عملته.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Redo": {
+  "en": "Redo an undone edit.",
+  "ar": "بتعيد التعديل اللي لسه راجع عنه بالـ Undo.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Cut": {
+  "en": "Cut selected activities for pasting (Edit menu / Activities window).",
+  "ar": "بتقص الأنشطة المحددة علشان تلزقها في مكان تاني.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Copy": {
+  "en": "Copy selected activities.",
+  "ar": "بتنسخ الأنشطة المحددة علشان تكررها.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Paste": {
+  "en": "Paste copied/cut activities into the selected WBS element.",
+  "ar": "بتلزق الأنشطة المنسوخة تحت عنصر WBS المحدد.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Add": {
+  "en": "Add a new activity (Edit > Add, or Insert key).",
+  "ar": "بتضيف نشاط جديد في الجدول. بعدها اكتب اسمه ومدته.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Delete": {
+  "en": "Delete selected activities.",
+  "ar": "بتمسح الأنشطة المحددة. خد بالك: العلاقات بتاعتها بتتمسح معاها.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Dissolve": {
+  "en": "Delete an activity and automatically connect its predecessors to its successors.",
+  "ar": "بتمسح النشاط وتوصل اللي قبله باللي بعده تلقائي علشان منطق الجدول مايتقطعش.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Renumber Activity IDs": {
+  "en": "Renumber the Activity IDs of selected activities using a prefix and increment.",
+  "ar": "بتعيد ترقيم أكواد الأنشطة بترتيب وزيادة ثابتة. مفيدة لما الأكواد تبقى مبعثرة.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Resources": {
+  "en": "Assign resources to activities (Assign Resources dialog); also the Resources window under Enterprise.",
+  "ar": "بتحدد مين أو إيه (عمال، معدات، مواد) هيشتغل على النشاط وبكمية كام. أساس تحليل التكلفة والتحميل.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Roles": {
+  "en": "Assign roles (job types such as engineer, foreman) to activities.",
+  "ar": "بتحدد الدور المطلوب (مهندس، مقاول…) من غير ما تحدد شخص بعينه. مفيدة في التخطيط المبدئي.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Activity Codes": {
+  "en": "Assign activity code values to activities; define code types under Enterprise.",
+  "ar": "بتصنف الأنشطة بأكواد (دور، مرحلة، مقاول…) علشان بعدين تجمّع وتفلتر على أساسها.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Predecessors": {
+  "en": "Add or edit predecessor relationships (FS, SS, FF, SF with lag).",
+  "ar": "بتحدد إيه الأنشطة اللي لازم تخلص أو تبدأ قبل النشاط ده، ونوع العلاقة والفاصل الزمني.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Successors": {
+  "en": "Add or edit successor relationships.",
+  "ar": "بتحدد إيه الأنشطة اللي بتيجي بعد النشاط ده وبتعتمد عليه.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Steps": {
+  "en": "Define activity steps with weights used for physical percent complete.",
+  "ar": "بتقسّم النشاط لخطوات صغيرة بوزن لكل خطوة، ونسبة الإنجاز الفعلي بتتحسب منها.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Find": {
+  "en": "Find text in the current table.",
+  "ar": "بتدوّر على كلمة أو كود في الجدول.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Replace": {
+  "en": "Find and replace text in a field (P6 uses Global Change for bulk edits).",
+  "ar": "بتبدّل كلمة بكلمة تانية في الحقل. للتعديل الجماعي الكبير استخدم Global Change.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Spell Check": {
+  "en": "Spell check names and notes.",
+  "ar": "بتفحص الإملاء في أسماء الأنشطة والملاحظات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Activities (Gantt)": {
+  "en": "Activities window with Activity Table on top and Gantt Chart (bars on a timescale).",
+  "ar": "الشاشة الأساسية: جدول الأنشطة على الشمال وأعمدة الجانت على اليمين على خط زمني. هنا بتشوف الجدول كله.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Timeline dock": {
+  "en": "App-specific docked timeline strip; P6 itself has a Timeline view in newer P6 EPPM web only (not verified).",
+  "ar": "شريط زمني صغير ثابت بيلخص المراحل المهمة. ده من عندنا في الموقع، مش أمر أصلي في P6 Professional.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|4D schedule": {
+  "en": "App-specific link from schedule activities to the 3D model for 4D playback (Navisworks calls this TimeLiner).",
+  "ar": "بيربط الأنشطة بعناصر المجسم وبيشغّل المحاكاة بالتاريخ. ده تكامل من عندنا، مش أمر في P6.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Activity Network": {
+  "en": "Top-layout view: activities as boxes with relationship lines (PERT-style).",
+  "ar": "عرض الأنشطة كصناديق متوصلة بخطوط العلاقات. بيوضح المسار والمنطق أحسن من الجانت.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Activity Usage Spreadsheet": {
+  "en": "Bottom-layout table of resource/cost usage per activity per time period.",
+  "ar": "جدول بيوري استهلاك الموارد أو التكلفة لكل نشاط في كل فترة زمنية.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Resource Usage Profile": {
+  "en": "Bottom-layout histogram of resource or role units/cost over time, with cumulative curve and overload view.",
+  "ar": "رسم أعمدة بيوري تحميل المورد أو التكلفة على الزمن. بيكشف المورد الزايد عليه شغل.",
+  "src": "https://docs.oracle.com/cd/F74771_01/English/User_Guides/p6_pro_user/the_resource_usage_profile.htm"
+ },
+ "sched|Columns": {
+  "en": "Customize which columns the Activity Table shows (Layout Options > Columns).",
+  "ar": "بتختار الأعمدة اللي تظهر في الجدول وترتيبها وعرضها.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Bars": {
+  "en": "Customize Gantt bar types, colors and filters.",
+  "ar": "بتظبط شكل شرايط الجانت: الألوان ونوع الشريط (فعلي، مخطط، باسلاين).",
+  "src": "FROM MEMORY"
+ },
+ "sched|Timescale": {
+  "en": "Set the Gantt time scale (years/months/weeks/days) and calendar.",
+  "ar": "بتظبط التقسيم الزمني للجانت: سنين أو شهور أو أسابيع.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Filters": {
+  "en": "Filter activities by criteria (field, operator, value) and save filters.",
+  "ar": "بتخبي الأنشطة اللي مش عايزها وتعرض اللي تنطبق عليها شروط معينة، زي المتأخرة أو اللي بتبدأ الشهر ده.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Group and Sort": {
+  "en": "Group activities by WBS/codes/fields and sort within groups.",
+  "ar": "بتجمّع الأنشطة تحت عناوين (WBS أو كود أو مقاول) وترتبها جوه كل مجموعة.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Bottom Layout": {
+  "en": "Show or hide the bottom layout (Activity Details, usage profile, etc.).",
+  "ar": "بتفتح أو تقفل الجزء اللي تحت الشاشة: تفاصيل النشاط أو الرسومات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Progress Line": {
+  "en": "Gantt vertical line at the data date showing ahead/behind progress.",
+  "ar": "خط رأسي عند تاريخ التحديث بيوري الأنشطة المتقدمة أو المتأخرة عن الخطة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Zoom In": {
+  "en": "Zoom the Gantt timescale in.",
+  "ar": "بتكبّر الخط الزمني علشان تشوف تفاصيل أيام أكتر.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Zoom Out": {
+  "en": "Zoom the Gantt timescale out.",
+  "ar": "بتصغّر الخط الزمني علشان تشوف المشروع كله.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Zoom to Best Fit": {
+  "en": "Fit the whole project in the visible timescale.",
+  "ar": "بتظبط الزوم تلقائي علشان المشروع كله يبان في الشاشة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|WBS": {
+  "en": "Work Breakdown Structure window: hierarchy of project elements.",
+  "ar": "شاشة هيكل تقسيم العمل. بتقسّم المشروع لمستويات (مرحلة، منطقة، بند) والأنشطة بتتعلق بيها.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Activities": {
+  "en": "Open the Activities window (Project > Activities).",
+  "ar": "بتفتح شاشة الأنشطة اللي فيها الجدول والجانت.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Resource Assignments": {
+  "en": "Window listing all resource assignments across activities with units, cost, dates.",
+  "ar": "شاشة بتعرض كل تخصيصات الموارد على الأنشطة بالكميات والتكلفة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Work Products and Documents": {
+  "en": "Window to attach documents/work products to projects, WBS or activities.",
+  "ar": "بتربط مستندات ومخرجات (رسومات، مواصفات) بالمشروع أو الأنشطة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Expenses": {
+  "en": "Non-resource costs (budget and actual) linked to activities.",
+  "ar": "المصروفات اللي مش موارد، زي رسوم أو إيجار، مربوطة بالنشاط بميزانية وفعلي.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Thresholds": {
+  "en": "Define thresholds (e.g. float below X days) that generate issues when exceeded.",
+  "ar": "بتحدد حدود (زي فلوت أقل من 5 أيام) والبرنامج يطلع مشكلة لما الحد يتعدى.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Issues": {
+  "en": "Log issues, priority, status and responsible person.",
+  "ar": "سجل المشاكل اللي بتواجه المشروع مع الأولوية والمسؤول والحالة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Risks": {
+  "en": "Risk register: identify risks, probability, impact, and link to activities (Working with risks).",
+  "ar": "سجل المخاطر: بتكتب الخطر واحتماله وتأثيره وبتربطه بالأنشطة المتأثرة.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Maintain Baselines": {
+  "en": "Create, copy, restore, delete project baselines (snapshots of the plan).",
+  "ar": "بتحفظ صورة من الجدول الحالي (باسلاين) علشان تقارن بيها بعدين الفعلي بالخطة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Assign Baselines": {
+  "en": "Choose which baseline is the project/user/primary baseline for comparison bars.",
+  "ar": "بتحدد أنهي باسلاين تتقارن بيه الأنشطة في الجانت.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Set Default Project": {
+  "en": "Set the project used by default for new items/commands.",
+  "ar": "بتحدد المشروع الافتراضي اللي الأوامر بتشتغل عليه.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Project details": {
+  "en": "Project window details: General, Dates, Calendars, Defaults, Settings, Notebook, Budget.",
+  "ar": "بيانات المشروع العامة: التواريخ والتقويم الافتراضي وإعدادات الجدولة والميزانية.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Calendar": {
+  "en": "Calendars window: work days, hours, holidays, exceptions (Global, Project, Resource).",
+  "ar": "بتحدد أيام وساعات الشغل والإجازات. التقويم بيأثر على مدة كل نشاط وتاريخه.",
+  "src": "FROM MEMORY"
+ },
+ "sched|EPS": {
+  "en": "Enterprise Project Structure: hierarchy that groups projects.",
+  "ar": "هيكل الشركة للمشاريع: بيجمّع المشاريع في مجموعات (شركة، فرع، موقع).",
+  "src": "FROM MEMORY"
+ },
+ "sched|OBS": {
+  "en": "Organizational Breakdown Structure: people responsible and security scope.",
+  "ar": "هيكل المسؤولين: مين مسؤول عن أنهي جزء من المشروع، وبيتحكم في الصلاحيات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Cost Accounts": {
+  "en": "Cost account hierarchy for coding costs to accounting.",
+  "ar": "شجرة حسابات التكلفة علشان تربط تكلفة الأنشطة بأكواد المحاسبة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Project Codes": {
+  "en": "Project-level code types and values to classify projects.",
+  "ar": "أكواد بتصنف المشاريع نفسها (نوع، منطقة، عميل).",
+  "src": "FROM MEMORY"
+ },
+ "sched|User Defined Fields": {
+  "en": "Custom fields you add to activities, projects, resources etc.",
+  "ar": "حقول مخصصة بتضيفها بنفسك، زي رقم أمر شغل أو ملاحظة خاصة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Schedule (F9)": {
+  "en": "Run the CPM schedule calculation (shortcut F9) with options: data date, log, leveling.",
+  "ar": "بتحسب الجدول (المسار الحرج والتواريخ والفلوت). اضغط F9 بعد أي تعديل في المدد أو العلاقات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Level Resources": {
+  "en": "Resource leveling: delay activities to resolve resource over-allocation.",
+  "ar": "بتأخر أنشطة علشان المورد ماياخدش شغل أكتر من طاقته في نفس الوقت.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Apply Actuals": {
+  "en": "Apply actual dates/units (past period actuals) to activities up to the data date.",
+  "ar": "بتطبق الفعلي المسجل على الأنشطة لحد تاريخ التحديث.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Update Progress": {
+  "en": "Update progress: percent complete, actual start/finish, remaining duration.",
+  "ar": "بتحدّث تقدم الشغل: النسبة والبداية والنهاية الفعلية والمدة المتبقية.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Recalculate Assignment Costs": {
+  "en": "Recalculate resource assignment costs after price/rate changes.",
+  "ar": "بتعيد حساب تكلفة تخصيص الموارد بعد تغيير الأسعار.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Summarize": {
+  "en": "Summarize project data up to WBS levels (roll-up of dates, cost, units).",
+  "ar": "بتجمع بيانات الأنشطة لمستويات الـ WBS (تواريخ وتكلفة) علشان تشوف ملخص.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Store Period Performance": {
+  "en": "Store actual this-period values for earned value / past-period reporting.",
+  "ar": "بتخزن الفعلي في فترة معينة علشان تقارير القيمة المكتسبة والفترات السابقة.",
+  "src": "https://docs.oracle.com/cd/F74771_01/client_help//en_US/activities_window.htm"
+ },
+ "sched|Scenarios and risk": {
+  "en": "App feature combining what-if scenarios and risk analysis; in P6 risk analysis is the separate Primavera Risk Analysis product (not verified here).",
+  "ar": "تحليل سيناريوهات وخطر على الجدول (ماذا لو). ده من عندنا، وتحليل المخاطر الكمي الأصلي منتج منفصل في أوراكل.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Claim Digger": {
+  "en": "P6 Professional tool that compares two projects (e.g. baseline vs update) and lists differences in dates, durations, logic.",
+  "ar": "بتقارن نسختين من المشروع (الخطة والتحديث) وتطلع الفروق في التواريخ والمدد والعلاقات. مفيدة في المطالبات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Check Schedule": {
+  "en": "App schedule quality check (open ends, negative lag, high float…). P6 has a similar Schedule Check feature in newer versions (not verified).",
+  "ar": "فحص جودة الجدول: أنشطة من غير سابق أو لاحق، علاقات سالبة، فلوت عالي. ابدأ بيها قبل ما تسلم الجدول.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Global Change": {
+  "en": "Bulk-edit activity fields by rule (IF conditions THEN assign).",
+  "ar": "تعديل جماعي بقاعدة: لو الشرط اتحقق غيّر الحقل ده لكذا. بتوفر وقت كبير.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Follow-up reports": {
+  "en": "App follow-up reports (progress vs plan).",
+  "ar": "تقارير متابعة التقدم مقابل الخطة. من عندنا في الموقع.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Reports": {
+  "en": "Reports window: run, edit, schedule report definitions.",
+  "ar": "شاشة التقارير الجاهزة. تشغّل تقرير أو تعدّله.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Report Wizard": {
+  "en": "Wizard to build a report: subject area, fields, filters, grouping.",
+  "ar": "معالج بيساعدك تبني تقرير: تختار البيانات والأعمدة والفلاتر.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Tracking": {
+  "en": "Tracking window: compare project data over time with layouts and bars.",
+  "ar": "بتتابع المشروع على الزمن وتقارن الفعلي بالخطة في عرض موحد.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Publish": {
+  "en": "Publish projects to Project Management web/EPPM (P6 Publish Projects).",
+  "ar": "بتنشر المشروع للويب أو لفريق تاني. في موقعنا بتطلّع نسخة للمشاركة.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Video of the 4D schedule": {
+  "en": "App feature that records the 4D playback as a video.",
+  "ar": "بيسجل محاكاة 4D كفيديو. ده من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "sched|Users": {
+  "en": "Admin: users and passwords.",
+  "ar": "إدارة المستخدمين: مين يدخل البرنامج.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Security Profiles": {
+  "en": "Admin: global/project security profiles with privileges.",
+  "ar": "ملفات صلاحيات: كل ملف بيحدد إيه المسموح للمستخدم.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Admin Preferences": {
+  "en": "Admin: global settings (time units, durations, earned value, data limits).",
+  "ar": "إعدادات عامة للنظام زي وحدات الوقت وحدود البيانات.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Admin Categories": {
+  "en": "Admin: categories for notebook topics, risk types, etc.",
+  "ar": "تصنيفات بتستخدم في الملاحظات والمخاطر.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Currencies": {
+  "en": "Admin: currencies and exchange rates.",
+  "ar": "العملات وأسعار الصرف.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Financial Periods": {
+  "en": "Admin: financial period calendar for period performance and cost reports.",
+  "ar": "فترات مالية (شهور أو أرباع) تستخدم في تقارير التكلفة والأداء.",
+  "src": "FROM MEMORY"
+ },
+ "sched|Calendars": {
+  "en": "Global/Project/Resource calendars under Enterprise: work week, hours per day, holidays.",
+  "ar": "بتعرّف تقاويم الشغل (أيام الأسبوع، ساعات اليوم، الإجازات) على مستوى الشركة أو المشروع أو المورد. غلطة التقويم بتغيّر كل التواريخ.",
+  "src": "FROM MEMORY"
+ }
+}

@@ -1,0 +1,692 @@
+{
+ "survey|Toolspace": {
+  "en": "Opens the Toolspace palette with Prospector, Settings, Survey and Toolbox tabs.",
+  "ar": "بيفتح لوحة Toolspace اللي فيها تابات Prospector وSettings وSurvey وToolbox.",
+  "key": "TOGGLETOOLSPACE (TOOLSPACE)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Properties|Home/Palettes": {
+  "en": "Opens the Properties palette for selected objects.",
+  "ar": "بيفتح لوحة الخصائص للعنصر المختار.",
+  "key": "PROPERTIES (CTRL+1)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Prospector": {
+  "en": "Shows the Prospector tab: a tree of all Civil 3D objects in the drawing.",
+  "ar": "بيظهر تاب Prospector: شجرة بكل عناصر Civil 3D في الرسمة (أسطح، محاور، قطاعات...).",
+  "key": "TOOLSPACE (Prospector tab)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Panorama": {
+  "en": "Opens the Panorama window with vistas such as event and data tables.",
+  "ar": "بيفتح نافذة Panorama اللي بتعرض جداول بيانات العنصر (زي جدول الأحداث).",
+  "key": "PANORAMA",
+  "src": "FROM MEMORY"
+ },
+ "survey|Tool Palettes": {
+  "en": "Opens the Tool Palettes window with ready tools and styles.",
+  "ar": "بيفتح لوحة الأدوات الجاهزة.",
+  "key": "TOOLPALETTES (CTRL+3)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Points|Home/Create Ground Data": {
+  "en": "Dropdown of commands to create COGO points (manual, from surface, along alignment, etc.).",
+  "ar": "قايمة أوامر لعمل نقط COGO: يدوي، من سطح، على محور وغيره.",
+  "key": "CREATEPOINTS",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENG/Civil3D-UserGuide/files/GUID-02175AB9-4C31-480C-99AD-B4C28815531D.htm (Home > Create Ground Data > Points menu) [VERIFIED]"
+ },
+ "survey|Surfaces": {
+  "en": "Dropdown to create surfaces (from TIN, grid, contours, point cloud, etc.).",
+  "ar": "قايمة لعمل سطح أرض (من TIN أو كونتور أو سحابة نقط...).",
+  "key": "CREATESURFACE (menu)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Feature Lines": {
+  "en": "Dropdown to create feature lines (3D lines with grade control).",
+  "ar": "قايمة لعمل Feature Lines: خطوط ثلاثية الأبعاد بتتحكم في الميول والمناسيب.",
+  "key": "CREATEFEATURELINE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Survey|Home/Create Ground Data": {
+  "en": "Opens survey commands from this panel; exact items vary. Not fully verified.",
+  "ar": "أوامر المساحة من البانل. الأوامر بالظبط مش متأكد منها.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Create TIN surface": {
+  "en": "Creates a TIN surface, a triangle network built from points, lines and boundaries.",
+  "ar": "بيعمل سطح TIN: شبكة مثلثات من نقط وخطوط وحدود.",
+  "key": "CREATESURFACETIN",
+  "src": "FROM MEMORY"
+ },
+ "survey|Terrain map": {
+  "en": "Not a known Civil 3D command name; may refer to surface from online map data or Map 3D. Not verified.",
+  "ar": "مش اسم أمر معروف في Civil 3D. ممكن يكون سطح من بيانات خريطة أونلاين. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Parcels": {
+  "en": "Dropdown to create parcels (land lots) from objects or by layout.",
+  "ar": "قايمة لعمل قطع الأراضي (Parcels) من عناصر أو بالرسم.",
+  "key": "CREATEPARCELFROMOBJECTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Alignments": {
+  "en": "Dropdown to create alignments, the horizontal centrelines for roads, pipes, etc.",
+  "ar": "قايمة لعمل المحاور (Alignments): خط المسار الأفقي للطريق أو الخط.",
+  "key": "CREATEALIGNMENT (menu)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Profile|Home/Create Design": {
+  "en": "Dropdown to create profiles from a surface or layout profiles (vertical design).",
+  "ar": "قايمة لعمل قطاع طولي: من سطح الأرض أو تصميم المنسوب الرأسي.",
+  "key": "CREATEPROFILE (menu)",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENG/Civil3D-Tutorials/files/GUID-C0C6F25C-B0A8-486E-9C32-13948DEF1995.htm (Home > Create Design > Profile) [VERIFIED]"
+ },
+ "survey|Corridor|Home/Create Design": {
+  "en": "Creates a corridor: a 3D model from an alignment, profile and assembly.",
+  "ar": "بيعمل Corridor: موديل ثلاثي الأبعاد من محور وقطاع طولي وقطاع عرضي (Assembly).",
+  "key": "CREATECORRIDOR",
+  "src": "FROM MEMORY"
+ },
+ "survey|Intersections": {
+  "en": "Creates road intersections with turning curves and corridor regions.",
+  "ar": "بيعمل تقاطعات طرق بمنحنيات الدوران.",
+  "key": "CREATEINTERSECTION",
+  "src": "FROM MEMORY"
+ },
+ "survey|Pipe Network|Home/Create Design": {
+  "en": "Creates gravity pipe networks: pipes and structures.",
+  "ar": "بيعمل شبكة مواسير انحدار (مواسير وغرف).",
+  "key": "CREATENETWORKBYLAYOUT",
+  "src": "FROM MEMORY"
+ },
+ "survey|Pressure Network": {
+  "en": "Creates pressure pipe networks (water, gas) with fittings and appurtenances.",
+  "ar": "بيعمل شبكة مواسير ضغط (مياه، غاز) بوصلات وملحقات.",
+  "key": "CREATEPRESSURENETWORK",
+  "src": "FROM MEMORY"
+ },
+ "survey|Grading|Home/Create Design": {
+  "en": "Dropdown of grading tools: grading groups, criteria, create grading, volume.",
+  "ar": "قايمة أدوات التسوية: مجموعات وأمثلة وحساب الكميات.",
+  "key": "CREATEGRADING",
+  "src": "FROM MEMORY"
+ },
+ "survey|Assembly": {
+  "en": "Creates an assembly: the cross-section template (lanes, curbs, slopes) used in corridors.",
+  "ar": "بيعمل Assembly: القطاع العرضي النمطي (حارات وأرصفة وميول) اللي بيتستخدم في الكوريدور.",
+  "key": "CREATEASSEMBLY",
+  "src": "FROM MEMORY"
+ },
+ "survey|Profile View": {
+  "en": "Creates a profile view: the graph that shows profiles along an alignment.",
+  "ar": "بيعمل نافذة قطاع طولي (رسم بياني للمناسيب على طول المحور).",
+  "key": "CREATEPROFILEVIEW",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENG/Civil3D-UserGuide/files/GUID-02175AB9-4C31-480C-99AD-B4C28815531D.htm (search snippet only) [VERIFIED]"
+ },
+ "survey|Sample Lines": {
+  "en": "Creates sample lines across an alignment where cross-sections will be cut.",
+  "ar": "بيعمل خطوط أخذ عينات عرضية على المحور عشان تتقطع القطاعات العرضية.",
+  "key": "CREATESAMPLELINES",
+  "src": "FROM MEMORY"
+ },
+ "survey|Section Views": {
+  "en": "Dropdown to create section views, the cross-section drawings.",
+  "ar": "بيعمل نوافذ القطاعات العرضية.",
+  "key": "CREATESECTIONVIEW",
+  "src": "FROM MEMORY"
+ },
+ "survey|Line|Home/Draw": {
+  "en": "Draws lines (standard AutoCAD command).",
+  "ar": "بيرسم خطوط (أمر أوتوكاد العادي).",
+  "key": "LINE (L)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Polyline|Home/Draw": {
+  "en": "Draws polylines (standard AutoCAD command).",
+  "ar": "بيرسم بوليلاين (أمر أوتوكاد العادي).",
+  "key": "PLINE (PL)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Circle": {
+  "en": "Draws circles (standard AutoCAD command).",
+  "ar": "بيرسم دايرة (أمر أوتوكاد العادي).",
+  "key": "CIRCLE (C)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Rectangle": {
+  "en": "Draws rectangles (standard AutoCAD command).",
+  "ar": "بيرسم مستطيل (أمر أوتوكاد العادي).",
+  "key": "RECTANG (REC)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Text|Home/Draw": {
+  "en": "Creates text (standard AutoCAD command).",
+  "ar": "بيكتب نص (أمر أوتوكاد العادي).",
+  "key": "MTEXT / TEXT",
+  "src": "FROM MEMORY"
+ },
+ "survey|Dimension|Home/Draw": {
+  "en": "Creates dimensions (standard AutoCAD DIM command).",
+  "ar": "بيحط أبعاد (أمر أوتوكاد DIM).",
+  "key": "DIM",
+  "src": "FROM MEMORY"
+ },
+ "survey|Move|Home/Modify": {
+  "en": "Moves objects (standard AutoCAD command).",
+  "ar": "بينقل العناصر (أمر أوتوكاد).",
+  "key": "MOVE (M)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Copy|Home/Modify": {
+  "en": "Copies objects (standard AutoCAD command).",
+  "ar": "بينسخ العناصر (أمر أوتوكاد).",
+  "key": "COPY (CO)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Rotate|Home/Modify": {
+  "en": "Rotates objects (standard AutoCAD command).",
+  "ar": "بيلف العناصر (أمر أوتوكاد).",
+  "key": "ROTATE (RO)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Mirror": {
+  "en": "Mirrors objects (standard AutoCAD command).",
+  "ar": "بيعمل مرايا للعناصر (أمر أوتوكاد).",
+  "key": "MIRROR (MI)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Scale": {
+  "en": "Scales objects (standard AutoCAD command).",
+  "ar": "بيكبّر ويصغّر العناصر (أمر أوتوكاد).",
+  "key": "SCALE (SC)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Offset": {
+  "en": "Creates parallel copies (standard AutoCAD command).",
+  "ar": "بيعمل نسخة موازية (أمر أوتوكاد).",
+  "key": "OFFSET (O)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Erase|Home/Modify": {
+  "en": "Deletes objects (standard AutoCAD command).",
+  "ar": "بيمسح العناصر (أمر أوتوكاد).",
+  "key": "ERASE (E)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Import points|Insert/Import": {
+  "en": "Imports COGO points from a text file (PNEZD etc.).",
+  "ar": "بيستورد نقط من ملف نصي (رقم، شمال، شرق، منسوب، وصف).",
+  "key": "IMPORTPOINTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Import CAD": {
+  "en": "Imports CAD or GIS file data via Map 3D import tools.",
+  "ar": "بيستورد بيانات رسم أو GIS بأدوات Map 3D.",
+  "key": "MAPIMPORT",
+  "src": "FROM MEMORY"
+ },
+ "survey|Import LandXML": {
+  "en": "Imports LandXML data (surfaces, alignments, pipes) into the drawing.",
+  "ar": "بيستورد بيانات LandXML (أسطح، محاور، مواسير) للرسمة.",
+  "key": "IMPORTLANDXML",
+  "src": "FROM MEMORY"
+ },
+ "survey|Import survey data": {
+  "en": "Imports field survey data (for example from a data collector) into a survey database.",
+  "ar": "بيستورد بيانات الرفع المساحي (من جهاز الرفع) لقاعدة بيانات المساحة.",
+  "key": "IMPORTSURVEYDATA",
+  "src": "FROM MEMORY"
+ },
+ "survey|Map and GIS": {
+  "en": "Opens Map 3D and GIS tools; exact scope depends on the workspace. Not fully verified.",
+  "ar": "أدوات الخرائط وGIS. الشكل بيعتمد على بيئة العمل. مش متأكد بالظبط.",
+  "key": "MAPWORKSPACE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Satellites": {
+  "en": "Likely maps to online map data (aerial/road map backdrop); command not verified.",
+  "ar": "غالبًا يقصد خلفية خريطة أونلاين (صورة جوية). اسم الأمر مش متأكد منه.",
+  "key": "MAPCONNECT / GEOGRAPHICLOCATION (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Attach image": {
+  "en": "Attaches a raster image to the drawing.",
+  "ar": "بيربط صورة بالرسمة.",
+  "key": "IMAGEATTACH",
+  "src": "FROM MEMORY"
+ },
+ "survey|Add Labels": {
+  "en": "Dropdown to add labels to objects (surface, alignment, parcel, pipe...).",
+  "ar": "قايمة لإضافة Labels على العناصر (سطح، محور، قطعة، ماسورة).",
+  "key": "ADDLABELS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Add Tables": {
+  "en": "Dropdown to add tables (point, parcel, alignment, pipe tables...).",
+  "ar": "قايمة لإضافة جداول بيانات للعناصر.",
+  "key": "ADDTABLES",
+  "src": "FROM MEMORY"
+ },
+ "survey|Surface labels": {
+  "en": "Adds labels to surfaces, such as spot level, slope or contour labels.",
+  "ar": "بيضيف Labels على السطح زي منسوب نقطة أو ميل أو كونتور.",
+  "key": "ADDSURFACELABELS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Linear|Annotate/Dimension": {
+  "en": "Creates a linear dimension (standard AutoCAD).",
+  "ar": "بُعد خطي (أمر أوتوكاد).",
+  "key": "DIMLINEAR",
+  "src": "FROM MEMORY"
+ },
+ "survey|Distance": {
+  "en": "Likely a distance dimension or measure; not a distinct known command. Not verified.",
+  "ar": "غالبًا بُعد مسافة أو قياس. مش أمر منفصل معروف. مش متأكد.",
+  "key": "DIMALIGNED / DIST (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Angle": {
+  "en": "Dimensions or measures an angle (standard AutoCAD).",
+  "ar": "بيقيس أو يكتب زاوية (أمر أوتوكاد).",
+  "key": "DIMANGULAR",
+  "src": "FROM MEMORY"
+ },
+ "survey|Level": {
+  "en": "Likely a spot level label on a surface; not a distinct known command. Not verified.",
+  "ar": "غالبًا Label منسوب نقطة على سطح. مش أمر منفصل معروف. مش متأكد.",
+  "key": "ADDSURFACESPOTLEVEL (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Text|Annotate/Text": {
+  "en": "Creates text (standard AutoCAD).",
+  "ar": "بيكتب نص (أمر أوتوكاد).",
+  "key": "MTEXT",
+  "src": "FROM MEMORY"
+ },
+ "survey|3D note": {
+  "en": "Not a known Civil 3D command; looks app-specific. Not verified.",
+  "ar": "مش أمر معروف في Civil 3D. غالبًا خاص بالتطبيق. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Surface": {
+  "en": "Modify tools for a surface: edit, add data, paste, smooth, etc. (appears after selecting a surface).",
+  "ar": "أدوات تعديل السطح: تحرير وإضافة بيانات وتنعيم. بتظهر لما تحدد سطح.",
+  "key": "EDITSURFACE (contextual tab)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Points|Modify/Ground Data": {
+  "en": "Edit COGO points (move, renumber, change properties).",
+  "ar": "تعديل نقط COGO.",
+  "key": "EDITPOINTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Feature Line": {
+  "en": "Edit feature lines: insert/delete PI, set elevations, grade.",
+  "ar": "تعديل Feature Line: إضافة وحذف نقط وتحديد مناسيب وميول.",
+  "key": "EDITFEATURELINE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Grading|Modify/Ground Data": {
+  "en": "Edit grading objects and their criteria.",
+  "ar": "تعديل كائنات التسوية.",
+  "key": "EDITGRADING",
+  "src": "FROM MEMORY"
+ },
+ "survey|Alignment": {
+  "en": "Edit alignment geometry (grips, entities, superelevation).",
+  "ar": "تعديل هندسة المحور.",
+  "key": "EDITALIGNMENT",
+  "src": "FROM MEMORY"
+ },
+ "survey|Profile|Modify/Design": {
+  "en": "Edit profile geometry (PVI, curves).",
+  "ar": "تعديل قطاع طولي (نقط تقاطع رأسي ومنحنيات).",
+  "key": "EDITPROFILE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Corridor|Modify/Design": {
+  "en": "Edit corridor parameters, regions and targets.",
+  "ar": "تعديل الكوريدور والمناطق والأهداف.",
+  "key": "EDITCORRIDOR",
+  "src": "FROM MEMORY"
+ },
+ "survey|Pipe Network|Modify/Design": {
+  "en": "Edit pipe network: pipes, structures, connections.",
+  "ar": "تعديل شبكة المواسير.",
+  "key": "EDITNETWORK",
+  "src": "FROM MEMORY"
+ },
+ "survey|Parcel": {
+  "en": "Edit parcel geometry and segments.",
+  "ar": "تعديل قطع الأراضي.",
+  "key": "EDITPARCEL",
+  "src": "FROM MEMORY"
+ },
+ "survey|Move|Modify/Edit": {
+  "en": "Moves objects (standard AutoCAD command).",
+  "ar": "بينقل العناصر (أمر أوتوكاد).",
+  "key": "MOVE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Copy|Modify/Edit": {
+  "en": "Copies objects (standard AutoCAD command).",
+  "ar": "بينسخ العناصر.",
+  "key": "COPY",
+  "src": "FROM MEMORY"
+ },
+ "survey|Rotate|Modify/Edit": {
+  "en": "Rotates objects (standard AutoCAD command).",
+  "ar": "بيلف العناصر.",
+  "key": "ROTATE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Erase|Modify/Edit": {
+  "en": "Deletes objects (standard AutoCAD command).",
+  "ar": "بيمسح العناصر.",
+  "key": "ERASE",
+  "src": "FROM MEMORY"
+ },
+ "survey|Remove last": {
+  "en": "Not a known ribbon command; maybe undo of last edit. Not verified.",
+  "ar": "مش أمر معروف في الريبون. ممكن يكون إلغاء آخر تعديل. مش متأكد.",
+  "key": "U / UNDO (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Volumes": {
+  "en": "Computes earthwork volumes between two surfaces (Volumes Dashboard / bounded volumes).",
+  "ar": "بيحسب كميات حفر وردم بين سطحين.",
+  "key": "VOLUMESDASHBOARD",
+  "src": "FROM MEMORY"
+ },
+ "survey|Contours": {
+  "en": "Adds or analyses contour lines; contour labels are in the surface styles.",
+  "ar": "بيعمل أو يعرض خطوط الكونتور للسطح.",
+  "key": "ADDSURFACECONTOURLABELS (not fully verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Slope analysis": {
+  "en": "Analyses surface slopes and colours them in ranges (surface style > Slopes analysis).",
+  "ar": "بيحلل ميول السطح ويلونها حسب درجات.",
+  "key": "SURFACE PROPERTIES > Analysis",
+  "src": "FROM MEMORY"
+ },
+ "survey|Elevation analysis": {
+  "en": "Colours the surface by elevation ranges (surface Analysis tab).",
+  "ar": "بيلون السطح حسب مدى المنسوب.",
+  "key": "SURFACE PROPERTIES > Analysis",
+  "src": "FROM MEMORY"
+ },
+ "survey|Watershed": {
+  "en": "Analyses water flow on a surface: catchments, flow paths and watershed boundaries.",
+  "ar": "بيحلل حركة المياه على السطح: أحواض تجميع ومسارات تصريف.",
+  "key": "CREATECATCHMENT / SURFACE WATERDROP",
+  "src": "FROM MEMORY"
+ },
+ "survey|Check clashes": {
+  "en": "Clash/interference check between pipe networks and other objects; wording not verified.",
+  "ar": "فحص تعارض بين شبكات المواسير وعناصر تانية. التسمية مش متأكد منها.",
+  "key": "INTERFERENCECHECK (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Site safety": {
+  "en": "Not a known Civil 3D ribbon command; looks app-specific. Not verified.",
+  "ar": "مش أمر معروف في Civil 3D. غالبًا خاص بالتطبيق.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Calculations": {
+  "en": "Not a known Civil 3D ribbon command; looks app-specific. Not verified.",
+  "ar": "مش أمر معروف بالاسم ده. غالبًا خاص بالتطبيق.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Seismic, wind, soil": {
+  "en": "Not a Civil 3D ribbon command; structural loads are outside Civil 3D. Looks app-specific.",
+  "ar": "مش أمر في Civil 3D؛ أحمال الزلازل والرياح بتتحسب في برامج إنشائية. غالبًا خاص بالتطبيق.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Pan": {
+  "en": "Moves the view (standard AutoCAD).",
+  "ar": "بيحرك العرض.",
+  "key": "PAN",
+  "src": "FROM MEMORY"
+ },
+ "survey|Zoom all": {
+  "en": "Zooms to the drawing limits or extents.",
+  "ar": "بيكبّر على كل الرسمة.",
+  "key": "ZOOM > All",
+  "src": "FROM MEMORY"
+ },
+ "survey|Zoom in": {
+  "en": "Increases magnification.",
+  "ar": "بيقرّب العرض.",
+  "key": "ZOOM > In",
+  "src": "FROM MEMORY"
+ },
+ "survey|Zoom out": {
+  "en": "Decreases magnification.",
+  "ar": "بيبعّد العرض.",
+  "key": "ZOOM > Out",
+  "src": "FROM MEMORY"
+ },
+ "survey|Orbit": {
+  "en": "Rotates the view in 3D.",
+  "ar": "بيدوّر المنظور في 3D.",
+  "key": "3DORBIT",
+  "src": "FROM MEMORY"
+ },
+ "survey|Walk": {
+  "en": "Walks through the 3D model at eye level using the keyboard and mouse.",
+  "ar": "بيخليك تمشي جوه الموديل 3D بمستوى نظر الإنسان.",
+  "key": "3DWALK",
+  "src": "FROM MEMORY"
+ },
+ "survey|Plan": {
+  "en": "Switches to the plan (top-down) view of the current UCS.",
+  "ar": "بيرجع لمنظور المسقط الأفقي.",
+  "key": "PLAN",
+  "src": "FROM MEMORY"
+ },
+ "survey|Iso": {
+  "en": "Switches to an isometric preset view.",
+  "ar": "بيغير لمنظور أيزومتري.",
+  "key": "VIEW > SW Isometric",
+  "src": "FROM MEMORY"
+ },
+ "survey|Top": {
+  "en": "Switches to the top preset view.",
+  "ar": "بيغير لمنظور علوي.",
+  "key": "-VIEW > Top",
+  "src": "FROM MEMORY"
+ },
+ "survey|Site plan": {
+  "en": "Not a known Civil 3D view command; maybe a saved named view. Not verified.",
+  "ar": "مش أمر معروف. ممكن يكون منظور محفوظ بالاسم.",
+  "key": "VIEW (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Zoom to station": {
+  "en": "Not a known ribbon command; Civil 3D has zoom to an alignment station via profile/alignment tools. Not verified.",
+  "ar": "مش أمر مباشر معروف. Civil 3D بيقدر يروح لمحطة على المحور بأدوات المحور. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Zoom to site": {
+  "en": "Not a known Civil 3D command; may mean zoom to a site object. Not verified.",
+  "ar": "مش أمر معروف. ممكن يقصد Site (مجموعة عناصر). مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Shaded": {
+  "en": "Visual style shaded (standard AutoCAD).",
+  "ar": "نمط عرض مظلل.",
+  "key": "VSCURRENT > Shaded",
+  "src": "FROM MEMORY"
+ },
+ "survey|Wireframe": {
+  "en": "Visual style 2D wireframe (standard AutoCAD).",
+  "ar": "نمط عرض خطوط بس.",
+  "key": "VSCURRENT > 2dWireframe",
+  "src": "FROM MEMORY"
+ },
+ "survey|X-ray": {
+  "en": "Visual style with semi-transparent faces.",
+  "ar": "نمط عرض شبه شفاف.",
+  "key": "VSCURRENT > X-ray",
+  "src": "FROM MEMORY"
+ },
+ "survey|Properties|View/Palettes": {
+  "en": "Opens the Properties palette.",
+  "ar": "بيفتح لوحة الخصائص.",
+  "key": "PROPERTIES",
+  "src": "FROM MEMORY"
+ },
+ "survey|Parameters": {
+  "en": "Likely the Parameters Manager palette (AutoCAD); not verified for Civil 3D ribbon.",
+  "ar": "غالبًا Parameters Manager من أوتوكاد. مش متأكد إنها في ريبون Civil 3D.",
+  "key": "PARAMETERS (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Contours DXF": {
+  "en": "Not a distinct command; contours export via Export to AutoCAD or LandXML. Not verified.",
+  "ar": "مش أمر منفصل. الكونتور بيتصدّر بالتصدير لأوتوكاد أو LandXML.",
+  "key": "EXPORTTOAUTOCAD (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Surface DXF 3D": {
+  "en": "Not a distinct command; surfaces can export as 3D faces / LandXML. Not verified.",
+  "ar": "مش أمر منفصل. السطح بيتصدّر كـ 3D Faces أو LandXML.",
+  "key": "EXPORTSURFACETOAUTOCAD (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|LandXML": {
+  "en": "Exports Civil 3D data to a LandXML file.",
+  "ar": "بيصدّر بيانات Civil 3D لملف LandXML.",
+  "key": "EXPORTLANDXML",
+  "src": "FROM MEMORY"
+ },
+ "survey|IFC": {
+  "en": "Exports to IFC format for BIM exchange; support depends on the version. Not verified.",
+  "ar": "بيصدّر بصيغة IFC لتبادل BIM. الدعم بيعتمد على النسخة. مش متأكد.",
+  "key": "IFCEXPORT (not verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Drawing sheet": {
+  "en": "Creates plan/profile sheets from view frames (Plan Production).",
+  "ar": "بيعمل شيتات مسقط وقطاع من إطارات العرض (Plan Production).",
+  "key": "CREATESHEETS",
+  "src": "FROM MEMORY"
+ },
+ "survey|PDF": {
+  "en": "Exports or plots the drawing to PDF.",
+  "ar": "بيطبع أو يصدّر الرسمة PDF.",
+  "key": "EXPORTPDF",
+  "src": "FROM MEMORY"
+ },
+ "survey|Quantities": {
+  "en": "Quantity take-off: computes material quantities from pay items and surfaces.",
+  "ar": "بيحسب كميات الأعمال (حفر وردم وبنود).",
+  "key": "TAKEOFF / QTOCOMMAND (not fully verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Survey Toolspace": {
+  "en": "Opens the Survey tab of the Toolspace.",
+  "ar": "بيفتح تاب Survey في Toolspace.",
+  "key": "TOOLSPACE (Survey tab)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Survey Databases": {
+  "en": "Manages survey databases for a project (equipment, figures, networks).",
+  "ar": "بيدير قواعد بيانات المساحة للمشروع.",
+  "key": "SURVEYDATABASE (not fully verified)",
+  "src": "FROM MEMORY"
+ },
+ "survey|Create points|Survey/Points": {
+  "en": "Creates points (COGO) from the survey tools.",
+  "ar": "بيعمل نقط من أدوات المساحة.",
+  "key": "CREATEPOINTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Edit points": {
+  "en": "Edits existing points.",
+  "ar": "بيعدل النقط الموجودة.",
+  "key": "EDITPOINTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Import points|Survey/Points": {
+  "en": "Imports points from a file.",
+  "ar": "بيستورد نقط من ملف.",
+  "key": "IMPORTPOINTS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Point groups": {
+  "en": "Creates and manages point groups: named collections of points with styles.",
+  "ar": "بيعمل ويدير مجموعات نقط بأسماء وأنماط.",
+  "key": "CREATEPOINTGROUP",
+  "src": "FROM MEMORY"
+ },
+ "survey|Figures": {
+  "en": "Survey figures: breaklines and linework from survey data.",
+  "ar": "Figures: خطوط الكسر والرسم من بيانات الرفع.",
+  "key": "SURVEY FIGURES",
+  "src": "FROM MEMORY"
+ },
+ "survey|Networks": {
+  "en": "Survey networks: control points and observations adjusted by least squares.",
+  "ar": "شبكات المساحة: نقط التحكم والأرصاد وتعديلها بالمربعات الصغرى.",
+  "key": "SURVEY NETWORKS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Linework codes": {
+  "en": "Linework code sets: field codes that auto-draw lines from survey points.",
+  "ar": "أكواد الرسم: أكواد حقلية بترسم الخطوط تلقائي من نقط الرفع.",
+  "key": "LINEWORKCODESET",
+  "src": "FROM MEMORY"
+ },
+ "survey|Survey Query": {
+  "en": "Not a known ribbon command; Civil 3D can query survey data in the Survey tab. Not verified.",
+  "ar": "مش أمر معروف بالاسم ده. Civil 3D بيستعلم بيانات المساحة من تاب Survey. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Drawing settings": {
+  "en": "Opens Drawing Settings: units, scale, coordinate system, abbreviations.",
+  "ar": "بيفتح إعدادات الرسمة: وحدات ومقياس ونظام إحداثيات.",
+  "key": "EDITDRAWINGSETTINGS",
+  "src": "FROM MEMORY"
+ },
+ "survey|Surface settings": {
+  "en": "Edit surface command settings and defaults.",
+  "ar": "بيعدل إعدادات أوامر السطح الافتراضية.",
+  "key": "Settings tab > Surface > Edit Command Settings",
+  "src": "FROM MEMORY"
+ },
+ "survey|Contour interval": {
+  "en": "Not a direct command; the contour interval is set in the surface style. Not verified.",
+  "ar": "مش أمر مباشر؛ فاصل الكونتور بيتحدد من نمط السطح.",
+  "key": "SURFACE STYLE > Contours",
+  "src": "FROM MEMORY"
+ },
+ "survey|Project info": {
+  "en": "Not a known ribbon command; project info lives in Autodesk Docs / Vault. Not verified.",
+  "ar": "مش أمر معروف. معلومات المشروع في Autodesk Docs أو Vault. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Saved projects": {
+  "en": "Not a known ribbon command. Not verified.",
+  "ar": "مش أمر معروف. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "survey|Team and versions": {
+  "en": "Not a known Civil 3D ribbon command; versioning is in Autodesk Docs/Vault. Not verified.",
+  "ar": "مش أمر معروف. الإصدارات في Autodesk Docs أو Vault.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ }
+}

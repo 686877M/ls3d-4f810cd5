@@ -1,0 +1,8561 @@
+[
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Wall",
+"runs_in_app": "rv_wall",
+"built": true,
+"app_function_title": "Wall"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Door",
+"runs_in_app": "rv_door",
+"built": true,
+"app_function_title": "Door"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Window",
+"runs_in_app": "rv_window",
+"built": true,
+"app_function_title": "Window"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Component",
+"runs_in_app": "p_fam",
+"built": true,
+"app_function_title": "Families"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Column",
+"runs_in_app": "rv_col",
+"built": true,
+"app_function_title": "Column"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Roof",
+"runs_in_app": "rv_roof",
+"built": true,
+"app_function_title": "Roof"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Ceiling",
+"runs_in_app": "rv_ceil",
+"built": true,
+"app_function_title": "Ceiling"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Floor",
+"runs_in_app": "rv_floor",
+"built": true,
+"app_function_title": "Floor"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Curtain System",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Curtain Grid",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Build",
+"command": "Mullion",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Circulation",
+"command": "Railing",
+"runs_in_app": "rv_rail",
+"built": true,
+"app_function_title": "Railing"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Circulation",
+"command": "Ramp",
+"runs_in_app": "rv_ramp",
+"built": true,
+"app_function_title": "Ramp"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Circulation",
+"command": "Stair",
+"runs_in_app": "rv_stair",
+"built": true,
+"app_function_title": "Stair"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Model",
+"command": "Model Text",
+"runs_in_app": "rv_mtext",
+"built": true,
+"app_function_title": "Model Text"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Model",
+"command": "Model Line",
+"runs_in_app": "rv_mline",
+"built": true,
+"app_function_title": "Model Line"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Model",
+"command": "Model Group",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Model",
+"command": "Parts",
+"runs_in_app": "p_parts",
+"built": true,
+"app_function_title": "Parts"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Room",
+"runs_in_app": "rv_room",
+"built": true,
+"app_function_title": "Room"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Room Separator",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Tag Room",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Area",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Area Boundary",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Room & Area",
+"command": "Tag Area",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Opening",
+"command": "By Face",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Opening",
+"command": "Shaft",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Opening",
+"command": "Wall",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Opening",
+"command": "Vertical",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Opening",
+"command": "Dormer",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Datum",
+"command": "Level",
+"runs_in_app": "rv_level",
+"built": true,
+"app_function_title": "Level"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Datum",
+"command": "Grid",
+"runs_in_app": "rv_grid",
+"built": true,
+"app_function_title": "Grid"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Datum",
+"command": "Show levels",
+"runs_in_app": "t_levels",
+"built": true,
+"app_function_title": "Levels"
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Work Plane",
+"command": "Set",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Work Plane",
+"command": "Show",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Work Plane",
+"command": "Ref Plane",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Architecture",
+"panel": "Work Plane",
+"command": "Viewer",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Beam",
+"runs_in_app": "rv_beam",
+"built": true,
+"app_function_title": "Beam"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Brace",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Column",
+"runs_in_app": "rv_col",
+"built": true,
+"app_function_title": "Column"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Floor",
+"runs_in_app": "rv_floor",
+"built": true,
+"app_function_title": "Floor"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Truss",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Structure",
+"command": "Beam System",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Foundation",
+"command": "Isolated",
+"runs_in_app": "rv_found",
+"built": true,
+"app_function_title": "Isolated Foundation"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Foundation",
+"command": "Wall",
+"runs_in_app": "rv_wall",
+"built": true,
+"app_function_title": "Wall"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Foundation",
+"command": "Slab",
+"runs_in_app": "rv_fslab",
+"built": true,
+"app_function_title": "Foundation Slab"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Rebar",
+"runs_in_app": "p_rebar",
+"built": true,
+"app_function_title": "Rebar"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Area",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Path",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Fabric Sheet",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Cover",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Reinforcement",
+"command": "Rebar Couplers",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Analytical Model",
+"command": "Check",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Analytical Model",
+"command": "Loads",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Analytical Model",
+"command": "Boundary Conditions",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Structure",
+"panel": "Analytical Model",
+"command": "Load Combinations",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Connection",
+"command": "Connection",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Connection",
+"command": "Plate",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Connection",
+"command": "Bolt",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Connection",
+"command": "Anchor",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Connection",
+"command": "Weld",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Fabrication",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Fabrication",
+"command": "Cope",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Steel",
+"panel": "Fabrication",
+"command": "Shorten",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Mechanical Equipment",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Air Terminal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Duct",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Duct Fitting",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Duct Accessory",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Flex Duct",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Duct Placeholder",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "HVAC",
+"command": "Heating and Cooling Loads",
+"runs_in_app": "=()=>wtNew(\"hv\")",
+"built": true,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Electrical Equipment",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Device",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Lighting Fixture",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Cable Tray",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Conduit",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Electrical",
+"command": "Wire",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Pipe",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Pipe Fitting",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Plumbing Fixture",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Sprinkler",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Pipe Accessory",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Pipe Placeholder",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Plumbing & Piping",
+"command": "Colour by system",
+"runs_in_app": "plant_sys",
+"built": true,
+"app_function_title": "Colour by pipe system"
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Mechanical",
+"command": "Mechanical Settings",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Mechanical",
+"command": "Pipe Sizing",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Systems",
+"panel": "Mechanical",
+"command": "Duct Sizing",
+"runs_in_app": "=()=>wtNew(\"hv\")",
+"built": true,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Link Revit",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Link IFC",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Link CAD",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Link Topography",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Decal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Point Cloud",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Link",
+"command": "Coordination Model",
+"runs_in_app": "p_coord",
+"built": true,
+"app_function_title": "Coordination"
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import CAD",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import gbXML",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Import",
+"command": "Image",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import PDF",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Load from Library",
+"command": "Load Family",
+"runs_in_app": "p_fam",
+"built": true,
+"app_function_title": "Families"
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Load from Library",
+"command": "Load as Group",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Insert",
+"panel": "Load from Library",
+"command": "Insert Views from File",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Aligned",
+"runs_in_app": "rv_dim",
+"built": true,
+"app_function_title": "Aligned Dimension"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Linear",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Angular",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Radial",
+"runs_in_app": "m_circ",
+"built": true,
+"app_function_title": "Circle / hole"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Diameter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Arc Length",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Spot Elevation",
+"runs_in_app": "m_lvl",
+"built": true,
+"app_function_title": "Level"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Spot Coordinate",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Spot Slope",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Detail Line",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Region",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Component",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Revision Cloud",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Insulation",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Detail",
+"command": "Repeating Detail",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Text",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Check Spelling",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Find/Replace",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Tag",
+"command": "Tag by Category",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Tag",
+"command": "Tag All",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Tag",
+"command": "Beam Annotations",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Tag",
+"command": "Material Tag",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Tag",
+"command": "Keynote",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Symbol",
+"command": "Symbol",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Symbol",
+"command": "Stair Path",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Annotate",
+"panel": "Symbol",
+"command": "Span Direction",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Energy Analysis",
+"command": "Heating and Cooling Loads",
+"runs_in_app": "=()=>wtNew(\"hv\")",
+"built": true,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Energy Analysis",
+"command": "Energy Optimization",
+"runs_in_app": "env_en",
+"built": true,
+"app_function_title": "GIS: Energy and climate"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Energy Analysis",
+"command": "Space",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Energy Analysis",
+"command": "Zone",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Reports & Schedules",
+"command": "Quantities and cost",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Reports & Schedules",
+"command": "Pressure Loss Report",
+"runs_in_app": "=()=>wtNew(\"hv\")",
+"built": true,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Reports & Schedules",
+"command": "Panel Schedules",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Check Systems",
+"command": "Check Duct Systems",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Check Systems",
+"command": "Check Pipe Systems",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Check Systems",
+"command": "Check Circuits",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Check Systems",
+"command": "Interference Check",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Review",
+"command": "Structural review",
+"runs_in_app": "wf_struct",
+"built": true,
+"app_function_title": "Review: structural and concrete"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Review",
+"command": "MEP review",
+"runs_in_app": "wf_mep",
+"built": true,
+"app_function_title": "Review: mechanical, electrical, power"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Review",
+"command": "Quality review",
+"runs_in_app": "wf_qa",
+"built": true,
+"app_function_title": "Review: quality before issue"
+},
+{
+"program": "model",
+"tab": "Analyze",
+"panel": "Review",
+"command": "Handover",
+"runs_in_app": "wf_hand",
+"built": true,
+"app_function_title": "Review: handover"
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Conceptual Mass",
+"command": "Show Mass",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Conceptual Mass",
+"command": "In-Place Mass",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Conceptual Mass",
+"command": "Place Mass",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Model Site",
+"command": "Toposurface",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Model Site",
+"command": "Site Component",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Model Site",
+"command": "Parking Component",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Model Site",
+"command": "Building Pad",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Model Site",
+"command": "Site plan in 3D",
+"runs_in_app": "site",
+"built": true,
+"app_function_title": "Site plan"
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Modify Site",
+"command": "Split Surface",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Modify Site",
+"command": "Merge Surface",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Modify Site",
+"command": "Subregion",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Modify Site",
+"command": "Property Line",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Massing & Site",
+"panel": "Modify Site",
+"command": "Graded Region",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Manage Collaboration",
+"command": "Collaborate",
+"runs_in_app": "p_team",
+"built": true,
+"app_function_title": "Team: Team"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Manage Collaboration",
+"command": "Worksets",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Manage Collaboration",
+"command": "Live session",
+"runs_in_app": "tm_live",
+"built": true,
+"app_function_title": "Team: Live session"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Synchronize",
+"command": "Versions and roll-back",
+"runs_in_app": "tm_vers",
+"built": true,
+"app_function_title": "Team: Versions and roll-back"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Synchronize",
+"command": "Activity log",
+"runs_in_app": "tm_log",
+"built": true,
+"app_function_title": "Team: Activity log"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Coordinate",
+"command": "Copy/Monitor",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Coordinate",
+"command": "Coordination Review",
+"runs_in_app": "p_coord",
+"built": true,
+"app_function_title": "Coordination"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Coordinate",
+"command": "Interference Check",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Coordinate",
+"command": "Reconcile Hosting",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Communicate",
+"command": "Share",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "model",
+"tab": "Collaborate",
+"panel": "Communicate",
+"command": "Search everywhere",
+"runs_in_app": "tm_find",
+"built": true,
+"app_function_title": "Team: Search everywhere"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Visibility/Graphics",
+"runs_in_app": "p_views",
+"built": true,
+"app_function_title": "Views"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "View Templates",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Filters",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Thin Lines",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Show Hidden Lines",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Ghost concrete",
+"runs_in_app": "t_ghost",
+"built": true,
+"app_function_title": "Ghost concrete"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Water",
+"runs_in_app": "t_water",
+"built": true,
+"app_function_title": "Water"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Levels",
+"runs_in_app": "t_levels",
+"built": true,
+"app_function_title": "Levels"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Graphics",
+"command": "Ground",
+"runs_in_app": "t_ground",
+"built": true,
+"app_function_title": "Ground"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Visual style",
+"command": "Shaded",
+"runs_in_app": "d_shaded",
+"built": true,
+"app_function_title": "Shaded"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Visual style",
+"command": "Wireframe",
+"runs_in_app": "d_wire",
+"built": true,
+"app_function_title": "Wireframe"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Visual style",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Presentation",
+"command": "Render",
+"runs_in_app": "render",
+"built": true,
+"app_function_title": "Render 4K / 8K / 12K"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Presentation",
+"command": "Screenshot",
+"runs_in_app": "shot",
+"built": true,
+"app_function_title": "Screenshot"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Presentation",
+"command": "Record video",
+"runs_in_app": "rec",
+"built": true,
+"app_function_title": "Record"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "3D View",
+"runs_in_app": "v_iso",
+"built": true,
+"app_function_title": "Overview"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Section",
+"runs_in_app": "rv_secX",
+"built": true,
+"app_function_title": "Section along X"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Callout",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Plan Views",
+"runs_in_app": "rv_plan",
+"built": true,
+"app_function_title": "Floor plan (cut)"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Elevation",
+"runs_in_app": "rv_elevS",
+"built": true,
+"app_function_title": "South elevation"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Drafting View",
+"runs_in_app": "cad",
+"built": true,
+"app_function_title": "CAD editor"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Duplicate View",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Legends",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Schedules",
+"runs_in_app": "rv_sched",
+"built": true,
+"app_function_title": "Schedule CSV"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "BOQ and cost",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Create",
+"command": "Scope Box",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Sheet Composition",
+"command": "Sheet",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Sheet Composition",
+"command": "Title Block",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Sheet Composition",
+"command": "Revisions",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Sheet Composition",
+"command": "Guide Grid",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Orbit",
+"runs_in_app": "n_orbit",
+"built": true,
+"app_function_title": "Orbit"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Pan",
+"runs_in_app": "n_pan",
+"built": true,
+"app_function_title": "Pan"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Walk",
+"runs_in_app": "n_walk",
+"built": true,
+"app_function_title": "Walk (WASD)"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom all",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom in",
+"runs_in_app": "zin",
+"built": true,
+"app_function_title": "Zoom in"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom out",
+"runs_in_app": "zout",
+"built": true,
+"app_function_title": "Zoom out"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom selected",
+"runs_in_app": "zsel",
+"built": true,
+"app_function_title": "Zoom selected"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Perspective",
+"runs_in_app": "n_persp",
+"built": true,
+"app_function_title": "Perspective"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Navigate",
+"command": "Orthographic",
+"runs_in_app": "n_ortho",
+"built": true,
+"app_function_title": "Orthographic"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Windows",
+"command": "Tile",
+"runs_in_app": "w_tile",
+"built": true,
+"app_function_title": "Tile"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Windows",
+"command": "Cascade",
+"runs_in_app": "w_casc",
+"built": true,
+"app_function_title": "Cascade"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Windows",
+"command": "Reset layout",
+"runs_in_app": "w_reset",
+"built": true,
+"app_function_title": "Reset layout"
+},
+{
+"program": "model",
+"tab": "View",
+"panel": "Windows",
+"command": "Hide / show top bars",
+"runs_in_app": "ui_bars",
+"built": true,
+"app_function_title": "Hide / show top bars"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Materials",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Object Styles",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Snaps",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Project Information",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Project Parameters",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Global Parameters",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Shared Parameters",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Transfer Project Standards",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Purge Unused",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Project Units",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Structural Settings",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Settings",
+"command": "MEP Settings",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Manage Links",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Manage Images",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Starting View",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Phasing",
+"runs_in_app": "p_sched",
+"built": true,
+"app_function_title": "4D schedule"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Design Options",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Manage Project",
+"command": "Saved projects",
+"runs_in_app": "projects",
+"built": true,
+"app_function_title": "Projects"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Inquiry",
+"command": "Warnings",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Inquiry",
+"command": "Select by ID",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Inquiry",
+"command": "Review Warnings",
+"runs_in_app": "p_safety",
+"built": true,
+"app_function_title": "Safety and clashes"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Control",
+"command": "Pulse and handover",
+"runs_in_app": "ct_pulse",
+"built": true,
+"app_function_title": "Control: Pulse and handover"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Control",
+"command": "Project cycle",
+"runs_in_app": "ct_life",
+"built": true,
+"app_function_title": "Control: Project cycle"
+},
+{
+"program": "model",
+"tab": "Manage",
+"panel": "Control",
+"command": "Calendar",
+"runs_in_app": "ct_cal",
+"built": true,
+"app_function_title": "Control: Calendar and reminders"
+},
+{
+"program": "model",
+"tab": "Add-Ins",
+"panel": "External Tools",
+"command": "Agent hub",
+"runs_in_app": "p_hub",
+"built": true,
+"app_function_title": "Agent hub"
+},
+{
+"program": "model",
+"tab": "Add-Ins",
+"panel": "External Tools",
+"command": "Telegram bot",
+"runs_in_app": "ct_tg",
+"built": true,
+"app_function_title": "Control: Telegram bot"
+},
+{
+"program": "model",
+"tab": "Add-Ins",
+"panel": "Dynamo",
+"command": "Dynamo",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Add-Ins",
+"panel": "Dynamo",
+"command": "Dynamo Player",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Properties",
+"runs_in_app": "rv_props",
+"built": true,
+"app_function_title": "Properties"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Project Browser",
+"runs_in_app": "rv_browser",
+"built": true,
+"app_function_title": "Project Browser"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Station parameters",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Plan to CAD",
+"runs_in_app": "rv_plancad",
+"built": true,
+"app_function_title": "Floor plan to CAD"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Families",
+"runs_in_app": "p_fam",
+"built": true,
+"app_function_title": "Families"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Properties",
+"command": "Parameters",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Clipboard",
+"command": "Paste",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Clipboard",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Clipboard",
+"command": "Copy",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Clipboard",
+"command": "Match Type",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Geometry",
+"command": "Cope",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Geometry",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Geometry",
+"command": "Join",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Align",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Offset",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Mirror",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Move",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Copy",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Rotate",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Trim/Extend",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Split",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Array",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Scale",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Pin",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Delete",
+"runs_in_app": "rv_del",
+"built": true,
+"app_function_title": "Delete"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Undo model tools",
+"runs_in_app": "rv_undo",
+"built": true,
+"app_function_title": "Undo (model tools)"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Modify",
+"command": "Remove all cuts and measures",
+"runs_in_app": "rm_all",
+"built": true,
+"app_function_title": "Remove all cuts and measurements"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Distance",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Between",
+"runs_in_app": "m_btw",
+"built": true,
+"app_function_title": "Between"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Angle",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Circle / hole",
+"runs_in_app": "m_circ",
+"built": true,
+"app_function_title": "Circle / hole"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Level",
+"runs_in_app": "m_lvl",
+"built": true,
+"app_function_title": "Level"
+},
+{
+"program": "model",
+"tab": "Modify",
+"panel": "Measure",
+"command": "Object",
+"runs_in_app": "m_obj",
+"built": true,
+"app_function_title": "Object"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Drawings",
+"command": "Sheet",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Drawings",
+"command": "PDF",
+"runs_in_app": "e_pdf",
+"built": true,
+"app_function_title": "Section PDF"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Drawings",
+"command": "SVG",
+"runs_in_app": "e_svg",
+"built": true,
+"app_function_title": "Section SVG"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Drawings",
+"command": "DXF",
+"runs_in_app": "e_dxf",
+"built": true,
+"app_function_title": "Section DXF"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "3D models",
+"command": "DXF 3D",
+"runs_in_app": "e_dxf3",
+"built": true,
+"app_function_title": "3D DXF"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "3D models",
+"command": "IFC",
+"runs_in_app": "e_ifc",
+"built": true,
+"app_function_title": "IFC2X3"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "3D models",
+"command": "OBJ",
+"runs_in_app": "e_obj",
+"built": true,
+"app_function_title": "OBJ"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Quantities",
+"command": "BOQ XLSX",
+"runs_in_app": "e_boq",
+"built": true,
+"app_function_title": "BOQ XLSX"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Quantities",
+"command": "BOQ CSV",
+"runs_in_app": "e_csv",
+"built": true,
+"app_function_title": "BOQ CSV"
+},
+{
+"program": "model",
+"tab": "Output",
+"panel": "Package",
+"command": "Project package ZIP",
+"runs_in_app": "pack",
+"built": true,
+"app_function_title": "Project package (ZIP)"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Line",
+"runs_in_app": "c_line",
+"built": true,
+"app_function_title": "Line"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Polyline",
+"runs_in_app": "c_pl",
+"built": true,
+"app_function_title": "Polyline"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Circle",
+"runs_in_app": "c_circle",
+"built": true,
+"app_function_title": "Circle"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Arc",
+"runs_in_app": "c_arc",
+"built": true,
+"app_function_title": "Arc (3 points)"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Rectangle",
+"runs_in_app": "c_rect",
+"built": true,
+"app_function_title": "Rectangle"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Polygon",
+"runs_in_app": "c_poly",
+"built": true,
+"app_function_title": "Polygon"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Ellipse",
+"runs_in_app": "c_ell",
+"built": true,
+"app_function_title": "Ellipse"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Spline",
+"runs_in_app": "c_spline",
+"built": true,
+"app_function_title": "Spline"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Hatch",
+"runs_in_app": "c_hatch",
+"built": true,
+"app_function_title": "Hatch"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Gradient",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Boundary",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Region",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Wipeout",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Revision Cloud",
+"runs_in_app": "c_cloud",
+"built": true,
+"app_function_title": "Revision Cloud"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Point",
+"runs_in_app": "c_point",
+"built": true,
+"app_function_title": "Point"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Construction Line",
+"runs_in_app": "c_xline",
+"built": true,
+"app_function_title": "Construction Line"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Draw",
+"command": "Ray",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Move",
+"runs_in_app": "c_move",
+"built": true,
+"app_function_title": "Move"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Copy",
+"runs_in_app": "c_copy",
+"built": true,
+"app_function_title": "Copy"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Stretch",
+"runs_in_app": "c_stretch",
+"built": true,
+"app_function_title": "Stretch"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Rotate",
+"runs_in_app": "c_rotate",
+"built": true,
+"app_function_title": "Rotate"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Mirror",
+"runs_in_app": "c_mirror",
+"built": true,
+"app_function_title": "Mirror"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Scale",
+"runs_in_app": "c_scale",
+"built": true,
+"app_function_title": "Scale"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Trim",
+"runs_in_app": "c_trim",
+"built": true,
+"app_function_title": "Trim"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Extend",
+"runs_in_app": "c_extend",
+"built": true,
+"app_function_title": "Extend"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Fillet",
+"runs_in_app": "c_fillet",
+"built": true,
+"app_function_title": "Fillet"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Chamfer",
+"runs_in_app": "c_chamfer",
+"built": true,
+"app_function_title": "Chamfer"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Array",
+"runs_in_app": "c_array",
+"built": true,
+"app_function_title": "Array"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Offset",
+"runs_in_app": "c_offset",
+"built": true,
+"app_function_title": "Offset"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Erase",
+"runs_in_app": "c_erase",
+"built": true,
+"app_function_title": "Erase"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Explode",
+"runs_in_app": "c_explode",
+"built": true,
+"app_function_title": "Explode"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Join",
+"runs_in_app": "c_join",
+"built": true,
+"app_function_title": "Join"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Break",
+"runs_in_app": "c_break",
+"built": true,
+"app_function_title": "Break"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Blend",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Lengthen",
+"runs_in_app": "c_lengthen",
+"built": true,
+"app_function_title": "Lengthen"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Align",
+"runs_in_app": "c_align",
+"built": true,
+"app_function_title": "Align"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Modify",
+"command": "Edit Polyline",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Annotation",
+"command": "Text",
+"runs_in_app": "c_text",
+"built": true,
+"app_function_title": "Text"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Annotation",
+"command": "Dimension",
+"runs_in_app": "c_dim",
+"built": true,
+"app_function_title": "Dimension"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Annotation",
+"command": "Leader",
+"runs_in_app": "c_leader",
+"built": true,
+"app_function_title": "Leader"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Annotation",
+"command": "Table",
+"runs_in_app": "c_table",
+"built": true,
+"app_function_title": "Table"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Annotation",
+"command": "Mtext",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Layer Properties",
+"runs_in_app": "ly_mgr",
+"built": true,
+"app_function_title": "Layer Properties"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Layer Previous",
+"runs_in_app": "ly_prev",
+"built": true,
+"app_function_title": "Layer Previous"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Isolate",
+"runs_in_app": "ly_iso",
+"built": true,
+"app_function_title": "Isolate"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Unisolate (all on)",
+"runs_in_app": "ly_all",
+"built": true,
+"app_function_title": "All layers on"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Freeze",
+"runs_in_app": "ly_freeze",
+"built": true,
+"app_function_title": "Freeze / thaw"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Lock",
+"runs_in_app": "ly_lock",
+"built": true,
+"app_function_title": "Lock"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Make Current",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Layers",
+"command": "Match",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Block",
+"command": "Insert",
+"runs_in_app": "c_binsert",
+"built": true,
+"app_function_title": "Insert Block"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Block",
+"command": "Create",
+"runs_in_app": "c_bcreate",
+"built": true,
+"app_function_title": "Create Block"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Block",
+"command": "Edit",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Block",
+"command": "Define Attributes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Properties",
+"command": "Match Properties",
+"runs_in_app": "c_matchp",
+"built": true,
+"app_function_title": "Match Properties"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Properties",
+"command": "Color",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Properties",
+"command": "Linetype",
+"runs_in_app": "ly_lt",
+"built": true,
+"app_function_title": "Linetype"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Properties",
+"command": "Lineweight",
+"runs_in_app": "ly_lw",
+"built": true,
+"app_function_title": "Lineweight"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Groups",
+"command": "Group",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Groups",
+"command": "Ungroup",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Utilities",
+"command": "Measure Distance",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Utilities",
+"command": "Area",
+"runs_in_app": "c_area",
+"built": true,
+"app_function_title": "Area"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Utilities",
+"command": "ID Point",
+"runs_in_app": "c_id",
+"built": true,
+"app_function_title": "ID Point"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Utilities",
+"command": "Quick Calc",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Utilities",
+"command": "Angle",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Paste",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Copy Clip",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Undo",
+"runs_in_app": "undo",
+"built": true,
+"app_function_title": "Undo"
+},
+{
+"program": "draft",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Redo",
+"runs_in_app": "redo",
+"built": true,
+"app_function_title": "Redo"
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Block",
+"command": "Insert",
+"runs_in_app": "c_binsert",
+"built": true,
+"app_function_title": "Insert Block"
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Block",
+"command": "Create Block",
+"runs_in_app": "c_bcreate",
+"built": true,
+"app_function_title": "Create Block"
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Block",
+"command": "Edit Block",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Reference",
+"command": "Attach",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Reference",
+"command": "Clip",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Reference",
+"command": "Underlay",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Import",
+"command": "PDF Import",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Data",
+"command": "Data Extraction",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Data",
+"command": "Link Data",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Linking",
+"command": "Hyperlink",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Insert",
+"panel": "Linking",
+"command": "Location",
+"runs_in_app": "p_geo",
+"built": true,
+"app_function_title": "Map and GIS"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Multiline Text",
+"runs_in_app": "c_text",
+"built": true,
+"app_function_title": "Text"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Single Line",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Check Spelling",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Find",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Linear",
+"runs_in_app": "c_dim",
+"built": true,
+"app_function_title": "Dimension"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Aligned",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Angular",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Radius",
+"runs_in_app": "m_circ",
+"built": true,
+"app_function_title": "Circle / hole"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Diameter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Arc Length",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Baseline",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Continue",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Update",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Dimensions",
+"command": "Dim Style",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Leaders",
+"command": "Multileader",
+"runs_in_app": "c_leader",
+"built": true,
+"app_function_title": "Leader"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Leaders",
+"command": "Add Leader",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Leaders",
+"command": "Align",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Tables",
+"command": "Table",
+"runs_in_app": "c_table",
+"built": true,
+"app_function_title": "Table"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Tables",
+"command": "Link Table",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Markup",
+"command": "Revision Cloud",
+"runs_in_app": "c_cloud",
+"built": true,
+"app_function_title": "Revision Cloud"
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Markup",
+"command": "Wipeout",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Annotate",
+"panel": "Markup",
+"command": "Note in 3D",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Coincident",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Collinear",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Concentric",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Fix",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Parallel",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Perpendicular",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Horizontal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Vertical",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Tangent",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Smooth",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Symmetric",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Geometric",
+"command": "Equal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Linear",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Aligned",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Angular",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Radius",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Diameter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Dimensional",
+"command": "Convert",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Manage",
+"command": "Delete Constraints",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Manage",
+"command": "Show/Hide",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Parametric",
+"panel": "Manage",
+"command": "Parameters Manager",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Pan",
+"runs_in_app": "n_pan",
+"built": true,
+"app_function_title": "Pan"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom Extents",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom Window",
+"runs_in_app": "zsel",
+"built": true,
+"app_function_title": "Zoom selected"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom In",
+"runs_in_app": "zin",
+"built": true,
+"app_function_title": "Zoom in"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom Out",
+"runs_in_app": "zout",
+"built": true,
+"app_function_title": "Zoom out"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Navigate",
+"command": "Orbit",
+"runs_in_app": "n_orbit",
+"built": true,
+"app_function_title": "Orbit"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "2D Wireframe",
+"runs_in_app": "d_wire",
+"built": true,
+"app_function_title": "Wireframe"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Shaded",
+"runs_in_app": "d_shaded",
+"built": true,
+"app_function_title": "Shaded"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Hidden",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Realistic",
+"runs_in_app": "render",
+"built": true,
+"app_function_title": "Render 4K / 8K / 12K"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Conceptual",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Sketchy",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Shades of Gray",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Model Viewports",
+"command": "Named Views",
+"runs_in_app": "p_views",
+"built": true,
+"app_function_title": "Views"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Model Viewports",
+"command": "Viewport Configuration",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Model Viewports",
+"command": "Top",
+"runs_in_app": "n_top",
+"built": true,
+"app_function_title": "Top"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Model Viewports",
+"command": "Iso",
+"runs_in_app": "n_iso",
+"built": true,
+"app_function_title": "Iso"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Palettes",
+"command": "Properties",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Palettes",
+"command": "Tool Palettes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Palettes",
+"command": "Sheet Set Manager",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Palettes",
+"command": "Layers",
+"runs_in_app": "ly_mgr",
+"built": true,
+"app_function_title": "Layer Properties"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Palettes",
+"command": "Measure",
+"runs_in_app": "p_review",
+"built": true,
+"app_function_title": "Review calculations"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Interface",
+"command": "Switch Windows",
+"runs_in_app": "w_tile",
+"built": true,
+"app_function_title": "Tile"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Interface",
+"command": "Cascade",
+"runs_in_app": "w_casc",
+"built": true,
+"app_function_title": "Cascade"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Interface",
+"command": "Reset layout",
+"runs_in_app": "w_reset",
+"built": true,
+"app_function_title": "Reset layout"
+},
+{
+"program": "draft",
+"tab": "View",
+"panel": "Interface",
+"command": "Hide / show bars",
+"runs_in_app": "ui_bars",
+"built": true,
+"app_function_title": "Hide / show top bars"
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Action Recorder",
+"command": "Record",
+"runs_in_app": "rec",
+"built": true,
+"app_function_title": "Record"
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Action Recorder",
+"command": "Play",
+"runs_in_app": "dis",
+"built": true,
+"app_function_title": "Disassemble"
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Customization",
+"command": "User Interface",
+"runs_in_app": "p_look",
+"built": true,
+"app_function_title": "Appearance"
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Customization",
+"command": "Tool Palettes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Customization",
+"command": "Edit Aliases",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "CAD Standards",
+"command": "Configure",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "CAD Standards",
+"command": "Check",
+"runs_in_app": "p_safety",
+"built": true,
+"app_function_title": "Safety and clashes"
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "CAD Standards",
+"command": "Layer Translator",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Applications",
+"command": "Load Application",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Manage",
+"panel": "Applications",
+"command": "Run Script",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Plot",
+"command": "Plot",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Plot",
+"command": "Batch Plot",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Plot",
+"command": "Preview",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Plot",
+"command": "Page Setup Manager",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Plot",
+"command": "Plotter Manager",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Export to DWF/PDF",
+"command": "Export PDF",
+"runs_in_app": "e_pdf",
+"built": true,
+"app_function_title": "Section PDF"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Export to DWF/PDF",
+"command": "Export SVG",
+"runs_in_app": "e_svg",
+"built": true,
+"app_function_title": "Section SVG"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Export to DWF/PDF",
+"command": "Export DXF",
+"runs_in_app": "e_dxf",
+"built": true,
+"app_function_title": "Section DXF"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Export to DWF/PDF",
+"command": "DWF",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Package",
+"command": "Project package ZIP",
+"runs_in_app": "pack",
+"built": true,
+"app_function_title": "Project package (ZIP)"
+},
+{
+"program": "draft",
+"tab": "Output",
+"panel": "Package",
+"command": "Share",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Palettes",
+"command": "Toolspace",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Palettes",
+"command": "Properties",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Palettes",
+"command": "Prospector",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Palettes",
+"command": "Panorama",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Palettes",
+"command": "Tool Palettes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Surfaces",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Feature Lines",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Survey",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Create TIN surface",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Ground Data",
+"command": "Terrain map",
+"runs_in_app": "p_geo",
+"built": true,
+"app_function_title": "Map and GIS"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Parcels",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Alignments",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Profile",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Corridor",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Intersections",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Pipe Network",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Pressure Network",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Grading",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Create Design",
+"command": "Assembly",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Profile & Section Views",
+"command": "Profile View",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Profile & Section Views",
+"command": "Sample Lines",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Profile & Section Views",
+"command": "Section Views",
+"runs_in_app": "sA",
+"built": true,
+"app_function_title": "Section X"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Line",
+"runs_in_app": "c_line",
+"built": true,
+"app_function_title": "Line"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Polyline",
+"runs_in_app": "c_pl",
+"built": true,
+"app_function_title": "Polyline"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Circle",
+"runs_in_app": "c_circle",
+"built": true,
+"app_function_title": "Circle"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Rectangle",
+"runs_in_app": "c_rect",
+"built": true,
+"app_function_title": "Rectangle"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Text",
+"runs_in_app": "c_text",
+"built": true,
+"app_function_title": "Text"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Draw",
+"command": "Dimension",
+"runs_in_app": "c_dim",
+"built": true,
+"app_function_title": "Dimension"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Move",
+"runs_in_app": "c_move",
+"built": true,
+"app_function_title": "Move"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Copy",
+"runs_in_app": "c_copy",
+"built": true,
+"app_function_title": "Copy"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Rotate",
+"runs_in_app": "c_rotate",
+"built": true,
+"app_function_title": "Rotate"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Mirror",
+"runs_in_app": "c_mirror",
+"built": true,
+"app_function_title": "Mirror"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Scale",
+"runs_in_app": "c_scale",
+"built": true,
+"app_function_title": "Scale"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Offset",
+"runs_in_app": "c_offset",
+"built": true,
+"app_function_title": "Offset"
+},
+{
+"program": "survey",
+"tab": "Home",
+"panel": "Modify",
+"command": "Erase",
+"runs_in_app": "c_erase",
+"built": true,
+"app_function_title": "Erase"
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import CAD",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import LandXML",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Import",
+"command": "Import survey data",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Map",
+"command": "Map and GIS",
+"runs_in_app": "p_geo",
+"built": true,
+"app_function_title": "Map and GIS"
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Map",
+"command": "Satellites",
+"runs_in_app": "env_sat",
+"built": true,
+"app_function_title": "GIS: Satellites and GIS"
+},
+{
+"program": "survey",
+"tab": "Insert",
+"panel": "Map",
+"command": "Attach image",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Labels & Tables",
+"command": "Add Labels",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Labels & Tables",
+"command": "Add Tables",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Labels & Tables",
+"command": "Surface labels",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Linear",
+"runs_in_app": "c_dim",
+"built": true,
+"app_function_title": "Dimension"
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Distance",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Angle",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Dimension",
+"command": "Level",
+"runs_in_app": "m_lvl",
+"built": true,
+"app_function_title": "Level"
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Text",
+"command": "Text",
+"runs_in_app": "c_text",
+"built": true,
+"app_function_title": "Text"
+},
+{
+"program": "survey",
+"tab": "Annotate",
+"panel": "Text",
+"command": "3D note",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Ground Data",
+"command": "Surface",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Ground Data",
+"command": "Points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Ground Data",
+"command": "Feature Line",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Ground Data",
+"command": "Grading",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Design",
+"command": "Alignment",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Design",
+"command": "Profile",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Design",
+"command": "Corridor",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Design",
+"command": "Pipe Network",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Design",
+"command": "Parcel",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Edit",
+"command": "Move",
+"runs_in_app": "c_move",
+"built": true,
+"app_function_title": "Move"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Edit",
+"command": "Copy",
+"runs_in_app": "c_copy",
+"built": true,
+"app_function_title": "Copy"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Edit",
+"command": "Rotate",
+"runs_in_app": "c_rotate",
+"built": true,
+"app_function_title": "Rotate"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Edit",
+"command": "Erase",
+"runs_in_app": "c_erase",
+"built": true,
+"app_function_title": "Erase"
+},
+{
+"program": "survey",
+"tab": "Modify",
+"panel": "Edit",
+"command": "Remove last",
+"runs_in_app": "rm_last",
+"built": true,
+"app_function_title": "Remove last placed item"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Ground Data",
+"command": "Volumes",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Ground Data",
+"command": "Contours",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Ground Data",
+"command": "Slope analysis",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Ground Data",
+"command": "Elevation analysis",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Ground Data",
+"command": "Watershed",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Design",
+"command": "Check clashes",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Design",
+"command": "Site safety",
+"runs_in_app": "p_safety",
+"built": true,
+"app_function_title": "Safety and clashes"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Design",
+"command": "Calculations",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "survey",
+"tab": "Analyze",
+"panel": "Design",
+"command": "Seismic, wind, soil",
+"runs_in_app": "env_qc",
+"built": true,
+"app_function_title": "GIS: Civil / MEP / Electrical calcs"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Pan",
+"runs_in_app": "n_pan",
+"built": true,
+"app_function_title": "Pan"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom all",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom in",
+"runs_in_app": "zin",
+"built": true,
+"app_function_title": "Zoom in"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom out",
+"runs_in_app": "zout",
+"built": true,
+"app_function_title": "Zoom out"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Orbit",
+"runs_in_app": "n_orbit",
+"built": true,
+"app_function_title": "Orbit"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Navigate",
+"command": "Walk",
+"runs_in_app": "n_walk",
+"built": true,
+"app_function_title": "Walk (WASD)"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Plan",
+"runs_in_app": "v_plan",
+"built": true,
+"app_function_title": "Plan"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Iso",
+"runs_in_app": "n_iso",
+"built": true,
+"app_function_title": "Iso"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Top",
+"runs_in_app": "n_top",
+"built": true,
+"app_function_title": "Top"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Site plan",
+"runs_in_app": "site",
+"built": true,
+"app_function_title": "Site plan"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Zoom to station",
+"runs_in_app": "sitest",
+"built": true,
+"app_function_title": "Zoom station"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Views",
+"command": "Zoom to site",
+"runs_in_app": "sitez",
+"built": true,
+"app_function_title": "Zoom site"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Shaded",
+"runs_in_app": "d_shaded",
+"built": true,
+"app_function_title": "Shaded"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Wireframe",
+"runs_in_app": "d_wire",
+"built": true,
+"app_function_title": "Wireframe"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Palettes",
+"command": "Properties",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "survey",
+"tab": "View",
+"panel": "Palettes",
+"command": "Parameters",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Export",
+"command": "Contours DXF",
+"runs_in_app": "e_dxf",
+"built": true,
+"app_function_title": "Section DXF"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Export",
+"command": "Surface DXF 3D",
+"runs_in_app": "e_dxf3",
+"built": true,
+"app_function_title": "3D DXF"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Export",
+"command": "LandXML",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Export",
+"command": "IFC",
+"runs_in_app": "e_ifc",
+"built": true,
+"app_function_title": "IFC2X3"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Plot",
+"command": "Drawing sheet",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Plot",
+"command": "PDF",
+"runs_in_app": "e_pdf",
+"built": true,
+"app_function_title": "Section PDF"
+},
+{
+"program": "survey",
+"tab": "Output",
+"panel": "Plot",
+"command": "Quantities",
+"runs_in_app": "e_boq",
+"built": true,
+"app_function_title": "BOQ XLSX"
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Survey Toolspace",
+"command": "Survey Toolspace",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Survey Toolspace",
+"command": "Survey Databases",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Points",
+"command": "Create points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Points",
+"command": "Edit points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Points",
+"command": "Import points",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Points",
+"command": "Point groups",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Figures and Networks",
+"command": "Figures",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Figures and Networks",
+"command": "Networks",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Figures and Networks",
+"command": "Linework codes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Survey",
+"panel": "Query",
+"command": "Survey Query",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Drawing settings",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Surface settings",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Settings",
+"command": "Contour interval",
+"runs_in_app": "p_survey",
+"built": true,
+"app_function_title": "Survey and surface"
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Project",
+"command": "Project info",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Project",
+"command": "Saved projects",
+"runs_in_app": "projects",
+"built": true,
+"app_function_title": "Projects"
+},
+{
+"program": "survey",
+"tab": "Manage",
+"panel": "Project",
+"command": "Team and versions",
+"runs_in_app": "p_team",
+"built": true,
+"app_function_title": "Team: Team"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Project",
+"command": "Project Manager",
+"runs_in_app": "projects",
+"built": true,
+"app_function_title": "Projects"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Project",
+"command": "Project Setup",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Project",
+"command": "Data Manager",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Project",
+"command": "Spec Viewer",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Project",
+"command": "P&ID Line List",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Route Pipe",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Pipe Fitting",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Valve",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Custom Part",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Insulation",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Part Insertion",
+"command": "Parts list",
+"runs_in_app": "p_parts",
+"built": true,
+"app_function_title": "Parts"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Equipment",
+"command": "Create Equipment",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Equipment",
+"command": "Modify Equipment",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Equipment",
+"command": "Attach Equipment",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Equipment",
+"command": "Nozzle",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Equipment",
+"command": "Families",
+"runs_in_app": "p_fam",
+"built": true,
+"app_function_title": "Families"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Pipe Supports",
+"command": "Create Support",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Pipe Supports",
+"command": "Convert Support",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Compare",
+"command": "Colour by system",
+"runs_in_app": "plant_sys",
+"built": true,
+"app_function_title": "Colour by pipe system"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Compare",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Compare",
+"command": "Ghost concrete",
+"runs_in_app": "t_ghost",
+"built": true,
+"app_function_title": "Ghost concrete"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Compare",
+"command": "Hide overlays",
+"runs_in_app": "hideov",
+"built": true,
+"app_function_title": "Hide overlays"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Ortho Views",
+"command": "Create Ortho View",
+"runs_in_app": "v_plan",
+"built": true,
+"app_function_title": "Plan"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Ortho Views",
+"command": "Section",
+"runs_in_app": "v_secA",
+"built": true,
+"app_function_title": "Section A"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Ortho Views",
+"command": "Side",
+"runs_in_app": "v_side",
+"built": true,
+"app_function_title": "Side"
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Ortho Views",
+"command": "Adjacent View",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Hide Selected",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Hide Others",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Show All",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Creation",
+"command": "Production Iso",
+"runs_in_app": "plant_sheet",
+"built": true,
+"app_function_title": "Iso sheet (A1, title block)"
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Creation",
+"command": "Quick Iso",
+"runs_in_app": "plant_sheet",
+"built": true,
+"app_function_title": "Iso sheet (A1, title block)"
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Creation",
+"command": "Iso view",
+"runs_in_app": "v_iso",
+"built": true,
+"app_function_title": "Overview"
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Annotations",
+"command": "Iso Message",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Annotations",
+"command": "Start Point",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Annotations",
+"command": "Break Point",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Annotations",
+"command": "Flow Arrow",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Iso Annotations",
+"command": "Insulation Symbol",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Export",
+"command": "PCF Export",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Export",
+"command": "Sheet PDF",
+"runs_in_app": "e_pdf",
+"built": true,
+"app_function_title": "Section PDF"
+},
+{
+"program": "plant",
+"tab": "Isos",
+"panel": "Export",
+"command": "DXF",
+"runs_in_app": "e_dxf",
+"built": true,
+"app_function_title": "Section DXF"
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Grid",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Member",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Railing",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Stairs",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Ladder",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Plate",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Parts",
+"command": "Footing",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Cutting",
+"command": "Cut Member",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Cutting",
+"command": "Miter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Cutting",
+"command": "Trim",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Cutting",
+"command": "Extend",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Review",
+"command": "Structural review",
+"runs_in_app": "wf_struct",
+"built": true,
+"app_function_title": "Review: structural and concrete"
+},
+{
+"program": "plant",
+"tab": "Structure",
+"panel": "Review",
+"command": "Rebar",
+"runs_in_app": "p_rebar",
+"built": true,
+"app_function_title": "Rebar"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Check",
+"command": "Clashes",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Check",
+"command": "Coordination",
+"runs_in_app": "p_coord",
+"built": true,
+"app_function_title": "Coordination"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Check",
+"command": "MEP review",
+"runs_in_app": "wf_mep",
+"built": true,
+"app_function_title": "Review: mechanical, electrical, power"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Check",
+"command": "Safety",
+"runs_in_app": "p_safety",
+"built": true,
+"app_function_title": "Safety and clashes"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Calculations",
+"command": "Pump and pipe calcs",
+"runs_in_app": "env_qc",
+"built": true,
+"app_function_title": "GIS: Civil / MEP / Electrical calcs"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Calculations",
+"command": "Engineering analysis",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "plant",
+"tab": "Analysis",
+"panel": "Calculations",
+"command": "HVAC",
+"runs_in_app": "=()=>wtNew(\"hv\")",
+"built": true,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Navigate",
+"command": "Orbit",
+"runs_in_app": "n_orbit",
+"built": true,
+"app_function_title": "Orbit"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Navigate",
+"command": "Pan",
+"runs_in_app": "n_pan",
+"built": true,
+"app_function_title": "Pan"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Navigate",
+"command": "Walk",
+"runs_in_app": "n_walk",
+"built": true,
+"app_function_title": "Walk (WASD)"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom all",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Navigate",
+"command": "Zoom selected",
+"runs_in_app": "zsel",
+"built": true,
+"app_function_title": "Zoom selected"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Shaded",
+"runs_in_app": "d_shaded",
+"built": true,
+"app_function_title": "Shaded"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Wireframe",
+"runs_in_app": "d_wire",
+"built": true,
+"app_function_title": "Wireframe"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Perspective",
+"runs_in_app": "n_persp",
+"built": true,
+"app_function_title": "Perspective"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Visual Styles",
+"command": "Orthographic",
+"runs_in_app": "n_ortho",
+"built": true,
+"app_function_title": "Orthographic"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Windows",
+"command": "Tile",
+"runs_in_app": "w_tile",
+"built": true,
+"app_function_title": "Tile"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Windows",
+"command": "Cascade",
+"runs_in_app": "w_casc",
+"built": true,
+"app_function_title": "Cascade"
+},
+{
+"program": "plant",
+"tab": "View",
+"panel": "Windows",
+"command": "Reset layout",
+"runs_in_app": "w_reset",
+"built": true,
+"app_function_title": "Reset layout"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Sheets",
+"command": "Iso sheet A1",
+"runs_in_app": "plant_sheet",
+"built": true,
+"app_function_title": "Iso sheet (A1, title block)"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Sheets",
+"command": "Drawing sheet",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Sheets",
+"command": "Render",
+"runs_in_app": "render",
+"built": true,
+"app_function_title": "Render 4K / 8K / 12K"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Sheets",
+"command": "Screenshot",
+"runs_in_app": "shot",
+"built": true,
+"app_function_title": "Screenshot"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Export",
+"command": "IFC",
+"runs_in_app": "e_ifc",
+"built": true,
+"app_function_title": "IFC2X3"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Export",
+"command": "DXF 3D",
+"runs_in_app": "e_dxf3",
+"built": true,
+"app_function_title": "3D DXF"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Export",
+"command": "OBJ",
+"runs_in_app": "e_obj",
+"built": true,
+"app_function_title": "OBJ"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Export",
+"command": "BOQ XLSX",
+"runs_in_app": "e_boq",
+"built": true,
+"app_function_title": "BOQ XLSX"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Export",
+"command": "Navisworks NWC",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Package",
+"command": "Project package ZIP",
+"runs_in_app": "pack",
+"built": true,
+"app_function_title": "Project package (ZIP)"
+},
+{
+"program": "plant",
+"tab": "Output",
+"panel": "Package",
+"command": "Share",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "New",
+"runs_in_app": "new",
+"built": true,
+"app_function_title": "New"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "Open",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "Save",
+"runs_in_app": "save",
+"built": true,
+"app_function_title": "Save"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "Projects",
+"runs_in_app": "projects",
+"built": true,
+"app_function_title": "Projects"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "Page Setup",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Project",
+"command": "Print",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Export XER",
+"runs_in_app": "xer",
+"built": true,
+"app_function_title": "XER"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Export MS Project XML",
+"runs_in_app": "xml",
+"built": true,
+"app_function_title": "MS Project XML"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Export XLSX",
+"runs_in_app": "xlsxs",
+"built": true,
+"app_function_title": "Schedule XLSX"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Export CSV",
+"runs_in_app": "csvs",
+"built": true,
+"app_function_title": "Activities CSV"
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Import XER",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "File",
+"panel": "Import / Export",
+"command": "Import XLSX",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Undo",
+"runs_in_app": "undo",
+"built": true,
+"app_function_title": "Undo"
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Redo",
+"runs_in_app": "redo",
+"built": true,
+"app_function_title": "Redo"
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Copy",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Paste",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Add",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Delete",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Dissolve",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Edit",
+"command": "Renumber Activity IDs",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Resources",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Roles",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Activity Codes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Predecessors",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Successors",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Assign",
+"command": "Steps",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Find",
+"command": "Find",
+"runs_in_app": "tm_find",
+"built": true,
+"app_function_title": "Team: Search everywhere"
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Find",
+"command": "Replace",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Edit",
+"panel": "Find",
+"command": "Spell Check",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "Activities (Gantt)",
+"runs_in_app": "p6",
+"built": true,
+"app_function_title": "Schedule (P6)"
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "Timeline dock",
+"runs_in_app": "p_tl",
+"built": true,
+"app_function_title": "Timeline dock"
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "4D schedule",
+"runs_in_app": "p_sched",
+"built": true,
+"app_function_title": "4D schedule"
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "Activity Network",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "Activity Usage Spreadsheet",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Layout",
+"command": "Resource Usage Profile",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Columns",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Bars",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Timescale",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Filters",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Group and Sort",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Bottom Layout",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Show",
+"command": "Progress Line",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Zoom",
+"command": "Zoom In",
+"runs_in_app": "zin",
+"built": true,
+"app_function_title": "Zoom in"
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Zoom",
+"command": "Zoom Out",
+"runs_in_app": "zout",
+"built": true,
+"app_function_title": "Zoom out"
+},
+{
+"program": "sched",
+"tab": "View",
+"panel": "Zoom",
+"command": "Zoom to Best Fit",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "WBS",
+"runs_in_app": "wbs_open",
+"built": true,
+"app_function_title": "WBS"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Activities",
+"runs_in_app": "p6",
+"built": true,
+"app_function_title": "Schedule (P6)"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Resource Assignments",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Work Products and Documents",
+"runs_in_app": "dc_reg",
+"built": true,
+"app_function_title": "TO: Register"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Expenses",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Thresholds",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Issues",
+"runs_in_app": "ct_pulse",
+"built": true,
+"app_function_title": "Control: Pulse and handover"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Structure",
+"command": "Risks",
+"runs_in_app": "p_scen",
+"built": true,
+"app_function_title": "Scenarios and risk"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Baselines",
+"command": "Maintain Baselines",
+"runs_in_app": "tm_vers",
+"built": true,
+"app_function_title": "Team: Versions and roll-back"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Baselines",
+"command": "Assign Baselines",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Settings",
+"command": "Set Default Project",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Settings",
+"command": "Project details",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "sched",
+"tab": "Project",
+"panel": "Settings",
+"command": "Calendar",
+"runs_in_app": "ct_cal",
+"built": true,
+"app_function_title": "Control: Calendar and reminders"
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Projects",
+"runs_in_app": "projects",
+"built": true,
+"app_function_title": "Projects"
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "EPS",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "OBS",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Resources",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Roles",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Calendars",
+"runs_in_app": "ct_cal",
+"built": true,
+"app_function_title": "Control: Calendar and reminders"
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Cost Accounts",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Activity Codes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "Project Codes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Enterprise",
+"panel": "Data",
+"command": "User Defined Fields",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Schedule (F9)",
+"runs_in_app": "p6",
+"built": true,
+"app_function_title": "Schedule (P6)"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Level Resources",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Apply Actuals",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Update Progress",
+"runs_in_app": "ct_rep",
+"built": true,
+"app_function_title": "Control: Follow-up reports"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Recalculate Assignment Costs",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Summarize",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Schedule",
+"command": "Store Period Performance",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Analysis",
+"command": "Scenarios and risk",
+"runs_in_app": "p_scen",
+"built": true,
+"app_function_title": "Scenarios and risk"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Analysis",
+"command": "Claim Digger",
+"runs_in_app": "tm_vers",
+"built": true,
+"app_function_title": "Team: Versions and roll-back"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Analysis",
+"command": "Check Schedule",
+"runs_in_app": "p_bim",
+"built": true,
+"app_function_title": "BIM health"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Analysis",
+"command": "Global Change",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Analysis",
+"command": "Follow-up reports",
+"runs_in_app": "ct_rep",
+"built": true,
+"app_function_title": "Control: Follow-up reports"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Reports",
+"command": "Reports",
+"runs_in_app": "ct_rep",
+"built": true,
+"app_function_title": "Control: Follow-up reports"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Reports",
+"command": "Report Wizard",
+"runs_in_app": "o_report",
+"built": true,
+"app_function_title": "Report editor"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Reports",
+"command": "Tracking",
+"runs_in_app": "ct_pulse",
+"built": true,
+"app_function_title": "Control: Pulse and handover"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Reports",
+"command": "Publish",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "sched",
+"tab": "Tools",
+"panel": "Reports",
+"command": "Video of the 4D schedule",
+"runs_in_app": "recsch",
+"built": true,
+"app_function_title": "Video: 4D schedule"
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Users",
+"runs_in_app": "p_team",
+"built": true,
+"app_function_title": "Team: Team"
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Security Profiles",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Admin Preferences",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Admin Categories",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Currencies",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "sched",
+"tab": "Admin",
+"panel": "Admin",
+"command": "Financial Periods",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Project",
+"command": "Append",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Project",
+"command": "Refresh",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Project",
+"command": "Reset All",
+"runs_in_app": "w_reset",
+"built": true,
+"app_function_title": "Reset layout"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Project",
+"command": "File Options",
+"runs_in_app": "setup",
+"built": true,
+"app_function_title": "Project set-up"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Select",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Select All",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Select Same",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Selection Tree",
+"runs_in_app": "p_parts",
+"built": true,
+"app_function_title": "Parts"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Find Items",
+"runs_in_app": "tm_find",
+"built": true,
+"app_function_title": "Team: Search everywhere"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Select & Search",
+"command": "Sets",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Hide",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Require",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Hide Unselected",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Unhide All",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Visibility",
+"command": "Hide overlays",
+"runs_in_app": "hideov",
+"built": true,
+"app_function_title": "Hide overlays"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Display",
+"command": "Links",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Display",
+"command": "Quick Properties",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Display",
+"command": "Properties",
+"runs_in_app": "p_edit",
+"built": true,
+"app_function_title": "Parameters"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Clash Detective",
+"runs_in_app": "clash",
+"built": true,
+"app_function_title": "Clashes"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Coordination (specs vs codes)",
+"runs_in_app": "p_coord",
+"built": true,
+"app_function_title": "Coordination"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "TimeLiner",
+"runs_in_app": "p_sched",
+"built": true,
+"app_function_title": "4D schedule"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Quantification",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Autodesk Rendering",
+"runs_in_app": "render",
+"built": true,
+"app_function_title": "Render 4K / 8K / 12K"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Animator",
+"runs_in_app": "p_anim",
+"built": true,
+"app_function_title": "Animation"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Scripter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Batch Utility",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Compare",
+"runs_in_app": "tm_vers",
+"built": true,
+"app_function_title": "Team: Versions and roll-back"
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "DataTools",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Home",
+"panel": "Tools",
+"command": "Safety",
+"runs_in_app": "p_safety",
+"built": true,
+"app_function_title": "Safety and clashes"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Save, Load & Playback",
+"command": "Save Viewpoint",
+"runs_in_app": "p_views",
+"built": true,
+"app_function_title": "Views"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Save, Load & Playback",
+"command": "Views",
+"runs_in_app": "p_views",
+"built": true,
+"app_function_title": "Views"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Save, Load & Playback",
+"command": "Record",
+"runs_in_app": "rec",
+"built": true,
+"app_function_title": "Record"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Save, Load & Playback",
+"command": "Play",
+"runs_in_app": "dis",
+"built": true,
+"app_function_title": "Disassemble"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Perspective",
+"runs_in_app": "n_persp",
+"built": true,
+"app_function_title": "Perspective"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Orthographic",
+"runs_in_app": "n_ortho",
+"built": true,
+"app_function_title": "Orthographic"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Field of View",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Align Camera",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Top",
+"runs_in_app": "n_top",
+"built": true,
+"app_function_title": "Top"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Camera",
+"command": "Iso",
+"runs_in_app": "n_iso",
+"built": true,
+"app_function_title": "Iso"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Walk",
+"runs_in_app": "n_walk",
+"built": true,
+"app_function_title": "Walk (WASD)"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Orbit",
+"runs_in_app": "n_orbit",
+"built": true,
+"app_function_title": "Orbit"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Pan",
+"runs_in_app": "n_pan",
+"built": true,
+"app_function_title": "Pan"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Zoom all",
+"runs_in_app": "zfit",
+"built": true,
+"app_function_title": "Zoom all"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Look Around",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Fly",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Navigate",
+"command": "Realism (collision, gravity)",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Render Style",
+"command": "Shaded",
+"runs_in_app": "d_shaded",
+"built": true,
+"app_function_title": "Shaded"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Render Style",
+"command": "Wireframe",
+"runs_in_app": "d_wire",
+"built": true,
+"app_function_title": "Wireframe"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Render Style",
+"command": "X-ray",
+"runs_in_app": "d_xray",
+"built": true,
+"app_function_title": "X-ray"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Render Style",
+"command": "Lighting",
+"runs_in_app": "env_sun",
+"built": true,
+"app_function_title": "GIS: Sun and seasons"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Sectioning",
+"command": "Enable Sectioning",
+"runs_in_app": "sA",
+"built": true,
+"app_function_title": "Section X"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Sectioning",
+"command": "Plan cut",
+"runs_in_app": "sB",
+"built": true,
+"app_function_title": "Plan cut Y"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Sectioning",
+"command": "Section Z",
+"runs_in_app": "sC",
+"built": true,
+"app_function_title": "Section Z"
+},
+{
+"program": "coord",
+"tab": "Viewpoint",
+"panel": "Sectioning",
+"command": "Clear cuts",
+"runs_in_app": "sClr",
+"built": true,
+"app_function_title": "Clear cuts"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Point to Point",
+"runs_in_app": "m_dist",
+"built": true,
+"app_function_title": "Distance"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Between",
+"runs_in_app": "m_btw",
+"built": true,
+"app_function_title": "Between"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Angle",
+"runs_in_app": "m_ang",
+"built": true,
+"app_function_title": "Angle"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Area / circle",
+"runs_in_app": "m_circ",
+"built": true,
+"app_function_title": "Circle / hole"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Level",
+"runs_in_app": "m_lvl",
+"built": true,
+"app_function_title": "Level"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Object",
+"runs_in_app": "m_obj",
+"built": true,
+"app_function_title": "Object"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Measure",
+"command": "Clear",
+"runs_in_app": "rm_all",
+"built": true,
+"app_function_title": "Remove all cuts and measurements"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Redline",
+"command": "Text",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Redline",
+"command": "Draw",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Redline",
+"command": "Erase",
+"runs_in_app": "rm_last",
+"built": true,
+"app_function_title": "Remove last placed item"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Tags",
+"command": "Add Tag",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Tags",
+"command": "Tag ID",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Comments",
+"command": "View Comments",
+"runs_in_app": "tm_log",
+"built": true,
+"app_function_title": "Team: Activity log"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Comments",
+"command": "Find Comments",
+"runs_in_app": "tm_find",
+"built": true,
+"app_function_title": "Team: Search everywhere"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Reviews",
+"command": "Structural",
+"runs_in_app": "wf_struct",
+"built": true,
+"app_function_title": "Review: structural and concrete"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Reviews",
+"command": "MEP",
+"runs_in_app": "wf_mep",
+"built": true,
+"app_function_title": "Review: mechanical, electrical, power"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Reviews",
+"command": "Quality",
+"runs_in_app": "wf_qa",
+"built": true,
+"app_function_title": "Review: quality before issue"
+},
+{
+"program": "coord",
+"tab": "Review",
+"panel": "Reviews",
+"command": "Handover",
+"runs_in_app": "wf_hand",
+"built": true,
+"app_function_title": "Review: handover"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Create",
+"command": "Animator",
+"runs_in_app": "p_anim",
+"built": true,
+"app_function_title": "Animation"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Create",
+"command": "Record",
+"runs_in_app": "rec",
+"built": true,
+"app_function_title": "Record"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Create",
+"command": "Disassembly video",
+"runs_in_app": "recdis",
+"built": true,
+"app_function_title": "Video: disassembly"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Create",
+"command": "Assembly video",
+"runs_in_app": "recasm",
+"built": true,
+"app_function_title": "Video: assembly"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Create",
+"command": "4D schedule video",
+"runs_in_app": "recsch",
+"built": true,
+"app_function_title": "Video: 4D schedule"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Playback",
+"command": "Disassemble",
+"runs_in_app": "dis",
+"built": true,
+"app_function_title": "Disassemble"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Playback",
+"command": "Assemble",
+"runs_in_app": "asm",
+"built": true,
+"app_function_title": "Assemble"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Playback",
+"command": "Pause",
+"runs_in_app": "pause",
+"built": true,
+"app_function_title": "Pause"
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Script",
+"command": "Enable Scripts",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Animation",
+"panel": "Script",
+"command": "Scripter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Navigation Aids",
+"command": "Navigation Bar",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Navigation Aids",
+"command": "ViewCube",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Navigation Aids",
+"command": "HUD",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Navigation Aids",
+"command": "Labels",
+"runs_in_app": "t_labels",
+"built": true,
+"app_function_title": "Labels"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Navigation Aids",
+"command": "Levels",
+"runs_in_app": "t_levels",
+"built": true,
+"app_function_title": "Levels"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Grids & Levels",
+"command": "Show Grid",
+"runs_in_app": "t_ground",
+"built": true,
+"app_function_title": "Ground"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Grids & Levels",
+"command": "Mode",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Scene View",
+"command": "Split View",
+"runs_in_app": "w_tile",
+"built": true,
+"app_function_title": "Tile"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Scene View",
+"command": "Full Screen",
+"runs_in_app": "ui_bars",
+"built": true,
+"app_function_title": "Hide / show top bars"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Scene View",
+"command": "Background",
+"runs_in_app": "p_look",
+"built": true,
+"app_function_title": "Appearance"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Workspace",
+"command": "Windows",
+"runs_in_app": "w_add",
+"built": true,
+"app_function_title": "Add widget"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Workspace",
+"command": "Load Workspace",
+"runs_in_app": "w_reset",
+"built": true,
+"app_function_title": "Reset layout"
+},
+{
+"program": "coord",
+"tab": "View",
+"panel": "Workspace",
+"command": "Site plan",
+"runs_in_app": "site",
+"built": true,
+"app_function_title": "Site plan"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Publish",
+"command": "NWD",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Publish",
+"command": "Project package ZIP",
+"runs_in_app": "pack",
+"built": true,
+"app_function_title": "Project package (ZIP)"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Publish",
+"command": "Share",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Scene",
+"command": "IFC",
+"runs_in_app": "e_ifc",
+"built": true,
+"app_function_title": "IFC2X3"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Scene",
+"command": "OBJ",
+"runs_in_app": "e_obj",
+"built": true,
+"app_function_title": "OBJ"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Scene",
+"command": "DXF 3D",
+"runs_in_app": "e_dxf3",
+"built": true,
+"app_function_title": "3D DXF"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Scene",
+"command": "FBX",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Scene",
+"command": "Google Earth KML",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Visuals",
+"command": "Image",
+"runs_in_app": "shot",
+"built": true,
+"app_function_title": "Screenshot"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Visuals",
+"command": "Rendered Image",
+"runs_in_app": "render",
+"built": true,
+"app_function_title": "Render 4K / 8K / 12K"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Visuals",
+"command": "Animation",
+"runs_in_app": "rec",
+"built": true,
+"app_function_title": "Record"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Data",
+"command": "Clash report",
+"runs_in_app": "p_coord",
+"built": true,
+"app_function_title": "Coordination"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Data",
+"command": "Quantities XLSX",
+"runs_in_app": "e_boq",
+"built": true,
+"app_function_title": "BOQ XLSX"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Data",
+"command": "Schedule XER",
+"runs_in_app": "xer",
+"built": true,
+"app_function_title": "XER"
+},
+{
+"program": "coord",
+"tab": "Output",
+"panel": "Export Data",
+"command": "Viewpoints report",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "New",
+"runs_in_app": "new",
+"built": true,
+"app_function_title": "New"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Open",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Save",
+"runs_in_app": "save",
+"built": true,
+"app_function_title": "Save"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Save As",
+"runs_in_app": "saveas",
+"built": true,
+"app_function_title": "Save as"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Print",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Export PDF",
+"runs_in_app": "e_pdf",
+"built": true,
+"app_function_title": "Section PDF"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Share",
+"runs_in_app": "p_share",
+"built": true,
+"app_function_title": "Share"
+},
+{
+"program": "office",
+"tab": "File",
+"panel": "File",
+"command": "Project package ZIP",
+"runs_in_app": "pack",
+"built": true,
+"app_function_title": "Project package (ZIP)"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Documents",
+"command": "Spreadsheet (Excel)",
+"runs_in_app": "o_sheet",
+"built": true,
+"app_function_title": "Spreadsheet"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Documents",
+"command": "Report (Word)",
+"runs_in_app": "o_report",
+"built": true,
+"app_function_title": "Report editor"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Documents",
+"command": "Slides (PowerPoint)",
+"runs_in_app": "o_slides",
+"built": true,
+"app_function_title": "Slides"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Documents",
+"command": "Media and share",
+"runs_in_app": "o_media",
+"built": true,
+"app_function_title": "Media and share"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Paste",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Cut",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Copy",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Clipboard",
+"command": "Format Painter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Bold",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Italic",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Underline",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Font Color",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Fill Color",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Font",
+"command": "Borders",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Alignment",
+"command": "Align Left",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Alignment",
+"command": "Center",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Alignment",
+"command": "Align Right",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Alignment",
+"command": "Merge & Center",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Alignment",
+"command": "Wrap Text",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Number",
+"command": "Number Format",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Number",
+"command": "Percent",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Number",
+"command": "Comma",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Number",
+"command": "Increase Decimal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Editing",
+"command": "Undo",
+"runs_in_app": "undo",
+"built": true,
+"app_function_title": "Undo"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Editing",
+"command": "Redo",
+"runs_in_app": "redo",
+"built": true,
+"app_function_title": "Redo"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Editing",
+"command": "Find",
+"runs_in_app": "tm_find",
+"built": true,
+"app_function_title": "Team: Search everywhere"
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Editing",
+"command": "Sort & Filter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Home",
+"panel": "Editing",
+"command": "AutoSum",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Tables",
+"command": "Table",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Tables",
+"command": "PivotTable",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Tables",
+"command": "BOQ table",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Illustrations",
+"command": "Picture",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Illustrations",
+"command": "Screenshot of the 3D view",
+"runs_in_app": "shot",
+"built": true,
+"app_function_title": "Screenshot"
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Illustrations",
+"command": "Shapes",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Illustrations",
+"command": "Drawing sheet",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Charts",
+"command": "Column Chart",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Charts",
+"command": "Line Chart",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Charts",
+"command": "Pie Chart",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Charts",
+"command": "Dashboard",
+"runs_in_app": "l_dash",
+"built": true,
+"app_function_title": "Dashboard"
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Text",
+"command": "Text Box",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Text",
+"command": "Header & Footer",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Insert",
+"panel": "Text",
+"command": "Date & Time",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Page Setup",
+"command": "Margins",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Page Setup",
+"command": "Orientation",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Page Setup",
+"command": "Size",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Page Setup",
+"command": "Print Area",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Page Setup",
+"command": "Breaks",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Themes",
+"command": "Theme",
+"runs_in_app": "theme",
+"built": true,
+"app_function_title": "Theme"
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Themes",
+"command": "Appearance",
+"runs_in_app": "p_look",
+"built": true,
+"app_function_title": "Appearance"
+},
+{
+"program": "office",
+"tab": "Page Layout",
+"panel": "Themes",
+"command": "Language",
+"runs_in_app": "lang",
+"built": true,
+"app_function_title": "Language"
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Insert Function",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Math",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Lookup",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Date & Time",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Engineering calculations",
+"runs_in_app": "p_calc",
+"built": true,
+"app_function_title": "Engineering analysis"
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Function Library",
+"command": "Review calculations",
+"runs_in_app": "p_review",
+"built": true,
+"app_function_title": "Review calculations"
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Formula Auditing",
+"command": "Trace Precedents",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Formula Auditing",
+"command": "Show Formulas",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Formulas",
+"panel": "Formula Auditing",
+"command": "Error Checking",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Get Data",
+"command": "From the BOQ",
+"runs_in_app": "p_bom",
+"built": true,
+"app_function_title": "BOQ and cost"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Get Data",
+"command": "From the schedule",
+"runs_in_app": "p6",
+"built": true,
+"app_function_title": "Schedule (P6)"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Get Data",
+"command": "From the register",
+"runs_in_app": "dc_reg",
+"built": true,
+"app_function_title": "TO: Register"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Get Data",
+"command": "From CSV",
+"runs_in_app": "open",
+"built": true,
+"app_function_title": "Open file"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Export",
+"command": "BOQ XLSX",
+"runs_in_app": "e_boq",
+"built": true,
+"app_function_title": "BOQ XLSX"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Export",
+"command": "BOQ CSV",
+"runs_in_app": "e_csv",
+"built": true,
+"app_function_title": "BOQ CSV"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Export",
+"command": "Schedule XLSX",
+"runs_in_app": "xlsxs",
+"built": true,
+"app_function_title": "Schedule XLSX"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Export",
+"command": "Activities CSV",
+"runs_in_app": "csvs",
+"built": true,
+"app_function_title": "Activities CSV"
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Sort & Filter",
+"command": "Sort",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Sort & Filter",
+"command": "Filter",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Sort & Filter",
+"command": "Remove Duplicates",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Data",
+"panel": "Sort & Filter",
+"command": "Data Validation",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Proofing",
+"command": "Spelling",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Proofing",
+"command": "Thesaurus",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Proofing",
+"command": "Terms",
+"runs_in_app": "dc_gl",
+"built": true,
+"app_function_title": "TO: Terms"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Comments",
+"command": "New Comment",
+"runs_in_app": "note",
+"built": true,
+"app_function_title": "3D note"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Comments",
+"command": "Activity log",
+"runs_in_app": "tm_log",
+"built": true,
+"app_function_title": "Team: Activity log"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Reports",
+"command": "Technical office reports",
+"runs_in_app": "dc_rep",
+"built": true,
+"app_function_title": "TO: Reports"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Reports",
+"command": "Follow-up reports",
+"runs_in_app": "ct_rep",
+"built": true,
+"app_function_title": "Control: Follow-up reports"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Reports",
+"command": "Quality review",
+"runs_in_app": "wf_qa",
+"built": true,
+"app_function_title": "Review: quality before issue"
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Protect",
+"command": "Protect Sheet",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "Review",
+"panel": "Protect",
+"command": "Versions and roll-back",
+"runs_in_app": "tm_vers",
+"built": true,
+"app_function_title": "Team: Versions and roll-back"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Workbook Views",
+"command": "Normal",
+"runs_in_app": "",
+"built": false,
+"app_function_title": ""
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Workbook Views",
+"command": "Page Layout",
+"runs_in_app": "sheet",
+"built": true,
+"app_function_title": "Drawing sheet"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Workbook Views",
+"command": "Tile windows",
+"runs_in_app": "w_tile",
+"built": true,
+"app_function_title": "Tile"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Workbook Views",
+"command": "Cascade",
+"runs_in_app": "w_casc",
+"built": true,
+"app_function_title": "Cascade"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Zoom",
+"command": "Zoom in",
+"runs_in_app": "ui_zoomin",
+"built": true,
+"app_function_title": "Zoom in workspace"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Zoom",
+"command": "Zoom out",
+"runs_in_app": "ui_zoomout",
+"built": true,
+"app_function_title": "Zoom out workspace"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Zoom",
+"command": "Density",
+"runs_in_app": "ui_dens",
+"built": true,
+"app_function_title": "Density"
+},
+{
+"program": "office",
+"tab": "View",
+"panel": "Zoom",
+"command": "Hide / show bars",
+"runs_in_app": "ui_bars",
+"built": true,
+"app_function_title": "Hide / show top bars"
+}
+]

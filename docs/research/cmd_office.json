@@ -1,0 +1,482 @@
+{
+ "office|New": {
+  "en": "Create a new blank workbook/document/deck.",
+  "ar": "بتفتح ملف جديد فاضي.",
+  "src": "FROM MEMORY"
+ },
+ "office|Open": {
+  "en": "Open a saved file.",
+  "ar": "بتفتح ملف محفوظ.",
+  "src": "FROM MEMORY"
+ },
+ "office|Save": {
+  "en": "Save the current file.",
+  "ar": "بتحفظ الملف الحالي. اضغطها كتير.",
+  "src": "FROM MEMORY"
+ },
+ "office|Save As": {
+  "en": "Save under a new name/format.",
+  "ar": "بتحفظ نسخة باسم أو صيغة تانية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Print": {
+  "en": "Print or preview.",
+  "ar": "بتطبع أو تعمل معاينة قبل الطباعة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Export PDF": {
+  "en": "Export/Save as PDF.",
+  "ar": "بتطلّع الملف PDF علشان تبعته من غير ما حد يعدل فيه.",
+  "src": "FROM MEMORY"
+ },
+ "office|Share": {
+  "en": "App sharing link.",
+  "ar": "بتشارك الملف برابط.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Project package ZIP": {
+  "en": "App package of project files as ZIP.",
+  "ar": "بتجمع ملفات المشروع في ZIP.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Spreadsheet (Excel)": {
+  "en": "App launcher for the spreadsheet module (Excel-style).",
+  "ar": "بتفتح جدول بيانات شبه إكسل.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Report (Word)": {
+  "en": "App launcher for the report module (Word-style).",
+  "ar": "بتفتح محرر تقارير شبه وورد.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Slides (PowerPoint)": {
+  "en": "App launcher for the slides module.",
+  "ar": "بتفتح العروض شبه بوربوينت.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Media and share": {
+  "en": "App media library and share.",
+  "ar": "مكتبة الصور والمشاركة.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Paste": {
+  "en": "Paste clipboard contents.",
+  "ar": "بتلزق اللي نسخته.",
+  "src": "FROM MEMORY"
+ },
+ "office|Cut": {
+  "en": "Cut selection to clipboard.",
+  "ar": "بتقص المحدد.",
+  "src": "FROM MEMORY"
+ },
+ "office|Copy": {
+  "en": "Copy selection.",
+  "ar": "بتنسخ المحدد.",
+  "src": "FROM MEMORY"
+ },
+ "office|Format Painter": {
+  "en": "Copy formatting from one cell/text and apply it elsewhere.",
+  "ar": "بتنسخ التنسيق (لون وخط) وتطبقه على مكان تاني من غير النص.",
+  "src": "FROM MEMORY"
+ },
+ "office|Bold": {
+  "en": "Bold text.",
+  "ar": "بتخلي الخط تقيل.",
+  "src": "FROM MEMORY"
+ },
+ "office|Italic": {
+  "en": "Italic text.",
+  "ar": "بتخلي الخط مايل.",
+  "src": "FROM MEMORY"
+ },
+ "office|Underline": {
+  "en": "Underline text.",
+  "ar": "بتحط خط تحت الكلام.",
+  "src": "FROM MEMORY"
+ },
+ "office|Font Color": {
+  "en": "Change text color.",
+  "ar": "بتغير لون الكتابة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Fill Color": {
+  "en": "Fill cell/shape background color.",
+  "ar": "بتلوّن خلفية الخلية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Borders": {
+  "en": "Add cell borders.",
+  "ar": "بتحط حدود حوالين الخلايا.",
+  "src": "FROM MEMORY"
+ },
+ "office|Align Left": {
+  "en": "Left alignment.",
+  "ar": "محاذاة لليسار.",
+  "src": "FROM MEMORY"
+ },
+ "office|Center": {
+  "en": "Center alignment.",
+  "ar": "توسيط.",
+  "src": "FROM MEMORY"
+ },
+ "office|Align Right": {
+  "en": "Right alignment.",
+  "ar": "محاذاة لليمين.",
+  "src": "FROM MEMORY"
+ },
+ "office|Merge & Center": {
+  "en": "Merge selected cells into one and center.",
+  "ar": "بتدمج خلايا في خلية واحدة وتوسطها. مفيدة للعناوين.",
+  "src": "FROM MEMORY"
+ },
+ "office|Wrap Text": {
+  "en": "Wrap long text inside the cell.",
+  "ar": "بتنزل الكلام الطويل لسطر تاني في نفس الخلية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Number Format": {
+  "en": "Choose number format: General, Number, Currency, Date…",
+  "ar": "بتختار شكل الرقم: عادي أو عملة أو تاريخ.",
+  "src": "FROM MEMORY"
+ },
+ "office|Percent": {
+  "en": "Percent style (x100 with % sign).",
+  "ar": "بتعرض الرقم نسبة مئوية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Comma": {
+  "en": "Thousands separator style.",
+  "ar": "بتحط فاصلة الآلاف.",
+  "src": "FROM MEMORY"
+ },
+ "office|Increase Decimal": {
+  "en": "Show more decimal places.",
+  "ar": "بتزود الأرقام بعد العلامة العشرية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Undo": {
+  "en": "Undo last action.",
+  "ar": "بترجّع آخر خطوة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Redo": {
+  "en": "Redo.",
+  "ar": "بتعيد الخطوة اللي رجعت عنها.",
+  "src": "FROM MEMORY"
+ },
+ "office|Find": {
+  "en": "Find text or values.",
+  "ar": "بتدوّر على كلمة أو رقم.",
+  "src": "FROM MEMORY"
+ },
+ "office|Sort & Filter": {
+  "en": "Sort ascending/descending or filter rows.",
+  "ar": "بترتب البيانات أو تعرض صفوف بشرط.",
+  "src": "FROM MEMORY"
+ },
+ "office|AutoSum": {
+  "en": "Insert SUM for adjacent cells.",
+  "ar": "بتجمع الخلايا اللي جنب بعض بضغطة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Table": {
+  "en": "Insert a formatted table.",
+  "ar": "بتحول المدى لجدول منسق بفلاتر.",
+  "src": "FROM MEMORY"
+ },
+ "office|PivotTable": {
+  "en": "Summarize data by dragging fields into rows/columns/values.",
+  "ar": "جدول محوري: بتلخص بيانات كتير (مثلاً الكميات حسب البند والدور).",
+  "src": "FROM MEMORY"
+ },
+ "office|BOQ table": {
+  "en": "App-specific BOQ table insert.",
+  "ar": "بتدخل جدول حصر الكميات من المشروع. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Picture": {
+  "en": "Insert image.",
+  "ar": "بتدخل صورة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Screenshot of the 3D view": {
+  "en": "App inserts a capture of the 3D view.",
+  "ar": "بتدخل لقطة من المجسم في الملف. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Shapes": {
+  "en": "Insert shapes.",
+  "ar": "بتدخل أشكال (سهم، مستطيل).",
+  "src": "FROM MEMORY"
+ },
+ "office|Drawing sheet": {
+  "en": "App inserts a drawing sheet.",
+  "ar": "بتدخل لوحة رسم. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Column Chart": {
+  "en": "Insert column chart.",
+  "ar": "رسم أعمدة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Line Chart": {
+  "en": "Insert line chart.",
+  "ar": "رسم خطي لتتبع التغير مع الوقت.",
+  "src": "FROM MEMORY"
+ },
+ "office|Pie Chart": {
+  "en": "Insert pie chart.",
+  "ar": "رسم دايري يوري النسب.",
+  "src": "FROM MEMORY"
+ },
+ "office|Dashboard": {
+  "en": "App dashboard insert.",
+  "ar": "لوحة مؤشرات. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Text Box": {
+  "en": "Insert text box.",
+  "ar": "بتدخل مربع نص حر.",
+  "src": "FROM MEMORY"
+ },
+ "office|Header & Footer": {
+  "en": "Add page header/footer text.",
+  "ar": "بتكتب عنوان أعلى الصفحة وأسفلها.",
+  "src": "FROM MEMORY"
+ },
+ "office|Date & Time": {
+  "en": "Insert date/time. / Date and time functions (TODAY, DATEDIF).",
+  "ar": "بتدخل التاريخ والوقت. — دوال التاريخ والوقت.",
+  "src": "FROM MEMORY"
+ },
+ "office|Margins": {
+  "en": "Set page margins.",
+  "ar": "بتظبط هوامش الصفحة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Orientation": {
+  "en": "Portrait or landscape.",
+  "ar": "طولي أو عرضي.",
+  "src": "FROM MEMORY"
+ },
+ "office|Size": {
+  "en": "Paper size.",
+  "ar": "مقاس الورقة (A4 مثلاً).",
+  "src": "FROM MEMORY"
+ },
+ "office|Print Area": {
+  "en": "Define which range prints.",
+  "ar": "بتحدد الجزء اللي يتطبع.",
+  "src": "FROM MEMORY"
+ },
+ "office|Breaks": {
+  "en": "Insert page breaks.",
+  "ar": "بتحدد أماكن قطع الصفحات.",
+  "src": "FROM MEMORY"
+ },
+ "office|Theme": {
+  "en": "App theme.",
+  "ar": "بتغير ألوان الواجهة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Appearance": {
+  "en": "App appearance (light/dark).",
+  "ar": "فاتح أو غامق.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Language": {
+  "en": "App language.",
+  "ar": "لغة الواجهة.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Insert Function": {
+  "en": "Open function wizard.",
+  "ar": "بتفتح معالج الدوال وتختار دالة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Math": {
+  "en": "Math & Trig functions (SUM, ROUND…).",
+  "ar": "دوال حسابية.",
+  "src": "FROM MEMORY"
+ },
+ "office|Lookup": {
+  "en": "Lookup functions (VLOOKUP, XLOOKUP, INDEX/MATCH).",
+  "ar": "دوال بحث عن قيمة في جدول.",
+  "src": "FROM MEMORY"
+ },
+ "office|Engineering calculations": {
+  "en": "App engineering calculation sheet; not an Excel command.",
+  "ar": "حسابات هندسية جاهزة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Review calculations": {
+  "en": "App calculation review; not an Excel command.",
+  "ar": "مراجعة الحسابات. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Trace Precedents": {
+  "en": "Show arrows to cells a formula depends on.",
+  "ar": "بتوري الخلايا اللي الصيغة معتمدة عليها.",
+  "src": "FROM MEMORY"
+ },
+ "office|Show Formulas": {
+  "en": "Display formulas instead of results.",
+  "ar": "بتعرض الصيغ بدل النتايج.",
+  "src": "FROM MEMORY"
+ },
+ "office|Error Checking": {
+  "en": "Find formula errors.",
+  "ar": "بتدوّر على أخطاء في الصيغ.",
+  "src": "FROM MEMORY"
+ },
+ "office|From the BOQ": {
+  "en": "App imports data from the BOQ.",
+  "ar": "بتجيب بيانات من حصر الكميات. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|From the schedule": {
+  "en": "App imports schedule data.",
+  "ar": "بتجيب بيانات الجدول. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|From the register": {
+  "en": "App imports register data.",
+  "ar": "بتجيب بيانات السجل. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|From CSV": {
+  "en": "Import data from CSV (Excel: From Text/CSV).",
+  "ar": "بتدخل بيانات من ملف CSV.",
+  "src": "FROM MEMORY"
+ },
+ "office|BOQ XLSX": {
+  "en": "App export BOQ to XLSX.",
+  "ar": "بتطلّع الحصر إكسل.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|BOQ CSV": {
+  "en": "App export BOQ to CSV.",
+  "ar": "بتطلّع الحصر CSV.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Schedule XLSX": {
+  "en": "App export schedule to XLSX.",
+  "ar": "بتطلّع الجدول إكسل.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Activities CSV": {
+  "en": "App export activities CSV.",
+  "ar": "بتطلّع الأنشطة CSV.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Sort": {
+  "en": "Sort data.",
+  "ar": "بترتب.",
+  "src": "FROM MEMORY"
+ },
+ "office|Filter": {
+  "en": "Filter rows.",
+  "ar": "بتفلتر الصفوف.",
+  "src": "FROM MEMORY"
+ },
+ "office|Remove Duplicates": {
+  "en": "Remove duplicate rows.",
+  "ar": "بتشيل الصفوف المكررة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Data Validation": {
+  "en": "Restrict allowed cell input.",
+  "ar": "بتحدد القيم المسموح بيها في الخلية (قايمة منسدلة).",
+  "src": "FROM MEMORY"
+ },
+ "office|Spelling": {
+  "en": "Spell check.",
+  "ar": "فحص الإملاء.",
+  "src": "FROM MEMORY"
+ },
+ "office|Thesaurus": {
+  "en": "Synonyms.",
+  "ar": "مرادفات.",
+  "src": "FROM MEMORY"
+ },
+ "office|Terms": {
+  "en": "App glossary of terms.",
+  "ar": "قاموس مصطلحات. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|New Comment": {
+  "en": "App comment.",
+  "ar": "بتضيف تعليق.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Activity log": {
+  "en": "App activity log.",
+  "ar": "سجل اللي اتعمل في الملف. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Technical office reports": {
+  "en": "App reports.",
+  "ar": "تقارير المكتب الفني. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Follow-up reports": {
+  "en": "App follow-up reports.",
+  "ar": "تقارير المتابعة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Quality review": {
+  "en": "App review.",
+  "ar": "مراجعة الجودة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Protect Sheet": {
+  "en": "Lock cells from edits.",
+  "ar": "بتقفل الشيت علشان محدش يعدل.",
+  "src": "FROM MEMORY"
+ },
+ "office|Versions and roll-back": {
+  "en": "App version history.",
+  "ar": "نسخ سابقة تقدر ترجعلها. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Normal": {
+  "en": "Normal view.",
+  "ar": "العرض العادي.",
+  "src": "FROM MEMORY"
+ },
+ "office|Page Layout": {
+  "en": "Page Layout view.",
+  "ar": "عرض بشكل الصفحة.",
+  "src": "FROM MEMORY"
+ },
+ "office|Tile windows": {
+  "en": "App tile windows.",
+  "ar": "ترتيب النوافذ جنب بعض.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Cascade": {
+  "en": "App cascade windows.",
+  "ar": "ترتيب النوافذ فوق بعض.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Zoom in": {
+  "en": "Zoom in.",
+  "ar": "تكبير.",
+  "src": "FROM MEMORY"
+ },
+ "office|Zoom out": {
+  "en": "Zoom out.",
+  "ar": "تصغير.",
+  "src": "FROM MEMORY"
+ },
+ "office|Density": {
+  "en": "App row density.",
+  "ar": "كثافة الصفوف.",
+  "src": "APP-SPECIFIC"
+ },
+ "office|Hide / show bars": {
+  "en": "App toggle bars.",
+  "ar": "إخفاء الأشرطة.",
+  "src": "APP-SPECIFIC"
+ }
+}

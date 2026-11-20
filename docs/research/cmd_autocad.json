@@ -1,0 +1,1040 @@
+{
+ "draft|Line": {
+  "en": "Draws straight line segments between points you pick.",
+  "ar": "بيرسم خطوط مستقيمة بين نقط بتحددها. أول أمر في أي رسمة.",
+  "key": "LINE (L)",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-E8C1190C-A26C-484C-ADDD-DDF81666F69F.htm [VERIFIED]"
+ },
+ "draft|Polyline": {
+  "en": "Draws one connected object made of straight and arc segments.",
+  "ar": "بيرسم خط واحد متصل من أجزاء مستقيمة وأقواس. مفيد لو عايز تقيس طول أو مساحة الشكل كله مرة واحدة.",
+  "key": "PLINE (PL)",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-ACC319C8-34EA-4D9D-981E-B69B7B187400.htm [VERIFIED]"
+ },
+ "draft|Circle": {
+  "en": "Draws a circle from centre and radius, diameter, or 2-3 points.",
+  "ar": "بيرسم دايرة بالمركز ونصف القطر أو بالقطر أو بنقطتين/تلاتة.",
+  "key": "CIRCLE (C)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Arc": {
+  "en": "Draws a circular arc using one of several point/angle/radius methods.",
+  "ar": "بيرسم قوس من دايرة، بطرق كتير (3 نقط، مركز وبداية ونهاية...).",
+  "key": "ARC (A)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Rectangle": {
+  "en": "Draws a rectangular closed polyline from two corners.",
+  "ar": "بيرسم مستطيل (بوليلاين مقفول) من ركنين متقابلين.",
+  "key": "RECTANG (REC)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Polygon": {
+  "en": "Draws a regular closed polygon with 3 to 1024 equal sides.",
+  "ar": "بيرسم مضلع منتظم أضلاعه متساوية (مثلث، سداسي...). تحدد عدد الأضلاع والمركز.",
+  "key": "POLYGON (POL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Ellipse": {
+  "en": "Draws an ellipse or an elliptical arc.",
+  "ar": "بيرسم قطع ناقص أو جزء منه.",
+  "key": "ELLIPSE (EL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Spline": {
+  "en": "Draws a smooth curve that passes through or near the points you pick.",
+  "ar": "بيرسم منحنى ناعم بيمر على النقط أو قريب منها. بيتستخدم للخطوط الانسيابية.",
+  "key": "SPLINE (SPL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Hatch": {
+  "en": "Fills a closed area or picked objects with a pattern, solid or gradient.",
+  "ar": "بيملّا مساحة مقفولة بنمط تهشير (خطوط، طوب، رمل...). بيتستخدم للمقاطع والمواد.",
+  "key": "HATCH (H)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Gradient": {
+  "en": "Fills a closed area with a smooth colour gradient.",
+  "ar": "بيملّا مساحة مقفولة بتدرج لوني بدل نمط التهشير.",
+  "key": "GRADIENT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Boundary": {
+  "en": "Creates a closed polyline or region from an enclosed area.",
+  "ar": "بيعمل حدود مقفولة (بوليلاين أو ريجن) من منطقة محاطة بخطوط، من غير ما ترسمها بإيدك.",
+  "key": "BOUNDARY (BO)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Region": {
+  "en": "Converts closed shapes into region objects (2D faces with area properties).",
+  "ar": "بيحوّل شكل مقفول لكائن ريجن، تقدر تجمّعه أو تطرحه من غيره وتحسب مساحته.",
+  "key": "REGION (REG)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Wipeout|Home/Draw": {
+  "en": "Creates a blank cover that hides objects behind it using the background colour.",
+  "ar": "بيعمل غطاء فاضي بيخبي اللي تحته (زي ما تحط ورقة بيضا). بيتستخدم عشان نص أو رمز يبان واضح.",
+  "key": "WIPEOUT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Revision Cloud|Home/Draw": {
+  "en": "Draws a cloud-shaped outline to flag changed areas on a drawing.",
+  "ar": "بيرسم إطار سحابة حوالين المنطقة اللي اتعدلت عشان المراجع يشوفها بسرعة.",
+  "key": "REVCLOUD",
+  "src": "FROM MEMORY"
+ },
+ "draft|Point": {
+  "en": "Creates a point object at a location you pick.",
+  "ar": "بيحط نقطة في مكان بتختاره. شكلها بيتحدد من إعدادات PDMODE.",
+  "key": "POINT (PO)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Construction Line": {
+  "en": "Draws an infinite line in both directions used as a guide.",
+  "ar": "بيرسم خط مساعد لا نهائي من الجهتين. للتصميم والتقاطعات، مش بيتطبع عادة.",
+  "key": "XLINE (XL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Ray": {
+  "en": "Draws a line that starts at a point and extends infinitely in one direction.",
+  "ar": "بيرسم شعاع بيبدأ من نقطة ويكمل لنهاية في اتجاه واحد. خط مساعد.",
+  "key": "RAY",
+  "src": "FROM MEMORY"
+ },
+ "draft|Move": {
+  "en": "Moves objects by a displacement without changing size.",
+  "ar": "بينقل العناصر من مكان لمكان من غير ما يغير حجمها.",
+  "key": "MOVE (M)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Copy": {
+  "en": "Makes copies of objects at a displacement; repeats until you stop.",
+  "ar": "بيعمل نسخ من العناصر ويفضل ينسخ لحد ما تخرج منه.",
+  "key": "COPY (CO / CP)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Stretch": {
+  "en": "Moves or stretches objects caught by a crossing window, keeping connections.",
+  "ar": "بيشد أو يمد الأجزاء اللي داخلة في نافذة التقاطع، والباقي بيفضل متوصل بيها.",
+  "key": "STRETCH (S)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Rotate": {
+  "en": "Rotates objects around a base point by an angle.",
+  "ar": "بيلف العناصر حوالين نقطة بزاوية معينة.",
+  "key": "ROTATE (RO)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Mirror": {
+  "en": "Creates a mirrored copy of objects across a line you define.",
+  "ar": "بيعمل انعكاس (مرايا) للعناصر حوالين خط تحدده. مفيد للأشكال المتماثلة.",
+  "key": "MIRROR (MI)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Scale": {
+  "en": "Enlarges or shrinks objects by a factor from a base point.",
+  "ar": "بيكبّر أو يصغّر العناصر بمعامل معين من نقطة أساس.",
+  "key": "SCALE (SC)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Trim": {
+  "en": "Cuts objects at the edges of other objects.",
+  "ar": "بيقص الجزء الزايد من الخطوط عند حدود عناصر تانية.",
+  "key": "TRIM (TR)",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-B1A185EF-07C6-4C53-A76F-05ADE11F5C32.htm [VERIFIED]"
+ },
+ "draft|Extend": {
+  "en": "Lengthens objects until they meet the edges of other objects.",
+  "ar": "بيطوّل الخطوط لحد ما توصل لعنصر تاني.",
+  "key": "EXTEND (EX)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Fillet": {
+  "en": "Rounds the corner between two objects with an arc of a given radius.",
+  "ar": "بيعمل تدوير (قوس) للركن بين خطين بنصف قطر تحدده. لو الصفر بيوصّل الخطين ركن حاد.",
+  "key": "FILLET (F)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Chamfer": {
+  "en": "Bevels the corner between two objects with a straight cut.",
+  "ar": "بيعمل قطع مائل للركن بين خطين بمسافتين تحددهم.",
+  "key": "CHAMFER (CHA)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Array": {
+  "en": "Makes multiple copies in a rectangular, polar or path pattern.",
+  "ar": "بيعمل نسخ كتير في نمط: صفوف وأعمدة، أو حوالين مركز، أو على مسار.",
+  "key": "ARRAY (AR)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Offset": {
+  "en": "Creates a parallel copy of an object at a set distance.",
+  "ar": "بيعمل نسخة موازية للعنصر على مسافة تحددها. بيتستخدم للجدران والحدود.",
+  "key": "OFFSET (O)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Erase": {
+  "en": "Deletes the selected objects.",
+  "ar": "بيمسح العناصر المختارة.",
+  "key": "ERASE (E)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Explode": {
+  "en": "Breaks a compound object (polyline, block, dimension) into simple parts.",
+  "ar": "بيفكك العنصر المركب (بوليلاين أو بلوك أو بُعد) لأجزاء بسيطة.",
+  "key": "EXPLODE (X)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Join": {
+  "en": "Joins similar objects end to end into one object.",
+  "ar": "بيوصّل عناصر من نفس النوع طرف بطرف في عنصر واحد.",
+  "key": "JOIN (J)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Break": {
+  "en": "Breaks an object into two parts or removes a section.",
+  "ar": "بيقطع العنصر لجزئين أو بيشيل جزء منه.",
+  "key": "BREAK (BR)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Blend": {
+  "en": "Creates a smooth spline joining the ends of two open objects.",
+  "ar": "بيعمل منحنى ناعم بيوصل طرفين مفتوحين من عنصرين.",
+  "key": "BLEND",
+  "src": "FROM MEMORY"
+ },
+ "draft|Lengthen": {
+  "en": "Changes the length of an open object or the included angle of an arc.",
+  "ar": "بيغير طول عنصر مفتوح أو زاوية القوس بقيمة أو نسبة.",
+  "key": "LENGTHEN (LEN)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Align|Home/Modify": {
+  "en": "Moves and rotates objects to line up with other objects using point pairs.",
+  "ar": "بينقل ويلف العناصر عشان تتطابق مع عناصر تانية باستخدام أزواج نقط.",
+  "key": "ALIGN (AL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Edit Polyline": {
+  "en": "Edits a polyline: close, join, change width, fit curves, edit vertices.",
+  "ar": "بيعدل البوليلاين: يقفله، يوصله، يغير سمكه، يعمله منحنى، يعدل رؤوسه.",
+  "key": "PEDIT (PE)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Text": {
+  "en": "Creates text; in the ribbon the dropdown offers multiline and single-line text.",
+  "ar": "بيكتب نص في الرسمة. القايمة فيها نص متعدد الأسطر أو سطر واحد.",
+  "key": "TEXT / MTEXT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Dimension": {
+  "en": "Creates dimensions; the DIM command picks the right type automatically.",
+  "ar": "بيحط أبعاد على الرسمة. أمر DIM بيختار نوع البعد المناسب بنفسه.",
+  "key": "DIM",
+  "src": "FROM MEMORY"
+ },
+ "draft|Leader": {
+  "en": "Draws a line with an arrow and a text note; modern version is the multileader.",
+  "ar": "بيرسم سهم بخط وجنبه ملاحظة نصية. النسخة الحديثة هي Multileader.",
+  "key": "MLEADER (legacy QLEADER)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Table|Home/Annotation": {
+  "en": "Creates an empty table object with rows and columns you can fill.",
+  "ar": "بيعمل جدول فاضي بصفوف وأعمدة تكتب فيه بيانات.",
+  "key": "TABLE (TB)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Mtext": {
+  "en": "Creates a paragraph text box with formatting inside a defined width.",
+  "ar": "بيعمل صندوق نص فيه فقرات وتنسيق (خط، حجم، ترقيم) جوه عرض تحدده.",
+  "key": "MTEXT (MT / T)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Layer Properties": {
+  "en": "Opens the Layer Properties Manager to create and control layers.",
+  "ar": "بيفتح مدير الطبقات: تعمل طبقات وتتحكم في لونها ونوع خطها وإخفائها وقفلها.",
+  "key": "LAYER (LA)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Layer Previous": {
+  "en": "Undoes the last change made to layer settings.",
+  "ar": "بيرجّع آخر تغيير حصل في إعدادات الطبقات.",
+  "key": "LAYERP",
+  "src": "FROM MEMORY"
+ },
+ "draft|Isolate": {
+  "en": "Hides or locks all layers except the layers of the selected objects.",
+  "ar": "بيخبي أو بيقفل كل الطبقات ما عدا طبقة العناصر اللي اخترتها.",
+  "key": "LAYISO",
+  "src": "FROM MEMORY"
+ },
+ "draft|Unisolate (all on)": {
+  "en": "Restores the layers changed by Isolate.",
+  "ar": "بيرجّع الطبقات زي ما كانت قبل أمر العزل.",
+  "key": "LAYUNISO",
+  "src": "FROM MEMORY"
+ },
+ "draft|Freeze": {
+  "en": "Freezes the layer of the selected object so it is hidden and not regenerated.",
+  "ar": "بيجمّد طبقة العنصر المختار فتختفي ومش بتتحسب في إعادة التوليد.",
+  "key": "LAYFRZ",
+  "src": "FROM MEMORY"
+ },
+ "draft|Lock": {
+  "en": "Locks the layer of the selected object so it cannot be edited.",
+  "ar": "بيقفل طبقة العنصر المختار، تفضل ظاهرة بس مش بتتعدل.",
+  "key": "LAYLCK",
+  "src": "FROM MEMORY"
+ },
+ "draft|Make Current": {
+  "en": "Makes the layer of a selected object the current layer.",
+  "ar": "بيخلي طبقة عنصر اخترته هي الطبقة الحالية اللي بترسم عليها.",
+  "key": "LAYMCUR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Match": {
+  "en": "Changes the layer of selected objects to match a destination object's layer.",
+  "ar": "بيغير طبقة عناصر لتبقى زي طبقة عنصر تاني تختاره.",
+  "key": "LAYMCH",
+  "src": "FROM MEMORY"
+ },
+ "draft|Insert|Home/Block": {
+  "en": "Inserts a block or another drawing into the current drawing.",
+  "ar": "بيدخل بلوك أو رسمة تانية جوه الرسمة الحالية.",
+  "key": "INSERT (I)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Create": {
+  "en": "Creates a block definition from selected objects.",
+  "ar": "بيعمل تعريف بلوك من العناصر المختارة عشان تستخدمه كذا مرة.",
+  "key": "BLOCK (B)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Edit": {
+  "en": "Opens a block in the Block Editor to change its definition.",
+  "ar": "بيفتح البلوك في محرر البلوكات عشان تعدل تعريفه، والتعديل يظهر في كل النسخ.",
+  "key": "BEDIT (BE)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Define Attributes": {
+  "en": "Defines an attribute: a text tag that stores data inside a block.",
+  "ar": "بيعرّف خاصية (Attribute): بيانات نصية جوه البلوك زي رقم أو وصف.",
+  "key": "ATTDEF (ATT)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Match Properties": {
+  "en": "Copies properties (layer, colour, linetype...) from one object to others.",
+  "ar": "بينسخ خصائص (طبقة ولون ونوع خط...) من عنصر لعناصر تانية.",
+  "key": "MATCHPROP (MA)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Color": {
+  "en": "Sets the current colour for new objects.",
+  "ar": "بيحدد اللون الحالي للعناصر الجديدة.",
+  "key": "COLOR (COL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Linetype": {
+  "en": "Sets the current linetype for new objects.",
+  "ar": "بيحدد نوع الخط الحالي (متصل، متقطع...) للعناصر الجديدة.",
+  "key": "LINETYPE (LT)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Lineweight": {
+  "en": "Sets the current lineweight (thickness) for new objects.",
+  "ar": "بيحدد سمك الخط الحالي للعناصر الجديدة.",
+  "key": "LWEIGHT (LW)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Group": {
+  "en": "Creates a named set of objects that you select as one.",
+  "ar": "بيجمّع عناصر في مجموعة تتحدد كلها بضغطة واحدة.",
+  "key": "GROUP (G)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Ungroup": {
+  "en": "Dissolves a group so its objects are separate again.",
+  "ar": "بيفك المجموعة وترجع العناصر منفصلة.",
+  "key": "UNGROUP",
+  "src": "FROM MEMORY"
+ },
+ "draft|Measure Distance": {
+  "en": "Measures the distance and angle between two points.",
+  "ar": "بيقيس المسافة والزاوية بين نقطتين.",
+  "key": "DIST (DI) / MEASUREGEOM",
+  "src": "FROM MEMORY"
+ },
+ "draft|Area": {
+  "en": "Measures the area and perimeter of an object or points you pick.",
+  "ar": "بيحسب المساحة والمحيط لشكل أو لنقط تختارها.",
+  "key": "AREA",
+  "src": "FROM MEMORY"
+ },
+ "draft|ID Point": {
+  "en": "Shows the coordinates of a picked point.",
+  "ar": "بيعرض إحداثيات النقطة اللي بتضغط عليها.",
+  "key": "ID",
+  "src": "FROM MEMORY"
+ },
+ "draft|Quick Calc": {
+  "en": "Opens a calculator palette with unit conversion and geometry functions.",
+  "ar": "بيفتح آلة حاسبة جانبية فيها تحويل وحدات وحسابات هندسية.",
+  "key": "QUICKCALC (QC)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Angle": {
+  "en": "Measures the angle between lines, at an arc or between three points.",
+  "ar": "بيقيس الزاوية بين خطين أو في قوس أو بين تلات نقط.",
+  "key": "MEASUREGEOM (Angle option)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Paste": {
+  "en": "Pastes clipboard content into the drawing.",
+  "ar": "بيلصق اللي في الكليبورد في الرسمة.",
+  "key": "PASTECLIP (CTRL+V)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Copy Clip": {
+  "en": "Copies selected objects to the Windows clipboard.",
+  "ar": "بينسخ العناصر المختارة للكليبورد.",
+  "key": "COPYCLIP (CTRL+C)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Cut": {
+  "en": "Cuts selected objects to the Windows clipboard.",
+  "ar": "بيقص العناصر المختارة للكليبورد.",
+  "key": "CUTCLIP (CTRL+X)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Undo": {
+  "en": "Reverses the last action.",
+  "ar": "بيرجع آخر عملية عملتها.",
+  "key": "U / UNDO (CTRL+Z)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Redo": {
+  "en": "Reverses the effect of the last Undo.",
+  "ar": "بيعيد آخر عملية رجّعتها بـ Undo.",
+  "key": "REDO (CTRL+Y)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Insert|Insert/Block": {
+  "en": "Inserts a block or drawing (same command as on the Home tab).",
+  "ar": "نفس أمر الإدراج اللي في Home: بيدخل بلوك أو رسمة.",
+  "key": "INSERT (I)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Create Block": {
+  "en": "Creates a block definition from selected objects.",
+  "ar": "بيعمل تعريف بلوك من عناصر مختارة (نفس Create في Home).",
+  "key": "BLOCK (B)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Edit Block": {
+  "en": "Opens the Block Editor to edit a block definition.",
+  "ar": "بيفتح محرر البلوكات.",
+  "key": "BEDIT (BE)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Attach": {
+  "en": "Attaches an external reference, image, PDF, DWF or DGN underlay.",
+  "ar": "بيربط ملف خارجي (رسمة، صورة، PDF...) بالرسمة من غير ما يدمجه جواها.",
+  "key": "ATTACH (XATTACH, IMAGEATTACH, PDFATTACH)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Clip": {
+  "en": "Crops the display of an xref, image or underlay to a boundary.",
+  "ar": "بيقص عرض الملف المربوط جوه حدود تحددها.",
+  "key": "CLIP",
+  "src": "FROM MEMORY"
+ },
+ "draft|Underlay": {
+  "en": "Attaches a PDF, DWF, DWFx or DGN file as a reference you can snap to.",
+  "ar": "بيحط PDF أو DWF أو DGN كخلفية مرجعية تقدر تمسك نقطها بالـ snap.",
+  "key": "PDFATTACH / DWFATTACH / DGNATTACH",
+  "src": "FROM MEMORY"
+ },
+ "draft|Import": {
+  "en": "Imports files from other formats (for example DGN, SAT, 3DS) into the drawing.",
+  "ar": "بيدخل ملفات من صيغ تانية للرسمة.",
+  "key": "IMPORT",
+  "src": "FROM MEMORY"
+ },
+ "draft|PDF Import": {
+  "en": "Converts geometry and text from a PDF page into drawing objects.",
+  "ar": "بيحوّل خطوط ونصوص صفحة PDF لعناصر رسم تتعدل.",
+  "key": "PDFIMPORT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Data Extraction": {
+  "en": "Extracts object, block and attribute data into a table or external file.",
+  "ar": "بيستخرج بيانات من الرسمة (بلوكات وخصائص) في جدول أو ملف إكسل.",
+  "key": "DATAEXTRACTION (EATTEXT)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Link Data": {
+  "en": "Links the drawing to an Excel spreadsheet through a data link.",
+  "ar": "بيربط الرسمة بملف إكسل عشان الجدول يتحدث لما الملف يتغير.",
+  "key": "DATALINK",
+  "src": "FROM MEMORY"
+ },
+ "draft|Hyperlink": {
+  "en": "Attaches a link (file or web page) to an object.",
+  "ar": "بيحط رابط (ملف أو صفحة ويب) على عنصر.",
+  "key": "HYPERLINK",
+  "src": "FROM MEMORY"
+ },
+ "draft|Location": {
+  "en": "Sets the geographic location of the drawing, e.g. from a map.",
+  "ar": "بيحدد الموقع الجغرافي للرسمة على الخريطة.",
+  "key": "GEOGRAPHICLOCATION",
+  "src": "FROM MEMORY"
+ },
+ "draft|Multiline Text": {
+  "en": "Creates a paragraph text box with formatting.",
+  "ar": "بيعمل نص متعدد الأسطر بتنسيق.",
+  "key": "MTEXT (MT)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Single Line": {
+  "en": "Creates separate single-line text objects.",
+  "ar": "بيعمل نص سطر واحد، كل سطر عنصر لوحده.",
+  "key": "TEXT / DTEXT (DT)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Check Spelling": {
+  "en": "Checks the spelling of text in the drawing.",
+  "ar": "بيراجع إملاء النصوص اللي في الرسمة.",
+  "key": "SPELL",
+  "src": "FROM MEMORY"
+ },
+ "draft|Find": {
+  "en": "Finds, replaces and zooms to text in the drawing.",
+  "ar": "بيدور على نص في الرسمة وتقدر تستبدله.",
+  "key": "FIND",
+  "src": "FROM MEMORY"
+ },
+ "draft|Linear|Annotate/Dimensions": {
+  "en": "Creates a horizontal, vertical or rotated dimension.",
+  "ar": "بيحط بُعد أفقي أو رأسي بين نقطتين.",
+  "key": "DIMLINEAR (DLI)",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-E908848F-4621-43D2-B377-FD3FBC2B8848.htm [VERIFIED]"
+ },
+ "draft|Aligned|Annotate/Dimensions": {
+  "en": "Creates a dimension parallel to the line between two points.",
+  "ar": "بيحط بُعد موازي للخط المايل بين نقطتين.",
+  "key": "DIMALIGNED (DAL)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Angular|Annotate/Dimensions": {
+  "en": "Dimensions the angle between lines or at an arc.",
+  "ar": "بيقيس ويكتب الزاوية بين خطين أو في قوس.",
+  "key": "DIMANGULAR (DAN)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Radius|Annotate/Dimensions": {
+  "en": "Dimensions the radius of a circle or arc.",
+  "ar": "بيكتب نصف قطر دايرة أو قوس.",
+  "key": "DIMRADIUS (DRA)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Diameter|Annotate/Dimensions": {
+  "en": "Dimensions the diameter of a circle or arc.",
+  "ar": "بيكتب قطر دايرة أو قوس.",
+  "key": "DIMDIAMETER (DDI)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Arc Length": {
+  "en": "Dimensions the length along an arc.",
+  "ar": "بيكتب طول القوس نفسه.",
+  "key": "DIMARC",
+  "src": "FROM MEMORY"
+ },
+ "draft|Baseline": {
+  "en": "Adds dimensions that all start from the same first extension line.",
+  "ar": "بيضيف أبعاد كلها بتبدأ من نفس نقطة الأساس.",
+  "key": "DIMBASELINE (DBA)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Continue": {
+  "en": "Adds dimensions chained end to end from the last dimension.",
+  "ar": "بيضيف أبعاد متتالية كل واحد بيبدأ من آخر بُعد.",
+  "key": "DIMCONTINUE (DCO)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Update": {
+  "en": "Applies the current dimension style to selected dimensions.",
+  "ar": "بيطبق نمط الأبعاد الحالي على أبعاد موجودة.",
+  "key": "-DIMSTYLE (Apply)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Dim Style": {
+  "en": "Opens the Dimension Style Manager to define dimension appearance.",
+  "ar": "بيفتح مدير أنماط الأبعاد: شكل الأسهم والنص والوحدات.",
+  "key": "DIMSTYLE (D)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Multileader": {
+  "en": "Creates a leader with arrow and multiline note or block.",
+  "ar": "بيعمل سهم بخط وملاحظة (نص أو بلوك).",
+  "key": "MLEADER (MLD)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Add Leader": {
+  "en": "Adds or removes leader lines on an existing multileader.",
+  "ar": "بيضيف أو يشيل خطوط سهم على Multileader موجود.",
+  "key": "MLEADEREDIT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Align|Annotate/Leaders": {
+  "en": "Aligns and spaces selected multileaders.",
+  "ar": "بيرصّ ويظبط المسافات بين أكتر من Multileader.",
+  "key": "MLEADERALIGN",
+  "src": "FROM MEMORY"
+ },
+ "draft|Table|Annotate/Tables": {
+  "en": "Creates a table object with rows, columns and text.",
+  "ar": "بيعمل جدول بصفوف وأعمدة ونصوص.",
+  "key": "TABLE",
+  "src": "FROM MEMORY"
+ },
+ "draft|Link Table": {
+  "en": "Creates a table linked to an Excel file through a data link.",
+  "ar": "بيعمل جدول مرتبط بملف إكسل.",
+  "key": "TABLE (From a data link) / DATALINK",
+  "src": "FROM MEMORY"
+ },
+ "draft|Revision Cloud|Annotate/Markup": {
+  "en": "Draws a cloud outline to mark revisions (same as in Draw).",
+  "ar": "نفس أمر السحابة اللي في Draw: بيعلّم المنطقة المعدّلة.",
+  "key": "REVCLOUD",
+  "src": "FROM MEMORY"
+ },
+ "draft|Wipeout|Annotate/Markup": {
+  "en": "Creates a cover that hides what is behind it (same as in Draw).",
+  "ar": "نفس أمر Wipeout اللي في Draw: غطاء بيخبي اللي وراه.",
+  "key": "WIPEOUT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Note in 3D": {
+  "en": "Not a known AutoCAD desktop ribbon command; looks app-specific. Not verified.",
+  "ar": "مش أمر معروف في أوتوكاد. غالبًا خاص بالتطبيق بتاعنا. مش متأكد منه.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "draft|Coincident": {
+  "en": "Constrains two points, or a point and a curve, to touch.",
+  "ar": "قيد بيخلي نقطتين (أو نقطة وخط) على بعض.",
+  "key": "GCCOINCIDENT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Collinear": {
+  "en": "Makes two lines lie on the same line.",
+  "ar": "قيد بيخلي خطين على استقامة واحدة.",
+  "key": "GCCOLLINEAR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Concentric": {
+  "en": "Makes two arcs or circles share one centre.",
+  "ar": "قيد بيخلي دايرتين أو قوسين ليهم نفس المركز.",
+  "key": "GCCONCENTRIC",
+  "src": "FROM MEMORY"
+ },
+ "draft|Fix": {
+  "en": "Locks a point or object in place.",
+  "ar": "قيد بيثبّت نقطة أو عنصر في مكانه.",
+  "key": "GCFIX",
+  "src": "FROM MEMORY"
+ },
+ "draft|Parallel": {
+  "en": "Makes two lines parallel.",
+  "ar": "قيد بيخلي خطين متوازيين.",
+  "key": "GCPARALLEL",
+  "src": "FROM MEMORY"
+ },
+ "draft|Perpendicular": {
+  "en": "Makes two lines meet at 90 degrees.",
+  "ar": "قيد بيخلي خطين متعامدين (90 درجة).",
+  "key": "GCPERPENDICULAR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Horizontal": {
+  "en": "Makes a line or point pair horizontal.",
+  "ar": "قيد بيخلي الخط أفقي.",
+  "key": "GCHORIZONTAL",
+  "src": "FROM MEMORY"
+ },
+ "draft|Vertical": {
+  "en": "Makes a line or point pair vertical.",
+  "ar": "قيد بيخلي الخط رأسي.",
+  "key": "GCVERTICAL",
+  "src": "FROM MEMORY"
+ },
+ "draft|Tangent": {
+  "en": "Makes a curve touch another curve or line tangentially.",
+  "ar": "قيد بيخلي منحنى يمس منحنى أو خط من غير ما يقطعه.",
+  "key": "GCTANGENT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Smooth": {
+  "en": "Joins a spline to another curve with continuous curvature.",
+  "ar": "قيد بيوصل سبلاين بمنحنى تاني بانسيابية.",
+  "key": "GCSMOOTH",
+  "src": "FROM MEMORY"
+ },
+ "draft|Symmetric": {
+  "en": "Makes two objects mirror each other about a line.",
+  "ar": "قيد بيخلي عنصرين متماثلين حوالين خط.",
+  "key": "GCSYMMETRIC",
+  "src": "FROM MEMORY"
+ },
+ "draft|Equal": {
+  "en": "Makes lengths or radii equal.",
+  "ar": "قيد بيخلي طولين أو نصفي قطرين متساويين.",
+  "key": "GCEQUAL",
+  "src": "FROM MEMORY"
+ },
+ "draft|Linear|Parametric/Dimensional": {
+  "en": "Adds a dimensional constraint that drives a horizontal or vertical distance.",
+  "ar": "قيد بُعدي: رقم بيتحكم في المسافة، لو غيرته الشكل يتغير.",
+  "key": "DCLINEAR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Aligned|Parametric/Dimensional": {
+  "en": "Adds a dimensional constraint driving the distance between two points.",
+  "ar": "قيد بُعدي بيتحكم في المسافة المايلة بين نقطتين.",
+  "key": "DCALIGNED",
+  "src": "FROM MEMORY"
+ },
+ "draft|Angular|Parametric/Dimensional": {
+  "en": "Adds a dimensional constraint driving an angle.",
+  "ar": "قيد بُعدي بيتحكم في زاوية.",
+  "key": "DCANGULAR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Radius|Parametric/Dimensional": {
+  "en": "Adds a dimensional constraint driving a radius.",
+  "ar": "قيد بُعدي بيتحكم في نصف القطر.",
+  "key": "DCRADIUS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Diameter|Parametric/Dimensional": {
+  "en": "Adds a dimensional constraint driving a diameter.",
+  "ar": "قيد بُعدي بيتحكم في القطر.",
+  "key": "DCDIAMETER",
+  "src": "FROM MEMORY"
+ },
+ "draft|Convert": {
+  "en": "Converts an ordinary dimension into a dimensional constraint.",
+  "ar": "بيحوّل بُعد عادي لقيد بُعدي.",
+  "key": "DCCONVERT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Delete Constraints": {
+  "en": "Removes all constraints from selected objects.",
+  "ar": "بيشيل كل القيود من العناصر المختارة.",
+  "key": "DELCONSTRAINT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Show/Hide": {
+  "en": "Shows or hides constraint icons on objects.",
+  "ar": "بيظهر أو يخبي علامات القيود.",
+  "key": "CONSTRAINTBAR",
+  "src": "FROM MEMORY"
+ },
+ "draft|Parameters Manager": {
+  "en": "Opens a palette listing and editing dimensional parameters and formulas.",
+  "ar": "بيفتح لوحة فيها كل المتغيرات (أبعاد وصيغ) تقدر تعدلها.",
+  "key": "PARAMETERS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Pan": {
+  "en": "Moves the view without changing zoom.",
+  "ar": "بيحرك العرض من غير ما يغير التكبير.",
+  "key": "PAN (P)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Zoom Extents": {
+  "en": "Zooms to show all objects in the drawing.",
+  "ar": "بيكبّر ليظهر كل اللي في الرسمة.",
+  "key": "ZOOM > Extents (ZE)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Zoom Window": {
+  "en": "Zooms to a rectangle you drag.",
+  "ar": "بيكبّر على مستطيل بتسحبه.",
+  "key": "ZOOM > Window (ZW)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Zoom In": {
+  "en": "Increases the magnification of the view.",
+  "ar": "بيقرّب العرض.",
+  "key": "ZOOM > In (navigation bar)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Zoom Out": {
+  "en": "Decreases the magnification of the view.",
+  "ar": "بيبعّد العرض.",
+  "key": "ZOOM > Out (navigation bar)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Orbit": {
+  "en": "Rotates the view around the model in 3D.",
+  "ar": "بيدوّر المنظور حوالين المجسم في 3D.",
+  "key": "3DORBIT",
+  "src": "FROM MEMORY"
+ },
+ "draft|2D Wireframe": {
+  "en": "Visual style showing edges as lines, no shading.",
+  "ar": "نمط عرض بيظهر الحروف خطوط بس من غير تظليل.",
+  "key": "VSCURRENT > 2dWireframe",
+  "src": "FROM MEMORY"
+ },
+ "draft|Shaded": {
+  "en": "Visual style with smooth shading and no edges.",
+  "ar": "نمط عرض بتظليل ناعم.",
+  "key": "VSCURRENT > Shaded",
+  "src": "FROM MEMORY"
+ },
+ "draft|X-ray": {
+  "en": "Visual style that makes faces partly transparent.",
+  "ar": "نمط عرض بيخلي الأسطح شبه شفافة.",
+  "key": "VSCURRENT > X-ray",
+  "src": "FROM MEMORY"
+ },
+ "draft|Hidden": {
+  "en": "Visual style that hides lines behind faces.",
+  "ar": "نمط عرض بيخفي الخطوط اللي ورا الأسطح.",
+  "key": "VSCURRENT > Hidden",
+  "src": "FROM MEMORY"
+ },
+ "draft|Realistic": {
+  "en": "Visual style with materials and smooth shading.",
+  "ar": "نمط عرض بالخامات والتظليل.",
+  "key": "VSCURRENT > Realistic",
+  "src": "FROM MEMORY"
+ },
+ "draft|Conceptual": {
+  "en": "Visual style with smooth shading and cool-to-warm face colours.",
+  "ar": "نمط عرض مظلل بألوان من البارد للدافي.",
+  "key": "VSCURRENT > Conceptual",
+  "src": "FROM MEMORY"
+ },
+ "draft|Sketchy": {
+  "en": "Visual style that makes edges look hand drawn.",
+  "ar": "نمط عرض بيخلي الحروف شكلها مرسوم بإيد.",
+  "key": "VSCURRENT > Sketchy",
+  "src": "FROM MEMORY"
+ },
+ "draft|Shades of Gray": {
+  "en": "Visual style shaded in grey tones.",
+  "ar": "نمط عرض مظلل بدرجات الرمادي.",
+  "key": "VSCURRENT > Shades of Gray",
+  "src": "FROM MEMORY"
+ },
+ "draft|Named Views": {
+  "en": "Saves and restores named views of the drawing.",
+  "ar": "بيحفظ ويستدعي مناظر باسم.",
+  "key": "VIEW (V)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Viewport Configuration": {
+  "en": "Splits the model space window into several viewports.",
+  "ar": "بيقسم شاشة الرسم لأكتر من نافذة عرض.",
+  "key": "VPORTS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Top": {
+  "en": "Switches to the plan (top) preset view.",
+  "ar": "بيغير المنظور لمنظور علوي (مسقط أفقي).",
+  "key": "-VIEW > Top",
+  "src": "FROM MEMORY"
+ },
+ "draft|Iso": {
+  "en": "Switches to an isometric preset view.",
+  "ar": "بيغير المنظور لمنظور أيزومتري.",
+  "key": "VIEW > SW Isometric",
+  "src": "FROM MEMORY"
+ },
+ "draft|Properties": {
+  "en": "Opens the Properties palette for selected objects.",
+  "ar": "بيفتح لوحة الخصائص للعناصر المختارة.",
+  "key": "PROPERTIES (PR / CTRL+1)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Tool Palettes|View/Palettes": {
+  "en": "Opens the Tool Palettes window with blocks, hatches and tools.",
+  "ar": "بيفتح لوحة الأدوات (بلوكات وتهشير وأدوات جاهزة).",
+  "key": "TOOLPALETTES (TP / CTRL+3)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Sheet Set Manager": {
+  "en": "Opens the Sheet Set Manager for organizing sheets of a project.",
+  "ar": "بيفتح مدير مجموعة الشيتات لتنظيم لوحات المشروع.",
+  "key": "SHEETSET (CTRL+4)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Layers": {
+  "en": "Opens the Layer Properties Manager.",
+  "ar": "بيفتح مدير الطبقات (نفس Layer Properties).",
+  "key": "LAYER",
+  "src": "FROM MEMORY"
+ },
+ "draft|Measure": {
+  "en": "No AutoCAD palette with this name known; likely maps to the MEASUREGEOM command. Not verified.",
+  "ar": "مفيش لوحة بالاسم ده في أوتوكاد. غالبًا هو أمر MEASUREGEOM للقياس. مش متأكد.",
+  "key": "MEASUREGEOM",
+  "src": "FROM MEMORY"
+ },
+ "draft|Switch Windows": {
+  "en": "Switches between open drawing windows.",
+  "ar": "بيبدّل بين الرسومات المفتوحة.",
+  "key": "CTRL+TAB",
+  "src": "FROM MEMORY"
+ },
+ "draft|Cascade": {
+  "en": "Arranges open drawing windows overlapping one another.",
+  "ar": "بيرتب نوافذ الرسومات فوق بعض متدرجة.",
+  "key": "WINDOW > Cascade",
+  "src": "FROM MEMORY"
+ },
+ "draft|Reset layout": {
+  "en": "Restores the default workspace layout.",
+  "ar": "بيرجّع شكل الواجهة الافتراضي.",
+  "key": "WSCURRENT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Hide / show bars": {
+  "en": "Hides or shows the ribbon and palettes for a larger drawing area.",
+  "ar": "بيخبي أو يظهر الريبون واللوحات عشان مساحة الرسم تكبر.",
+  "key": "CLEANSCREENON / CLEANSCREENOFF",
+  "src": "FROM MEMORY"
+ },
+ "draft|Record": {
+  "en": "Starts recording a sequence of commands as an action macro.",
+  "ar": "بيبدأ يسجل سلسلة أوامر كماكرو.",
+  "key": "ACTRECORD",
+  "src": "FROM MEMORY"
+ },
+ "draft|Play": {
+  "en": "Plays back the recorded action macro.",
+  "ar": "بيشغل الماكرو المسجل.",
+  "key": "ACTPLAY",
+  "src": "FROM MEMORY"
+ },
+ "draft|User Interface": {
+  "en": "Opens the Customize User Interface editor for ribbon, menus and shortcuts.",
+  "ar": "بيفتح محرر تخصيص الواجهة (ريبون وقوايم واختصارات).",
+  "key": "CUI",
+  "src": "FROM MEMORY"
+ },
+ "draft|Tool Palettes|Manage/Customization": {
+  "en": "Opens the tool palettes customization / palette window.",
+  "ar": "بيفتح لوحة الأدوات لتخصيصها.",
+  "key": "TOOLPALETTES / CUSTOMIZE",
+  "src": "FROM MEMORY"
+ },
+ "draft|Edit Aliases": {
+  "en": "Opens the file that defines command shortcut names.",
+  "ar": "بيفتح ملف اختصارات الأوامر (acad.pgp) تعدل فيه.",
+  "key": "ALIASEDIT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Configure": {
+  "en": "Sets up the CAD standards files to check against.",
+  "ar": "بيحدد ملفات المعايير اللي هتتراجع عليها الرسمة.",
+  "key": "STANDARDS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Check": {
+  "en": "Checks the drawing against the CAD standards files.",
+  "ar": "بيراجع الرسمة على معايير الـ CAD ويقترح التصليح.",
+  "key": "CHECKSTANDARDS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Layer Translator": {
+  "en": "Maps layers of a drawing to a standard set of layers.",
+  "ar": "بيحوّل أسماء وخصائص الطبقات لمعيار موحد.",
+  "key": "LAYTRANS",
+  "src": "FROM MEMORY"
+ },
+ "draft|Load Application": {
+  "en": "Loads an add-on file such as LISP, ARX or .NET.",
+  "ar": "بيحمّل برنامج إضافي (LISP أو ARX أو .NET).",
+  "key": "APPLOAD",
+  "src": "FROM MEMORY"
+ },
+ "draft|Run Script": {
+  "en": "Runs a script file (.scr) of commands.",
+  "ar": "بيشغل ملف سكريبت فيه أوامر متتابعة.",
+  "key": "SCRIPT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Plot": {
+  "en": "Plots the current layout or model to a plotter or file.",
+  "ar": "بيطبع الرسمة على طابعة أو ملف.",
+  "key": "PLOT (CTRL+P)",
+  "src": "FROM MEMORY"
+ },
+ "draft|Batch Plot": {
+  "en": "Plots many sheets in one job.",
+  "ar": "بيطبع شيتات كتير مرة واحدة.",
+  "key": "PUBLISH",
+  "src": "FROM MEMORY"
+ },
+ "draft|Preview": {
+  "en": "Shows how the plot will look before printing.",
+  "ar": "بيعرض شكل الطباعة قبل ما تطبع.",
+  "key": "PREVIEW",
+  "src": "FROM MEMORY"
+ },
+ "draft|Page Setup Manager": {
+  "en": "Creates and edits named page setups.",
+  "ar": "بيعمل ويعدل إعدادات الصفحة بأسماء.",
+  "key": "PAGESETUP",
+  "src": "FROM MEMORY"
+ },
+ "draft|Plotter Manager": {
+  "en": "Opens the folder of plotter configuration files.",
+  "ar": "بيفتح مكان ملفات إعداد الطابعات.",
+  "key": "PLOTTERMANAGER",
+  "src": "FROM MEMORY"
+ },
+ "draft|Export PDF": {
+  "en": "Exports drawing sheets to a PDF file.",
+  "ar": "بيصدّر الرسمة لملف PDF.",
+  "key": "EXPORTPDF",
+  "src": "FROM MEMORY"
+ },
+ "draft|Export SVG": {
+  "en": "AutoCAD desktop has no native SVG export that I know of. Not verified.",
+  "ar": "ماعرفش إن أوتوكاد سطح المكتب عنده تصدير SVG مباشر. مش متأكد.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ },
+ "draft|Export DXF": {
+  "en": "Saves the drawing in DXF format for exchange.",
+  "ar": "بيحفظ الرسمة بصيغة DXF للتبادل مع برامج تانية.",
+  "key": "SAVEAS (DXF) / DXFOUT",
+  "src": "FROM MEMORY"
+ },
+ "draft|DWF": {
+  "en": "Exports the drawing to a DWF file.",
+  "ar": "بيصدّر الرسمة بصيغة DWF.",
+  "key": "EXPORTDWF",
+  "src": "FROM MEMORY"
+ },
+ "draft|Project package ZIP": {
+  "en": "Packages the drawing with its xrefs and fonts into a zip.",
+  "ar": "بيجمع الرسمة وكل الملفات المرتبطة بيها في ملف zip.",
+  "key": "ETRANSMIT",
+  "src": "FROM MEMORY"
+ },
+ "draft|Share": {
+  "en": "Shares the drawing or a view with others online; exact command not verified.",
+  "ar": "بيشارك الرسمة أو منظور مع ناس تانية أونلاين. اسم الأمر مش متأكد منه.",
+  "key": "unknown",
+  "src": "FROM MEMORY"
+ }
+}

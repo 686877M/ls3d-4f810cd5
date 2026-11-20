@@ -1,0 +1,1387 @@
+{
+ "model|Wall": {
+  "en": "Draws architectural or structural walls of a chosen type, height and location line.",
+  "ar": "بترسم حيطان بنوع وارتفاع تختارهم. استخدمها أول حاجة لما تبدأ تعمل مخطط الدور.",
+  "src": "FROM MEMORY"
+ },
+ "model|Wall|Opening": {
+  "en": "Cuts a rectangular opening in a selected wall by sketching its boundary.",
+  "ar": "بتفتح فتحة مستطيلة في حيطة موجودة من غير ما تحط باب أو شباك. تستخدمها للفتحات الكبيرة أو الممرات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Wall|Foundation": {
+  "en": "Places a wall foundation (strip footing) under a selected wall.",
+  "ar": "بتحط أساس شريطي تحت الحيطة. تستخدمها لما الحيطة بتشيل حمل وعايز أساس مستمر تحتها.",
+  "src": "FROM MEMORY"
+ },
+ "model|Door": {
+  "en": "Places a door family in a wall and attaches it to that host.",
+  "ar": "بتركّب باب جوّه حيطة وبيتحرك معاها. اختار النوع من القايمة وحطه على الحيطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Window": {
+  "en": "Adds a window family to a wall (or a skylight to an in-place roof).",
+  "ar": "بتركّب شباك في حيطة أو منور في سقف. حطه في مسقط أو واجهة وراجع الارتفاع من الخصائص.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Revit-ArchDesign/files/GUID-3B7BAC64-6120-4372-A29E-95C4A1D853F5.htm"
+ },
+ "model|Component": {
+  "en": "Places a loadable or in-place family such as furniture or fixtures into the model.",
+  "ar": "بتحط عناصر زي الأثاث والأجهزة من مكتبة العائلات. تستخدمها للأشياء اللي بتتركب في الموقع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Component|Detail": {
+  "en": "Places a 2D detail component (hatch-like symbol such as a bolt or beam section) in a detail or drafting view.",
+  "ar": "بتحط رمز تفصيلي ثنائي الأبعاد في تفصيلة. بيظهر في الـ view ده بس ومش جزء من الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Column": {
+  "en": "Places an architectural column used for box-outs or decorative elements around structure.",
+  "ar": "بتحط عمود معماري يغلّف العمود الإنشائي أو للزينة. مش بيشيل حمل في التحليل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Column|Structure": {
+  "en": "Places a structural column that carries load and joins the analytical model.",
+  "ar": "بتحط عمود إنشائي بيشيل حمل ويدخل في النموذج التحليلي. اختار القطاع والارتفاع من الخصائص.",
+  "src": "FROM MEMORY"
+ },
+ "model|Roof": {
+  "en": "Creates a roof from a footprint or extrusion with slope settings.",
+  "ar": "بتعمل سقف من حدود المبنى (footprint) أو بسحب مقطع. حدد الميل من الحدود المرسومة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Ceiling": {
+  "en": "Creates an automatic or sketched ceiling at an offset height above its level.",
+  "ar": "بتعمل سقف معلّق على ارتفاع من الدور. تستخدمه للأسقف المستعارة وتنسيق الإضاءة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Floor": {
+  "en": "Creates an architectural floor slab by sketching its boundary, with layered structure and slope.",
+  "ar": "بترسم بلاطة أرضية بحدود ترسمها وطبقات وميل لو عايز. تستخدمها لأرضيات الأدوار.",
+  "src": "FROM MEMORY"
+ },
+ "model|Floor|Structure": {
+  "en": "Creates a structural floor (slab) marked as structural so it joins the analytical model.",
+  "ar": "بتعمل بلاطة إنشائية داخلة في التحليل الإنشائي. اختار السمك والتسليح بعدين.",
+  "src": "FROM MEMORY"
+ },
+ "model|Curtain System": {
+  "en": "Creates a curtain system by picking faces of a mass or generic model and filling it with panels, grids and mullions.",
+  "ar": "بتعمل واجهة زجاجية على أسطح من كتلة أو موديل. بتتقسم لألواح وشبكة وقوائم.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Revit-ArchDesign/files/GUID-F20928C1-83F8-4CD0-870E-6F8F123A67C9.htm"
+ },
+ "model|Curtain Grid": {
+  "en": "Adds grid lines that divide a curtain wall or curtain system into panels.",
+  "ar": "بتحط خطوط شبكة تقسّم الواجهة الزجاجية لألواح. اضبط مسافاتها قبل الـ Mullion.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Revit-ArchDesign/files/GUID-F20928C1-83F8-4CD0-870E-6F8F123A67C9.htm"
+ },
+ "model|Mullion": {
+  "en": "Adds mullions (frame members) along curtain grid lines.",
+  "ar": "بتحط القوائم المعدنية على خطوط الشبكة في الواجهة الزجاجية. تستخدمها بعد ما تظبط الـ Curtain Grid.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Revit-ArchDesign/files/GUID-F20928C1-83F8-4CD0-870E-6F8F123A67C9.htm"
+ },
+ "model|Railing": {
+  "en": "Draws a railing along a path or places one on a stair or ramp.",
+  "ar": "بتعمل درابزين على مسار أو على سلم أو منحدر. اختار نوعه وارتفاعه من الخصائص.",
+  "src": "FROM MEMORY"
+ },
+ "model|Ramp": {
+  "en": "Creates a ramp between levels from a run sketch and slope settings.",
+  "ar": "بتعمل منحدر بين دورين بمسار وميل محدد. تستخدمه لمداخل المعاقين والجراجات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Stair": {
+  "en": "Creates a stair by run, landing and supports between levels.",
+  "ar": "بتعمل سلم بين دورين بمراحل وبسطات. حدد عدد الدرجات والارتفاع الكلي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Model Text": {
+  "en": "Adds 3D text that is part of the model geometry.",
+  "ar": "بتحط كتابة ثلاثية الأبعاد في الموديل نفسه، زي اسم محل على الواجهة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Model Line": {
+  "en": "Draws 3D lines on a work plane that exist as model geometry (not view-specific).",
+  "ar": "بترسم خطوط في الموديل بتظهر في كل الـ views. تستخدمها كمرجع أو شكل بسيط.",
+  "src": "FROM MEMORY"
+ },
+ "model|Model Group": {
+  "en": "Groups selected elements so they can be copied and placed together as one unit.",
+  "ar": "بتجمّع عناصر مع بعض كمجموعة وتنسخها كلها مرة واحدة. مفيد للغرف المتكررة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Parts": {
+  "en": "Divides an element such as a wall or floor into parts so layers can be scheduled or modified separately.",
+  "ar": "بتقسّم الحيطة أو البلاطة لأجزاء عشان تحسب كل طبقة لوحدها أو تعدّلها.",
+  "src": "FROM MEMORY"
+ },
+ "model|Room": {
+  "en": "Places a room element in an enclosed area to track name, number, area and volume.",
+  "ar": "بتعمل غرفة جوّه مساحة مقفولة بحيطان عشان تحسب المساحة والحجم وتسجّل الاسم والرقم.",
+  "src": "FROM MEMORY"
+ },
+ "model|Room Separator": {
+  "en": "Draws a line that splits a room boundary where no wall exists.",
+  "ar": "بترسم خط بيقسم الغرفة مكان مفيش حيطة. تستخدمه في المساحات المفتوحة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Tag Room": {
+  "en": "Places a tag showing room name and number in a view.",
+  "ar": "بتحط تاج بيظهر اسم ورقم الغرفة في المسقط.",
+  "src": "FROM MEMORY"
+ },
+ "model|Area": {
+  "en": "Creates an area in an area plan for gross or rentable area calculations.",
+  "ar": "بتحسب مساحة في مسقط مساحات (إجمالية أو قابلة للتأجير). مختلفة عن الغرفة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Area|Reinforcement": {
+  "en": "Places area reinforcement (rebar layout over a region) in a host such as a slab or wall.",
+  "ar": "بتوزع تسليح على مساحة كاملة في بلاطة أو حيطة. بتحدد الاتجاه والقطر والمسافات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Area Boundary": {
+  "en": "Draws the boundary lines that define an area in an area plan.",
+  "ar": "بترسم حدود المساحة في مسقط المساحات عشان تتحسب صح.",
+  "src": "FROM MEMORY"
+ },
+ "model|Tag Area": {
+  "en": "Tags an area with its name and computed area value.",
+  "ar": "بتحط تاج على المساحة بيظهر اسمها وقيمتها.",
+  "src": "FROM MEMORY"
+ },
+ "model|By Face": {
+  "en": "Cuts an opening perpendicular to the face of a host such as a roof, floor or ceiling.",
+  "ar": "بتفتح فتحة عمودية على سطح السقف أو البلاطة. تستخدمها للمداخن والمناور.",
+  "src": "FROM MEMORY"
+ },
+ "model|Shaft": {
+  "en": "Cuts a vertical opening through several levels for shafts and stairwells.",
+  "ar": "بتفتح فتحة رأسية تخترق أكتر من دور. تستخدمها لمناور الخدمات وبيت السلم والمصعد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Vertical": {
+  "en": "Cuts an opening perpendicular to the level through a roof, floor or ceiling.",
+  "ar": "بتفتح فتحة رأسية في سقف أو بلاطة واحدة. تستخدمها لفتحة صغيرة مستقيمة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Dormer": {
+  "en": "Cuts a roof opening so a dormer can be attached.",
+  "ar": "بتفتح السقف عشان تركّب فيه دورمر (نافذة بارزة). اختار السقف وحيطان الدورمر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Level": {
+  "en": "Creates a level (horizontal datum plane) that controls floor height and generates plan views.",
+  "ar": "بتعمل منسوب (دور) بيتحكم في ارتفاعات العناصر وبيطلّع مسقط. اعمله في واجهة أو قطاع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Level|Measure": {
+  "en": "Measures or shows the elevation of a picked point in this app.",
+  "ar": "بتقيس منسوب نقطة تختارها في التطبيق. مش أمر Revit مستقل.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Grid": {
+  "en": "Draws structural or architectural grid lines used to locate columns and walls.",
+  "ar": "بترسم محاور (grid) لتحديد أماكن الأعمدة والحيطان. تتسمّى بحروف وأرقام.",
+  "src": "FROM MEMORY"
+ },
+ "model|Show levels": {
+  "en": "Toggles level planes visibility in this app's 3D view.",
+  "ar": "بتظهر أو تخفي مستويات الأدوار في الـ 3D بتاع التطبيق. في Revit بتتحكم بيها من Visibility/Graphics.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Set": {
+  "en": "Sets the active work plane by picking a plane, face or named reference plane.",
+  "ar": "بتحدد مستوى الشغل اللي هترسم عليه. اختار مستوى أو وش عنصر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Show": {
+  "en": "Displays the current work plane in the active view.",
+  "ar": "بتظهر مستوى الشغل الحالي في الـ view عشان تتأكد إنت على أنهي مستوى.",
+  "src": "FROM MEMORY"
+ },
+ "model|Ref Plane": {
+  "en": "Draws a reference plane used for alignment and as a work plane.",
+  "ar": "بترسم مستوى مرجعي للمحاذاة أو كمستوى شغل. تستخدمه بكثرة في العائلات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Viewer": {
+  "en": "Opens a viewer that shows the model from the current work plane in a drafting-style window.",
+  "ar": "بيفتح شاشة بتعرض الموديل من مستوى الشغل الحالي. تستخدمه لفحص جانبي سريع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Beam": {
+  "en": "Places a structural framing beam between two points or supports.",
+  "ar": "بتحط كمرة إنشائية بين نقطتين أو عمودين. اختار القطاع من القايمة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Brace": {
+  "en": "Places diagonal bracing members between structural elements.",
+  "ar": "بتحط تكتيف قُطري بين العناصر الإنشائية لمقاومة الأحمال الجانبية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Truss": {
+  "en": "Creates a truss from a truss family with top and bottom chords and webs.",
+  "ar": "بتعمل جمالون من عائلة جاهزة فيها الأحزمة العلوية والسفلية والأوتار.",
+  "src": "FROM MEMORY"
+ },
+ "model|Beam System": {
+  "en": "Creates a set of parallel beams by sketching a boundary and spacing.",
+  "ar": "بتعمل مجموعة كمرات متوازية بحدود ومسافات محددة. تستخدمها لبلاطات الكمرات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Isolated": {
+  "en": "Places an isolated (pad) footing under a column.",
+  "ar": "بتحط قاعدة منفصلة تحت العمود. حددلها الأبعاد من النوع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Slab": {
+  "en": "Creates a foundation slab (mat or raft) by sketching its boundary.",
+  "ar": "بتعمل لبشة أو بلاطة أساس بحدود ترسمها.",
+  "src": "FROM MEMORY"
+ },
+ "model|Rebar": {
+  "en": "Places individual reinforcement bars in a host using a rebar shape and layout.",
+  "ar": "بتحط حديد تسليح في العنصر بشكل ومسافات محددة. اختار القطر والشكل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Path": {
+  "en": "Places path reinforcement along a sketched line in a slab or wall.",
+  "ar": "بتوزع تسليح على مسار مرسوم في بلاطة أو حيطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Fabric Sheet": {
+  "en": "Places welded fabric (mesh) reinforcement sheets in a host.",
+  "ar": "بتحط شبكة حديد جاهزة (ويلد ميش) في البلاطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cover": {
+  "en": "Sets the concrete cover distance for reinforcement in a host.",
+  "ar": "بتحدد الغطاء الخرساني بين الحديد وسطح الخرسانة. مهم للمتانة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Rebar Couplers": {
+  "en": "Adds mechanical couplers to join rebar ends.",
+  "ar": "بتحط وصلات ميكانيكية بتربط نهايات الأسياخ مع بعض.",
+  "src": "FROM MEMORY"
+ },
+ "model|Check": {
+  "en": "Runs the app's analytical model consistency check.",
+  "ar": "بتفحص النموذج التحليلي للتأكد من اتصال العناصر. الاسم في Revit بيختلف (Consistency Checks).",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Loads": {
+  "en": "Applies point, line or area loads to the structural analytical model.",
+  "ar": "بتحط أحمال نقطية أو خطية أو على مساحة على النموذج الإنشائي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Boundary Conditions": {
+  "en": "Defines supports (fixed, pinned, roller) at points, lines or areas of the analytical model.",
+  "ar": "بتحدد أنواع الركائز (مثبتة/مفصلية/متحركة) في النموذج التحليلي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Load Combinations": {
+  "en": "Defines combinations of load cases with factors for structural analysis.",
+  "ar": "بتجمّع حالات الأحمال بمعاملات أمان عشان التحليل الإنشائي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Connection": {
+  "en": "Adds a steel connection between structural framing members.",
+  "ar": "بتحط وصلة حديد بين عنصرين إنشائيين زي كمرة وعمود.",
+  "src": "FROM MEMORY"
+ },
+ "model|Plate": {
+  "en": "Places a steel fabrication plate element.",
+  "ar": "بتحط لوح حديد (بليت) كعنصر تصنيع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Bolt": {
+  "en": "Places bolts to connect steel elements.",
+  "ar": "بتحط مسامير ربط بين عناصر الحديد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Anchor": {
+  "en": "Places anchor bolts connecting steel to concrete.",
+  "ar": "بتحط مسامير تثبيت بتربط الحديد بالخرسانة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Weld": {
+  "en": "Adds a weld between steel elements.",
+  "ar": "بتحط لحام بين عناصر الحديد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cut": {
+  "en": "Cuts one steel element with another (a steel fabrication modify tool).",
+  "ar": "بتقطع عنصر حديد بعنصر تاني. للتصنيع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cut|Clipboard": {
+  "en": "Cuts the selected elements to the clipboard so you can paste them elsewhere.",
+  "ar": "بتقص العناصر المختارة للحافظة وتلصقها مكان تاني.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cut|Geometry": {
+  "en": "Cuts a solid geometry out of another solid.",
+  "ar": "بتقص مجسم من مجسم تاني (طرح). مختلفة عن Cut بتاع الحافظة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cope": {
+  "en": "Trims a steel beam end so it fits around another member (steel fabrication).",
+  "ar": "بتقصّ طرف الكمرة عشان تركب حوالين عنصر تاني.",
+  "src": "FROM MEMORY"
+ },
+ "model|Shorten": {
+  "en": "Shortens a steel element to a set length at an end.",
+  "ar": "بتقصّر عنصر حديد لطول معين من الطرف.",
+  "src": "FROM MEMORY"
+ },
+ "model|Mechanical Equipment": {
+  "en": "Places mechanical equipment such as air handlers or pumps with connectors.",
+  "ar": "بتحط معدات ميكانيكا زي وحدات التكييف والمضخات وفيها نقاط توصيل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Air Terminal": {
+  "en": "Places air diffusers, grilles or registers connected to ducts.",
+  "ar": "بتحط مخارج الهواء (دفرات/جريلات) وتوصلها بالدكت.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duct": {
+  "en": "Draws rigid duct runs between equipment and terminals.",
+  "ar": "بترسم دكت تكييف بين الأجهزة ومخارج الهواء. اختار المقاس والارتفاع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duct Fitting": {
+  "en": "Places a duct fitting such as an elbow, tee or transition.",
+  "ar": "بتحط وصلة دكت زي كوع أو تي أو تحويلة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duct Accessory": {
+  "en": "Places duct accessories like dampers or fire dampers inline.",
+  "ar": "بتحط ملحقات دكت زي دمبر ومنظّم نار داخل الخط.",
+  "src": "FROM MEMORY"
+ },
+ "model|Flex Duct": {
+  "en": "Draws flexible duct for the final connection to terminals.",
+  "ar": "بترسم دكت مرن للتوصيلة الأخيرة عند المخارج.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duct Placeholder": {
+  "en": "Draws a placeholder duct for early layout before fittings and sizing are final.",
+  "ar": "بترسم دكت مبدئي في بداية التصميم قبل المقاسات والوصلات النهائية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Heating and Cooling Loads": {
+  "en": "Calculates heating and cooling loads from building spaces and zones.",
+  "ar": "بتحسب أحمال التدفئة والتبريد من الفراغات والزونات. تستخدمها لتحديد سعة المعدات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Electrical Equipment": {
+  "en": "Places electrical equipment such as panels and transformers.",
+  "ar": "بتحط معدات كهرباء زي اللوحات والمحولات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Device": {
+  "en": "Places electrical devices such as switches, outlets and data points.",
+  "ar": "بتحط أجهزة كهرباء زي مفاتيح وبرايز ونقاط داتا.",
+  "src": "FROM MEMORY"
+ },
+ "model|Lighting Fixture": {
+  "en": "Places lighting fixtures hosted on ceilings, walls or faces.",
+  "ar": "بتحط وحدات إنارة على السقف أو الحيطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cable Tray": {
+  "en": "Draws cable tray runs for power and data cables.",
+  "ar": "بترسم مسارات صواني كابلات للقوى والداتا.",
+  "src": "FROM MEMORY"
+ },
+ "model|Conduit": {
+  "en": "Draws electrical conduit runs.",
+  "ar": "بترسم مواسير كهرباء (كونديوت).",
+  "src": "FROM MEMORY"
+ },
+ "model|Wire": {
+  "en": "Draws wires that connect devices and define circuits.",
+  "ar": "بترسم أسلاك بتوصل الأجهزة وبتكوّن الدوائر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pipe": {
+  "en": "Draws pipe runs between equipment and fixtures, with type, size and slope.",
+  "ar": "بترسم مواسير بين المعدات والأجهزة بنوع ومقاس وميل. تستخدمها للمياه والصرف والحريق.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-MEPEng/files/GUID-EEB121ED-6C1F-4728-A615-B3AF36DD6A61.htm"
+ },
+ "model|Pipe Fitting": {
+  "en": "Places a pipe fitting such as an elbow, tee or union.",
+  "ar": "بتحط وصلة ماسورة زي كوع أو تي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Plumbing Fixture": {
+  "en": "Places plumbing fixtures such as sinks and toilets with pipe connectors.",
+  "ar": "بتحط أطقم صحية زي الحوض والمرحاض وفيها توصيلات مواسير.",
+  "src": "FROM MEMORY"
+ },
+ "model|Sprinkler": {
+  "en": "Places fire sprinkler heads connected to piping.",
+  "ar": "بتحط رشاشات الحريق وتوصلها بمواسير الشبكة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pipe Accessory": {
+  "en": "Places inline pipe accessories such as valves and strainers.",
+  "ar": "بتحط ملحقات على الماسورة زي المحابس والمصافي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pipe Placeholder": {
+  "en": "Draws placeholder pipe to show the approximate route before sizing and fittings are final.",
+  "ar": "بترسم ماسورة مبدئية تبين المسار التقريبي قبل المقاسات النهائية.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-MEPEng/files/GUID-EEB121ED-6C1F-4728-A615-B3AF36DD6A61.htm"
+ },
+ "model|Colour by system": {
+  "en": "Colours MEP elements by their system in this app's views.",
+  "ar": "بتلوّن عناصر الـ MEP حسب النظام في التطبيق. في Revit بتتعمل بفلاتر أو بـ Color Fill.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Mechanical Settings": {
+  "en": "Opens settings for duct and pipe sizing, units and conversions.",
+  "ar": "بتفتح إعدادات مقاسات الدكت والمواسير والوحدات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pipe Sizing": {
+  "en": "Sizes pipes in a system from flow and pressure criteria.",
+  "ar": "بتحسب مقاسات المواسير في نظام من التدفق وفاقد الضغط.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duct Sizing": {
+  "en": "Sizes ducts in a system using a method such as equal friction or velocity.",
+  "ar": "بتحسب مقاسات الدكت بطريقة زي الاحتكاك المتساوي أو السرعة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Link Revit": {
+  "en": "Links another Revit model into this project by reference.",
+  "ar": "بتربط موديل Revit تاني كمرجع من غير ما تدمجه. بيتحدّث لما الملف الأصلي يتغير.",
+  "src": "FROM MEMORY"
+ },
+ "model|Link IFC": {
+  "en": "Links an IFC file into the project as a reference.",
+  "ar": "بتربط ملف IFC كمرجع في المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Link CAD": {
+  "en": "Links a DWG/DXF drawing as a reference underlay.",
+  "ar": "بتربط رسمة أوتوكاد كخلفية مرجعية بتتحدث مع الأصل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Link Topography": {
+  "en": "Links a topography (surface) file from a civil source.",
+  "ar": "بتربط ملف طبوغرافيا (سطح أرض) من برنامج مدني.",
+  "src": "FROM MEMORY"
+ },
+ "model|Decal": {
+  "en": "Places an image decal on a surface for rendering.",
+  "ar": "بتحط صورة (ديكال) على سطح عشان الريندر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Point Cloud": {
+  "en": "Links a scanned point cloud into the project.",
+  "ar": "بتربط سحابة نقاط ماسح ليزر في المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Coordination Model": {
+  "en": "Links a Navisworks coordination model as a reference.",
+  "ar": "بتربط موديل تنسيق من Navisworks كمرجع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Import CAD": {
+  "en": "Imports a DWG/DXF drawing into the project.",
+  "ar": "بتستورد رسمة أوتوكاد وتدمجها في المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Import gbXML": {
+  "en": "Imports a gbXML energy-analysis file.",
+  "ar": "بتستورد ملف gbXML للتحليل الحراري.",
+  "src": "FROM MEMORY"
+ },
+ "model|Image": {
+  "en": "Places a raster image in a view.",
+  "ar": "بتحط صورة (JPG/PNG) في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Import PDF": {
+  "en": "Places a PDF page as an underlay in a view.",
+  "ar": "بتحط صفحة PDF كخلفية في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Load Family": {
+  "en": "Loads a family (.rfa) from disk into the project.",
+  "ar": "بتحمّل عائلة .rfa من الجهاز للمشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Load as Group": {
+  "en": "Loads a Revit file as a group of elements.",
+  "ar": "بتحمّل ملف Revit كمجموعة عناصر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Insert Views from File": {
+  "en": "Inserts views or sheets from another Revit file.",
+  "ar": "بتجيب views أو شيتات من ملف Revit تاني.",
+  "src": "FROM MEMORY"
+ },
+ "model|Aligned": {
+  "en": "Places an aligned dimension between parallel references.",
+  "ar": "بتعمل بُعد موازي بين مرجعين.",
+  "src": "FROM MEMORY"
+ },
+ "model|Linear": {
+  "en": "Places a horizontal or vertical linear dimension.",
+  "ar": "بتعمل بُعد أفقي أو رأسي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Angular": {
+  "en": "Dimensions the angle between two lines.",
+  "ar": "بتقيس الزاوية بين خطين.",
+  "src": "FROM MEMORY"
+ },
+ "model|Radial": {
+  "en": "Dimensions the radius of an arc or circle.",
+  "ar": "بتكتب نصف قطر القوس أو الدائرة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Diameter": {
+  "en": "Dimensions the diameter of a circle.",
+  "ar": "بتكتب قطر الدائرة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Arc Length": {
+  "en": "Dimensions the length of an arc.",
+  "ar": "بتكتب طول القوس.",
+  "src": "FROM MEMORY"
+ },
+ "model|Spot Elevation": {
+  "en": "Shows the elevation at a point on a surface or edge.",
+  "ar": "بتكتب منسوب نقطة على سطح أو حرف.",
+  "src": "FROM MEMORY"
+ },
+ "model|Spot Coordinate": {
+  "en": "Shows north/south and east/west coordinates of a point.",
+  "ar": "بتكتب إحداثيات نقطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Spot Slope": {
+  "en": "Shows slope at a point as a percentage or ratio.",
+  "ar": "بتكتب ميل سطح عند نقطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Detail Line": {
+  "en": "Draws 2D lines that exist only in the current view.",
+  "ar": "بترسم خطوط ثنائية الأبعاد في الـ view ده بس.",
+  "src": "FROM MEMORY"
+ },
+ "model|Region": {
+  "en": "Draws a filled or masking region in a view.",
+  "ar": "بترسم منطقة بتعبية أو بتغطية في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Revision Cloud": {
+  "en": "Draws a cloud around changes to mark a revision.",
+  "ar": "بترسم سحابة حوالين التعديلات عشان تعلّم المراجعة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Insulation": {
+  "en": "Draws batt insulation symbol along a path in a detail.",
+  "ar": "بترسم رمز عزل على مسار في التفصيلة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Repeating Detail": {
+  "en": "Repeats a detail component along a path.",
+  "ar": "بتكرر عنصر تفصيلي على مسار (زي صف طوب).",
+  "src": "FROM MEMORY"
+ },
+ "model|Text": {
+  "en": "Places text notes in a view.",
+  "ar": "بتكتب ملاحظات نصية في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Check Spelling": {
+  "en": "Checks spelling of text notes in the view or project.",
+  "ar": "بتراجع إملاء الملاحظات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Find/Replace": {
+  "en": "Finds and replaces text across notes in the project.",
+  "ar": "بتدوّر وتبدّل نص في الملاحظات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Tag by Category": {
+  "en": "Tags an element with a tag of its category.",
+  "ar": "بتعلّق تاج على عنصر حسب نوعه (باب، شباك..).",
+  "src": "FROM MEMORY"
+ },
+ "model|Tag All": {
+  "en": "Tags all untagged elements of chosen categories at once.",
+  "ar": "بتحط تاجات على كل العناصر غير الموسومة مرة واحدة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Beam Annotations": {
+  "en": "Adds beam annotations such as size and elevation tags.",
+  "ar": "بتكتب بيانات الكمرة (مقاس/منسوب) على الرسمة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Material Tag": {
+  "en": "Tags an element with its material name.",
+  "ar": "بتكتب اسم خامة العنصر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Keynote": {
+  "en": "Places a keynote tag linked to a keynote table.",
+  "ar": "بتحط رقم ملاحظة مرتبط بجدول Keynotes.",
+  "src": "FROM MEMORY"
+ },
+ "model|Symbol": {
+  "en": "Places a 2D annotation symbol family in a view.",
+  "ar": "بتحط رمز توضيحي ثنائي الأبعاد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Stair Path": {
+  "en": "Adds an arrow showing stair run direction in plan.",
+  "ar": "بتحط سهم اتجاه صعود السلم في المسقط.",
+  "src": "FROM MEMORY"
+ },
+ "model|Span Direction": {
+  "en": "Adds a symbol showing slab/deck span direction.",
+  "ar": "بتحط رمز اتجاه بحر البلاطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Energy Optimization": {
+  "en": "Runs Revit's energy/systems analysis workflows on analytical spaces (load calc or annual simulation).",
+  "ar": "بتشغّل تحليل الطاقة والأحمال على الفراغات التحليلية. تستخدمه بعد تعريف الـ Spaces.",
+  "src": "https://help.autodesk.com/cloudhelp/2020/ENU/Revit-Analyze/files/GUID-489D3898-82B1-4615-BDF2-DA1DC37A83BB.htm"
+ },
+ "model|Space": {
+  "en": "Places MEP spaces used for loads and airflow calculation.",
+  "ar": "بتحط Spaces (فراغات) عشان حسابات الأحمال والهواء.",
+  "src": "FROM MEMORY"
+ },
+ "model|Zone": {
+  "en": "Groups spaces into HVAC zones.",
+  "ar": "بتجمّع الفراغات في زونات تكييف.",
+  "src": "FROM MEMORY"
+ },
+ "model|Quantities and cost": {
+  "en": "Opens the app's quantity take-off and cost view.",
+  "ar": "بتفتح حصر الكميات والتكلفة في التطبيق. في Revit بتتعمل بالجداول (Schedules).",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Pressure Loss Report": {
+  "en": "Reports pressure loss through duct or pipe systems.",
+  "ar": "بتطلّع تقرير فاقد الضغط في الدكت أو المواسير.",
+  "src": "FROM MEMORY"
+ },
+ "model|Panel Schedules": {
+  "en": "Creates a panel schedule listing a panel's circuits and loads.",
+  "ar": "بتعمل جدول لوحة بيبين الدوائر والأحمال المتصلة بيها.",
+  "src": "https://help.autodesk.com/cloudhelp/2026/ENU/Revit-DocumentPresent/files/GUID-3D2D0E77-ED17-4FBF-AAE4-CB9185A3F779.htm"
+ },
+ "model|Check Duct Systems": {
+  "en": "Checks duct systems for disconnected or unassigned elements.",
+  "ar": "بتفحص أنظمة الدكت لو فيه عناصر مش متوصلة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Check Pipe Systems": {
+  "en": "Checks pipe systems for connection and flow problems.",
+  "ar": "بتفحص أنظمة المواسير للتوصيلات والتدفق.",
+  "src": "FROM MEMORY"
+ },
+ "model|Check Circuits": {
+  "en": "Checks electrical circuits for unassigned or overloaded issues.",
+  "ar": "بتفحص الدوائر الكهربية لو فيها مشاكل توصيل أو حمل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Interference Check": {
+  "en": "Finds geometric clashes between selected categories of elements.",
+  "ar": "بتدوّر على تعارضات هندسية بين فئات عناصر تختارها.",
+  "src": "FROM MEMORY"
+ },
+ "model|Structural review": {
+  "en": "App-specific structural review panel.",
+  "ar": "شاشة مراجعة إنشائية خاصة بالتطبيق، مش أمر في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|MEP review": {
+  "en": "App-specific MEP review panel.",
+  "ar": "شاشة مراجعة MEP خاصة بالتطبيق، مش أمر في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Quality review": {
+  "en": "App-specific model quality review panel.",
+  "ar": "شاشة فحص جودة الموديل خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Handover": {
+  "en": "App-specific project handover checklist.",
+  "ar": "قايمة تسليم المشروع خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Show Mass": {
+  "en": "Toggles visibility of mass elements in views.",
+  "ar": "بتظهر أو تخفي الكتل (Mass) في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|In-Place Mass": {
+  "en": "Creates a conceptual mass directly in the project.",
+  "ar": "بتعمل كتلة تصميمية جوّه المشروع مباشرة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Place Mass": {
+  "en": "Places a loaded mass family.",
+  "ar": "بتحط كتلة جاهزة من عائلة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Toposurface": {
+  "en": "Creates a terrain surface from points or imported data.",
+  "ar": "بتعمل سطح أرض من نقاط أو بيانات مستوردة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Site Component": {
+  "en": "Places site items such as trees, cars and street furniture.",
+  "ar": "بتحط عناصر موقع زي الشجر والعربيات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Parking Component": {
+  "en": "Places parking stall components on a toposurface.",
+  "ar": "بتحط أماكن انتظار سيارات على سطح الأرض.",
+  "src": "FROM MEMORY"
+ },
+ "model|Building Pad": {
+  "en": "Creates a level pad that cuts the toposurface under a building.",
+  "ar": "بتعمل منصة بتفرد الأرض تحت المبنى.",
+  "src": "FROM MEMORY"
+ },
+ "model|Site plan in 3D": {
+  "en": "App-specific 3D site-plan view.",
+  "ar": "عرض موقع عام ثلاثي الأبعاد خاص بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Split Surface": {
+  "en": "Splits a toposurface into separate surfaces.",
+  "ar": "بتقسم سطح الأرض لسطحين منفصلين.",
+  "src": "FROM MEMORY"
+ },
+ "model|Merge Surface": {
+  "en": "Merges two toposurfaces into one.",
+  "ar": "بتدمج سطحين أرض في واحد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Subregion": {
+  "en": "Defines a sub-area of a toposurface with its own material (e.g. road).",
+  "ar": "بتحدد جزء من سطح الأرض بخامة مختلفة زي طريق.",
+  "src": "FROM MEMORY"
+ },
+ "model|Property Line": {
+  "en": "Draws property boundary lines or defines them by distance and bearing.",
+  "ar": "بترسم حدود الملكية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Graded Region": {
+  "en": "Creates an editable copy of the toposurface to model grading.",
+  "ar": "بتعمل نسخة قابلة للتعديل من الأرض لعمل ميول وتسوية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Collaborate": {
+  "en": "Starts cloud/central collaboration for the project.",
+  "ar": "بتشغّل التعاون على المشروع مع فريق.",
+  "src": "FROM MEMORY"
+ },
+ "model|Worksets": {
+  "en": "Opens the Worksets dialog to divide the model among team members.",
+  "ar": "بتفتح Worksets عشان تقسّم الشغل على الفريق.",
+  "src": "FROM MEMORY"
+ },
+ "model|Live session": {
+  "en": "App-specific live shared session.",
+  "ar": "جلسة مباشرة مشتركة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Versions and roll-back": {
+  "en": "App-specific version history and restore.",
+  "ar": "سجل نسخ واسترجاع خاص بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Activity log": {
+  "en": "App-specific log of project changes.",
+  "ar": "سجل أنشطة المشروع خاص بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Copy/Monitor": {
+  "en": "Copies and monitors linked elements such as levels and grids for change.",
+  "ar": "بتنسخ وتراقب عناصر من موديل مربوط زي المناسيب والمحاور.",
+  "src": "FROM MEMORY"
+ },
+ "model|Coordination Review": {
+  "en": "Reviews changes in monitored or coordinated linked elements.",
+  "ar": "بتراجع التغييرات في العناصر المراقبة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Reconcile Hosting": {
+  "en": "Resolves host changes in linked elements.",
+  "ar": "بتحل تغيّر المستضيف للعناصر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Share": {
+  "en": "App-specific share/export link.",
+  "ar": "مشاركة المشروع خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Search everywhere": {
+  "en": "App-specific global search.",
+  "ar": "بحث شامل خاص بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Visibility/Graphics": {
+  "en": "Controls which categories show in a view and their line, colour and transparency overrides.",
+  "ar": "بتتحكم في ظهور الفئات وألوانها وشفافيتها في الـ view.",
+  "src": "FROM MEMORY"
+ },
+ "model|View Templates": {
+  "en": "Applies saved view settings to many views.",
+  "ar": "بتطبّق إعدادات view محفوظة على أكتر من view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Filters": {
+  "en": "Applies rule-based graphic overrides to elements.",
+  "ar": "بتغيّر شكل العناصر بقواعد (مثلاً حسب النظام).",
+  "src": "FROM MEMORY"
+ },
+ "model|Thin Lines": {
+  "en": "Displays all lines at one thin weight regardless of zoom.",
+  "ar": "بتخلي كل الخطوط رفيعة بنفس السُمك.",
+  "src": "FROM MEMORY"
+ },
+ "model|Show Hidden Lines": {
+  "en": "Reveals lines hidden behind other elements.",
+  "ar": "بتظهر الخطوط المخفية ورا العناصر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Ghost concrete": {
+  "en": "App-specific toggle: Dims concrete in this app's views.",
+  "ar": "بتخلي الخرسانة باهتة في التطبيق. مش أمر مستقل في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Water": {
+  "en": "App-specific toggle: Toggles water display in the app.",
+  "ar": "بتظهر المياه في التطبيق. مش أمر مستقل في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Levels": {
+  "en": "App-specific toggle: Toggles level display in the app.",
+  "ar": "بتظهر المناسيب في التطبيق. مش أمر مستقل في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Ground": {
+  "en": "App-specific toggle: Toggles ground plane display in the app.",
+  "ar": "بتظهر سطح الأرض في التطبيق. مش أمر مستقل في Revit.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Shaded": {
+  "en": "Sets the view visual style to shaded.",
+  "ar": "بتخلي الـ view معروض بتظليل. من شريط View Control Bar.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-GetStarted/files/GUID-42872B9F-A4DE-472A-A88C-77879ACEC93E.htm"
+ },
+ "model|Wireframe": {
+  "en": "Sets the view visual style to wireframe (edges only).",
+  "ar": "بتعرض الحواف بس. من شريط View Control Bar.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-GetStarted/files/GUID-42872B9F-A4DE-472A-A88C-77879ACEC93E.htm"
+ },
+ "model|X-ray": {
+  "en": "App-specific transparent display.",
+  "ar": "عرض شفاف خاص بالتطبيق، Revit بيعمل ده بالشفافية.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Render": {
+  "en": "Renders a photo-realistic image of a 3D view.",
+  "ar": "بتعمل صورة واقعية من الـ 3D.",
+  "src": "FROM MEMORY"
+ },
+ "model|Screenshot": {
+  "en": "Saves the current view as an image in this app.",
+  "ar": "بتحفظ الـ view كصورة. في Revit: Export Images.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Record video": {
+  "en": "Records the 3D view as video in this app.",
+  "ar": "بتسجل فيديو للـ 3D.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|3D View": {
+  "en": "Creates a default 3D or camera view.",
+  "ar": "بتعمل view ثلاثي الأبعاد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Section": {
+  "en": "Cuts a section view through the model.",
+  "ar": "بتعمل قطاع من الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Callout": {
+  "en": "Creates a zoomed detail view of part of a view.",
+  "ar": "بتعمل تكبير تفصيلي لجزء من الرسمة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Plan Views": {
+  "en": "Creates floor, ceiling or area plans.",
+  "ar": "بتعمل مساقط أدوار وأسقف ومساحات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Elevation": {
+  "en": "Creates an elevation view of the building.",
+  "ar": "بتعمل واجهة للمبنى.",
+  "src": "FROM MEMORY"
+ },
+ "model|Drafting View": {
+  "en": "Creates a blank 2D view for detail drawing.",
+  "ar": "بتعمل view فاضي للتفاصيل ثنائية الأبعاد.",
+  "src": "FROM MEMORY"
+ },
+ "model|Duplicate View": {
+  "en": "Duplicates a view with or without detailing.",
+  "ar": "بتعمل نسخة من view.",
+  "src": "FROM MEMORY"
+ },
+ "model|Legends": {
+  "en": "Creates a legend view listing symbols and keys.",
+  "ar": "بتعمل مفتاح رموز.",
+  "src": "FROM MEMORY"
+ },
+ "model|Schedules": {
+  "en": "Creates schedules/quantities from model data.",
+  "ar": "بتعمل جداول كميات وبيانات من الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "model|BOQ and cost": {
+  "en": "App-specific bill of quantities and cost.",
+  "ar": "جدول كميات وتكلفة خاص بالتطبيق، بيقابل الـ Schedules.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Scope Box": {
+  "en": "Creates a box that controls the extent of views, grids and levels.",
+  "ar": "بتعمل صندوق يتحكم في حدود العرض والمحاور.",
+  "src": "FROM MEMORY"
+ },
+ "model|Sheet": {
+  "en": "Creates a drawing sheet with a title block.",
+  "ar": "بتعمل شيت رسم بإطار.",
+  "src": "FROM MEMORY"
+ },
+ "model|Sheet|Drawings": {
+  "en": "Exports/prints the sheet in this app.",
+  "ar": "بتصدّر الشيت. في Revit: Print/Export PDF.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Title Block": {
+  "en": "Places a title block on a sheet.",
+  "ar": "بتحط إطار الشيت.",
+  "src": "FROM MEMORY"
+ },
+ "model|Revisions": {
+  "en": "Opens the revision table and settings.",
+  "ar": "بتفتح جدول المراجعات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Guide Grid": {
+  "en": "Places a guide grid on a sheet for layout.",
+  "ar": "بتحط شبكة إرشادية على الشيت.",
+  "src": "FROM MEMORY"
+ },
+ "model|Orbit": {
+  "en": "Navigation tool: Rotates the 3D view around the model.",
+  "ar": "بتلف الموديل 3D. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pan": {
+  "en": "Navigation tool: Moves the view sideways.",
+  "ar": "بتحرك الشاشة. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Walk": {
+  "en": "Navigation tool: Walks through the model at eye level.",
+  "ar": "بتمشي جوه الموديل. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Zoom all": {
+  "en": "Navigation tool: Fits everything in the window.",
+  "ar": "بتعرض كل حاجة. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Zoom in": {
+  "en": "Navigation tool: Magnifies the view.",
+  "ar": "بتكبّر. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Zoom out": {
+  "en": "Navigation tool: Reduces the view.",
+  "ar": "بتصغّر. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Zoom selected": {
+  "en": "Navigation tool: Fits the selected elements.",
+  "ar": "بتكبّر على المحدد. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Perspective": {
+  "en": "Navigation tool: Switches to perspective camera.",
+  "ar": "كاميرا منظور. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Orthographic": {
+  "en": "Navigation tool: Switches to parallel projection.",
+  "ar": "إسقاط متوازي. في Revit من Navigation Bar.",
+  "src": "FROM MEMORY"
+ },
+ "model|Tile": {
+  "en": "Arranges open views side by side.",
+  "ar": "بترتب النوافذ جنب بعض.",
+  "src": "FROM MEMORY"
+ },
+ "model|Cascade": {
+  "en": "Overlaps open views.",
+  "ar": "بتحط النوافذ فوق بعض.",
+  "src": "FROM MEMORY"
+ },
+ "model|Reset layout": {
+  "en": "Resets the app's window layout.",
+  "ar": "بترجّع ترتيب نوافذ التطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Hide / show top bars": {
+  "en": "Hides or shows the app's top bars.",
+  "ar": "بتخفي أو تظهر الشرائط العليا.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Materials": {
+  "en": "Opens the materials browser/editor.",
+  "ar": "بتفتح مكتبة الخامات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Object Styles": {
+  "en": "Sets line weight, colour and pattern per category.",
+  "ar": "بتحدد شكل الخطوط لكل فئة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Snaps": {
+  "en": "Sets snap behaviour.",
+  "ar": "بتظبط الـ snaps.",
+  "src": "FROM MEMORY"
+ },
+ "model|Project Information": {
+  "en": "Edits project name, number and client.",
+  "ar": "بتعدّل بيانات المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Project Parameters": {
+  "en": "Adds parameters to categories in the project.",
+  "ar": "بتضيف باراميترات للفئات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Global Parameters": {
+  "en": "Defines project-wide parameters that drive dimensions.",
+  "ar": "بتعرّف باراميترات عامة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Shared Parameters": {
+  "en": "Manages parameter definitions shared across projects.",
+  "ar": "بتدير باراميترات مشتركة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Transfer Project Standards": {
+  "en": "Copies settings between projects.",
+  "ar": "بتنقل إعدادات من مشروع لمشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Purge Unused": {
+  "en": "Removes unused families and types.",
+  "ar": "بتمسح غير المستخدم.",
+  "src": "FROM MEMORY"
+ },
+ "model|Project Units": {
+  "en": "Sets units and rounding.",
+  "ar": "بتظبط الوحدات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Structural Settings": {
+  "en": "Opens structural display and analysis settings.",
+  "ar": "إعدادات إنشائية.",
+  "src": "FROM MEMORY"
+ },
+ "model|MEP Settings": {
+  "en": "Opens MEP settings.",
+  "ar": "إعدادات الـ MEP.",
+  "src": "FROM MEMORY"
+ },
+ "model|Manage Links": {
+  "en": "Manages linked files.",
+  "ar": "بتدير الملفات المربوطة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Manage Images": {
+  "en": "Manages placed images.",
+  "ar": "بتدير الصور.",
+  "src": "FROM MEMORY"
+ },
+ "model|Starting View": {
+  "en": "Sets the view that opens first.",
+  "ar": "بتحدد أول view يفتح.",
+  "src": "FROM MEMORY"
+ },
+ "model|Phasing": {
+  "en": "Defines project phases and filters.",
+  "ar": "بتحدد مراحل المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Design Options": {
+  "en": "Models alternate design options.",
+  "ar": "بتعمل بدائل تصميم.",
+  "src": "FROM MEMORY"
+ },
+ "model|Saved projects": {
+  "en": "App-specific project storage list.",
+  "ar": "قايمة مشاريع محفوظة في التطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Warnings": {
+  "en": "Lists model warnings.",
+  "ar": "بتعرض تحذيرات الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Review Warnings": {
+  "en": "Reviews and resolves model warnings.",
+  "ar": "بتراجع التحذيرات.",
+  "src": "FROM MEMORY"
+ },
+ "model|Select by ID": {
+  "en": "Selects an element by its ID.",
+  "ar": "بتختار عنصر برقم الـ ID.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pulse and handover": {
+  "en": "App-specific feature.",
+  "ar": "ميزة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Project cycle": {
+  "en": "App-specific feature.",
+  "ar": "ميزة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Calendar": {
+  "en": "App-specific feature.",
+  "ar": "ميزة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Agent hub": {
+  "en": "App-specific feature.",
+  "ar": "ميزة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Telegram bot": {
+  "en": "App-specific feature.",
+  "ar": "ميزة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Dynamo": {
+  "en": "Opens Dynamo visual programming.",
+  "ar": "بيفتح Dynamo للبرمجة المرئية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Dynamo Player": {
+  "en": "Runs Dynamo scripts.",
+  "ar": "بيشغّل سكريبتات Dynamo.",
+  "src": "FROM MEMORY"
+ },
+ "model|Properties": {
+  "en": "Opens the Properties palette to view and edit element parameters.",
+  "ar": "بتفتح لوحة الخصائص لتعديل بيانات العنصر.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-GetStarted/files/GUID-A764EA7A-FE26-469B-857C-F3A70812FC34.htm"
+ },
+ "model|Project Browser": {
+  "en": "Opens the Project Browser listing views, sheets, schedules and families.",
+  "ar": "بتفتح متصفح المشروع.",
+  "src": "https://help.autodesk.com/cloudhelp/2024/ENU/Revit-GetStarted/files/GUID-C8D3E5A6-02A5-43A9-AFFC-D49DD27398B1.htm"
+ },
+ "model|Station parameters": {
+  "en": "App-specific station parameters.",
+  "ar": "باراميترات محطة خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Plan to CAD": {
+  "en": "App-specific plan export to CAD.",
+  "ar": "تصدير مسقط لـ CAD.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Families": {
+  "en": "App-specific families panel.",
+  "ar": "لوحة العائلات خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Parameters": {
+  "en": "App-specific parameters panel.",
+  "ar": "لوحة باراميترات خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Paste": {
+  "en": "Pastes clipboard elements.",
+  "ar": "بتلصق.",
+  "src": "FROM MEMORY"
+ },
+ "model|Copy": {
+  "en": "Copies elements to clipboard.",
+  "ar": "بتنسخ.",
+  "src": "FROM MEMORY"
+ },
+ "model|Copy|Modify": {
+  "en": "Creates copies of selected elements by moving them.",
+  "ar": "بتعمل نسخ بسحب.",
+  "src": "FROM MEMORY"
+ },
+ "model|Match Type": {
+  "en": "Matches element type to another.",
+  "ar": "بتطابق النوع.",
+  "src": "FROM MEMORY"
+ },
+ "model|Join": {
+  "en": "Joins geometry between elements.",
+  "ar": "بتوصل الهندسة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Align": {
+  "en": "Aligns elements to a reference.",
+  "ar": "بتحاذي.",
+  "src": "FROM MEMORY"
+ },
+ "model|Offset": {
+  "en": "Offsets elements by distance.",
+  "ar": "بتعمل ازاحة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Mirror": {
+  "en": "Mirrors elements about an axis.",
+  "ar": "بتعمل مراية.",
+  "src": "FROM MEMORY"
+ },
+ "model|Move": {
+  "en": "Moves elements.",
+  "ar": "بتنقل.",
+  "src": "FROM MEMORY"
+ },
+ "model|Rotate": {
+  "en": "Rotates elements.",
+  "ar": "بتدوّر.",
+  "src": "FROM MEMORY"
+ },
+ "model|Trim/Extend": {
+  "en": "Trims or extends to a boundary.",
+  "ar": "بتقص أو تمدّ.",
+  "src": "FROM MEMORY"
+ },
+ "model|Split": {
+  "en": "Splits element at a point.",
+  "ar": "بتقسم.",
+  "src": "FROM MEMORY"
+ },
+ "model|Array": {
+  "en": "Creates linear or radial arrays.",
+  "ar": "بتعمل مصفوفة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Scale": {
+  "en": "Scales elements.",
+  "ar": "بتغيّر الحجم.",
+  "src": "FROM MEMORY"
+ },
+ "model|Pin": {
+  "en": "Pins elements to prevent movement.",
+  "ar": "بتثبّت.",
+  "src": "FROM MEMORY"
+ },
+ "model|Delete": {
+  "en": "Deletes selected elements.",
+  "ar": "بتمسح.",
+  "src": "FROM MEMORY"
+ },
+ "model|Undo model tools": {
+  "en": "App-specific undo.",
+  "ar": "تراجع خاص بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Remove all cuts and measures": {
+  "en": "App-specific cleanup.",
+  "ar": "بتمسح القطع والقياسات.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Distance": {
+  "en": "Measures distance between two references.",
+  "ar": "بتقيس مسافة.",
+  "src": "FROM MEMORY"
+ },
+ "model|Between": {
+  "en": "Measures between two references.",
+  "ar": "بتقيس بين مرجعين.",
+  "src": "FROM MEMORY"
+ },
+ "model|Angle": {
+  "en": "App-specific angle measure.",
+  "ar": "قياس زاوية في التطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Circle / hole": {
+  "en": "App-specific circle measure.",
+  "ar": "قياس دائرة.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Object": {
+  "en": "App-specific object measure.",
+  "ar": "قياس عنصر.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|PDF": {
+  "en": "Exports views/sheets to PDF (File > Export > PDF in current Revit).",
+  "ar": "بتصدّر الشيتات أو الـ views لـ PDF للطباعة والمشاركة.",
+  "src": "FROM MEMORY"
+ },
+ "model|SVG": {
+  "en": "App-specific vector export (Revit has no native SVG export).",
+  "ar": "تصدير SVG في التطبيق. Revit مفيهوش SVG مباشر.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|DXF": {
+  "en": "Exports views/sheets to DXF/DWG via File > Export > CAD Formats.",
+  "ar": "بتصدّر الرسومات لـ DXF عشان تفتح في أوتوكاد.",
+  "src": "FROM MEMORY"
+ },
+ "model|DXF 3D": {
+  "en": "Exports a 3D view to DXF/DWG via CAD Formats export.",
+  "ar": "بتصدّر الـ 3D لملف DXF.",
+  "src": "FROM MEMORY"
+ },
+ "model|IFC": {
+  "en": "Exports the model to IFC via File > Export > IFC.",
+  "ar": "بتصدّر الموديل بصيغة IFC للتبادل مع برامج تانية.",
+  "src": "FROM MEMORY"
+ },
+ "model|OBJ": {
+  "en": "App-specific OBJ mesh export (Revit has no native OBJ export).",
+  "ar": "تصدير OBJ في التطبيق. Revit مفيهوش OBJ مباشر (بيصدّر FBX).",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|BOQ XLSX": {
+  "en": "App-specific Excel BOQ export (Revit exports schedules to text/CSV).",
+  "ar": "تصدير جدول كميات لإكسل في التطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|BOQ CSV": {
+  "en": "App-specific CSV BOQ export (Revit exports schedules as delimited text).",
+  "ar": "تصدير جدول كميات CSV. Revit بيصدّر الجداول كنص.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "model|Project package ZIP": {
+  "en": "App-specific project bundle.",
+  "ar": "حزمة مشروع ZIP خاصة بالتطبيق.",
+  "src": "NOT A REVIT COMMAND (app-specific feature; no Autodesk page)"
+ }
+}

@@ -1,0 +1,537 @@
+{
+ "coord|Append": {
+  "en": "Add another model file to the current scene (Home > Project > Append); keeps the original files linked.",
+  "ar": "بتضيف ملف موديل تاني للمشهد الحالي. كده تجمع المعماري والإنشائي والكهرباء في مشهد واحد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Refresh": {
+  "en": "Reload the files referenced by the scene to pick up changes.",
+  "ar": "بتعيد تحميل الملفات علشان تظهر آخر تعديلات اتعملت عليها.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Reset All": {
+  "en": "Reset appearance, visibility and transparency overrides to the original model state.",
+  "ar": "بترجع كل التلوين والإخفاء والشفافية لحالتها الأصلية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|File Options": {
+  "en": "Scene-level settings: culling, orientation, speed, headlight, DataTools.",
+  "ar": "إعدادات الملف: سرعة الحركة والإضاءة والاتجاه وإخفاء العناصر البعيدة علشان الأداء.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Select": {
+  "en": "Pick objects in the scene with the selection tool.",
+  "ar": "بتحدد عنصر أو أكتر بالضغط عليه في المجسم.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Select All": {
+  "en": "Select every object in the scene.",
+  "ar": "بتحدد كل عناصر المشهد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Select Same": {
+  "en": "Select objects sharing a property (same name, type, material…).",
+  "ar": "بتحدد كل العناصر المشابهة للعنصر المحدد (نفس النوع أو الاسم).",
+  "src": "FROM MEMORY"
+ },
+ "coord|Selection Tree": {
+  "en": "Dockable window showing the model hierarchy (Standard, Compact, Properties, Sets views).",
+  "ar": "شجرة بتعرض ترتيب الموديل (ملف، طابق، عنصر). منها تحدد وتخفي بدقة.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Find Items": {
+  "en": "Dockable window to search the scene by property conditions and save results as sets.",
+  "ar": "بتدوّر على عناصر بشروط (الفئة = جدار والمادة = خرسانة) وتحفظ النتيجة.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Sets": {
+  "en": "Dockable window for saved selection sets and search sets.",
+  "ar": "بتحفظ مجموعات اختيار أو بحث علشان ترجعلها بسرعة وتستخدمها في الاصطدامات والجدولة.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Hide": {
+  "en": "Hide the selected objects.",
+  "ar": "بتخفي العناصر المحددة علشان تشوف اللي وراها.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Require": {
+  "en": "Mark selected objects as required so they stay visible when others are hidden or culled.",
+  "ar": "بتخلي العناصر المحددة دايماً ظاهرة حتى لو الباقي اتخفى.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Hide Unselected": {
+  "en": "Hide everything except the selection.",
+  "ar": "بتخفي كل حاجة ماعدا المحدد علشان تركز على جزء.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Unhide All": {
+  "en": "Show all hidden objects.",
+  "ar": "بترجّع كل العناصر المخفية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Hide overlays": {
+  "en": "App option to hide redline/tag/measure overlays on screen.",
+  "ar": "بتخفي الرسم والملاحظات والقياسات من على الشاشة من غير ما تمسحها. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Links": {
+  "en": "Show or hide links (URLs, files, tags) attached to objects.",
+  "ar": "بتظهر أو تخفي الروابط المرتبطة بالعناصر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Quick Properties": {
+  "en": "Hover-style display of chosen property values over objects.",
+  "ar": "بتظهر خصائص مختارة فوق العنصر لما تقف عليه بالماوس.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Properties": {
+  "en": "Dockable window listing properties of the selected object by tabs (Item, Revit, etc.).",
+  "ar": "شاشة بتعرض كل بيانات العنصر المحدد (النوع والأبعاد والمادة).",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Clash Detective": {
+  "en": "Window to define clash tests (Selection A vs B), run, review results, group, assign, report. Manage only.",
+  "ar": "بتختبر التعارض بين مجموعتين (مثلاً مواسير ضد كمرات)، وتراجع كل تعارض وتسلمه لحد يحله. متاحة في Manage بس.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Coordination (specs vs codes)": {
+  "en": "App-specific tool comparing specifications against codes/requirements; not a Navisworks command.",
+  "ar": "مقارنة المواصفات بالكود المطلوب. أداة من عندنا مش من نافيسوركس.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|TimeLiner": {
+  "en": "Window linking model objects to schedule tasks for 4D simulation; Tasks, Data Sources, Configure, Simulate tabs.",
+  "ar": "بتربط عناصر الموديل بأنشطة الجدول وتشغّل محاكاة البناء بالتاريخ (4D).",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Quantification": {
+  "en": "Quantification Workbook, Item Catalog and Resource Catalog windows for quantity takeoff.",
+  "ar": "حصر الكميات من الموديل: بتختار عناصر وتطلّع أطوال ومساحات وأعداد في جدول.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Autodesk Rendering": {
+  "en": "Rendering window with materials, lighting and environment (shown when rendering system is on).",
+  "ar": "بتدي مواد وإضاءة للمجسم وتطلّع صورة واقعية.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Animator": {
+  "en": "Window to build animations: scenes, cameras, objects moving or changing color/transparency over time.",
+  "ar": "بتعمل أنيميشن: كاميرا بتتحرك أو عناصر بتتحرك وتتلون على خط زمني.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Scripter": {
+  "en": "Window to create scripts: events (start, timer, key) trigger actions (play animation, set viewpoint…).",
+  "ar": "بتبرمج تفاعل: لما يحصل حدث (ضغط مفتاح أو تصادم) ينفذ أمر زي تشغيل أنيميشن.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Batch Utility": {
+  "en": "Batch-run file conversion/merge/clash tasks on many files.",
+  "ar": "بتشغّل مهام على ملفات كتير مرة واحدة (دمج وتحويل).",
+  "src": "FROM MEMORY"
+ },
+ "coord|Compare": {
+  "en": "Compare two models or selections and report differences.",
+  "ar": "بتقارن نسختين من الموديل وتعلّم اللي اتغير.",
+  "src": "FROM MEMORY"
+ },
+ "coord|DataTools": {
+  "en": "Link scene objects to external database tables (ODBC) to bring in extra properties.",
+  "ar": "بتربط عناصر الموديل بجدول بيانات خارجي علشان تضيف خصائص زي السعر أو المورد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Safety": {
+  "en": "App-specific safety review layer; not a Navisworks command.",
+  "ar": "مراجعة السلامة على الموديل. أداة من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Save Viewpoint": {
+  "en": "Save the current camera, visibility and markup as a viewpoint (Saved Viewpoints window).",
+  "ar": "بتحفظ الزاوية الحالية بالإخفاء والتلوين والملاحظات علشان ترجعلها.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Views": {
+  "en": "Saved Viewpoints window listing viewpoints, folders, animations.",
+  "ar": "قايمة الزوايا المحفوظة. دوس على واحدة وتروح لها.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Record": {
+  "en": "Record camera movement as a viewpoint animation.",
+  "ar": "بتسجل حركتك في المجسم كأنيميشن.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Play": {
+  "en": "Play the recorded/selected viewpoint animation.",
+  "ar": "بتشغّل الأنيميشن المسجل.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Perspective": {
+  "en": "Perspective camera (objects shrink with distance).",
+  "ar": "كاميرا واقعية، الأبعد أصغر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Orthographic": {
+  "en": "Orthographic camera (no perspective distortion).",
+  "ar": "كاميرا هندسية من غير تشويه، مناسبة للقياس.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Field of View": {
+  "en": "Set the camera angle of view.",
+  "ar": "بتحدد زاوية رؤية الكاميرا (واسعة أو ضيقة).",
+  "src": "FROM MEMORY"
+ },
+ "coord|Align Camera": {
+  "en": "Align view to an axis (X/Y/Z).",
+  "ar": "بتعدل الكاميرا لتبقى موازية لمحور.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Top": {
+  "en": "Standard top view.",
+  "ar": "منظر علوي (مسقط أفقي).",
+  "src": "FROM MEMORY"
+ },
+ "coord|Iso": {
+  "en": "Isometric-style 3D view.",
+  "ar": "منظر مجسم 3D من زاوية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Walk": {
+  "en": "Walk navigation at eye height with Realism options.",
+  "ar": "مشي جوه المبنى بمنظور شخص.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Orbit": {
+  "en": "Rotate the camera around the model.",
+  "ar": "بتلف حوالين الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Pan": {
+  "en": "Slide the view sideways/up/down.",
+  "ar": "بتحرك الشاشة يمين وشمال.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Zoom all": {
+  "en": "Zoom to fit the entire model.",
+  "ar": "بتكبّر علشان الموديل كله يظهر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Look Around": {
+  "en": "Pivot the camera in place like turning your head.",
+  "ar": "بتلف الكاميرا مكانها زي ما تدور رأسك.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Fly": {
+  "en": "Free flight navigation.",
+  "ar": "طيران حر في المشهد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Realism (collision, gravity)": {
+  "en": "Walk realism: collision, gravity, crouching, third-person.",
+  "ar": "بتخلي المشي واقعي: ماتعديش من الحيطان وتنزل بالجاذبية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Shaded": {
+  "en": "Shaded render mode.",
+  "ar": "عرض ملون بتظليل.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Wireframe": {
+  "en": "Edges only.",
+  "ar": "عرض خطوط بس.",
+  "src": "FROM MEMORY"
+ },
+ "coord|X-ray": {
+  "en": "Semi-transparent surfaces.",
+  "ar": "بتشوف جوه العناصر بشفافية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Lighting": {
+  "en": "Lighting modes: Full, Scene, Head, No lights.",
+  "ar": "بتختار نوع الإضاءة: كاملة أو مصباح أمامي أو بدون.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Enable Sectioning": {
+  "en": "Toggle sectioning on (Section Plane Settings window).",
+  "ar": "بتفعل القطع علشان تشوف جوه المبنى.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Plan cut": {
+  "en": "App shortcut for a horizontal cut at plan level.",
+  "ar": "قطع أفقي عند منسوب علشان تشوف مسقط الدور. اختصار من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Section Z": {
+  "en": "Cut along Z axis plane.",
+  "ar": "قطع عند ارتفاع معين على محور Z.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Clear cuts": {
+  "en": "Remove all section planes.",
+  "ar": "بتشيل كل القطع.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Point to Point": {
+  "en": "Measure straight distance between two picked points.",
+  "ar": "بتقيس المسافة بين نقطتين.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Between": {
+  "en": "Measure distance between two objects (Point to Multiple Points style).",
+  "ar": "بتقيس المسافة بين عنصرين.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Angle": {
+  "en": "Measure angle between lines/surfaces.",
+  "ar": "بتقيس زاوية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Area / circle": {
+  "en": "Area measure by points; here also circle area.",
+  "ar": "بتقيس مساحة منطقة أو دايرة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Level": {
+  "en": "App measure of level/elevation.",
+  "ar": "بتقرأ المنسوب لنقطة.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Object": {
+  "en": "App object measurement (size of an item).",
+  "ar": "بتقيس أبعاد العنصر المحدد.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Clear": {
+  "en": "Clear measurements.",
+  "ar": "بتمسح القياسات.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Text": {
+  "en": "Add redline text note on a viewpoint.",
+  "ar": "بتكتب ملاحظة نصية على الصورة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Draw": {
+  "en": "Draw redline shapes (line, freehand, ellipse, cloud).",
+  "ar": "بترسم علامات حمرا زي دايرة أو سحابة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Erase": {
+  "en": "Erase redline items.",
+  "ar": "بتمسح علامات الرسم.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Add Tag": {
+  "en": "Attach a numbered tag with a comment to a point; used for review.",
+  "ar": "بتحط علامة مرقمة بتعليق على نقطة في الموديل للمراجعة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Tag ID": {
+  "en": "Go to a tag by ID.",
+  "ar": "بتروح لعلامة برقمها.",
+  "src": "FROM MEMORY"
+ },
+ "coord|View Comments": {
+  "en": "Comments dockable window to view/add comments on viewpoints, tags and clashes.",
+  "ar": "بتشوف كل التعليقات وتضيف تعليق وتغير الحالة.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Find Comments": {
+  "en": "Find Comments window: search comments by text, author, status.",
+  "ar": "بتدوّر في التعليقات بالكلمة أو الشخص أو الحالة.",
+  "src": "https://help.autodesk.com/cloudhelp/2022/ENU/Navisworks/files/GUID-3539A344-FD91-4F2C-8744-2A5A9828B4C1.htm"
+ },
+ "coord|Structural": {
+  "en": "App review preset (structural).",
+  "ar": "مراجعة إنشائية جاهزة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|MEP": {
+  "en": "App review preset (MEP).",
+  "ar": "مراجعة ميكانيكا وكهرباء جاهزة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Quality": {
+  "en": "App review preset (quality).",
+  "ar": "مراجعة جودة جاهزة. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Handover": {
+  "en": "App review preset (handover).",
+  "ar": "مراجعة التسليم. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Disassembly video": {
+  "en": "App generated video that explodes the model by order.",
+  "ar": "فيديو تفكيك المجسم. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Assembly video": {
+  "en": "App generated video assembling the model.",
+  "ar": "فيديو تركيب المجسم. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|4D schedule video": {
+  "en": "App video of schedule simulation.",
+  "ar": "فيديو لمحاكاة الجدول 4D.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Disassemble": {
+  "en": "Playback: step disassembly.",
+  "ar": "بتفكك العناصر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Assemble": {
+  "en": "Playback: step assembly.",
+  "ar": "بترجّع العناصر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Pause": {
+  "en": "Pause playback.",
+  "ar": "بتوقف التشغيل.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Enable Scripts": {
+  "en": "Turn scripts on/off for the scene.",
+  "ar": "بتشغّل أو توقف السكريبتات.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Navigation Bar": {
+  "en": "Show the navigation bar with Pan/Zoom/Orbit.",
+  "ar": "بتظهر شريط التنقل.",
+  "src": "FROM MEMORY"
+ },
+ "coord|ViewCube": {
+  "en": "Show the ViewCube for orientation.",
+  "ar": "بتظهر مكعب الاتجاهات.",
+  "src": "FROM MEMORY"
+ },
+ "coord|HUD": {
+  "en": "Heads-up display: XYZ axes, position readout, grid location.",
+  "ar": "بتظهر معلومات ثابتة على الشاشة زي المحاور والمكان.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Labels": {
+  "en": "App labels on objects/levels.",
+  "ar": "بتظهر أسماء على العناصر.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Levels": {
+  "en": "Grid levels display (Grids & Levels).",
+  "ar": "بتظهر مناسيب الأدوار.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Show Grid": {
+  "en": "Show grid lines (Grids & Levels).",
+  "ar": "بتظهر خطوط المحاور.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Mode": {
+  "en": "Grid mode (above/below/overlap).",
+  "ar": "بتحدد طريقة عرض الشبكة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Split View": {
+  "en": "Show two viewports.",
+  "ar": "بتقسم الشاشة لعرضين.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Full Screen": {
+  "en": "Full-screen view.",
+  "ar": "بتفتح العرض ملء الشاشة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Background": {
+  "en": "Set background colors/sky.",
+  "ar": "بتغير خلفية المشهد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Windows": {
+  "en": "List of dockable windows to show/hide.",
+  "ar": "قايمة النوافذ اللي تظهرها أو تخفيها.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Load Workspace": {
+  "en": "Load a saved window layout.",
+  "ar": "بتحمل ترتيب نوافذ محفوظ.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Site plan": {
+  "en": "App site plan view.",
+  "ar": "عرض مخطط الموقع. من عندنا.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|NWD": {
+  "en": "Publish scene as NWD (snapshot of model + markups) for viewers/Freedom.",
+  "ar": "بتحفظ المشهد في ملف NWD واحد خفيف تقدر تبعته لحد من غير الملفات الأصلية.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Project package ZIP": {
+  "en": "App package of project files in a ZIP.",
+  "ar": "بتجمع ملفات المشروع في ZIP للمشاركة.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Share": {
+  "en": "App sharing/link.",
+  "ar": "مشاركة المشروع برابط.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|IFC": {
+  "en": "Export scene to IFC.",
+  "ar": "بتطلّع الموديل بصيغة IFC المفتوحة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|OBJ": {
+  "en": "Export to OBJ mesh.",
+  "ar": "بتطلّع مجسم OBJ.",
+  "src": "FROM MEMORY"
+ },
+ "coord|DXF 3D": {
+  "en": "Export to 3D DXF.",
+  "ar": "بتطلّع DXF ثلاثي الأبعاد.",
+  "src": "FROM MEMORY"
+ },
+ "coord|FBX": {
+  "en": "Export to FBX.",
+  "ar": "بتطلّع FBX للأنيميشن والمجسمات.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Google Earth KML": {
+  "en": "Export to KML for Google Earth.",
+  "ar": "بتطلّع KML تفتحه في جوجل إيرث.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Image": {
+  "en": "Export current view as image.",
+  "ar": "بتصوّر الشاشة صورة.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Rendered Image": {
+  "en": "Export a rendered image from Autodesk Rendering.",
+  "ar": "بتطلّع صورة واقعية بعد الريندر.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Animation": {
+  "en": "Export animation as video.",
+  "ar": "بتطلّع فيديو الأنيميشن.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Clash report": {
+  "en": "Export clash results as report (HTML/XML/PDF/CSV).",
+  "ar": "بتطلّع تقرير بالتعارضات.",
+  "src": "FROM MEMORY"
+ },
+ "coord|Quantities XLSX": {
+  "en": "App export of quantities to Excel.",
+  "ar": "بتطلّع الكميات في إكسل.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Schedule XER": {
+  "en": "App export schedule to XER.",
+  "ar": "بتطلّع الجدول بصيغة XER.",
+  "src": "APP-SPECIFIC"
+ },
+ "coord|Viewpoints report": {
+  "en": "Export a report of saved viewpoints.",
+  "ar": "بتطلّع تقرير بالزوايا المحفوظة.",
+  "src": "FROM MEMORY"
+ }
+}

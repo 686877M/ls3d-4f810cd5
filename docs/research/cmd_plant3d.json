@@ -1,0 +1,417 @@
+{
+ "plant|Project Manager": {
+  "en": "Opens the Project Manager, which assembles and manages the drawings of a plant project (Home tab, Project panel).",
+  "ar": "بيفتح مدير المشروع اللي بيجمّع ويدير رسومات مشروع المصنع. ابدأ منه لما تفتح أو تعمل مشروع جديد.",
+  "src": "https://help.autodesk.com/cloudhelp/2018/ENU/Plant3D-UserGuide/files/GUID-B05A7C7B-A0CD-4484-813D-84C5B212C8C8.htm"
+ },
+ "plant|Project Setup": {
+  "en": "Opens the project setup where drawing locations, units and project settings are defined.",
+  "ar": "بيفتح إعدادات المشروع (أماكن الرسومات والوحدات). بتستخدمه مرة في أول المشروع.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Data Manager": {
+  "en": "Opens the Data Manager to view, filter and report on the project's plant data.",
+  "ar": "بيفتح مدير البيانات عشان تشوف وتطلّع تقارير من بيانات المصنع.",
+  "src": "https://help.autodesk.com/cloudhelp/2018/ENU/Plant3D-UserGuide/files/GUID-B05A7C7B-A0CD-4484-813D-84C5B212C8C8.htm"
+ },
+ "plant|Spec Viewer": {
+  "en": "Opens the pipe spec viewer to browse the parts allowed in a piping spec.",
+  "ar": "بيعرض مواصفة المواسير والأجزاء المسموحة فيها. افتحه قبل ما تختار قطعة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|P&ID Line List": {
+  "en": "Shows the line list from P&ID data used to drive 3D piping.",
+  "ar": "بيعرض قايمة الخطوط من الـ P&ID عشان ترسم عليها المواسير في الـ 3D.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Route Pipe": {
+  "en": "Starts routing pipe in the 3D model using the active spec and size.",
+  "ar": "بيبدأ رسم الماسورة في الموديل حسب المواصفة والمقاس الحاليين.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Pipe Fitting": {
+  "en": "Inserts a spec-driven fitting such as an elbow or tee on a pipe.",
+  "ar": "بيحط وصلة من المواصفة (كوع/تي) على الماسورة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Valve": {
+  "en": "Inserts a spec-driven valve in a pipe line.",
+  "ar": "بيحط محبس من المواصفة في خط المواسير.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Custom Part": {
+  "en": "Creates a custom or placeholder part with the Custom Parts Builder when no spec part exists.",
+  "ar": "بيعمل قطعة مخصوصة أو مؤقتة لو القطعة مش في المواصفة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Insulation": {
+  "en": "Adds insulation to a selected pipe or part.",
+  "ar": "بيضيف عزل على الماسورة أو القطعة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Parts list": {
+  "en": "App-specific parts list view.",
+  "ar": "قايمة الأجزاء خاصة بالتطبيق. في Plant 3D بتتعمل بتقارير Data Manager.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Create Equipment": {
+  "en": "Opens the Create Equipment dialog to create tanks, vessels and pumps from templates.",
+  "ar": "بيفتح نافذة عمل معدة (تانك/وعاء/مضخة) من قوالب.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Modify Equipment": {
+  "en": "Edits dimensions, nozzles and properties of equipment.",
+  "ar": "بيعدّل أبعاد ونوزلات المعدة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Attach Equipment": {
+  "en": "Attaches equipment to existing geometry or brings in external equipment models.",
+  "ar": "بيربط معدة بهندسة موجودة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Nozzle": {
+  "en": "Adds a nozzle to equipment as a pipe connection point.",
+  "ar": "بيضيف نوزل على المعدة كنقطة توصيل مواسير.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Families": {
+  "en": "App-specific families panel.",
+  "ar": "لوحة عائلات خاصة بالتطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Create Support": {
+  "en": "Starts adding a pipe support: choose a support type and snap it to a pipe.",
+  "ar": "بيبدأ تركيب سبورت: تختار النوع وتثبّته على الماسورة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Convert Support": {
+  "en": "Converts an existing object to a pipe support (command name unverified).",
+  "ar": "بيحوّل عنصر لسبورت. اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Colour by system": {
+  "en": "App-specific display toggle: colours objects by system.",
+  "ar": "عرض خاص بالتطبيق، في Plant 3D بيتم بالـ visual styles والـ visibility.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Ghost concrete": {
+  "en": "App-specific display toggle: dims concrete.",
+  "ar": "عرض خاص بالتطبيق، في Plant 3D بيتم بالـ visual styles والـ visibility.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Hide overlays": {
+  "en": "App-specific display toggle: hides overlays.",
+  "ar": "عرض خاص بالتطبيق، في Plant 3D بيتم بالـ visual styles والـ visibility.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Create Ortho View": {
+  "en": "Enters the ortho environment to generate 2D orthographic drawings from the 3D model.",
+  "ar": "بيدخل بيئة الأورثو عشان يطلّع مساقط 2D من الموديل.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Section": {
+  "en": "App-specific section view.",
+  "ar": "قطاع في التطبيق، في Plant 3D بيتم من الأورثو.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Side": {
+  "en": "App-specific side view.",
+  "ar": "منظر جانبي في التطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Adjacent View": {
+  "en": "App-specific adjacent view.",
+  "ar": "منظر مجاور خاص بالتطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Hide Selected": {
+  "en": "Plant 3D object visibility control (Hide Selected); separate from AutoCAD layer visibility.",
+  "ar": "تحكم في ظهور عناصر المصنع (Hide Selected) ومش بيغيّر الـ layers.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Plant3D-UserGuide/files/GUID-118AAFEF-9E27-48A3-86FD-DE1E67F3089B.htm"
+ },
+ "plant|Hide Others": {
+  "en": "Plant 3D object visibility control (Hide Others); separate from AutoCAD layer visibility.",
+  "ar": "تحكم في ظهور عناصر المصنع (Hide Others) ومش بيغيّر الـ layers.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Plant3D-UserGuide/files/GUID-118AAFEF-9E27-48A3-86FD-DE1E67F3089B.htm"
+ },
+ "plant|Show All": {
+  "en": "Plant 3D object visibility control (Show All); separate from AutoCAD layer visibility.",
+  "ar": "تحكم في ظهور عناصر المصنع (Show All) ومش بيغيّر الـ layers.",
+  "src": "https://help.autodesk.com/cloudhelp/2021/ENU/Plant3D-UserGuide/files/GUID-118AAFEF-9E27-48A3-86FD-DE1E67F3089B.htm"
+ },
+ "plant|Production Iso": {
+  "en": "Creates production isometric drawings from piping lines (Isos tab, Iso Creation panel).",
+  "ar": "بيعمل ايزومتريك للتنفيذ من خطوط المواسير.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Quick Iso": {
+  "en": "Creates a quick isometric for review.",
+  "ar": "بيعمل ايزو سريع للمراجعة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Iso view": {
+  "en": "App-specific iso view.",
+  "ar": "عرض ايزو خاص بالتطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Iso Message": {
+  "en": "Iso annotation item (Iso Message) for the Isos tab Iso Annotation panel; exact command unverified.",
+  "ar": "عنصر تعليق على الايزو (Iso Message). اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY (panel name verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Start Point": {
+  "en": "Iso annotation item (Start Point) for the Isos tab Iso Annotation panel; exact command unverified.",
+  "ar": "عنصر تعليق على الايزو (Start Point). اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY (panel name verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Break Point": {
+  "en": "Iso annotation item (Break Point) for the Isos tab Iso Annotation panel; exact command unverified.",
+  "ar": "عنصر تعليق على الايزو (Break Point). اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY (panel name verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Flow Arrow": {
+  "en": "Iso annotation item (Flow Arrow) for the Isos tab Iso Annotation panel; exact command unverified.",
+  "ar": "عنصر تعليق على الايزو (Flow Arrow). اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY (panel name verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Insulation Symbol": {
+  "en": "Iso annotation item (Insulation Symbol) for the Isos tab Iso Annotation panel; exact command unverified.",
+  "ar": "عنصر تعليق على الايزو (Insulation Symbol). اسم الأمر محتاج مراجعة.",
+  "src": "FROM MEMORY (panel name verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|PCF Export": {
+  "en": "Exports piping data to PCF for isometric generation.",
+  "ar": "بيصدّر بيانات المواسير لـ PCF لعمل الايزو.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Sheet PDF": {
+  "en": "App-specific iso sheet PDF export.",
+  "ar": "تصدير شيت ايزو PDF في التطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|DXF": {
+  "en": "App-specific DXF export.",
+  "ar": "تصدير DXF في التطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Grid": {
+  "en": "Structure tab Parts panel: places a structure grid (exact tool set unverified).",
+  "ar": "بيحط structure grid في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Member": {
+  "en": "Structure tab Parts panel: places a structural member (exact tool set unverified).",
+  "ar": "بيحط structural member في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Railing": {
+  "en": "Structure tab Parts panel: places a railing (exact tool set unverified).",
+  "ar": "بيحط railing في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Stairs": {
+  "en": "Structure tab Parts panel: places a stair (exact tool set unverified).",
+  "ar": "بيحط stair في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Ladder": {
+  "en": "Structure tab Parts panel: places a ladder (exact tool set unverified).",
+  "ar": "بيحط ladder في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Plate": {
+  "en": "Structure tab Parts panel: places a plate (exact tool set unverified).",
+  "ar": "بيحط plate في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Footing": {
+  "en": "Structure tab Parts panel: places a footing (exact tool set unverified).",
+  "ar": "بيحط footing في تاب Structure. الأداة محتاجة مراجعة.",
+  "src": "FROM MEMORY (tab/panel names verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Cut Member": {
+  "en": "Structure tab Cutting-panel style tool: Cuts a structural member.",
+  "ar": "أداة قص عناصر إنشائية: Cut Member.",
+  "src": "FROM MEMORY (Cutting panel verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Miter": {
+  "en": "Structure tab Cutting-panel style tool: Miters member ends.",
+  "ar": "أداة قص عناصر إنشائية: Miter.",
+  "src": "FROM MEMORY (Cutting panel verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Trim": {
+  "en": "Structure tab Cutting-panel style tool: Trims members to each other.",
+  "ar": "أداة قص عناصر إنشائية: Trim.",
+  "src": "FROM MEMORY (Cutting panel verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Extend": {
+  "en": "Structure tab Cutting-panel style tool: Extends members to a boundary.",
+  "ar": "أداة قص عناصر إنشائية: Extend.",
+  "src": "FROM MEMORY (Cutting panel verified at https://help.autodesk.com/cloudhelp/2024/ENU/Plant3D-UserGuide/files/GUID-D792AEF2-E0E9-450A-9C5D-970F156E4AE4.htm)"
+ },
+ "plant|Structural review": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Rebar": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Clashes": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Coordination": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|MEP review": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Safety": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Pump and pipe calcs": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Engineering analysis": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|HVAC": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Iso sheet A1": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Drawing sheet": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Render": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Screenshot": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Share": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|Project package ZIP": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|BOQ XLSX": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|DXF 3D": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|OBJ": {
+  "en": "App-specific feature (no equivalent ribbon command in Plant 3D).",
+  "ar": "ميزة خاصة بالتطبيق وملهاش أمر مقابل في Plant 3D.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|IFC": {
+  "en": "AutoCAD-based export to IFC (availability depends on version).",
+  "ar": "التصدير لـ IFC ممكن من أوتوكاد حسب النسخة.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Navisworks NWC": {
+  "en": "Exports the model to NWC for Navisworks.",
+  "ar": "بيصدّر لـ NWC عشان Navisworks.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Orbit": {
+  "en": "AutoCAD-based view tool: Rotates the view.",
+  "ar": "أداة عرض من أوتوكاد: Orbit.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Pan": {
+  "en": "AutoCAD-based view tool: Moves the view.",
+  "ar": "أداة عرض من أوتوكاد: Pan.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Walk": {
+  "en": "AutoCAD-based view tool: Walks through the model.",
+  "ar": "أداة عرض من أوتوكاد: Walk.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Zoom all": {
+  "en": "AutoCAD-based view tool: Fits all objects.",
+  "ar": "أداة عرض من أوتوكاد: Zoom all.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Zoom selected": {
+  "en": "AutoCAD-based view tool: Fits the selection.",
+  "ar": "أداة عرض من أوتوكاد: Zoom selected.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Shaded": {
+  "en": "AutoCAD-based view tool: Shaded visual style.",
+  "ar": "أداة عرض من أوتوكاد: Shaded.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Wireframe": {
+  "en": "AutoCAD-based view tool: Wireframe visual style.",
+  "ar": "أداة عرض من أوتوكاد: Wireframe.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Perspective": {
+  "en": "AutoCAD-based view tool: Perspective camera.",
+  "ar": "أداة عرض من أوتوكاد: Perspective.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Orthographic": {
+  "en": "AutoCAD-based view tool: Parallel projection.",
+  "ar": "أداة عرض من أوتوكاد: Orthographic.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Tile": {
+  "en": "AutoCAD-based view tool: Tiles windows.",
+  "ar": "أداة عرض من أوتوكاد: Tile.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Cascade": {
+  "en": "AutoCAD-based view tool: Cascades windows.",
+  "ar": "أداة عرض من أوتوكاد: Cascade.",
+  "src": "FROM MEMORY"
+ },
+ "plant|Reset layout": {
+  "en": "App-specific window layout reset.",
+  "ar": "بترجّع ترتيب نوافذ التطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ },
+ "plant|X-ray": {
+  "en": "App-specific transparent display.",
+  "ar": "عرض شفاف خاص بالتطبيق.",
+  "src": "NOT A PLANT 3D COMMAND (app-specific feature; no Autodesk page)"
+ }
+}
