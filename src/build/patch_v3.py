@@ -55,4 +55,7 @@ s=s.replace("function buildModel(){","/* ########## PROJECT BLOCK 2/4: model geo
 s=s.replace("function baseItems(){","/* ########## PROJECT BLOCK 3/4: items, quantities, families, IFC mapping (edit per project) ########## */\nfunction baseItems(){",1)
 s=s.replace("const PD=[['conc',","/* ########## PROJECT BLOCK 4/4: part specifications shown in the Parts tab (edit per project) ########## */\nconst PD=[['conc',",1)
 s=s.replace('<div class="row lang"','<div class="row lang" title="Template BVT-1"',1)
+a0="function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false);"
+assert a0 in s
+s=s.replace(a0,"function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight, key=w+'x'+h+'@'+(renderer.getPixelRatio?renderer.getPixelRatio():1); if(resize.k===key)return; resize.k=key; renderer.setSize(w,h,false);",1)
 open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')

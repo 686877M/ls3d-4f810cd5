@@ -1,0 +1,16 @@
+const {chromium}=require('playwright-core');
+(async()=>{ const b=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+ const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message));
+ await pg.goto('file://'+process.argv[2],{waitUntil:'domcontentloaded',timeout:120000}); await pg.waitForTimeout(7000);
+ const r=await pg.evaluate(()=>__lsv.ev(`(function(){ const o={}; const h=s=>{let x=0;for(let i=0;i<s.length;i++)x=(x*31+s.charCodeAt(i))|0;return x}; const grp={};
+  const add=(src,k)=>{ const s=ui2Illus(k); const g=h(s); (grp[g]=grp[g]||{n:0,keys:[]}); grp[g].n++; if(grp[g].keys.length<400)grp[g].keys.push(src+':'+k); };
+  RIB.forEach(r=>{ add('tab',r[0]); r[2].forEach(g=>g[1].forEach(id=>add('cmd',id))); });
+  Object.keys(WTYPES).forEach(t=>add('wtab','tab_'+t));
+  add('part','zfit');
+  const cmds=Object.keys(XC).length, ribcmds=RIB.reduce((a,r)=>a+r[2].reduce((b,g)=>b+g[1].length,0),0);
+  const noDesc=[]; RIB.forEach(r=>r[2].forEach(g=>g[1].forEach(id=>{ if(!XDESC[id])noDesc.push(id); })));
+  const noTD=RIB.filter(r=>!TABDESC[r[0]]).map(r=>r[0]);
+  const xiKeys=Object.keys(XI); const unusedIcons=[];
+  return {grp:Object.values(grp).map(g=>({n:g.n,sample:g.keys})), cmds, ribcmds, tabs:RIB.map(r=>r[0]), noDescN:noDesc.length, noDesc:noDesc.slice(0,60), noTD, xiN:xiKeys.length, wtypes:Object.keys(WTYPES)}; })()`));
+ console.log(JSON.stringify(r,null,1)); console.log('ERR',er.slice(0,3)); await b.close(); })();

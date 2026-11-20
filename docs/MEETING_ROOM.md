@@ -354,3 +354,6 @@ c_link.js + c_link2.js at end of chain (after c_qx_bi.js). Colour dropdown per w
 
 ## 2026-11-20 — free AI providers + local in-browser Whisper merged
 freeai_data.js + freeai.js after c_orb.js (28 presets with Free badges, free chain with 429 fallback, copy/paste relay, n8n webhook, WebLLM stub); sttlocal.js at end of chain (Whisper tiny/base via transformers.js, vendor/stt/ ~142 MB kept OUT of git, ship locally). Tests: freeai 88/88, parity 126, rc 330, link 43. Not tested: real providers/CORS, WebGPU, merged-page STT end-to-end (harness double-injects), n8n for real.
+
+## 2026-11-20 — audit: explainer graphics + resize guard merged
+c_ui2.js/c_ind.js: one picture set (21 pictures, 0 fallbacks) shared by hover, Guide, part card; 4 tab descriptions + 2 icon aliases added; resize guard (GL setSize 5->1 at startup). Tests: parity 126, px2 149, rc 330, freeai 88, link 43. Open: 113 ribbon buttons have no description (need bilingual wording); two chart renderers (Q.X, O.X) not merged; window.__lsv.ev eval hook should be removed from public build; no CPU gain proven (machine overloaded).

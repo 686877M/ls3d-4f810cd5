@@ -1,0 +1,11 @@
+const {chromium}=require('playwright-core');
+(async()=>{ const b=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860}}); await ctx.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+ const pg=await ctx.newPage(); await pg.goto('file://'+process.argv[2],{waitUntil:'domcontentloaded',timeout:120000}); await pg.waitForTimeout(7000);
+ const r=await pg.evaluate(()=>__lsv.ev(`(function(){ const ks=Object.keys(XC); const sample=Object.keys(XC.undo); const used={}, miss={}; ks.forEach(k=>{ const c=XC[k]; const ic=c.ic||c.i||c.icon; if(ic){ used[ic]=(used[ic]||0)+1; if(!XI[ic])miss[ic]=(miss[ic]||[]).concat(k).slice(0,5); } });
+  RIB.forEach(r=>{ if(r[3]&&!XI[r[3]])miss['rib:'+r[3]]=[r[0]]; });
+  const xk=Object.keys(XI); const norm=s=>s.replace(/\\s+/g,''); const byBody={}; xk.forEach(k=>{ (byBody[norm(XI[k])]=byBody[norm(XI[k])]||[]).push(k); });
+  const dup=Object.values(byBody).filter(a=>a.length>1);
+  const src=document.documentElement.innerHTML; const unused=xk.filter(k=>!used[k]&&!new RegExp("ico\\\\(['\\"]"+k+"['\\"]|ic:['\\"]"+k+"['\\"]|['\\"]"+k+"['\\"]").test(src.replace(/XI=\\{[\\s\\S]*?\\n\\};?/,'')));
+  return {sample,miss,dup,unusedN:unused.length,unused:unused.slice(0,60),ribk:RIB[0].length, rib0:RIB[0].slice(0,2)}; })()`));
+ console.log(JSON.stringify(r)); await b.close(); })();
