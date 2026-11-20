@@ -1,0 +1,335 @@
+--- rc_page.js
+PASS GSD at 75 m = 75*17.3/(12.29*5280) = 0.019995 m
+PASS height for 2 cm = 0.02*12.29*5280/17.3 = 75.0187 m
+PASS footprint across 0.02*5280 = 105.6
+PASS footprint along 0.02*3956 = 79.12
+PASS photo base 79.12*0.2 = 15.824
+PASS line spacing 105.6*0.3 = 31.68
+PASS overlap at 55 m clearance, front: 1-0.2*75/55 = 72.73%
+PASS overlap at 55 m clearance, side: 1-0.3*75/55 = 59.09%
+PASS lines = ceil(300/31.68)+1 = 11
+PASS photos = 11*(ceil(400/15.824)+1) = 11*27 = 297
+PASS path = 11*400+10*31.68 = 4716.8 m
+PASS time = 4716.8/10+10*8+180 = 731.68 s
+PASS batteries = ceil(12.19/(25*0.7)) = 1
+PASS area 400*300 = 120000 m2
+PASS auto heading along the 400 m side = 90 deg
+PASS slowest shutter 1/(10/0.02) = 1/500
+PASS blur at 1/1000 = 0.5 px
+PASS actual base 400/26 = 15.3846
+PASS front overlap achieved 1-15.3846/79.12 = 80.555%
+PASS interval 15.3846/10 = 1.538 s
+PASS storage 297*10/1024 = 2.9004 GB
+PASS waypoints = 2 per line = 22
+PASS first two photos 15.3846 m apart
+PASS lines centred: first line at -(10*31.68)/2 = -158.4 m
+PASS line to line 31.68 m
+PASS legal limit unset gives an info note, no number invented
+PASS height 75 m over a user limit of 60 m warns
+PASS no height warning under a user limit of 120 m
+PASS side overlap 50% under the user minimum 60% warns
+PASS blur warning at 1/200 s (2.5 px)
+PASS heading 0: lines = ceil(400/31.68)+1 = 14, photos = 14*(ceil(300/15.824)+1) = 14*20 = 280
+PASS margin 20 m: line 440 m, photos = 11*(ceil(440/15.824)+1) = 11*29 = 319
+PASS margin path = 11*440+10*31.68 = 5156.8
+PASS double grid: 11+14 = 25 lines, 297+280 = 577 photos
+PASS oblique pitch -60: centre GSD = 2 cm / cos 30 = 2.3094 cm
+PASS oblique photos carry pitch -60
+PASS orbit: 2 rings * 360/15 = 48 photos
+PASS orbit ring 1 pitch = -atan(20/30) = -33.69 deg
+PASS orbit ring 1 GSD = hypot(30,20)*17.3/(12.29*5280) = 0.9612 cm
+PASS orbit ring 2 pitch = -atan(40/30) = -53.13
+PASS orbit photo 7 (90 deg) is 30 m east of the point
+PASS and looks west (yaw 270)
+PASS corridor 1000 m x 60 m: lines = ceil(60/31.68)+1 = 3, photos = 3*(ceil(1000/15.824)+1) = 3*65 = 195
+PASS corridor offsets -31.68, 0, +31.68
+PASS corridor bend is mitred: outer corner at (131.68, -31.68) or inner (68.32, 31.68)
+PASS terrain samples came through gmElev
+PASS fixed height: min clearance = H - (highest ground - take-off ground)
+PASS fixed height: max clearance = H - (lowest ground - take-off ground)
+PASS ground rises about 41 m across the 316.8 m of lines (mock 20 m per 150 m)
+PASS fixed height over a 42 m rise: overlap warning raised
+PASS terrain note about obstacles always shown
+PASS terrain following: clearance stays within H ± H/10
+PASS line 11 flies 316.8 m further north than line 1: 42.24 m higher
+PASS no terrain overlap warning with following on
+PASS KML: path has 22 vertices, 297 photo points, area polygon
+PASS KML: first vertex returns within 1e-6 deg and height 75.02
+PASS GeoJSON: 297 points, path line 22, area ring 4
+PASS GeoJSON: last photo returns within 1e-6 deg
+PASS CSV: 22 waypoints back, header skipped
+PASS photo CSV: 297 rows
+PASS Litchi: header has 8+30+8 = 46 columns, 22 rows
+PASS Litchi: coordinates, height 75.0, pitch -90, speed 10 return
+PASS Litchi: distance trigger 15.4 m on line starts, -1 on line ends
+PASS QGC plan: fileType Plan, SimpleItems only
+PASS QGC plan: 22 waypoints, take-off first, return last, 11 trigger starts + 11 stops
+PASS QGC plan: waypoint coordinates return exactly
+PASS QGC plan: trigger distance 15.38
+PASS Mission Planner: QGC WPL 110 header, home line, 12 tab columns
+PASS Mission Planner: 22 waypoints return within 1e-7 deg, same order as the QGC plan
+PASS DJI KMZ: zip holds wpmz/template.kml and wpmz/waylines.wpml
+PASS DJI KMZ: both files are well-formed XML
+PASS DJI KMZ: 22 placemarks in each file, first coordinate lon,lat returns
+PASS DJI KMZ: 11 distance-trigger groups at 15.38 m, heights 75.02
+PASS DJI export is labelled not validated
+PASS brief: HTML with the photo count, camera warning, checklist and print button
+PASS GPX: 2 waypoints + 3 track points, 1 track
+PASS GPX point carries grid coordinates of the tab system (UTM 36N)
+PASS NMEA: 3 good fixes, 1 bad checksum dropped
+PASS NMEA: 3000.6000 N = 30.01, 03106.6000 E = 31.11, height 46.0, RTK float (5)
+PASS NMEA: S and W are negative; fix counts {4:1,5:1,1:1}
+PASS CSV P,E,N,Z,D
+PASS TXT P,N,E,Z,D with spaces
+PASS column guess from a header: name,northing,easting,elev,code = P,N,E,Z,D
+PASS column guess without header: 5 columns = P,E,N,Z,D; lat/lon detected
+PASS CSV lat/lon with ; separator and header
+PASS KMZ: unzipped, polygon ring of 4 and 1 point with height
+PASS imported polygon becomes the mission area
+PASS DXF: 1 point with Z, closed LWPOLYLINE of 4 at elevation 5, POLYLINE of 3 vertices, 1 LINE, CIRCLE reported as not read
+PASS LandXML: points read as northing, easting, elevation
+PASS LandXML: surface EG with 4 points, 2 visible faces (invisible face skipped)
+PASS EXIF: GPS 30 15 36 N = 30.26, 31 30 0 E = 31.5, altitude 1234/10 = 123.4
+PASS EXIF: time and model strings
+PASS XMP: gimbal yaw -45.5, pitch -90, flight yaw 12.3, relative altitude 75.02, RTK flag 50
+PASS photo import: 1 read with GPS, 1 refused as not a JPEG
+PASS coverage of one nadir photo at 75.02 m: 105.6*79.12 = 8355 m2 (1 m cells)
+PASS coverage: one photo, no cell seen more than once
+PASS nadir footprint corners at ±52.8, ±39.56 m
+PASS oblique -45 deg, lens half angle atan(0.5): far edge at 100*tan(45+26.565) = 300 m
+PASS near edge at 100*tan(45-26.565) = 33.33 m
+PASS planned coverage at the site centre: 79.12/15.38 = 5.1 along x 105.6/31.68 = 3.3 across, so 15 to 24 photos
+PASS LAS 1.2 format 2: 100 points, point 4 = (500003, 3300006, 101.5), colour 255,128,0, class 2
+PASS LAS: Z range 100 to 104.5, 50 ground points
+PASS LAS 1.4 format 6: 64-bit count 1000, decimated every 10 to 100 shown
+PASS LAS 1.3 format 3 reads colour at byte 28
+PASS LAZ is refused with a clear message
+PASS .laz file refused by name too
+PASS LAS file import: cloud stored with map positions
+PASS cloud to points: 50 ground points added
+PASS prism 20 x 10 x 2 m: TIN cut = 400 m3
+PASS prism: TIN fill = 0
+PASS prism: grid cut = 400 m3 (200 cells of 1 m)
+PASS prism: grid used 200 cells of 1 x 1 m
+PASS bulking 1.25: loose cut = 400*1.25 = 500
+PASS balance with no fill = 400
+PASS level 11: fill = 200 m3
+PASS shrinkage 1.1: material needed = 220
+PASS balance = 0 - 220
+PASS wedge 0..2 m over 10 x 10 against level 1: cut = 0.5*5*1*10 = 25
+PASS wedge: fill = 25
+PASS wedge: grid cut = 25
+PASS wedge: grid fill = 25
+PASS wedge: net 0
+PASS wedge against level 0.5: cut = 0.5*7.5*1.5*10 = 56.25
+PASS wedge against level 0.5: fill = 0.5*2.5*0.5*10 = 6.25
+PASS 2 m grid on a zero line inside cells: within 5% of exact (56.25 / 6.25), net exact 50
+PASS flat 5 against a plane rising 10% east: fill = 0.1*10*50 = 50
+PASS plane: cut 0
+PASS plane: grid fill 50
+PASS surface against surface (10 over 8, 20 x 10): composite TIN cut = 400
+PASS surface against surface: grid cut = 400
+PASS boundary 10 x 10 on a 1 m deep cut: grid = 100
+PASS prism formula one corner up: cut = 6*27/(3*4*4) = 3.375
+PASS and fill = cut - A*mean = 3.375 - 2 = 1.375
+PASS contours every 0.5 on the 0..2 wedge: levels 0.5, 1, 1.5
+PASS contour 1.0 runs at E = 5
+PASS contour DXF has 6 LINE entities
+PASS wedge slope = atan(2/10) = 11.31 deg
+PASS slope class 5-15 deg holds all 100 m2
+PASS spot level at E+2.5 on the wedge = 0.5
+PASS spot outside the surface is null
+PASS profile: 11 samples, Z = 0.2*distance
+PASS cross-sections every 5 m: 3 stations (0, 5, 10) of 5 offsets, flat across, Z = 0.2*station
+PASS earthworks CSV has the summary and the grid table
+PASS earthworks XLSX is a zip (PK) of some size
+PASS earthworks report page built
+PASS push to S.X: 5 points in the survey tab and its surface built
+PASS ASCII grid header and 9 values
+PASS ASCII grid surface: 8 valid points, top-left cell centre at (500005, 3300025) = 1
+PASS grid surface Z at the middle cell centre = 5
+PASS grid surface between cell centres 4 and 5 = 4.5
+PASS GeoTIFF (uncompressed strip, float32): 4 x 3, 10 m cells, lower-left (500000, 3300000), values 100 .. 105.5
+PASS GeoTIFF surface at the centre of row 2, column 3 = 100 + 6*0.5 = 103
+PASS compressed GeoTIFF refused with a message
+PASS tiled GeoTIFF refused with a message
+PASS world file: 2000 x 1000 px at 5 cm = 100 x 50 m, corners placed from pixel edges
+PASS first-estimate DEM built from the elevation service, with the accuracy warning
+PASS the DEM warning travels into the cut and fill result
+PASS DEM plane rising 40 m over 300 m, 400 m wide, above its lowest level: 0.5*300*40*400 = 2.4e6 m3
+PASS accuracy: 3 check points, the control point is left out
+PASS RMSE east = sqrt((0.03²+0.04²)/3) = 0.028868
+PASS RMSE north = 0.028868
+PASS RMSE horizontal = sqrt(2*0.0025/3) = 0.040825
+PASS RMSE vertical = sqrt(0.06/3) = 0.141421
+PASS RMSE 3D = sqrt(0.065/3) = 0.147196
+PASS mean dZ = 0.2/3 = 0.0667
+PASS max horizontal = 0.05
+PASS max |dZ| = 0.2
+PASS accuracy report page lists the points and says how many
+PASS no check points: the report says accuracy is not tested
+PASS model Z filled from a surface: 0.5 at E+2.5 on the wedge, dZ = +0.05
+PASS conformal fit recovers scale 1.0002
+PASS conformal fit recovers rotation 30 deg
+PASS conformal fit recovers shift X 1000
+PASS conformal fit recovers shift Y 2000
+PASS conformal residual RMSE of exact points = 0
+PASS conformal fit maps a fifth point
+PASS one corner of a 100 m square moved 0.2 m east: sum of squares 0.03 after the shift, minus (da²+db²)*20000 = 0.01 taken by scale and rotation, RMSE = sqrt(0.02/4) = 0.070711
+PASS affine fit recovers 1.001, 0.02, 500, -0.015, 0.998, 700
+PASS fit with one point is refused
+PASS local grid brought to the map: point (50, 40) lands on its UTM position
+PASS ODM job: photo list, options, UTM header, honest how-to
+--- rc_bld_page.js
+PASS OSM parse: 3 building ways, closing vertex dropped, node ignored
+PASS OSM height: 4 levels x 3 m = 12 m, labelled ESTIMATE / confirm on site
+PASS OSM height tag "20 m" = 20, labelled confirm on site; no tags = null
+PASS no footprint yet: plan refuses with a message
+PASS pick by click: Overpass asked once around the click
+PASS picked the building under the click, the other two became obstacles
+PASS stand-off for 1 cm: 0.01*12.29*5280/17.3 = 37.5094 m
+PASS Rb = hypot(10,5) = 11.1803
+PASS ring radius = Rb + D = 48.6897
+PASS image width on the facade Fh = D*17.3/12.29 = 52.8 m
+PASS shots per ring = max(ceil(2*pi*11.18/(52.8*0.2)) = 7, ceil(360/15) = 24) = 24
+PASS ring 1 height = max(lowest 5, 12/6) = 5
+PASS ring 3 height = h + D/2 = 12 + 18.7547 = 30.7547
+PASS ring 2 height = midway = 17.877
+PASS ring 1 looks at 2 m: pitch = -atan(3/40.5996) = -4.226 deg
+PASS ring 3 looks at 10 m: pitch = -atan(20.7547/40.5996) = -27.076 deg
+PASS ring 1 GSD = hypot(40.5996,3)*17.3/(12.29*5280) = 1.0853 cm
+PASS three bands cover the facade from 0 to 12 m
+PASS roof grid at 1.5 cm: lines = ceil(10/23.76)+1 = 2, photos = 2*(ceil(20/11.868)+1) = 6
+PASS roof flight height = 12 + 0.015*12.29*5280/17.3 = 12 + 56.264 = 68.264 m above take-off
+PASS total shots = 6 + 3*24 = 78; waypoints = 4 + 72
+PASS ring shot 7 (90 deg) is 48.69 m east of the centre
+PASS ring shots look at the centre (yaw 270 there) with the ring pitch, and carry the look-at point 2 m up
+PASS path = roof 2*20+23.76 + 3 rings 2*pi*48.6897 + transits (48.69 + 63.26 + 12.88 + 12.88) = 1119.25 m
+PASS time = dist/10 + 4 turns*8 + 180
+PASS max step 60 deg: shots = max(7, 6) = 7 from the overlap rule
+PASS minimum safe distance 50 m wins over 37.5: radius = 11.18 + 50 = 61.18
+PASS and the plan says the stand-off was raised and what GSD that gives
+PASS one ring cannot cover 12 m of facade at this distance? it reports honestly either way
+PASS 60 m tower, one ring 10 m away: band = 30 ± 13.09*0.527 = ± 6.9 m, so a facade gap warning
+PASS neighbour 3.7 m from the ring and 20 m tall: low rings flagged, warning names it
+PASS top ring at 30.75 m clears 20 + 10 m: not flagged
+PASS height source and site-walk notes are in the warnings
+PASS sun at solar noon, 21 June, latitude 30 N: 90 - 30 + 23.44 = 83.44 deg
+PASS 21 December: 90 - 30 - 23.44 = 36.56 deg
+PASS 20 March (equinox): 90 - 30 = 60 deg
+PASS solar noon at longitude 31 E, UTC+2 on 21 June: 12:00 - 4 min/deg*(31-30) + 1.8 min equation of time = about 11:58
+PASS equinox sunrise is due east (azimuth 90 ± 2) with the sun near the horizon
+PASS June 09:00: sun in the east half (azimuth 70..100), elevation 40..55
+PASS box facades face 0, 90, 180, 270
+PASS sun in the south-east (135): south and east facades lit, north and west in shadow
+PASS same answer when the footprint is drawn clockwise
+PASS light hits the south facade at cos(45)*cos(45) = 0.5
+PASS sun below the horizon: nothing lit
+PASS shadow length = 12 / tan(elevation)
+PASS shadow falls opposite the sun
+PASS 10:00 in June, sun in the east: west facade (270) is in shadow, east (90) lit
+PASS roof window (sun above 30 deg) starts mid-morning and ends mid-afternoon
+PASS east facade lit window is in the morning, west in the afternoon
+PASS 06:00: low sun warning with the shadow length
+PASS 02:00: sun below the horizon warning
+PASS 5 m/s headwind at 10 m/s airspeed: ground speed out 5
+PASS back 15
+PASS legs along the wind cost 100/(100-25) = 1.3333
+PASS out-and-back factor from the two ground speeds agrees
+PASS legs across the wind cost 10/sqrt(75) = 1.1547
+PASS pure crosswind: ground speed sqrt(100-25) = 8.660 both ways
+PASS crab angle asin(5/10) = 30 deg
+PASS wind as fast as the drone: no finite factor
+PASS no wind entered: says so, invents nothing
+PASS forecast fetched from Open-Meteo for the date, hour 10: 5 m/s, gusts 10, from 100 deg
+PASS wind limit not set: asks for it, no built-in limit
+PASS best long-leg heading across a wind from 100 deg = 10 deg (or 190)
+PASS worst-case time = calm time * 1.3333
+PASS battery margin = 25*0.7 - worst-case time
+PASS leg advice gives both factors and the ground-speed swing 5.0 to 15.0
+PASS gusts 10 over the user limit 8: warning
+PASS limit 12: no wind warning
+PASS wind 11 m/s against 10 m/s flight speed: cannot hold the lines
+PASS offline: forecast fails cleanly and asks for manual wind
+PASS offline: building lookup fails cleanly and asks to draw the footprint
+PASS ray test: from 40 m south, eye 1.7 m, a point 40 m north at 20 m is hidden (ray is at 9.7 m over the near wall)
+PASS at 30 m it is visible (ray at 14.1 m and 17.6 m over the walls)
+PASS threshold: 25.2 m hidden, 25.3 m visible (1.7 + 0.4375*(z-1.7) = 12 at z = 25.24)
+PASS a point off to the side (30, 40) is visible: the ray passes the corner
+PASS three points: exactly one hidden
+PASS no take-off marked: says so and suggests a point
+PASS take-off 40 m south: some low-ring waypoints behind the building are hidden, not all
+PASS due north of the building: rings 1 and 2 (5 m, 17.9 m) hidden, ring 3 (30.75 m, above the 25.2 m threshold at this distance) visible; roof grid at 68 m visible
+PASS without neighbours exactly 6 waypoints are hidden: the 3 northernmost of rings 1 and 2
+PASS suggested take-off hides no more than the marked one
+PASS QGC plan: 76 waypoints, 72 single-photo commands on the rings, 3 look-at points (one per ring), 2 roof trigger starts
+PASS look-at heights 2, 6, 10 m
+PASS Litchi: 76 rows; ring rows carry the point of interest, roof rows the distance trigger
+PASS DJI KMZ: 72 towardPOI headings, 4 followWayline, well-formed
+PASS KML: footprint polygon, 78 photo points
+PASS brief (English): one page with map, sun diagram, ring table, total 78, time window, wind, line of sight, checklist of 8, print button
+PASS brief carries the height estimate label and the camera check
+PASS brief (Arabic): right-to-left page with Arabic headings
+PASS building brief is an export format
+PASS 3D view: building + 2 obstacles extruded + flight path
+PASS 3D group hidden again when switched off
+PASS drawn footprint without a height: asks for the height
+PASS drawn footprint + typed height 12: same 78 shots, no obstacle warning, source says typed
+PASS TOXAPI.plan_building by lat/lon: 78 shots, 3 rings of 24, radius 48.69, height 12 labelled ESTIMATE, sun and wind returned
+PASS plan_building is in the model tool list, the bridge list and window.TOX
+PASS phrase: plan a drone capture of this building height 15
+PASS   -> height 15 taken, plan rebuilt
+PASS phrase (Arabic): خطط تصوير المبنى بالدرون
+--- tab, agent, outputs
+PASS elevation calls went through the mocked service
+PASS tab type capture registered with its own icon and name F.X
+PASS default layout: map, mission panel, data panel are on screen
+PASS ribbon: every button of the capture ribbon is wired (no stubs)
+PASS mission panel shows the camera warning and inputs
+PASS TOXAPI.plan_mission: 11 lines, 297 photos, camera note
+PASS window.TOX carries the six tools
+PASS model tool list and bridge allow-list carry the six tools
+PASS xaTool plan_mission double grid: 577 photos
+PASS plan_mission with terrain: clearance returned
+PASS result table and terrain profile drawn in the panel
+PASS import_survey_file from text: 4 points
+PASS make_contours through the bridge tool: levels 0.5, 1, 1.5
+PASS compute_cut_fill: cut 25, fill 25 (TIN and grid)
+PASS accuracy_report with no points says not tested
+PASS accuracy_report: RMSE horizontal 0.05, vertical 0.1
+PASS export_mission kml downloads mission_grid.kml
+PASS export_mission geojson downloads mission_grid.geojson
+PASS export_mission csv downloads mission_grid_waypoints.csv
+PASS export_mission photos downloads mission_grid_photos.csv
+PASS export_mission litchi downloads mission_grid_litchi.csv
+PASS export_mission qgc downloads mission_grid.plan
+PASS export_mission mp downloads mission_grid.waypoints
+PASS export_mission dji downloads mission_grid_dji_NOT_VALIDATED.kmz
+PASS export_mission brief downloads mission_grid_brief.html
+PASS downloaded QGC plan parses outside the page: 22 waypoints
+PASS downloaded KMZ starts with PK
+PASS unknown export format is refused
+PASS phrase (English): plan a drone mission double grid gsd 3 cm overlap 75 65
+PASS   -> type double, GSD 3, overlaps 75 / 65
+PASS phrase (Arabic): خطط مهمة طيران شبكة ارتفاع 60
+PASS   -> type grid, height 60 m
+PASS phrase (Arabic): قطع وردم عند منسوب 1.5
+PASS   -> cut and fill ran against level 1.5
+PASS phrase: contours every 0.25 / كنتور كل 0.25
+PASS   -> interval 0.25
+PASS phrase: accuracy report
+PASS phrase: export the drone mission as litchi
+PASS   -> litchi file downloaded
+PASS unrelated phrase is not swallowed
+PASS Output Center lists Flight plan and Earthworks report
+PASS Output Center build: 9 flight files + 3 earthworks files + README, no failures
+PASS data panel tabs render (accuracy table, hub how-to)
+PASS Draw area arms the polygon tool on the shared G.X map
+PASS finishing the polygon sets the mission area (not a GIS feature)
+PASS building mission in the panel: building inputs, ring table, sun line
+PASS Pick building arms a map click on the shared G.X map
+PASS Mark take-off: a map click sets the take-off point
+PASS building brief downloads from the ribbon
+PASS no page errors
+
+TOTAL 330  PASS 330  FAIL 0

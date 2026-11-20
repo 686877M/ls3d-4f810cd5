@@ -348,3 +348,6 @@ Next: Plant 3D, Primavera P6, Navisworks, Office ribbons; Project Browser / Prop
 
 ## 2026-11-20 — colour-linked windows merged
 c_link.js + c_link2.js at end of chain (after c_qx_bi.js). Colour dropdown per window, same colour = linked (element/level/time/view/selection/camera), open any tab as a window, TOXAPI.link/unlink. Tests: link_test 43/43, parity 126, px2 149. Not tested: on the Start tab itself, real GPU.
+
+## 2026-11-20 — F.X Capture (reality capture) merged
+5 chunks c_rc_*.js at end of chain. Flight planner (grid/double grid/oblique/orbit/corridor), building planner (OSM, sun, wind, LOS), imports (GPX, NMEA, CSV, KML, GeoJSON, DXF, LandXML, EXIF, LAS), terrain/contours/cut-fill/accuracy, exports. rc_test 330/330, parity 126. Not tested: DJI KMZ/Litchi/QGC/Mission Planner in real apps; Overpass/Open-Meteo only mocked.
