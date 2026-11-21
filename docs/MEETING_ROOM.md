@@ -390,3 +390,6 @@ New chunks in chain (before c_xdesc2): ph_* (Photos to 3D via NodeODM/Docker thr
 
 ## 2026-11-21 MEP sheets + GIS maps merged
 md_* (electrical, plumbing, low-current, fire, vent, MEP routes) and gm_* (working basemaps: the sample origin was in open sea; queue, offline grid, 5 demo plots incl. 3 in New Cairo, 40+ layer catalogue from leaflet-providers/NASA GIBS/EOX/Esri Wayback, per-host Sensitive gate). Decision: incoming28 (blank default / separate pump station) NOT merged; standard tabs keep the original pump-station project. Tests: parity 126, px2 149, privacy 109, sample_check 31, gm 66. link flaky under load (passes on a quieter machine).
+
+## 2026-11-21 reset link
+open index.html?reset=1 : stops saving, removes lsv3-* project keys and the xto-hist DB, then reloads clean (project returns to the default pump-station sample). Settings and keys stay.
