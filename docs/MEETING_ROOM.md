@@ -369,3 +369,6 @@ rs_core/rs_out/rs_ui in chain before c_xdesc2. Stills (to 8K tiled), turntable/w
 
 ## 2026-11-21 bridge proxy merged
 tox_bridge.py: /proxy (allow-listed, no redirects, public IPs only), /mcp (streamable HTTP for n8n), --isolate opt-in. freeai.js retries blocked providers through /proxy. Tests: 94 bridge, 22 chrome, 88 freeai. Not tested: real providers, n8n.
+
+## 2026-11-21 vector 3D export merged
+vx.js: current/saved view as SVG, PDF, DXF (true vectors); ribbon vx_export; Render Studio Stills tab block. Test 34/35 in session (35th screenshot timeout), parity 126, px2 149. Not opened in Illustrator/Inkscape/AutoCAD.
