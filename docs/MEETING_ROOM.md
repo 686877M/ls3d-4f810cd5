@@ -399,3 +399,6 @@ open index.html?reset=1 : stops saving, removes lsv3-* project keys and the xto-
 
 ## 2026-11-21 separation (incoming30) + smaller labels
 Default stays the pump-station sample; any other template shows none of its content (4D site objects, site plan, N.X checks, outputs, pack, geo defaults, notes, caption, station panes). R.X text/room tags 0.45 -> 0.2 m. Tests: separation 32, parity 126, px2 149, privacy 109.
+
+## 2026-11-21 ribbon layout fix + demo on hold
+c_ribfix.js: Commands reference button and Working x/y counter moved into the ribbon tab row; groups row fixed height, scrolls sideways (no overlap of icons, never covers the document tabs). c_demohold.js: TEMPORARY, demo buttons show a notice until the rebuilt demo (clean exit) is merged; the old demo saved its house over the user project.

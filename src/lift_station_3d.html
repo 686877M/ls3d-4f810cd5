@@ -11817,6 +11817,26 @@ XCMD('gm_layers','layer','Map layers catalogue (imagery, thermal, history, statu
 setTimeout(()=>Object.assign(XDESC,{gm_layers:['Opens the layer catalogue: streets, aerial, Wayback history, Sentinel-2 by year, NASA GIBS daily imagery, thermal (land and sea surface temperature), night lights, vegetation, land cover, water, forest, radar, with licence flags, tested status and a live Test button.','بتفتح كتالوج الطبقات: شوارع وصور جوية وتاريخ Wayback وSentinel-2 بالسنة وصور NASA GIBS اليومية وحراري (حرارة الأرض والبحر) وأضواء الليل والنبات والغطاء الأرضي والمياه والغابات والرادار، بعلامات الترخيص والحالة المختبرة وزرار اختبار حي.']}),0);
 try{ const ids=['gm_layers']; RIBM.gm_layers={type:'gis',tab:'Map',tabAr:'الخريطة',panel:'Places',panelAr:'الأماكن',en:'Layers catalogue',ar:'كتالوج الطبقات',impl:'gm_layers'}; const t=RIBP.gis&&RIBP.gis.tabs.find(t=>t[0]==='map'); const g=t&&t[2].find(g=>g[0][0]==='Places'); if(g)g[1].push('gm_layers'); }catch(e){}
 window.GMC=GMC; window.gmcApply=gmcApply; window.gmcRaw=gmcRaw; window.gmcTest=gmcTest; window.gmcStatus=gmcStatus;
+/* c_demohold.js - TEMPORARY: the published guided demo (old version) saves its house project over the user's project.
+   Until the rebuilt demo (clean exit, never saved) is merged, the demo buttons only show a notice. Remove this chunk then. */
+demoStart=function(){ try{ const d=document.createElement('div'); d.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#1b1714;color:#e8dcc8;border:1px solid #e0643a;border-radius:10px;padding:12px 18px;font:14px "Segoe UI",system-ui,sans-serif;max-width:560px;text-align:center;box-shadow:0 6px 24px #0008';
+ d.textContent=b2('The guided demo is being rebuilt (it will run on its own temporary project and never change yours). It will be back soon.','العرض الموجّه بيتعاد بناؤه (هيشتغل على مشروع مؤقت لوحده ومش هيغيّر مشروعك). هيرجع قريب.');
+ document.body.appendChild(d); setTimeout(()=>d.remove(),6000); }catch(e){} };
+/* c_ribfix.js - ribbon layout: the "Commands reference" button and the "Working x of y" counter sat (sticky) on top of the
+   ribbon groups and hid icons; the ribbon could grow and cover the document tabs. Now: both live at the end of the ribbon
+   TAB row, the groups row has a fixed height and scrolls sideways instead of wrapping or growing. */
+(function(){
+ const st=document.createElement('style'); st.id='xRibFixCss';
+ st.textContent='#xTabs{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}#xTabs::-webkit-scrollbar{display:none}'+
+  '#xTabs>button{flex:none}#xRib{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;max-height:var(--ribh,64px);scrollbar-width:thin}'+
+  '#xRib>.xg{flex:none}#xTabs #xRibRef,#xTabs #xRibCount{position:static!important;align-self:center!important;flex:none}'+
+  '#xTabs #xRibCount{margin-inline-start:auto!important;padding:0 8px}#xTabs #xRibRef{margin-inline-start:6px!important;margin-inline-end:6px}'+
+  '@media (max-width:1180px){#xTabs #xRibCount{display:none}}';
+ document.head.appendChild(st);
+ const fix=()=>{ try{ const t=document.getElementById('xTabs'); if(!t)return; const c=document.getElementById('xRibCount'), r=document.getElementById('xRibRef'); if(c&&c.parentNode!==t)t.appendChild(c); if(r&&r.parentNode!==t)t.appendChild(r); }catch(e){} };
+ if(typeof xRibbon==='function'){ const o=xRibbon; xRibbon=function(){ const v=o.apply(this,arguments); fix(); return v; }; }
+ setTimeout(fix,0);
+})();
 /* c_xdesc2.js - bilingual hover text for ribbon buttons that had none (85 ids). EN then AR. */
 setTimeout(()=>{const D={
 start:['Go back to the Start page with all programs and recent files','ارجع لصفحة البداية فيها كل البرامج وآخر الملفات'],

@@ -3432,7 +3432,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H18M64 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="39.2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7.6" font-weight="300" letter-spacing="2.4" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
 function xtoTagSvg(fill,op,y){ y=y||44.5; return '<g fill="'+fill+'" stroke="none" opacity="'+op+'" font-family="Segoe UI,Arial,sans-serif"><text x="2" y="'+y+'" textLength="78" lengthAdjust="spacing" font-size="3.4" font-weight="300">TECHNICAL OFFICE <tspan font-size="5.2" font-weight="400">X</tspan></text><text x="28" y="'+(y+5.6)+'" textLength="26" lengthAdjust="spacing" font-size="3.6" font-weight="200">6868</text></g>'; }
-XTO.build='20261121-203846';
+XTO.build='20261121-210247';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -13277,6 +13277,26 @@ XCMD('gm_layers','layer','Map layers catalogue (imagery, thermal, history, statu
 setTimeout(()=>Object.assign(XDESC,{gm_layers:['Opens the layer catalogue: streets, aerial, Wayback history, Sentinel-2 by year, NASA GIBS daily imagery, thermal (land and sea surface temperature), night lights, vegetation, land cover, water, forest, radar, with licence flags, tested status and a live Test button.','بتفتح كتالوج الطبقات: شوارع وصور جوية وتاريخ Wayback وSentinel-2 بالسنة وصور NASA GIBS اليومية وحراري (حرارة الأرض والبحر) وأضواء الليل والنبات والغطاء الأرضي والمياه والغابات والرادار، بعلامات الترخيص والحالة المختبرة وزرار اختبار حي.']}),0);
 try{ const ids=['gm_layers']; RIBM.gm_layers={type:'gis',tab:'Map',tabAr:'الخريطة',panel:'Places',panelAr:'الأماكن',en:'Layers catalogue',ar:'كتالوج الطبقات',impl:'gm_layers'}; const t=RIBP.gis&&RIBP.gis.tabs.find(t=>t[0]==='map'); const g=t&&t[2].find(g=>g[0][0]==='Places'); if(g)g[1].push('gm_layers'); }catch(e){}
 window.GMC=GMC; window.gmcApply=gmcApply; window.gmcRaw=gmcRaw; window.gmcTest=gmcTest; window.gmcStatus=gmcStatus;
+/* c_demohold.js - TEMPORARY: the published guided demo (old version) saves its house project over the user's project.
+   Until the rebuilt demo (clean exit, never saved) is merged, the demo buttons only show a notice. Remove this chunk then. */
+demoStart=function(){ try{ const d=document.createElement('div'); d.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#1b1714;color:#e8dcc8;border:1px solid #e0643a;border-radius:10px;padding:12px 18px;font:14px "Segoe UI",system-ui,sans-serif;max-width:560px;text-align:center;box-shadow:0 6px 24px #0008';
+ d.textContent=b2('The guided demo is being rebuilt (it will run on its own temporary project and never change yours). It will be back soon.','العرض الموجّه بيتعاد بناؤه (هيشتغل على مشروع مؤقت لوحده ومش هيغيّر مشروعك). هيرجع قريب.');
+ document.body.appendChild(d); setTimeout(()=>d.remove(),6000); }catch(e){} };
+/* c_ribfix.js - ribbon layout: the "Commands reference" button and the "Working x of y" counter sat (sticky) on top of the
+   ribbon groups and hid icons; the ribbon could grow and cover the document tabs. Now: both live at the end of the ribbon
+   TAB row, the groups row has a fixed height and scrolls sideways instead of wrapping or growing. */
+(function(){
+ const st=document.createElement('style'); st.id='xRibFixCss';
+ st.textContent='#xTabs{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}#xTabs::-webkit-scrollbar{display:none}'+
+  '#xTabs>button{flex:none}#xRib{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;max-height:var(--ribh,64px);scrollbar-width:thin}'+
+  '#xRib>.xg{flex:none}#xTabs #xRibRef,#xTabs #xRibCount{position:static!important;align-self:center!important;flex:none}'+
+  '#xTabs #xRibCount{margin-inline-start:auto!important;padding:0 8px}#xTabs #xRibRef{margin-inline-start:6px!important;margin-inline-end:6px}'+
+  '@media (max-width:1180px){#xTabs #xRibCount{display:none}}';
+ document.head.appendChild(st);
+ const fix=()=>{ try{ const t=document.getElementById('xTabs'); if(!t)return; const c=document.getElementById('xRibCount'), r=document.getElementById('xRibRef'); if(c&&c.parentNode!==t)t.appendChild(c); if(r&&r.parentNode!==t)t.appendChild(r); }catch(e){} };
+ if(typeof xRibbon==='function'){ const o=xRibbon; xRibbon=function(){ const v=o.apply(this,arguments); fix(); return v; }; }
+ setTimeout(fix,0);
+})();
 /* c_xdesc2.js - bilingual hover text for ribbon buttons that had none (85 ids). EN then AR. */
 setTimeout(()=>{const D={
 start:['Go back to the Start page with all programs and recent files','ارجع لصفحة البداية فيها كل البرامج وآخر الملفات'],
