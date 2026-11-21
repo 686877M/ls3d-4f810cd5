@@ -3430,7 +3430,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H18M64 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="39.2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7.6" font-weight="300" letter-spacing="2.4" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
 function xtoTagSvg(fill,op,y){ y=y||44.5; return '<g fill="'+fill+'" stroke="none" opacity="'+op+'" font-family="Segoe UI,Arial,sans-serif"><text x="2" y="'+y+'" textLength="78" lengthAdjust="spacing" font-size="3.4" font-weight="300">TECHNICAL OFFICE <tspan font-size="5.2" font-weight="400">X</tspan></text><text x="28" y="'+(y+5.6)+'" textLength="26" lengthAdjust="spacing" font-size="3.6" font-weight="200">6868</text></g>'; }
-XTO.build='20261121-110859';
+XTO.build='20261121-112722';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -10473,6 +10473,20 @@ function rsParse(text){ const s=rsNorm(text); if(!/(render|ريندر|رندر|�
  const pr=s.match(/\b(draft|standard|high|ultra|presentation)\b/)||(/(مسوده)/.test(s)&&['','draft'])||(/(قياسي)/.test(s)&&['','standard']); if(pr)o.preset=pr[1]==='presentation'?'pres':pr[1]; return o; }
 { const _p=xaPre; xaPre=function(text){ let o=null; try{ o=rsParse(text); }catch(e){} if(!o)return _p(text); const say=(en,ar)=>{ try{ say2(b2(en,ar),'a'); }catch(e){} }; if(o.kind==='open'){ rsOpen(); say('Opened the Render Studio.','فتحت استوديو الريندر.'); return true; } if(o.kind==='cancel'){ TOXAPI.renderCancel(); say('Cancelling the render.','بلغي الريندر.'); return true; } if(RS.busy){ say('A render is already running. Say "cancel render" to stop it.','في ريندر شغال. قول "الغي الريندر" لإيقافه.'); return true; } o.download=true; say('Starting a '+(o.kind==='video'?(o.dur||10)+' s '+o.move+' video':'still')+' render. Progress is in the Render Studio pane.','بدأت ريندر '+(o.kind==='video'?'فيديو '+o.move+' '+(o.dur||10)+' ثانية':'صورة')+'. التقدم في استوديو الريندر.'); rsOpen(); TOXAPI.render(o).then(r=>say(r?'Done: '+r.name+' ('+r.w+'×'+r.h+', '+r.secs+' s). Downloaded.':'The render did not finish: '+RS.msg,r?'تم: '+r.name+' ('+r.w+'×'+r.h+'، '+r.secs+' ث). اتنزّل.':'الريندر ماخلصش: '+RS.msg)).catch(e=>say('Render failed: '+e.message,'الريندر فشل: '+e.message)); return true; }; }
 TOXAPI.renderParse=rsParse; window.TOX=Object.freeze(Object.assign({version:'1'},TOXAPI));
+/* ====== demo_stub.js - launcher for the "Project 6868" guided demo. This is ALL that runs at page start: it only registers two commands and adds two buttons.
+   The player and the chapters (demo_core.js + demo_ch*.js) sit in a plain-text script block with id xDemoSrc (never executed by the browser) and are evaluated inside this closure (direct eval) on the first click. ====== */
+const DMX={loaded:false,api:null};
+function demoLoad(){ if(DMX.api)return DMX.api; const n=document.getElementById('xDemoSrc'); if(!n)throw new Error('demo source is missing from this build'); const src=n.text; DMX.api=eval(src+'\n;DEMO;'); n.remove(); DMX.loaded=true; return DMX.api; }
+function demoStart(o){ try{ return demoLoad().start(o||{}); }catch(e){ xSt(String(e.message||e)); throw e; } }
+function demoStop(){ if(DMX.api)DMX.api.stop(); }
+XCMD('demo_start','video','Project 6868 guided demo','ديمو موجّه: مشروع 6868',()=>demoStart());
+XCMD('demo_stop','video','Stop the guided demo','إيقاف الديمو الموجّه',()=>demoStop());
+if(typeof XDESC!=='undefined'){ XDESC.demo_start=['A self-running tutorial: a visible cursor builds the sample Project 6868 with the real tools, chapter by chapter, with captions. Pause, speed 1x/2x/4x, skip chapters, Stop at any time.','شرح بيشتغل لوحده: مؤشر ظاهر يبني مشروع 6868 النموذجي بالأدوات الحقيقية فصل ورا فصل مع تعليقات. إيقاف مؤقت وسرعة ١× ٢× ٤× وتخطي فصول وإيقاف في أي وقت.']; XDESC.demo_stop=['Stop the guided demo immediately (the project stays as it is)','إيقاف الديمو فورًا (المشروع يفضل زي ما هو)']; }
+/* Start page: one button under the search box */
+{ const _sp=startPanel; startPanel=function(){ _sp.apply(this,arguments); try{ const hd=startBox.querySelector('.xdh'); if(hd&&!hd.querySelector('.xdemo')){ const L=lang==='ar'?1:0; const b=el('button',{class:'xdemo',style:'margin-top:10px;padding:9px 16px;border-radius:10px;border:1px solid #f0b35a;background:rgba(240,179,90,.14);color:inherit;font:600 14px system-ui,Arial;cursor:pointer;display:inline-flex;gap:8px;align-items:center',title:['A self-running tutorial that builds a complete sample project with the real tools','شرح بيشتغل لوحده وبيبني مشروع نموذجي كامل بالأدوات الحقيقية'][L],onclick:()=>demoStart()}); b.textContent='▶ '+['Project 6868 guided demo','ديمو موجّه: مشروع 6868'][L]; hd.appendChild(b); } }catch(e){} }; }
+/* entry screen: same button; it opens the app and then starts the demo. The entry screen is a visual gate only (its own comment says so); the button fills the same fixed fields and presses Enter. */
+(function(){ try{ const bx=document.querySelector('#xLogin .box'); if(!bx||bx.querySelector('.xdemo'))return; const b=document.createElement('button'); b.className='xdemo'; b.type='button'; b.style.cssText='margin-top:14px;padding:8px 16px;border-radius:999px;border:1px solid #f0b35a;background:transparent;color:#f0b35a;font:600 13px "Segoe UI",Arial,sans-serif;cursor:pointer;display:block;margin-inline:auto'; b.textContent='▶ Project 6868 guided demo · ديمو موجّه'; b.onclick=()=>{ const U=document.getElementById('xlU'), P=document.getElementById('xlP'); if(!U||!P||typeof LOGIN==='undefined')return; LOGIN.after=()=>demoStart(); U.value=LOGIN.user; P.value=LOGIN.pass; P.dispatchEvent(new Event('input',{bubbles:true})); }; bx.appendChild(b); }catch(e){} })();
+try{ TOXAPI.demo={start:o=>demoStart(o),stop:()=>demoStop(),state:()=>DMX.api?DMX.api.state():{loaded:false}}; window.TOX=Object.freeze(Object.assign({version:'1'},TOXAPI)); }catch(e){}
 /* c_xdesc2.js - bilingual hover text for ribbon buttons that had none (85 ids). EN then AR. */
 setTimeout(()=>{const D={
 start:['Go back to the Start page with all programs and recent files','ارجع لصفحة البداية فيها كل البرامج وآخر الملفات'],
@@ -10819,4 +10833,231 @@ window.PRIV=PRIV;
 window.__xWarm=()=>{try{INTRO.warm();}catch(e){}};window.__lsv={svgDraft,pdfDraft,dxfDraft,draftOps,getItems,buildSheet,xlsxBlob,sheetPdf,sheetSvg,sheetDxf,SEQ,collect,slice,svg2d,dxf2d,dxf3d,ifc,obj,pdf2d,boq,boqCsv,P,A,SEC,DR,rebuild,applyAnim,parts:()=>parts,G:()=>G,state};
 })();
 </script><script>(function(){var ran=0;function go(){if(ran)return;ran=1;var L=document.querySelectorAll('script[data-xl]');for(var j=0;j<L.length;j++)(function(n){var k=n.getAttribute('data-xl');Object.defineProperty(window,k,{configurable:true,enumerable:true,get:function(){delete window[k];var s=document.createElement('script');s.text=n.text;document.head.appendChild(s);n.remove();return window[k];},set:function(v){delete window[k];window[k]=v;}});})(L[j]);var a=document.querySelectorAll('script[data-xd]');for(var i=0;i<a.length;i++){var s=document.createElement('script');s.text=a[i].text;document.head.appendChild(s);}for(i=a.length-1;i>=0;i--)a[i].remove();}if(window.__XSYNC)go();else{requestAnimationFrame(function(){setTimeout(go,0)});setTimeout(go,1500);}})();</script>
-</body>
+<script type="text/plain" id="xDemoSrc">
+/* ====== demo_core.js - "Project 6868" guided demo: ENGINE (lazy source, evaluated inside the app closure by demo_stub.js on the first click).
+   Script format (arrays of plain objects, see demo.md): chapter{id,n,mode,steps}; steps: say, cap, move, click, type, key, wait, run, tab, draw, do, assert, ui.
+   Everything goes through the real app: ribbon buttons are clicked with real events, XC[id].run, TOXAPI, RV.els, ... Every step that changes data is followed by an assert.
+   Player: own cursor (eased bezier path, hover tooltip, click ripple), pause / resume, 1x 2x 4x, skip / previous / chapter list, progress bar, always-working Stop. No network, no storage keys. ====== */
+const DEMO=(function(){
+ const D={on:false,paused:false,sp:1,ff:false,voice:false,abort:null,runId:0,chapters:[],cur:-1,res:{},stepNo:0,snap:null,ui:null,cap:['',''],t0:0,last:null,hooks:{}};
+ const L=()=>lang==='ar'?1:0, B=(en,ar)=>lang==='ar'?ar:en;
+ const h=(tag,a,...kids)=>{ const e=document.createElement(tag); if(a)for(const k in a){ if(k==='style')e.style.cssText=a[k]; else if(k==='text')e.textContent=a[k]; else if(k==='html')e.innerHTML=a[k]; else if(k.slice(0,2)==='on')e[k]=a[k]; else e.setAttribute(k,a[k]); } kids.forEach(c=>{ if(c)e.append(c); }); return e; };
+ const STOP=new Error('demo-abort');
+ /* ---------- time: every wait counts base milliseconds, shrinks with speed, freezes on pause, throws on abort ---------- */
+ const waiters=new Set();
+ function chk(){ if(D.abort)throw STOP; }
+ function sleep(ms){ return new Promise((res,rej)=>{ let left=D.ff?0:ms, last=performance.now(); const w={rej}; waiters.add(w); (function tick(){ if(D.abort){ waiters.delete(w); return rej(STOP); } const n=performance.now(); if(!D.paused)left-=(n-last)*D.sp; last=n; if(left<=0){ waiters.delete(w); return res(); } setTimeout(tick,Math.max(4,Math.min(40,left/D.sp))); })(); }); }
+ function guard(p,ms,what){ return new Promise((res,rej)=>{ const w={rej}; waiters.add(w); let done=0; const tm=setTimeout(()=>{ if(done)return; done=1; waiters.delete(w); rej(new Error('timeout: '+(what||'step'))); },ms); Promise.resolve(p).then(v=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); res(v); },e=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); rej(e); }); }); }
+ function doAbort(why){ D.abort=why; waiters.forEach(w=>{ try{ w.rej(STOP); }catch(e){} }); waiters.clear(); }
+ /* ---------- UI: cursor, tooltip, panel ---------- */
+ const Z=2147483000;
+ function css(){ if(document.getElementById('xDemoCss'))return; const s=h('style',{id:'xDemoCss',text:
+  '#xDemoCur{position:fixed;left:0;top:0;z-index:'+(Z+5)+';pointer-events:none;width:26px;height:26px;margin:-2px 0 0 -2px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));will-change:transform}'+
+  '#xDemoCur svg{display:block;transition:transform .12s}#xDemoCur.dn svg{transform:scale(.8)}'+
+  '.xdRip{position:fixed;z-index:'+(Z+4)+';pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border:2px solid #f0b35a;border-radius:50%;animation:xdRip .6s ease-out forwards}@keyframes xdRip{to{transform:scale(4);opacity:0}}'+
+  '#xDemoTip{position:fixed;z-index:'+(Z+4)+';pointer-events:none;max-width:280px;background:#f0b35a;color:#1b1714;border-radius:8px;padding:5px 9px;font:600 12px system-ui,Arial;box-shadow:0 3px 10px rgba(0,0,0,.4)}'+
+  '.xdHl{outline:3px solid #f0b35a!important;outline-offset:2px;border-radius:6px;transition:outline-color .2s}'+
+  '#xDemoShield{position:fixed;inset:0;z-index:'+(Z-2)+';background:transparent;cursor:progress}'+
+  '#xDemoBar{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(780px,96vw);box-sizing:border-box;z-index:'+Z+';background:var(--panel,#241f1b);color:var(--fg,#e8dcc8);border:1px solid var(--line,#4a4038);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.55);padding:10px 12px;font:13px system-ui,Segoe UI,Arial}'+
+  '#xDemoBar.top{bottom:auto;top:12px}#xDemoBar button{font:600 12px system-ui,Arial;border-radius:8px;border:1px solid var(--line,#4a4038);background:transparent;color:inherit;padding:5px 9px;cursor:pointer}#xDemoBar button.on{background:#f0b35a;color:#1b1714;border-color:#f0b35a}'+
+  '#xDemoBar button.stop{background:#b3261e;border-color:#b3261e;color:#fff}#xDemoBar .row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}#xDemoBar .cap{font-size:15px;line-height:1.5;min-height:2.6em;margin:6px 0 2px}#xDemoBar .cap2{font-size:12px;opacity:.65;line-height:1.4;min-height:1.4em}'+
+  '#xDemoBar .seg{display:flex;gap:2px;height:7px;margin:8px 0}#xDemoBar .seg i{display:block;position:relative;background:var(--line,#4a4038);border-radius:3px;overflow:hidden;cursor:pointer}#xDemoBar .seg i b{position:absolute;inset:0;width:0;background:#f0b35a}#xDemoBar .seg i.ok b{background:#4caf6a}#xDemoBar .seg i.warn b{background:#e0a030}#xDemoBar .seg i.bad b{background:#d9534f}'+
+  '#xDemoList{position:fixed;z-index:'+(Z+1)+';width:min(520px,92vw);max-height:60vh;overflow:auto;background:var(--panel,#241f1b);color:var(--fg,#e8dcc8);border:1px solid var(--line,#4a4038);border-radius:12px;padding:6px;box-shadow:0 8px 30px rgba(0,0,0,.55);font:13px system-ui,Arial}'+
+  '#xDemoList div{display:flex;gap:8px;padding:6px 8px;border-radius:8px;cursor:pointer;align-items:baseline}#xDemoList div:hover{background:rgba(240,179,90,.18)}#xDemoList div.cur{outline:1px solid #f0b35a}#xDemoList small{opacity:.65;margin-inline-start:auto}'+
+  '#xDemoBar .sum{max-height:34vh;overflow:auto;font-size:12.5px;line-height:1.6;margin:6px 0}'}); document.head.appendChild(s); }
+ function cursor(){ let c=document.getElementById('xDemoCur'); if(!c){ css(); c=h('div',{id:'xDemoCur',html:'<svg width="26" height="26" viewBox="0 0 20 20"><path d="M2 2l14 6-6 2-2 6z" fill="#f0b35a" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/></svg>'}); c.style.display='none'; document.body.appendChild(c); D.cx=innerWidth*.6; D.cy=innerHeight*.5; place(D.cx,D.cy); } return c; }
+ function place(x,y){ D.cx=x; D.cy=y; const c=document.getElementById('xDemoCur'); if(c){ c.style.display='block'; c.style.transform='translate('+Math.round(x)+'px,'+Math.round(y)+'px)'; } }
+ function tip(txt,x,y){ let t=document.getElementById('xDemoTip'); if(!txt){ if(t)t.remove(); return; } if(!t){ t=h('div',{id:'xDemoTip'}); document.body.appendChild(t); } t.textContent=txt; const w=t.offsetWidth; t.style.left=Math.max(6,Math.min(innerWidth-w-6,x+14))+'px'; t.style.top=Math.max(6,Math.min(innerHeight-40,y+22))+'px'; }
+ function bar(){ if(D.ui)return D.ui; css(); const u=D.ui={};
+  u.root=h('div',{id:'xDemoBar'}); u.root.dir=lang==='ar'?'rtl':'ltr';
+  u.title=h('b',{style:'font-size:13px'}); u.meta=h('span',{style:'opacity:.65;font-size:12px;margin-inline-start:auto'});
+  u.seg=h('div',{class:'seg'}); u.cap1=h('div',{class:'cap'}); u.cap2=h('div',{class:'cap2'}); u.msg=h('div',{style:'font-size:12px;min-height:1.2em;color:#e0a030'});
+  const btn=(t,f,c,ti)=>{ const b=h('button',{text:t,title:ti||'',onclick:f}); if(c)b.className=c; return b; };
+  u.bPrev=btn('⏮',()=>jump(D.cur-1),'',B('Previous chapter','الفصل السابق')); u.bPause=btn('❚❚',()=>pause(),'',B('Pause / resume','إيقاف مؤقت / استكمال')); u.bNext=btn('⏭',()=>skip(),'',B('Skip this chapter','تخطي الفصل'));
+  u.sp=[1,2,4].map(s=>btn(s+'x',()=>speed(s),'',B('Speed','السرعة'))); u.bVoice=btn('🔊',()=>voice(),'',B('Voice on / off','الصوت'));
+  u.bList=btn('☰ '+B('Chapters','الفصول'),()=>list()); u.bStop=btn('■ '+B('Stop','إيقاف'),()=>stop(),'stop',B('Stop the demo now','إيقاف الديمو فورًا'));
+  u.root.append(h('div',{class:'row'},u.title,u.meta),u.seg,u.cap1,u.cap2,u.msg,h('div',{class:'row'},u.bPrev,u.bPause,u.bNext,...u.sp,u.bVoice,u.bList,h('span',{style:'flex:1'}),u.bStop));
+  u.root.addEventListener('pointerdown',e=>e.stopPropagation()); document.body.appendChild(u.root); segs(); return u; }
+ function segs(){ const u=D.ui; if(!u)return; u.seg.innerHTML=''; D.chapters.forEach((c,i)=>{ const r=D.res[c.id]; const e=h('i',{title:c.n[L()],style:'flex:'+Math.max(2,c.steps.length)+' 1 0',onclick:()=>jump(i)}); e.append(h('b')); if(r&&r.done)e.classList.add(r.fail?(r.okAsserts?'warn':'bad'):'ok'); u.seg.appendChild(e); }); }
+ function refresh(){ const u=D.ui; if(!u)return; const c=D.chapters[D.cur]; u.title.textContent=c?(B('Chapter ','الفصل ')+(D.cur)+' / '+(D.chapters.length-1)+' · '+c.n[L()]):'Project 6868'; u.meta.textContent=fmt((Date.now()-D.t0)/1000)+' · '+D.sp+'x'+(D.ff?' ⏩':''); u.bPause.textContent=D.paused?'▶':'❚❚'; u.bPause.className=D.paused?'on':''; u.sp.forEach((b,i)=>{ b.className=[1,2,4][i]===D.sp?'on':''; }); u.bVoice.className=D.voice?'on':''; u.bVoice.textContent=D.voice?'🔊':'🔇'; [...u.seg.children].forEach((e,i)=>{ const cc=D.chapters[i]; const f=e.firstChild; if(i<D.cur||(D.res[cc.id]&&D.res[cc.id].done))f.style.width='100%'; else if(i===D.cur)f.style.width=Math.min(100,Math.round(D.stepNo/Math.max(1,cc.steps.length)*100))+'%'; else f.style.width='0'; e.classList.toggle('cur',i===D.cur); }); const sh=document.getElementById('xDemoShield'); if(sh)sh.style.display=(D.on&&!D.paused&&!D.sum)?'block':'none'; }
+ const fmt=s=>{ s=Math.round(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+ function setCap(en,ar,keep){ const u=bar(); const a=[en||'',ar||en||'']; D.cap=a; const p=L(); u.cap1.textContent=a[p]; u.cap2.textContent=a[1-p]; if(!keep)u.msg.textContent=''; }
+ function warn(en,ar){ const u=bar(); u.msg.style.color='#e0a030'; u.msg.textContent='⚠ '+B(en,ar||en); }
+ function good(en,ar){ const u=bar(); u.msg.style.color='#4caf6a'; u.msg.textContent='✓ '+B(en,ar||en); }
+ function avoid(y){ const u=D.ui; if(!u)return; const r=u.root.getBoundingClientRect(); const top=u.root.classList.contains('top'); if(!top&&y>r.top-30&&y<r.bottom+30)u.root.classList.add('top'); else if(top&&y<r.bottom+30&&y>r.top-30)u.root.classList.remove('top'); }
+ function list(){ let l=document.getElementById('xDemoList'); if(l){ l.remove(); return; } const u=bar(); const r=u.bList.getBoundingClientRect(); l=h('div',{id:'xDemoList'}); D.chapters.forEach((c,i)=>{ const rs=D.res[c.id]; l.append(h('div',{class:i===D.cur?'cur':'',onclick:()=>{ l.remove(); jump(i); }},h('b',{text:i+'.'}),h('span',{text:c.n[L()]}),h('small',{text:(rs&&rs.done?(rs.fail?'⚠ ':'✓ '):'')+modeTxt(c.mode)}))); }); document.body.appendChild(l); l.style.left=Math.max(6,Math.min(innerWidth-l.offsetWidth-6,r.left))+'px'; const top=u.root.classList.contains('top'); if(top)l.style.top=(r.bottom+6)+'px'; else l.style.bottom=(innerHeight-r.top+6)+'px'; }
+ const modeTxt=m=>m==='real'?B('real commands','أوامر حقيقية'):m==='ui'?B('UI tour only','عرض الواجهة فقط'):B('real + UI','حقيقي + واجهة');
+ /* ---------- element finding and cursor motion ---------- */
+ const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
+ async function ribBtn(id){ const q=()=>document.querySelector('#xRib .xb[data-cmd="'+id+'"]'); let b=q(); if(vis(b))return b; const tabs=[...document.querySelectorAll('#xTabs button')]; for(const t of tabs){ t.click(); await sleep(60); b=q(); if(vis(b)){ return b; } } return null; }
+ async function find(to,st){ const tries=(st&&st.tries)||12; for(let i=0;i<tries;i++){ chk(); let e=null; if(typeof to==='function')e=to(); else if(Array.isArray(to))return to; else if(typeof to==='string'){ if(to.startsWith('cmd:'))e=await ribBtn(to.slice(4)); else if(to.startsWith('tab:'))e=(typeof xaTabEl==='function'?xaTabEl(to.slice(4)):null); else if(to==='plus')e=document.querySelector('#xDocTabs .plus'); else if(to.startsWith('text:')){ const t=to.slice(5), root=(st&&st.in)?document.querySelector(st.in):document; e=[...(root||document).querySelectorAll('button,a,label,.xb,.dt,li,div,span')].filter(vis).find(x=>x.children.length<3&&(x.textContent||'').trim()===t)||null; } else e=document.querySelector(to); } else e=to; if(vis(e))return e; await sleep(250); } if(st&&st.opt)return null; throw new Error('target not found: '+(typeof to==='string'?to:'element')); }
+ const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+ async function glide(x,y,ms){ const x0=D.cx,y0=D.cy, dx=x-x0, dy=y-y0, dist=Math.hypot(dx,dy); if(dist<2){ place(x,y); return; } const dur=ms||Math.max(380,Math.min(1500,300+dist*1.1)); const nx=-dy/dist, ny=dx/dist, bend=Math.min(120,dist*.18)*((Math.round(x0+y0)%2)?1:-1); const c1=[x0+dx*.3+nx*bend,y0+dy*.3+ny*bend], c2=[x0+dx*.75+nx*bend*.4,y0+dy*.75+ny*bend*.4]; let el_=0, last=performance.now(); const w={rej:null}; await new Promise((res,rej)=>{ w.rej=rej; waiters.add(w); (function tick(){ if(D.abort){ waiters.delete(w); return rej(STOP); } const n=performance.now(); if(!D.paused)el_+=(n-last)*(D.ff?1e6:D.sp); last=n; const t=Math.min(1,el_/dur), e=ease(t), u=1-e; place(u*u*u*x0+3*u*u*e*c1[0]+3*u*e*e*c2[0]+e*e*e*x, u*u*u*y0+3*u*u*e*c1[1]+3*u*e*e*c2[1]+e*e*e*y); if(t>=1){ waiters.delete(w); return res(); } setTimeout(tick,16); })(); }); }
+ const fire=(e,type,x,y,o)=>{ try{ const C=/^pointer/.test(type)&&window.PointerEvent?PointerEvent:/^key/.test(type)?KeyboardEvent:MouseEvent; e.dispatchEvent(new C(type,Object.assign({bubbles:true,cancelable:true,composed:true,view:window,clientX:x,clientY:y,button:0,buttons:/down|move/.test(type)&&o&&o.down?1:0,pointerId:1,pointerType:'mouse',isPrimary:true},o&&o.init||{}))); }catch(er){} };
+ const nameOf=e=>e.getAttribute&&(e.getAttribute('title')||e.getAttribute('aria-label'))||(e.textContent||'').trim().slice(0,60);
+ async function moveTo(to,st){ st=st||{}; const e=await find(to,st); cursor(); if(!e)return null; let x,y; if(Array.isArray(e)){ x=e[0]; y=e[1]; } else { if(e.scrollIntoView){ const r0=e.getBoundingClientRect(); if(r0.top<0||r0.bottom>innerHeight||r0.left<0||r0.right>innerWidth)e.scrollIntoView({block:'center',inline:'center'}); } const r=e.getBoundingClientRect(), at=st.at||[.5,.5]; x=r.left+r.width*at[0]; y=r.top+r.height*at[1]; } avoid(y); await glide(x,y); if(!Array.isArray(e)){ fire(e,'pointerover',x,y); fire(e,'mouseover',x,y); fire(e,'mouseenter',x,y); fire(e,'pointermove',x,y); fire(e,'mousemove',x,y); const nm=st.tip?B(st.tip[0],st.tip[1]||st.tip[0]):nameOf(e); if(nm&&st.tip!==false)tip(nm,x,y); e.classList&&e.classList.add('xdHl'); await sleep(st.hold==null?650:st.hold); e.classList&&e.classList.remove('xdHl'); tip(null); } return e; }
+ async function clickAt(e,x,y,o){ const c=document.getElementById('xDemoCur'); if(c)c.classList.add('dn'); const rp=h('div',{class:'xdRip'}); rp.style.left=x+'px'; rp.style.top=y+'px'; document.body.appendChild(rp); setTimeout(()=>rp.remove(),700); await sleep(90); fire(e,'pointerdown',x,y,{down:1}); fire(e,'mousedown',x,y,{down:1}); await sleep(70); fire(e,'pointerup',x,y); fire(e,'mouseup',x,y); if(!o||!o.noClick)fire(e,'click',x,y); if(c)c.classList.remove('dn'); await sleep(o&&o.after!=null?o.after:260); }
+ function elAt(x,y){ const sh=document.getElementById('xDemoShield'); if(sh)sh.style.pointerEvents='none'; const e=document.elementFromPoint(x,y); if(sh)sh.style.pointerEvents=''; return e; }
+ async function click(to,st){ st=st||{}; const e=await moveTo(to,st); if(!e)return null; if(Array.isArray(e)){ const t=elAt(e[0],e[1]); await clickAt(t||document.body,e[0],e[1],st); return t; } const r=e.getBoundingClientRect(); await clickAt(e,D.cx,D.cy,st); return e; }
+ async function typeInto(to,text,st){ st=st||{}; const e=await moveTo(to,Object.assign({hold:200},st)); if(!e)return; await clickAt(e,D.cx,D.cy,{noClick:true,after:60}); e.focus&&e.focus(); if(st.clear!==false){ e.value=''; e.dispatchEvent(new Event('input',{bubbles:true})); } for(const ch of String(text)){ chk(); fire(e,'keydown',0,0,{init:{key:ch}}); e.value+=ch; e.dispatchEvent(new InputEvent('input',{bubbles:true,data:ch,inputType:'insertText'})); fire(e,'keyup',0,0,{init:{key:ch}}); await sleep(st.cps?1000/st.cps:55); } e.dispatchEvent(new Event('change',{bubbles:true})); await sleep(200); }
+ function key(k,o){ const t=(o&&o.on)||document.body; t.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true,cancelable:true,ctrlKey:!!(o&&o.ctrl)})); t.dispatchEvent(new KeyboardEvent('keyup',{key:k,bubbles:true,ctrlKey:!!(o&&o.ctrl)})); }
+ /* world point on the R.X level -> screen pixel of the 3D canvas */
+ function w2s(x,z,y){ const cv=renderer.domElement, r=cv.getBoundingClientRect(), v=new T.Vector3(x,y==null?rvLy(RV.lv):y,z).project(camera); return [r.left+(v.x+1)/2*r.width, r.top+(1-v.y)/2*r.height]; }
+ async function canvasClick(x,z,y,o){ const cv=renderer.domElement, p=w2s(x,z,y); await glide(p[0],p[1]); const t=cv; fire(t,'pointermove',p[0],p[1]); await sleep(60); fire(t,'pointerdown',p[0],p[1],{down:1}); fire(t,'mousedown',p[0],p[1],{down:1}); await sleep(50); fire(t,'pointerup',p[0],p[1]); fire(t,'mouseup',p[0],p[1]); await sleep(o&&o.after!=null?o.after:200); }
+ async function fly(pos,tgt,ms){ const p0=camera.position.clone(), t0=controls.target.clone(), n=D.ff?1:Math.max(6,Math.round((ms||1400)/60)); for(let i=1;i<=n;i++){ chk(); const e=ease(i/n); camera.position.set(p0.x+(pos[0]-p0.x)*e,p0.y+(pos[1]-p0.y)*e,p0.z+(pos[2]-p0.z)*e); controls.target.set(t0.x+(tgt[0]-t0.x)*e,t0.y+(tgt[1]-t0.y)*e,t0.z+(tgt[2]-t0.z)*e); controls.update(); if(i<n)await sleep(60); } try{ camera.updateMatrixWorld(); }catch(e){} await sleep(200); }
+ /* ---------- narration (caption stays; optional voice) ---------- */
+ function speak(txt){ return new Promise(res=>{ try{ const S=window.speechSynthesis; if(!S){ res(); return; } S.cancel(); const u=new SpeechSynthesisUtterance(String(txt).slice(0,500)); u.lang=lang==='ar'?'ar-EG':'en-US'; const tm=setTimeout(res,9000); u.onend=u.onerror=()=>{ clearTimeout(tm); res(); }; S.speak(u); }catch(e){ res(); } }); }
+ async function narrate(st){ const txt=(st[lang==='ar'?'ar':'en']||st.en||''); const base=Math.max(1400,Math.min(9000,900+txt.length*52)); if(D.voice&&!D.ff){ await Promise.race([speak(txt),guard(new Promise(()=>{}),base*3+4000,'voice').catch(()=>{})]); await sleep(300); } else await sleep(st.hold||base); }
+ /* ---------- steps ---------- */
+ const OPS={
+  async cap(st){ setCap(st.en,st.ar); },
+  async say(st){ setCap(st.en,st.ar); await narrate(st); },
+  async move(st){ await moveTo(st.to,st); },
+  async click(st){ await click(st.to,st); },
+  async type(st){ await typeInto(st.to,st.text,st); },
+  async key(st){ const on=typeof st.on==='function'?st.on():typeof st.on==='string'?document.querySelector(st.on):st.on; for(let i=0;i<(st.n||1);i++){ key(st.k,Object.assign({},st,{on:on})); await sleep(i<(st.n||1)-1?120:(st.after==null?200:st.after)); } },
+  async wait(st){ await sleep(st.ms||500); },
+  async run(st){ const id=st.cmd; if(!XC[id])throw new Error('unknown command '+id); const b=await ribBtn(id); if(b){ await click(b,st); } else { await moveTo(document.getElementById('xRib')||[innerWidth/2,90],{hold:200,tip:false}); await sleep(200); XC[id].run(st.arg); } await sleep(st.after==null?300:st.after); },
+  async tab(st){ const type=st.type; let t=WTAB.tabs.find(x=>x.type===type); if(!t){ const p=await find('plus',st); await click(p,{tip:[B('New tab: pick a tool','تاب جديد: اختار أداة')],hold:300}); await sleep(250); const code=(WTYPES[type]&&WTYPES[type].n[0].split(' ')[0])||'~'; const it=[...document.querySelectorAll('.xmenu .xm')].find(x=>(x.textContent||'').trim().startsWith(code)); if(it)await click(it,{hold:250}); else { document.body.click(); wtNew(type); } } else if(WTAB.cur!==t.id){ const e=await find('tab:'+type,{opt:1,tries:4}); if(e)await click(e,{hold:200}); else wtSwitch(t.id); } await sleep(st.after==null?500:st.after); },
+  async draw(st){ /* R.X: real pointer events on the 3D canvas at the screen position of world points */ const cv=renderer.domElement; if(!vis(cv))throw new Error('3D canvas is not visible'); const lv=st.lv==null?RV.lv:st.lv; if(RV.lv!==lv){ RV.lv=lv; try{ rvBrowser(); }catch(e){} } const yy=st.y==='top'?rvLy(lv)+3:st.y; const tries=st.until?3:1; for(let k=0;k<tries;k++){ for(const p of st.pts){ chk(); await canvasClick(p[0]+k*.35,p[1],yy,{after:st.gap}); } if(!st.until||st.until())break; if(k<tries-1)await sleep(300); } },
+  async do(st){ await st.fn(api); },
+  async assert(st){ const ms=st.wait==null?2500:st.wait; const t0=Date.now(); let ok=false, err=null; for(;;){ chk(); try{ ok=!!(await st.ok(api)); }catch(e){ if(e===STOP)throw e; ok=false; err=e; } if(ok||(Date.now()-t0)*D.sp>=ms||D.ff&&Date.now()-t0>ms)break; await sleep(120); } const r=rec(); if(ok){ r.okAsserts++; r.asserts.push({ok:1,en:st.en}); good(st.en||'checked',st.ar); await sleep(450); } else { r.fail++; r.asserts.push({ok:0,en:st.en,err:err&&err.message}); warn('check failed: '+(st.en||'?')+(err?' ('+err.message+')':''),'فشل التحقق: '+(st.ar||st.en||'?')); await sleep(900); if(!st.soft)throw Object.assign(new Error('assert: '+(st.en||'')),{assertFail:1}); } },
+  async ui(st){ /* "ui" steps only show something: hover tour, never changes data */ for(const t of st.tour||[]){ await moveTo(t.to||t,Object.assign({opt:1,hold:t.hold||800},t.to?t:{})); } }
+ };
+ const rec=()=>{ const c=D.chapters[D.cur]; return D.res[c.id]||(D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0,done:false}); };
+ async function runChapter(i){ const c=D.chapters[i]; D.cur=i; D.stepNo=0; const r=D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0,done:false,mode:c.mode,t0:Date.now()}; refresh(); setCap(c.sum?c.sum[0]:c.n[0],c.sum?c.sum[1]:c.n[1]); try{ if(c.pre)await c.pre(api); }catch(e){ if(e===STOP)throw e; r.errors.push('pre: '+e.message); }
+  for(const st of c.steps){ chk(); while(D.paused){ await sleep(100); } if(st.when&&!st.when(api))continue; D.stepNo++; r.steps++; refresh(); D.last=st;
+   try{ await guard(OPS[st.op](st),st.timeout||90000,st.op); }catch(e){ if(e===STOP||D.abort)throw STOP; r.errors.push(st.op+': '+(e&&e.message)); r.fail++; warn('This step could not run: '+(e&&e.message)+'. Skipping to the next chapter.','الخطوة دي معرفتش تتنفذ: '+(e&&e.message)+'. هنكمل بالفصل اللي بعده.'); console.warn('[demo]',c.id,st.op,e); await sleep(1800); break; } }
+  r.done=true; segs(); refresh(); try{ rvTool&&RV.tool&&rvTool(null); }catch(e){} }
+ /* ---------- control ---------- */
+ async function loop(from,last){ const my=++D.runId; let i=from; while(i<=last){ if(D.runId!==my)return; const c=D.chapters[i]; try{ await runChapter(i); i++; }catch(e){ if(D.runId!==my)return; const ab=D.abort; if(ab==='stop')return; if(ab==='skip'){ D.abort=null; const r=D.res[c.id]||(D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0}); r.skipped=1; r.done=true; segs(); i++; continue; } if(ab==='jump'){ D.abort=null; const r=D.res[c.id]; if(r)r.done=false; i=D.jumpTo; continue; } if(e!==STOP){ console.warn('[demo] chapter crashed',e); i++; } else return; } }
+  if(D.runId===my)finish(false); }
+ function jump(i){ i=Math.max(0,Math.min(D.chapters.length-1,i)); if(!D.on&&D.pickRes){ D.pick=i; const f=D.pickRes; D.pickRes=null; f(1); return; } if(!D.on||D.sum)return; D.jumpTo=i; D.paused=false; doAbort('jump'); }
+ function skip(){ if(!D.on||D.sum)return; D.paused=false; doAbort('skip'); }
+ function pause(f){ if(!D.on)return; D.paused=f===undefined?!D.paused:!!f; try{ if(D.paused&&window.speechSynthesis)speechSynthesis.pause(); else if(window.speechSynthesis)speechSynthesis.resume(); }catch(e){} refresh(); }
+ function speed(s){ D.sp=s; D.ff=false; refresh(); }
+ function voice(f){ D.voice=f===undefined?!D.voice:!!f; if(!D.voice)try{ speechSynthesis.cancel(); }catch(e){} refresh(); }
+ function cleanup(){ clearInterval(D.tick); ['xDemoCur','xDemoTip','xDemoShield','xDemoList'].forEach(i=>{ const e=document.getElementById(i); if(e)e.remove(); }); document.querySelectorAll('.xdHl').forEach(e=>e.classList.remove('xdHl')); try{ speechSynthesis.cancel(); }catch(e){} try{ if(RV.tool)rvTool(null); }catch(e){} }
+ function stop(){ if(!D.on)return; D.runId++; doAbort('stop'); D.paused=false; finish(true); }
+ function finish(stopped){ if(D.sum)return; D.on=false; D.sum=true; cleanup(); const u=bar(); u.root.classList.remove('top'); const rows=D.chapters.map((c,i)=>{ const r=D.res[c.id]; const st=!r?'—':r.skipped?B('skipped','اتخطى'):!r.done?(i===D.cur?B('stopped','اتوقف'):'—'):r.fail?'⚠ '+B('partial','جزئي'):'✓'; return '<div>'+i+'. '+c.n[L()]+' — <b>'+st+'</b> <small style="opacity:.6">('+modeTxt(c.mode)+(r?', '+r.okAsserts+' '+B('checks passed','تحقق ناجح')+(r.fail?', '+r.fail+' '+B('problem(s)','مشكلة'):''):'')+')</small></div>'; }).join(''); setCap(stopped?'Demo stopped. The project is left as it is now and stays usable.':'Demo finished. Project 6868 is open and usable.',stopped?'اتوقف الديمو. المشروع فاضل زي ما هو دلوقتي وتقدر تكمل شغل عليه.':'خلص الديمو. مشروع 6868 مفتوح وتقدر تشتغل عليه.'); u.msg.textContent=''; let s=u.root.querySelector('.sum'); if(s)s.remove(); s=h('div',{class:'sum',html:rows}); u.cap2.after(s);
+  const row=u.root.lastChild; row.innerHTML=''; const b=(t,f,c)=>{ const x=h('button',{text:t,onclick:f}); if(c)x.className=c; return x; }; row.append(b(B('Keep Project 6868','خلّي مشروع 6868'),()=>close(),'on'),b(B('Restore my previous project','رجّع مشروعي السابق'),()=>{ restore(); close(); }),b(B('Play again','شغّل تاني'),()=>{ close(); start({yes:1}); }),b(B('Close','إغلاق'),()=>close())); D.final={stopped,res:JSON.parse(JSON.stringify(D.res))}; try{ if(D.hooks.end)D.hooks.end(D.final); }catch(e){} }
+ function close(){ cleanup(); if(D.ui){ D.ui.root.remove(); D.ui=null; } D.sum=null; D.on=false; try{ xBar(true); startPanel(); }catch(e){} }
+ function restore(){ if(!D.snap)return false; try{ loadProject(D.snap); try{ persist(); }catch(e){} try{ xBar(); rvBuild(); startPanel(); }catch(e){} return true; }catch(e){ console.warn('[demo] restore failed',e); return false; } }
+ /* ---------- start ---------- */
+ function confirmCard(o){ return new Promise(res=>{ D.pickRes=res; D.pick=null; const u=bar(); u.root.dir=lang==='ar'?'rtl':'ltr'; setCap('Guided demo: Project 6868. A cursor will move and click by itself and build a complete sample project with the real tools: model, site, schedule, quantities, structure, MEP, clash, documents and outputs. Your current project is saved first and you can restore it with one click.','ديمو موجّه: مشروع 6868. هيتحرك مؤشر ويضغط لوحده ويبني مشروع نموذجي كامل بالأدوات الحقيقية: موديل وموقع وجدول وكميات وإنشائي وMEP وتعارضات ومستندات ومخرجات. مشروعك الحالي بيتحفظ الأول وترجّعه بضغطة.'); u.title.textContent='Project 6868'; u.meta.textContent=''; const row=u.root.lastChild; row.innerHTML=''; const b=(t,f,c)=>{ const x=h('button',{text:t,onclick:f}); if(c)x.className=c; return x; }; row.append(b('▶ '+B('Start','ابدأ'),()=>res(1),'on'),b(B('Chapters','الفصول'),()=>{ list(); }),h('span',{style:'flex:1'}),b(B('Cancel','إلغاء'),()=>res(0))); }); }
+ function buildRow(){ const u=D.ui, row=u.root.lastChild; row.innerHTML=''; row.append(u.bPrev,u.bPause,u.bNext,...u.sp,u.bVoice,u.bList,h('span',{style:'flex:1'}),u.bStop); }
+ async function start(o){ o=o||{}; if(D.on||D.sum){ if(D.sum)close(); else return false; } if(!D.chapters.length)throw new Error('no chapters'); D.on=false; D.abort=null; D.paused=false; D.res={}; D.sum=null; D.final=null; bar(); document.body.appendChild(h('div',{id:'xDemoShield'})); cursor().style.display='none';
+  if(o.speed)D.sp=o.speed; D.ff=!!o.ff; if(o.voice!==undefined)D.voice=!!o.voice; D.t0=Date.now(); D.snap=null; try{ D.snap=projectJson(); }catch(e){} segs();
+  if(!o.yes){ const sh=document.getElementById('xDemoShield'); if(sh)sh.style.display='none'; const ok=await confirmCard(o); D.pickRes=null; if(!ok){ close(); return false; } if(D.pick!=null)o.from=D.pick; buildRow(); const l=document.getElementById('xDemoList'); if(l)l.remove(); } else buildRow();
+  D.on=true; D.t0=Date.now(); clearInterval(D.tick); D.tick=setInterval(()=>{ if(D.on)refresh(); },1000); refresh(); const from=o.from==null?0:o.from, last=o.to==null?D.chapters.length-1:o.to; const done=loop(from,last); D.promise=done; if(o.wait)await done; return true; }
+ const api={D,start,stop,pause,skip,jump,speed,voice,restore,close,sleep,find,moveTo,click,typeInto,key,canvasClick,w2s,fly,setCap,warn,good,fmt,chk,B,L,h,ribBtn,
+  add(c){ c.mode=c.mode||'real'; D.chapters.push(c); segs(); },
+  state(){ return {on:D.on,paused:D.paused,speed:D.sp,chapter:D.cur,chapters:D.chapters.map(c=>c.id),results:JSON.parse(JSON.stringify(D.res)),finished:!!D.sum,final:D.final}; },
+  report(){ return D.final||this.state(); }};
+ api.ops=OPS; return api; })();
+
+/* ====== demo_ch1.js - chapters 0-2 (welcome, project + template, R.X building). Evaluated together with demo_core.js. ====== */
+(function(){
+ const S=DEMO, B=S.B;
+ /* the sample template: registered here (not in c_templates.js) so the chooser shows it once the demo has been opened. Same R.X starter as the villa; the demo then adds the rest with the real tools. */
+ try{ if(!TEMPLATES.sample6868){ const rvf=(TEMPLATES.house2&&TEMPLATES.house2.rv)||(typeof tpHouse2==='function'?tpHouse2:null); if(rvf)TEMPLATES.sample6868={id:'sample6868',base:'blank',n:['Project 6868 (sample, full)','مشروع 6868 (نموذجي كامل)'],title:['Project 6868','Project 6868'],rv:rvf,d:['The sample used by the guided demo: two-floor building starter; the demo adds site, schedule, quantities, structure, MEP, clash and outputs.','النموذج اللي بيستخدمه الديمو: مبنى دورين؛ والديمو بيضيف الموقع والجدول والكميات والإنشائي وMEP والتعارضات والمخرجات.']}; } }catch(e){}
+ const cnt=k=>RV.els.filter(e=>e.k===k).length;
+ const ctx={};
+ /* make sure "Project 6868" exists (used when someone starts at a later chapter): the same real function the chooser calls, no animation */
+ S.ensureProject=async function(){ if(typeof tpId==='function'&&tpId()==='sample6868'&&dcProjName()==='Project 6868')return false; tpNew('sample6868'); const P2=DATA.proj||(DATA.proj={}); P2.name='Project 6868'; P2.no='6868-DEMO'; P2.client='Sample client'; P2.loc='Sample site'; DR.title='Project 6868'; try{ persist(); xBar(); }catch(e){} return true; };
+
+ /* ---------------- 0: welcome / how to use ---------------- */
+ S.add({id:'welcome',n:['Welcome: how the platform works','أهلاً: إزاي بتشتغل المنصة'],mode:'mixed',
+  sum:['Welcome. Everything here is a tab; commands live in the ribbon; Ctrl+K finds anything.','أهلاً. كل حاجة هنا تاب، والأوامر في الشريط، وCtrl+K بيدور على أي حاجة.'],
+  steps:[
+   {op:'tab',type:'start'},
+   {op:'say',en:'Welcome to T.O X. This is the Start page. Every tool you see is a tab: R.X is the Revit-like model, C.X is CAD, S.X is survey and civil, P.X is the schedule, N.X is coordination.',ar:'أهلاً بيك في T.O X. دي صفحة البداية. كل أداة قدامك هي تاب: R.X الموديل زي ريفيت، C.X الأوتوكاد، S.X المساحة والمدني، P.X الجدول الزمني، N.X التنسيق.'},
+   {op:'move',to:'.xdh h1',tip:['The project name is always here','اسم المشروع بيظهر هنا دايمًا']},
+   {op:'ui',tour:[{to:'.xtl .xt:nth-child(1)',hold:700},{to:'.xtl .xt:nth-child(3)',hold:700},{to:'.xtl .xt:nth-child(4)',hold:700}]},
+   {op:'say',en:'Search everything with Ctrl+K: commands, tools and files. I will press it and look for "wall".',ar:'ابحث في كل حاجة بـ Ctrl+K: أوامر وأدوات وملفات. هضغطها وأدوّر على "wall".'},
+   {op:'key',k:'k',ctrl:true,after:500},
+   {op:'assert',en:'The search box opened',ar:'صندوق البحث اتفتح',ok:()=>!!document.querySelector('.xdlg input[type=text]')},
+   {op:'type',to:'.xdlg input[type=text]',text:'wall',tip:false},
+   {op:'wait',ms:1200},
+   {op:'assert',en:'Search found commands',ar:'البحث لقى أوامر',soft:1,ok:()=>document.querySelectorAll('.xdlg .xm').length>=1},
+   {op:'key',k:'Escape',on:()=>document.querySelector('.xdlg input[type=text]'),after:300},
+   {op:'assert',en:'Search closed',ar:'البحث اتقفل',soft:1,ok:()=>!document.querySelector('.xdlg input[type=text]')},
+   {op:'say',en:'New tabs: the + button next to the tabs opens the menu of all tools. I will open it just to show it.',ar:'التابات الجديدة: زرار + جنب التابات بيفتح قائمة كل الأدوات. هفتحه بس عشان أوريهالك.'},
+   {op:'click',to:'plus',tip:['Add a tab','أضف تاب'],hold:400},
+   {op:'assert',en:'The tools menu is open',ar:'قايمة الأدوات اتفتحت',ok:()=>!!document.querySelector('.xmenu .xm')},
+   {op:'ui',tour:[{to:'.xmenu .xm:nth-child(1)',hold:600},{to:'.xmenu .xm:nth-child(3)',hold:600},{to:'.xmenu .xm:nth-child(4)',hold:600}]},
+   {op:'click',to:'tab:start',tip:false,after:300},
+   {op:'say',en:'Files and data: "Open a file" loads a saved project, IFC, DXF or CSV from your computer. The operating system file dialog is outside the browser, so I only point at it. Saved projects are listed under "Projects".',ar:'الملفات والبيانات: "فتح ملف" بيحمّل مشروع محفوظ أو IFC أو DXF أو CSV من جهازك. نافذة اختيار الملف تبع نظام التشغيل برّه المتصفح فهشاور عليها بس. المشاريع المحفوظة تلاقيها في "المشاريع".'},
+   {op:'move',to:'cmd:open',hold:900},
+   {op:'move',to:'cmd:save',hold:700},
+   {op:'move',to:'cmd:projects',hold:700},
+   {op:'say',en:'Data is filled in forms and tables inside each tool. Next chapter: we create the project and fill its information.',ar:'البيانات بتتملي في نماذج وجداول جوه كل أداة. الفصل الجاي: هننشئ المشروع ونملي بياناته.'}
+  ]});
+
+ /* ---------------- 1: create the project from a template ---------------- */
+ S.add({id:'project',n:['Create the project from a template','إنشاء المشروع من قالب'],mode:'real',
+  sum:['New project from the template, then the project information.','مشروع جديد من القالب، وبعدين بيانات المشروع.'],
+  steps:[
+   {op:'tab',type:'start'},
+   {op:'say',en:'Press "New". The chooser lists the templates. Your current project is kept in the undo history first.',ar:'اضغط "جديد". القائمة بتعرض القوالب. مشروعك الحالي بيتحفظ في سجل التراجع الأول.'},
+   {op:'run',cmd:'new',after:500},
+   {op:'assert',en:'The template chooser opened',ar:'قايمة القوالب اتفتحت',ok:()=>!!document.getElementById('tpDlg')},
+   {op:'ui',tour:[{to:'#tpDlg [data-tpl]:nth-child(1)',hold:500},{to:'#tpDlg [data-tpl]:nth-child(2)',hold:500}]},
+   {op:'say',en:'The "Download the current project first" box would save a file to your computer. The demo keeps your project itself, so I untick it.',ar:'خانة "نزّل المشروع الحالي الأول" هتحفظ ملف على جهازك. الديمو بيحتفظ بمشروعك بنفسه، فهشيل العلامة.'},
+   {op:'click',to:'#tpDl',tip:false},
+   {op:'assert',en:'Download box is off',ar:'خانة التنزيل مقفولة',ok:()=>{ const c=document.getElementById('tpDl'); return !!c&&!c.checked; }},
+   {op:'click',to:'#tpDlg [data-tpl="sample6868"]',hold:700},
+   {op:'assert',en:'Project created from the template (elements in R.X)',ar:'المشروع اتعمل من القالب (عناصر في R.X)',ok:()=>tpId()==='sample6868'&&RV.els.length>=40,wait:4000},
+   {op:'say',en:'Now the project information: name, number, client, location. "Project set-up" opens the form.',ar:'دلوقتي بيانات المشروع: الاسم والرقم والعميل والموقع. "إعداد المشروع" بيفتح النموذج.'},
+   {op:'run',cmd:'setup',after:400},
+   {op:'assert',en:'The set-up form opened',ar:'نموذج الإعداد اتفتح',ok:()=>!!document.querySelector('.xdlg input[data-k="name"]')},
+   {op:'type',to:'.xdlg input[data-k="name"]',text:'Project 6868',tip:false},
+   {op:'type',to:'.xdlg input[data-k="no"]',text:'6868-DEMO',tip:false},
+   {op:'type',to:'.xdlg input[data-k="client"]',text:'Sample client',tip:false},
+   {op:'type',to:'.xdlg input[data-k="loc"]',text:'Sample site',tip:false},
+   {op:'click',to:()=>[...document.querySelectorAll('.xdlg button')].find(b=>b.textContent.trim()===B('Apply','تطبيق')),hold:500},
+   {op:'assert',en:'Project information saved (name, number, client, location)',ar:'بيانات المشروع اتحفظت',ok:()=>dcProjName()==='Project 6868'&&DATA.proj.no==='6868-DEMO'&&DATA.proj.client==='Sample client'&&DATA.proj.loc==='Sample site'},
+   {op:'say',en:'Project 6868 exists. Its name is in the top bar and on the Start page.',ar:'مشروع 6868 اتعمل. اسمه في الشريط العلوي وفي صفحة البداية.'},
+   {op:'move',to:'#xBar .pj',opt:1,hold:900}
+  ]});
+
+ /* ---------------- 2: R.X building model ---------------- */
+ S.add({id:'rx',n:['R.X: the building model','R.X: موديل المبنى'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Draw a garage annex by hand in R.X: walls, floor, door, window and a column, then look at it in 3D.','هنرسم ملحق جراج بإيدينا في R.X: حيطان وبلاطة وباب وشباك وعمود، وبعدين نشوفه 3D.'],
+  steps:[
+   {op:'say',en:'R.X is the model. The template already has levels, grids, walls, rooms, stairs and a roof for the main house. Open the R.X tab.',ar:'R.X هو الموديل. القالب فيه مناسيب وشبكات وحيطان وغرف وسلم وسقف للبيت الأساسي. افتح تاب R.X.'},
+   {op:'tab',type:'model'},
+   {op:'assert',en:'R.X tab is active and the 3D view is visible',ar:'تاب R.X شغال والـ 3D ظاهر',ok:()=>{ try{ return ribType()==='model'&&renderer.domElement.getBoundingClientRect().width>100; }catch(e){ return false; } },wait:5000},
+   {op:'do',fn:async a=>{ ctx.w0=cnt('wall'); ctx.d0=cnt('door'); ctx.n0=cnt('window'); ctx.c0=cnt('col'); ctx.f0=cnt('floor'); RV.lv=0; try{ rvBrowser(); }catch(e){} await a.fly([9,34,5.4],[9,0,5],1400); }},
+   {op:'say',en:'Plan view of the ground floor. We add a 6 x 6 m garage on the east side. Pick the Wall tool, then click the corners: the cursor clicks on the 3D canvas like a mouse.',ar:'مسقط الدور الأرضي. هنضيف جراج ٦ × ٦ م على الجانب الشرقي. اختار أداة الحائط، وبعدين اضغط الأركان: المؤشر بيضغط على الـ 3D زي الماوس.'},
+   {op:'run',cmd:'rv_wall'},
+   {op:'assert',en:'Wall tool is active',ar:'أداة الحائط شغالة',ok:()=>RV.tool==='wall'},
+   {op:'draw',pts:[[12,0],[18,0],[18,6],[12,6]],gap:250},
+   {op:'key',k:'Escape',n:2},
+   {op:'assert',en:'3 walls added by clicking, tool ended with Esc',ar:'٣ حيطان اتضافت بالضغط، والأداة انتهت بـ Esc',ok:()=>cnt('wall')-ctx.w0===3&&!RV.tool},
+   {op:'say',en:'Floor slab: pick Floor and click two opposite corners.',ar:'بلاطة الأرضية: اختار بلاطة وبعدين اضغط ركنين متقابلين.'},
+   {op:'run',cmd:'rv_floor'},
+   {op:'draw',pts:[[12,0],[18,6]]},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'Floor slab added',ar:'البلاطة اتضافت',ok:()=>cnt('floor')-ctx.f0===1},
+   {op:'say',en:'Door and window: pick the tool and click on a wall.',ar:'الباب والشباك: اختار الأداة واضغط على جدار.'},
+   {op:'run',cmd:'rv_door'},
+   {op:'draw',pts:[[15,0]],y:'top',until:()=>cnt('door')>ctx.d0},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'Door added to the garage wall',ar:'الباب اتضاف لحيطة الجراج',ok:()=>cnt('door')-ctx.d0===1},
+   {op:'run',cmd:'rv_window'},
+   {op:'draw',pts:[[18,3]],y:'top',until:()=>cnt('window')>ctx.n0},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'Window added',ar:'الشباك اتضاف',ok:()=>cnt('window')-ctx.n0===1},
+   {op:'run',cmd:'rv_col'},
+   {op:'draw',pts:[[15,3]]},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'Column added',ar:'العمود اتضاف',ok:()=>cnt('col')-ctx.c0===1},
+   {op:'say',en:'Now the 3D view: orbit around the new annex. Everything you drew is real model data used later for quantities, schedule links and sheets.',ar:'دلوقتي منظور 3D: بندور حوالين الملحق. كل اللي رسمناه بيانات موديل حقيقية بتتستخدم بعدين في الكميات وربط الجدول واللوحات.'},
+   {op:'do',fn:async a=>{ await a.fly([24,15,22],[9,1.5,5],1800); }},
+   {op:'assert',en:'Model totals: walls, doors, windows, columns',ar:'إجمالي الموديل: حيطان وأبواب وشبابيك وأعمدة',ok:()=>cnt('wall')>=ctx.w0+3&&cnt('door')>ctx.d0&&cnt('window')>ctx.n0&&cnt('col')>ctx.c0}
+  ]});
+})();
+
+</script></body>

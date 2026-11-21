@@ -378,3 +378,6 @@ Login first (early script), main script and three.js started after first frame, 
 
 ## 2026-11-21 privacy merged
 privacy.js + privacy_patch.py (run by ./make.sh after patch_v3.py): neutral templates/exports, wipe_project (typed confirm, trusted click), AI request gate with redaction, Sensitive-project switch, minimum context, outbound log; bridge inbox retention + /inbox/clear. Tests: privacy 109, parity 126, px2 149, freeai 88, link 43. Limits in docs SECURITY_PRIVACY.md (best-effort redaction; sample geometry/coordinates still embedded).
+
+## 2026-11-21 demo stage 1 merged
+Project 6868 guided demo: player engine + chapters 0-2 (welcome, project from template, R.X building), lazy-loaded; buttons on Start page and entry screen; TOX.demo.start(). Chapters 3-12 not written yet. Tests: demo smoke/run/stop, parity 126, px2 149, freeai 88, link 43, privacy 109.
