@@ -402,3 +402,6 @@ Default stays the pump-station sample; any other template shows none of its cont
 
 ## 2026-11-21 ribbon layout fix + demo on hold
 c_ribfix.js: Commands reference button and Working x/y counter moved into the ribbon tab row; groups row fixed height, scrolls sideways (no overlap of icons, never covers the document tabs). c_demohold.js: TEMPORARY, demo buttons show a notice until the rebuilt demo (clean exit) is merged; the old demo saved its house over the user project.
+
+## 2026-11-21 demo stage 3 merged, demo hold removed
+16 phase chapters on house_rc (welcome, project, site, arch, sys, design, elec, hvac, plumb, lowc, clash, boq, tender, sched, build, handover, out). Runs in an isolated temporary project: storage writes go to an in-memory shadow, every opened tab is closed, the previous workspace is restored (clean-exit test x4 in session; early cycle + smoke rerun here). Still to do: per-state progress bar, why-captions, info cards, step log/repeat, popup suppression, site chapter with wall/gate/garden/drainage.

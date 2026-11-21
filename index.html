@@ -3432,7 +3432,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H18M64 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="39.2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7.6" font-weight="300" letter-spacing="2.4" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
 function xtoTagSvg(fill,op,y){ y=y||44.5; return '<g fill="'+fill+'" stroke="none" opacity="'+op+'" font-family="Segoe UI,Arial,sans-serif"><text x="2" y="'+y+'" textLength="78" lengthAdjust="spacing" font-size="3.4" font-weight="300">TECHNICAL OFFICE <tspan font-size="5.2" font-weight="400">X</tspan></text><text x="28" y="'+(y+5.6)+'" textLength="26" lengthAdjust="spacing" font-size="3.6" font-weight="200">6868</text></g>'; }
-XTO.build='20261121-210247';
+XTO.build='20261121-212606';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -13277,11 +13277,6 @@ XCMD('gm_layers','layer','Map layers catalogue (imagery, thermal, history, statu
 setTimeout(()=>Object.assign(XDESC,{gm_layers:['Opens the layer catalogue: streets, aerial, Wayback history, Sentinel-2 by year, NASA GIBS daily imagery, thermal (land and sea surface temperature), night lights, vegetation, land cover, water, forest, radar, with licence flags, tested status and a live Test button.','بتفتح كتالوج الطبقات: شوارع وصور جوية وتاريخ Wayback وSentinel-2 بالسنة وصور NASA GIBS اليومية وحراري (حرارة الأرض والبحر) وأضواء الليل والنبات والغطاء الأرضي والمياه والغابات والرادار، بعلامات الترخيص والحالة المختبرة وزرار اختبار حي.']}),0);
 try{ const ids=['gm_layers']; RIBM.gm_layers={type:'gis',tab:'Map',tabAr:'الخريطة',panel:'Places',panelAr:'الأماكن',en:'Layers catalogue',ar:'كتالوج الطبقات',impl:'gm_layers'}; const t=RIBP.gis&&RIBP.gis.tabs.find(t=>t[0]==='map'); const g=t&&t[2].find(g=>g[0][0]==='Places'); if(g)g[1].push('gm_layers'); }catch(e){}
 window.GMC=GMC; window.gmcApply=gmcApply; window.gmcRaw=gmcRaw; window.gmcTest=gmcTest; window.gmcStatus=gmcStatus;
-/* c_demohold.js - TEMPORARY: the published guided demo (old version) saves its house project over the user's project.
-   Until the rebuilt demo (clean exit, never saved) is merged, the demo buttons only show a notice. Remove this chunk then. */
-demoStart=function(){ try{ const d=document.createElement('div'); d.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#1b1714;color:#e8dcc8;border:1px solid #e0643a;border-radius:10px;padding:12px 18px;font:14px "Segoe UI",system-ui,sans-serif;max-width:560px;text-align:center;box-shadow:0 6px 24px #0008';
- d.textContent=b2('The guided demo is being rebuilt (it will run on its own temporary project and never change yours). It will be back soon.','العرض الموجّه بيتعاد بناؤه (هيشتغل على مشروع مؤقت لوحده ومش هيغيّر مشروعك). هيرجع قريب.');
- document.body.appendChild(d); setTimeout(()=>d.remove(),6000); }catch(e){} };
 /* c_ribfix.js - ribbon layout: the "Commands reference" button and the "Working x of y" counter sat (sticky) on top of the
    ribbon groups and hid icons; the ribbon could grow and cover the document tabs. Now: both live at the end of the ribbon
    TAB row, the groups row has a fixed height and scrolls sideways instead of wrapping or growing. */
@@ -13658,7 +13653,7 @@ const DEMO=(function(){
  const waiters=new Set();
  function chk(){ if(D.abort)throw STOP; }
  function sleep(ms){ return new Promise((res,rej)=>{ let left=D.ff?0:ms, last=performance.now(); const w={rej}; waiters.add(w); (function tick(){ if(D.abort){ waiters.delete(w); return rej(STOP); } const n=performance.now(); if(!D.paused)left-=(n-last)*D.sp; last=n; if(left<=0){ waiters.delete(w); return res(); } setTimeout(tick,Math.max(4,Math.min(40,left/D.sp))); })(); }); }
- function guard(p,ms,what){ return new Promise((res,rej)=>{ const w={rej}; waiters.add(w); let done=0; const tm=setTimeout(()=>{ if(done)return; done=1; waiters.delete(w); rej(new Error('timeout: '+(what||'step'))); },ms); Promise.resolve(p).then(v=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); res(v); },e=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); rej(e); }); }); }
+ function guard(p,ms,what){ return new Promise((res,rej)=>{ const w={rej}; waiters.add(w); let done=0; const tm=setTimeout(()=>{ if(done)return; done=1; waiters.delete(w); rej(new Error('timeout: '+(what||'step')+' (where='+D.where+')')); },ms); Promise.resolve(p).then(v=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); res(v); },e=>{ if(done)return; done=1; clearTimeout(tm); waiters.delete(w); rej(e); }); }); }
  function doAbort(why){ D.abort=why; waiters.forEach(w=>{ try{ w.rej(STOP); }catch(e){} }); waiters.clear(); }
  /* ---------- UI: cursor, tooltip, panel ---------- */
  const Z=2147483000;
@@ -13666,7 +13661,9 @@ const DEMO=(function(){
   '#xDemoCur{position:fixed;left:0;top:0;z-index:'+(Z+5)+';pointer-events:none;width:26px;height:26px;margin:-2px 0 0 -2px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));will-change:transform}'+
   '#xDemoCur svg{display:block;transition:transform .12s}#xDemoCur.dn svg{transform:scale(.8)}'+
   '.xdRip{position:fixed;z-index:'+(Z+4)+';pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border:2px solid #f0b35a;border-radius:50%;animation:xdRip .6s ease-out forwards}@keyframes xdRip{to{transform:scale(4);opacity:0}}'+
-  '#xDemoTip{position:fixed;z-index:'+(Z+4)+';pointer-events:none;max-width:280px;background:#f0b35a;color:#1b1714;border-radius:8px;padding:5px 9px;font:600 12px system-ui,Arial;box-shadow:0 3px 10px rgba(0,0,0,.4)}'+
+  '#xDemoTip{position:fixed;z-index:'+(Z+4)+';pointer-events:none;max-width:320px;background:rgba(27,23,20,.94);color:#f3e7cf;border:1px solid #f0b35a;border-radius:8px;padding:4px 10px;font:600 12.5px system-ui,Arial;box-shadow:0 3px 12px rgba(0,0,0,.45);transition:left .08s linear,top .08s linear}'+
+  '#xDemoRing{position:fixed;z-index:'+(Z+3)+';pointer-events:none;border:3px solid #f0b35a;border-radius:8px;box-shadow:0 0 0 3px rgba(240,179,90,.25),0 0 16px rgba(240,179,90,.55);animation:xdPulse 1.4s ease-in-out infinite}@keyframes xdPulse{50%{box-shadow:0 0 0 6px rgba(240,179,90,.12),0 0 22px rgba(240,179,90,.7)}}'+
+  '#xDemoCard{position:fixed;left:50%;top:14%;transform:translateX(-50%);z-index:'+(Z+2)+';width:min(520px,92vw);box-sizing:border-box;background:var(--panel,#241f1b);color:var(--fg,#e8dcc8);border:2px dashed #e0a030;border-radius:14px;padding:14px 18px;font:14px/1.6 system-ui,Arial;box-shadow:0 10px 36px rgba(0,0,0,.6)}#xDemoCard b{color:#e0a030}'+
   '.xdHl{outline:3px solid #f0b35a!important;outline-offset:2px;border-radius:6px;transition:outline-color .2s}'+
   '#xDemoShield{position:fixed;inset:0;z-index:'+(Z-2)+';background:transparent;cursor:progress}'+
   '#xDemoBar{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(780px,96vw);box-sizing:border-box;z-index:'+Z+';background:var(--panel,#241f1b);color:var(--fg,#e8dcc8);border:1px solid var(--line,#4a4038);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.55);padding:10px 12px;font:13px system-ui,Segoe UI,Arial}'+
@@ -13677,8 +13674,10 @@ const DEMO=(function(){
   '#xDemoList div{display:flex;gap:8px;padding:6px 8px;border-radius:8px;cursor:pointer;align-items:baseline}#xDemoList div:hover{background:rgba(240,179,90,.18)}#xDemoList div.cur{outline:1px solid #f0b35a}#xDemoList small{opacity:.65;margin-inline-start:auto}'+
   '#xDemoBar .sum{max-height:34vh;overflow:auto;font-size:12.5px;line-height:1.6;margin:6px 0}'}); document.head.appendChild(s); }
  function cursor(){ let c=document.getElementById('xDemoCur'); if(!c){ css(); c=h('div',{id:'xDemoCur',html:'<svg width="26" height="26" viewBox="0 0 20 20"><path d="M2 2l14 6-6 2-2 6z" fill="#f0b35a" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/></svg>'}); c.style.display='none'; document.body.appendChild(c); D.cx=innerWidth*.6; D.cy=innerHeight*.5; place(D.cx,D.cy); } return c; }
- function place(x,y){ D.cx=x; D.cy=y; const c=document.getElementById('xDemoCur'); if(c){ c.style.display='block'; c.style.transform='translate('+Math.round(x)+'px,'+Math.round(y)+'px)'; } }
- function tip(txt,x,y){ let t=document.getElementById('xDemoTip'); if(!txt){ if(t)t.remove(); return; } if(!t){ t=h('div',{id:'xDemoTip'}); document.body.appendChild(t); } t.textContent=txt; const w=t.offsetWidth; t.style.left=Math.max(6,Math.min(innerWidth-w-6,x+14))+'px'; t.style.top=Math.max(6,Math.min(innerHeight-40,y+22))+'px'; }
+ function place(x,y){ D.cx=x; D.cy=y; const c=document.getElementById('xDemoCur'); if(c){ c.style.display='block'; c.style.transform='translate('+Math.round(x)+'px,'+Math.round(y)+'px)'; } const t=document.getElementById('xDemoTip'); if(t)tipPos(t,x,y); }
+ function tipPos(t,x,y){ const w=t.offsetWidth; t.style.left=Math.max(6,Math.min(innerWidth-w-6,x+16))+'px'; t.style.top=Math.max(6,Math.min(innerHeight-50,y+28))+'px'; }
+ function tip(txt,x,y){ let t=document.getElementById('xDemoTip'); if(!txt){ if(t)t.remove(); return; } if(!t){ t=h('div',{id:'xDemoTip'}); document.body.appendChild(t); } t.textContent=txt; tipPos(t,x==null?D.cx:x,y==null?D.cy:y); }
+ function ring(e,keep){ let r=document.getElementById('xDemoRing'); if(!e){ if(r)r.remove(); return; } if(!r){ r=h('div',{id:'xDemoRing'}); document.body.appendChild(r); } let b; if(Array.isArray(e))b={left:e[0]-22,top:e[1]-22,width:44,height:44}; else b=e.getBoundingClientRect(); r.style.cssText='left:'+(b.left-4)+'px;top:'+(b.top-4)+'px;width:'+(b.width+8)+'px;height:'+(b.height+8)+'px'+(Array.isArray(e)?';border-radius:50%':''); }
  function bar(){ if(D.ui)return D.ui; css(); const u=D.ui={};
   u.root=h('div',{id:'xDemoBar'}); u.root.dir=lang==='ar'?'rtl':'ltr';
   u.title=h('b',{style:'font-size:13px'}); u.meta=h('span',{style:'opacity:.65;font-size:12px;margin-inline-start:auto'});
@@ -13703,82 +13702,123 @@ const DEMO=(function(){
  async function ribBtn(id){ const q=()=>document.querySelector('#xRib .xb[data-cmd="'+id+'"]'); let b=q(); if(vis(b))return b; const tabs=[...document.querySelectorAll('#xTabs button')]; for(const t of tabs){ t.click(); await sleep(60); b=q(); if(vis(b)){ return b; } } return null; }
  async function find(to,st){ const tries=(st&&st.tries)||12; for(let i=0;i<tries;i++){ chk(); let e=null; if(typeof to==='function')e=to(); else if(Array.isArray(to))return to; else if(typeof to==='string'){ if(to.startsWith('cmd:'))e=await ribBtn(to.slice(4)); else if(to.startsWith('tab:'))e=(typeof xaTabEl==='function'?xaTabEl(to.slice(4)):null); else if(to==='plus')e=document.querySelector('#xDocTabs .plus'); else if(to.startsWith('text:')){ const t=to.slice(5), root=(st&&st.in)?document.querySelector(st.in):document; e=[...(root||document).querySelectorAll('button,a,label,.xb,.dt,li,div,span')].filter(vis).find(x=>x.children.length<3&&(x.textContent||'').trim()===t)||null; } else e=document.querySelector(to); } else e=to; if(vis(e))return e; await sleep(250); } if(st&&st.opt)return null; throw new Error('target not found: '+(typeof to==='string'?to:'element')); }
  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
- async function glide(x,y,ms){ const x0=D.cx,y0=D.cy, dx=x-x0, dy=y-y0, dist=Math.hypot(dx,dy); if(dist<2){ place(x,y); return; } const dur=ms||Math.max(380,Math.min(1500,300+dist*1.1)); const nx=-dy/dist, ny=dx/dist, bend=Math.min(120,dist*.18)*((Math.round(x0+y0)%2)?1:-1); const c1=[x0+dx*.3+nx*bend,y0+dy*.3+ny*bend], c2=[x0+dx*.75+nx*bend*.4,y0+dy*.75+ny*bend*.4]; let el_=0, last=performance.now(); const w={rej:null}; await new Promise((res,rej)=>{ w.rej=rej; waiters.add(w); (function tick(){ if(D.abort){ waiters.delete(w); return rej(STOP); } const n=performance.now(); if(!D.paused)el_+=(n-last)*(D.ff?1e6:D.sp); last=n; const t=Math.min(1,el_/dur), e=ease(t), u=1-e; place(u*u*u*x0+3*u*u*e*c1[0]+3*u*e*e*c2[0]+e*e*e*x, u*u*u*y0+3*u*u*e*c1[1]+3*u*e*e*c2[1]+e*e*e*y); if(t>=1){ waiters.delete(w); return res(); } setTimeout(tick,16); })(); }); }
+ async function glide(x,y,ms){ const x0=D.cx,y0=D.cy, dx=x-x0, dy=y-y0, dist=Math.hypot(dx,dy); if(dist<2){ place(x,y); return; } const dur=ms||Math.max(900,Math.min(2300,650+dist*1.35)); const nx=-dy/dist, ny=dx/dist, bend=Math.min(120,dist*.18)*((Math.round(x0+y0)%2)?1:-1); const c1=[x0+dx*.3+nx*bend,y0+dy*.3+ny*bend], c2=[x0+dx*.75+nx*bend*.4,y0+dy*.75+ny*bend*.4]; let el_=0, last=performance.now(); const w={rej:null}; await new Promise((res,rej)=>{ w.rej=rej; waiters.add(w); (function tick(){ if(D.abort){ waiters.delete(w); return rej(STOP); } const n=performance.now(); if(!D.paused)el_+=(n-last)*(D.ff?1e6:D.sp); last=n; const t=Math.min(1,el_/dur), e=ease(t), u=1-e; place(u*u*u*x0+3*u*u*e*c1[0]+3*u*e*e*c2[0]+e*e*e*x, u*u*u*y0+3*u*u*e*c1[1]+3*u*e*e*c2[1]+e*e*e*y); if(t>=1){ waiters.delete(w); return res(); } setTimeout(tick,16); })(); }); }
  const fire=(e,type,x,y,o)=>{ try{ const C=/^pointer/.test(type)&&window.PointerEvent?PointerEvent:/^key/.test(type)?KeyboardEvent:MouseEvent; e.dispatchEvent(new C(type,Object.assign({bubbles:true,cancelable:true,composed:true,view:window,clientX:x,clientY:y,button:0,buttons:/down|move/.test(type)&&o&&o.down?1:0,pointerId:1,pointerType:'mouse',isPrimary:true},o&&o.init||{}))); }catch(er){} };
- const nameOf=e=>e.getAttribute&&(e.getAttribute('title')||e.getAttribute('aria-label'))||(e.textContent||'').trim().slice(0,60);
- async function moveTo(to,st){ st=st||{}; const e=await find(to,st); cursor(); if(!e)return null; let x,y; if(Array.isArray(e)){ x=e[0]; y=e[1]; } else { if(e.scrollIntoView){ const r0=e.getBoundingClientRect(); if(r0.top<0||r0.bottom>innerHeight||r0.left<0||r0.right>innerWidth)e.scrollIntoView({block:'center',inline:'center'}); } const r=e.getBoundingClientRect(), at=st.at||[.5,.5]; x=r.left+r.width*at[0]; y=r.top+r.height*at[1]; } avoid(y); await glide(x,y); if(!Array.isArray(e)){ fire(e,'pointerover',x,y); fire(e,'mouseover',x,y); fire(e,'mouseenter',x,y); fire(e,'pointermove',x,y); fire(e,'mousemove',x,y); const nm=st.tip?B(st.tip[0],st.tip[1]||st.tip[0]):nameOf(e); if(nm&&st.tip!==false)tip(nm,x,y); e.classList&&e.classList.add('xdHl'); await sleep(st.hold==null?650:st.hold); e.classList&&e.classList.remove('xdHl'); tip(null); } return e; }
- async function clickAt(e,x,y,o){ const c=document.getElementById('xDemoCur'); if(c)c.classList.add('dn'); const rp=h('div',{class:'xdRip'}); rp.style.left=x+'px'; rp.style.top=y+'px'; document.body.appendChild(rp); setTimeout(()=>rp.remove(),700); await sleep(90); fire(e,'pointerdown',x,y,{down:1}); fire(e,'mousedown',x,y,{down:1}); await sleep(70); fire(e,'pointerup',x,y); fire(e,'mouseup',x,y); if(!o||!o.noClick)fire(e,'click',x,y); if(c)c.classList.remove('dn'); await sleep(o&&o.after!=null?o.after:260); }
+ const nameOf=(e,st)=>{ if(st&&st.name)return B(st.name[0],st.name[1]||st.name[0]); if(Array.isArray(e))return ''; const cm=e.dataset&&e.dataset.cmd&&XC[e.dataset.cmd]; if(cm)return cm.t[L()]; const t=e.getAttribute&&(e.getAttribute('title')||e.getAttribute('aria-label')); if(t)return t.slice(0,60); let x=(e.textContent||'').trim().replace(/\s+/g,' '); return x.slice(0,50); };
+ async function moveTo(to,st){ st=st||{}; const e=await find(to,st); cursor(); if(!e)return null; let x,y; if(Array.isArray(e)){ x=e[0]; y=e[1]; } else { if(e.scrollIntoView){ const r0=e.getBoundingClientRect(); if(r0.top<0||r0.bottom>innerHeight||r0.left<0||r0.right>innerWidth)e.scrollIntoView({block:'center',inline:'center'}); } const r=e.getBoundingClientRect(), at=st.at||[.5,.5]; x=r.left+r.width*at[0]; y=r.top+r.height*at[1]; } const nm=st.tip===false?'':nameOf(e,st); ring(null); avoid(y); if(nm)tip(B('Going to: ','رايح لـ: ')+nm); D.cur_name=nm; await glide(x,y); chk(); ring(e); if(!Array.isArray(e)){ fire(e,'pointerover',x,y); fire(e,'mouseover',x,y); fire(e,'mouseenter',x,y); fire(e,'pointermove',x,y); fire(e,'mousemove',x,y); } if(nm)tip((st.verb||B('Pointing at: ','بشاور على: '))+nm); await sleep(st.hold==null?1000:st.hold); if(!Array.isArray(e)&&e.classList){} return e; }
+ async function clickAt(e,x,y,o){ o=o||{}; const c=document.getElementById('xDemoCur'); if(o.name)tip((o.verb||B('Clicking: ','بنضغط على: '))+o.name); if(c)c.classList.add('dn'); const rp=h('div',{class:'xdRip'}); rp.style.left=x+'px'; rp.style.top=y+'px'; document.body.appendChild(rp); setTimeout(()=>rp.remove(),700); await sleep(220); fire(e,'pointerdown',x,y,{down:1}); fire(e,'mousedown',x,y,{down:1}); await sleep(120); fire(e,'pointerup',x,y); fire(e,'mouseup',x,y); if(!o.noClick)fire(e,'click',x,y); if(c)c.classList.remove('dn'); if(o.name&&!o.noClick)tip(B('Chosen: ','تم اختيار: ')+o.name); await sleep(o.after!=null?o.after:1000); ring(null); }
  function elAt(x,y){ const sh=document.getElementById('xDemoShield'); if(sh)sh.style.pointerEvents='none'; const e=document.elementFromPoint(x,y); if(sh)sh.style.pointerEvents=''; return e; }
- async function click(to,st){ st=st||{}; const e=await moveTo(to,st); if(!e)return null; if(Array.isArray(e)){ const t=elAt(e[0],e[1]); await clickAt(t||document.body,e[0],e[1],st); return t; } const r=e.getBoundingClientRect(); await clickAt(e,D.cx,D.cy,st); return e; }
- async function typeInto(to,text,st){ st=st||{}; const e=await moveTo(to,Object.assign({hold:200},st)); if(!e)return; await clickAt(e,D.cx,D.cy,{noClick:true,after:60}); e.focus&&e.focus(); if(st.clear!==false){ e.value=''; e.dispatchEvent(new Event('input',{bubbles:true})); } let acc=st.clear===false?(e.value||''):''; for(const ch of String(text)){ chk(); fire(e,'keydown',0,0,{init:{key:ch}}); acc+=ch; e.value=acc; e.dispatchEvent(new InputEvent('input',{bubbles:true,data:ch,inputType:'insertText'})); fire(e,'keyup',0,0,{init:{key:ch}}); await sleep(st.cps?1000/st.cps:55); } e.dispatchEvent(new Event('change',{bubbles:true})); await sleep(200); }
+ async function click(to,st){ st=st||{}; const e=await moveTo(to,st); if(!e)return null; const nm=st.tip===false?'':nameOf(e,st); if(Array.isArray(e)){ const t=elAt(e[0],e[1]); await clickAt(t||document.body,e[0],e[1],Object.assign({},st,{name:nm})); return t; } await clickAt(e,D.cx,D.cy,Object.assign({},st,{name:nm})); return e; }
+ async function typeInto(to,text,st){ st=st||{}; const e=await moveTo(to,Object.assign({hold:400,verb:B('Typing in: ','بنكتب في: ')},st)); if(!e)return; tip(B('Typing: ','بنكتب: ')+text); await clickAt(e,D.cx,D.cy,{noClick:true,after:150}); tip(B('Typing: ','بنكتب: ')+text); e.focus&&e.focus(); if(st.clear!==false){ e.value=''; e.dispatchEvent(new Event('input',{bubbles:true})); } let acc=st.clear===false?(e.value||''):''; for(const ch of String(text)){ chk(); fire(e,'keydown',0,0,{init:{key:ch}}); acc+=ch; e.value=acc; e.dispatchEvent(new InputEvent('input',{bubbles:true,data:ch,inputType:'insertText'})); fire(e,'keyup',0,0,{init:{key:ch}}); await sleep(st.cps?1000/st.cps:95); } e.dispatchEvent(new Event('change',{bubbles:true})); await sleep(600); ring(null); }
  function key(k,o){ const t=(o&&o.on)||document.body; t.dispatchEvent(new KeyboardEvent('keydown',{key:k,bubbles:true,cancelable:true,ctrlKey:!!(o&&o.ctrl)})); t.dispatchEvent(new KeyboardEvent('keyup',{key:k,bubbles:true,ctrlKey:!!(o&&o.ctrl)})); }
  /* world point on the R.X level -> screen pixel of the 3D canvas */
- function w2s(x,z,y){ const cv=renderer.domElement, r=cv.getBoundingClientRect(), v=new T.Vector3(x,y==null?rvLy(RV.lv):y,z).project(camera); return [r.left+(v.x+1)/2*r.width, r.top+(1-v.y)/2*r.height]; }
- async function canvasClick(x,z,y,o){ const cv=renderer.domElement, p=w2s(x,z,y); await glide(p[0],p[1]); const t=cv; fire(t,'pointermove',p[0],p[1]); await sleep(60); fire(t,'pointerdown',p[0],p[1],{down:1}); fire(t,'mousedown',p[0],p[1],{down:1}); await sleep(50); fire(t,'pointerup',p[0],p[1]); fire(t,'mouseup',p[0],p[1]); await sleep(o&&o.after!=null?o.after:200); }
- async function fly(pos,tgt,ms){ const p0=camera.position.clone(), t0=controls.target.clone(), n=D.ff?1:Math.max(6,Math.round((ms||1400)/60)); for(let i=1;i<=n;i++){ chk(); const e=ease(i/n); camera.position.set(p0.x+(pos[0]-p0.x)*e,p0.y+(pos[1]-p0.y)*e,p0.z+(pos[2]-p0.z)*e); controls.target.set(t0.x+(tgt[0]-t0.x)*e,t0.y+(tgt[1]-t0.y)*e,t0.z+(tgt[2]-t0.z)*e); controls.update(); if(i<n)await sleep(60); } try{ camera.updateMatrixWorld(); }catch(e){} await sleep(200); }
+ function syncCam(){ const cv=renderer.domElement; if(cv.clientWidth>0&&cv.clientHeight>0)camera.aspect=cv.clientWidth/cv.clientHeight; camera.updateProjectionMatrix(); try{ controls.update(); }catch(e){} camera.updateMatrixWorld(true); }
+ function w2s(x,z,y){ syncCam(); const cv=renderer.domElement, r=cv.getBoundingClientRect(), v=new T.Vector3(x,y==null?rvLy(RV.lv):y,z).project(camera); return [r.left+(v.x+1)/2*r.width, r.top+(1-v.y)/2*r.height]; }
+ async function settle(){ const cv=renderer.domElement; let last='',n=0; const t0=Date.now(); while(n<4&&Date.now()-t0<5000){ chk(); const r=cv.getBoundingClientRect(), k=[r.left,r.top,r.width,r.height].map(v=>Math.round(v)).join(); if(k===last)n++; else{ n=0; last=k; } await new Promise(q=>setTimeout(q,120)); } }
+ function solvePx(x,z,y,loop){ let p=w2s(x,z,y); if(loop===false)return p; for(let k=0;k<6;k++){ let a=null; try{ a=rvPoint({clientX:p[0],clientY:p[1]}); }catch(e){} if(!a)break; const e0=[x-a[0],z-a[1]]; if(Math.hypot(e0[0],e0[1])<.04)break; const q1=w2s(x+1,z,y), q2=w2s(x,z+1,y), jx=[q1[0]-p[0],q1[1]-p[1]], jz=[q2[0]-p[0],q2[1]-p[1]]; p=[p[0]+jx[0]*e0[0]+jz[0]*e0[1], p[1]+jx[1]*e0[0]+jz[1]*e0[1]]; } return p; }
+ async function canvasClick(x,z,y,o){ o=o||{}; const ce=controls.enabled; controls.enabled=false; try{ return await canvasClick0(x,z,y,o); } finally{ controls.enabled=ce; } }
+ async function canvasClick0(x,z,y,o){ const cv=renderer.domElement; if(D.pose){ camera.position.set(...D.pose.pos); controls.target.set(...D.pose.tgt); try{ controls.update(); }catch(e){} } await settle(); let p=solvePx(x,z,y,o.loop); const nm=o.name||''; if(nm)tip(B('Going to: ','رايح لـ: ')+nm); ring(null); await glide(p[0],p[1]); chk(); ring(p); fire(cv,'pointermove',p[0],p[1]); if(nm)tip((o.verb||B('Clicking: ','بنضغط على: '))+nm); await sleep(o.hold==null?700:o.hold); await settle(); const p2=solvePx(x,z,y,o.loop); if(Math.hypot(p2[0]-p[0],p2[1]-p[1])>1.5){ await glide(p2[0],p2[1],500); p=solvePx(x,z,y,o.loop); place(p[0],p[1]); } else p=p2; ring(p); (D.dbg=D.dbg||[]).push([x,z,p.map(Math.round)]); if(D.dbg.length>40)D.dbg.shift(); fire(cv,'pointerdown',p[0],p[1],{down:1}); fire(cv,'mousedown',p[0],p[1],{down:1}); await sleep(120); fire(cv,'pointerup',p[0],p[1]); fire(cv,'mouseup',p[0],p[1]); const rp=h('div',{class:'xdRip'}); rp.style.left=p[0]+'px'; rp.style.top=p[1]+'px'; document.body.appendChild(rp); setTimeout(()=>rp.remove(),700); await sleep(o.after!=null?o.after:900); ring(null); return p; }
+ async function fly(pos,tgt,ms){ const p0=camera.position.clone(), t0=controls.target.clone(), n=D.ff?1:Math.max(6,Math.round((ms||1400)/60)); for(let i=1;i<=n;i++){ chk(); const e=ease(i/n); camera.position.set(p0.x+(pos[0]-p0.x)*e,p0.y+(pos[1]-p0.y)*e,p0.z+(pos[2]-p0.z)*e); controls.target.set(t0.x+(tgt[0]-t0.x)*e,t0.y+(tgt[1]-t0.y)*e,t0.z+(tgt[2]-t0.z)*e); controls.update(); if(i<n)await sleep(60); } try{ camera.updateMatrixWorld(); }catch(e){} D.pose={pos:camera.position.toArray(),tgt:controls.target.toArray()}; await sleep(200); }
  /* ---------- narration (caption stays; optional voice) ---------- */
  function speak(txt){ return new Promise(res=>{ try{ const S=window.speechSynthesis; if(!S){ res(); return; } S.cancel(); const u=new SpeechSynthesisUtterance(String(txt).slice(0,500)); u.lang=lang==='ar'?'ar-EG':'en-US'; const tm=setTimeout(res,9000); u.onend=u.onerror=()=>{ clearTimeout(tm); res(); }; S.speak(u); }catch(e){ res(); } }); }
- async function narrate(st){ const txt=(st[lang==='ar'?'ar':'en']||st.en||''); const base=Math.max(1400,Math.min(9000,900+txt.length*52)); if(D.voice&&!D.ff){ await Promise.race([speak(txt),guard(new Promise(()=>{}),base*3+4000,'voice').catch(()=>{})]); await sleep(300); } else await sleep(st.hold||base); }
+ async function narrate(st){ const txt=(st[lang==='ar'?'ar':'en']||st.en||''); const base=Math.max(2200,Math.min(12000,1500+txt.length*68)); if(D.voice&&!D.ff){ await Promise.race([speak(txt),guard(new Promise(()=>{}),base*3+4000,'voice').catch(()=>{})]); await sleep(300); } else await sleep(st.hold||base); }
  /* ---------- steps ---------- */
+ async function tabReady(type){ const t0=Date.now(); const ok=()=>{ const t=WTAB.tabs.find(x=>x.type===type); if(!t||WTAB.cur!==t.id||ribType()!==type)return false; if(type==='model'){ try{ const r=renderer.domElement.getBoundingClientRect(); return r.width>200&&r.height>150; }catch(e){ return false; } } if(type==='draft')return vis(typeof CW!=='undefined'?CW:null); const rb=document.getElementById('xRib'); return !!rb&&rb.children.length>0; }; while(!ok()){ chk(); if(Date.now()-t0>25000){ warn('The tab took too long to show: '+type,'التاب اتأخر في الظهور: '+type); return false; } await sleep(200); } await sleep(300); return true; }
+ const rs=v=>typeof v==='function'?v():v;
+ const S_hook=n=>(api&&api[n])||null;
  const OPS={
-  async cap(st){ setCap(st.en,st.ar); },
-  async say(st){ setCap(st.en,st.ar); await narrate(st); },
+  async cap(st){ setCap(rs(st.en),rs(st.ar)); },
+  async say(st){ const t={en:rs(st.en),ar:rs(st.ar),hold:st.hold}; setCap(t.en,t.ar); await narrate(t); },
   async move(st){ await moveTo(st.to,st); },
   async click(st){ await click(st.to,st); },
   async type(st){ await typeInto(st.to,st.text,st); },
   async key(st){ const on=typeof st.on==='function'?st.on():typeof st.on==='string'?document.querySelector(st.on):st.on; for(let i=0;i<(st.n||1);i++){ key(st.k,Object.assign({},st,{on:on})); await sleep(i<(st.n||1)-1?120:(st.after==null?200:st.after)); } },
   async wait(st){ await sleep(st.ms||500); },
   async run(st){ const id=st.cmd; if(!XC[id])throw new Error('unknown command '+id); const b=await ribBtn(id); if(b){ await click(b,st); } else { await moveTo(document.getElementById('xRib')||[innerWidth/2,90],{hold:200,tip:false}); await sleep(200); XC[id].run(st.arg); } await sleep(st.after==null?300:st.after); },
-  async tab(st){ const type=st.type; let t=WTAB.tabs.find(x=>x.type===type); if(!t){ let dead=false; const via=async()=>{ const p=await find('plus',st); if(dead)return; await click(p,{tip:[B('New tab: pick a tool','تاب جديد: اختار أداة')],hold:300}); if(dead)return; await sleep(250); if(dead)return; const code=(WTYPES[type]&&WTYPES[type].n[0].split(' ')[0])||'~'; const it=[...document.querySelectorAll('.xmenu .xm')].find(x=>(x.textContent||'').trim().startsWith(code)); if(it)await click(it,{hold:250}); else { document.body.click(); wtNew(type); } }; try{ await guard(via(),25000,'tab menu'); }catch(e){ if(e===STOP||D.abort)throw STOP; dead=true; document.querySelectorAll('.xmenu').forEach(m=>m.remove()); if(!WTAB.tabs.find(x=>x.type===type))wtNew(type); } } else if(WTAB.cur!==t.id){ const e=await find('tab:'+type,{opt:1,tries:4}); if(e)await click(e,{hold:200}); else wtSwitch(t.id); } await sleep(st.after==null?500:st.after); },
-  async draw(st){ /* R.X: real pointer events on the 3D canvas at the screen position of world points */ const cv=renderer.domElement; if(!vis(cv))throw new Error('3D canvas is not visible'); const lv=st.lv==null?RV.lv:st.lv; if(RV.lv!==lv){ RV.lv=lv; try{ rvBrowser(); }catch(e){} } const yy=st.y==='top'?rvLy(lv)+3:st.y; const tries=st.until?3:1; for(let k=0;k<tries;k++){ for(const p of st.pts){ chk(); await canvasClick(p[0]+k*.35,p[1],yy,{after:st.gap}); } if(!st.until||st.until())break; if(k<tries-1)await sleep(300); } },
+  async tab(st){ D.where='tab start'; const type=st.type; let t=WTAB.tabs.find(x=>x.type===type); const nmT=(WTYPES[type]&&WTYPES[type].n[0])||type;
+   if(!t){ let dead=false; const via=async()=>{ D.where='find plus'; const p=await find('plus',st); if(dead)return; D.where='click plus'; await click(p,{name:['New tab (+): the tools menu','تاب جديد (+): قايمة الأدوات'],hold:1000,after:600}); if(dead)return; D.where='menu'; const code=(WTYPES[type]&&WTYPES[type].n[0].split(' ')[0])||'~'; const it=[...document.querySelectorAll('.xmenu .xm')].find(x=>(x.textContent||'').trim().startsWith(code)); if(it){ D.where='click item'; await click(it,{name:[nmT],hold:1100,after:700}); } else { D.where='no item'; document.body.click(); wtNew(type); } }; try{ await guard(via(),30000,'tab menu'); }catch(e){ if(e===STOP||D.abort)throw STOP; dead=true; (rec().notes=rec().notes||[]).push('tab menu fallback for '+type+' at '+D.where+' menuItems='+document.querySelectorAll('.xmenu .xm').length+' plusVis='+vis(document.querySelector('#xDocTabs .plus'))); document.querySelectorAll('.xmenu').forEach(m=>m.remove()); if(!WTAB.tabs.find(x=>x.type===type))wtNew(type); } }
+   else if(WTAB.cur!==t.id){ const e=await find('tab:'+type,{opt:1,tries:4}); if(e)await click(e,{name:[nmT],hold:1000,after:600}); else wtSwitch(t.id); }
+   D.where='tab ready wait'; await tabReady(type); D.where='tab after'; await sleep(st.after==null?900:st.after); },
+  async card(st){ const r=rec(); (r.cards=r.cards||[]).push(st.en); let c=document.getElementById('xDemoCard'); if(c)c.remove(); const fld=st.kind==='field'; const E=x=>String(x).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); c=h('div',{id:'xDemoCard',html:'<b>'+E(fld?B('Done by people, outside the software','شغل بشري برّه البرنامج'):B('Not available yet','مش متاح لسه'))+'</b> — '+E(B(st.en,st.ar||st.en))+(st.need?'<div style="opacity:.75;font-size:12.5px;margin-top:6px">'+E(B('Needs: ','محتاج: ')+B(st.need[0],st.need[1]||st.need[0]))+'</div>':'')}); document.body.appendChild(c); setCap(st.en,st.ar||st.en); await sleep(st.hold||Math.max(4200,1500+String(st.en).length*60)); c.remove(); },
+  async shot(st){ await sleep(st.after==null?500:st.after); const f=window.__demoShot; if(f){ try{ await f(D.chapters[D.cur].id+'_'+st.name); }catch(e){} } },
+  async draw(st){ /* R.X: real pointer events on the 3D canvas; the click position is corrected until the app's own rvPoint() returns the wanted world point */ const cv=renderer.domElement; if(!vis(cv))throw new Error('3D canvas is not visible'); const lv=st.lv==null?RV.lv:st.lv; if(RV.lv!==lv){ RV.lv=lv; try{ rvBrowser(); }catch(e){} } const yy=st.y==='top'?rvLy(lv)+3:st.y; const tries=st.until?3:1; const PTS=typeof st.pts==='function'?st.pts():st.pts; for(let k=0;k<tries;k++){ let i=0; for(const p of PTS){ chk(); const nm=st.names&&st.names[i]?B(st.names[i][0],st.names[i][1]||st.names[i][0]):(st.name?B(st.name[0],st.name[1]||st.name[0]):''); await canvasClick(p[0]+(st.until?k*.35:0),p[1],yy,{after:st.gap,name:nm,loop:st.loop,hold:st.hold}); i++; } if(!st.until||st.until())break; if(k<tries-1)await sleep(400); } },
   async do(st){ await st.fn(api); },
-  async assert(st){ const ms=st.wait==null?2500:st.wait; const t0=Date.now(); let ok=false, err=null; for(;;){ chk(); try{ ok=!!(await st.ok(api)); }catch(e){ if(e===STOP)throw e; ok=false; err=e; } if(ok||(Date.now()-t0)*D.sp>=ms||D.ff&&Date.now()-t0>ms)break; await sleep(120); } const r=rec(); if(ok){ r.okAsserts++; r.asserts.push({ok:1,en:st.en}); good(st.en||'checked',st.ar); await sleep(450); } else { r.fail++; r.asserts.push({ok:0,en:st.en,err:err&&err.message}); warn('check failed: '+(st.en||'?')+(err?' ('+err.message+')':''),'فشل التحقق: '+(st.ar||st.en||'?')); await sleep(900); if(!st.soft)throw Object.assign(new Error('assert: '+(st.en||'')),{assertFail:1}); } },
+  async assert(st){ const ms=st.wait==null?2500:st.wait; const t0=Date.now(); let ok=false, err=null; for(;;){ chk(); try{ ok=!!(await st.ok(api)); }catch(e){ if(e===STOP)throw e; ok=false; err=e; } if(ok||(Date.now()-t0)*D.sp>=ms||D.ff&&Date.now()-t0>ms)break; await sleep(120); } const r=rec(); if(ok){ r.okAsserts++; r.asserts.push({ok:1,en:st.en}); good(st.en||'checked',st.ar); await sleep(450); } else { r.fail++; let inf=''; try{ if(st.info)inf=String(st.info(api)); }catch(e){} r.asserts.push({ok:0,en:st.en,err:(err&&err.message)||'',info:inf}); warn('check failed: '+(st.en||'?')+(err?' ('+err.message+')':''),'فشل التحقق: '+(st.ar||st.en||'?')); await sleep(900); if(!st.soft)throw Object.assign(new Error('assert: '+(st.en||'')),{assertFail:1}); } },
   async ui(st){ /* "ui" steps only show something: hover tour, never changes data */ for(const t of st.tour||[]){ await moveTo(t.to||t,Object.assign({opt:1,hold:t.hold||800},t.to?t:{})); } }
  };
  const rec=()=>{ const c=D.chapters[D.cur]; return D.res[c.id]||(D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0,done:false}); };
  async function runChapter(i){ const c=D.chapters[i]; D.cur=i; D.stepNo=0; const r=D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0,done:false,mode:c.mode,t0:Date.now()}; refresh(); setCap(c.sum?c.sum[0]:c.n[0],c.sum?c.sum[1]:c.n[1]); try{ if(c.pre)await c.pre(api); }catch(e){ if(e===STOP)throw e; r.errors.push('pre: '+e.message); }
   for(const st of c.steps){ chk(); while(D.paused){ await sleep(100); } if(st.when&&!st.when(api))continue; D.stepNo++; r.steps++; refresh(); D.last=st;
-   try{ await guard(OPS[st.op](st),st.timeout||90000,st.op); }catch(e){ if(e===STOP||D.abort)throw STOP; r.errors.push(st.op+(st.type?'['+st.type+']':'')+(st.cmd?'['+st.cmd+']':'')+' @'+(Date.now()-r.t0)+'ms paused='+D.paused+' sp='+D.sp+' abort='+D.abort+': '+(e&&e.message)); r.fail++; warn('This step could not run: '+(e&&e.message)+'. Skipping to the next chapter.','الخطوة دي معرفتش تتنفذ: '+(e&&e.message)+'. هنكمل بالفصل اللي بعده.'); console.warn('[demo]',c.id,st.op,e); await sleep(1800); break; } }
-  r.done=true; segs(); refresh(); try{ rvTool&&RV.tool&&rvTool(null); }catch(e){} }
+   const stx=(typeof st.en==='function'||typeof st.ar==='function')?Object.assign({},st,{en:rs(st.en),ar:rs(st.ar)}):st; try{ await guard(OPS[st.op](stx),st.timeout||240000,st.op); }catch(e){ if(e===STOP||D.abort)throw STOP; r.errors.push(st.op+(st.type?'['+st.type+']':'')+(st.cmd?'['+st.cmd+']':'')+' @'+(Date.now()-r.t0)+'ms paused='+D.paused+' sp='+D.sp+' abort='+D.abort+': '+(e&&e.message)); r.fail++; warn('This step could not run: '+(e&&e.message)+'. Skipping to the next chapter.','الخطوة دي معرفتش تتنفذ: '+(e&&e.message)+'. هنكمل بالفصل اللي بعده.'); console.warn('[demo]',c.id,st.op,e); await sleep(1800); break; } }
+  try{ if(RV.tool)rvTool(null); }catch(e){} try{ await closeDemoTabs(); }catch(x){ if(x===STOP||D.abort)throw STOP; } r.done=true; segs(); refresh(); }
  /* ---------- control ---------- */
  async function loop(from,last){ const my=++D.runId; let i=from; while(i<=last){ if(D.runId!==my)return; const c=D.chapters[i]; try{ await runChapter(i); i++; }catch(e){ if(D.runId!==my)return; const ab=D.abort; if(ab==='stop')return; if(ab==='skip'){ D.abort=null; const r=D.res[c.id]||(D.res[c.id]={okAsserts:0,fail:0,asserts:[],errors:[],steps:0}); r.skipped=1; r.done=true; segs(); i++; continue; } if(ab==='jump'){ D.abort=null; const r=D.res[c.id]; if(r)r.done=false; i=D.jumpTo; continue; } if(e!==STOP){ console.warn('[demo] chapter crashed',e); i++; } else return; } }
-  if(D.runId===my)finish(false); }
+  if(D.runId===my){ D.abort='done'; finish(false); } }
  function jump(i){ i=Math.max(0,Math.min(D.chapters.length-1,i)); if(!D.on&&D.pickRes){ D.pick=i; const f=D.pickRes; D.pickRes=null; f(1); return; } if(!D.on||D.sum)return; D.jumpTo=i; D.paused=false; doAbort('jump'); }
  function skip(){ if(!D.on||D.sum)return; D.paused=false; doAbort('skip'); }
  function pause(f){ if(!D.on)return; D.paused=f===undefined?!D.paused:!!f; try{ if(D.paused&&window.speechSynthesis)speechSynthesis.pause(); else if(window.speechSynthesis)speechSynthesis.resume(); }catch(e){} refresh(); }
  function speed(s){ D.sp=s; D.ff=false; refresh(); }
  function voice(f){ D.voice=f===undefined?!D.voice:!!f; if(!D.voice)try{ speechSynthesis.cancel(); }catch(e){} refresh(); }
- function cleanup(){ clearInterval(D.tick); ['xDemoCur','xDemoTip','xDemoShield','xDemoList'].forEach(i=>{ const e=document.getElementById(i); if(e)e.remove(); }); document.querySelectorAll('.xdHl').forEach(e=>e.classList.remove('xdHl')); try{ speechSynthesis.cancel(); }catch(e){} try{ if(RV.tool)rvTool(null); }catch(e){} }
+ function cleanup(){ clearInterval(D.tick); ['xDemoCur','xDemoTip','xDemoRing','xDemoCard','xDemoShield','xDemoList'].forEach(i=>{ const e=document.getElementById(i); if(e)e.remove(); }); document.querySelectorAll('.xdHl').forEach(e=>e.classList.remove('xdHl')); try{ speechSynthesis.cancel(); }catch(e){} try{ if(RV.tool)rvTool(null); }catch(e){} }
  function stop(){ if(!D.on)return; D.runId++; doAbort('stop'); D.paused=false; finish(true); }
- function finish(stopped){ if(D.sum)return; D.on=false; D.sum=true; cleanup(); const u=bar(); u.root.classList.remove('top'); const rows=D.chapters.map((c,i)=>{ const r=D.res[c.id]; const st=!r?'—':r.skipped?B('skipped','اتخطى'):!r.done?(i===D.cur?B('stopped','اتوقف'):'—'):r.fail?'⚠ '+B('partial','جزئي'):'✓'; return '<div>'+i+'. '+c.n[L()]+' — <b>'+st+'</b> <small style="opacity:.6">('+modeTxt(c.mode)+(r?', '+r.okAsserts+' '+B('checks passed','تحقق ناجح')+(r.fail?', '+r.fail+' '+B('problem(s)','مشكلة'):''):'')+')</small></div>'; }).join(''); setCap(stopped?'Demo stopped. The project is left as it is now and stays usable.':'Demo finished. Project 6868 is open and usable.',stopped?'اتوقف الديمو. المشروع فاضل زي ما هو دلوقتي وتقدر تكمل شغل عليه.':'خلص الديمو. مشروع 6868 مفتوح وتقدر تشتغل عليه.'); u.msg.textContent=''; let s=u.root.querySelector('.sum'); if(s)s.remove(); s=h('div',{class:'sum',html:rows}); u.cap2.after(s);
-  const row=u.root.lastChild; row.innerHTML=''; const b=(t,f,c)=>{ const x=h('button',{text:t,onclick:f}); if(c)x.className=c; return x; }; row.append(b(B('Keep Project 6868','خلّي مشروع 6868'),()=>close(),'on'),b(B('Restore my previous project','رجّع مشروعي السابق'),()=>{ restore(); close(); }),b(B('Play again','شغّل تاني'),()=>{ close(); start({yes:1}); }),b(B('Close','إغلاق'),()=>close())); D.final={stopped,res:JSON.parse(JSON.stringify(D.res))}; try{ if(D.hooks.end)D.hooks.end(D.final); }catch(e){} }
- function close(){ cleanup(); if(D.ui){ D.ui.root.remove(); D.ui=null; } D.sum=null; D.on=false; try{ xBar(true); startPanel(); }catch(e){} }
- function restore(){ if(!D.snap)return false; try{ loadProject(D.snap); try{ persist(); }catch(e){} try{ xBar(); rvBuild(); startPanel(); }catch(e){} return true; }catch(e){ console.warn('[demo] restore failed',e); return false; } }
+ function finish(stopped){ if(D.sum)return; D.on=false; D.sum=true; cleanup(); const u=bar(); u.root.classList.remove('top'); const rows=D.chapters.map((c,i)=>{ const r=D.res[c.id]; const st=!r?'—':r.skipped?B('skipped','اتخطى'):!r.done?(i===D.cur?B('stopped','اتوقف'):'—'):r.fail?'⚠ '+B('partial','جزئي'):'✓'; return '<div>'+i+'. '+c.n[L()]+' — <b>'+st+'</b> <small style="opacity:.6">('+modeTxt(c.mode)+(r?', '+r.okAsserts+' '+B('checks passed','تحقق ناجح')+(r.fail?', '+r.fail+' '+B('problem(s)','مشكلة'):''):'')+')</small></div>'; }).join(''); setCap(stopped?'Demo stopped. Restoring your workspace exactly as it was.':'Demo finished. Restoring your workspace exactly as it was.',stopped?'اتوقف الديمو. برجّع شغلك زي ما كان بالظبط.':'خلص الديمو. برجّع شغلك زي ما كان بالظبط.'); u.msg.textContent=''; let s=u.root.querySelector('.sum'); if(s)s.remove(); s=h('div',{class:'sum',html:rows}); u.cap2.after(s);
+  const row=u.root.lastChild; row.innerHTML=''; const b=(t,f,c)=>{ const x=h('button',{text:t,onclick:f}); if(c)x.className=c; return x; }; row.append(b(B('Close','إغلاق'),()=>close(),'on'),b(B('Play again','شغّل تاني'),()=>{ close(); start({yes:1}); })); D.final={stopped,res:JSON.parse(JSON.stringify(D.res))}; const keep=D.keep; D.restored=false; if(!keep){ setTimeout(()=>{ wsRestore(); u.msg.style.color='#4caf6a'; u.msg.textContent='✓ '+B('Your workspace is back as it was: tabs, project, layout.','شغلك رجع زي ما كان: التابات والمشروع والتخطيط.'); },450); } else D.restored=true; try{ if(D.hooks.end)D.hooks.end(D.final); }catch(e){} }
+ function close(){ cleanup(); if(D.ui){ D.ui.root.remove(); D.ui=null; } D.sum=null; D.on=false; if(D.ws&&!D.keep)wsRestore(); const c=document.getElementById('xDemoCss'); if(c)c.remove(); try{ xBar(true); startPanel(); }catch(e){} }
+ /* ---------- isolation: while the demo runs nothing is written to localStorage (writes go to a shadow map that is thrown away), so the standard views and saved project never see the demo data ---------- */
+ const SP_=Storage.prototype, _si=SP_.setItem, _gi=SP_.getItem, _ri=SP_.removeItem; let isoOn_=false; const shadow={};
+ function isoOn(){ if(isoOn_)return; isoOn_=true; Object.keys(shadow).forEach(k=>delete shadow[k]); SP_.setItem=function(k,v){ if(this===localStorage){ shadow[k]=String(v); return; } return _si.apply(this,arguments); }; SP_.getItem=function(k){ if(this===localStorage&&Object.prototype.hasOwnProperty.call(shadow,k))return shadow[k]===null?null:shadow[k]; return _gi.apply(this,arguments); }; SP_.removeItem=function(k){ if(this===localStorage){ shadow[k]=null; return; } return _ri.apply(this,arguments); }; }
+ function isoOff(){ if(!isoOn_)return; isoOn_=false; SP_.setItem=_si; SP_.getItem=_gi; SP_.removeItem=_ri; Object.keys(shadow).forEach(k=>delete shadow[k]); }
+ /* ---------- workspace snapshot: everything the demo can touch, restored on end and on stop ---------- */
+ const cl=o=>{ try{ return structuredClone(o); }catch(e){ return JSON.parse(JSON.stringify(o)); } };
+ function rawCloseTab(id){ const i=WTAB.tabs.findIndex(t=>t.id===id); if(i<=0)return; const was=WTAB.cur===id; WTAB.tabs.splice(i,1); if(was)wtSwitch(WTAB.tabs[Math.max(0,i-1)].id); else{ wtBar(); wtSave(); } }
+ function wsSnap(){ const cur=WTAB.tabs.find(t=>t.id===WTAB.cur); const ls={}; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); ls[k]=localStorage.getItem(k); }
+  const w={ tabs:WTAB.tabs.map(t=>({id:t.id,name:t.name,type:t.type,custom:t.custom,lay:cl(t===cur&&t.type!=='start'?wtSnap():t.lay)})), cur:WTAB.cur, xtab:XTAB, project:projectJson(), hi:{n:HI.st.length,i:HI.i}, ls,
+   hvd:cl(HVD), ace:cl(ACE), duc:cl(DUC), dc:cl(DC), outc:{v:OUTC.versions.slice(),b:Object.assign({},OUTC.blobs),n:OUTC.ver,sel:OUTC.sel.slice()}, cc:Object.assign({},CC), rv:{lv:RV.lv,sel:RV.sel}, rc:{}, dirty:(typeof XSV!=='undefined')?XSV.dirty:false };
+  ['data','surf','cf','plan','ctrl','tab'].forEach(k=>{ try{ w.rc[k]=cl(RC[k]); }catch(e){ w.rc[k]=RC[k]; } }); try{ w.cam={pos:camera.position.toArray(),tgt:controls.target.toArray()}; }catch(e){} D.ws=w; return w; }
+ function wsRestore(){ const w=D.ws; if(!w)return false; D.ws=null; const warn_=m=>console.warn('[demo] restore:',m);
+  try{ if(RV.tool)rvTool(null); }catch(e){}
+  try{ const ids=new Set(w.tabs.map(t=>t.id)); WTAB.tabs.filter(t=>!ids.has(t.id)).forEach(t=>rawCloseTab(t.id)); }catch(e){ warn_(e.message); }
+  try{ HI.lock=true; }catch(e){}
+  try{ const sj=JSON.parse(w.project); const keep=new Set(Object.keys(sj.data||{})); Object.keys(DATA).filter(k=>!keep.has(k)).forEach(k=>delete DATA[k]); }catch(e){ warn_('data keys '+e.message); }
+  try{ hiApply(w.project); }catch(e){ warn_('project '+e.message); try{ loadProject(w.project); }catch(x){} }
+  try{ const rep=(t,o)=>{ Object.keys(t).forEach(k=>delete t[k]); Object.assign(t,cl(o)); }; rep(HVD,w.hvd); rep(ACE,w.ace); rep(DUC,w.duc); rep(DC,w.dc); }catch(e){ warn_('stores '+e.message); }
+  try{ OUTC.versions.splice(0,OUTC.versions.length,...w.outc.v); Object.keys(OUTC.blobs).forEach(k=>delete OUTC.blobs[k]); Object.assign(OUTC.blobs,w.outc.b); OUTC.ver=w.outc.n; OUTC.sel.splice(0,OUTC.sel.length,...w.outc.sel); Object.keys(CC).forEach(k=>delete CC[k]); Object.assign(CC,w.cc); Object.keys(w.rc).forEach(k=>{ try{ RC[k]=w.rc[k]; }catch(e){} }); }catch(e){ warn_('outputs '+e.message); }
+  try{ w.tabs.forEach(o=>{ const t=WTAB.tabs.find(x=>x.id===o.id); if(t){ t.name=o.name; t.custom=o.custom; t.lay=o.lay; } }); WTAB.cur='start'; wtSwitch(w.cur); XTAB=w.xtab; xRibbon(); }catch(e){ warn_('tabs '+e.message); }
+  try{ RV.lv=w.rv.lv; RV.sel=w.rv.sel; rvBuild(); rvBrowser(); rvProps(); }catch(e){}
+  try{ if(w.cam){ camera.position.set(...w.cam.pos); controls.target.set(...w.cam.tgt); controls.update(); } D.pose=null; }catch(e){}
+  try{ for(let i=localStorage.length-1;i>=0;i--){ const k=localStorage.key(i); if(!(k in w.ls))localStorage.removeItem(k); } Object.keys(w.ls).forEach(k=>{ if(localStorage.getItem(k)!==w.ls[k])localStorage.setItem(k,w.ls[k]); }); }catch(e){}
+  try{ if(S_hook('onEnd'))S_hook('onEnd')(); }catch(e){} isoOff(); try{ xBar(); startPanel(); wtBar(); xSync(); }catch(e){} try{ if(typeof XSV!=='undefined')XSV.dirty=w.dirty; HI.st.length=Math.min(HI.st.length,w.hi.n); HI.i=w.hi.i; HI.lock=false; try{ hiSync(); }catch(e){} }catch(e){} D.restored=true; return true; }
+ /* close the tabs the demo opened (real click on the x of the tab), called at the end of each chapter */
+ async function closeDemoTabs(){ try{ (rec().notes=rec().notes||[]).push('closeDemoTabs ws='+!!D.ws+' tabs='+WTAB.tabs.map(t=>t.type).join()); }catch(e){} if(!D.ws)return; const ids=new Set(D.ws.tabs.map(t=>t.id)); for(const t of WTAB.tabs.filter(t=>!ids.has(t.id))){ try{ try{ XSV.dirty=false; }catch(e){} const d=[...document.querySelectorAll('#xDocTabs .dt')][WTAB.tabs.indexOf(t)]; const x=d&&d.querySelector('b'); if(x&&vis(x)){ await click(x,{name:['Closing the tab the demo opened','بنقفل التاب اللي الديمو فتحه'],hold:700,after:500}); } await sleep(250); if(WTAB.tabs.some(z=>z.id===t.id))rawCloseTab(t.id); try{ rec().notes.push('closed '+t.type+' now='+WTAB.tabs.map(z=>z.type).join()); }catch(e){} }catch(e){ if(e===STOP||D.abort)throw STOP; try{ rec().notes.push('close err '+e.message); }catch(x){} rawCloseTab(t.id); } } if(WTAB.cur&&!WTAB.tabs.some(z=>z.id===WTAB.cur))wtSwitch('start'); try{ document.querySelectorAll('#xSavePrompt').forEach(n=>n.remove()); }catch(e){} await sleep(300); }
+ function restore(){ return wsRestore(); }
  /* ---------- start ---------- */
  function confirmCard(o){ return new Promise(res=>{ D.pickRes=res; D.pick=null; const u=bar(); u.root.dir=lang==='ar'?'rtl':'ltr'; setCap('Guided demo: Project 6868. A cursor will move and click by itself and build a complete sample project with the real tools: model, site, schedule, quantities, structure, MEP, clash, documents and outputs. Your current project is saved first and you can restore it with one click.','ديمو موجّه: مشروع 6868. هيتحرك مؤشر ويضغط لوحده ويبني مشروع نموذجي كامل بالأدوات الحقيقية: موديل وموقع وجدول وكميات وإنشائي وMEP وتعارضات ومستندات ومخرجات. مشروعك الحالي بيتحفظ الأول وترجّعه بضغطة.'); u.title.textContent='Project 6868'; u.meta.textContent=''; const row=u.root.lastChild; row.innerHTML=''; const b=(t,f,c)=>{ const x=h('button',{text:t,onclick:f}); if(c)x.className=c; return x; }; row.append(b('▶ '+B('Start','ابدأ'),()=>res(1),'on'),b(B('Chapters','الفصول'),()=>{ list(); }),h('span',{style:'flex:1'}),b(B('Cancel','إلغاء'),()=>res(0))); }); }
  function buildRow(){ const u=D.ui, row=u.root.lastChild; row.innerHTML=''; row.append(u.bPrev,u.bPause,u.bNext,...u.sp,u.bVoice,u.bList,h('span',{style:'flex:1'}),u.bStop); }
  async function start(o){ o=o||{}; if(D.on||D.sum){ if(D.sum)close(); else return false; } if(!D.chapters.length)throw new Error('no chapters'); D.on=false; D.abort=null; D.paused=false; D.res={}; D.sum=null; D.final=null; bar(); document.body.appendChild(h('div',{id:'xDemoShield'})); cursor().style.display='none';
-  if(o.speed)D.sp=o.speed; D.ff=!!o.ff; if(o.voice!==undefined)D.voice=!!o.voice; D.t0=Date.now(); D.snap=null; try{ D.snap=projectJson(); }catch(e){} segs();
-  if(!o.yes){ const sh=document.getElementById('xDemoShield'); if(sh)sh.style.display='none'; const ok=await confirmCard(o); D.pickRes=null; if(!ok){ close(); return false; } if(D.pick!=null)o.from=D.pick; buildRow(); const l=document.getElementById('xDemoList'); if(l)l.remove(); } else buildRow();
+  if(o.speed)D.sp=o.speed; D.ff=!!o.ff; if(o.voice!==undefined)D.voice=!!o.voice; D.t0=Date.now(); D.keep=!!o.keep; D.restored=false; D.snap=null; try{ D.snap=projectJson(); wsSnap(); }catch(e){ console.warn('[demo] snapshot',e); } if(!D.keep){ isoOn(); } try{ if(S_hook('onStart'))S_hook('onStart')(); }catch(e){} segs();
+  if(!o.yes){ const sh=document.getElementById('xDemoShield'); if(sh)sh.style.display='none'; const ok=await confirmCard(o); D.pickRes=null; if(!ok){ D.ws=null; isoOff(); close(); return false; } if(D.pick!=null)o.from=D.pick; buildRow(); const l=document.getElementById('xDemoList'); if(l)l.remove(); } else buildRow();
   D.on=true; D.t0=Date.now(); clearInterval(D.tick); D.tick=setInterval(()=>{ if(D.on)refresh(); },1000); refresh(); const from=o.from==null?0:o.from, last=o.to==null?D.chapters.length-1:o.to; const done=loop(from,last); D.promise=done; if(o.wait)await done; return true; }
  const api={D,start,stop,pause,skip,jump,speed,voice,restore,close,sleep,find,moveTo,click,typeInto,key,canvasClick,w2s,fly,setCap,warn,good,fmt,chk,B,L,h,ribBtn,
-  add(c){ c.mode=c.mode||'real'; D.chapters.push(c); segs(); },
+  add(c){ c.mode=c.mode||'real'; c._i=D.chapters.length; D.chapters.push(c); D.chapters.sort((a,b)=>(parseFloat(a.phase||99)-parseFloat(b.phase||99))||(a._i-b._i)); segs(); },
   state(){ return {on:D.on,paused:D.paused,speed:D.sp,chapter:D.cur,chapters:D.chapters.map(c=>c.id),results:JSON.parse(JSON.stringify(D.res)),finished:!!D.sum,final:D.final}; },
   report(){ return D.final||this.state(); }};
- api.ops=OPS; return api; })();
+ api.ops=OPS; api.waiters=()=>waiters.size; api.near=(a,b,t)=>Math.hypot(a[0]-b[0],a[1]-b[1])<=(t==null?.06:t); api.has=id=>!!XC[id]; api.tabReady=tabReady; return api; })();
 
 /* ====== demo_ch1.js - chapters 0-2 (welcome, project + template, R.X building). Evaluated together with demo_core.js. ====== */
 (function(){
  const S=DEMO, B=S.B;
- /* the sample template: registered here (not in c_templates.js) so the chooser shows it once the demo has been opened. Same R.X starter as the villa; the demo then adds the rest with the real tools. */
- try{ if(!TEMPLATES.sample6868){ const rvf=(TEMPLATES.house2&&TEMPLATES.house2.rv)||(typeof tpHouse2==='function'?tpHouse2:null); if(rvf)TEMPLATES.sample6868={id:'sample6868',base:'blank',n:['Project 6868 (sample, full)','مشروع 6868 (نموذجي كامل)'],title:['Project 6868','Project 6868'],rv:rvf,d:['The sample used by the guided demo: two-floor building starter; the demo adds site, schedule, quantities, structure, MEP, clash and outputs.','النموذج اللي بيستخدمه الديمو: مبنى دورين؛ والديمو بيضيف الموقع والجدول والكميات والإنشائي وMEP والتعارضات والمخرجات.']}; } }catch(e){}
- const cnt=k=>RV.els.filter(e=>e.k===k).length;
+ /* the sample template: registered ONLY while the demo runs (start) and removed when it ends or stops, so no chooser, tab or saved project ever shows it otherwise */
+ S.onStart=function(){ try{ if(!TEMPLATES.sample6868){ const rvf=(TEMPLATES.house2&&TEMPLATES.house2.rv)||(typeof tpHouse2==='function'?tpHouse2:null); if(rvf)TEMPLATES.sample6868={id:'sample6868',base:'blank',n:['Project 6868 (sample, full)','مشروع 6868 (نموذجي كامل)'],title:['Project 6868','Project 6868'],rv:rvf,d:['The sample used by the guided demo; it exists only while the demo runs.','النموذج اللي بيستخدمه الديمو؛ وبيوجد وقت تشغيل الديمو بس.']}; } }catch(e){} };
+ S.onEnd=function(){ try{ delete TEMPLATES.sample6868; }catch(e){} }; const cnt=k=>RV.els.filter(e=>e.k===k).length;
  const ctx={};
  /* make sure "Project 6868" exists (used when someone starts at a later chapter): the same real function the chooser calls, no animation */
- S.ensureProject=async function(){ if(typeof tpId==='function'&&tpId()==='sample6868'&&dcProjName()==='Project 6868')return false; tpNew('sample6868'); const P2=DATA.proj||(DATA.proj={}); P2.name='Project 6868'; P2.no='6868-DEMO'; P2.client='Sample client'; P2.loc='Sample site'; DR.title='Project 6868'; try{ persist(); xBar(); }catch(e){} return true; };
+ /* pluggable building source: the first of these templates that exists (RC generator / apartment building from other sessions) else the sample starter */
+ S.srcIds=['apartment_rc','apt_rc','building_rc','house_rc','villa_rc'];
+ S.src=()=>S.srcIds.find(id=>TEMPLATES[id])||'sample6868';
+ S.ensureProject=async function(){ if(typeof tpId==='function'&&tpId()===S.src()&&dcProjName()==='Project 6868')return false; tpNew(S.src()); const P2=DATA.proj||(DATA.proj={}); P2.name='Project 6868'; P2.no='6868-DEMO'; P2.client='Sample client'; P2.loc='Sample site'; DR.title='Project 6868'; try{ persist(); xBar(); }catch(e){} return true; };
 
  /* ---------------- 0: welcome / how to use ---------------- */
- S.add({id:'welcome',n:['Welcome: how the platform works','أهلاً: إزاي بتشتغل المنصة'],mode:'mixed',
+ S.add({id:'welcome',phase:'0',n:['Welcome: how the platform works','أهلاً: إزاي بتشتغل المنصة'],mode:'mixed',
   sum:['Welcome. Everything here is a tab; commands live in the ribbon; Ctrl+K finds anything.','أهلاً. كل حاجة هنا تاب، والأوامر في الشريط، وCtrl+K بيدور على أي حاجة.'],
   steps:[
    {op:'tab',type:'start'},
@@ -13792,6 +13832,7 @@ const DEMO=(function(){
    {op:'wait',ms:1200},
    {op:'assert',en:'Search found commands',ar:'البحث لقى أوامر',soft:1,ok:()=>document.querySelectorAll('.xdlg .xm').length>=1},
    {op:'key',k:'Escape',on:()=>document.querySelector('.xdlg input[type=text]'),after:300},
+   {op:'do',fn:()=>{ if(document.querySelector('.xdlg input[type=text]'))document.querySelectorAll('.xdlg').forEach(n=>n.remove()); }},
    {op:'assert',en:'Search closed',ar:'البحث اتقفل',soft:1,ok:()=>!document.querySelector('.xdlg input[type=text]')},
    {op:'say',en:'New tabs: the + button next to the tabs opens the menu of all tools. I will open it just to show it.',ar:'التابات الجديدة: زرار + جنب التابات بيفتح قائمة كل الأدوات. هفتحه بس عشان أوريهالك.'},
    {op:'click',to:'plus',tip:['Add a tab','أضف تاب'],hold:400},
@@ -13806,7 +13847,7 @@ const DEMO=(function(){
   ]});
 
  /* ---------------- 1: create the project from a template ---------------- */
- S.add({id:'project',n:['Create the project from a template','إنشاء المشروع من قالب'],mode:'real',
+ S.add({id:'project',phase:'0',n:['Create the project from a template','إنشاء المشروع من قالب'],mode:'real',
   sum:['New project from the template, then the project information.','مشروع جديد من القالب، وبعدين بيانات المشروع.'],
   steps:[
    {op:'tab',type:'start'},
@@ -13817,8 +13858,8 @@ const DEMO=(function(){
    {op:'say',en:'The "Download the current project first" box would save a file to your computer. The demo keeps your project itself, so I untick it.',ar:'خانة "نزّل المشروع الحالي الأول" هتحفظ ملف على جهازك. الديمو بيحتفظ بمشروعك بنفسه، فهشيل العلامة.'},
    {op:'click',to:'#tpDl',tip:false},
    {op:'assert',en:'Download box is off',ar:'خانة التنزيل مقفولة',ok:()=>{ const c=document.getElementById('tpDl'); return !!c&&!c.checked; }},
-   {op:'click',to:'#tpDlg [data-tpl="sample6868"]',hold:700},
-   {op:'assert',en:'Project created from the template (elements in R.X)',ar:'المشروع اتعمل من القالب (عناصر في R.X)',ok:()=>tpId()==='sample6868'&&RV.els.length>=40,wait:4000},
+   {op:'click',to:()=>document.querySelector('#tpDlg [data-tpl="'+S.src()+'"]'),hold:1200},
+   {op:'assert',en:'Project created from the template (elements in R.X)',ar:'المشروع اتعمل من القالب (عناصر في R.X)',ok:()=>tpId()===S.src()&&RV.els.length>=10,wait:4000},
    {op:'say',en:'Now the project information: name, number, client, location. "Project set-up" opens the form.',ar:'دلوقتي بيانات المشروع: الاسم والرقم والعميل والموقع. "إعداد المشروع" بيفتح النموذج.'},
    {op:'run',cmd:'setup',after:400},
    {op:'assert',en:'The set-up form opened',ar:'نموذج الإعداد اتفتح',ok:()=>!!document.querySelector('.xdlg input[data-k="name"]')},
@@ -13829,148 +13870,209 @@ const DEMO=(function(){
    {op:'click',to:()=>[...document.querySelectorAll('.xdlg button')].find(b=>b.textContent.trim()===B('Apply','تطبيق')),hold:500},
    {op:'assert',en:'Project information saved (name, number, client, location)',ar:'بيانات المشروع اتحفظت',ok:()=>dcProjName()==='Project 6868'&&DATA.proj.no==='6868-DEMO'&&DATA.proj.client==='Sample client'&&DATA.proj.loc==='Sample site'},
    {op:'say',en:'Project 6868 exists. Its name is in the top bar and on the Start page.',ar:'مشروع 6868 اتعمل. اسمه في الشريط العلوي وفي صفحة البداية.'},
+   {op:'card',en:'Brief, room programme and budget: use the O.X report editor and a spreadsheet by hand. There is no brief or budget-per-m² tool yet.',ar:'الفكرة وبرنامج الغرف والميزانية: بتتكتب في محرر تقارير O.X وجدول بإيدك. مفيش أداة للفكرة أو لتكلفة المتر لسه.',need:['A brief / room-programme sheet and a cost-per-m² benchmark','شيت فكرة وبرنامج غرف ومرجع تكلفة المتر']},
+   {op:'card',kind:'field',en:'Plot rules (setbacks, coverage, floors, height) come from the district office; the demo does not guess them.',ar:'اشتراطات القطعة (ارتدادات ونسبة بناء وأدوار وارتفاع) بتيجي من إدارة الحي؛ والديمو مبيخمنهاش.'},
    {op:'move',to:'#xBar .pj',opt:1,hold:900}
   ]});
 
- /* ---------------- 2: R.X building model ---------------- */
- S.add({id:'rx',n:['R.X: the building model','R.X: موديل المبنى'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Draw a garage annex by hand in R.X: walls, floor, door, window and a column, then look at it in 3D.','هنرسم ملحق جراج بإيدينا في R.X: حيطان وبلاطة وباب وشباك وعمود، وبعدين نشوفه 3D.'],
+
+ /* ---------------- phase 2: R.X architecture, with numeric geometry checks ---------------- */
+ const E=k=>RV.els.filter(e=>e.k===k), lastN=(k,n)=>E(k).slice(-n);
+ const pt=(a,b)=>S.near(a,b,.06);
+ /* annex footprint derived from the building that is open now (works for any source: generator, import, sample): 6 x 6 m on the east side of the ground-floor walls */
+ S.gl=()=>{ const i=RV.levels.findIndex(l=>l.z===0); return i<0?0:i; };
+ S.annex={x0:12,z0:0,x1:18,z1:6,minX:0,maxZ:10,shared:true};
+ S.findAnnex=function(){ const w=RV.els.filter(e=>e.k==='wall'&&e.lv===S.gl()&&e.src!=='demo'); if(!w.length)return S.annex; let minX=1e9,maxX=-1e9,minZ=1e9,maxZ=-1e9; w.forEach(e=>[e.a,e.b].forEach(p=>{ minX=Math.min(minX,p[0]); maxX=Math.max(maxX,p[0]); minZ=Math.min(minZ,p[1]); maxZ=Math.max(maxZ,p[1]); })); const r=v=>Math.round(v*10)/10, A={x0:r(maxX),z0:r(minZ),x1:r(maxX+6),z1:r(minZ+6),minX:r(minX),maxZ:r(maxZ)}; A.shared=w.some(e=>Math.abs(e.a[0]-A.x0)<.05&&Math.abs(e.b[0]-A.x0)<.05&&Math.min(e.a[1],e.b[1])<=A.z0+.05&&Math.max(e.a[1],e.b[1])>=A.z1-.05); S.annex=A; return A; };
+ S.archCheck=function(){ const bad=[]; const nl=RV.levels.length; RV.els.forEach(e=>{ if(e.lv==null||e.lv<0||e.lv>=nl)bad.push('level of '+e.k); if(e.k==='wall'){ const h=(RV.levels[e.lv+1]?RV.levels[e.lv+1].z:RV.levels[e.lv].z+e.h)-RV.levels[e.lv].z; if(e.h>h+1e-6)bad.push('wall higher than its storey'); [e.a,e.b].forEach(p=>{ if(!p.every(isFinite))bad.push('wall NaN'); }); if(Math.hypot(e.b[0]-e.a[0],e.b[1]-e.a[1])<.1)bad.push('zero-length wall'); } if((e.k==='door'||e.k==='window')){ const w=RV.els.find(x=>x.id===e.w); if(!w)bad.push(e.k+' without wall'); else { const L=Math.hypot(w.b[0]-w.a[0],w.b[1]-w.a[1]); if(e.p-e.W/2<-1e-6||e.p+e.W/2>L+1e-6)bad.push(e.k+' outside its wall'); if(w.lv!==e.lv)bad.push(e.k+' on another level than its wall'); } } }); return bad; };
+ const AX=()=>S.annex, mid=(a,b)=>(a+b)/2;
+ const wallPts=()=>{ const A=AX(); return A.shared?[[A.x0,A.z0],[A.x1,A.z0],[A.x1,A.z1],[A.x0,A.z1]]:[[A.x0,A.z0],[A.x1,A.z0],[A.x1,A.z1],[A.x0,A.z1],[A.x0,A.z0]]; };
+ const nNew=()=>AX().shared?3:4;
+ S.add({id:'arch',phase:'2',n:['Phase 2 · R.X architecture: grids, walls, openings, floor','المرحلة 2 · R.X المعماري: شبكات وحيطان وفتحات وبلاطة'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); S.findAnnex(); },
+  sum:['Add a 6 x 6 m garage annex beside the building in the right order: grid lines, walls on the grid crossings, floor, door, window. Every element is checked by its numbers.','نضيف جراج ٦ × ٦ م جنب المبنى بالترتيب الصح: خطوط شبكة، حيطان على تقاطعات الشبكة، بلاطة، باب، شباك. وكل عنصر بنراجعه بأرقامه.'],
   steps:[
-   {op:'say',en:'R.X is the model. The template already has levels, grids, walls, rooms, stairs and a roof for the main house. Open the R.X tab.',ar:'R.X هو الموديل. القالب فيه مناسيب وشبكات وحيطان وغرف وسلم وسقف للبيت الأساسي. افتح تاب R.X.'},
    {op:'tab',type:'model'},
-   {op:'assert',en:'R.X tab is active and the 3D view is visible',ar:'تاب R.X شغال والـ 3D ظاهر',ok:()=>{ try{ return ribType()==='model'&&renderer.domElement.getBoundingClientRect().width>100; }catch(e){ return false; } },wait:5000},
-   {op:'do',fn:async a=>{ ctx.w0=cnt('wall'); ctx.d0=cnt('door'); ctx.n0=cnt('window'); ctx.c0=cnt('col'); ctx.f0=cnt('floor'); RV.lv=0; try{ rvBrowser(); }catch(e){} await a.fly([9,34,5.4],[9,0,5],1400); }},
-   {op:'say',en:'Plan view of the ground floor. We add a 6 x 6 m garage on the east side. Pick the Wall tool, then click the corners: the cursor clicks on the 3D canvas like a mouse.',ar:'مسقط الدور الأرضي. هنضيف جراج ٦ × ٦ م على الجانب الشرقي. اختار أداة الحائط، وبعدين اضغط الأركان: المؤشر بيضغط على الـ 3D زي الماوس.'},
+   {op:'do',fn:async a=>{ S.findAnnex(); const A=AX(); ctx.w0=E('wall').length; ctx.d0=E('door').length; ctx.n0=E('window').length; ctx.f0=E('floor').length; ctx.g0=RV.grids.length; RV.lv=S.gl(); try{ rvBrowser(); }catch(e){} RV.def.wall.t=.25; await a.fly([mid(A.minX,A.x1),Math.max(30,(A.x1-A.minX)*1.9),mid(A.z0,A.maxZ)+.6],[mid(A.minX,A.x1),0,mid(A.z0,A.maxZ)],2200); }},
+   {op:'say',en:'R.X is the model. Order of work: levels, grids, walls, openings, floors, stair, roof. The building is already there from the template. We add a garage on its east side.',ar:'R.X هو الموديل. ترتيب الشغل: مناسيب، شبكات، حيطان، فتحات، بلاطات، سلم، سقف. المبنى موجود من القالب. هنضيف جراج على جانبه الشرقي.'},
+   {op:'assert',en:'Levels are in order, rising, with a zero level',ar:'المناسيب مترتبة وطالعة وفيه منسوب صفر',ok:()=>RV.levels.length>=2&&RV.levels.every((l,i)=>isFinite(l.z)&&(i===0||l.z>RV.levels[i-1].z))&&RV.levels.some(l=>l.z===0),info:()=>JSON.stringify(RV.levels)},
+   {op:'shot',name:'01_plan_before'},
+   {op:'say',en:()=>'Step 1: grid lines. A vertical grid at x = '+AX().x1+' m and a horizontal grid at z = '+AX().z1+' m. The garage corners sit on their crossings.',ar:()=>'خطوة ١: خطوط الشبكة. شبكة رأسية عند x = '+AX().x1+' م وأفقية عند z = '+AX().z1+' م. أركان الجراج على تقاطعاتهم.'},
+   {op:'run',cmd:'rv_grid'},
+   {op:'assert',en:'Grid tool is active',ar:'أداة الشبكة شغالة',ok:()=>RV.tool==='grid'},
+   {op:'draw',pts:()=>[[AX().x1,AX().z0-1],[AX().x1,AX().maxZ+1]],names:[['Vertical grid: start','الشبكة الرأسية: البداية'],['Vertical grid: end','الشبكة الرأسية: النهاية']]},
+   {op:'draw',pts:()=>[[AX().minX-1,AX().z1],[AX().x1+1,AX().z1]],names:[['Horizontal grid: start','الشبكة الأفقية: البداية'],['Horizontal grid: end','الشبكة الأفقية: النهاية']]},
+   {op:'key',k:'Escape',n:2},
+   {op:'assert',en:'Two grids created exactly where intended',ar:'اتعملت شبكتين في مكانهم بالظبط',ok:()=>{ const A=AX(), g=RV.grids.slice(ctx.g0); return g.length===2&&g[0].hz===false&&Math.abs(g[0].a[0]-A.x1)<.06&&Math.abs(g[0].b[0]-A.x1)<.06&&g[1].hz===true&&Math.abs(g[1].a[1]-A.z1)<.06&&Math.abs(g[1].b[1]-A.z1)<.06; },info:()=>JSON.stringify(RV.grids.slice(ctx.g0).map(g=>[g.n,g.hz,g.a,g.b]))},
+   {op:'shot',name:'02_grids'},
+   {op:'say',en:'Step 2: external walls, 25 cm thick, 3 m high. The clicks snap to the grid crossings, so the corners are exact.',ar:'خطوة ٢: الحيطان الخارجية سُمك ٢٥ سم وارتفاع ٣ م. الضغطات بتتثبت على تقاطعات الشبكة فالأركان بالظبط.'},
    {op:'run',cmd:'rv_wall'},
    {op:'assert',en:'Wall tool is active',ar:'أداة الحائط شغالة',ok:()=>RV.tool==='wall'},
-   {op:'draw',pts:[[12,0],[18,0],[18,6],[12,6]],gap:250},
+   {op:'draw',pts:wallPts,names:[['Garage corner 1','ركن الجراج ١'],['Garage corner 2','ركن الجراج ٢'],['Garage corner 3','ركن الجراج ٣'],['Garage corner 4','ركن الجراج ٤'],['Back to corner 1','رجوع للركن ١']]},
    {op:'key',k:'Escape',n:2},
-   {op:'assert',en:'3 walls added by clicking, tool ended with Esc',ar:'٣ حيطان اتضافت بالضغط، والأداة انتهت بـ Esc',ok:()=>cnt('wall')-ctx.w0===3&&!RV.tool},
-   {op:'say',en:'Floor slab: pick Floor and click two opposite corners.',ar:'بلاطة الأرضية: اختار بلاطة وبعدين اضغط ركنين متقابلين.'},
+   {op:'assert',en:'New walls: end points equal the grid crossings; 0.25 m thick, standard wall height, ground level',ar:'الحيطان الجديدة: النهايات = تقاطعات الشبكة؛ سُمك ٠٫٢٥ وارتفاع ٣ م على الدور الأرضي',ok:()=>{ const n=nNew(), w=lastN('wall',n), P=wallPts(); return E('wall').length-ctx.w0===n&&w.every((x,i)=>pt(x.a,P[i])&&pt(x.b,P[i+1]||P[0])&&x.t===.25&&x.h===RV.def.wall.h&&x.lv===S.gl()); },info:()=>JSON.stringify(lastN('wall',4).map(w=>[w.a,w.b,w.t,w.h,w.lv]))+' want '+JSON.stringify(wallPts())},
+   {op:'shot',name:'03_walls_plan'},
+   {op:'say',en:'Step 3: the floor slab fills the same rectangle, corner to corner.',ar:'خطوة ٣: بلاطة الأرضية بتملا نفس المستطيل، ركن لركن.'},
    {op:'run',cmd:'rv_floor'},
-   {op:'draw',pts:[[12,0],[18,6]],until:()=>cnt('floor')>ctx.f0},
+   {op:'draw',pts:()=>[[AX().x0,AX().z0],[AX().x1,AX().z1]],names:[['Slab corner 1','ركن البلاطة ١'],['Slab corner 2 (opposite)','ركن البلاطة ٢ (المقابل)']],until:()=>E('floor').length>ctx.f0},
    {op:'key',k:'Escape'},
-   {op:'assert',en:'Floor slab added',ar:'البلاطة اتضافت',ok:()=>cnt('floor')-ctx.f0===1},
-   {op:'say',en:'Door and window: pick the tool and click on a wall.',ar:'الباب والشباك: اختار الأداة واضغط على جدار.'},
+   {op:'assert',en:'Floor slab covers exactly the garage walls',ar:'البلاطة بتغطي حيطان الجراج بالظبط',ok:()=>{ const A=AX(), f=E('floor').slice(-1)[0]; return E('floor').length-ctx.f0===1&&f.lv===S.gl()&&(pt(f.a,[A.x0,A.z0])&&pt(f.b,[A.x1,A.z1])||pt(f.a,[A.x1,A.z1])&&pt(f.b,[A.x0,A.z0])); }},
+   {op:'say',en:'Step 4: openings. A door in the south wall and a window in the east wall, each placed by clicking on the wall.',ar:'خطوة ٤: الفتحات. باب في الحيطة الجنوبية وشباك في الشرقية، وكل واحد بالضغط على الحيطة.'},
    {op:'run',cmd:'rv_door'},
-   {op:'draw',pts:[[15,0]],y:'top',until:()=>cnt('door')>ctx.d0},
+   {op:'draw',pts:()=>[[mid(AX().x0,AX().x1),AX().z0]],y:'top',loop:false,names:[['South wall, middle','الحيطة الجنوبية في النص']],until:()=>E('door').length>ctx.d0},
    {op:'key',k:'Escape'},
-   {op:'assert',en:'Door added to the garage wall',ar:'الباب اتضاف لحيطة الجراج',ok:()=>cnt('door')-ctx.d0===1},
+   {op:'assert',en:'Door sits inside the south garage wall near its middle, same level',ar:'الباب جوه حيطة الجراج الجنوبية جنب النص ونفس الدور',ok:()=>{ const A=AX(), d=E('door').slice(-1)[0], w=d&&RV.els.find(x=>x.id===d.w); return E('door').length-ctx.d0===1&&w&&pt(w.a,[A.x0,A.z0])&&pt(w.b,[A.x1,A.z0])&&Math.abs(d.p-3)<.5&&d.lv===w.lv; }},
    {op:'run',cmd:'rv_window'},
-   {op:'draw',pts:[[18,3]],y:'top',until:()=>cnt('window')>ctx.n0},
+   {op:'draw',pts:()=>[[AX().x1,mid(AX().z0,AX().z1)]],y:'top',loop:false,names:[['East wall, middle','الحيطة الشرقية في النص']],until:()=>E('window').length>ctx.n0},
    {op:'key',k:'Escape'},
-   {op:'assert',en:'Window added',ar:'الشباك اتضاف',ok:()=>cnt('window')-ctx.n0===1},
-   {op:'run',cmd:'rv_col'},
-   {op:'draw',pts:[[15,3]],until:()=>cnt('col')>ctx.c0},
-   {op:'key',k:'Escape'},
-   {op:'assert',en:'Column added',ar:'العمود اتضاف',ok:()=>cnt('col')-ctx.c0===1},
-   {op:'say',en:'Now the 3D view: orbit around the new annex. Everything you drew is real model data used later for quantities, schedule links and sheets.',ar:'دلوقتي منظور 3D: بندور حوالين الملحق. كل اللي رسمناه بيانات موديل حقيقية بتتستخدم بعدين في الكميات وربط الجدول واللوحات.'},
-   {op:'do',fn:async a=>{ await a.fly([24,15,22],[9,1.5,5],1800); }},
-   {op:'assert',en:'Model totals: walls, doors, windows, columns',ar:'إجمالي الموديل: حيطان وأبواب وشبابيك وأعمدة',ok:()=>cnt('wall')>=ctx.w0+3&&cnt('door')>ctx.d0&&cnt('window')>ctx.n0&&cnt('col')>ctx.c0}
+   {op:'assert',en:'Window sits inside the east garage wall near its middle, same level',ar:'الشباك جوه حيطة الجراج الشرقية جنب النص ونفس الدور',ok:()=>{ const A=AX(), d=E('window').slice(-1)[0], w=d&&RV.els.find(x=>x.id===d.w); return E('window').length-ctx.n0===1&&w&&pt(w.a,[A.x1,A.z0])&&pt(w.b,[A.x1,A.z1])&&Math.abs(d.p-3)<.5&&d.lv===w.lv; }},
+   {op:'shot',name:'04_openings_plan'},
+   {op:'say',en:'Check the whole model: every element on a real level, walls not higher than their storey, openings inside their walls.',ar:'نراجع الموديل كله: كل عنصر على دور حقيقي، والحيطان مش أعلى من دورها، والفتحات جوه حيطانها.'},
+   {op:'assert',en:'Geometry check: no element floating, outside its level or outside its wall',ar:'فحص الهندسة: مفيش عنصر طاير أو خارج دوره أو خارج حيطته',ok:()=>S.archCheck().length===0,info:()=>S.archCheck().join('; ')},
+   {op:'do',fn:async a=>{ const A=AX(), cx=mid(A.minX,A.x1), cz=mid(A.z0,A.maxZ), R=Math.max(26,(A.x1-A.minX)*1.4); await a.fly([cx+R,R*.6,cz+R*.9],[cx,1.2,cz],2600); }},
+   {op:'shot',name:'05_persp_front'},
+   {op:'do',fn:async a=>{ const A=AX(), cx=mid(A.minX,A.x1), cz=mid(A.z0,A.maxZ), R=Math.max(26,(A.x1-A.minX)*1.4); await a.fly([cx-R,R*.55,cz-R],[cx,1.2,cz],2600); }},
+   {op:'shot',name:'06_persp_back'},
+   {op:'do',fn:async a=>{ const A=AX(), cx=mid(A.minX,A.x1), cz=mid(A.z0,A.maxZ); await a.fly([A.x1+22,2.5,cz],[cx,1.8,cz],2200); }},
+   {op:'shot',name:'07_side_east'},
+   {op:'do',fn:async a=>{ const A=AX(), cx=mid(A.minX,A.x1), cz=mid(A.z0,A.maxZ), R=Math.max(26,(A.x1-A.minX)*1.4); await a.fly([cx+R,R*.6,cz+R*.9],[cx,1.2,cz],2000); }},
+   {op:'say',en:'Not shown in this version: stair, roof and rooms of the annex, elevations and sections, materials and interior finishes. The R.X tools exist; the building from the template already has them.',ar:'مش معروض في النسخة دي: سلم وسقف وغرف الملحق، والواجهات والقطاعات، والخامات والتشطيبات. أدوات R.X موجودة؛ والمبنى اللي من القالب فيه اللي ينفع.'}
   ]});
 })();
 
-/* ====== demo_ch2.js - chapters 3-7: site + earthworks + cost, P.X schedule, structure checks, electrical (AC), HVAC. Evaluated with demo_core.js and demo_ch1.js. ======
-   Honest rule used here: "run" = the real ribbon button (XC command); "do" = a call to the same function/API the button or form uses (TOX.*, store edits) when the real input is an OS file dialog or many form fields. Every chapter ends in asserts on the data. */
+/* ====== demo_ch2.js - phases 1, 3, 4, 5, 6 of PROJECT_PHASES.md: site, structural system, structural checks, MEP, coordination + BOQ. Evaluated with the other demo files; chapters are sorted by phase.
+   Rules: "run" = real ribbon button; "do" = the same function/API the button or form uses; "card" = a step that has no tool yet (or is human/field work): shown plainly, never faked. A command id that appears later (from other sessions) is picked up by feature detection (`when`). ====== */
 (function(){
  const S=DEMO, B=S.B, ctx={};
- const sleepq=ms=>S.sleep(ms);
+ const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
  const qxVal=(name,r,c)=>{ const sh=QX.api.wb().sheets.find(s=>s.name===name); return sh?qxGet(sh,r,c):null; };
+ const E=k=>RV.els.filter(e=>e.k===k), lastN=(k,n)=>E(k).slice(-n), pt=(a,b)=>S.near(a,b,.06);
+ const num=i=>()=>calBox.querySelectorAll('input[type=number]')[i];
+ const calcBtn=()=>[...calBox.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Calculate','احسب'));
+ const calcSet=id=>{ CC.id=id; CC.code=CALCS.find(x=>x.id===id).codes[0]; CC.vals={}; CC.sheet=null; calPanel(); };
  const nrx=()=>ACT.filter(a=>a.src==='rx').length;
+ const card=(en,ar,need,kind)=>({op:'card',kind:kind,en:en,ar:ar,need:need});
+ const A=()=>S.annex||S.findAnnex();
+ const cols=()=>{ const a=A(); return [[a.x0,a.z0],[a.x1,a.z0],[a.x1,a.z1],[a.x0,a.z1]]; };
 
- /* ---------------- 3: site, survey, excavation, earthworks cost ---------------- */
- S.add({id:'site',n:['Site: survey, excavation and earthworks cost','الموقع: المساحة والحفر وتكلفة الأعمال الترابية'],mode:'real',
+ /* ---------------- phase 1: site ---------------- */
+ S.add({id:'site',phase:'1',n:['Phase 1 · Site: survey, surface, earthworks and cost','المرحلة 1 · الموقع: المساحة والسطح والأعمال الترابية والتكلفة'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
-  sum:['Import survey points, build the ground surface and contours, compute cut and fill against a design level, then price it in a Q.X sheet.','استيراد نقط المساحة، عمل سطح الأرض والكنتور، حساب القطع والردم على منسوب التصميم، وبعدين تسعيره في شيت Q.X.'],
+  sum:['Import survey points, build the ground surface and contours, compute cut and fill against a platform level, then price it in a Q.X sheet.','استيراد نقط المساحة، عمل سطح الأرض والكنتور، حساب القطع والردم على منسوب المنصة، وبعدين تسعيره في شيت Q.X.'],
   steps:[
-   {op:'say',en:'F.X is the reality-capture and terrain tab. Survey points normally come from a file on your computer (CSV, DXF, LandXML, GPX). The file dialog is outside the browser, so the demo feeds 36 sample points to the same import function.',ar:'F.X هو تاب التقاط الواقع والتضاريس. نقط المساحة عادةً بتيجي من ملف على جهازك (CSV أو DXF أو LandXML أو GPX). نافذة الملف برّه المتصفح، فالديمو بيدّي ٣٦ نقطة تجريبية لنفس دالة الاستيراد.'},
+   {op:'say',en:'Phase 1 is the site. A topographic survey is ordered from a surveyor; its points come back as a file. F.X is the terrain tab.',ar:'المرحلة 1 هي الموقع. الرفع المساحي بيتطلب من مساح وبترجع نقطه في ملف. F.X هو تاب التضاريس.'},
+   card('The survey itself (total station / GNSS) and the soil boreholes are field work done by people. The software starts from their files.','الرفع المساحي نفسه والحفر الاستكشافي شغل ميداني بيعمله ناس. البرنامج بيبدأ من ملفاتهم.',null,'field'),
    {op:'tab',type:'capture'},
-   {op:'assert',en:'F.X tab is open',ar:'تاب F.X مفتوح',ok:()=>ribType()==='capture',wait:5000},
    {op:'do',fn:async()=>{ let csv='P,E,N,Z\n',n=1; for(let i=0;i<6;i++)for(let j=0;j<6;j++)csv+=(n++)+','+(i*5)+','+(j*5)+','+(100+.4*i-.3*j+Math.sin(i+j)*.2).toFixed(2)+'\n'; ctx.imp=await TOX.importSurveyFile({name:'sample_points.csv',text:csv,order:'P,E,N,Z'}); }},
-   {op:'assert',en:'36 survey points imported',ar:'اتستوردت ٣٦ نقطة مساحة',ok:()=>TOX.captureState().points===36},
+   {op:'assert',en:'36 survey points imported (sample points: the OS file dialog cannot be driven)',ar:'اتستوردت ٣٦ نقطة مساحة (نقط تجريبية: نافذة الملف تبع النظام مينفعش تتشغّل)',ok:()=>TOX.captureState().points===36},
+   {op:'shot',name:'01_points'},
    {op:'say',en:'Build the TIN surface from the points with the ribbon button.',ar:'نعمل سطح TIN من النقط بزرار الشريط.'},
-   {op:'run',cmd:'rc_tin',after:600},
+   {op:'run',cmd:'rc_tin',after:900},
    {op:'assert',en:'Ground surface (TIN) exists',ar:'سطح الأرض (TIN) اتعمل',ok:()=>TOX.captureState().surfaces.length>=1},
    {op:'do',fn:async()=>{ ctx.cont=await TOX.makeContours({interval:.5}); }},
    {op:'assert',en:'Contours drawn every 0.5 m',ar:'الكنتور اتعمل كل ٠٫٥ م',ok:()=>ctx.cont&&ctx.cont.segments>0},
-   {op:'say',en:'Excavation and backfill: cut and fill of the ground against a design platform level of 100.00 m.',ar:'الحفر والردم: القطع والردم للأرض مقابل منسوب منصة التصميم ١٠٠٫٠٠ م.'},
-   {op:'run',cmd:'rc_qty',after:500},
+   {op:'shot',name:'02_contours'},
+   {op:'say',en:'Earthworks: cut and fill of the ground against a platform level of 100.00 m (excavation and backfill volumes).',ar:'الأعمال الترابية: القطع والردم للأرض مقابل منسوب منصة ١٠٠٫٠٠ م (حجم الحفر والردم).'},
+   {op:'run',cmd:'rc_qty',after:700},
    {op:'do',fn:async()=>{ ctx.cf=await TOX.computeCutFill({level:100}); }},
    {op:'assert',en:'Cut and fill volumes computed (m³)',ar:'اتحسبت أحجام القطع والردم (م³)',ok:()=>ctx.cf&&ctx.cf.tin.cut>0&&ctx.cf.tin.fill>0},
-   {op:'say',en:'Cost: a Q.X sheet multiplies the volumes by unit rates. The app ships no price list, so the rates here are SAMPLE placeholders for the demo; type your own.',ar:'التكلفة: شيت Q.X بيضرب الأحجام في أسعار الوحدة. التطبيق مفيهوش قايمة أسعار، فالأسعار هنا تجريبية للديمو؛ اكتب أسعارك.'},
+   {op:'say',en:'Cost: a Q.X sheet multiplies the volumes by unit rates. The app ships no price list, so these rates are SAMPLE placeholders; type your own.',ar:'التكلفة: شيت Q.X بيضرب الأحجام في أسعار الوحدة. التطبيق مفيهوش قايمة أسعار، فالأسعار هنا تجريبية؛ اكتب أسعارك.'},
    {op:'do',fn:()=>{ const c=ctx.cf.tin.cut, f=ctx.cf.tin.fill; QX.addSheet('Earthworks',sh=>{ const P=(r,k,v)=>{ sh.cells[qxK(r,k)]=v; }; ['Item','Quantity m3','Sample rate (placeholder)','Cost'].forEach((t,k)=>P(0,k,t)); P(1,0,'Excavation (cut)'); P(1,1,+c.toFixed(2)); P(1,2,40); P(1,3,'=B2*C2'); P(2,0,'Backfill (fill)'); P(2,1,+f.toFixed(2)); P(2,2,25); P(2,3,'=B3*C3'); P(3,0,'Total'); P(3,3,'=D2+D3'); }); }},
    {op:'assert',en:'Earthworks sheet total = cut × rate + fill × rate',ar:'إجمالي شيت الأعمال الترابية = قطع × سعر + ردم × سعر',ok:()=>{ const t=qxVal('Earthworks',3,3); return typeof t==='number'&&Math.abs(t-(ctx.cf.tin.cut*40+ctx.cf.tin.fill*25))<1; }},
-   {op:'do',fn:()=>{ ctx.site=qxVal('Earthworks',3,3); }},
-   {op:'say',en:'GIS: "Send the model to the map" places the building footprint on the G.X map layers.',ar:'GIS: "ابعت الموديل للخريطة" بيحط مسقط المبنى على طبقات خريطة G.X.'},
-   {op:'run',cmd:'xf_gis',after:800,soft:1},
-   {op:'assert',en:'Map layers hold features',ar:'طبقات الخريطة فيها عناصر',soft:1,ok:()=>GM.layers.some(l=>l.feat&&l.feat.length>0)}
+   {op:'shot',name:'03_earthworks_sheet'},
+   {op:'say',en:'GIS: send the building to the map layers.',ar:'GIS: نبعت المبنى لطبقات الخريطة.'},
+   {op:'run',cmd:'xf_gis',after:900},
+   {op:'assert',en:'Map layers hold features',ar:'طبقات الخريطة فيها عناصر',soft:1,ok:()=>GM.layers.some(l=>l.feat&&l.feat.length>0)},
+   card('Plot presets for New Cairo, boundary check against setbacks, landscape / garden, and access for trucks and crane: no tool in this build yet. The GIS maps session is adding plot presets; they will be used here when they exist.','قطع التجمع الخامس الجاهزة، فحص الحدود مع الارتدادات، الحديقة والمناظر الطبيعية، ووصول العربيات والونش: مفيش أداة ليها في النسخة دي لسه. جلسة الخرائط بتضيف القطع الجاهزة وهتتستخدم هنا لما تظهر.',['Plot presets, setback check, landscape and logistics tools','قطع جاهزة وفحص ارتدادات وأدوات حدائق ولوجستيات']),
+   {op:'say',en:'Phase 1 outputs here: a ground surface, contours, earthworks volumes and a first cost. Soil bearing is entered later from the borehole report.',ar:'مخرجات المرحلة 1 هنا: سطح الأرض والكنتور وأحجام الأعمال الترابية وتكلفة أولية. تحمل التربة بيتدخل بعدين من تقرير الحفر.'}
   ]});
 
- /* ---------------- 4: P.X schedule linked to the model ---------------- */
- S.add({id:'sched',n:['P.X: schedule from the model (4D / 5D)','P.X: الجدول من الموديل (4D / 5D)'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Send the R.X quantities to P.X, compute the schedule, open the Gantt and link the schedule window to the model window.','ابعت كميات R.X لـP.X، احسب الجدول، افتح الجانت واربط نافذة الجدول بنافذة الموديل.'],
+ /* ---------------- phase 3: structural system (RC skeleton on the grid) ---------------- */
+ S.add({id:'sys',phase:'3',n:['Phase 3 · Structural system: columns, beams and footings on the grid','المرحلة 3 · النظام الإنشائي: أعمدة وكمرات وقواعد على الشبكة'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); S.findAnnex(); },
+  sum:['Place the reinforced-concrete skeleton of the garage on the grid: four columns, the beams between them and a footing under each column. Positions are checked by numbers.','نحط هيكل الخرسانة المسلحة للجراج على الشبكة: ٤ أعمدة والكمرات بينهم وقاعدة تحت كل عمود. والمواقع بتتراجع بالأرقام.'],
   steps:[
+   {op:'say',en:'Phase 3 chooses the system. For a house or small building the default is a reinforced-concrete skeleton: columns, beams, solid slabs, isolated footings. The system and the footing type come from the soil report and the engineer.',ar:'المرحلة 3 بتختار النظام. للبيت أو المبنى الصغير الافتراضي هيكل خرسانة مسلحة: أعمدة وكمرات وبلاطات مصمتة وقواعد منفصلة. النظام ونوع القاعدة بيجوا من تقرير التربة والمهندس.'},
+   {op:'run',cmd:'p_codes',after:900},
+   {op:'say',en:'The codes panel lists the codes for reference (titles and scope only: the app does not quote clauses).',ar:'لوحة الأكواد بتسرد الأكواد للرجوع (العناوين والنطاق بس: التطبيق مبيقتبسش بنود).'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:codes'); }catch(e){} }},
    {op:'tab',type:'model'},
-   {op:'say',en:'The schedule is built from the model: "Send to P.X" turns each type of work (foundations, walls, slabs, roof...) into activities with durations from quantities divided by productivity.',ar:'الجدول بيتعمل من الموديل: "ابعت لـP.X" بيحوّل كل نوع شغل (أساسات وحيطان وبلاطات وسقف...) لأنشطة مدتها الكمية على الإنتاجية.'},
-   {op:'run',cmd:'xf_p6',after:500},
-   {op:'assert',en:'The productivity table opened',ar:'جدول الإنتاجية اتفتح',ok:()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول'))},
-   {op:'move',to:()=>[...document.querySelectorAll('table.dctab')].find(t=>vis(t)),opt:1,hold:900,tip:[B('Output per day is a placeholder: use your own productivity','الإنتاجية في اليوم قيمة مبدئية: استخدم إنتاجيتك')]},
-   {op:'click',to:()=>[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول')),hold:400},
-   {op:'assert',en:'Activities created from the model (WBS 5)',ar:'اتعملت أنشطة من الموديل (WBS 5)',ok:()=>nrx()>=3,wait:5000},
-   {op:'do',fn:()=>{ computeSched(); try{ p6Refresh(); }catch(e){} ctx.fin=ACT.filter(a=>a.src==='rx').slice(-1)[0]; }},
-   {op:'assert',en:'Schedule computed: the last activity has a finish date after the start',ar:'اتحسب الجدول: آخر نشاط له تاريخ نهاية بعد البداية',ok:()=>ctx.fin&&ctx.fin.fDate>ctx.fin.sDate},
-   {op:'say',en:'The Gantt chart shows the same activities as bars with the critical path.',ar:'الجانت بيعرض نفس الأنشطة أعمدة مع المسار الحرج.'},
-   {op:'run',cmd:'gantt_open',after:900},
-   {op:'assert',en:'Gantt pane is open',ar:'الجانت مفتوح',ok:()=>{ const l=WX.lay['pane:gantt']; return !!(l&&l.open); }},
-   {op:'say',en:'4D link: link the schedule window with the model window, so selecting an activity shows its work in 3D.',ar:'ربط 4D: نربط نافذة الجدول بنافذة الموديل، فاختيار نشاط يوري شغله في الـ3D.'},
-   {op:'do',fn:()=>{ ctx.lk=TOXAPI.link('sched','model'); }},
-   {op:'assert',en:'Schedule and model windows share a link colour',ar:'نافذتا الجدول والموديل ليهم نفس لون الربط',ok:()=>!!ctx.lk&&LK.col(LK.winId('sched')||'sched')===LK.col(LK.winId('model')||'model')}
+   {op:'do',fn:async a=>{ const x=A(); ctx.c0=E('col').length; ctx.b0=E('beam').length; ctx.f0=E('found').length; RV.lv=S.gl(); try{ rvBrowser(); }catch(e){} await a.fly([(x.minX+x.x1)/2,Math.max(30,(x.x1-x.minX)*1.9),(x.z0+x.maxZ)/2+.6],[(x.minX+x.x1)/2,0,(x.z0+x.maxZ)/2],2000); }},
+   {op:'say',en:'Columns first, at the four corners of the garage, on the grid crossings.',ar:'الأعمدة الأول، في الأركان الأربعة للجراج، على تقاطعات الشبكة.'},
+   {op:'run',cmd:'rv_col'},
+   {op:'assert',en:'Column tool is active',ar:'أداة العمود شغالة',ok:()=>RV.tool==='col'},
+   {op:'draw',pts:cols,names:[['Column 1','عمود ١'],['Column 2','عمود ٢'],['Column 3','عمود ٣'],['Column 4','عمود ٤']],until:()=>E('col').length-ctx.c0>=4},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'4 columns, each centred on a garage corner, standard column size',ar:'٤ أعمدة، كل واحد في ركن الجراج، ٠٫٤ × ٠٫٤ م وارتفاع ٣ م',ok:()=>{ const c=lastN('col',4), P=cols(); return E('col').length-ctx.c0===4&&c.every((x,i)=>pt(x.p,P[i])&&x.w===RV.def.col.w&&x.d===RV.def.col.d&&x.h===RV.def.col.h&&x.lv===S.gl()); },info:()=>JSON.stringify(lastN('col',5).map(c=>[c.p,c.w,c.h,c.lv]))},
+   {op:'say',en:'Beams: click the four column tops in turn and close the loop.',ar:'الكمرات: اضغط على أعلى الأعمدة الأربعة بالترتيب وأقفل الدايرة.'},
+   {op:'run',cmd:'rv_beam'},
+   {op:'draw',pts:()=>{ const P=cols(); return [P[0],P[1],P[2],P[3],P[0]]; },names:[['Beam start: column 1','بداية الكمرة: عمود ١'],['Column 2','عمود ٢'],['Column 3','عمود ٣'],['Column 4','عمود ٤'],['Close at column 1','القفل عند عمود ١']]},
+   {op:'key',k:'Escape',n:2},
+   {op:'assert',en:'4 beams, each from one column centre to the next (ends equal the columns)',ar:'٤ كمرات، كل واحدة من مركز عمود للتالي (النهايات = الأعمدة)',ok:()=>{ const b=lastN('beam',4), P=cols(); return E('beam').length-ctx.b0===4&&b.every((x,i)=>pt(x.a,P[i])&&pt(x.b,P[(i+1)%4])); },info:()=>JSON.stringify(lastN('beam',5).map(b=>[b.a,b.b]))},
+   {op:'say',en:'Footings: one isolated footing under each column.',ar:'القواعد: قاعدة منفصلة تحت كل عمود.'},
+   {op:'run',cmd:'rv_found'},
+   {op:'draw',pts:cols,names:[['Footing under column 1','قاعدة تحت عمود ١'],['Footing under column 2','قاعدة تحت عمود ٢'],['Footing under column 3','قاعدة تحت عمود ٣'],['Footing under column 4','قاعدة تحت عمود ٤']],until:()=>E('found').length-ctx.f0>=4},
+   {op:'key',k:'Escape'},
+   {op:'assert',en:'4 footings, each centred under its column',ar:'٤ قواعد، كل واحدة متمركزة تحت عمودها',ok:()=>{ const f=lastN('found',4), P=cols(); return E('found').length-ctx.f0===4&&f.every((x,i)=>pt(x.p,P[i])); },info:()=>JSON.stringify(lastN('found',5).map(f=>[f.p,f.w,f.d,f.t]))},
+   {op:'shot',name:'01_skeleton_plan'},
+   {op:'do',fn:async a=>{ const x=A(), cx=(x.minX+x.x1)/2, cz=(x.z0+x.maxZ)/2, R=Math.max(26,(x.x1-x.minX)*1.4); await a.fly([cx+R,R*.6,cz+R*.9],[cx,1.2,cz],2400); }},
+   {op:'shot',name:'02_skeleton_persp'},
+   {op:'assert',en:'Geometry check of the whole model after the skeleton',ar:'فحص هندسة الموديل كله بعد الهيكل',ok:()=>S.archCheck().length===0,info:()=>S.archCheck().join('; ')},
+   card('Choice of system and foundation type, preliminary sizing by span/depth, and the column load take-down: no tool yet (a rule-of-thumb sizing sheet is missing). The sizes above are the template defaults, not a design.','اختيار النظام ونوع القواعد والأبعاد المبدئية بالبحر/العمق وتجميع أحمال الأعمدة: مفيش أداة لسه. الأبعاد فوق هي الافتراضية من القالب مش تصميم.',['Preliminary sizing sheet and column take-down','شيت أبعاد مبدئية وتجميع أحمال أعمدة']),
+   card('Whole-building skeleton generator (footings, tie beams, columns on a grid, beams, slabs for every floor): being built in a separate session. When its command exists the demo will use it.','مولّد هيكل المبنى كله (قواعد وسملات وأعمدة على شبكة وكمرات وبلاطات لكل دور): بيتبني في جلسة تانية. لما أمره يظهر الديمو هيستخدمه.',['RC skeleton generator command','أمر مولّد الهيكل الخرساني'])
   ]});
 
- /* ---------------- 5: structure: quantities, concrete check ---------------- */
- S.add({id:'struct',n:['Structure: concrete quantities and a bending check','الإنشائي: كميات الخرسانة وفحص العزم'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Concrete volumes from the R.X model, then a concrete section flexure and shear check with a code selected.','أحجام الخرسانة من موديل R.X، وبعدين فحص انحناء وقص لقطاع خرساني بكود مختار.'],
+ /* ---------------- phase 4: structural design checks ---------------- */
+ S.add({id:'design',phase:'4',n:['Phase 4 · Structural checks: bending and bearing','المرحلة 4 · الفحوصات الإنشائية: العزم وتحمل التربة'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); S.findAnnex(); },
+  sum:['A bending and shear check of a concrete section and a bearing check under a footing, with calculators that exist today. Reinforcement design, columns and BBS are shown as not available yet.','فحص انحناء وقص لقطاع خرساني وفحص تحمل تحت قاعدة، بحاسبات موجودة النهارده. تصميم التسليح والأعمدة وجدول الحديد بتظهر كـ"مش متاح لسه".'],
   steps:[
-   {op:'say',en:'Concrete quantities come from the model elements: walls, floor slabs and columns, measured in m³.',ar:'كميات الخرسانة جاية من عناصر الموديل: حيطان وبلاطات وأعمدة بالمتر المكعب.'},
-   {op:'do',fn:async()=>{ ctx.q=rvQty(); const s=QX.api.sync(true); ctx.mq=s&&s.name; }},
-   {op:'assert',en:'Model quantities sheet in Q.X, with floor slab volume > 0 m³',ar:'شيت كميات الموديل في Q.X وحجم البلاطات أكبر من صفر',ok:()=>ctx.mq==='Model quantities'&&ctx.q.floor.V>0&&ctx.q.wall.V>0},
-   {op:'say',en:'Reinforcement: R.X has the rebar tool for placing bars; the rebar pane of the Parts tab belongs to the lift-station sample, so it is not shown here.',ar:'التسليح: R.X فيه أداة حديد لوضع الأسياخ؛ أما لوحة الحديد في تاب الأجزاء فتبع نموذج المحطة، فمش بنعرضها هنا.'},
-   {op:'say',en:'Moment check: open Engineering analysis, pick "Concrete section: flexure and shear", enter the factored moment and the section, and press Calculate.',ar:'فحص العزم: افتح التحليل الهندسي، اختار "قطاع خرساني: انحناء وقص"، دخّل العزم المضروب في المعاملات والقطاع، واضغط احسب.'},
-   {op:'run',cmd:'p_calc',after:700},
+   {op:'say',en:'Phase 4 is the detailed design: slabs, beams, columns, footings, stairs, each with its checks. Today the app has two screening calculators: a concrete section (bending and shear) and a bearing check.',ar:'المرحلة 4 هي التصميم التفصيلي: بلاطات وكمرات وأعمدة وقواعد وسلالم، وكل واحد بفحوصاته. النهارده التطبيق فيه حاسبتين للفحص المبدئي: قطاع خرساني (انحناء وقص) وفحص تحمل التربة.'},
+   {op:'do',fn:()=>{ ctx.q=rvQty(); const s=QX.api.sync(true); ctx.mq=s&&s.name; }},
+   {op:'assert',en:'Concrete quantities come from the model (slab volume > 0 m³) and fill the Q.X "Model quantities" sheet',ar:'كميات الخرسانة جاية من الموديل (حجم البلاطات أكبر من صفر) وبتملا شيت "كميات الموديل" في Q.X',ok:()=>ctx.mq==='Model quantities'&&ctx.q.floor.V>0&&ctx.q.wall.V>0},
+   {op:'run',cmd:'p_calc',after:800},
    {op:'assert',en:'Engineering analysis pane is open',ar:'لوحة التحليل الهندسي مفتوحة',ok:()=>!!(typeof calBox!=='undefined'&&calBox&&vis(calBox)),wait:4000},
-   {op:'do',fn:()=>{ CC.id='flex'; CC.code='ACI 318'; CC.vals={}; CC.sheet=null; calPanel(); }},
-   {op:'type',to:()=>calBox.querySelectorAll('input[type=number]')[0],text:'120',tip:false,hold:100},
-   {op:'type',to:()=>calBox.querySelectorAll('input[type=number]')[1],text:'80',tip:false,hold:100},
-   {op:'type',to:()=>calBox.querySelectorAll('input[type=number]')[7],text:'30',tip:false,hold:100},
-   {op:'click',to:()=>[...calBox.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Calculate','احسب')),hold:300},
-   {op:'assert',en:'The check ran and returned result rows (no FAIL)',ar:'الفحص اتنفذ ورجّع نتايج (من غير FAIL)',ok:()=>CC.sheet&&CC.sheet.rows&&CC.sheet.rows.length>2&&!CC.sheet.rows.some(r=>r[3]==='FAIL')},
-   {op:'say',en:'These numbers are a demonstration of the calculator, not a structural design: the designer enters real loads and checks the code.',ar:'الأرقام دي توضيح للحاسبة مش تصميم إنشائي: المصمم بيدخل أحمال حقيقية ويراجع الكود.'}
+   {op:'do',fn:()=>calcSet('flex')},
+   {op:'say',en:'Beam check: factored moment 120 kN·m, shear 80 kN, concrete f′c 30 MPa. Demonstration numbers: the designer enters the real loads.',ar:'فحص كمرة: العزم المضروب في المعاملات ١٢٠ كيلو نيوتن·م والقص ٨٠ كيلو نيوتن وخرسانة ٣٠ ميجا باسكال. أرقام للتوضيح: المصمم بيدخل الأحمال الحقيقية.'},
+   {op:'type',to:num(0),text:'120',name:['Moment Mu (kN·m)','العزم Mu (كيلو نيوتن·م)']},
+   {op:'type',to:num(1),text:'80',name:['Shear Vu (kN)','القص Vu (كيلو نيوتن)']},
+   {op:'type',to:num(7),text:'30',name:['Concrete f′c (MPa)','الخرسانة f′c (ميجا باسكال)']},
+   {op:'click',to:calcBtn,name:['Calculate','احسب']},
+   {op:'assert',en:'The check ran: result rows, no FAIL',ar:'الفحص اتنفذ: نتايج من غير FAIL',ok:()=>CC.sheet&&CC.sheet.rows&&CC.sheet.rows.length>2&&!CC.sheet.rows.some(r=>r[3]==='FAIL')},
+   {op:'shot',name:'01_flex_result'},
+   {op:'do',fn:()=>calcSet('bear')},
+   {op:'say',en:'Footing check: load on one column about 126 kN (tributary area 9 m² × 14 kN/m², a RULE OF THUMB), footing 1.5 × 1.5 m = 2.25 m², allowable bearing 200 kN/m² (from the soil report).',ar:'فحص القاعدة: حمل العمود حوالي ١٢٦ كيلو نيوتن (المساحة المحملة ٩ م² × ١٤ كيلو نيوتن/م²، قاعدة تقريبية)، قاعدة ١٫٥ × ١٫٥ م = ٢٫٢٥ م²، تحمل مسموح ٢٠٠ كيلو نيوتن/م² (من تقرير التربة).'},
+   {op:'type',to:num(0),text:'126',name:['Load W (kN)','الحمل W (كيلو نيوتن)']},
+   {op:'type',to:num(1),text:'2.25',name:['Base area A (m²)','مساحة القاعدة A (م²)']},
+   {op:'click',to:calcBtn,name:['Calculate','احسب']},
+   {op:'assert',en:'Applied pressure 56 kN/m² is below the allowable 200: OK',ar:'الضغط الواقع ٥٦ كيلو نيوتن/م² أقل من المسموح ٢٠٠: تمام',ok:()=>CC.sheet&&CC.sheet.rows&&CC.sheet.rows[0][3]==='OK'&&Math.abs(+CC.sheet.rows[0][1]-56)<1},
+   {op:'shot',name:'02_bearing_result'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:calc'); }catch(e){} }},
+   card('Slab panels and moment coefficients, beam shear and deflection, column axial + moment interaction, footing punching shear, stairs, retaining walls: no calculation sheets yet (a structural design session is writing them).','بلاطات ومعاملات العزم، قص وترخيم الكمرات، تفاعل عزم ومحوري الأعمدة، قص الخرق للقواعد، السلالم، حوائط الساند: مفيش شيتات حساب لسه (جلسة التصميم الإنشائي بتكتبها).',['Structural design sheets (slab, beam, column, footing, stair)','شيتات تصميم إنشائي (بلاطة، كمرة، عمود، قاعدة، سلم)']),
+   card('Reinforcement detailing (cover, spacing, development and lap lengths), bar bending schedule (BBS) and structural drawings: the ribbon commands are placeholders today; a rebar session is adding bar placement and BBS.','تفاصيل التسليح (الغطاء والمسافات وأطوال الربط) وجدول تفريد الحديد (BBS) والرسومات الإنشائية: أوامر الشريط مكان محجوز النهارده؛ وجلسة الحديد بتضيف وضع الأسياخ والـBBS.',['Rebar placement and BBS','وضع حديد وجدول تفريد']),
+   card('The Egyptian code method (ECP 203 with cube strength) is not programmed: it needs a verified formula set from the licensed code. The check above uses the ACI form for screening only.','طريقة الكود المصري (ECP 203 بمقاومة المكعب) مش مبرمجة: محتاجة معادلات متحقق منها من الكود المرخص. الفحص فوق بصيغة ACI للفحص المبدئي بس.',['Verified ECP 203 formula set','معادلات ECP 203 متحقق منها'])
   ]});
 
- /* ---------------- 6: electrical (AC circuits) ---------------- */
- S.add({id:'elec',n:['Electrical: AC unit circuits','الكهرباء: دوائر وحدات التكييف'],mode:'real',
+ /* ---------------- phase 5: MEP ---------------- */
+ S.add({id:'elec',phase:'5',n:['Phase 5 · Electrical: rooms and AC circuits','المرحلة 5 · الكهرباء: الغرف ودوائر التكييف'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
   sum:['Add the rooms in V.X, then create one AC unit per room and read its current, breaker and cable size.','ضيف الغرف في V.X، وبعدين اعمل وحدة تكييف لكل غرفة واقرأ تيارها وقاطعها ومقاس كابلها.'],
   steps:[
-   {op:'say',en:'The electrical data of the air conditioners follows the rooms. Open V.X and add three rooms.',ar:'بيانات كهرباء التكييف تابعة للغرف. افتح V.X وضيف ٣ غرف.'},
+   {op:'say',en:'Phase 5 designs the electrical, HVAC, plumbing and low-current systems. The AC electrical data follows the rooms. Open V.X and add three rooms.',ar:'المرحلة 5 بتصمم الكهرباء والتكييف والسباكة والتيار الخفيف. كهرباء التكييف تابعة للغرف. افتح V.X وضيف ٣ غرف.'},
    {op:'tab',type:'hv'},
    {op:'do',fn:()=>{ ctx.r0=HVD.rooms.length; }},
    {op:'run',cmd:'hv_room'},{op:'run',cmd:'hv_room'},{op:'run',cmd:'hv_room'},
    {op:'assert',en:'3 rooms added',ar:'اتضافت ٣ غرف',ok:()=>HVD.rooms.length-ctx.r0===3},
    {op:'do',fn:()=>{ const v=HVD.rooms.slice(-3); [['Living',40,6],['Master bedroom',24,3],['Kitchen',16,3]].forEach((x,i)=>{ Object.assign(v[i],{n:x[0],A:x[1],pp:x[2],gS:4,wS:8}); }); hvSave(); hvRender(); }},
-   {op:'say',en:'Now "Units from cooling load" creates one AC unit per room and sizes the current, the breaker and the cable.',ar:'دلوقتي "وحدات من حمل التبريد" بتعمل وحدة تكييف لكل غرفة وبتحسب التيار والقاطع والكابل.'},
-   {op:'run',cmd:'ace_load',after:800},
+   {op:'say',en:'"Units from cooling load" creates one AC unit per room and sizes the current, the breaker and the cable.',ar:'"وحدات من حمل التبريد" بتعمل وحدة تكييف لكل غرفة وبتحسب التيار والقاطع والكابل.'},
+   {op:'run',cmd:'ace_load',after:900},
    {op:'assert',en:'AC units created, each with current > 0 A and a breaker size',ar:'اتعملت وحدات التكييف وليها تيار أكبر من صفر وقاطع',ok:()=>ACE.units.length>=3&&ACE.units.every(u=>{ const r=aceCalc(u); return r.I>0&&r.br>0; })},
    {op:'run',cmd:'ace_open',after:900},
    {op:'assert',en:'AC electrical pane open',ar:'لوحة كهرباء التكييف مفتوحة',ok:()=>{ const l=WX.lay['pane:acel']; return !!(l&&l.open); }},
-   {op:'say',en:'This covers the AC circuits. Lighting, power panels and cable trays are not calculated in this app yet: the R.X ribbon has their tools as model placeholders only.',ar:'ده بيغطي دوائر التكييف. الإنارة ولوحات الكهرباء وصواني الكابلات مش محسوبة في التطبيق لسه: شريط R.X فيه أدواتها كمكان محجوز بس.'}
+   {op:'shot',name:'01_ac_electrical'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:acel'); }catch(e){} }},
+   card('Room-by-room load schedule (lighting, sockets), distribution boards and circuits, earthing and protection, lighting design: only the AC circuits are calculated; the rest has no tool yet (an MEP session is adding electrical design commands).','جدول أحمال كل غرفة (إنارة وبرايز) ولوحات التوزيع والدوائر والتأريض والحماية وتصميم الإنارة: دوائر التكييف بس هي المحسوبة؛ الباقي مفيش أداة لسه (جلسة MEP بتضيف أوامر تصميم الكهرباء).',['Electrical load schedule, boards, earthing, lighting','جدول أحمال وألواح وتأريض وإنارة'])
   ]});
-
- /* ---------------- 7: HVAC ---------------- */
- S.add({id:'hvac',n:['HVAC: cooling load and ducts','التكييف: حمل التبريد والمجاري'],mode:'real',
+ S.add({id:'hvac',phase:'5.1',n:['Phase 5 · HVAC: cooling load and ducts','المرحلة 5 · التكييف: حمل التبريد والمجاري'],mode:'real',
   pre:async()=>{ await S.ensureProject(); if(HVD.rooms.length<1){ HVD.rooms.push(Object.assign({},HVR,{n:'Room 1',A:30})); hvSave(); } },
   sum:['Hourly cooling load per room, then duct sizes from the loads.','حمل التبريد بالساعة لكل غرفة، وبعدين مقاسات المجاري من الأحمال.'],
   steps:[
@@ -13978,117 +14080,187 @@ const DEMO=(function(){
    {op:'say',en:'V.X computes the cooling load of each room on a design day: walls, glass, people, lights, equipment and ventilation. The design temperatures are editable placeholders.',ar:'V.X بيحسب حمل التبريد لكل غرفة في يوم التصميم: حيطان وزجاج وناس وإضاءة وأجهزة وتهوية. درجات الحرارة قيم مبدئية تتعدل.'},
    {op:'do',fn:()=>{ ctx.hv=hvCalc(); hvRender(); }},
    {op:'assert',en:'Cooling load computed for every room',ar:'اتحسب حمل التبريد لكل غرفة',ok:()=>ctx.hv&&ctx.hv.rooms&&ctx.hv.rooms.length===HVD.rooms.length&&JSON.stringify(ctx.hv.rooms[0]).length>200},
+   {op:'shot',name:'01_cooling_load'},
    {op:'say',en:'Duct flows come straight from the room loads.',ar:'تدفقات المجاري جاية مباشرة من أحمال الغرف.'},
    {op:'do',fn:()=>{ ctx.du0=DUC.secs.length; }},
-   {op:'run',cmd:'du_load',after:800},
+   {op:'run',cmd:'du_load',after:900},
    {op:'assert',en:'Duct sections created from the loads (airflow > 0)',ar:'اتعملت قطاعات مجاري من الأحمال (تدفق أكبر من صفر)',ok:()=>DUC.secs.length>ctx.du0&&DUC.secs.slice(-1)[0].Q>0},
-   {op:'run',cmd:'dp_open',after:700,soft:1},
+   {op:'run',cmd:'dp_open',after:800,soft:1},
+   card('Equipment selection (split / VRF), fresh air and extract, and the HVAC 3D layout: libraries exist as shells with placeholder data; no sizing from the load yet.','اختيار المعدات (سبليت / VRF) والهواء النقي والشفط والرسم ثلاثي الأبعاد للتكييف: المكتبات موجودة كهياكل ببيانات مبدئية؛ ومفيش اختيار من الحمل لسه.',['Equipment selection from the load','اختيار معدات من الحمل']),
    {op:'say',en:'The result is a sizing aid for review by the HVAC engineer, not an approved design.',ar:'النتيجة أداة مساعدة للتحجيم يراجعها مهندس التكييف، مش تصميم معتمد.'}
   ]});
- const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
-})();
-
-/* ====== demo_ch3.js - chapters 8-12: low-current symbols, plumbing/drainage checks, N.X clash, BOQ + documents, outputs. Evaluated with the other demo files. ====== */
-(function(){
- const S=DEMO, B=S.B, ctx={};
- const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
- const card=name=>()=>{ const it=lbItems(LB.libs.cxblk).find(x=>x.id===name); const t=it&&lbNm(it); return [...document.querySelectorAll('#lbg_cx .lbc')].find(c=>c.title===t); };
- const calcRun=async(id,vals)=>{ CC.id=id; CC.code=CALCS.find(x=>x.id===id).codes[0]; CC.vals={}; CC.sheet=null; calPanel(); };
- const num=i=>()=>calBox.querySelectorAll('input[type=number]')[i];
- const calcBtn=()=>[...calBox.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Calculate','احسب'));
-
- /* ---------------- 8: low-current (symbols on the C.X drawing) ---------------- */
- S.add({id:'lowc',n:['Low-current: data, TV and fire-alarm symbols','التيار الخفيف: رموز البيانات والتلفزيون وإنذار الحريق'],mode:'mixed',
+ S.add({id:'plumb',phase:'5.2',n:['Phase 5 · Plumbing and drainage checks','المرحلة 5 · السباكة والصرف: الفحوصات'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Gravity drain capacity (Manning) and water pipe head loss (Hazen-Williams) with the calculators.','سعة ماسورة الصرف (Manning) وفقد ضغط ماسورة المياه (Hazen-Williams) بالحاسبات.'],
+  steps:[
+   {op:'say',en:'Drainage: the capacity of a gravity pipe from its diameter, roughness and slope (Manning). Open Engineering analysis.',ar:'الصرف: سعة ماسورة جاذبية من قطرها وخشونتها وميلها (Manning). افتح التحليل الهندسي.'},
+   {op:'run',cmd:'p_calc',after:800},
+   {op:'assert',en:'Engineering analysis pane is open',ar:'لوحة التحليل الهندسي مفتوحة',ok:()=>!!(typeof calBox!=='undefined'&&calBox&&vis(calBox)),wait:4000},
+   {op:'do',fn:()=>calcSet('man')},
+   {op:'type',to:num(0),text:'300',name:['Diameter (mm)','القطر (مم)']},{op:'type',to:num(1),text:'0.013',name:['Manning n','معامل Manning n']},{op:'type',to:num(2),text:'0.005',name:['Slope (m/m)','الميل (م/م)']},
+   {op:'click',to:calcBtn,name:['Calculate','احسب']},
+   {op:'assert',en:'Full-flow capacity 68 L/s and velocity returned (300 mm at 0.5%)',ar:'رجعت السعة ٦٨ لتر/ث والسرعة للتصرف الكامل (٣٠٠ مم بميل ٠٫٥٪)',ok:()=>CC.sheet&&CC.sheet.rows&&Math.abs(+CC.sheet.rows[0][1]-68.4)<1},
+   {op:'say',en:'Water supply: friction loss (Hazen-Williams) for 10 L/s in 100 mm over 200 m.',ar:'المياه: فقد الاحتكاك (Hazen-Williams) لتصرف ١٠ لتر/ث في ١٠٠ مم لمسافة ٢٠٠ م.'},
+   {op:'do',fn:()=>calcSet('hw')},
+   {op:'type',to:num(0),text:'10',name:['Flow (L/s)','التصرف (لتر/ث)']},{op:'type',to:num(1),text:'100',name:['Diameter (mm)','القطر (مم)']},{op:'type',to:num(2),text:'200',name:['Length (m)','الطول (م)']},{op:'type',to:num(3),text:'140',name:['C factor','معامل C']},{op:'type',to:num(4),text:'0',name:['Minor losses K','فواقد ثانوية K']},
+   {op:'click',to:calcBtn,name:['Calculate','احسب']},
+   {op:'assert',en:'Velocity 1.27 m/s and total head loss 3.3 m returned',ar:'رجعت السرعة ١٫٢٧ م/ث وفقد الضغط الكلي ٣٫٣ م',ok:()=>CC.sheet&&CC.sheet.rows&&Math.abs(+CC.sheet.rows[0][1]-1.27)<.05},
+   {op:'shot',name:'01_hazen_result'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:calc'); }catch(e){} }},
+   card('Fixture units and pipe sizing for the whole building, hot water, vents, septic or sewer connection, rainwater roof drains, fire fighting: no tool yet beyond the two calculators.','وحدات الأجهزة وتحجيم المواسير للمبنى كله والمياه الساخنة والتهوية وتوصيل الصرف أو الخزان والصرف المطري وإطفاء الحريق: مفيش أداة لسه غير الحاسبتين.',['Plumbing design sheets and layouts','شيتات وتصميم سباكة']),
+   {op:'say',en:'Results are checks for review by the engineer, not an approved design.',ar:'النتايج فحوصات يراجعها المهندس، مش تصميم معتمد.'}
+  ]});
+ S.add({id:'lowc',phase:'5.3',n:['Phase 5 · Low-current: data, TV and fire-alarm symbols','المرحلة 5 · التيار الخفيف: رموز البيانات والتلفزيون وإنذار الحريق'],mode:'mixed',
   pre:async()=>{ await S.ensureProject(); },
   sum:['Place data outlet, TV outlet, smoke detector and alarm bell symbols from the C.X block library onto the drawing.','ضع رموز مخرج بيانات وتلفزيون وكاشف دخان وجرس إنذار من مكتبة بلوكات C.X على الرسم.'],
   steps:[
-   {op:'say',en:'Low-current systems (data, TV, fire alarm) are drawn in C.X with the block library. The app has symbols for them; there is no cabling or alarm calculation module for them yet.',ar:'التيار الخفيف (بيانات وتلفزيون وإنذار حريق) بيترسم في C.X بمكتبة البلوكات. التطبيق فيه رموزها؛ ومفيش وحدة حساب كابلات أو إنذار ليها لسه.'},
+   {op:'say',en:'Low-current systems (data, TV, fire alarm) are drawn in C.X with the block library. The app has symbols for them; there is no cabling or alarm calculation module yet.',ar:'التيار الخفيف (بيانات وتلفزيون وإنذار حريق) بيترسم في C.X بمكتبة البلوكات. التطبيق فيه رموزها؛ ومفيش وحدة حساب كابلات أو إنذار ليها لسه.'},
    {op:'tab',type:'draft'},
-   {op:'assert',en:'C.X drawing tab is open',ar:'تاب رسم C.X مفتوح',ok:()=>ribType()==='draft',wait:5000},
    {op:'do',fn:()=>{ ctx.e0=cadD().ents.length; lbOpen('cx','cxblk','data'); }},
    {op:'assert',en:'Block library pane is open with cards',ar:'لوحة مكتبة البلوكات مفتوحة وفيها كروت',ok:()=>document.querySelectorAll('#lbg_cx .lbc').length>10,wait:4000},
-   {op:'do',fn:()=>{ ctx.pts=[[2000,1500],[3500,1500],[5000,1500],[6500,1500]]; ctx.k=0; }},
-   {op:'click',to:card('data'),hold:500},
-   {op:'assert',en:'Place mode is armed (click on the drawing)',ar:'وضع الوضع شغال (اضغط على الرسم)',ok:()=>CS.tool==='lbplace'&&!!CS.lbArm},
-   {op:'move',to:()=>{ const s=CW.querySelector('svg'); return vis(s)?s:CW; },at:[.3,.4],hold:300,tip:false},
-   {op:'do',fn:()=>{ cadClick(ctx.pts[0]); }},
-   {op:'click',to:card('tv'),hold:300},{op:'move',to:()=>CW,at:[.45,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[1]); }},
-   {op:'click',to:card('smoke'),hold:300},{op:'move',to:()=>CW,at:[.6,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[2]); }},
-   {op:'click',to:card('bell'),hold:300},{op:'move',to:()=>CW,at:[.75,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[3]); cadEsc(); }},
-   {op:'assert',en:'Four symbols placed as real CAD entities and saved as blocks',ar:'٤ رموز اتحطت ككيانات CAD حقيقية واتحفظت كبلوكات',ok:()=>{ const D=cadD(); return D.ents.length-ctx.e0>=4&&['LB_data','LB_tv','LB_smoke','LB_bell'].filter(k=>D.blocks&&Object.keys(D.blocks).some(b=>b.toLowerCase().indexOf(k.toLowerCase())===0||b===k)).length>=1; }},
-   {op:'say',en:'Placed symbols are normal drawing entities: they can be moved, layered and exported with the sheet.',ar:'الرموز اللي اتحطت كيانات رسم عادية: تتحرك وتتوزع على طبقات وتتصدّر مع اللوحة.'}
+   {op:'do',fn:()=>{ ctx.pts=[[2000,1500],[3500,1500],[5000,1500],[6500,1500]]; }},
+   ...[['data',0,.3],['tv',1,.45],['smoke',2,.6],['bell',3,.75]].flatMap(([id,k,fx])=>[
+     {op:'click',to:()=>{ const it=lbItems(LB.libs.cxblk).find(x=>x.id===id); const t=it&&lbNm(it); return [...document.querySelectorAll('#lbg_cx .lbc')].find(c=>c.title===t); },hold:1000},
+     {op:'assert',en:'Place mode is armed (click on the drawing)',ar:'وضع الوضع شغال (اضغط على الرسم)',ok:()=>CS.tool==='lbplace'&&!!CS.lbArm},
+     {op:'move',to:()=>{ const s=CW.querySelector('svg'); return vis(s)?s:CW; },at:[fx,.4],tip:false,hold:900},
+     {op:'do',fn:()=>{ cadClick(ctx.pts[k]); if(k===3)cadEsc(); }}]),
+   {op:'assert',en:'Four symbols placed as real CAD entities and saved as blocks',ar:'٤ رموز اتحطت ككيانات CAD حقيقية واتحفظت كبلوكات',ok:()=>{ const D=cadD(); return D.ents.length-ctx.e0>=4&&Object.keys(D.blocks||{}).some(b=>/^LB_/i.test(b)); }},
+   {op:'do',fn:()=>{ try{ wxClose('lb_cx'); }catch(e){} }},
+   {op:'do',fn:()=>{ try{ cadZoomExt(); }catch(e){} }},
+   {op:'shot',name:'01_symbols'},
+   card('Cabling routes, rack and panel locations, fire-alarm zoning and device counts: no tool yet (symbols only).','مسارات الكابلات ومكان الراك واللوحات ومناطق الإنذار وعدد الأجهزة: مفيش أداة لسه (رموز بس).',['Low-current layout and schedules','تخطيط وجداول تيار خفيف'])
   ]});
 
- /* ---------------- 9: plumbing, drainage, infrastructure checks ---------------- */
- S.add({id:'plumb',n:['Plumbing, drainage and infrastructure checks','الصرف والمياه والبنية التحتية: الفحوصات'],mode:'mixed',
+ /* ---------------- phase 6: coordination, quantities, BOQ ---------------- */
+ S.add({id:'clash',phase:'6',n:['Phase 6 · N.X coordination and clash detection','المرحلة 6 · N.X التنسيق وكشف التعارضات'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
-  sum:['Gravity drain capacity (Manning) and water pipe head loss (Hazen-Williams) with the calculators; the S.X pipe-network tools are shown but not drawn.','سعة ماسورة الصرف (Manning) وفقد ضغط ماسورة المياه (Hazen-Williams) بالحاسبات؛ وأدوات شبكة المواسير في S.X بنعرضها بس من غير رسم.'],
+  sum:['Add a clash test of everything against everything and run it on the model.','ضيف اختبار تعارض لكل حاجة ضد كل حاجة وشغّله على الموديل.'],
   steps:[
-   {op:'say',en:'Drainage: the capacity of a gravity pipe from its diameter, roughness and slope (Manning). Open Engineering analysis.',ar:'الصرف: سعة ماسورة جاذبية من قطرها وخشونتها وميلها (Manning). افتح التحليل الهندسي.'},
-   {op:'run',cmd:'p_calc',after:700},
-   {op:'assert',en:'Engineering analysis pane is open',ar:'لوحة التحليل الهندسي مفتوحة',ok:()=>!!(typeof calBox!=='undefined'&&calBox&&vis(calBox)),wait:4000},
-   {op:'do',fn:()=>calcRun('man')},
-   {op:'type',to:num(0),text:'300',tip:false,hold:100},{op:'type',to:num(1),text:'0.013',tip:false,hold:100},{op:'type',to:num(2),text:'0.005',tip:false,hold:100},
-   {op:'click',to:calcBtn,hold:300},
-   {op:'assert',en:'Full-flow capacity and velocity returned (300 mm, slope 0.5%)',ar:'رجعت السعة والسرعة للتصرف الكامل (٣٠٠ مم، ميل ٠٫٥٪)',ok:()=>CC.sheet&&CC.sheet.rows&&+CC.sheet.rows[0][1]>10},
-   {op:'say',en:'Water supply: friction loss in a pipe (Hazen-Williams) for a flow of 10 L/s in 100 mm over 200 m.',ar:'المياه: فقد الاحتكاك في ماسورة (Hazen-Williams) لتصرف ١٠ لتر/ث في ١٠٠ مم لمسافة ٢٠٠ م.'},
-   {op:'do',fn:()=>calcRun('hw')},
-   {op:'type',to:num(0),text:'10',tip:false,hold:100},{op:'type',to:num(1),text:'100',tip:false,hold:100},{op:'type',to:num(2),text:'200',tip:false,hold:100},{op:'type',to:num(3),text:'140',tip:false,hold:100},{op:'type',to:num(4),text:'0',tip:false,hold:100},
-   {op:'click',to:calcBtn,hold:300},
-   {op:'assert',en:'Velocity and head loss returned',ar:'رجعت السرعة وفقد الضغط',ok:()=>CC.sheet&&CC.sheet.rows&&CC.sheet.rows.some(r=>/Total|الإجمالي/.test(r[0])&&+r[1]>0)},
-   {op:'say',en:'Infrastructure networks (sewer, storm, water, fire) live in S.X: the Pipe Network tools and the structures catalogue. Here we only open the tab and point at them; drawing a network is not part of this demo.',ar:'شبكات البنية التحتية (صرف وأمطار ومياه وحريق) في S.X: أدوات شبكة المواسير وكتالوج المنشآت. هنا بنفتح التاب ونشاور عليها بس؛ رسم شبكة مش جزء من الديمو.'},
-   {op:'tab',type:'survey'},
-   {op:'move',to:'cmd:survey_60',opt:1,hold:900},
-   {op:'assert',en:'S.X tab is open (tour only)',ar:'تاب S.X مفتوح (عرض بس)',ok:()=>ribType()==='survey',soft:1},
-   {op:'say',en:'Results are checks for review by the engineer, not an approved design.',ar:'النتايج فحوصات يراجعها المهندس، مش تصميم معتمد.'}
-  ]});
-
- /* ---------------- 10: N.X coordination and clashes ---------------- */
- S.add({id:'clash',n:['N.X: coordination and clash detection','N.X: التنسيق وكشف التعارضات'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Add a clash test of everything against everything and run it on the R.X model.','ضيف اختبار تعارض لكل حاجة ضد كل حاجة وشغّله على موديل R.X.'],
-  steps:[
-   {op:'say',en:'N.X checks the model for clashes. A hard test finds elements whose volumes overlap. Open the Clash Detective.',ar:'N.X بيفحص الموديل عن تعارضات. اختبار hard بيلاقي عناصر أحجامها متداخلة. افتح كاشف التعارض.'},
+   {op:'say',en:'Phase 6 starts with coordination: all disciplines in one model, then a clash test. A hard test finds elements whose volumes overlap.',ar:'المرحلة 6 بتبدأ بالتنسيق: كل التخصصات في موديل واحد وبعدين اختبار تعارض. اختبار hard بيلاقي عناصر أحجامها متداخلة.'},
    {op:'tab',type:'coord'},
-   {op:'run',cmd:'nv_clash',after:800},
+   {op:'run',cmd:'nv_clash',after:900},
    {op:'assert',en:'Clash Detective pane is open',ar:'كاشف التعارض مفتوح',ok:()=>{ const l=WX.lay['pane:nvclash']; return !!(l&&l.open); },wait:4000},
    {op:'do',fn:()=>{ ctx.t0=nvCl().tests.length; CLS.tab='tests'; nvClRender(); }},
-   {op:'click',to:'[data-a="addtest"]',tip:[B('Add a test','أضف اختبار')],hold:400},
+   {op:'click',to:'[data-a="addtest"]',name:['Add a test','أضف اختبار']},
    {op:'assert',en:'A test was added',ar:'اتضاف اختبار',ok:()=>nvCl().tests.length===ctx.t0+1},
-   {op:'click',to:'[data-a="runall"]',tip:[B('Run all tests','شغّل كل الاختبارات')],hold:400,after:800},
-   {op:'assert',en:'The test ran and found clashes (overlapping R.X elements: slabs, stairs, walls)',ar:'الاختبار اشتغل ولقى تعارضات (عناصر R.X متداخلة: بلاطات وسلالم وحيطان)',ok:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; return t&&Array.isArray(t.results)&&t.count>0; },wait:5000},
-   {op:'do',fn:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; ctx.n=t.count; t.results[0].status='Reviewed'; try{ nvKeep(); CLS.tab='res'; nvClRender(); }catch(e){} }},
+   {op:'click',to:'[data-a="runall"]',name:['Run all tests','شغّل كل الاختبارات'],after:1200},
+   {op:'assert',en:'The test ran and found clashes',ar:'الاختبار اشتغل ولقى تعارضات',ok:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; return t&&Array.isArray(t.results)&&t.count>0; },wait:5000},
+   {op:'do',fn:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; t.results[0].status='Reviewed'; try{ nvKeep(); CLS.tab='res'; nvClRender(); }catch(e){} }},
    {op:'assert',en:'First clash marked "Reviewed" in the results list',ar:'أول تعارض اتعلّم "Reviewed" في قايمة النتايج',ok:()=>nvCl().tests.slice(-1)[0].results[0].status==='Reviewed'},
-   {op:'say',en:'The clashes here come from the sample template itself (a stair crossing the slab, wall and slab overlaps). In a real project you review each one and fix the model.',ar:'التعارضات هنا جاية من القالب نفسه (سلم بيقطع البلاطة وتداخل حيطان وبلاطات). في مشروع حقيقي بتراجع كل واحد وتصلّح الموديل.'}
+   {op:'shot',name:'01_clash_results'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:nvclash'); }catch(e){} }},
+   {op:'say',en:'The clashes come from the template itself (for example a stair crossing a slab). In a real project each one is reviewed and the model fixed. MEP pipes and ducts are not modelled in 3D yet, so MEP clashes cannot be found.',ar:'التعارضات جاية من القالب نفسه (مثلاً سلم بيقطع بلاطة). في مشروع حقيقي كل واحد بيتراجع والموديل بيتصلح. مواسير ومجاري الـMEP مش متعملة 3D لسه فمينفعش نلاقي تعارضات MEP.'}
   ]});
-
- /* ---------------- 11: BOQ, costs and documents ---------------- */
- S.add({id:'boq',n:['BOQ, costs and documents','المقايسة والتكاليف والمستندات'],mode:'real',
+ S.add({id:'boq',phase:'6.1',n:['Phase 6 · Quantities, BOQ and cost','المرحلة 6 · الكميات والمقايسة والتكلفة'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
-  sum:['Quantities from the model become a BOQ and a cost summary in Q.X; then register an RFI and a transmittal in the document register.','كميات الموديل بتبقى مقايسة وملخص تكلفة في Q.X؛ وبعدين سجل RFI ومراسلة في سجل المستندات.'],
+  sum:['Quantities from the model become a BOQ and a cost summary in Q.X.','كميات الموديل بتبقى مقايسة وملخص تكلفة في Q.X.'],
   steps:[
    {op:'say',en:'Q.X links to the model: "Model quantities" lists every item, "Build BOQ" groups them, "Cost summary" adds percentages and totals.',ar:'Q.X مربوط بالموديل: "كميات الموديل" بتسرد كل بند، "عمل BOQ" بيجمّعها، "ملخص التكلفة" بيضيف النسب والإجماليات.'},
    {op:'tab',type:'takeoff'},
-   {op:'do',fn:()=>{ ctx.sh0=QX.api.wb().sheets.length; QX.api.sync(true); QX.mkBoq(); QX.mkCost(); }},
+   {op:'do',fn:()=>{ QX.api.sync(true); QX.mkBoq(); QX.mkCost(); }},
    {op:'assert',en:'Model quantities, BOQ and Cost summary sheets exist',ar:'شيتات كميات الموديل والـBOQ وملخص التكلفة موجودة',ok:()=>{ const n=QX.api.wb().sheets.map(s=>s.name); return n.includes('Model quantities')&&n.some(x=>/^BOQ/i.test(x))&&n.includes('Cost summary'); }},
-   {op:'say',en:'The rate cells are empty on purpose. Here is one SAMPLE rate typed into the BOQ so you can see the total move; use your own rates.',ar:'خانات السعر فاضية عن قصد. هنا سعر تجريبي واحد في الـBOQ عشان تشوف الإجمالي بيتحرك؛ استخدم أسعارك.'},
+   {op:'shot',name:'01_boq'},
+   {op:'say',en:'The rate cells are empty on purpose. One SAMPLE rate is typed into the BOQ so you can see the total move; use your own rates.',ar:'خانات السعر فاضية عن قصد. سعر تجريبي واحد اتكتب في الـBOQ عشان تشوف الإجمالي بيتحرك؛ استخدم أسعارك.'},
    {op:'do',fn:()=>{ const w=QX.api.wb(), sh=w.sheets.find(s=>/^BOQ/i.test(s.name)); const hdr=[0,1,2,3,4,5].map(k=>qxGet(sh,0,k)); ctx.rc=hdr.findIndex(v=>typeof v==='string'&&/^rate$|سعر/i.test(v)); ctx.ac=hdr.findIndex(v=>typeof v==='string'&&/^amount$|المبلغ/i.test(v)); ctx.qr=-1; for(let r=1;r<40;r++){ const q=qxGet(sh,r,ctx.rc-1); if(typeof q==='number'&&q>0){ ctx.qr=r; ctx.q=q; break; } } if(ctx.rc>0&&ctx.qr>0){ sh.cells[qxK(ctx.qr,ctx.rc)]=100; try{ qxRecalcAll(w); }catch(e){} ctx.amt=qxGet(sh,ctx.qr,ctx.ac); } }},
    {op:'assert',en:'With a sample rate of 100 the item amount = quantity × 100',ar:'بسعر تجريبي ١٠٠ مبلغ البند = الكمية × ١٠٠',ok:()=>typeof ctx.amt==='number'&&Math.abs(ctx.amt-ctx.q*100)<.5},
-   {op:'say',en:'Documents: register an RFI and a transmittal. Every record gets a reference number and a status trail.',ar:'المستندات: سجل RFI ومراسلة. كل سجل ليه رقم مرجعي ومسار حالات.'},
-   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; ctx.r1=TOX.addDoc({type:'RFI',dir:'out',subject:'Sample RFI: confirm garage slab thickness',body:'Demo record.',from:'Contractor',to:'Consultant'}); ctx.r2=TOX.addDoc({type:'TRN',dir:'out',subject:'Sample transmittal: drawing set A',body:'Demo record.',from:'Contractor',to:'Consultant'}); TOX.setStatus(ctx.r1,'sent'); }},
-   {op:'assert',en:'Two records in the register, the RFI marked sent',ar:'سجلين في السجل والـRFI حالته sent',ok:()=>TOX.docs().length-ctx.d0===2&&TOX.docs().find(d=>d.ref===ctx.r1).status==='sent'}
+   card('Specifications (concrete grade, steel, finishes), unit-price lists and a priced estimate with preliminaries: the app has no price list or specification book; rates and specs are typed by the estimator (a price-and-spec session is adding sample books).','المواصفات (رتبة الخرسانة والحديد والتشطيبات) وقوايم الأسعار وتقدير مسعّر بالمصروفات العامة: التطبيق مفيهوش قايمة أسعار أو كتاب مواصفات؛ المقدّر بيكتب الأسعار والمواصفات (جلسة الأسعار والمواصفات بتضيف كتب تجريبية).',['Unit-price list and specification book','قايمة أسعار وكتاب مواصفات'])
+  ]});
+ /* feature detection example for later sessions: when a skeleton generator command appears, offer it as a real step */
+ S.has=id=>!!XC[id];
+})();
+
+/* ====== demo_ch3.js - phases 7-10: tender, planning, construction in stages with hold points, handover, outputs. Evaluated with the other demo files. ====== */
+(function(){
+ const S=DEMO, B=S.B, ctx={};
+ const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
+ const nrx=()=>ACT.filter(a=>a.src==='rx').length;
+ const card=(en,ar,need,kind)=>({op:'card',kind:kind,en:en,ar:ar,need:need});
+ const STAGES=[{"id": "9.1", "en": "Site setup and set-out", "ar": "تجهيز الموقع والتوقيع", "hold": "HOLD: set-out checked by the consultant before excavation. Record: set-out sheet."}, {"id": "9.2", "en": "Excavation and shoring", "ar": "الحفر والسند", "hold": "HOLD: founding level and soil acceptance (consultant + geotech). Record: excavation approval form with level readings."}, {"id": "9.3", "en": "Blinding and waterproofing of foundations", "ar": "الخرسانة العادية وعزل الأساسات", "hold": "HOLD: blinding level and dimensions; waterproofing continuity. Record: blinding approval."}, {"id": "9.4", "en": "Footings, neck columns and tie beams", "ar": "القواعد ورقاب الأعمدة والسملات", "hold": "HOLD 1: rebar inspection before pour (diameter, spacing, cover, laps, starters, cleanliness, formwork). HOLD 2: pour with approved mix, slum"}, {"id": "9.5", "en": "Ground slab / plinth beams and DPC", "ar": "أرضية الدور الأرضي والعزل الأفقي", "hold": "HOLD: sleeves/embedded services inspected BEFORE pour (MEP + QC). Record: embedded works checklist."}, {"id": "9.6", "en": "Columns, beams and slabs - each floor", "ar": "الأعمدة والكمرات والبلاطات لكل دور", "hold": "HOLD 1: formwork and props inspection. HOLD 2: rebar inspection (incl. top steel, stirrups, cover, laps, openings). HOLD 3: MEP embedded wor"}, {"id": "9.7", "en": "Roof slab, parapet, roof waterproofing and tanks", "ar": "سقف الدور الأخير والبرابيت وعزل الأسطح", "hold": "HOLD: flood test pass (no leaks after 24-48 h). Record: flood test report."}, {"id": "9.8", "en": "Masonry (external and internal walls)", "ar": "المباني (الطوب الخارجي والداخلي)", "hold": "HOLD: opening sizes, verticality, lintels, chase depth. Record: masonry inspection."}, {"id": "9.9", "en": "MEP first fix (rough-in)", "ar": "أعمال الكهروميكانيكا الأولى (داخل الحوائط)", "hold": "HOLD: pressure test water pipes (typ. 1.5 x working pressure, 2-24 h per spec), drain water/air test, conduit continuity and earth continuit"}, {"id": "9.10", "en": "Plaster (internal and external)", "ar": "المحارة الداخلية والخارجية", "hold": "HOLD: MEP first fix tested and closed before plaster. Record: plaster inspection."}, {"id": "9.11", "en": "Floors, wall finishes, ceilings, doors/windows, paint", "ar": "الأرضيات وتشطيبات الحوائط والأسقف والأبواب والدهانات", "hold": "HOLD: wet-area waterproofing flood test; tile sampling approval; colour approvals."}, {"id": "9.12", "en": "MEP second fix (trim)", "ar": "أعمال الكهروميكانيكا الثانية (التركيبات النهائية)", "hold": "HOLD: insulation resistance (megger), earth resistance, RCD trip test, polarity before energising."}, {"id": "9.13", "en": "External works", "ar": "الأعمال الخارجية", "hold": "HOLD: manholes and drainage test, sewer connection approved."}];
+
+ /* ---------------- phase 7: tender and contract ---------------- */
+ S.add({id:'tender',phase:'7',n:['Phase 7 · Tender: bid log and comparison','المرحلة 7 · المناقصة: سجل العروض والمقارنة'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Log the tender documents and three sample bids in the register, then compare the bids in a Q.X sheet.','سجّل مستندات المناقصة وثلاثة عروض تجريبية في السجل، وبعدين قارن العروض في شيت Q.X.'],
+  steps:[
+   {op:'say',en:'Phase 7: the tender package goes out to three to five bidders, questions are logged as RFIs, bids come back and are compared. The document register keeps the trail.',ar:'المرحلة 7: حزمة المناقصة بتروح لـ٣ لـ٥ مقاولين، والأسئلة بتتسجل RFI، والعروض بترجع وتتقارن. سجل المستندات بيحفظ المسار.'},
+   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; ctx.r=[]; ctx.r.push(TOX.addDoc({type:'LTR',dir:'out',subject:'Invitation to tender: Project 6868',body:'Demo record: invitation to three sample bidders.',from:'Consultant',to:'Bidders'})); ['A','B','C'].forEach(x=>ctx.r.push(TOX.addDoc({type:'SUB',dir:'in',subject:'Sample bid from Contractor '+x,body:'Demo record: sealed bid received.',from:'Contractor '+x,to:'Consultant'}))); ctx.r.push(TOX.addDoc({type:'RFI',dir:'in',subject:'Bidder question: slab thickness at the garage',body:'Demo record.',from:'Contractor B',to:'Consultant'})); }},
+   {op:'assert',en:'Five records in the register: invitation, three bids, one bidder question',ar:'خمس سجلات في السجل: دعوة وثلاث عروض وسؤال مقاول',ok:()=>TOX.docs().length-ctx.d0===5},
+   {op:'say',en:'Bid comparison in Q.X: the three SAMPLE totals, the lowest and the spread against the estimate. The numbers are invented for the demo.',ar:'مقارنة العروض في Q.X: الإجماليات التجريبية الثلاثة، والأقل، والفرق عن التقدير. الأرقام متألفة للديمو.'},
+   {op:'tab',type:'takeoff'},
+   {op:'do',fn:()=>{ QX.addSheet('Bid comparison',sh=>{ const P=(r,k,v)=>{ sh.cells[qxK(r,k)]=v; }; ['Bidder','Sample total','Difference to estimate %'].forEach((t,k)=>P(0,k,t)); P(1,0,'Estimate (sample)'); P(1,1,1000000); P(2,0,'Contractor A'); P(2,1,1080000); P(2,2,'=(B3-B$2)/B$2*100'); P(3,0,'Contractor B'); P(3,1,985000); P(3,2,'=(B4-B$2)/B$2*100'); P(4,0,'Contractor C'); P(4,1,1210000); P(4,2,'=(B5-B$2)/B$2*100'); P(5,0,'Lowest bid'); P(5,1,'=MIN(B3:B5)'); }); }},
+   {op:'assert',en:'The sheet finds the lowest bid (985,000) and Contractor B is 1.5% under the estimate',ar:'الشيت لقى أقل عرض (٩٨٥٬٠٠٠) والمقاول B أقل من التقدير بـ١٫٥٪',ok:()=>{ const sh=QX.api.wb().sheets.find(s=>s.name==='Bid comparison'); return sh&&qxGet(sh,5,1)===985000&&Math.abs(qxGet(sh,3,2)+1.5)<.01; }},
+   {op:'shot',name:'01_bid_comparison'},
+   card('Negotiation, award recommendation and contract signing are decisions and paperwork done by people.','التفاوض وترسية العقد والتوقيع قرارات وورق بيعملها ناس.',null,'field'),
+   card('Tender package templates (instructions to bidders, conditions) exist only as generic document templates; there is no contract builder or bid-analysis tool yet.','قوالب حزمة المناقصة موجودة كقوالب مستندات عامة بس؛ ومفيش بنّاء عقود أو أداة تحليل عروض لسه.',['Contract builder and bid analysis','بنّاء عقود وتحليل عروض'])
   ]});
 
- /* ---------------- 12: outputs ---------------- */
- S.add({id:'out',n:['Outputs: sheets, package, vector export, render','المخرجات: اللوحات والحزمة والفكتور والريندر'],mode:'real',
+ /* ---------------- phase 8: planning ---------------- */
+ S.add({id:'sched',phase:'8',n:['Phase 8 · P.X planning: schedule from the model (4D / 5D)','المرحلة 8 · P.X التخطيط: الجدول من الموديل (4D / 5D)'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Send the R.X quantities to P.X, compute the schedule, open the Gantt and link the schedule window to the model window.','ابعت كميات R.X لـP.X، احسب الجدول، افتح الجانت واربط نافذة الجدول بنافذة الموديل.'],
+  steps:[
+   {op:'tab',type:'model'},
+   {op:'say',en:'Phase 8: the schedule is built from the model. "Send to P.X" turns each type of work into activities with durations from quantity divided by productivity.',ar:'المرحلة 8: الجدول بيتعمل من الموديل. "ابعت لـP.X" بيحوّل كل نوع شغل لأنشطة مدتها الكمية على الإنتاجية.'},
+   {op:'run',cmd:'xf_p6',after:700},
+   {op:'assert',en:'The productivity table opened',ar:'جدول الإنتاجية اتفتح',ok:()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول'))},
+   {op:'move',to:()=>[...document.querySelectorAll('table.dctab')].find(t=>vis(t)),opt:1,hold:1400,name:['Output per day: a placeholder, use your own productivity','الإنتاجية في اليوم قيمة مبدئية: استخدم إنتاجيتك']},
+   {op:'click',to:()=>[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول')),name:['Add to the schedule','ضيف للجدول']},
+   {op:'assert',en:'Activities created from the model (WBS 5)',ar:'اتعملت أنشطة من الموديل (WBS 5)',ok:()=>nrx()>=3,wait:5000},
+   {op:'do',fn:()=>{ computeSched(); try{ p6Refresh(); }catch(e){} ctx.fin=ACT.filter(a=>a.src==='rx').slice(-1)[0]; }},
+   {op:'assert',en:'Schedule computed: the last activity finishes after the start',ar:'اتحسب الجدول: آخر نشاط بينتهي بعد البداية',ok:()=>ctx.fin&&ctx.fin.fDate>ctx.fin.sDate},
+   {op:'shot',name:'01_schedule'},
+   {op:'run',cmd:'gantt_open',after:1200},
+   {op:'assert',en:'Gantt pane is open',ar:'الجانت مفتوح',ok:()=>{ const l=WX.lay['pane:gantt']; return !!(l&&l.open); }},
+   {op:'shot',name:'02_gantt'},
+   {op:'say',en:'4D link: link the schedule window with the model window, so selecting an activity shows its work in 3D.',ar:'ربط 4D: نربط نافذة الجدول بنافذة الموديل، فاختيار نشاط يوري شغله في الـ3D.'},
+   {op:'do',fn:()=>{ ctx.lk=TOXAPI.link('sched','model'); }},
+   {op:'assert',en:'Schedule and model windows share a link colour',ar:'نافذتا الجدول والموديل ليهم نفس لون الربط',ok:()=>!!ctx.lk&&LK.col(LK.winId('sched')||'sched')===LK.col(LK.winId('model')||'model')},
+   {op:'do',fn:()=>{ try{ wxClose('pane:gantt'); }catch(e){} }},
+   card('The full WBS with all construction stages, resource loading, cost-loaded cash flow and S-curve, and the safety plan (HSE): the schedule here has only the model-based work types.','هيكل الأعمال الكامل بكل مراحل التنفيذ وتحميل الموارد والتدفق النقدي المحمّل بالتكلفة ومنحنى S وخطة السلامة: الجدول هنا فيه أنواع الشغل المبنية على الموديل بس.',['WBS template with stages, cash flow, S-curve, safety plan','قالب WBS بالمراحل وتدفق نقدي وS-curve وخطة سلامة'])
+  ]});
+
+ /* ---------------- phase 9: construction in stages ---------------- */
+ S.add({id:'build',phase:'9',n:['Phase 9 · Construction in order, with hold points','المرحلة 9 · التنفيذ بالترتيب مع نقاط الإيقاف'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['The 13 construction stages in their true order. Each stage has a hold point; the demo registers an inspection request for each one in the document register.','مراحل التنفيذ الـ١٣ بترتيبها الصح. كل مرحلة ليها نقطة إيقاف؛ والديمو بيسجل طلب فحص لكل واحدة في سجل المستندات.'],
+  steps:[
+   {op:'say',en:'Phase 9 follows the true order of site work. Before each stage is closed, an inspection request is raised and a hold point is signed. The register below keeps those records.',ar:'المرحلة 9 بتتبع الترتيب الحقيقي لشغل الموقع. قبل قفل كل مرحلة بيتفتح طلب فحص وبتتوقّع نقطة إيقاف. السجل ده بيحفظ السجلات دي.'},
+   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; }},
+   ...STAGES.flatMap(s=>[
+     {op:'say',en:s.id+' '+s.en+'. '+s.hold,ar:s.id+' '+s.ar+'. نقطة الإيقاف: '+s.hold.replace(/^HOLD[^:]*:\s*/,''),hold:4200},
+     {op:'do',fn:()=>{ TOX.addDoc({type:'IR',dir:'out',subject:'Inspection request '+s.id+': '+s.en,body:'Demo record. '+s.hold,from:'Contractor',to:'Consultant'}); }}]),
+   {op:'assert',en:'13 inspection requests registered, one per construction stage',ar:'اتسجل ١٣ طلب فحص، واحد لكل مرحلة تنفيذ',ok:()=>TOX.docs().length-ctx.d0===13&&TOX.docs().filter(d=>/Inspection request 9\./.test(d.subject)).length>=13},
+   card('Set-out sheet, excavation and shoring design, formwork and props checks, concrete cube and slump statistics, ITP (inspection and test plan) library, site logistics and temporary works: no tool yet.','ورقة التوقيع وتصميم الحفر والسند وفحص الشدات والعدّادات وإحصائيات المكعبات والهبوط ومكتبة خطة الفحص والاختبار والخدمات المؤقتة ولوجستيات الموقع: مفيش أداة لسه.',['ITP register, set-out sheet, cube/slump statistics, temporary works','سجل ITP وورقة توقيع وإحصائيات مكعبات وأعمال مؤقتة']),
+   card('Workers, crews and equipment per stage are listed in the phase map; resource loading in P.X needs your own crews and rates.','العمال والطواقم والمعدات لكل مرحلة موجودة في خريطة المراحل؛ وتحميل الموارد في P.X محتاج طواقمك وأسعارك.',null,'field')
+  ]});
+
+ /* ---------------- phase 10: handover and outputs ---------------- */
+ S.add({id:'handover',phase:'10',n:['Phase 10 · Handover: snags, as-built and close-out','المرحلة 10 · التسليم: الملاحظات والرسومات التنفيذية والإقفال'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Register a snag as an issue on the 3D model and close the project documents.','سجّل ملاحظة كـ issue على الموديل 3D وقفّل مستندات المشروع.'],
+  steps:[
+   {op:'say',en:'Phase 10: testing and commissioning are done on site; then the snag list, the as-built drawings, the O&M manuals and the close-out. The model carries the issues.',ar:'المرحلة 10: الاختبارات والتشغيل التجريبي في الموقع؛ وبعدين قايمة الملاحظات والرسومات التنفيذية وكتيبات التشغيل والإقفال. والموديل شايل الـissues.'},
+   card('Electrical and plumbing tests, commissioning for 24 to 72 hours, the occupancy certificate and utility connections are people and authority work.','اختبارات الكهرباء والسباكة والتشغيل التجريبي ٢٤ لـ٧٢ ساعة وشهادة الإشغال وتوصيل المرافق شغل ناس وجهات.',null,'field'),
+   {op:'tab',type:'model'},
+   {op:'do',fn:()=>{ ctx.i0=IS.list.length; const w=RV.els.find(e=>e.k==='wall'); if(w){ RV.sel=w.id; try{ rvBuild(); rvProps(); }catch(e){} } }},
+   {op:'say',en:'A snag found at the walk-through: select a wall and press "New issue from selected element".',ar:'ملاحظة لقيناها في الجولة: اختار حيطة واضغط "مشكلة جديدة من العنصر المحدد".'},
+   {op:'run',cmd:'is_new',after:1200},
+   {op:'assert',en:'An issue was created on the selected element',ar:'اتعملت issue على العنصر المحدد',ok:()=>IS.list.length===ctx.i0+1},
+   {op:'shot',name:'01_snag'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:issues'); }catch(e){} }},
+   {op:'do',fn:()=>{ ctx.d1=TOX.docs().length; TOX.addDoc({type:'LTR',dir:'out',subject:'Handover letter: Project 6868',body:'Demo record: handover with the as-built package and O&M manuals.',from:'Contractor',to:'Owner'}); }},
+   {op:'assert',en:'Handover letter registered',ar:'خطاب التسليم اتسجل',ok:()=>TOX.docs().length===ctx.d1+1},
+   card('The handover rules check, as-built update of the model and the asset register run on the existing commands but need real project data, so the demo does not fake them.','فحص قواعد التسليم وتحديث الموديل as-built وسجل الأصول بيشتغلوا على أوامر موجودة لكن محتاجين بيانات مشروع حقيقية، فالديمو مبيزيفهمش.',null)
+  ]});
+ S.add({id:'out',phase:'10.5',n:['Outputs: sheets, package, vector export, render','المخرجات: اللوحات والحزمة والفكتور والريندر'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
   sum:['Build an Output Center package, export a vector view and render a still, all from the open project. Nothing is downloaded.','ابني حزمة مركز المخرجات، صدّر منظور فكتور، وارندر صورة ثابتة، من المشروع المفتوح. ومفيش حاجة بتتنزّل.'],
   steps:[
    {op:'tab',type:'model'},
    {op:'say',en:'The drawing sheet is composed from the project (title block, views, notes).',ar:'لوحة الرسم بتتكوّن من المشروع (إطار وأوجه وملاحظات).'},
-   {op:'run',cmd:'sheet',after:800,soft:1},
-   {op:'say',en:'Output Center: pick numbered deliverables and build a versioned package. I build drawing sheet PDF, sheet SVG/PNG/DXF, 3D model files and the BOQ.',ar:'مركز المخرجات: اختار مخرجات مرقمة وابني حزمة بنسخة. هبني اللوحة PDF وSVG/PNG/DXF وملفات الموديل 3D والمقايسة.'},
-   {op:'run',cmd:'out_open',after:700},
+   {op:'run',cmd:'sheet',after:1000,soft:1},
+   {op:'say',en:'Output Center: pick numbered deliverables and build a versioned package: drawing sheet PDF, sheet SVG/PNG/DXF, 3D model files and the BOQ.',ar:'مركز المخرجات: اختار مخرجات مرقمة وابني حزمة بنسخة: اللوحة PDF وSVG/PNG/DXF وملفات الموديل 3D والمقايسة.'},
+   {op:'run',cmd:'out_open',after:900},
    {op:'do',fn:async()=>{ ctx.v0=OUTC.versions.length; ctx.v=await outBuild([1,2,3,5],null); }},
    {op:'assert',en:'Package version built with files and no failed items',ar:'اتبنت نسخة الحزمة بملفاتها ومن غير مخرجات فاشلة',ok:()=>OUTC.versions.length===ctx.v0+1&&(v=>(Array.isArray(v.files)?v.files.length:+v.files)>0&&!(Array.isArray(v.fails)?v.fails.length:v.fails))(OUTC.versions[OUTC.versions.length-1]),wait:30000},
    {op:'tab',type:'model'},
@@ -14098,7 +14270,8 @@ const DEMO=(function(){
    {op:'say',en:'Render Studio: a draft-quality still of the current view.',ar:'استوديو الريندر: صورة ثابتة بجودة مسودة للمنظور الحالي.'},
    {op:'do',fn:async()=>{ ctx.rs=await TOX.render({kind:'still',preset:'draft'}); },timeout:180000},
    {op:'assert',en:'Rendered still created',ar:'الصورة المرندرة اتعملت',ok:()=>!!ctx.rs&&ctx.rs.ok!==false&&(ctx.rs.bytes>1000||(ctx.rs.blob&&ctx.rs.blob.size>1000))},
-   {op:'say',en:'That is the end of the tour. Project 6868 stays open and usable: model, schedule, quantities, calculations, clashes, documents and outputs are all in it. These outputs are demonstrations, not an approved design.',ar:'كده خلص الجولة. مشروع 6868 فاضل مفتوح وتقدر تشتغل عليه: الموديل والجدول والكميات والحسابات والتعارضات والمستندات والمخرجات كلها فيه. المخرجات دي للتوضيح مش تصميم معتمد.'}
+   {op:'shot',name:'01_after_render'},
+   {op:'say',en:'End of the tour. The project stays open and usable. These outputs are demonstrations, not an approved design.',ar:'خلصت الجولة. المشروع فاضل مفتوح وتقدر تشتغل عليه. المخرجات دي للتوضيح مش تصميم معتمد.'}
   ]});
 })();
 

@@ -1,104 +1,95 @@
-/* ====== demo_ch3.js - chapters 8-12: low-current symbols, plumbing/drainage checks, N.X clash, BOQ + documents, outputs. Evaluated with the other demo files. ====== */
+/* ====== demo_ch3.js - phases 7-10: tender, planning, construction in stages with hold points, handover, outputs. Evaluated with the other demo files. ====== */
 (function(){
  const S=DEMO, B=S.B, ctx={};
  const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
- const card=name=>()=>{ const it=lbItems(LB.libs.cxblk).find(x=>x.id===name); const t=it&&lbNm(it); return [...document.querySelectorAll('#lbg_cx .lbc')].find(c=>c.title===t); };
- const calcRun=async(id,vals)=>{ CC.id=id; CC.code=CALCS.find(x=>x.id===id).codes[0]; CC.vals={}; CC.sheet=null; calPanel(); };
- const num=i=>()=>calBox.querySelectorAll('input[type=number]')[i];
- const calcBtn=()=>[...calBox.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Calculate','احسب'));
+ const nrx=()=>ACT.filter(a=>a.src==='rx').length;
+ const card=(en,ar,need,kind)=>({op:'card',kind:kind,en:en,ar:ar,need:need});
+ const STAGES=[{"id": "9.1", "en": "Site setup and set-out", "ar": "تجهيز الموقع والتوقيع", "hold": "HOLD: set-out checked by the consultant before excavation. Record: set-out sheet."}, {"id": "9.2", "en": "Excavation and shoring", "ar": "الحفر والسند", "hold": "HOLD: founding level and soil acceptance (consultant + geotech). Record: excavation approval form with level readings."}, {"id": "9.3", "en": "Blinding and waterproofing of foundations", "ar": "الخرسانة العادية وعزل الأساسات", "hold": "HOLD: blinding level and dimensions; waterproofing continuity. Record: blinding approval."}, {"id": "9.4", "en": "Footings, neck columns and tie beams", "ar": "القواعد ورقاب الأعمدة والسملات", "hold": "HOLD 1: rebar inspection before pour (diameter, spacing, cover, laps, starters, cleanliness, formwork). HOLD 2: pour with approved mix, slum"}, {"id": "9.5", "en": "Ground slab / plinth beams and DPC", "ar": "أرضية الدور الأرضي والعزل الأفقي", "hold": "HOLD: sleeves/embedded services inspected BEFORE pour (MEP + QC). Record: embedded works checklist."}, {"id": "9.6", "en": "Columns, beams and slabs - each floor", "ar": "الأعمدة والكمرات والبلاطات لكل دور", "hold": "HOLD 1: formwork and props inspection. HOLD 2: rebar inspection (incl. top steel, stirrups, cover, laps, openings). HOLD 3: MEP embedded wor"}, {"id": "9.7", "en": "Roof slab, parapet, roof waterproofing and tanks", "ar": "سقف الدور الأخير والبرابيت وعزل الأسطح", "hold": "HOLD: flood test pass (no leaks after 24-48 h). Record: flood test report."}, {"id": "9.8", "en": "Masonry (external and internal walls)", "ar": "المباني (الطوب الخارجي والداخلي)", "hold": "HOLD: opening sizes, verticality, lintels, chase depth. Record: masonry inspection."}, {"id": "9.9", "en": "MEP first fix (rough-in)", "ar": "أعمال الكهروميكانيكا الأولى (داخل الحوائط)", "hold": "HOLD: pressure test water pipes (typ. 1.5 x working pressure, 2-24 h per spec), drain water/air test, conduit continuity and earth continuit"}, {"id": "9.10", "en": "Plaster (internal and external)", "ar": "المحارة الداخلية والخارجية", "hold": "HOLD: MEP first fix tested and closed before plaster. Record: plaster inspection."}, {"id": "9.11", "en": "Floors, wall finishes, ceilings, doors/windows, paint", "ar": "الأرضيات وتشطيبات الحوائط والأسقف والأبواب والدهانات", "hold": "HOLD: wet-area waterproofing flood test; tile sampling approval; colour approvals."}, {"id": "9.12", "en": "MEP second fix (trim)", "ar": "أعمال الكهروميكانيكا الثانية (التركيبات النهائية)", "hold": "HOLD: insulation resistance (megger), earth resistance, RCD trip test, polarity before energising."}, {"id": "9.13", "en": "External works", "ar": "الأعمال الخارجية", "hold": "HOLD: manholes and drainage test, sewer connection approved."}];
 
- /* ---------------- 8: low-current (symbols on the C.X drawing) ---------------- */
- S.add({id:'lowc',n:['Low-current: data, TV and fire-alarm symbols','التيار الخفيف: رموز البيانات والتلفزيون وإنذار الحريق'],mode:'mixed',
+ /* ---------------- phase 7: tender and contract ---------------- */
+ S.add({id:'tender',phase:'7',n:['Phase 7 · Tender: bid log and comparison','المرحلة 7 · المناقصة: سجل العروض والمقارنة'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
-  sum:['Place data outlet, TV outlet, smoke detector and alarm bell symbols from the C.X block library onto the drawing.','ضع رموز مخرج بيانات وتلفزيون وكاشف دخان وجرس إنذار من مكتبة بلوكات C.X على الرسم.'],
+  sum:['Log the tender documents and three sample bids in the register, then compare the bids in a Q.X sheet.','سجّل مستندات المناقصة وثلاثة عروض تجريبية في السجل، وبعدين قارن العروض في شيت Q.X.'],
   steps:[
-   {op:'say',en:'Low-current systems (data, TV, fire alarm) are drawn in C.X with the block library. The app has symbols for them; there is no cabling or alarm calculation module for them yet.',ar:'التيار الخفيف (بيانات وتلفزيون وإنذار حريق) بيترسم في C.X بمكتبة البلوكات. التطبيق فيه رموزها؛ ومفيش وحدة حساب كابلات أو إنذار ليها لسه.'},
-   {op:'tab',type:'draft'},
-   {op:'assert',en:'C.X drawing tab is open',ar:'تاب رسم C.X مفتوح',ok:()=>ribType()==='draft',wait:5000},
-   {op:'do',fn:()=>{ ctx.e0=cadD().ents.length; lbOpen('cx','cxblk','data'); }},
-   {op:'assert',en:'Block library pane is open with cards',ar:'لوحة مكتبة البلوكات مفتوحة وفيها كروت',ok:()=>document.querySelectorAll('#lbg_cx .lbc').length>10,wait:4000},
-   {op:'do',fn:()=>{ ctx.pts=[[2000,1500],[3500,1500],[5000,1500],[6500,1500]]; ctx.k=0; }},
-   {op:'click',to:card('data'),hold:500},
-   {op:'assert',en:'Place mode is armed (click on the drawing)',ar:'وضع الوضع شغال (اضغط على الرسم)',ok:()=>CS.tool==='lbplace'&&!!CS.lbArm},
-   {op:'move',to:()=>{ const s=CW.querySelector('svg'); return vis(s)?s:CW; },at:[.3,.4],hold:300,tip:false},
-   {op:'do',fn:()=>{ cadClick(ctx.pts[0]); }},
-   {op:'click',to:card('tv'),hold:300},{op:'move',to:()=>CW,at:[.45,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[1]); }},
-   {op:'click',to:card('smoke'),hold:300},{op:'move',to:()=>CW,at:[.6,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[2]); }},
-   {op:'click',to:card('bell'),hold:300},{op:'move',to:()=>CW,at:[.75,.4],hold:200,tip:false},{op:'do',fn:()=>{ cadClick(ctx.pts[3]); cadEsc(); }},
-   {op:'assert',en:'Four symbols placed as real CAD entities and saved as blocks',ar:'٤ رموز اتحطت ككيانات CAD حقيقية واتحفظت كبلوكات',ok:()=>{ const D=cadD(); return D.ents.length-ctx.e0>=4&&['LB_data','LB_tv','LB_smoke','LB_bell'].filter(k=>D.blocks&&Object.keys(D.blocks).some(b=>b.toLowerCase().indexOf(k.toLowerCase())===0||b===k)).length>=1; }},
-   {op:'say',en:'Placed symbols are normal drawing entities: they can be moved, layered and exported with the sheet.',ar:'الرموز اللي اتحطت كيانات رسم عادية: تتحرك وتتوزع على طبقات وتتصدّر مع اللوحة.'}
-  ]});
-
- /* ---------------- 9: plumbing, drainage, infrastructure checks ---------------- */
- S.add({id:'plumb',n:['Plumbing, drainage and infrastructure checks','الصرف والمياه والبنية التحتية: الفحوصات'],mode:'mixed',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Gravity drain capacity (Manning) and water pipe head loss (Hazen-Williams) with the calculators; the S.X pipe-network tools are shown but not drawn.','سعة ماسورة الصرف (Manning) وفقد ضغط ماسورة المياه (Hazen-Williams) بالحاسبات؛ وأدوات شبكة المواسير في S.X بنعرضها بس من غير رسم.'],
-  steps:[
-   {op:'say',en:'Drainage: the capacity of a gravity pipe from its diameter, roughness and slope (Manning). Open Engineering analysis.',ar:'الصرف: سعة ماسورة جاذبية من قطرها وخشونتها وميلها (Manning). افتح التحليل الهندسي.'},
-   {op:'run',cmd:'p_calc',after:700},
-   {op:'assert',en:'Engineering analysis pane is open',ar:'لوحة التحليل الهندسي مفتوحة',ok:()=>!!(typeof calBox!=='undefined'&&calBox&&vis(calBox)),wait:4000},
-   {op:'do',fn:()=>calcRun('man')},
-   {op:'type',to:num(0),text:'300',tip:false,hold:100},{op:'type',to:num(1),text:'0.013',tip:false,hold:100},{op:'type',to:num(2),text:'0.005',tip:false,hold:100},
-   {op:'click',to:calcBtn,hold:300},
-   {op:'assert',en:'Full-flow capacity and velocity returned (300 mm, slope 0.5%)',ar:'رجعت السعة والسرعة للتصرف الكامل (٣٠٠ مم، ميل ٠٫٥٪)',ok:()=>CC.sheet&&CC.sheet.rows&&+CC.sheet.rows[0][1]>10},
-   {op:'say',en:'Water supply: friction loss in a pipe (Hazen-Williams) for a flow of 10 L/s in 100 mm over 200 m.',ar:'المياه: فقد الاحتكاك في ماسورة (Hazen-Williams) لتصرف ١٠ لتر/ث في ١٠٠ مم لمسافة ٢٠٠ م.'},
-   {op:'do',fn:()=>calcRun('hw')},
-   {op:'type',to:num(0),text:'10',tip:false,hold:100},{op:'type',to:num(1),text:'100',tip:false,hold:100},{op:'type',to:num(2),text:'200',tip:false,hold:100},{op:'type',to:num(3),text:'140',tip:false,hold:100},{op:'type',to:num(4),text:'0',tip:false,hold:100},
-   {op:'click',to:calcBtn,hold:300},
-   {op:'assert',en:'Velocity and head loss returned',ar:'رجعت السرعة وفقد الضغط',ok:()=>CC.sheet&&CC.sheet.rows&&CC.sheet.rows.some(r=>/Total|الإجمالي/.test(r[0])&&+r[1]>0)},
-   {op:'say',en:'Infrastructure networks (sewer, storm, water, fire) live in S.X: the Pipe Network tools and the structures catalogue. Here we only open the tab and point at them; drawing a network is not part of this demo.',ar:'شبكات البنية التحتية (صرف وأمطار ومياه وحريق) في S.X: أدوات شبكة المواسير وكتالوج المنشآت. هنا بنفتح التاب ونشاور عليها بس؛ رسم شبكة مش جزء من الديمو.'},
-   {op:'tab',type:'survey'},
-   {op:'move',to:'cmd:survey_60',opt:1,hold:900},
-   {op:'assert',en:'S.X tab is open (tour only)',ar:'تاب S.X مفتوح (عرض بس)',ok:()=>ribType()==='survey',soft:1},
-   {op:'say',en:'Results are checks for review by the engineer, not an approved design.',ar:'النتايج فحوصات يراجعها المهندس، مش تصميم معتمد.'}
-  ]});
-
- /* ---------------- 10: N.X coordination and clashes ---------------- */
- S.add({id:'clash',n:['N.X: coordination and clash detection','N.X: التنسيق وكشف التعارضات'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Add a clash test of everything against everything and run it on the R.X model.','ضيف اختبار تعارض لكل حاجة ضد كل حاجة وشغّله على موديل R.X.'],
-  steps:[
-   {op:'say',en:'N.X checks the model for clashes. A hard test finds elements whose volumes overlap. Open the Clash Detective.',ar:'N.X بيفحص الموديل عن تعارضات. اختبار hard بيلاقي عناصر أحجامها متداخلة. افتح كاشف التعارض.'},
-   {op:'tab',type:'coord'},
-   {op:'run',cmd:'nv_clash',after:800},
-   {op:'assert',en:'Clash Detective pane is open',ar:'كاشف التعارض مفتوح',ok:()=>{ const l=WX.lay['pane:nvclash']; return !!(l&&l.open); },wait:4000},
-   {op:'do',fn:()=>{ ctx.t0=nvCl().tests.length; CLS.tab='tests'; nvClRender(); }},
-   {op:'click',to:'[data-a="addtest"]',tip:[B('Add a test','أضف اختبار')],hold:400},
-   {op:'assert',en:'A test was added',ar:'اتضاف اختبار',ok:()=>nvCl().tests.length===ctx.t0+1},
-   {op:'click',to:'[data-a="runall"]',tip:[B('Run all tests','شغّل كل الاختبارات')],hold:400,after:800},
-   {op:'assert',en:'The test ran and found clashes (overlapping R.X elements: slabs, stairs, walls)',ar:'الاختبار اشتغل ولقى تعارضات (عناصر R.X متداخلة: بلاطات وسلالم وحيطان)',ok:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; return t&&Array.isArray(t.results)&&t.count>0; },wait:5000},
-   {op:'do',fn:()=>{ const t=nvCl().tests[nvCl().tests.length-1]; ctx.n=t.count; t.results[0].status='Reviewed'; try{ nvKeep(); CLS.tab='res'; nvClRender(); }catch(e){} }},
-   {op:'assert',en:'First clash marked "Reviewed" in the results list',ar:'أول تعارض اتعلّم "Reviewed" في قايمة النتايج',ok:()=>nvCl().tests.slice(-1)[0].results[0].status==='Reviewed'},
-   {op:'say',en:'The clashes here come from the sample template itself (a stair crossing the slab, wall and slab overlaps). In a real project you review each one and fix the model.',ar:'التعارضات هنا جاية من القالب نفسه (سلم بيقطع البلاطة وتداخل حيطان وبلاطات). في مشروع حقيقي بتراجع كل واحد وتصلّح الموديل.'}
-  ]});
-
- /* ---------------- 11: BOQ, costs and documents ---------------- */
- S.add({id:'boq',n:['BOQ, costs and documents','المقايسة والتكاليف والمستندات'],mode:'real',
-  pre:async()=>{ await S.ensureProject(); },
-  sum:['Quantities from the model become a BOQ and a cost summary in Q.X; then register an RFI and a transmittal in the document register.','كميات الموديل بتبقى مقايسة وملخص تكلفة في Q.X؛ وبعدين سجل RFI ومراسلة في سجل المستندات.'],
-  steps:[
-   {op:'say',en:'Q.X links to the model: "Model quantities" lists every item, "Build BOQ" groups them, "Cost summary" adds percentages and totals.',ar:'Q.X مربوط بالموديل: "كميات الموديل" بتسرد كل بند، "عمل BOQ" بيجمّعها، "ملخص التكلفة" بيضيف النسب والإجماليات.'},
+   {op:'say',en:'Phase 7: the tender package goes out to three to five bidders, questions are logged as RFIs, bids come back and are compared. The document register keeps the trail.',ar:'المرحلة 7: حزمة المناقصة بتروح لـ٣ لـ٥ مقاولين، والأسئلة بتتسجل RFI، والعروض بترجع وتتقارن. سجل المستندات بيحفظ المسار.'},
+   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; ctx.r=[]; ctx.r.push(TOX.addDoc({type:'LTR',dir:'out',subject:'Invitation to tender: Project 6868',body:'Demo record: invitation to three sample bidders.',from:'Consultant',to:'Bidders'})); ['A','B','C'].forEach(x=>ctx.r.push(TOX.addDoc({type:'SUB',dir:'in',subject:'Sample bid from Contractor '+x,body:'Demo record: sealed bid received.',from:'Contractor '+x,to:'Consultant'}))); ctx.r.push(TOX.addDoc({type:'RFI',dir:'in',subject:'Bidder question: slab thickness at the garage',body:'Demo record.',from:'Contractor B',to:'Consultant'})); }},
+   {op:'assert',en:'Five records in the register: invitation, three bids, one bidder question',ar:'خمس سجلات في السجل: دعوة وثلاث عروض وسؤال مقاول',ok:()=>TOX.docs().length-ctx.d0===5},
+   {op:'say',en:'Bid comparison in Q.X: the three SAMPLE totals, the lowest and the spread against the estimate. The numbers are invented for the demo.',ar:'مقارنة العروض في Q.X: الإجماليات التجريبية الثلاثة، والأقل، والفرق عن التقدير. الأرقام متألفة للديمو.'},
    {op:'tab',type:'takeoff'},
-   {op:'do',fn:()=>{ ctx.sh0=QX.api.wb().sheets.length; QX.api.sync(true); QX.mkBoq(); QX.mkCost(); }},
-   {op:'assert',en:'Model quantities, BOQ and Cost summary sheets exist',ar:'شيتات كميات الموديل والـBOQ وملخص التكلفة موجودة',ok:()=>{ const n=QX.api.wb().sheets.map(s=>s.name); return n.includes('Model quantities')&&n.some(x=>/^BOQ/i.test(x))&&n.includes('Cost summary'); }},
-   {op:'say',en:'The rate cells are empty on purpose. Here is one SAMPLE rate typed into the BOQ so you can see the total move; use your own rates.',ar:'خانات السعر فاضية عن قصد. هنا سعر تجريبي واحد في الـBOQ عشان تشوف الإجمالي بيتحرك؛ استخدم أسعارك.'},
-   {op:'do',fn:()=>{ const w=QX.api.wb(), sh=w.sheets.find(s=>/^BOQ/i.test(s.name)); const hdr=[0,1,2,3,4,5].map(k=>qxGet(sh,0,k)); ctx.rc=hdr.findIndex(v=>typeof v==='string'&&/^rate$|سعر/i.test(v)); ctx.ac=hdr.findIndex(v=>typeof v==='string'&&/^amount$|المبلغ/i.test(v)); ctx.qr=-1; for(let r=1;r<40;r++){ const q=qxGet(sh,r,ctx.rc-1); if(typeof q==='number'&&q>0){ ctx.qr=r; ctx.q=q; break; } } if(ctx.rc>0&&ctx.qr>0){ sh.cells[qxK(ctx.qr,ctx.rc)]=100; try{ qxRecalcAll(w); }catch(e){} ctx.amt=qxGet(sh,ctx.qr,ctx.ac); } }},
-   {op:'assert',en:'With a sample rate of 100 the item amount = quantity × 100',ar:'بسعر تجريبي ١٠٠ مبلغ البند = الكمية × ١٠٠',ok:()=>typeof ctx.amt==='number'&&Math.abs(ctx.amt-ctx.q*100)<.5},
-   {op:'say',en:'Documents: register an RFI and a transmittal. Every record gets a reference number and a status trail.',ar:'المستندات: سجل RFI ومراسلة. كل سجل ليه رقم مرجعي ومسار حالات.'},
-   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; ctx.r1=TOX.addDoc({type:'RFI',dir:'out',subject:'Sample RFI: confirm garage slab thickness',body:'Demo record.',from:'Contractor',to:'Consultant'}); ctx.r2=TOX.addDoc({type:'TRN',dir:'out',subject:'Sample transmittal: drawing set A',body:'Demo record.',from:'Contractor',to:'Consultant'}); TOX.setStatus(ctx.r1,'sent'); }},
-   {op:'assert',en:'Two records in the register, the RFI marked sent',ar:'سجلين في السجل والـRFI حالته sent',ok:()=>TOX.docs().length-ctx.d0===2&&TOX.docs().find(d=>d.ref===ctx.r1).status==='sent'}
+   {op:'do',fn:()=>{ QX.addSheet('Bid comparison',sh=>{ const P=(r,k,v)=>{ sh.cells[qxK(r,k)]=v; }; ['Bidder','Sample total','Difference to estimate %'].forEach((t,k)=>P(0,k,t)); P(1,0,'Estimate (sample)'); P(1,1,1000000); P(2,0,'Contractor A'); P(2,1,1080000); P(2,2,'=(B3-B$2)/B$2*100'); P(3,0,'Contractor B'); P(3,1,985000); P(3,2,'=(B4-B$2)/B$2*100'); P(4,0,'Contractor C'); P(4,1,1210000); P(4,2,'=(B5-B$2)/B$2*100'); P(5,0,'Lowest bid'); P(5,1,'=MIN(B3:B5)'); }); }},
+   {op:'assert',en:'The sheet finds the lowest bid (985,000) and Contractor B is 1.5% under the estimate',ar:'الشيت لقى أقل عرض (٩٨٥٬٠٠٠) والمقاول B أقل من التقدير بـ١٫٥٪',ok:()=>{ const sh=QX.api.wb().sheets.find(s=>s.name==='Bid comparison'); return sh&&qxGet(sh,5,1)===985000&&Math.abs(qxGet(sh,3,2)+1.5)<.01; }},
+   {op:'shot',name:'01_bid_comparison'},
+   card('Negotiation, award recommendation and contract signing are decisions and paperwork done by people.','التفاوض وترسية العقد والتوقيع قرارات وورق بيعملها ناس.',null,'field'),
+   card('Tender package templates (instructions to bidders, conditions) exist only as generic document templates; there is no contract builder or bid-analysis tool yet.','قوالب حزمة المناقصة موجودة كقوالب مستندات عامة بس؛ ومفيش بنّاء عقود أو أداة تحليل عروض لسه.',['Contract builder and bid analysis','بنّاء عقود وتحليل عروض'])
   ]});
 
- /* ---------------- 12: outputs ---------------- */
- S.add({id:'out',n:['Outputs: sheets, package, vector export, render','المخرجات: اللوحات والحزمة والفكتور والريندر'],mode:'real',
+ /* ---------------- phase 8: planning ---------------- */
+ S.add({id:'sched',phase:'8',n:['Phase 8 · P.X planning: schedule from the model (4D / 5D)','المرحلة 8 · P.X التخطيط: الجدول من الموديل (4D / 5D)'],mode:'real',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Send the R.X quantities to P.X, compute the schedule, open the Gantt and link the schedule window to the model window.','ابعت كميات R.X لـP.X، احسب الجدول، افتح الجانت واربط نافذة الجدول بنافذة الموديل.'],
+  steps:[
+   {op:'tab',type:'model'},
+   {op:'say',en:'Phase 8: the schedule is built from the model. "Send to P.X" turns each type of work into activities with durations from quantity divided by productivity.',ar:'المرحلة 8: الجدول بيتعمل من الموديل. "ابعت لـP.X" بيحوّل كل نوع شغل لأنشطة مدتها الكمية على الإنتاجية.'},
+   {op:'run',cmd:'xf_p6',after:700},
+   {op:'assert',en:'The productivity table opened',ar:'جدول الإنتاجية اتفتح',ok:()=>[...document.querySelectorAll('button')].some(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول'))},
+   {op:'move',to:()=>[...document.querySelectorAll('table.dctab')].find(t=>vis(t)),opt:1,hold:1400,name:['Output per day: a placeholder, use your own productivity','الإنتاجية في اليوم قيمة مبدئية: استخدم إنتاجيتك']},
+   {op:'click',to:()=>[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===B('Add to the schedule','ضيف للجدول')),name:['Add to the schedule','ضيف للجدول']},
+   {op:'assert',en:'Activities created from the model (WBS 5)',ar:'اتعملت أنشطة من الموديل (WBS 5)',ok:()=>nrx()>=3,wait:5000},
+   {op:'do',fn:()=>{ computeSched(); try{ p6Refresh(); }catch(e){} ctx.fin=ACT.filter(a=>a.src==='rx').slice(-1)[0]; }},
+   {op:'assert',en:'Schedule computed: the last activity finishes after the start',ar:'اتحسب الجدول: آخر نشاط بينتهي بعد البداية',ok:()=>ctx.fin&&ctx.fin.fDate>ctx.fin.sDate},
+   {op:'shot',name:'01_schedule'},
+   {op:'run',cmd:'gantt_open',after:1200},
+   {op:'assert',en:'Gantt pane is open',ar:'الجانت مفتوح',ok:()=>{ const l=WX.lay['pane:gantt']; return !!(l&&l.open); }},
+   {op:'shot',name:'02_gantt'},
+   {op:'say',en:'4D link: link the schedule window with the model window, so selecting an activity shows its work in 3D.',ar:'ربط 4D: نربط نافذة الجدول بنافذة الموديل، فاختيار نشاط يوري شغله في الـ3D.'},
+   {op:'do',fn:()=>{ ctx.lk=TOXAPI.link('sched','model'); }},
+   {op:'assert',en:'Schedule and model windows share a link colour',ar:'نافذتا الجدول والموديل ليهم نفس لون الربط',ok:()=>!!ctx.lk&&LK.col(LK.winId('sched')||'sched')===LK.col(LK.winId('model')||'model')},
+   {op:'do',fn:()=>{ try{ wxClose('pane:gantt'); }catch(e){} }},
+   card('The full WBS with all construction stages, resource loading, cost-loaded cash flow and S-curve, and the safety plan (HSE): the schedule here has only the model-based work types.','هيكل الأعمال الكامل بكل مراحل التنفيذ وتحميل الموارد والتدفق النقدي المحمّل بالتكلفة ومنحنى S وخطة السلامة: الجدول هنا فيه أنواع الشغل المبنية على الموديل بس.',['WBS template with stages, cash flow, S-curve, safety plan','قالب WBS بالمراحل وتدفق نقدي وS-curve وخطة سلامة'])
+  ]});
+
+ /* ---------------- phase 9: construction in stages ---------------- */
+ S.add({id:'build',phase:'9',n:['Phase 9 · Construction in order, with hold points','المرحلة 9 · التنفيذ بالترتيب مع نقاط الإيقاف'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['The 13 construction stages in their true order. Each stage has a hold point; the demo registers an inspection request for each one in the document register.','مراحل التنفيذ الـ١٣ بترتيبها الصح. كل مرحلة ليها نقطة إيقاف؛ والديمو بيسجل طلب فحص لكل واحدة في سجل المستندات.'],
+  steps:[
+   {op:'say',en:'Phase 9 follows the true order of site work. Before each stage is closed, an inspection request is raised and a hold point is signed. The register below keeps those records.',ar:'المرحلة 9 بتتبع الترتيب الحقيقي لشغل الموقع. قبل قفل كل مرحلة بيتفتح طلب فحص وبتتوقّع نقطة إيقاف. السجل ده بيحفظ السجلات دي.'},
+   {op:'do',fn:()=>{ ctx.d0=TOX.docs().length; }},
+   ...STAGES.flatMap(s=>[
+     {op:'say',en:s.id+' '+s.en+'. '+s.hold,ar:s.id+' '+s.ar+'. نقطة الإيقاف: '+s.hold.replace(/^HOLD[^:]*:\s*/,''),hold:4200},
+     {op:'do',fn:()=>{ TOX.addDoc({type:'IR',dir:'out',subject:'Inspection request '+s.id+': '+s.en,body:'Demo record. '+s.hold,from:'Contractor',to:'Consultant'}); }}]),
+   {op:'assert',en:'13 inspection requests registered, one per construction stage',ar:'اتسجل ١٣ طلب فحص، واحد لكل مرحلة تنفيذ',ok:()=>TOX.docs().length-ctx.d0===13&&TOX.docs().filter(d=>/Inspection request 9\./.test(d.subject)).length>=13},
+   card('Set-out sheet, excavation and shoring design, formwork and props checks, concrete cube and slump statistics, ITP (inspection and test plan) library, site logistics and temporary works: no tool yet.','ورقة التوقيع وتصميم الحفر والسند وفحص الشدات والعدّادات وإحصائيات المكعبات والهبوط ومكتبة خطة الفحص والاختبار والخدمات المؤقتة ولوجستيات الموقع: مفيش أداة لسه.',['ITP register, set-out sheet, cube/slump statistics, temporary works','سجل ITP وورقة توقيع وإحصائيات مكعبات وأعمال مؤقتة']),
+   card('Workers, crews and equipment per stage are listed in the phase map; resource loading in P.X needs your own crews and rates.','العمال والطواقم والمعدات لكل مرحلة موجودة في خريطة المراحل؛ وتحميل الموارد في P.X محتاج طواقمك وأسعارك.',null,'field')
+  ]});
+
+ /* ---------------- phase 10: handover and outputs ---------------- */
+ S.add({id:'handover',phase:'10',n:['Phase 10 · Handover: snags, as-built and close-out','المرحلة 10 · التسليم: الملاحظات والرسومات التنفيذية والإقفال'],mode:'mixed',
+  pre:async()=>{ await S.ensureProject(); },
+  sum:['Register a snag as an issue on the 3D model and close the project documents.','سجّل ملاحظة كـ issue على الموديل 3D وقفّل مستندات المشروع.'],
+  steps:[
+   {op:'say',en:'Phase 10: testing and commissioning are done on site; then the snag list, the as-built drawings, the O&M manuals and the close-out. The model carries the issues.',ar:'المرحلة 10: الاختبارات والتشغيل التجريبي في الموقع؛ وبعدين قايمة الملاحظات والرسومات التنفيذية وكتيبات التشغيل والإقفال. والموديل شايل الـissues.'},
+   card('Electrical and plumbing tests, commissioning for 24 to 72 hours, the occupancy certificate and utility connections are people and authority work.','اختبارات الكهرباء والسباكة والتشغيل التجريبي ٢٤ لـ٧٢ ساعة وشهادة الإشغال وتوصيل المرافق شغل ناس وجهات.',null,'field'),
+   {op:'tab',type:'model'},
+   {op:'do',fn:()=>{ ctx.i0=IS.list.length; const w=RV.els.find(e=>e.k==='wall'); if(w){ RV.sel=w.id; try{ rvBuild(); rvProps(); }catch(e){} } }},
+   {op:'say',en:'A snag found at the walk-through: select a wall and press "New issue from selected element".',ar:'ملاحظة لقيناها في الجولة: اختار حيطة واضغط "مشكلة جديدة من العنصر المحدد".'},
+   {op:'run',cmd:'is_new',after:1200},
+   {op:'assert',en:'An issue was created on the selected element',ar:'اتعملت issue على العنصر المحدد',ok:()=>IS.list.length===ctx.i0+1},
+   {op:'shot',name:'01_snag'},
+   {op:'do',fn:()=>{ try{ wxClose('pane:issues'); }catch(e){} }},
+   {op:'do',fn:()=>{ ctx.d1=TOX.docs().length; TOX.addDoc({type:'LTR',dir:'out',subject:'Handover letter: Project 6868',body:'Demo record: handover with the as-built package and O&M manuals.',from:'Contractor',to:'Owner'}); }},
+   {op:'assert',en:'Handover letter registered',ar:'خطاب التسليم اتسجل',ok:()=>TOX.docs().length===ctx.d1+1},
+   card('The handover rules check, as-built update of the model and the asset register run on the existing commands but need real project data, so the demo does not fake them.','فحص قواعد التسليم وتحديث الموديل as-built وسجل الأصول بيشتغلوا على أوامر موجودة لكن محتاجين بيانات مشروع حقيقية، فالديمو مبيزيفهمش.',null)
+  ]});
+ S.add({id:'out',phase:'10.5',n:['Outputs: sheets, package, vector export, render','المخرجات: اللوحات والحزمة والفكتور والريندر'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },
   sum:['Build an Output Center package, export a vector view and render a still, all from the open project. Nothing is downloaded.','ابني حزمة مركز المخرجات، صدّر منظور فكتور، وارندر صورة ثابتة، من المشروع المفتوح. ومفيش حاجة بتتنزّل.'],
   steps:[
    {op:'tab',type:'model'},
    {op:'say',en:'The drawing sheet is composed from the project (title block, views, notes).',ar:'لوحة الرسم بتتكوّن من المشروع (إطار وأوجه وملاحظات).'},
-   {op:'run',cmd:'sheet',after:800,soft:1},
-   {op:'say',en:'Output Center: pick numbered deliverables and build a versioned package. I build drawing sheet PDF, sheet SVG/PNG/DXF, 3D model files and the BOQ.',ar:'مركز المخرجات: اختار مخرجات مرقمة وابني حزمة بنسخة. هبني اللوحة PDF وSVG/PNG/DXF وملفات الموديل 3D والمقايسة.'},
-   {op:'run',cmd:'out_open',after:700},
+   {op:'run',cmd:'sheet',after:1000,soft:1},
+   {op:'say',en:'Output Center: pick numbered deliverables and build a versioned package: drawing sheet PDF, sheet SVG/PNG/DXF, 3D model files and the BOQ.',ar:'مركز المخرجات: اختار مخرجات مرقمة وابني حزمة بنسخة: اللوحة PDF وSVG/PNG/DXF وملفات الموديل 3D والمقايسة.'},
+   {op:'run',cmd:'out_open',after:900},
    {op:'do',fn:async()=>{ ctx.v0=OUTC.versions.length; ctx.v=await outBuild([1,2,3,5],null); }},
    {op:'assert',en:'Package version built with files and no failed items',ar:'اتبنت نسخة الحزمة بملفاتها ومن غير مخرجات فاشلة',ok:()=>OUTC.versions.length===ctx.v0+1&&(v=>(Array.isArray(v.files)?v.files.length:+v.files)>0&&!(Array.isArray(v.fails)?v.fails.length:v.fails))(OUTC.versions[OUTC.versions.length-1]),wait:30000},
    {op:'tab',type:'model'},
@@ -108,6 +99,7 @@
    {op:'say',en:'Render Studio: a draft-quality still of the current view.',ar:'استوديو الريندر: صورة ثابتة بجودة مسودة للمنظور الحالي.'},
    {op:'do',fn:async()=>{ ctx.rs=await TOX.render({kind:'still',preset:'draft'}); },timeout:180000},
    {op:'assert',en:'Rendered still created',ar:'الصورة المرندرة اتعملت',ok:()=>!!ctx.rs&&ctx.rs.ok!==false&&(ctx.rs.bytes>1000||(ctx.rs.blob&&ctx.rs.blob.size>1000))},
-   {op:'say',en:'That is the end of the tour. Project 6868 stays open and usable: model, schedule, quantities, calculations, clashes, documents and outputs are all in it. These outputs are demonstrations, not an approved design.',ar:'كده خلص الجولة. مشروع 6868 فاضل مفتوح وتقدر تشتغل عليه: الموديل والجدول والكميات والحسابات والتعارضات والمستندات والمخرجات كلها فيه. المخرجات دي للتوضيح مش تصميم معتمد.'}
+   {op:'shot',name:'01_after_render'},
+   {op:'say',en:'End of the tour. The project stays open and usable. These outputs are demonstrations, not an approved design.',ar:'خلصت الجولة. المشروع فاضل مفتوح وتقدر تشتغل عليه. المخرجات دي للتوضيح مش تصميم معتمد.'}
   ]});
 })();
