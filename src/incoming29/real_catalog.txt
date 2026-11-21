@@ -1,0 +1,57 @@
+OK   osm             OK
+OK   osm_de          OK
+OK   osm_hot         OK
+OK   cyclosm         OK
+OK   carto_light     OK
+OK   carto_dark      OK
+OK   carto_voyager   OK
+OK   esri_street     OK
+OK   esri_gray       OK
+OK   otm             OK
+OK   esri_topo       OK
+OK   esri_natgeo     OK
+OK   eox_terrain     OK
+OK   esri_hill       OK
+OK   esri_img        OK
+n/a  wayback         open it once to load the release list
+OK   eox_2016        OK
+OK   eox_2018        OK
+OK   eox_2019        OK
+OK   eox_2020        OK
+OK   eox_2021        OK
+OK   eox_2022        OK
+OK   eox_2023        OK
+OK   eox_2024        OK
+OK   gibs_hls        OK
+OK   gibs_modis_tc   OK
+OK   gibs_viirs_tc   OK
+OK   gibs_bm         OK
+OK   gibs_lst_day    OK
+OK   gibs_lst_night  OK
+OK   gibs_sst        OK
+OK   gibs_bmarble    OK
+FAIL gibs_dnb        HTTP 200 (not an image)
+OK   gibs_ndvi       OK
+OK   gibs_snow       OK
+OK   gibs_aerosol    OK
+FAIL worldcover      no connection, blocked, or no CORS
+OK   gsw             OK
+OK   gfc             OK
+OK   rainviewer      OK
+OK   esri_labels     OK
+OK   esri_trans      OK
+OK   openrailway     OK
+OK   openseamap      OK
+OK   osm_fr          OK
+FAIL opnv            no connection, blocked, or no CORS
+OK   un_clearmap     OK
+OK   esri_shaded     OK
+OK   esri_terrain    OK
+OK   esri_physical   OK
+OK   esri_ocean      OK
+OK   wmt_hiking      OK
+OK   wmt_cycling     OK
+OK   gibs_b721       OK
+OK   gibs_b367       OK
+OK   gibs_citylights OK
+OK   gibs_chloro     OK

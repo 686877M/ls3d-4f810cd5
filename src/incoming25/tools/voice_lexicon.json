@@ -1,0 +1,17 @@
+{
+ "_note": "Pronunciation fixes for the narration text ONLY (captions on screen are not changed). Key = text as written in the Arabic caption (Latin keys match case-insensitively, whole word). Edit freely; changed lines are re-rendered automatically. Run `make_voice.py --report-latin` to list Latin words still unmapped.",
+ "T.O X": "تي أو إكس",
+ "R.X": "آر إكس", "C.X": "سي إكس", "S.X": "إس إكس", "P.X": "بي إكس", "N.X": "إن إكس",
+ "Q.X": "كيو إكس", "V.X": "في إكس", "F.X": "إف إكس", "G.X": "جي إكس", "O.X": "أو إكس",
+ "Ctrl+K": "كنترول كيه", "Ctrl": "كنترول",
+ "6868": "ستة تمانية ستة تمانية",
+ "3D": "ثري دي", "4D": "فور دي", "2D": "تو دي",
+ "BOQ": "بي أو كيو", "MEP": "إم إي بي", "BIM": "بيم", "GIS": "جي آي إس", "TIN": "تي آي إن",
+ "IFC": "آي إف سي", "RFI": "آر إف آي", "PDF": "بي دي إف", "DXF": "دي إكس إف", "DWG": "دي دبليو جي",
+ "CSV": "سي إس في", "SVG": "إس في جي", "PNG": "بي إن جي", "GPX": "جي بي إكس", "LandXML": "لاند إكس إم إل",
+ "HVAC": "إتش في إيه سي", "AC": "إيه سي", "CAD": "كاد", "P6": "بي ستة",
+ "Manning": "مانينج", "Hazen-Williams": "هيزن ويليامز",
+ "wall": "وول", "hard": "هارد",
+ "%": " في المية",
+ "m²": "متر مربع", "m³": "متر مكعب", "kN": "كيلو نيوتن", "kW": "كيلو وات", "mm": "مللي"
+}

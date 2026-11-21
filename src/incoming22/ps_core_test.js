@@ -1,0 +1,92 @@
+// node ps_core_test.js [dir with ps_data.js + ps_core.js]   (Node only, no browser)
+const fs=require('fs'),vm=require('vm'),path=require('path');
+const D=process.argv[2]||__dirname;
+const ctx={}; vm.createContext(ctx);
+vm.runInContext(fs.readFileSync(path.join(D,'ps_data.js'),'utf8')+'\n'+fs.readFileSync(path.join(D,'ps_core.js'),'utf8')+'\nthis.PSD=PSD;this.PSX=PSX;',ctx);
+const {PSD,PSX}=ctx; let ok=0,bad=0; const t=(n,c,x)=>{ if(c)ok++; else{ bad++; console.log('FAIL',n,x===undefined?'':JSON.stringify(x)); } }; const near=(a,b)=>Math.abs(a-b)<1e-6;
+// --- price book: nothing exists until the user loads it
+let b=PSX.bookNew(); t('book starts empty',b.items.length===0&&b.currency===''&&!PSX.bookHasSample(b));
+t('sample data has 50+ items, unique codes',PSD.items.length>=50&&new Set(PSD.items.map(i=>i[0])).size===PSD.items.length);
+t('every trade of every item exists',PSD.items.every(i=>PSD.trades.some(x=>x[0]===i[1])));
+t('every finish code exists',Object.values(PSD.fin).every(a=>a.every(e=>!e[3]||PSD.items.some(i=>i[0]===e[3]))) );
+t('every suggestion exists',Object.values(PSD.suggest).every(c=>PSD.items.some(i=>i[0]===c)));
+t('every clause has trade + 2 languages',PSD.spec.every(c=>PSD.trades.some(x=>x[0]===c[1])&&c.slice(2).every(s=>s&&s.length>2)));
+t('arabic present in clauses',PSD.spec.every(c=>/[؀-ۿ]/.test(c[3]+c[5])));
+t('load sample',PSX.bookLoadSample(b)===PSD.items.length&&PSX.bookHasSample(b)&&b.items.every(i=>i.src==='sample'));
+t('load twice adds nothing',PSX.bookLoadSample(b)===0);
+// --- CSV round trip
+b.currency='XXX'; b.date='2026-11-21'; b.region='Region, with comma "quoted"'; PSX.bookSet(b,'CN03',92.5); b.items.find(i=>i.code==='MS01').en='Block, "200" mm; test';
+const csv=PSX.bookCsv(b); const b2=PSX.bookNew(); const r=PSX.bookImport(b2,csv);
+t('round trip counts',r.added===b.items.length&&!r.errors.length,r);
+t('round trip items equal',b.items.every((i,k)=>JSON.stringify(i)===JSON.stringify(b2.items[k])));
+t('round trip meta',b2.currency==='XXX'&&b2.date==='2026-11-21'&&b2.region===b.region);
+t('user edit survives as user',b2.items.find(i=>i.code==='CN03').src==='user'&&b2.items.find(i=>i.code==='CN03').rate===92.5);
+t('csv sample rows carry the SAMPLE note',/SAMPLE, replace with your own rates/.test(csv));
+const b3=PSX.bookNew(); const r3=PSX.bookImport(b3,'item;price;unit\nZZ1;12,5;m2\nZZ2;abc;m\n;3;m\nZZ3;-4;m\n'); t('semicolon + comma-decimal/ bad rows',r3.added===1&&b3.items[0].rate===125&&r3.errors.length===2&&r3.skipped===3,r3);
+t('imported rows are labelled import not sample',b3.items[0].src==='import');
+const inj=PSX.bookNew(); inj.items.push({code:'=X1',trade:'',en:'=cmd',ar:'',unit:'m',rate:1,src:'user'}); const ij=PSX.bookCsv(inj); t('formula guard on export',/'=X1/.test(ij)); const ib=PSX.bookNew(); PSX.bookImport(ib,ij); t('formula guard round trip',ib.items[0].code==='=X1'&&ib.items[0].en==='=cmd');
+t('bad file refused',PSX.bookImport(PSX.bookNew(),'a,b\n1,2').errors.length===1);
+// --- apply plan: opt-in only
+const rows=[{key:'RX:wall.A',row:3,name:'Walls',unit:'m2',qty:152.5,rate:null},{key:'RX:floor.V',row:4,name:'Floors',unit:'m3',qty:48,rate:null},{key:'RX:door.n',row:5,name:'Doors',unit:'no',qty:9,rate:55},{key:'RX:col.V',row:6,name:'Cols',unit:'m2',qty:2,rate:null}];
+let p=PSX.planApply(rows,{},b,{}); t('no picks = nothing written',p.writes.length===0);
+const picks={}; rows.forEach(x=>picks[x.key]={code:PSX.suggestFor(x.key,b),on:false}); p=PSX.planApply(rows,picks,b,{}); t('suggested but not ticked = nothing written',p.writes.length===0);
+rows.forEach(x=>picks[x.key].on=true); p=PSX.planApply(rows,picks,b,{});
+t('ticked writes rates',p.writes.length===3&&p.writes.find(w=>w.key==='RX:wall.A').rate===17,p);
+t('typed rate protected',p.skipped.some(s=>s.key==='RX:door.n'&&/already/.test(s.why)));
+t('overwrite is explicit',PSX.planApply(rows,picks,b,{overwrite:true}).writes.some(w=>w.key==='RX:door.n'));
+t('unit mismatch flagged',p.writes.find(w=>w.key==='RX:col.V').unitWarn===true&&!p.writes.find(w=>w.key==='RX:wall.A').unitWarn);
+t('remark labels SAMPLE',/SAMPLE, replace with your own rates/.test(p.writes.find(w=>w.key==='RX:wall.A').remark)&&/XXX/.test(p.writes[0].remark));
+t('user rate remark not SAMPLE',!/SAMPLE/.test(p.writes.find(w=>w.key==='RX:floor.V').remark));
+t('item without rate skipped',(()=>{ const c=PSX.bookNew(); PSX.bookLoadSample(c); PSX.bookSet(c,'MS01',''); return PSX.planApply([rows[0]],{[rows[0].key]:{code:'MS01',on:true}},c,{}).skipped.length===1; })());
+t('BOQ total = qty x rate',near(PSX.boqTotal([{qty:152.5,rate:17},{qty:48,rate:92.5},{qty:9,rate:140}]),152.5*17+48*92.5+9*140));
+// --- finishes: 2-room hand calculation
+const A={id:'A',src:'man',name:'Room A',A:20,P:18,h:3,doors:[{id:'d1',W:.9,H:2.1}],windows:[{id:'w1',W:1.2,H:1.2}],floor:'cer',skirt:'cer',wall:'paint',ceil:'paint'};
+const B={id:'B',src:'man',name:'Room B',A:9,P:12,h:3,doors:[{id:'d1',W:.9,H:2.1}],windows:[],floor:'cer',skirt:'cer',wall:'paint',ceil:'paint'};
+const qa=PSX.finQty(A), qb=PSX.finQty(B);
+t('room A wall = 18x3 - 1.89 - 1.44 = 50.67',near(qa.wall,50.67),qa); t('room A skirting = 18 - 0.9 = 17.1',near(qa.skirt,17.1)); t('room A floor=ceiling=20',qa.floor===20&&qa.ceil===20);
+t('room B wall = 36 - 1.89 = 34.11',near(qb.wall,34.11),qb); t('room B skirting = 11.1',near(qb.skirt,11.1));
+const lines=PSX.finLines([A,B],{}); const q=c=>(lines.find(l=>l.code===c)||{}).qty;
+t('FL01 = 29',near(q('FL01'),29),lines); t('FL06 screed = 29',near(q('FL06'),29)); t('SK01 = 28.2',near(q('SK01'),28.2)); t('PL01 = 84.78',near(q('PL01'),84.78)); t('PT01 = 84.78+29',near(q('PT01'),113.78)); t('PL03 = 29',near(q('PL03'),29));
+t('shared door counted once',q('DW01')===1); t('window area 1.44 (DW03 per m2)',near(q('DW03'),1.44));
+t('lines list rooms',lines.find(l=>l.code==='FL01').rooms.join()==='Room A,Room B');
+t('lines have no rate until user fills',lines.every(l=>l.rate===null&&l.amount===null));
+t('summary unpriced before fill',PSX.finSummary(lines,[A,B]).perM2===null&&PSX.finSummary(lines,[A,B]).unpriced===lines.length);
+const nf=PSX.finFill(lines,b); t('fill takes book rates',nf===lines.length&&lines.every(l=>l.rate!==null&&near(l.amount,l.qty*l.rate)));
+const sm=PSX.finSummary(lines,[A,B]); let hand=0; lines.forEach(l=>hand+=l.qty*PSX.item(b,l.code).rate);
+t('summary total = sum of lines',near(sm.total,hand)&&near(sm.byTrade.reduce((s,x)=>s+x.amount,0),sm.total),sm); t('cost per m2 = total / 29',near(sm.perM2,hand/29)&&sm.area===29);
+const b4=PSX.bookNew(); PSX.bookLoadSample(b4); b4.items.find(i=>i.code==='PT01').rate=null; PSX.finFill(lines,b4); t('missing rate keeps cost/m2 empty',PSX.finSummary(lines,[A,B]).perM2===null&&PSX.finSummary(lines,[A,B]).unpriced===1);
+t('tile wall / gypsum / no skirting variants',(()=>{ const r=Object.assign({},A,{wall:'tile',ceil:'gyp',skirt:'none',floor:'none'}); const l=PSX.finLines([r],{}); const g=c=>(l.find(x=>x.code===c)||{}).qty; return near(g('WT01'),50.67)&&near(g('CE01'),20)&&near(g('PT01'),20)&&g('SK01')===undefined&&g('FL01')===undefined&&g('FL06')===undefined; })());
+t('window mark type per piece',(()=>{ const l=PSX.finLines([A],{[PSX.winKey({W:1.2,H:1.2})]:'DW08'}); return l.find(x=>x.code==='DW08').qty===1; })());
+t('marks dedupe sizes',(()=>{ const m=PSX.marks([A,B]); return m.doors.length===1&&m.doors[0].label==='D1'&&m.wins[0].label==='W1'; })());
+t('parseOpenings',PSX.parseOpenings('0.9x2.1*2, 1x2.1, junk',"m").length===3);
+// --- R.X rooms
+const RV={def:{wall:{h:3,t:.2}},els:[{id:1,k:'room',a:[0,0],b:[4,5],n:'Living',lv:0},{id:2,k:'room',a:[4.2,0],b:[7.2,3],n:'Bath',lv:0},{id:3,k:'wall',a:[4.1,0],b:[4.1,5],h:3,t:.2,lv:0},{id:4,k:'wall',a:[0,0],b:[4,0],h:3.2,t:.2,lv:0},{id:5,k:'door',w:3,p:1.5,W:.9,H:2.1,lv:0},{id:6,k:'window',w:4,p:2,W:1.2,H:1.2,lv:0},{id:7,k:'room',a:[0,0],b:[2,2],n:'Upper',lv:1}]};
+const rr=PSX.roomsFromRV(RV); t('roomsFromRV 3 rooms',rr.length===3);
+const li=rr.find(x=>x.name==='Living'), ba=rr.find(x=>x.name==='Bath');
+t('living 20 m2, P 18, h 3.2 (tallest wall on level)',li.A===20&&li.P===18&&li.h===3.2,li); t('door shared by both rooms',li.doors.length===1&&ba.doors.length===1&&li.doors[0].id===ba.doors[0].id); t('window only in living',li.windows.length===1&&ba.windows.length===0);
+t('other level has no openings',rr.find(x=>x.name==='Upper').doors.length===0);
+const mg=PSX.mergeRooms([Object.assign({},li,{floor:'mar'}),{id:'gone',src:'rx',name:'old'},{id:'m1',src:'man',name:'Manual'}],rr); t('merge keeps choice, drops stale, keeps manual',mg.rooms.find(x=>x.id==='1').floor==='mar'&&mg.removed===1&&mg.added===2&&mg.rooms.some(x=>x.id==='m1'));
+// --- bids
+const sh=PSX.bidSample(b); const cmp=PSX.bidCompare(sh,{});
+t('3 bidders, ranks 1..3',cmp.rows.length===3&&cmp.rows.map(r=>r.rank).sort().join()==='1,2,3');
+let handA=0; sh.lines.forEach(l=>handA+=l.qty*sh.bidders[0].rates[l.code]); t('quoted = sum qty x rate',near(cmp.rows[0].quoted,handA));
+const rb=cmp.rows[1]; t('missing item filled at median of the others',rb.missing===1&&near(rb.filled,sh.lines.find(l=>l.code==='RB01').qty*((sh.bidders[0].rates.RB01+sh.bidders[2].rates.RB01)/2)),rb);
+t('normalised = quoted + filled + adj',cmp.rows.every(r=>near(r.normalised,r.quoted+r.filled+r.adj)));
+t('unbalanced rate flagged on C (PL01 at 0.4 x)',cmp.rows[2].flags.some(f=>/unbalanced.*PL01/.test(f)),cmp.rows[2].flags);
+t('qualification flagged on B',cmp.rows[1].flags.includes('qualifications'));
+const rt=PSX.bidImport(PSX.bidCsv(sh)); t('bid sheet CSV round trip',JSON.stringify(rt)===JSON.stringify(sh));
+t('below-estimate flag uses 15 %',(()=>{ const s2=JSON.parse(JSON.stringify(sh)); s2.bidders.forEach(x=>{ for(const k in x.rates)x.rates[k]=x.rates[k]*.5; x.adj=0; }); return PSX.bidCompare(s2,{}).rows.every(r=>r.flags.some(f=>/below estimate/.test(f))); })());
+t('html mentions SAMPLE caveat',/SAMPLE, replace with your own rates/.test(PSX.bidHtml(sh,cmp,'XXX')));
+// --- documents: neutral
+const proj='ZZ-SECRET-PROJECT-NAME';
+const sb=PSX.specBook({lang:'both',sel:{'RX:wall.A':['MS-1','MS-2'],'RX:floor.V':['CN-1','CN-2']},names:{'RX:wall.A':'Walls, net area','RX:floor.V':'Floors, volume'}});
+t('spec book has selected clauses only',/Mortar and workmanship/.test(sb)&&/Cover to reinforcement/.test(sb)&&!/Plaster</.test(sb)&&!/Wall tiles/.test(sb));
+t('spec book bilingual',/class="ar"/.test(sb)&&/Blocks and bricks/.test(sb)&&/البلوك والطوب/.test(sb));
+t('spec book neutral title and no project',/<title>Technical specifications<\/title>/.test(sb)&&!sb.includes(proj));
+t('spec book arabic only',!/Blocks and bricks/.test(PSX.specBook({lang:'ar',sel:{k:['MS-1']}}))&&/dir="rtl"/.test(PSX.specBook({lang:'ar',sel:{k:['MS-1']}})));
+t('empty selection prints the library and says so',/whole library/.test(PSX.specBook({lang:'en'}))&&PSD.spec.every(c=>PSX.specBook({lang:'en'}).includes(c[2])));
+t('spec table links lines to numbers',/Walls, net area<\/td><td>\d\d\.\d, \d\d\.\d/.test(sb),sb.slice(-400));
+t('html escaping',!PSX.specBook({lang:'en',title:'<b>x</b>',sel:{}}).includes('<b>x</b>'));
+const ch=PSX.contractHtml(null,'both'); t('contract set has all documents',PSD.contract.every(c=>ch.includes(c[1])||ch.includes(PSX.esc(c[1]))),ch.length); t('contract neutral (blanks only)',/\[Employer\]/.test(ch)&&!ch.includes(proj));
+t('no real-looking host/URL in documents',!/https?:\/\//.test(ch+sb));
+console.log(ok+' passed, '+bad+' failed'); process.exit(bad?1:0);

@@ -1,0 +1,39 @@
+--- a/tools/tox_bridge.py	2026-11-21 16:27:23
++++ b/tools/tox_bridge.py	2026-11-21 16:27:23
+@@ -32,6 +32,11 @@
+ from email.policy import default as _mailpolicy
+ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+ from urllib.parse import urlparse, parse_qs
++sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++try:
++    import tox_photo             # "Photos to 3D": local NodeODM container + restricted /photo/* routes (tools/tox_photo.py)
++except ImportError:
++    tox_photo = None
+ 
+ PORT = int(os.environ.get("TOX_PORT", "8766"))
+ ROOT = None                    # set by --serve: folder with index.html (the site)
+@@ -534,12 +539,14 @@
+             self.send_header("Content-Length", str(len(body)))
+             self.end_headers()
+             return self.wfile.write(body)
++        if p.startswith("/photo/") and tox_photo:
++            return tox_photo.route(self, "GET")
+         if p == "/mcp":     # no server-initiated stream: allowed by the streamable HTTP spec
+             return self._send(405, {"error": "POST only"}, {"Allow": "POST"})
+         if ROOT and p not in ("/ping", "/poll"):
+             return self._static(p)
+         if p == "/ping":
+-            return self._send(200, {"ok": True, "page": page_online(), "whisper": WH["name"], "proxy": True, "mcp": True, "isolate": ISOLATE})
++            return self._send(200, {"ok": True, "page": page_online(), "whisper": WH["name"], "proxy": True, "mcp": True, "photo": bool(tox_photo), "isolate": ISOLATE})
+         if not self._auth():
+             return self._send(401, {"error": "bad token"})
+         if p == "/poll":
+@@ -559,6 +566,8 @@
+         pth = urlparse(self.path).path
+         if pth == "/proxy":
+             return self._do_proxy()
++        if pth.startswith("/photo/") and tox_photo:
++            return tox_photo.route(self, "POST")
+         if pth == "/mcp":
+             return self._do_mcp()
+         if pth == "/v1/audio/transcriptions":   # OpenAI-compatible, used by the page's REC button

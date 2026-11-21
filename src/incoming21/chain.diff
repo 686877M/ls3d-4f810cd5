@@ -1,0 +1,10 @@
+--- patch_v3.py (baseline copy)
++++ patch_v3.py (with structural design engine)
+@@ the uiText chain: insert the six se_ chunks between c_rc_ui.js and sttlocal.js @@
+-...+rd('c_rc_core.js')+rd('c_rc_import.js')+rd('c_rc_terrain.js')+rd('c_rc_bld.js')+rd('c_rc_ui.js')+rd('sttlocal.js')+...
++...+rd('c_rc_core.js')+rd('c_rc_import.js')+rd('c_rc_terrain.js')+rd('c_rc_bld.js')+rd('c_rc_ui.js')+rd('se_codes.js')+rd('se_loads.js')+rd('se_members.js')+rd('se_members2.js')+rd('se_api.js')+rd('se_ui.js')+rd('sttlocal.js')+...
+
+Only this one replacement is needed (string in patch_v3.py):
+  OLD: rd('c_rc_ui.js')+rd('sttlocal.js')
+  NEW: rd('c_rc_ui.js')+rd('se_codes.js')+rd('se_loads.js')+rd('se_members.js')+rd('se_members2.js')+rd('se_api.js')+rd('se_ui.js')+rd('sttlocal.js')
+The se_ chunks must stay BEFORE rs_ui.js (it freezes window.TOX); they register TOXAPI.structDesign etc. at load.

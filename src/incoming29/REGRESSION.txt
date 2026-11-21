@@ -1,0 +1,10 @@
+Regression on the private build work_gismaps/out (index.test.html), 2026-11-21, one headless Chrome at a time, machine load average about 300.
+gm_test.js (new)        66 passed, 0 failed
+parity_test.js          126 passed, 0 failed   (expected 126)
+px2_test.js             149 passed, 0 failed   (expected 149)
+freeai_test.js          88 passed, 0 failed    (expected 88)
+privacy_test.js         109 passed, 0 failed   (expected 109)
+p2tog_gis_test.js       61 passed, 0 failed    (expected 61)
+sample_check.js         31 passed, 0 failed    (both pw/sample_check.js and incoming18/sample_check.js print 31; the brief said 32: the count could not be reconciled, no failures)
+link_test.js            NOT PASSED UNDER LOAD: TEST ERROR "page.setInputFiles: Timeout 30000ms" at the IFC viewer step (my build, twice). The same script on the unchanged site/index.test.html also errored ("page.screenshot: Timeout 30000ms"), so it is the 30 s default timeouts under load, not the maps chunks; the 43 link checks were NOT completed on either build. Re-run on a quiet machine.
+Earlier partial run of link_test (pw/link_test.js, older copy): 34 of 35 passed, the one failure the same IFC viewer file load.

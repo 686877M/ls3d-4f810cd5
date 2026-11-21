@@ -1,0 +1,408 @@
+{
+ "src": {
+  "osm": "leaflet-providers (BSD-2) OpenStreetMap.Mapnik",
+  "osm_de": "leaflet-providers (BSD-2) OpenStreetMap.DE",
+  "osm_hot": "leaflet-providers (BSD-2) OpenStreetMap.HOT",
+  "cyclosm": "leaflet-providers (BSD-2) CyclOSM",
+  "carto_light": "leaflet-providers (BSD-2) CartoDB.Positron",
+  "carto_dark": "leaflet-providers (BSD-2) CartoDB.DarkMatter",
+  "carto_voyager": "leaflet-providers (BSD-2) CartoDB.Voyager",
+  "esri_street": "leaflet-providers (BSD-2) Esri.WorldStreetMap",
+  "esri_gray": "leaflet-providers (BSD-2) Esri.WorldGrayCanvas",
+  "otm": "leaflet-providers (BSD-2) OpenTopoMap",
+  "esri_topo": "leaflet-providers (BSD-2) Esri.WorldTopoMap",
+  "esri_natgeo": "leaflet-providers (BSD-2) Esri.NatGeoWorldMap",
+  "esri_img": "leaflet-providers (BSD-2) Esri.WorldImagery",
+  "openrailway": "leaflet-providers (BSD-2) OpenRailwayMap",
+  "openseamap": "leaflet-providers (BSD-2) OpenSeaMap",
+  "gibs_modis_tc": "NASA GIBS GetCapabilities MODIS_Terra_CorrectedReflectance_TrueColor + leaflet-providers (BSD-2) NASAGIBS.ModisTerraTrueColorCR",
+  "gibs_lst_day": "NASA GIBS GetCapabilities MODIS_Terra_Land_Surface_Temp_Day + leaflet-providers (BSD-2) NASAGIBS.ModisTerraLSTDay",
+  "gibs_snow": "NASA GIBS GetCapabilities MODIS_Terra_NDSI_Snow_Cover + leaflet-providers (BSD-2) NASAGIBS.ModisTerraSnowCover",
+  "gibs_aerosol": "NASA GIBS GetCapabilities MODIS_Terra_Aerosol + leaflet-providers (BSD-2) NASAGIBS.ModisTerraAOD",
+  "gibs_viirs_tc": "NASA GIBS GetCapabilities VIIRS_SNPP_CorrectedReflectance_TrueColor",
+  "gibs_bm": "NASA GIBS GetCapabilities BlueMarble_ShadedRelief_Bathymetry",
+  "gibs_lst_night": "NASA GIBS GetCapabilities MODIS_Terra_Land_Surface_Temp_Night",
+  "gibs_sst": "NASA GIBS GetCapabilities GHRSST_L4_MUR_Sea_Surface_Temperature",
+  "gibs_bmarble": "NASA GIBS GetCapabilities VIIRS_Black_Marble",
+  "gibs_dnb": "NASA GIBS GetCapabilities VIIRS_SNPP_DayNightBand_ENCC",
+  "gibs_ndvi": "NASA GIBS GetCapabilities MODIS_Terra_NDVI_8Day",
+  "gibs_hls": "NASA GIBS GetCapabilities HLS_S30_Nadir_BRDF_Adjusted_Reflectance",
+  "fires": "NASA GIBS GetCapabilities MODIS_Terra_Thermal_Anomalies_All / VIIRS_SNPP_Thermal_Anomalies_375m_All (format application/vnd.mapbox-vector-tile) + NASA FIRMS viewer link",
+  "wayback": "Esri Wayback config JSON (waybackconfig.json, release list)",
+  "rainviewer": "RainViewer public API docs (weather-maps.json), own research; not in leaflet-providers",
+  "eox_terrain": "EOX maps WMTS (maps.eox.at), own research",
+  "esri_hill": "Esri ArcGIS service name World_Hillshade, own research",
+  "worldcover": "ESA WorldCover / Terrascope WMTS docs, own research",
+  "gsw": "JRC Global Surface Water Explorer tile bucket, own research",
+  "gfc": "Hansen / UMD Global Forest Change tile bucket, own research",
+  "esri_labels": "existing repo c_gis.js OVERLAYS (Esri reference service)",
+  "esri_trans": "existing repo c_gis.js OVERLAYS (Esri reference service)",
+  "img_key": "Esri ArcGIS Location Platform docs, own research",
+  "sentinelhub": "Sentinel Hub OGC WMTS docs, own research",
+  "maptiler_sat": "xyzservices (BSD-3) MapTiler.Satellite",
+  "eox_2016": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2018": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2019": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2020": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2021": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2022": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2023": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "eox_2024": "EOX Sentinel-2 cloudless WMTS (s2maps.eu / maps.eox.at), own research; not in leaflet-providers",
+  "lk_*": "existing repo c_gis2.js viewer links + own research"
+ },
+ "attr": {
+  "osm": "© OpenStreetMap contributors",
+  "osm_de": "© OpenStreetMap contributors",
+  "osm_hot": "© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France",
+  "cyclosm": "CyclOSM | Map data: © OpenStreetMap contributors",
+  "carto_light": "© OpenStreetMap contributors © CARTO",
+  "carto_dark": "© OpenStreetMap contributors © CARTO",
+  "carto_voyager": "© OpenStreetMap contributors © CARTO",
+  "esri_street": "Tiles © Esri -- Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
+  "esri_gray": "Tiles © Esri -- Esri, DeLorme, NAVTEQ",
+  "otm": "Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)",
+  "esri_topo": "Tiles © Esri -- Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
+  "esri_natgeo": "Tiles © Esri -- National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
+  "esri_img": "Tiles © Esri -- Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+  "openrailway": "Map data: © OpenStreetMap contributors | Map style: © OpenRailwayMap (CC-BY-SA)",
+  "openseamap": "Map data: © OpenSeaMap contributors",
+  "gibs_modis_tc": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+  "gibs_lst_day": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+  "gibs_snow": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+  "gibs_aerosol": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ."
+ },
+ "extra": [
+  {
+   "id": "osm_fr",
+   "g": "street",
+   "k": "b",
+   "en": "OpenStreetMap France",
+   "ar": "OpenStreetMap فرنسا",
+   "u": "https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+   "a": "© OpenStreetMap France | © OpenStreetMap contributors",
+   "z": 20,
+   "lic": "light",
+   "tx": [
+    "Community tile server from the leaflet-providers list: light use only, no bulk download, no SLA. Licence of the data: see attribution.",
+    "سيرفر مجتمعي من قايمة leaflet-providers: استخدام خفيف بس، ممنوع التحميل الكتير، بدون ضمان. ترخيص البيانات: شوف الإسناد."
+   ],
+   "pz": 12,
+   "src": "leaflet-providers (BSD-2) OpenStreetMap.France"
+  },
+  {
+   "id": "opnv",
+   "g": "street",
+   "k": "b",
+   "en": "Public transport map (OPNVKarte)",
+   "ar": "خريطة المواصلات العامة (OPNVKarte)",
+   "u": "https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png",
+   "a": "Map memomaps.de CC-BY-SA, map data © OpenStreetMap contributors",
+   "z": 18,
+   "lic": "light",
+   "tx": [
+    "Community tile server from the leaflet-providers list: light use only, no bulk download, no SLA. Licence of the data: see attribution.",
+    "سيرفر مجتمعي من قايمة leaflet-providers: استخدام خفيف بس، ممنوع التحميل الكتير، بدون ضمان. ترخيص البيانات: شوف الإسناد."
+   ],
+   "pz": 12,
+   "src": "leaflet-providers (BSD-2) OPNVKarte"
+  },
+  {
+   "id": "un_clearmap",
+   "g": "topo",
+   "k": "b",
+   "en": "UN ClearMap (United Nations web topo)",
+   "ar": "UN ClearMap (طبوغرافي الأمم المتحدة)",
+   "u": "https://geoservices.un.org/arcgis/rest/services/ClearMap_WebTopo/MapServer/tile/{z}/{y}/{x}",
+   "a": "United Nations",
+   "z": 18,
+   "lic": "check",
+   "tx": [
+    "United Nations geospatial web service (from the xyzservices list): terms not checked here; the UN asks for the attribution shown.",
+    "خدمة الأمم المتحدة الجغرافية (من قايمة xyzservices): الشروط ماتحققتش هنا؛ الإسناد المعروض مطلوب."
+   ],
+   "pz": 8,
+   "src": "xyzservices (BSD-3) UN.ClearMap"
+  },
+  {
+   "id": "esri_shaded",
+   "g": "topo",
+   "k": "b",
+   "en": "Esri shaded relief",
+   "ar": "تظليل التضاريس Esri",
+   "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",
+   "a": "Tiles © Esri -- Source: Esri",
+   "z": 13,
+   "lic": "unclear",
+   "tx": [
+    "Esri public tile URL, no key: licence for direct third-party use NOT confirmed; private demo only.",
+    "رابط بلاطات Esri العام بدون مفتاح: ترخيص الاستخدام المباشر غير مؤكد؛ لديمو خاص بس."
+   ],
+   "pz": 8,
+   "src": "leaflet-providers (BSD-2) Esri.WorldShadedRelief"
+  },
+  {
+   "id": "esri_terrain",
+   "g": "topo",
+   "k": "b",
+   "en": "Esri terrain base",
+   "ar": "تضاريس Esri الأساسية",
+   "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+   "a": "Tiles © Esri -- Source: USGS, Esri, TANA, DeLorme, and NPS",
+   "z": 13,
+   "lic": "unclear",
+   "tx": [
+    "Esri public tile URL, no key: licence for direct third-party use NOT confirmed; private demo only.",
+    "رابط بلاطات Esri العام بدون مفتاح: ترخيص الاستخدام المباشر غير مؤكد؛ لديمو خاص بس."
+   ],
+   "pz": 8,
+   "src": "leaflet-providers (BSD-2) Esri.WorldTerrain"
+  },
+  {
+   "id": "esri_physical",
+   "g": "topo",
+   "k": "b",
+   "en": "Esri physical map",
+   "ar": "الخريطة الفيزيائية Esri",
+   "u": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
+   "a": "Tiles © Esri -- Source: US National Park Service",
+   "z": 8,
+   "lic": "unclear",
+   "tx": [
+    "Esri public tile URL, no key: licence for direct third-party use NOT confirmed; private demo only.",
+    "رابط بلاطات Esri العام بدون مفتاح: ترخيص الاستخدام المباشر غير مؤكد؛ لديمو خاص بس."
+   ],
+   "pz": 8,
+   "src": "leaflet-providers (BSD-2) Esri.WorldPhysical"
+  },
+  {
+   "id": "esri_ocean",
+   "g": "topo",
+   "k": "b",
+   "en": "Esri ocean basemap",
+   "ar": "خريطة المحيطات Esri",
+   "u": "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+   "a": "Tiles © Esri -- Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri",
+   "z": 13,
+   "lic": "unclear",
+   "tx": [
+    "Esri public tile URL, no key: licence for direct third-party use NOT confirmed; private demo only.",
+    "رابط بلاطات Esri العام بدون مفتاح: ترخيص الاستخدام المباشر غير مؤكد؛ لديمو خاص بس."
+   ],
+   "pz": 8,
+   "src": "leaflet-providers (BSD-2) Esri.OceanBasemap"
+  },
+  {
+   "id": "wmt_hiking",
+   "g": "ref",
+   "k": "o",
+   "en": "Hiking trails (Waymarked Trails)",
+   "ar": "مسارات المشي (Waymarked Trails)",
+   "u": "https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png",
+   "a": "Map data: © OpenStreetMap contributors | Map style: © waymarkedtrails.org (CC-BY-SA)",
+   "z": 18,
+   "lic": "light",
+   "tx": [
+    "Community tile server from the leaflet-providers list: light use only, no bulk download, no SLA. Licence of the data: see attribution.",
+    "سيرفر مجتمعي من قايمة leaflet-providers: استخدام خفيف بس، ممنوع التحميل الكتير، بدون ضمان. ترخيص البيانات: شوف الإسناد."
+   ],
+   "pz": 10,
+   "src": "leaflet-providers (BSD-2) WaymarkedTrails.hiking",
+   "op": 0.9
+  },
+  {
+   "id": "wmt_cycling",
+   "g": "ref",
+   "k": "o",
+   "en": "Cycling routes (Waymarked Trails)",
+   "ar": "مسارات الدراجات (Waymarked Trails)",
+   "u": "https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png",
+   "a": "Map data: © OpenStreetMap contributors | Map style: © waymarkedtrails.org (CC-BY-SA)",
+   "z": 18,
+   "lic": "light",
+   "tx": [
+    "Community tile server from the leaflet-providers list: light use only, no bulk download, no SLA. Licence of the data: see attribution.",
+    "سيرفر مجتمعي من قايمة leaflet-providers: استخدام خفيف بس، ممنوع التحميل الكتير، بدون ضمان. ترخيص البيانات: شوف الإسناد."
+   ],
+   "pz": 10,
+   "src": "leaflet-providers (BSD-2) WaymarkedTrails.cycling",
+   "op": 0.9
+  },
+  {
+   "id": "gibs_b721",
+   "g": "aerial",
+   "k": "b",
+   "en": "MODIS Terra bands 7-2-1 (burn scars, snow, vegetation; NASA GIBS)",
+   "ar": "MODIS Terra نطاقات 7-2-1 (حروق وثلج ونبات)",
+   "u": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_Bands721/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpeg",
+   "a": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+   "z": 9,
+   "lic": "open",
+   "tx": [
+    "NASA GIBS: NASA open data, acknowledgement requested, no key. Commercial use not stated explicitly on the pages seen: check the GIBS data-use page.",
+    "NASA GIBS: بيانات NASA مفتوحة وبتطلب الإسناد، بدون مفتاح. الاستخدام التجاري مش مذكور صراحة: راجع صفحة شروط GIBS."
+   ],
+   "pz": 7,
+   "op": 1,
+   "src": "leaflet-providers (BSD-2) NASAGIBS.ModisTerraBands721CR + NASA GIBS GetCapabilities MODIS_Terra_CorrectedReflectance_Bands721",
+   "time": {
+    "min": "2000-02-24",
+    "max": "today",
+    "d": "2026-11-10"
+   }
+  },
+  {
+   "id": "gibs_b367",
+   "g": "aerial",
+   "k": "b",
+   "en": "MODIS Terra bands 3-6-7 (snow and ice, clouds; NASA GIBS)",
+   "ar": "MODIS Terra نطاقات 3-6-7 (ثلج وجليد وسحب)",
+   "u": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_Bands367/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpeg",
+   "a": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+   "z": 9,
+   "lic": "open",
+   "tx": [
+    "NASA GIBS: NASA open data, acknowledgement requested, no key. Commercial use not stated explicitly on the pages seen: check the GIBS data-use page.",
+    "NASA GIBS: بيانات NASA مفتوحة وبتطلب الإسناد، بدون مفتاح. الاستخدام التجاري مش مذكور صراحة: راجع صفحة شروط GIBS."
+   ],
+   "pz": 7,
+   "op": 1,
+   "src": "leaflet-providers (BSD-2) NASAGIBS.ModisTerraBands367CR + NASA GIBS GetCapabilities MODIS_Terra_CorrectedReflectance_Bands367",
+   "time": {
+    "min": "2000-02-24",
+    "max": "today",
+    "d": "2026-11-10"
+   }
+  },
+  {
+   "id": "gibs_citylights",
+   "g": "land",
+   "k": "o",
+   "en": "Earth at night 2012, city lights (VIIRS, NASA GIBS)",
+   "ar": "الأرض بالليل 2012، أضواء المدن (VIIRS)",
+   "u": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_CityLights_2012/default/2012-01-01/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg",
+   "a": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+   "z": 8,
+   "lic": "open",
+   "tx": [
+    "NASA GIBS: NASA open data, acknowledgement requested, no key. Commercial use not stated explicitly on the pages seen: check the GIBS data-use page.",
+    "NASA GIBS: بيانات NASA مفتوحة وبتطلب الإسناد، بدون مفتاح. الاستخدام التجاري مش مذكور صراحة: راجع صفحة شروط GIBS."
+   ],
+   "pz": 7,
+   "op": 0.8,
+   "src": "leaflet-providers (BSD-2) NASAGIBS.ViirsEarthAtNight2012 + NASA GIBS GetCapabilities VIIRS_CityLights_2012"
+  },
+  {
+   "id": "gibs_chloro",
+   "g": "land",
+   "k": "o",
+   "en": "Ocean chlorophyll-a (MODIS, NASA GIBS)",
+   "ar": "كلوروفيل المحيط (MODIS)",
+   "u": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_L2_Chlorophyll_A/default/{time}/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png",
+   "a": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS) with funding provided by NASA/HQ.",
+   "z": 7,
+   "lic": "open",
+   "tx": [
+    "NASA GIBS: NASA open data, acknowledgement requested, no key. Commercial use not stated explicitly on the pages seen: check the GIBS data-use page.",
+    "NASA GIBS: بيانات NASA مفتوحة وبتطلب الإسناد، بدون مفتاح. الاستخدام التجاري مش مذكور صراحة: راجع صفحة شروط GIBS."
+   ],
+   "pz": 7,
+   "op": 0.8,
+   "src": "leaflet-providers (BSD-2) NASAGIBS.ModisTerraChlorophyll + NASA GIBS GetCapabilities MODIS_Terra_L2_Chlorophyll_A",
+   "time": {
+    "min": "2000-02-24",
+    "max": "today",
+    "d": "2026-11-10"
+   }
+  },
+  {
+   "id": "stadia_sat",
+   "g": "key",
+   "k": "b",
+   "en": "Stadia Alidade satellite (needs your key)",
+   "ar": "Stadia أقمار (محتاج مفتاحك)",
+   "u": "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}.jpg?api_key={key}",
+   "a": "© CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | © Stadia Maps © OpenMapTiles © OpenStreetMap contributors",
+   "z": 20,
+   "lic": "key",
+   "key": "stadia",
+   "tx": [
+    "Stadia Maps: your own key (free tier for non-commercial use with limits, paid for commercial; their terms). NOT tested: no key.",
+    "Stadia Maps: مفتاحك الخاص (مجاني لغير التجاري بحدود، التجاري مدفوع؛ شروطهم). مااتجربش."
+   ],
+   "pz": 0,
+   "src": "leaflet-providers (BSD-2) Stadia.AlidadeSatellite"
+  },
+  {
+   "id": "stadia_terrain",
+   "g": "key",
+   "k": "b",
+   "en": "Stadia Stamen terrain (needs your key)",
+   "ar": "Stadia Stamen تضاريس (محتاج مفتاحك)",
+   "u": "https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png?api_key={key}",
+   "a": "© Stadia Maps © Stamen Design © OpenMapTiles © OpenStreetMap contributors",
+   "z": 18,
+   "lic": "key",
+   "key": "stadia",
+   "tx": [
+    "Stadia Maps: see Stadia satellite. NOT tested.",
+    "Stadia Maps: زي الأقمار. مااتجربش."
+   ],
+   "pz": 0,
+   "src": "leaflet-providers (BSD-2) Stadia.StamenTerrain"
+  },
+  {
+   "id": "tf_landscape",
+   "g": "key",
+   "k": "b",
+   "en": "Thunderforest Landscape (needs your key)",
+   "ar": "Thunderforest Landscape (محتاج مفتاحك)",
+   "u": "https://api.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey={key}",
+   "a": "© Thunderforest, © OpenStreetMap contributors",
+   "z": 22,
+   "lic": "key",
+   "key": "thunderforest",
+   "tx": [
+    "Thunderforest: your own key (free hobby plan with limits, paid otherwise; their terms). NOT tested: no key.",
+    "Thunderforest: مفتاحك الخاص (خطة مجانية بحدود، غير كده مدفوع؛ شروطهم). مااتجربش."
+   ],
+   "pz": 0,
+   "src": "leaflet-providers (BSD-2) Thunderforest.Landscape"
+  },
+  {
+   "id": "tf_cycle",
+   "g": "key",
+   "k": "b",
+   "en": "Thunderforest OpenCycleMap (needs your key)",
+   "ar": "Thunderforest OpenCycleMap (محتاج مفتاحك)",
+   "u": "https://api.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={key}",
+   "a": "© Thunderforest, © OpenStreetMap contributors",
+   "z": 22,
+   "lic": "key",
+   "key": "thunderforest",
+   "tx": [
+    "Thunderforest: your own key (free hobby plan with limits, paid otherwise; their terms). NOT tested: no key.",
+    "Thunderforest: مفتاحك الخاص (خطة مجانية بحدود، غير كده مدفوع؛ شروطهم). مااتجربش."
+   ],
+   "pz": 0,
+   "src": "leaflet-providers (BSD-2) Thunderforest.OpenCycleMap"
+  },
+  {
+   "id": "tf_outdoors",
+   "g": "key",
+   "k": "b",
+   "en": "Thunderforest Outdoors (needs your key)",
+   "ar": "Thunderforest Outdoors (محتاج مفتاحك)",
+   "u": "https://api.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey={key}",
+   "a": "© Thunderforest, © OpenStreetMap contributors",
+   "z": 22,
+   "lic": "key",
+   "key": "thunderforest",
+   "tx": [
+    "Thunderforest: your own key (free hobby plan with limits, paid otherwise; their terms). NOT tested: no key.",
+    "Thunderforest: مفتاحك الخاص (خطة مجانية بحدود، غير كده مدفوع؛ شروطهم). مااتجربش."
+   ],
+   "pz": 0,
+   "src": "leaflet-providers (BSD-2) Thunderforest.Outdoors"
+  }
+ ]
+}

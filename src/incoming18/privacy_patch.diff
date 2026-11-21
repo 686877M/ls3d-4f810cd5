@@ -1,0 +1,25 @@
+--- sample_bak/privacy_patch.py.orig	2026-11-21 14:50:35
++++ privacy_patch.py	2026-11-21 14:50:53
+@@ -45,16 +45,15 @@
+ rep('BIS-ME-LST-0', 'SMP-ME-0')
+ rep('ME-GLY-01', 'SMP-SITE-01')
+ rep('SEWEGE TANK CALCULATIONS REV 01.pdf (Drive TOX / Lift Station)', 'structural calculation summary (sample)', 1)
+-rep('Mecra Boru HDPE', 'HDPE pipe', 1)
+-rep('Mecra Pompa', 'Pump', 1)
+-rep('LIFT STATION (2)', 'STRUCTURE (2)')
++rep('Mecra Boru HDPE', 'HDPE pipe', None, 0)
++rep('Mecra Pompa', 'Pump', None, 0)
++rep('LIFT STATION (2)', 'STRUCTURE (2)', None, 0)
+ rep('["SEWAGE LIFT STATION",', '["PUMP STATION",', 1)
+ rep('SEWAGE PUMPSTATION', 'PUMP STATION', 2, 1)
+-m = re.search(r'"src":\{"sew":"SewerGEMS.*?\}', s)
+-assert m, 'NETS.src not found'
+-s = s[:m.start()] + ('"src":{"sew":"Sewer network model (sample data), checked against sample profile sheets","storm":"Storm network model (sample data)",'
++m = re.search(r'"src":\{"sew":"SewerGEMS.*?\}', s)   # incoming18: the chunk is already neutral, so this is optional now
++if m: s = s[:m.start()] + ('"src":{"sew":"Sewer network model (sample data), checked against sample profile sheets","storm":"Storm network model (sample data)",'
+     '"water":"Water network model (sample data). Node elevation is the model junction elevation; pipe cover is not in the model.",'
+-    '"fireb":"Fire-fighting network model (sample data, buildings loop)","fireh":"Fire-fighting network model (sample data, hangars loop)"}') + s[m.end():]
++    '"fireb":"Fire-fighting network model (sample data, buildings loop)","fireh":"Fire-fighting network model (sample data, zone B loop)"}') + s[m.end():]
+ # ---- 6. AI context: agentBrief must not carry project title / share URL / full state when privacy mode is on ----
+ # (the wrapper itself lives in privacy.js; here we only make XAGSAFE never offer the wipe command to a model)
+ rep("'w_reset','rec','recdis','recasm','recsch']", "'w_reset','rec','recdis','recasm','recsch','wipe_project','privacy_panel']", 1)

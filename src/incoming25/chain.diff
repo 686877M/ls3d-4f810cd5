@@ -1,0 +1,11 @@
+--- patch_v3.py	2026-11-21 14:50:53
++++ patch_v3.py	2026-11-21 16:34:09
+@@ -72,7 +72,7 @@
+ s=s.replace(b,rd('lazygl.js')+"\n"+b,1)
+ s=s.replace("':'+e.lineno+')';}","':'+e.lineno+':'+e.colno+')'+((e.error&&e.error.stack)?' | '+String(e.error.stack).split('\\n').slice(1,4).map(function(x){return x.trim().replace(/^at /,'')}).join(' < '):'');}",1)
+ import os
+-demo_src='\n'.join(rd(f) for f in ['demo_core.js','demo_ch1.js']+[f for f in ['demo_ch2.js','demo_ch3.js'] if os.path.exists(SP+f)])
++demo_src='\n'.join(rd(f) for f in ['demo_core.js','demo_ch1.js']+[f for f in ['demo_ch2.js','demo_ch3.js','demo_voice.js'] if os.path.exists(SP+f)])
+ assert '</script' not in demo_src
+ _i=s.rindex('</body>'); s=s[:_i]+'<script type="text/plain" id="xDemoSrc">\n'+demo_src+'\n</script>'+s[_i:]  # lazy source: evaluated on first click, not at start
+ open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')

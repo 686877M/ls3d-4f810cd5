@@ -1,0 +1,23 @@
+--- sample_bak/patch_v3.py.orig	2026-11-21 14:50:35
++++ patch_v3.py	2026-11-21 14:50:53
+@@ -2,6 +2,11 @@
+ SP='/private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/'
+ s=open(SP+'v2_backup.html',encoding='utf-8').read()
+ rd=lambda n:open(SP+n,encoding='utf-8').read()
++# sample project: absolute levels of the base page shifted by -1059.76 m (B.L +1159.76 -> +100.00), see sample_neutral.py
++from decimal import Decimal as _D, ROUND_HALF_UP as _R
++_LV=re.compile(r'(?<![\w.])11[5-7]\d\.\d+(?![\d])')
++s=_LV.sub(lambda m:str((_D(m.group(0))+_D('-1059.76')).quantize(_D(1).scaleb(-len(m.group(0).split('.')[1])),rounding=_R)),s)
++assert 'const BL=100.00, P0=' in s
+ def between(s,a,b,new,keep_a=False):
+     i=s.index(a); j=s.index(b,i); return s[:i]+new+s[j:]
+ # head: panes
+@@ -50,7 +55,7 @@
+ s=s.replace("window.__lsv={collect,","window.__lsv={ev:s=>{ if(localStorage.getItem('xto-test')!=='1')throw new Error('test hook is off'); return eval(s); },svgDraft,pdfDraft,dxfDraft,draftOps,getItems,buildSheet,xlsxBlob,sheetPdf,sheetSvg,sheetDxf,SEQ,collect,",1)
+ s=s.replace("<title>Lift Station 3D Model</title>","<title>Lift Station 3D Model</title>\n<!-- BVT-1 : BIM Viewer Template. Engine = scene, camera, sections, drafting, sheet composer, exports, data and families. Project = the four PROJECT BLOCKs (parameters, geometry, items and IFC mapping, part specs). See template/BVT-1/README.md -->",1)
+ s=s.replace("/* ====================== scene ====================== */","/* ########## BVT-1 ENGINE (reusable, do not edit per project) ########## */\n/* ====================== scene ====================== */",1)
+-s=s.replace("const BL=1159.76, P0=","/* ########## PROJECT BLOCK 1/4: parameters and defaults (edit per project) ########## */\nconst BL=1159.76, P0=",1)
++s=s.replace("const BL=100.00, P0=","/* ########## PROJECT BLOCK 1/4: parameters and defaults (edit per project) ########## */\nconst BL=100.00, P0=",1)
+ s=s.replace("function buildModel(){","/* ########## PROJECT BLOCK 2/4: model geometry (edit per project) ########## */\nfunction buildModel(){",1)
+ s=s.replace("function baseItems(){","/* ########## PROJECT BLOCK 3/4: items, quantities, families, IFC mapping (edit per project) ########## */\nfunction baseItems(){",1)
+ s=s.replace("const PD=[['conc',","/* ########## PROJECT BLOCK 4/4: part specifications shown in the Parts tab (edit per project) ########## */\nconst PD=[['conc',",1)

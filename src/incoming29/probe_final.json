@@ -1,0 +1,562 @@
+{
+ "osm": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "35945",
+  "cors": true,
+  "note": ""
+ },
+ "osm_de": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "38854",
+  "cors": true,
+  "note": ""
+ },
+ "osm_hot": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "21939",
+  "cors": true,
+  "note": ""
+ },
+ "cyclosm": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "50804",
+  "cors": true,
+  "note": ""
+ },
+ "carto_light": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "2049",
+  "cors": true,
+  "note": ""
+ },
+ "carto_dark": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "2513",
+  "cors": true,
+  "note": ""
+ },
+ "carto_voyager": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "2049",
+  "cors": true,
+  "note": ""
+ },
+ "esri_street": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "30933",
+  "cors": true,
+  "note": ""
+ },
+ "esri_gray": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "5031",
+  "cors": true,
+  "note": ""
+ },
+ "otm": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "48581",
+  "cors": true,
+  "note": ""
+ },
+ "esri_topo": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "24872",
+  "cors": true,
+  "note": ""
+ },
+ "esri_natgeo": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "27538",
+  "cors": true,
+  "note": ""
+ },
+ "eox_terrain": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "8710",
+  "cors": true,
+  "note": ""
+ },
+ "esri_hill": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "9299",
+  "cors": true,
+  "note": ""
+ },
+ "esri_img": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "15361",
+  "cors": true,
+  "note": ""
+ },
+ "wayback": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "15361",
+  "cors": true,
+  "note": "release World Imagery (Wayback 2026-11-18)"
+ },
+ "eox_2016": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "15817",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2018": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "10348",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2019": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "19904",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2020": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "19030",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2021": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "16923",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2022": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "17538",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2023": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "13133",
+  "cors": true,
+  "note": ""
+ },
+ "eox_2024": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "20428",
+  "cors": true,
+  "note": ""
+ },
+ "gibs_hls": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "125973",
+  "cors": true,
+  "note": "date 2026-11-05"
+ },
+ "gibs_modis_tc": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "14572",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_viirs_tc": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "9454",
+  "cors": true,
+  "note": "date 2026-11-01"
+ },
+ "gibs_bm": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "10952",
+  "cors": true,
+  "note": ""
+ },
+ "gibs_lst_day": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "17476",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_lst_night": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "18784",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_sst": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "4729",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "fires": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "gibs_bmarble": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "86782",
+  "cors": true,
+  "note": ""
+ },
+ "gibs_dnb": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "1189",
+  "cors": true,
+  "note": "date 2023-07-07"
+ },
+ "gibs_ndvi": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "32598",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_snow": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "2916",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_aerosol": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "1675",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "worldcover": {
+  "code": "000",
+  "ct": "",
+  "size": "0",
+  "cors": false,
+  "note": ""
+ },
+ "gsw": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "2830",
+  "cors": true,
+  "note": ""
+ },
+ "gfc": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "27437",
+  "cors": true,
+  "note": ""
+ },
+ "rainviewer": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "334",
+  "cors": true,
+  "note": "frame 1795275000"
+ },
+ "esri_labels": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "4731",
+  "cors": true,
+  "note": ""
+ },
+ "esri_trans": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "26817",
+  "cors": true,
+  "note": ""
+ },
+ "openrailway": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "7420",
+  "cors": true,
+  "note": ""
+ },
+ "openseamap": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "334",
+  "cors": true,
+  "note": ""
+ },
+ "maptiler_sat": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "img_key": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "sentinelhub": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "lk_eo": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_cop": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_ge": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_wbsite": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_wv": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_ee": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_ot": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_asf": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_ghsl": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_wc": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_gfw": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_gsw2": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_oldmaps": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "lk_rumsey": {
+  "code": "-",
+  "ct": "link",
+  "size": "",
+  "cors": false,
+  "note": "external link, not fetched"
+ },
+ "osm_fr": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "31254",
+  "cors": true,
+  "note": ""
+ },
+ "opnv": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "35813",
+  "cors": false,
+  "note": ""
+ },
+ "un_clearmap": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "15435",
+  "cors": true,
+  "note": ""
+ },
+ "esri_shaded": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "5188",
+  "cors": true,
+  "note": ""
+ },
+ "esri_terrain": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "5894",
+  "cors": true,
+  "note": ""
+ },
+ "esri_physical": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "13980",
+  "cors": true,
+  "note": ""
+ },
+ "esri_ocean": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "27572",
+  "cors": true,
+  "note": ""
+ },
+ "wmt_hiking": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "163",
+  "cors": true,
+  "note": ""
+ },
+ "wmt_cycling": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "163",
+  "cors": true,
+  "note": ""
+ },
+ "gibs_b721": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "16313",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_b367": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "15068",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "gibs_citylights": {
+  "code": "200",
+  "ct": "image/jpeg",
+  "size": "12709",
+  "cors": true,
+  "note": ""
+ },
+ "gibs_chloro": {
+  "code": "200",
+  "ct": "image/png",
+  "size": "1038",
+  "cors": true,
+  "note": "date 2026-11-10"
+ },
+ "stadia_sat": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "stadia_terrain": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "tf_landscape": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "tf_cycle": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ },
+ "tf_outdoors": {
+  "code": "-",
+  "ct": "",
+  "size": "",
+  "cors": false,
+  "note": "needs your key: not tested"
+ }
+}

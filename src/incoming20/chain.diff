@@ -1,0 +1,5 @@
+--- a/patch_v3.py
++++ b/patch_v3.py
+@@ chain: append at the END of the uiText chunk list (anywhere after rd('c_templates.js') and the rvx_* chunks works; the two files must stay in this order)
+-...+rd('c_xdesc2.js')+rd('c_upd.js'))
++...+rd('c_xdesc2.js')+rd('c_upd.js')+rd('rcs_skel.js')+rd('rcs_rebar.js'))

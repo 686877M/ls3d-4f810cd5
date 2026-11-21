@@ -1,0 +1,10 @@
+--- a/privacy.js	2026-11-21 16:42:59
++++ b/privacy.js	2026-11-21 16:43:30
+@@ -164,6 +164,7 @@
+     try{ XAS.chat.length=0; R.mem.push('agent chat'); }catch(e){} try{ XAS.log=[]; R.mem.push('agent action log'); }catch(e){} try{ if(XAS.gaps)XAS.gaps=[]; }catch(e){}
+     try{ AI.hist=[]; XAM.hist=[]; XAG.log=[]; R.mem.push('model history'); }catch(e){}
+     try{ S.map.clear(); S.rev.clear(); S.cnt={}; LOG.length=0; try{ localStorage.removeItem(LK); }catch(e){} R.mem.push('redaction map, outbound log'); }catch(e){}
++    try{ if(typeof phWipe==='function'){ const w=await phWipe(); R.mem.push('Photos to 3D: '+w); } }catch(e){ R.mem.push('Photos to 3D wipe failed: '+e.message); }   /* photo job: files in memory, imported layers, local NodeODM container + job data (needs the bridge token, so before the keys are cleared) */
+     try{ if(BR&&BR.url&&BR.token){ const r=await fetch(String(BR.url).replace(/\/$/,'')+'/inbox/clear?t='+encodeURIComponent(BR.token),{method:'POST',body:'{}'}); R.bridge=r.ok?'bridge inbox cleared':'bridge answered '+r.status+' (old bridge: delete ~/.tox/inbox.jsonl by hand)'; } else R.bridge='bridge not connected: delete ~/.tox/inbox.jsonl on the computer that runs tox_bridge.py (or restart it with TOX_INBOX_DAYS=0)'; }catch(e){ R.bridge='bridge not reachable: delete ~/.tox/inbox.jsonl by hand'; }
+     if(o.keys){ try{ const ks=[]; for(let i=0;i<localStorage.length;i++)ks.push(localStorage.key(i)); ks.forEach(k=>{ if(SECRET.test(k)){ R.secrets.push(k); localStorage.removeItem(k); } }); const sk=[]; for(let i=0;i<sessionStorage.length;i++)sk.push(sessionStorage.key(i)); sk.forEach(k=>{ if(SECRET.test(k)){ R.secrets.push('session:'+k); sessionStorage.removeItem(k); } });
+       try{ const a=JSON.parse(localStorage.getItem('xto-agent')||'null'); if(a&&a.key){ delete a.key; localStorage.setItem('xto-agent',JSON.stringify(a)); R.secrets.push('xto-agent.key'); } }catch(e){}
