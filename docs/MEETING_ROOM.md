@@ -393,3 +393,6 @@ md_* (electrical, plumbing, low-current, fire, vent, MEP routes) and gm_* (worki
 
 ## 2026-11-21 reset link
 open index.html?reset=1 : stops saving, removes lsv3-* project keys and the xto-hist DB, then reloads clean (project returns to the default pump-station sample). Settings and keys stay.
+
+## 2026-11-21 reset + role fixes
+?reset=1 now removes ALL project keys (everything not in the privacy KEEP/SECRET lists: xto-rv R.X data, xto-dc, xto-gis, xto-mom...), not only lsv3-*. c_hubx.js: Missions panel crashed when xto-role was not one of owner/contractor/consultant (settings buttons store dev/res...): falls back to owner.
