@@ -375,3 +375,6 @@ vx.js: current/saved view as SVG, PDF, DXF (true vectors); ribbon vx_export; Ren
 
 ## 2026-11-21 perf merged
 Login first (early script), main script and three.js started after first frame, lazy WebGL (lazygl.js), jsPDF lazy, resize never to 0. Login frame 3.2s->0.52s, CPU to ribbon 10.7s->2.2s (SwiftShader, loaded Mac, median of 5; real GPU not measured). parity 126, px2 149, freeai 88, link 43.
+
+## 2026-11-21 privacy merged
+privacy.js + privacy_patch.py (run by ./make.sh after patch_v3.py): neutral templates/exports, wipe_project (typed confirm, trusted click), AI request gate with redaction, Sensitive-project switch, minimum context, outbound log; bridge inbox retention + /inbox/clear. Tests: privacy 109, parity 126, px2 149, freeai 88, link 43. Limits in docs SECURITY_PRIVACY.md (best-effort redaction; sample geometry/coordinates still embedded).

@@ -58,6 +58,36 @@ TOOLS = [
 ]
 INBOX = os.environ.get("TOX_INBOX") or os.path.expanduser("~/.tox/inbox.jsonl")
 os.makedirs(os.path.dirname(INBOX), exist_ok=True)
+# privacy: the inbox is a plain-text copy of what the user typed in the tab. Keep it only INBOX_DAYS days (default 7;
+# 0 = never write it). POST /inbox/clear (token) empties it, the page calls that from "Close out project".
+INBOX_DAYS = float(os.environ.get("TOX_INBOX_DAYS", "7"))
+
+
+def inbox_prune():
+    """Drop lines older than INBOX_DAYS (or the whole file when 0). Lines that do not parse are dropped too."""
+    try:
+        if INBOX_DAYS <= 0:
+            open(INBOX, "w").close()
+            return
+        cut = time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(time.time() - INBOX_DAYS * 86400))
+        keep = []
+        with open(INBOX, encoding="utf-8") as f:
+            for ln in f:
+                try:
+                    if json.loads(ln).get("t", "") >= cut:
+                        keep.append(ln)
+                except Exception:
+                    pass
+        with open(INBOX, "w", encoding="utf-8") as f:
+            f.writelines(keep)
+        os.chmod(INBOX, 0o600)
+    except FileNotFoundError:
+        pass
+    except OSError:
+        pass
+
+
+inbox_prune()
 unread = []                    # messages from the tab not yet read through tab_messages
 WH = {"model": None, "name": None, "err": "", "lock": threading.Lock()}
 WPROMPT = "ريفت، أوتوكاد، بريمافيرا، نافيزووركس، فيلا، دور، غرف، مناسيب، حيطان، أعمدة، سقف، جدول، حمل التبريد"
@@ -561,11 +591,21 @@ class H(BaseHTTPRequestHandler):
                 s["res"] = d
                 s["ev"].set()
             return self._send(200, {"ok": True})
+        if p == "/inbox/clear":      # privacy: wipe the on-disk copy and the unread queue (token required, like /inbox)
+            n = len(unread)
+            del unread[:]
+            try:
+                open(INBOX, "w").close()
+            except OSError:
+                pass
+            return self._send(200, {"ok": True, "cleared": True, "unread": n})
         if p == "/inbox":
             m = {"t": time.strftime("%Y-%m-%dT%H:%M:%S"), "from": "tab", "text": str(d.get("text", ""))[:4000]}
             unread.append(m)
-            with open(INBOX, "a", encoding="utf-8") as f:
-                f.write(json.dumps(m, ensure_ascii=False) + "\n")
+            if INBOX_DAYS > 0:
+                fd = os.open(INBOX, os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o600)
+                with os.fdopen(fd, "a", encoding="utf-8") as f:
+                    f.write(json.dumps(m, ensure_ascii=False) + "\n")
             return self._send(200, {"ok": True})
         if p == "/reply":
             calls.put({"id": uuid.uuid4().hex[:10], "tool": "__reply", "args": {"text": str(d.get("text", ""))[:4000]}})
