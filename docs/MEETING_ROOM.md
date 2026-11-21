@@ -381,3 +381,6 @@ privacy.js + privacy_patch.py (run by ./make.sh after patch_v3.py): neutral temp
 
 ## 2026-11-21 demo stage 1 merged
 Project 6868 guided demo: player engine + chapters 0-2 (welcome, project from template, R.X building), lazy-loaded; buttons on Start page and entry screen; TOX.demo.start(). Chapters 3-12 not written yet. Tests: demo smoke/run/stop, parity 126, px2 149, freeai 88, link 43, privacy 109.
+
+## 2026-11-21 demo stage 2, shared chart renderer, lazygl fix
+Demo: all 13 chapters (3-12 real where state asserts are possible; rebar design, construction phases, detailed specs NOT done). Charts: one toxChartSvg for Q.X and O.X (84/84 golden). lazygl set-trap fix (Render Studio no longer kills the live 3D view). Tests: parity 126, px2 149, freeai 88, link 43, privacy 109, demo run 0-12 at 4x, charts 8. docs/PROJECT_PHASES.md = phase map for the next demo rewrite.

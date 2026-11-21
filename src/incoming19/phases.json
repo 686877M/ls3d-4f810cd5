@@ -1,0 +1,3616 @@
+{
+ "title": "Project 6868 - complete small-building project phases mapped to T.O X",
+ "generated": "2026-11-21",
+ "build_checked": "vx_wired.html (scratchpad, built 2026-11-21 09:12), registry dumped headless: 1608 commands, 1462 non-stub",
+ "legend": {
+  "Y": "tool exists and does the step",
+  "P": "partly there",
+  "M": "MISSING",
+  "F": "field / human step, no software"
+ },
+ "project": {
+  "type": "2-storey reinforced-concrete villa with MEP on a real plot",
+  "region": "Egypt / Arab world",
+  "codes": [
+   "ECP 203 (concrete)",
+   "ECP 201 (loads)",
+   "ECP 202 (soil/foundations)",
+   "Eurocode 1/2/7/8",
+   "ACI 318 / ASCE 7"
+  ]
+ },
+ "phases": [
+  {
+   "id": 0,
+   "title_en": "Brief, feasibility and budget",
+   "title_ar": "الفكرة والبرنامج وجدوى الميزانية",
+   "purpose": "Turn 'I want a house' into a written brief, a first budget and a go / no-go decision before any design money is spent.",
+   "inputs": [
+    "Owner wishes: family size, number of bedrooms, parking, garden, future extension (third floor?)",
+    "Plot (owned or candidate), approximate area and location",
+    "Money available (own funds, loan), target handover date",
+    "Local planning rules for the district (permitted height, setbacks, coverage) - from the district technical office, not guessed"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Interview the owner and write the design brief (rooms, areas, adjacencies, finish level A/B/C, special needs).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      }
+     ],
+     "note": "O.X report editor + document templates can hold the brief; no brief/room-programme tool."
+    },
+    {
+     "n": 2,
+     "text": "Fix the areas: net room programme, then gross built-up area (BUA) = net / efficiency (0.80-0.85 for a villa incl. walls, stair, void).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      },
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      }
+     ],
+     "note": "A spreadsheet does it; no dedicated programme sheet."
+    },
+    {
+     "n": 3,
+     "text": "Check plot rules: setbacks, max coverage %, number of floors, max height, parking count, easements.",
+     "status": "M",
+     "ids": [],
+     "note": "No zoning / setback checker. Demo can only type the numbers into the project notes."
+    },
+    {
+     "n": 4,
+     "text": "Order-of-magnitude budget = BUA x cost per m2 for the finish level (rule of thumb, from recent local tenders, NOT a design figure); add design fees, permit fees, utilities connection, contingency 10-15 %.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "dc_tnd",
+       "label": "dc_tnd",
+       "check": "ok"
+      },
+      {
+       "id": "dc_fs",
+       "label": "dc_fs",
+       "check": "ok"
+      },
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      }
+     ],
+     "note": "dc_tnd prices a BOQ (overhead, profit, contingency, VAT); dc_fs does NPV/IRR/payback. Neither ships a cost-per-m2 benchmark."
+    },
+    {
+     "n": 5,
+     "text": "Feasibility if it is an investment (sell/rent): NPV, IRR, payback, sensitivity. Skip for an owner-occupied house.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_fs",
+       "label": "dc_fs",
+       "check": "ok"
+      }
+     ],
+     "note": "Inputs are the owner's own numbers."
+    },
+    {
+     "n": 6,
+     "text": "Risk list at idea stage (soil unknown, permit delay, price escalation, owner changes) with a first mitigation each.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_scen",
+       "label": "p_scen",
+       "check": "ok"
+      }
+     ],
+     "note": "Risk register + Monte Carlo schedule risk."
+    },
+    {
+     "n": 7,
+     "text": "Choose delivery route: design-bid-build with separate consultant and contractor (recommended for a house), or design-build, or owner-managed with labour-only crews.",
+     "status": "F",
+     "ids": [],
+     "note": "Decision; affects phase 7."
+    },
+    {
+     "n": 8,
+     "text": "Go / no-go and sign the brief; open the project file and the document register.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "new_from_template",
+       "label": "new_from_template",
+       "check": "ok"
+      },
+      {
+       "id": "setup",
+       "label": "setup",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "tpl:house2",
+       "label": "tpl:house2",
+       "check": "ok"
+      }
+     ],
+     "note": "tpChooser creates the project; setup stores name/client/number/currency. Template house2 is the R.X starter (see data inventory)."
+    }
+   ],
+   "outputs": [
+    "Signed design brief (1-3 pages)",
+    "Room programme and BUA estimate",
+    "Budget range and funding plan",
+    "Go/no-go record",
+    "Project number and folder / register opened"
+   ],
+   "checks": [
+    "Brief signed by owner (date on it)",
+    "Budget >= low estimate x 1.1 or scope reduced",
+    "BUA within plot rules (coverage x floors)",
+    "Every wish has either a room, a budget line or a written 'not now'"
+   ],
+   "rules": [
+    "RULE OF THUMB: villa BUA ~ 1.2-1.4 x net living area.",
+    "RULE OF THUMB: contingency 10 % at brief stage, 5 % at tender, 3-5 % at construction.",
+    "RULE OF THUMB: soft costs (design, supervision, permits, utilities) 8-15 % of construction cost."
+   ],
+   "mistakes": [
+    "Starting design before the plot rules are known",
+    "Budget without utilities connection, landscaping, boundary wall, furniture",
+    "Forgetting the owner's future extension (column and footing sizes then change)"
+   ],
+   "duration": "1-3 weeks",
+   "demo": "Fast: ch1 'project' already does the template + setup. Add a 20-second 'brief' caption and a dc_fs sample; do not spend long here.",
+   "coverage": {
+    "Y": 3,
+    "P": 3,
+    "M": 1,
+    "F": 1
+   }
+  },
+  {
+   "id": 1,
+   "title_en": "Site: survey, soil, boundary, utilities, access",
+   "title_ar": "الموقع: الرفع المساحي والتربة والحدود والمرافق والوصول",
+   "purpose": "Know the ground (levels, boundary, soil, water table) and what the plot connects to, before the structure and the drainage are designed.",
+   "inputs": [
+    "Plot title / cadastral sheet (حيازة / عقد / كروكي)",
+    "Candidate plot coordinates",
+    "Neighbours' building heights and foundation levels (adjacent excavation risk)"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Locate the plot on the map, record coordinates (WGS84 and the local grid), north direction, nearby roads.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_geo",
+       "label": "p_geo",
+       "check": "ok"
+      },
+      {
+       "id": "gis_setproj",
+       "label": "gis_setproj",
+       "check": "ok"
+      },
+      {
+       "id": "gis_id",
+       "label": "gis_id",
+       "check": "ok"
+      },
+      {
+       "id": "gis_conv",
+       "label": "gis_conv",
+       "check": "ok"
+      },
+      {
+       "id": "xf_gis",
+       "label": "xf_gis",
+       "check": "ok"
+      }
+     ],
+     "note": "G.X map + converter + 'Set project location'. Imagery needs internet."
+    },
+    {
+     "n": 2,
+     "text": "Order a topographic survey: total station / GNSS, grid of spot levels (every 5-10 m on a small plot + all break lines), boundary pegs, neighbours' walls, road kerb levels, manhole/pole positions.",
+     "status": "F",
+     "ids": [],
+     "note": "Field work. T.O X receives the result."
+    },
+    {
+     "n": 3,
+     "text": "Import survey points (PNEZD/CSV), build TIN surface, contours (0.25-0.5 m for a plot), spot-check against raw points.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_survey",
+       "label": "p_survey",
+       "check": "ok"
+      },
+      {
+       "id": "survey_37",
+       "label": "survey_37 [SURVEY Insert > Import > Import points]",
+       "check": "ok"
+      },
+      {
+       "id": "survey_10",
+       "label": "survey_10 [SURVEY Home > Create Ground Data > Create TIN surface]",
+       "check": "ok"
+      }
+     ],
+     "note": "S.X (Civil 3D-like): points, TIN, contours, volumes, traverse with Bowditch (mod_cxsx), LandXML import/export."
+    },
+    {
+     "n": 4,
+     "text": "Draw the boundary as a closed polyline from the survey; compute area and compare with the title area (difference tolerance per authority).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "c_pl",
+       "label": "c_pl",
+       "check": "ok"
+      },
+      {
+       "id": "c_area",
+       "label": "c_area",
+       "check": "ok"
+      },
+      {
+       "id": "m_dist",
+       "label": "m_dist",
+       "check": "ok"
+      }
+     ],
+     "note": "CAD polyline + area. No 'compare with title' check."
+    },
+    {
+     "n": 5,
+     "text": "Soil investigation: 2-3 boreholes (or 1 per ~150-200 m2) to 6-10 m or to firm layer; SPT every 1-1.5 m; sampling; water table; lab tests (grain size, Atterberg, unit weight, shear strength / consolidation, chemical tests: sulphates, chlorides, pH). Geotechnical report with recommended foundation type, allowable bearing, settlement, aggressive-soil advice.",
+     "status": "F",
+     "ids": [],
+     "note": "Field + lab. Egyptian reference: ECP 202 (soil mechanics and foundations; check edition/clauses)."
+    },
+    {
+     "n": 6,
+     "text": "Enter the borehole log and compute a preliminary bearing capacity (Terzaghi) as a screening check of the geotechnical report.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_soil",
+       "label": "dc_soil",
+       "check": "ok"
+      },
+      {
+       "id": "fn:dcBearing",
+       "label": "fn:dcBearing",
+       "check": "ok"
+      },
+      {
+       "id": "env_gr",
+       "label": "env_gr",
+       "check": "ok"
+      }
+     ],
+     "note": "dcBearing = Terzaghi qu with shape factors, FS. No settlement, no layered soil, no ECP 202 method."
+    },
+    {
+     "n": 7,
+     "text": "Seismic and wind site data: seismic zone / design ground acceleration from the code map, site class from the boreholes, basic wind speed; liquefaction screening if loose saturated sand.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "env_eq",
+       "label": "env_eq",
+       "check": "ok"
+      },
+      {
+       "id": "env_wind",
+       "label": "env_wind",
+       "check": "ok"
+      },
+      {
+       "id": "gis_seis",
+       "label": "gis_seis",
+       "check": "ok"
+      },
+      {
+       "id": "gis_windrep",
+       "label": "gis_windrep",
+       "check": "ok"
+      },
+      {
+       "id": "gis_soil",
+       "label": "gis_soil",
+       "check": "ok"
+      }
+     ],
+     "note": "Eurocode-8-form spectrum (the form ECP 201 uses) and ASCE 7 base shear; wind panel says ECP 201 has its own chapter and does NOT apply it. Zone values must be typed from the code map."
+    },
+    {
+     "n": 8,
+     "text": "Sun path and orientation study for the building mass and glazing (shade, summer sun).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "env_sun",
+       "label": "env_sun",
+       "check": "ok"
+      },
+      {
+       "id": "gis_sunrep",
+       "label": "gis_sunrep",
+       "check": "ok"
+      },
+      {
+       "id": "env_en",
+       "label": "env_en",
+       "check": "ok"
+      }
+     ],
+     "note": "Sun path, shadows on the model, energy."
+    },
+    {
+     "n": 9,
+     "text": "Utilities survey: electricity (nearest transformer / LV pole, available kVA), water (main DN, pressure), sewer (invert level of the nearest manhole - decides gravity vs septic), gas, telecom, storm. Written statement from each utility.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "gis_import",
+       "label": "gis_import",
+       "check": "ok"
+      },
+      {
+       "id": "lib:sxpipe",
+       "label": "lib:sxpipe",
+       "check": "ok"
+      },
+      {
+       "id": "survey_17",
+       "label": "survey_17 [SURVEY Home > Create Design > Pipe Network]",
+       "check": "ok"
+      }
+     ],
+     "note": "Can draw/import the lines as layers; S.X pipe catalogue exists (placeholder sizes). No utility-capacity check."
+    },
+    {
+     "n": 10,
+     "text": "Access and logistics: road width for concrete trucks/pump, crane or no crane, material storage, neighbours, working hours.",
+     "status": "M",
+     "ids": [],
+     "note": "No site-logistics tool; draw on the C.X plan."
+    },
+    {
+     "n": 11,
+     "text": "Earthworks estimate: existing vs finished ground levels, cut/fill volume, disposal; excavation volume of foundations later (phase 6).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rc_open",
+       "label": "rc_open",
+       "check": "ok"
+      },
+      {
+       "id": "rc_qty",
+       "label": "rc_qty",
+       "check": "ok"
+      },
+      {
+       "id": "rc_tin",
+       "label": "rc_tin",
+       "check": "ok"
+      },
+      {
+       "id": "rc_ter",
+       "label": "rc_ter",
+       "check": "ok"
+      },
+      {
+       "id": "survey_67",
+       "label": "survey_67 [SURVEY Analyze > Ground Data > Volumes]",
+       "check": "ok"
+      }
+     ],
+     "note": "F.X reality capture: TIN, cut and fill; S.X volumes."
+    },
+    {
+     "n": 12,
+     "text": "Site report: summary of constraints and design implications (soil, level, utilities, orientation).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "dc_rep",
+       "label": "dc_rep",
+       "check": "ok"
+      },
+      {
+       "id": "dc_soil",
+       "label": "dc_soil",
+       "check": "ok"
+      }
+     ],
+     "note": "Report templates incl. technical and site visit."
+    }
+   ],
+   "outputs": [
+    "Topographic drawing (DWG/PDF) with boundary, levels, contours",
+    "Soil report with allowable bearing and foundation advice",
+    "Utilities letters / connection points",
+    "Site constraints summary",
+    "Seismic/wind inputs"
+   ],
+   "checks": [
+    "Survey closes: control points tie within tolerance (typical total-station traverse closure 1:10 000, per spec)",
+    "Boundary area vs title within the authority's tolerance",
+    "Soil report signed by a geotechnical consultant / accredited lab; borehole depth >= 1.5 x footing width below founding level (rule of thumb) or reaches firm layer",
+    "Water table known; aggressive soil classified (sulphate / chloride)",
+    "Every utility has a written connection point"
+   ],
+   "rules": [
+    "RULE OF THUMB: 1 borehole per 150-200 m2 of footprint, minimum 2; depth 6-10 m for a 2-storey house on normal soil.",
+    "RULE OF THUMB: allowable bearing of 100-200 kPa is common for Egyptian normal soils; weak clays / fill / high water table are common exceptions - the soil report decides, not this figure.",
+    "RULE OF THUMB: spot levels every 5-10 m on a small plot; contour interval 0.25-0.5 m."
+   ],
+   "mistakes": [
+    "Designing foundations without a soil report",
+    "Taking levels from the road only (plot is lower than the street -> flooding, and sewer cannot be gravity)",
+    "Ignoring neighbour's foundation depth (needs shoring or underpinning)",
+    "Using a wrong datum between survey and drawings"
+   ],
+   "duration": "2-4 weeks (survey 3-5 days, boreholes + lab 1-3 weeks, report 1 week)",
+   "demo": "Today ch2 'site' only does survey/excavation/cost on the sample site. Add: borehole log typed into dc_soil -> bearing result; env_eq inputs typed; utilities shown as GIS layers.",
+   "coverage": {
+    "Y": 6,
+    "P": 3,
+    "M": 1,
+    "F": 2
+   }
+  },
+  {
+   "id": 2,
+   "title_en": "Concept and architectural design",
+   "title_ar": "التصميم المعماري: الفكرة ثم المخطط ثم الواجهات والقطاعات",
+   "purpose": "Turn the brief and plot into a buildable plan: layout, facades, sections, openings - the geometry the structure and MEP will follow.",
+   "inputs": [
+    "Approved brief and BUA",
+    "Survey (levels, boundary)",
+    "Plot rules (setbacks, height)",
+    "Soil/orientation constraints"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Mass and site plan: footprint inside setbacks, parking, entrance, garden, orientation (living towards north/breeze, minimum west glass).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "site",
+       "label": "site",
+       "check": "ok"
+      },
+      {
+       "id": "tab:draft",
+       "label": "tab:draft",
+       "check": "ok"
+      },
+      {
+       "id": "model_146",
+       "label": "model_146 [MODEL Massing & Site > Model Site > Toposurface]",
+       "check": "ok"
+      }
+     ],
+     "note": "Site plan view in R.X is station-specific data; massing tools partly present."
+    },
+    {
+     "n": 2,
+     "text": "Concept plans by hand or CAD: bubble diagram -> block plan with room areas.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "tab:draft",
+       "label": "tab:draft",
+       "check": "ok"
+      },
+      {
+       "id": "cad",
+       "label": "cad",
+       "check": "ok"
+      },
+      {
+       "id": "lb_cx",
+       "label": "lb_cx",
+       "check": "ok"
+      },
+      {
+       "id": "hm_sample",
+       "label": "hm_sample",
+       "check": "ok"
+      },
+      {
+       "id": "hm_room",
+       "label": "hm_room",
+       "check": "ok"
+      }
+     ],
+     "note": "H.X home plan: drag rooms; C.X blocks library (arch 28, elec 19, plumb 9, fire 8, HVAC 13)."
+    },
+    {
+     "n": 3,
+     "text": "Set levels and grids in R.X. Ground floor level +0.00 = chosen vs road kerb (usually +0.45 to +1.0 m above road, per local rule); floor-to-floor 3.0-3.2 m; parapet 1.0 m.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "model_30",
+       "label": "model_30 [MODEL Architecture > Datum > Level]",
+       "check": "ok"
+      },
+      {
+       "id": "model_31",
+       "label": "model_31 [MODEL Architecture > Datum > Grid]",
+       "check": "ok"
+      },
+      {
+       "id": "rv_level",
+       "label": "rv_level",
+       "check": "ok"
+      },
+      {
+       "id": "rv_grid",
+       "label": "rv_grid",
+       "check": "ok"
+      }
+     ],
+     "note": "Template house2 has levels Ground 0 / First 3 / Roof 6 and 4 grids."
+    },
+    {
+     "n": 4,
+     "text": "Draw external and internal walls (structure grid first, then 25 cm external / 12 cm internal masonry, per Egyptian practice), doors, windows, columns positions coincide with grid.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rv_wall",
+       "label": "rv_wall",
+       "check": "ok"
+      },
+      {
+       "id": "rv_door",
+       "label": "rv_door",
+       "check": "ok"
+      },
+      {
+       "id": "rv_window",
+       "label": "rv_window",
+       "check": "ok"
+      },
+      {
+       "id": "rv_col",
+       "label": "rv_col",
+       "check": "ok"
+      },
+      {
+       "id": "lb_rx",
+       "label": "lb_rx",
+       "check": "ok"
+      },
+      {
+       "id": "lib:rxfam",
+       "label": "lib:rxfam",
+       "check": "ok"
+      },
+      {
+       "id": "lib:rxasm",
+       "label": "lib:rxasm",
+       "check": "ok"
+      }
+     ],
+     "note": "R.X walls/doors/windows (hosted openings). 45 family types + 12 layered assemblies; assembly sets wall thickness only, 3D stays a single box. NOTE: template house2 has 16 walls, 0 columns, 0 beams (see gaps)."
+    },
+    {
+     "n": 5,
+     "text": "Floors, stair (riser 15-17 cm, tread 28-30 cm, width >= 1.0 m; headroom >= 2.2 m), roof (flat with parapet and slope 1-2 % to drains), rooms with area tags.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rv_floor",
+       "label": "rv_floor",
+       "check": "ok"
+      },
+      {
+       "id": "rv_stair",
+       "label": "rv_stair",
+       "check": "ok"
+      },
+      {
+       "id": "rv_roof",
+       "label": "rv_roof",
+       "check": "ok"
+      },
+      {
+       "id": "rv_room",
+       "label": "rv_room",
+       "check": "ok"
+      },
+      {
+       "id": "rv_rail",
+       "label": "rv_rail",
+       "check": "ok"
+      },
+      {
+       "id": "rv_ramp",
+       "label": "rv_ramp",
+       "check": "ok"
+      },
+      {
+       "id": "rv_ceil",
+       "label": "rv_ceil",
+       "check": "ok"
+      }
+     ],
+     "note": "All present as R.X tools."
+    },
+    {
+     "n": 6,
+     "text": "Check areas and clearances: room areas, net/gross, stair geometry, door widths (0.9 m main, 0.8 m rooms, 0.7 m bath), window sills.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rv_room",
+       "label": "rv_room",
+       "check": "ok"
+      },
+      {
+       "id": "rv_props",
+       "label": "rv_props",
+       "check": "ok"
+      },
+      {
+       "id": "model_22",
+       "label": "model_22 [MODEL Architecture > Room & Area > Area]",
+       "check": "ok"
+      }
+     ],
+     "note": "Room area tags and Area (Gross/Rentable)."
+    },
+    {
+     "n": 7,
+     "text": "Elevations (4), sections (2, through stair and wet areas), plan with dims.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rv_plan",
+       "label": "rv_plan",
+       "check": "ok"
+      },
+      {
+       "id": "rv_elevN",
+       "label": "rv_elevN",
+       "check": "ok"
+      },
+      {
+       "id": "rv_elevS",
+       "label": "rv_elevS",
+       "check": "ok"
+      },
+      {
+       "id": "rv_elevE",
+       "label": "rv_elevE",
+       "check": "ok"
+      },
+      {
+       "id": "rv_elevW",
+       "label": "rv_elevW",
+       "check": "ok"
+      },
+      {
+       "id": "rv_secX",
+       "label": "rv_secX",
+       "check": "ok"
+      },
+      {
+       "id": "rv_secZ",
+       "label": "rv_secZ",
+       "check": "ok"
+      },
+      {
+       "id": "rv_dim",
+       "label": "rv_dim",
+       "check": "ok"
+      },
+      {
+       "id": "rv_plancad",
+       "label": "rv_plancad",
+       "check": "ok"
+      },
+      {
+       "id": "rv_sec2cad",
+       "label": "rv_sec2cad",
+       "check": "ok"
+      }
+     ],
+     "note": "SVG, no WebGL; 'to CAD' puts them on layers for PDF/DXF."
+    },
+    {
+     "n": 8,
+     "text": "Interior layout and finishes: materials, furniture, lights.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "hx_mat",
+       "label": "hx_mat",
+       "check": "ok"
+      },
+      {
+       "id": "hx_fur",
+       "label": "hx_fur",
+       "check": "ok"
+      },
+      {
+       "id": "hx_light",
+       "label": "hx_light",
+       "check": "ok"
+      },
+      {
+       "id": "xf_hx",
+       "label": "xf_hx",
+       "check": "ok"
+      },
+      {
+       "id": "xf_rx",
+       "label": "xf_rx",
+       "check": "ok"
+      }
+     ],
+     "note": "H.X materials (floors 19, walls 9, ...) and furniture models."
+    },
+    {
+     "n": 9,
+     "text": "Render and walkthrough images for the owner approval.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "render",
+       "label": "render",
+       "check": "ok"
+      },
+      {
+       "id": "rs_open",
+       "label": "rs_open",
+       "check": "ok"
+      },
+      {
+       "id": "rs_still",
+       "label": "rs_still",
+       "check": "ok"
+      },
+      {
+       "id": "rs_turntable",
+       "label": "rs_turntable",
+       "check": "ok"
+      },
+      {
+       "id": "shot2",
+       "label": "shot2",
+       "check": "ok"
+      },
+      {
+       "id": "vx_export",
+       "label": "vx_export",
+       "check": "ok"
+      }
+     ],
+     "note": "Render Studio (stills up to 8K, turntable video) and true-vector SVG export of the view."
+    },
+    {
+     "n": 10,
+     "text": "Owner review round(s) and freeze; issue 'architectural design freeze' drawing set (plans, elevations, sections, door/window schedule).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "sheet",
+       "label": "sheet",
+       "check": "ok"
+      },
+      {
+       "id": "e_pdf",
+       "label": "e_pdf",
+       "check": "ok"
+      },
+      {
+       "id": "e_dxf",
+       "label": "e_dxf",
+       "check": "ok"
+      },
+      {
+       "id": "model_190",
+       "label": "model_190 [MODEL View > Create > Schedules]",
+       "check": "ok"
+      },
+      {
+       "id": "dc_new",
+       "label": "dc_new",
+       "check": "ok"
+      }
+     ],
+     "note": "Sheet composer exists; door/window schedule via R.X schedule (rv_sched). No design-freeze status workflow."
+    },
+    {
+     "n": 11,
+     "text": "Submit for the building permit (authority forms: architectural + structural + soil report + title). Egypt: unified building law (Law 119 of 2008 and its executive regulations - verify current text).",
+     "status": "F",
+     "ids": [],
+     "note": "Outside the software; tracked in the register (dc_new / dc_reg)."
+    }
+   ],
+   "outputs": [
+    "Architectural drawing set (site plan, plans, 4 elevations, 2 sections, schedules)",
+    "R.X model Level of Development ~ LOD 200-300 (walls, openings, floors, stair, roof)",
+    "Renders",
+    "Permit submission file"
+   ],
+   "checks": [
+    "Plan inside setbacks and coverage limits",
+    "Stair rise/tread comply, headroom >= 2.2 m",
+    "Every room has window/ventilation (or mechanical vent) and every wet area stacks over wet area where possible",
+    "Grid spacing realistic for RC (spans 3.5-5.5 m, avoid > 6 m without extra beam)",
+    "Owner signature on the freeze set"
+   ],
+   "rules": [
+    "RULE OF THUMB: keep slab spans <= 5 m for economical solid slab+beam; align walls above walls; stack wet rooms.",
+    "RULE OF THUMB: floor-to-floor 3.0-3.2 m; clear height 2.7-2.9 m after finishes.",
+    "RULE OF THUMB: external masonry 25 cm, internal 12 cm; wall self-weight ~ 2.0-3.5 kN/m2 of wall face - the load figure comes from ECP 201 / the materials, not from this."
+   ],
+   "mistakes": [
+    "Drawing walls first and columns later (columns end up in the middle of doors)",
+    "Wet areas not stacked -> long drains",
+    "No room for ducts / shafts (MEP riser 40x60 cm each)",
+    "Stair with wrong rise/tread because floor height changed"
+   ],
+   "duration": "1-3 months including owner changes",
+   "demo": "Current ch1 'rx' + ch2 start. Needed: explicit grid + level first, then perimeter walls (thickness 0.25), then columns on the grid, then openings; sections after. The template house2 has no columns: demo must place them or the template must be extended.",
+   "coverage": {
+    "Y": 7,
+    "P": 3,
+    "M": 0,
+    "F": 1
+   }
+  },
+  {
+   "id": 3,
+   "title_en": "Structural system choice, loads and preliminary sizing",
+   "title_ar": "النظام الإنشائي والأحمال والأبعاد المبدئية",
+   "purpose": "Pick the frame system and foundation type, define the loads, and size members roughly so the architect and MEP can reserve space.",
+   "inputs": [
+    "Architectural plans and sections (freeze set)",
+    "Soil report (allowable bearing, depth, water table)",
+    "Codes chosen: ECP 201 loads, ECP 203 concrete, ECP 202 foundations (or Eurocode 1/2/7, or ACI 318 + ASCE 7)",
+    "Material grades"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Choose the system: RC skeleton (columns + beams + solid slab) = default for a villa; flat slab / hollow-block (ribbed) alternatives; masonry fill, not load-bearing.",
+     "status": "F",
+     "ids": [],
+     "note": "Engineering decision."
+    },
+    {
+     "n": 2,
+     "text": "Choose the foundation type from the soil report and column loads: isolated footings + tie beams (default on good soil), strap/combined footings near boundary, raft if footings cover > ~40-50 % of the footprint or soil is weak/water high, piles only if the report requires.",
+     "status": "F",
+     "ids": [],
+     "note": "Engineering decision; revisit after load take-down."
+    },
+    {
+     "n": 3,
+     "text": "Fix materials: concrete grade (Egypt uses cube strength fcu: typical C25-C30 for a villa frame; check ECP 203 exposure and durability for foundations in sulphate soil), reinforcing steel grade (common Egyptian grades 24/35 mild, 36/52 high-yield, 40/60 high-strength - verify with the supplier and ES standard), cover, cement type (sulphate-resisting where the soil report says so).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "p_codes",
+       "label": "p_codes",
+       "check": "ok"
+      },
+      {
+       "id": "lib:rxfam",
+       "label": "lib:rxfam",
+       "check": "ok"
+      }
+     ],
+     "note": "p_codes lists the codes (titles only, clause numbers deliberately not reproduced). No material-grade table."
+    },
+    {
+     "n": 4,
+     "text": "Define loads per ECP 201 (check clauses): dead (self weight + finishes + partitions), live by occupancy (residential rooms ~2 kN/m2, balconies/stairs higher - from the code table), roof live/maintenance, wind, seismic zone, earth pressure, water. Typical finishes allowance ~1.5-2.0 kN/m2 on floors; masonry wall line loads.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "model_55",
+       "label": "model_55 [MODEL Structure > Analytical Model > Load Combinations]",
+       "check": "ok"
+      },
+      {
+       "id": "p_calc",
+       "label": "p_calc",
+       "check": "ok"
+      },
+      {
+       "id": "env_wind",
+       "label": "env_wind",
+       "check": "ok"
+      },
+      {
+       "id": "env_eq",
+       "label": "env_eq",
+       "check": "ok"
+      }
+     ],
+     "note": "R.X Load Combinations (floor loads, EN 1990 6.10 / ASCE 7 / characteristic) exists but no ECP 201 table and no wall line loads."
+    },
+    {
+     "n": 5,
+     "text": "Load combinations: ECP 203 ultimate (typical 1.4 D + 1.6 L, plus wind/seismic combinations - check the clause) and service combination for deflection/cracking/bearing.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "model_55",
+       "label": "model_55 [MODEL Structure > Analytical Model > Load Combinations]",
+       "check": "ok"
+      }
+     ],
+     "note": "EN/ASCE/characteristic forms only."
+    },
+    {
+     "n": 6,
+     "text": "Preliminary sizing by span/depth: slab t >= span/30-35 (one-way) or span/35-40 (two-way continuous); beam depth span/10-12 (simply supported to continuous), width 20-30 cm; column from load: Ac ~ N / (0.35-0.45 x fcu) as first guess; footing area = service load / allowable bearing x 1.1.",
+     "status": "M",
+     "ids": [],
+     "note": "Rules of thumb only; no pre-sizing tool. Demo can type them into the R.X Properties (rv_props)."
+    },
+    {
+     "n": 7,
+     "text": "Layout the structure on the grid: column positions (also at stair corners, around shafts), beam lines under walls, slab panels, cantilevers/balconies, expansion/construction joints, lift pit if any.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "rv_col",
+       "label": "rv_col",
+       "check": "ok"
+      },
+      {
+       "id": "rv_beam",
+       "label": "rv_beam",
+       "check": "ok"
+      },
+      {
+       "id": "rv_floor",
+       "label": "rv_floor",
+       "check": "ok"
+      },
+      {
+       "id": "rv_found",
+       "label": "rv_found",
+       "check": "ok"
+      },
+      {
+       "id": "rv_fslab",
+       "label": "rv_fslab",
+       "check": "ok"
+      },
+      {
+       "id": "model_42",
+       "label": "model_42 [MODEL Structure > Structure > Beam System]",
+       "check": "ok"
+      },
+      {
+       "id": "model_38",
+       "label": "model_38 [MODEL Structure > Structure > Brace]",
+       "check": "ok"
+      }
+     ],
+     "note": "R.X elements exist; no automatic framing from walls."
+    },
+    {
+     "n": 8,
+     "text": "Check column load take-down (tributary area x total load x floors) and footing area once; revise sizes; fix final grid and dimensions with the architect.",
+     "status": "M",
+     "ids": [],
+     "note": "No load take-down tool. p_calc sheets 'bear' (bearing pressure under base) can check one footing."
+    },
+    {
+     "n": 9,
+     "text": "Coordination meeting: structure vs architecture vs MEP (beam depth under ducts, column vs door, slab openings for shafts).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "clash",
+       "label": "clash",
+       "check": "ok"
+      },
+      {
+       "id": "p_coord",
+       "label": "p_coord",
+       "check": "ok"
+      },
+      {
+       "id": "coord_nv1",
+       "label": "coord_nv1",
+       "check": "ok"
+      },
+      {
+       "id": "nv_clash",
+       "label": "nv_clash",
+       "check": "ok"
+      },
+      {
+       "id": "mom_new",
+       "label": "mom_new",
+       "check": "ok"
+      }
+     ],
+     "note": "N.X clash + MOM tool."
+    },
+    {
+     "n": 10,
+     "text": "Write the structural design basis (1-2 pages): codes, loads, materials, foundation type, assumptions, software/method.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "dc_rep",
+       "label": "dc_rep",
+       "check": "ok"
+      },
+      {
+       "id": "p_codes",
+       "label": "p_codes",
+       "check": "ok"
+      }
+     ],
+     "note": "Report editor; no design-basis template."
+    }
+   ],
+   "outputs": [
+    "Structural design basis document",
+    "Structural layout drawings (column grid + beam layout + slab panels + foundation type) - preliminary",
+    "Updated R.X model with columns/beams/slabs/foundations at preliminary sizes",
+    "Load table"
+   ],
+   "checks": [
+    "Column continuity from foundation to roof (no column ends on a beam unless designed)",
+    "Total preliminary concrete within the rule-of-thumb range (see phase 6)",
+    "Footing areas fit inside the plot and clear neighbours",
+    "All spans <= limits used in the span/depth table",
+    "Design basis signed by the engineer in charge"
+   ],
+   "rules": [
+    "RULE OF THUMB: total concrete in a villa skeleton ~ 0.30-0.40 m3 per m2 of BUA incl. foundations; reinforcing steel 90-130 kg per m3 of concrete (~ 35-50 kg/m2 BUA). A quantity far outside this range = recheck.",
+    "RULE OF THUMB: villa column grid 4-5.5 m, columns 25x60 to 30x70 cm in Egyptian practice (long side along the wall), beams 25x60 cm typical; footing 1.2-2.2 m square for 400-900 kN service load on 150 kPa soil.",
+    "RULE OF THUMB: the 1st trial footing area = service load x 1.1 / allowable bearing."
+   ],
+   "mistakes": [
+    "Choosing isolated footings when they almost touch -> should be a raft",
+    "Forgetting the tie beams / grade beams and the ground slab",
+    "Using live loads from habit instead of the code table",
+    "Changing the architectural plan after the structure is fixed"
+   ],
+   "duration": "2-4 weeks",
+   "demo": "Highlight: place columns on the grid, beams on the wall lines, foundation pads under columns, show the 'load take-down' table (needs a small build - see gaps).",
+   "coverage": {
+    "Y": 2,
+    "P": 4,
+    "M": 2,
+    "F": 2
+   }
+  },
+  {
+   "id": 4,
+   "title_en": "Detailed structural analysis and design",
+   "title_ar": "التحليل والتصميم الإنشائي التفصيلي (بلاطات وكمرات وأعمدة وأساسات وسلالم وحوائط ساندة)",
+   "purpose": "Design every structural element to the code, detail the reinforcement and issue drawings, schedules and a calculation report that a checker can follow.",
+   "inputs": [
+    "Phase 3 design basis, layout, loads, materials",
+    "Soil report",
+    "Final architectural dimensions and openings",
+    "MEP penetrations and equipment weights (water tank, AC units, lift)"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Build the analysis model or the hand-calc scheme: slab panels (support conditions per edge), continuous beams, frames (2D or 3D), foundation model. State assumptions (rigid/elastic supports, cracked section factors).",
+     "status": "M",
+     "ids": [
+      {
+       "id": "model_54",
+       "label": "model_54 [MODEL Structure > Analytical Model > Boundary Conditions]",
+       "check": "ok"
+      },
+      {
+       "id": "model_52",
+       "label": "model_52 [MODEL Structure > Analytical Model > Check]",
+       "check": "ok"
+      }
+     ],
+     "note": "R.X can tag boundary conditions (fixed/pinned/roller/free) on columns/foundations but there is NO structural solver (no frame/beam/slab analysis)."
+    },
+    {
+     "n": 2,
+     "text": "Slabs: solid slab one-way (long/short >= 2) or two-way; bending moments from code coefficient tables or yield-line/FE; check minimum thickness for deflection; min steel (shrinkage/temperature) and max spacing; cantilevers/balconies design incl. edge beam torsion; shear check (usually no stirrups).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:flex",
+       "label": "calc:flex",
+       "check": "ok"
+      },
+      {
+       "id": "p_calc",
+       "label": "p_calc",
+       "check": "ok"
+      }
+     ],
+     "note": "Only the strip/beam flexure+shear sheet `flex` (ACI 318 form, simplified, cylinder f'c). No moment coefficients, no two-way slab, no deflection."
+    },
+    {
+     "n": 3,
+     "text": "Beams: flexure (rectangular / T-beam, singly then doubly reinforced), shear + stirrup spacing, torsion for edge/spandrel beams, deflection (span/depth or computed), crack width, support moment at continuity, development of top steel into columns.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:flex",
+       "label": "calc:flex",
+       "check": "ok"
+      }
+     ],
+     "note": "`flex` gives As, As,min, tension-controlled strain, phi*Mn, phi*Vc only. No stirrup design, no T-beam, no torsion/deflection/crack."
+    },
+    {
+     "n": 4,
+     "text": "Columns: axial + uniaxial/biaxial moment (interaction diagram), slenderness (braced/unbraced), minimum eccentricity, steel ratio limits (min ~0.8 %, max ~4-6 % - check ECP 203), tie spacing/size, splice zone.",
+     "status": "M",
+     "ids": [],
+     "note": "No column design sheet or interaction diagram."
+    },
+    {
+     "n": 5,
+     "text": "Foundations: service-load bearing check (q <= allowable, no uplift under combinations), settlement/differential settlement, ultimate design: one-way shear, punching shear at d/2, flexure in both directions, development length of bars, tie beams/strap design; raft: soil springs or rigid method, punching under columns, edge details. Egyptian reference ECP 202 (check clauses).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:bear",
+       "label": "calc:bear",
+       "check": "ok"
+      },
+      {
+       "id": "dc_soil",
+       "label": "dc_soil",
+       "check": "ok"
+      },
+      {
+       "id": "fn:dcBearing",
+       "label": "fn:dcBearing",
+       "check": "ok"
+      },
+      {
+       "id": "calc:flex",
+       "label": "calc:flex",
+       "check": "ok"
+      }
+     ],
+     "note": "`bear` = W/A vs qa for one base; Terzaghi qu from the log. No punching, no one-way shear for footings, no raft, no settlement."
+    },
+    {
+     "n": 6,
+     "text": "Stairs: waist slab as one-way inclined slab (span horizontal projection), landings, loads (self weight of steps + finishes + live), reinforcement incl. bent bars at re-entrant corners, support on beams/walls.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:flex",
+       "label": "calc:flex",
+       "check": "ok"
+      },
+      {
+       "id": "rv_stair",
+       "label": "rv_stair",
+       "check": "ok"
+      }
+     ],
+     "note": "Can run `flex` per metre strip; stair geometry is in R.X."
+    },
+    {
+     "n": 7,
+     "text": "Retaining walls / basement walls / ramp walls if the plot has level change: active/at-rest earth pressure + surcharge + water; stability (overturning FS >= ~1.5-2.0, sliding FS >= ~1.5, bearing); stem and base design; drainage and waterproofing.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "calc:float",
+       "label": "calc:float",
+       "check": "ok"
+      }
+     ],
+     "note": "Only flotation (`float`, for a well) exists - no retaining wall sheet."
+    },
+    {
+     "n": 8,
+     "text": "Seismic: ECP 201 zone + site class -> base shear, distribution, drift; check frame detailing class (ductility). Wind on a 2-storey villa rarely governs.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "env_eq",
+       "label": "env_eq",
+       "check": "ok"
+      },
+      {
+       "id": "env_wind",
+       "label": "env_wind",
+       "check": "ok"
+      }
+     ],
+     "note": "Eurocode-8-form spectrum and ASCE 7 base shear (ECP 201's own spectrum/zone table not coded; wind: ECP 201 has its own chapter - the panel says it does not apply it)."
+    },
+    {
+     "n": 9,
+     "text": "Serviceability: deflection limit (e.g. span/250 total, span/350-500 after partitions - check ECP 203), crack width (typical 0.3 mm external/0.4 mm internal - check exposure class), vibration for long spans.",
+     "status": "M",
+     "ids": [],
+     "note": "Not computed anywhere."
+    },
+    {
+     "n": 10,
+     "text": "Detailing: cover, bar spacing, development length ld and lap length (rule of thumb ld ~ 40-50 db for high-yield bars in 25-30 MPa cube concrete, lap = 1.3 ld for ~50 % splice - COMPUTE with the ECP 203 / ACI formula), hooks and bends, stirrup closure at 135 deg, splice location (columns just above slab, beams away from supports), stirrup spacing near supports (confinement zone), curtailment points.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "model_50",
+       "label": "model_50 [MODEL Structure > Reinforcement > Cover]",
+       "check": "stub"
+      },
+      {
+       "id": "model_47",
+       "label": "model_47 [MODEL Structure > Reinforcement > Area]",
+       "check": "stub"
+      },
+      {
+       "id": "model_48",
+       "label": "model_48 [MODEL Structure > Reinforcement > Path]",
+       "check": "stub"
+      }
+     ],
+     "note": "Ribbon entries Cover/Area/Path/Fabric Sheet/Couplers are stubs; Rebar entry runs the lift-station rebar viewer (`rb`/`p_rebar`) only."
+    },
+    {
+     "n": 11,
+     "text": "Reinforcement schedules / bar bending schedule (BBS): mark, diameter, shape code, cut length, number, total length, weight (kg = d2/162 x m, d in mm). Totals per element and per diameter for ordering.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "dc_rb",
+       "label": "dc_rb",
+       "check": "ok"
+      },
+      {
+       "id": "rb",
+       "label": "rb",
+       "check": "ok"
+      },
+      {
+       "id": "p_rebar",
+       "label": "p_rebar",
+       "check": "ok"
+      }
+     ],
+     "note": "dc_rb = rebar take-off tab of document control; `rb` = station rebar. Not generated from R.X columns/beams/slabs."
+    },
+    {
+     "n": 12,
+     "text": "Structural drawings: foundation plan + sections, column schedule, beam layout + elevations, slab reinforcement plans per floor, stair detail, general notes (grades, cover, laps, curing), title block.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "sheet",
+       "label": "sheet",
+       "check": "ok"
+      },
+      {
+       "id": "lb_cx",
+       "label": "lb_cx",
+       "check": "ok"
+      },
+      {
+       "id": "tab:draft",
+       "label": "tab:draft",
+       "check": "ok"
+      },
+      {
+       "id": "e_pdf",
+       "label": "e_pdf",
+       "check": "ok"
+      },
+      {
+       "id": "e_dxf",
+       "label": "e_dxf",
+       "check": "ok"
+      },
+      {
+       "id": "rv_plancad",
+       "label": "rv_plancad",
+       "check": "ok"
+      }
+     ],
+     "note": "C.X drawing + sheet composer + title blocks A1-A4. Drawings must be drawn; none auto-produced from a design."
+    },
+    {
+     "n": 13,
+     "text": "Calculation report: inputs, load table, results, pass/fail per check, reference clause. Independent check by a second engineer (+ authority stamp).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:flex",
+       "label": "calc:flex",
+       "check": "ok"
+      },
+      {
+       "id": "p_review",
+       "label": "p_review",
+       "check": "ok"
+      },
+      {
+       "id": "wf:struct",
+       "label": "wf:struct",
+       "check": "ok"
+      },
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "dc_rep",
+       "label": "dc_rep",
+       "check": "ok"
+      }
+     ],
+     "note": "p_review recomputes the calc sheets and compares with the model; wf_struct is an ordered review (model data > calcs > soil > rebar > seismic > wind > liquefaction > clashes > drawing set)."
+    }
+   ],
+   "outputs": [
+    "Calculation report",
+    "Structural drawings: foundation, columns, beams, slabs, stair, details",
+    "Reinforcement schedule / BBS",
+    "Structural quantities (concrete m3, steel kg, formwork m2)",
+    "Authority-approved structural set"
+   ],
+   "checks": [
+    "Flexure: Mu <= phi*Mn at every critical section; As >= As,min; As <= As,max (tension-controlled / ductile)",
+    "Shear: Vu <= phi*Vn; stirrup spacing <= code max; minimum shear steel where required",
+    "Punching (footings, flat slabs): vu <= phi*vc at d/2 from the column face",
+    "Deflection: computed or span/depth ratio satisfied; crack width <= limit for the exposure class",
+    "Columns: Pu-Mu point inside the interaction diagram; slenderness checked; 0.8 % <= rho <= code max (check ECP 203)",
+    "Footing: service q <= allowable (and >= 0 everywhere, i.e. no uplift); differential settlement <= typical L/500 (check the code)",
+    "Detailing: cover >= code/exposure; ld and lap provided >= required; bar spacing between min and max",
+    "Overall: quantities per m2 BUA in the rule-of-thumb band; two-engineer sign-off"
+   ],
+   "rules": [
+    "ECP 203 works with cube strength fcu and gamma_c = 1.5, gamma_s = 1.15 (check the clauses); ACI 318 works with cylinder f'c (rough conversion f'c ~ 0.8 fcu, NEVER use for final design); Eurocode 2 uses fck cylinder. T.O X `flex` is ACI/SBC-style - say so on screen.",
+    "RULE OF THUMB steel weight per m3 concrete: footings 60-100, slabs 70-100, beams 130-180, columns 150-250 kg; average 100-130 kg/m3.",
+    "RULE OF THUMB min dims: column >= 25x25 cm (check), slab >= 12 cm (roof/floor), beam width >= 20-25 cm, cover 25-30 mm in beams/columns indoors, 50-75 mm against soil.",
+    "RULE OF THUMB two-way slab: effective depth d ~ L/35-L/40; simply supported one-way: L/20-L/25 (d); the code table is the authority.",
+    "Bar weight kg/m = d^2/162 (d in mm): 10 mm 0.617, 12 mm 0.888, 16 mm 1.58, 18 mm 2.00, 20 mm 2.47, 25 mm 3.85."
+   ],
+   "mistakes": [
+    "Designing with unconfirmed loads or an unchecked soil bearing",
+    "Missing top steel at continuous supports and cantilevers",
+    "Stirrups too wide at column/beam joints, 90-degree stirrup hooks",
+    "Forgetting punching at footing and slab-column joints",
+    "Laps all at the same section",
+    "Cover too small against soil -> corrosion",
+    "Copying ACI formulas for an ECP submission"
+   ],
+   "duration": "3-6 weeks for a villa (design) + 1 week checks",
+   "demo": "Demo can truthfully show: R.X sizes -> concrete quantities -> `flex` bending check of one slab strip and one beam -> `bear` check of one footing -> rebar weight from dc_rb. It must say 'screening, ACI-form'. Anything more (columns, punching, deflection, ECP 203) is a BUILD item, see gaps 1-3.",
+   "coverage": {
+    "Y": 0,
+    "P": 8,
+    "M": 5,
+    "F": 0
+   }
+  },
+  {
+   "id": 5,
+   "title_en": "MEP design (electrical, HVAC, plumbing, low-current)",
+   "title_ar": "تصميم الكهروميكانيكا: الكهرباء والتكييف والسباكة والصرف والتيار الخفيف",
+   "purpose": "Design the building services so they fit the architecture and structure, are safe, and can be quantified and priced.",
+   "inputs": [
+    "Architectural plans (rooms, areas, use, glazing, orientation)",
+    "Structural layout (beam depths, shafts, slab openings)",
+    "Utility connection letters (kVA, water pressure, sewer level)",
+    "Owner requirements (AC type, solar heater, smart home, CCTV)"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "ELECTRICAL - Load schedule: every room's lighting (W/m2 or lux method), sockets (typ. 10 A / 16 A), AC units, water heaters, kitchen, pumps, lift, EV charger; connected load, demand/diversity factors, total kVA, phase balance (single/three-phase supply).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "model_72",
+       "label": "model_72 [MODEL Systems > Electrical > Electrical Equipment]",
+       "check": "ok"
+      },
+      {
+       "id": "model_74",
+       "label": "model_74 [MODEL Systems > Electrical > Lighting Fixture]",
+       "check": "ok"
+      },
+      {
+       "id": "model_73",
+       "label": "model_73 [MODEL Systems > Electrical > Device]",
+       "check": "ok"
+      },
+      {
+       "id": "model_134",
+       "label": "model_134 [MODEL Analyze > Reports & Schedules > Panel Schedules]",
+       "check": "ok"
+      },
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      }
+     ],
+     "note": "R.X placements carry watts; Panel Schedules assign loads to the nearest panel and sum connected watts. No demand/diversity factors, no kVA/phase-balance report."
+    },
+    {
+     "n": 2,
+     "text": "Distribution: main distribution board (MDB), sub-boards per floor, circuits (lighting 10 A, sockets 16 A, AC dedicated), RCDs 30 mA on socket/wet circuits, metering point from the utility.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "model_134",
+       "label": "model_134 [MODEL Analyze > Reports & Schedules > Panel Schedules]",
+       "check": "ok"
+      },
+      {
+       "id": "lib:vxeq",
+       "label": "lib:vxeq",
+       "check": "ok"
+      }
+     ],
+     "note": "Panel schedule only; no single-line diagram tool."
+    },
+    {
+     "n": 3,
+     "text": "Cable and breaker sizing: design current Ib = P/(sqrt3 x V x pf) (3-ph) or P/(V x pf) (1-ph); breaker In >= Ib; cable Iz >= In from the code's ampacity table with derating (grouping, temperature, installation); voltage drop <= ~3 % lighting / 5 % total (check local rule); short-circuit check at the board.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "ace_open",
+       "label": "ace_open",
+       "check": "ok"
+      },
+      {
+       "id": "ace_load",
+       "label": "ace_load",
+       "check": "ok"
+      },
+      {
+       "id": "env_qc",
+       "label": "env_qc",
+       "check": "ok"
+      },
+      {
+       "id": "calc:mot",
+       "label": "calc:mot",
+       "check": "ok"
+      }
+     ],
+     "note": "AC unit table: power from cooling and COP, current, breaker from the standard rating series, cable from voltage drop (resistance at conductor temperature). Ampacity tables are NOT typed in: user pastes them. Motor/transformer/voltage-drop calc in env_qc. No lighting/socket circuit sizing, no short-circuit calc."
+    },
+    {
+     "n": 4,
+     "text": "Earthing and protection: TN-C-S or TT per utility, earth electrode (rod/plate/foundation earth - often the footing steel is bonded), main equipotential bonding, lightning protection if required, surge protection at MDB.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "wf:mep",
+       "label": "wf:mep",
+       "check": "ok"
+      }
+     ],
+     "note": "wf_mep has a step 'Earthing, lightning, fire, ventilation' that only checks a list; no earthing resistance calc."
+    },
+    {
+     "n": 5,
+     "text": "Lighting design: lux target per room (rule of thumb living 100-150, kitchen/desk 300, corridors 100, bath 150-200), lumen method N = E x A / (F x UF x MF), fixture schedule, switching.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "lib:vxeq",
+       "label": "lib:vxeq",
+       "check": "ok"
+      }
+     ],
+     "note": "No lighting calculation tool."
+    },
+    {
+     "n": 6,
+     "text": "HVAC - cooling load room by room (envelope U-values, glass by orientation, people, lights, equipment, ventilation, infiltration), diversity, select unit capacity (split HP / TR) with margin 10 %.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "tab:hv",
+       "label": "tab:hv",
+       "check": "ok"
+      },
+      {
+       "id": "hv_room",
+       "label": "hv_room",
+       "check": "ok"
+      },
+      {
+       "id": "hv_import",
+       "label": "hv_import",
+       "check": "ok"
+      },
+      {
+       "id": "xf_hv",
+       "label": "xf_hv",
+       "check": "ok"
+      },
+      {
+       "id": "hv_csv",
+       "label": "hv_csv",
+       "check": "ok"
+      },
+      {
+       "id": "model_128",
+       "label": "model_128 [MODEL Analyze > Energy Analysis > Heating and Cooling Loads]",
+       "check": "ok"
+      }
+     ],
+     "note": "V.X hourly design-day estimate (conduction with sol-air, Meinel solar, people, lights, vent, infiltration; no thermal storage = conservative). All inputs editable placeholders."
+    },
+    {
+     "n": 7,
+     "text": "Select equipment: split / ducted split / VRF, indoor units per room, outdoor units on roof/balcony with service clearance, refrigerant pipe length limits, condensate drains.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lib:vxeq",
+       "label": "lib:vxeq",
+       "check": "ok"
+      },
+      {
+       "id": "model_64",
+       "label": "model_64 [MODEL Systems > HVAC > Mechanical Equipment]",
+       "check": "ok"
+      },
+      {
+       "id": "model_65",
+       "label": "model_65 [MODEL Systems > HVAC > Air Terminal]",
+       "check": "ok"
+      }
+     ],
+     "note": "Equipment library (AHU, FCU, split, VRF, chillers, diffusers) is placeholder data."
+    },
+    {
+     "n": 8,
+     "text": "Duct sizing (if ducted): flow per diffuser, equal-friction method, velocity limits, aspect ratio, fittings K values entered by the user, critical-path pressure, fan static.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "du_sec",
+       "label": "du_sec",
+       "check": "ok"
+      },
+      {
+       "id": "du_load",
+       "label": "du_load",
+       "check": "ok"
+      },
+      {
+       "id": "du_csv",
+       "label": "du_csv",
+       "check": "ok"
+      },
+      {
+       "id": "dp_open",
+       "label": "dp_open",
+       "check": "ok"
+      },
+      {
+       "id": "dp_flow",
+       "label": "dp_flow",
+       "check": "ok"
+      }
+     ],
+     "note": "Darcy-Weisbach + Swamee-Jain, Huebscher rectangular equivalent; duct plan assigns flows downstream and finds the critical path. No fitting tables (user enters K)."
+    },
+    {
+     "n": 9,
+     "text": "Fresh air and extract: toilets/kitchen extract (typ. 10-15 ACH bath, kitchen hood), stairwell/garage rules.",
+     "status": "M",
+     "ids": [],
+     "note": "No ventilation calc."
+    },
+    {
+     "n": 10,
+     "text": "PLUMBING - Water supply: fixture units per fixture, demand (probable flow from fixture units), pipe sizes by velocity (<= 1.5-2.0 m/s) and pressure loss (Hazen-Williams), pressure at highest fixture (>= 1-1.5 bar), ground tank + pump or roof tank (volume = persons x 150-250 L/day x 1-2 days), booster pump selection.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:hw",
+       "label": "calc:hw",
+       "check": "ok"
+      },
+      {
+       "id": "calc:mot",
+       "label": "calc:mot",
+       "check": "ok"
+      },
+      {
+       "id": "env_qc",
+       "label": "env_qc",
+       "check": "ok"
+      },
+      {
+       "id": "model_80",
+       "label": "model_80 [MODEL Systems > Plumbing & Piping > Plumbing Fixture]",
+       "check": "ok"
+      }
+     ],
+     "note": "Hazen-Williams head loss + velocity and pump/motor calc exist. No fixture-unit demand table, no tank-volume or pipe-sizing tool, R.X Pipe/Pipe Sizing are stubs."
+    },
+    {
+     "n": 11,
+     "text": "Hot water: solar heater + electric backup, pipe lengths, insulation.",
+     "status": "M",
+     "ids": [],
+     "note": ""
+    },
+    {
+     "n": 12,
+     "text": "Drainage and vent: fixture units to branch/stack sizes (typ. WC 100 mm, others 50-75 mm), slopes (1-2 %: >= 1:50 for 100 mm, 1:100 for >= 150 mm), vents, manhole at turns/ends (spacing <= 15-25 m), inspection chambers, grease trap for kitchen if required.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "calc:man",
+       "label": "calc:man",
+       "check": "ok"
+      },
+      {
+       "id": "lib:sxpipe",
+       "label": "lib:sxpipe",
+       "check": "ok"
+      },
+      {
+       "id": "tab:plant",
+       "label": "tab:plant",
+       "check": "ok"
+      }
+     ],
+     "note": "Manning full-flow capacity of a gravity pipe; S.X pipe/structure catalogue (placeholder); T.X pipe runs with DN/spec/BOM/iso (not linked to R.X)."
+    },
+    {
+     "n": 13,
+     "text": "Sewer or septic: connect to public sewer if invert level allows gravity (check cover and slope), otherwise septic tank + soakaway/cesspit (بيارة) sized by persons x 150-200 L/day x retention 1-2 days; setback from water well / boundary per authority.",
+     "status": "M",
+     "ids": [],
+     "note": "No septic/soakaway tool. Networks sample data (sewer/storm/water/fire) exist from the lift-station sample only."
+    },
+    {
+     "n": 14,
+     "text": "Rainwater: roof drains (area x rainfall intensity), downpipes, storm connection or soakaway.",
+     "status": "M",
+     "ids": [],
+     "note": ""
+    },
+    {
+     "n": 15,
+     "text": "Fire fighting: extinguishers per area, civil-defence approval for the building class, hose reel/standpipe if required by class; smoke detectors.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lb_cx",
+       "label": "lb_cx",
+       "check": "ok"
+      },
+      {
+       "id": "wf:mep",
+       "label": "wf:mep",
+       "check": "ok"
+      }
+     ],
+     "note": "C.X fire symbols (8); network sample for fire mains exists in sample data."
+    },
+    {
+     "n": 16,
+     "text": "LOW-CURRENT - Data/telephone: structured cabling (Cat6) to each room, rack location, wifi AP positions; TV/satellite; intercom/video door phone; CCTV cameras + NVR (storage = cameras x bitrate x days); fire alarm panel + detectors/sounders + battery sizing; access control; smart-home bus if any.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lb_cx",
+       "label": "lb_cx",
+       "check": "ok"
+      },
+      {
+       "id": "lib:cxblk",
+       "label": "lib:cxblk",
+       "check": "ok"
+      }
+     ],
+     "note": "Only CAD symbols in the block library; no riser diagram, no cable schedule, no battery/NVR calc."
+    },
+    {
+     "n": 17,
+     "text": "Draw MEP layouts: lighting+socket plans, panel schedule, AC layout + duct, water + drainage plans/risers/isometrics, low-current plans, schedules, specifications.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "tab:draft",
+       "label": "tab:draft",
+       "check": "ok"
+      },
+      {
+       "id": "lb_cx",
+       "label": "lb_cx",
+       "check": "ok"
+      },
+      {
+       "id": "sheet",
+       "label": "sheet",
+       "check": "ok"
+      },
+      {
+       "id": "rv_plancad",
+       "label": "rv_plancad",
+       "check": "ok"
+      },
+      {
+       "id": "plant_sheet",
+       "label": "plant_sheet",
+       "check": "ok"
+      }
+     ],
+     "note": "CAD + sheets; T.X iso sheet generator for pipes."
+    },
+    {
+     "n": 18,
+     "text": "MEP check: wf_mep runs pump, motor, voltage drop, transformer, pipe velocity, safety, earthing in order and says 'missing' where no data.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "wf:mep",
+       "label": "wf:mep",
+       "check": "ok"
+      },
+      {
+       "id": "wf_mep",
+       "label": "wf_mep",
+       "check": "ok"
+      }
+     ],
+     "note": "Checks station-type items (pump/transformer) well; building items are mostly missing."
+    }
+   ],
+   "outputs": [
+    "Electrical: load schedule, single-line diagram, panel schedules, cable/breaker table, lighting plan, socket plan, earthing detail",
+    "HVAC: cooling-load table, unit schedule, duct drawing + table, drain plan",
+    "Plumbing: fixture-unit table, supply/drain/vent plans, risers, tank & pump data, septic/sewer detail",
+    "Low-current: layouts + riser diagrams + schedules",
+    "MEP specifications + BOQ inputs"
+   ],
+   "checks": [
+    "Electrical: Ib <= In <= Iz for every circuit; VD <= limit; earth fault loop / RCD operation; main kVA <= utility approval; every socket circuit RCD-protected",
+    "HVAC: unit capacity >= room load x (1.0-1.15); duct velocity <= limit; total static within fan data; condensate falls",
+    "Plumbing: velocity within 0.6-2.0 m/s; residual pressure >= 1 bar at worst fixture; drain slope >= minimum and flow depth < ~0.7 D; vent for every trap",
+    "Septic/sewer: capacity >= persons x per-capita; levels allow gravity",
+    "Fire: civil-defence approval in file",
+    "All penetrations through slabs and beams are shown on the structural set"
+   ],
+   "rules": [
+    "RULE OF THUMB HVAC (Egypt, residential): 120-180 W per m2 conditioned area; 1 TR = 3.517 kW; 1 HP split ~ 9000-12000 Btu/h; ~1 HP per 10-14 m2 in a villa room with average glazing. Load calc supersedes this.",
+    "RULE OF THUMB electrical: villa connected load 80-150 W/m2, after diversity ~ 40-70 W/m2; typical main supply 3-phase 380/220 V 50 Hz, 63-125 A for a villa (utility decides).",
+    "RULE OF THUMB water: 150-250 L/person/day (check local), tank volume 1-2 days; supply pipe velocity 1.0-1.5 m/s.",
+    "RULE OF THUMB drains: 100 mm at 1 % (1:100) minimum for WC branches where allowed (check code), 50 mm basin/shower at 2 %; manholes every <= 15-20 m.",
+    "RULE OF THUMB duct: main 6-8 m/s, branches 3-5 m/s, friction 0.8-1.0 Pa/m (residential 0.6-0.8)."
+   ],
+   "mistakes": [
+    "AC outdoor units without airflow clearance",
+    "Condensate drains forgotten",
+    "Sockets without RCD in bathrooms/kitchens",
+    "Panel placed in bathroom/kitchen wall or behind a door",
+    "Septic tank too close to a water well or boundary",
+    "No riser shafts reserved -> pipes through beams",
+    "Cable sized for current only (no voltage drop / derating)"
+   ],
+   "duration": "3-6 weeks for all disciplines (parallel to structural design)",
+   "demo": "Good existing coverage for HVAC cooling load > duct > AC electrical. Electrical load schedule/panel and plumbing sizing need small builds to be convincing (gaps 5-7).",
+   "coverage": {
+    "Y": 3,
+    "P": 9,
+    "M": 6,
+    "F": 0
+   }
+  },
+  {
+   "id": 6,
+   "title_en": "Coordination, quantities, BOQ, specifications and cost estimate",
+   "title_ar": "التنسيق وحصر الكميات والمقايسة والمواصفات والتكلفة",
+   "purpose": "Prove the design is clash-free, then extract every quantity, attach specifications and prices, and produce the engineer's estimate that the tender and the budget rely on.",
+   "inputs": [
+    "Final architectural + structural + MEP models/drawings",
+    "Specification library (or the consultant's spec)",
+    "Current unit prices (suppliers, recent tenders, official price lists)",
+    "Soil/earthwork quantities"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Coordination: federate the models (arch + structure + MEP), run clash detection (hard clashes first: pipes vs beams, ducts vs beams, columns vs doors), assign issues, re-run until closed; keep a clash log.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "tab:coord",
+       "label": "tab:coord",
+       "check": "ok"
+      },
+      {
+       "id": "clash",
+       "label": "clash",
+       "check": "ok"
+      },
+      {
+       "id": "nv_clash",
+       "label": "nv_clash",
+       "check": "ok"
+      },
+      {
+       "id": "p_coord",
+       "label": "p_coord",
+       "check": "ok"
+      },
+      {
+       "id": "coord_nv1",
+       "label": "coord_nv1",
+       "check": "ok"
+      },
+      {
+       "id": "is_open",
+       "label": "is_open",
+       "check": "ok"
+      },
+      {
+       "id": "is_new",
+       "label": "is_new",
+       "check": "ok"
+      },
+      {
+       "id": "mom_new",
+       "label": "mom_new",
+       "check": "ok"
+      },
+      {
+       "id": "wf_qa",
+       "label": "wf_qa",
+       "check": "ok"
+      }
+     ],
+     "note": "N.X clash detective + coordination checks (specs vs codes) + BCF-shaped issues (viewpoint, section cut, snapshot). Needs MEP as 3D geometry to be meaningful: R.X Duct/Pipe are stubs; only boxes (Mechanical Equipment, Device, Plumbing Fixture...)."
+    },
+    {
+     "n": 2,
+     "text": "Check headroom/clear height under beams, slab openings vs shafts, door clearances, equipment access.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "m_dist",
+       "label": "m_dist",
+       "check": "ok"
+      },
+      {
+       "id": "m_btw",
+       "label": "m_btw",
+       "check": "ok"
+      },
+      {
+       "id": "sA",
+       "label": "sA",
+       "check": "ok"
+      },
+      {
+       "id": "sB",
+       "label": "sB",
+       "check": "ok"
+      },
+      {
+       "id": "sC",
+       "label": "sC",
+       "check": "ok"
+      }
+     ],
+     "note": "Section planes and measure tools; no rule-based headroom check."
+    },
+    {
+     "n": 3,
+     "text": "Quantity take-off by trade, per phase of work (excavation, blinding, concrete by element and grade, formwork area, steel kg, masonry m2/m3 minus openings, plaster, flooring, ceilings, doors/windows, paint, waterproofing, MEP points/lengths).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_bom",
+       "label": "p_bom",
+       "check": "ok"
+      },
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      },
+      {
+       "id": "e_boq",
+       "label": "e_boq",
+       "check": "ok"
+      },
+      {
+       "id": "model_132",
+       "label": "model_132 [MODEL Analyze > Reports & Schedules > Quantities and cost]",
+       "check": "ok"
+      }
+     ],
+     "note": "getItems() BOQ rows R01.. from R.X elements (walls, floors, doors, windows, columns, stairs, roofs...). Q.X sheet: Model quantities (live link), Build BOQ, Cost summary, pivots. In template house2 the BOQ currently has only 6 rows (R01 76.6 m3, R03 48 m3, R06 152.5 m2, R08 9 no., R09 16 no., R10 1 no.; names not checked) - no foundations/beams/columns/rebar rows until those are modelled."
+    },
+    {
+     "n": 4,
+     "text": "Reinforcement quantity: from the BBS (phase 4); cross-check with kg/m3 ranges.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "dc_rb",
+       "label": "dc_rb",
+       "check": "ok"
+      }
+     ],
+     "note": "Station-based; not linked to R.X."
+    },
+    {
+     "n": 5,
+     "text": "Earthwork quantities and disposal.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "rc_qty",
+       "label": "rc_qty",
+       "check": "ok"
+      },
+      {
+       "id": "rc_open",
+       "label": "rc_open",
+       "check": "ok"
+      },
+      {
+       "id": "survey_67",
+       "label": "survey_67 [SURVEY Analyze > Ground Data > Volumes]",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    },
+    {
+     "n": 6,
+     "text": "Specifications: concrete grade/slump/cement/aggregate/water-cement ratio; steel grade + tests; masonry brick class + mortar; plaster mix and thickness; waterproofing system; tiles/paint classes; doors/windows; MEP materials (cables LSZH, pipes PPR/uPVC, AC brands, fixtures). Each BOQ item points to a spec section.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "p_codes",
+       "label": "p_codes",
+       "check": "ok"
+      },
+      {
+       "id": "lib:txspec",
+       "label": "lib:txspec",
+       "check": "ok"
+      }
+     ],
+     "note": "No specification library (T.X spec class tables are placeholders for pipes only). p_codes lists code titles; clause text deliberately not reproduced."
+    },
+    {
+     "n": 7,
+     "text": "Unit prices: enter or import rates per BOQ item (materials + labour + equipment + overhead + profit), VAT; keep source and date per rate.",
+     "status": "M",
+     "ids": [
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      },
+      {
+       "id": "dc_tnd",
+       "label": "dc_tnd",
+       "check": "ok"
+      },
+      {
+       "id": "lib:pxres",
+       "label": "lib:pxres",
+       "check": "ok"
+      }
+     ],
+     "note": "Q.X rate/percentage cells ship EMPTY by design; dc_tnd rate0 = 0; P.X resource lists have rates 0. There is no sample price list."
+    },
+    {
+     "n": 8,
+     "text": "Cost estimate: sum by trade; add preliminaries (site setup, supervision, insurance), overhead, profit, contingency, VAT; cost per m2 BUA; compare with budget (phase 0).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_tnd",
+       "label": "dc_tnd",
+       "check": "ok"
+      },
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      },
+      {
+       "id": "p_scen",
+       "label": "p_scen",
+       "check": "ok"
+      }
+     ],
+     "note": "dc_tnd: overhead, profit, contingency, VAT on the BOQ; Q.X cost summary; p_scen price comparison + 5D."
+    },
+    {
+     "n": 9,
+     "text": "Cash-flow forecast later from schedule x costs (phase 8).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "xf_p6",
+       "label": "xf_p6",
+       "check": "ok"
+      },
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      }
+     ],
+     "note": "Template sheet exists."
+    },
+    {
+     "n": 10,
+     "text": "QA review before issue: quantities zero check, rates missing check, drawings consistent.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "wf:qa",
+       "label": "wf:qa",
+       "check": "ok"
+      },
+      {
+       "id": "wf_qa",
+       "label": "wf_qa",
+       "check": "ok"
+      }
+     ],
+     "note": "wf_qa steps: quantities and rates > schedule > document control > calculations > coordination > risks."
+    }
+   ],
+   "outputs": [
+    "Clash report (closed)",
+    "BOQ by trade (xlsx/csv) with quantities and spec references",
+    "Specification book (volume 2)",
+    "Engineer's estimate with cost per m2",
+    "Coordination log"
+   ],
+   "checks": [
+    "Zero open hard clashes; every soft clash has a decision",
+    "Quantities sanity vs rules of thumb: concrete 0.30-0.40 m3/m2 BUA, steel 100-130 kg/m3, blockwork area ~ 1.0-1.5 m2 per m2 BUA, plaster area ~ 2.0-2.8 m2 per m2 BUA (RULES OF THUMB)",
+    "No BOQ line with qty 0 or rate 0 (wf_qa reports it)",
+    "Every BOQ item has unit, spec reference and source of rate",
+    "Estimate within +/-10 % of independent cost-per-m2 benchmark"
+   ],
+   "rules": [
+    "RULE OF THUMB: structure ~ 25-35 %, finishes ~ 30-40 %, MEP ~ 15-25 % of a villa construction cost (varies strongly with finish level).",
+    "RULE OF THUMB: formwork ~ 6-8 m2 per m3 of beam/column concrete, 5-6 m2 per m3 of slab.",
+    "RULE OF THUMB: add waste: concrete 3-5 %, steel 3-5 % (laps/cut), tiles 7-10 %, brick 3-5 %."
+   ],
+   "mistakes": [
+    "Quantities taken from architectural walls only (no structure)",
+    "No allowance for laps/waste/formwork",
+    "Rates without date and source",
+    "Spec says one thing, BOQ item another",
+    "Forgetting preliminaries (site office, water/electricity for works, scaffolding)"
+   ],
+   "duration": "2-4 weeks",
+   "demo": "Today ch3 'boq' works on the 6 R.X rows. To be convincing it needs foundations/columns/beams/slabs/rebar rows and a sample, clearly labelled price list (gap 4).",
+   "coverage": {
+    "Y": 5,
+    "P": 3,
+    "M": 2,
+    "F": 0
+   }
+  },
+  {
+   "id": 7,
+   "title_en": "Tender and contracting",
+   "title_ar": "المناقصة والتعاقد",
+   "purpose": "Choose a contractor on a clear scope and price, with a contract that fixes time, payment, quality and responsibilities.",
+   "inputs": [
+    "Complete drawings, specifications, BOQ",
+    "Estimate and budget",
+    "Shortlist of contractors (or owner-managed crews)",
+    "Permit approvals"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Prepare tender package: instructions to bidders, general + particular conditions (e.g. FIDIC-style or the owner's contract), drawings, spec, BOQ, schedule format, bid bond rules, retention %, advance payment %, defects period, liquidated damages.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      },
+      {
+       "id": "dc_new",
+       "label": "dc_new",
+       "check": "ok"
+      },
+      {
+       "id": "dc_tnd",
+       "label": "dc_tnd",
+       "check": "ok"
+      }
+     ],
+     "note": "O.X has 11 letter/form templates (letter, RFI, IR, MIR, MOM, transmittal, NCR, daily report, payment certificate, variation order, checklist) - no tender/contract template."
+    },
+    {
+     "n": 2,
+     "text": "Pre-qualify and invite 3-5 bidders; issue tender; log clarifications (RFI) and issue addenda.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "dc_new",
+       "label": "dc_new",
+       "check": "ok"
+      },
+      {
+       "id": "cde_open",
+       "label": "cde_open",
+       "check": "ok"
+      },
+      {
+       "id": "rq_open",
+       "label": "rq_open",
+       "check": "ok"
+      }
+     ],
+     "note": "Register + CDE states + follow-up dashboard."
+    },
+    {
+     "n": 3,
+     "text": "Site visit and bid submission date; receive sealed bids (log them).",
+     "status": "F",
+     "ids": [
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    },
+    {
+     "n": 4,
+     "text": "Bid comparison: price per trade vs estimate, unbalanced rates, qualifications, schedule, references, payment terms; normalise to the same scope.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "p_scen",
+       "label": "p_scen",
+       "check": "ok"
+      },
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      },
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      }
+     ],
+     "note": "Price comparison inside p_scen; no bid-normalisation sheet."
+    },
+    {
+     "n": 5,
+     "text": "Negotiate, clarify, recommend award; owner approval.",
+     "status": "F",
+     "ids": [],
+     "note": ""
+    },
+    {
+     "n": 6,
+     "text": "Contract signing: contract sum, program, key staff, insurance, performance bond, advance payment guarantee; start-work order.",
+     "status": "F",
+     "ids": [
+      {
+       "id": "dc_new",
+       "label": "dc_new",
+       "check": "ok"
+      }
+     ],
+     "note": "Log the signed documents in the register."
+    },
+    {
+     "n": 7,
+     "text": "Set up contract administration: register of letters/RFI/submittals, payment certificate routine, variation procedure, meeting schedule.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "dc_ipc",
+       "label": "dc_ipc",
+       "check": "ok"
+      },
+      {
+       "id": "mom_open",
+       "label": "mom_open",
+       "check": "ok"
+      },
+      {
+       "id": "is_open",
+       "label": "is_open",
+       "check": "ok"
+      },
+      {
+       "id": "ct_cal",
+       "label": "ct_cal",
+       "check": "ok"
+      },
+      {
+       "id": "ct_pulse",
+       "label": "ct_pulse",
+       "check": "ok"
+      }
+     ],
+     "note": "Interim payment certificate (cumulative, retention, advance recovery), MOM, issue tracker, calendar."
+    }
+   ],
+   "outputs": [
+    "Tender documents",
+    "Bid comparison",
+    "Signed contract with BOQ and program",
+    "Contract administration set-up"
+   ],
+   "checks": [
+    "Bids on identical scope and BOQ",
+    "Contract sum = BOQ total + agreed adjustments",
+    "Bonds/insurance received before start",
+    "Retention and advance recovery terms written in the IPC settings"
+   ],
+   "rules": [
+    "RULE OF THUMB: advance payment 10-20 %, retention 5-10 % until completion + defects period (6-12 months)",
+    "RULE OF THUMB: reject a bid > 15 % below the estimate without a written explanation (unbalanced / missing scope)"
+   ],
+   "mistakes": [
+    "Awarding on lowest price without scope normalisation",
+    "No variation procedure",
+    "Vague drawings -> endless extra claims",
+    "Starting work without permit and insurance"
+   ],
+   "duration": "3-6 weeks",
+   "demo": "Short chapter: show dc_tnd pricing of the BOQ and dc_ipc certificate. A comparison table of 3 sample bids would be a nice add (needs sample data).",
+   "coverage": {
+    "Y": 2,
+    "P": 2,
+    "M": 0,
+    "F": 3
+   }
+  },
+  {
+   "id": 8,
+   "title_en": "Planning: WBS, schedule, resources, cash flow, safety plan",
+   "title_ar": "التخطيط: هيكل الأعمال والجدول والموارد والتدفق النقدي وخطة السلامة",
+   "purpose": "Turn the BOQ into a logic-driven programme that shows when each trade works, what it costs per month and how it is kept safe.",
+   "inputs": [
+    "BOQ quantities",
+    "Crew productivities (local), calendar (Friday off, Ramadan, holidays)",
+    "Contract dates",
+    "Site constraints (access, neighbours)"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Build the WBS: 1 Preliminaries, 2 Earthworks, 3 Foundations, 4 Superstructure (floor by floor), 5 Masonry, 6 MEP first fix, 7 Plaster, 8 MEP second fix, 9 Finishes, 10 External works, 11 Testing and handover.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "wbs_open",
+       "label": "wbs_open",
+       "check": "ok"
+      },
+      {
+       "id": "p6",
+       "label": "p6",
+       "check": "ok"
+      },
+      {
+       "id": "lib:pxact",
+       "label": "lib:pxact",
+       "check": "ok"
+      }
+     ],
+     "note": "P.X WBS + activity template library (4 templates, 62 activities, placeholder durations)."
+    },
+    {
+     "n": 2,
+     "text": "Create activities with durations from quantity / (crew x productivity): e.g. column pour, slab pour, blockwork per floor; set calendars (5/6/7-day).",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "xf_p6",
+       "label": "xf_p6",
+       "check": "ok"
+      },
+      {
+       "id": "lib:pxcal",
+       "label": "lib:pxcal",
+       "check": "ok"
+      },
+      {
+       "id": "p6",
+       "label": "p6",
+       "check": "ok"
+      }
+     ],
+     "note": "xf_p6 turns quantities into chained activities with your productivity; 9 calendars in the library."
+    },
+    {
+     "n": 3,
+     "text": "Add logic: FS links, lags (concrete cure 7 days before stripping soffit formwork - spec; masonry after frame; MEP first fix before plaster; second fix after plaster), constraints, milestones.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p6",
+       "label": "p6",
+       "check": "ok"
+      },
+      {
+       "id": "gantt_open",
+       "label": "gantt_open",
+       "check": "ok"
+      },
+      {
+       "id": "sched_70",
+       "label": "sched_70 [SCHED Tools > Schedule > Schedule (F9)]",
+       "check": "ok"
+      }
+     ],
+     "note": "CPM, critical path, float, baseline, drag bars (gantt)."
+    },
+    {
+     "n": 4,
+     "text": "Resource loading: crews (steel fixers, carpenters, masons...) and equipment; check peaks and levelling.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lib:pxres",
+       "label": "lib:pxres",
+       "check": "ok"
+      },
+      {
+       "id": "sched_23",
+       "label": "sched_23 [SCHED Edit > Assign > Roles]",
+       "check": "ok"
+      }
+     ],
+     "note": "Role assignment exists; resource rates 0; no levelling algorithm confirmed (check)."
+    },
+    {
+     "n": 5,
+     "text": "Cost-load the schedule, produce monthly cash flow and S-curve; align with owner payment capacity.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "p_scen",
+       "label": "p_scen",
+       "check": "ok"
+      },
+      {
+       "id": "o_sheet",
+       "label": "o_sheet",
+       "check": "ok"
+      },
+      {
+       "id": "dc_ipc",
+       "label": "dc_ipc",
+       "check": "ok"
+      }
+     ],
+     "note": "5D in p_scen; O.X sheet templates cash flow 12 months + S-curve table."
+    },
+    {
+     "n": 6,
+     "text": "Risk: Monte Carlo on durations, risk register (rain, strikes, material delivery, permits), contingency time.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_scen",
+       "label": "p_scen",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    },
+    {
+     "n": 7,
+     "text": "Safety plan (HSE): hazards by activity (excavation collapse, falls from height, formwork failure, electrocution, lifting), PPE, edge protection, scaffolding inspection, emergency plan, permits to work; induction.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "p_safety",
+       "label": "p_safety",
+       "check": "ok"
+      },
+      {
+       "id": "wf:mep",
+       "label": "wf:mep",
+       "check": "ok"
+      },
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      }
+     ],
+     "note": "Site safety/clash panel + ISO 45001 listed in codes; no HSE-plan or hazard-register template."
+    },
+    {
+     "n": 8,
+     "text": "Link schedule to model (4D) and render a 4D video for the owner/authority.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p_sched",
+       "label": "p_sched",
+       "check": "ok"
+      },
+      {
+       "id": "lk_sched",
+       "label": "lk_sched",
+       "check": "ok"
+      },
+      {
+       "id": "recsch",
+       "label": "recsch",
+       "check": "ok"
+      },
+      {
+       "id": "nv_timeliner",
+       "label": "nv_timeliner",
+       "check": "ok"
+      },
+      {
+       "id": "p_tl",
+       "label": "p_tl",
+       "check": "ok"
+      }
+     ],
+     "note": "4D linking + video."
+    },
+    {
+     "n": 9,
+     "text": "Baseline the schedule, issue the master programme and look-ahead formats.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "sched_55",
+       "label": "sched_55 [SCHED Project > Baselines > Maintain Baselines]",
+       "check": "ok"
+      },
+      {
+       "id": "xer",
+       "label": "xer",
+       "check": "ok"
+      },
+      {
+       "id": "xml",
+       "label": "xml",
+       "check": "ok"
+      },
+      {
+       "id": "xlsxs",
+       "label": "xlsxs",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    }
+   ],
+   "outputs": [
+    "WBS + master programme (baseline)",
+    "Resource histogram",
+    "Monthly cash flow + S-curve",
+    "HSE plan",
+    "4D animation"
+   ],
+   "checks": [
+    "Critical path is continuous and driven by logical links (no constraints forcing dates)",
+    "Float on non-critical branches reported",
+    "Calendars include weekends/holidays/curing",
+    "Cash flow peak <= available funds + financing",
+    "Every high-risk activity has a method statement"
+   ],
+   "rules": [
+    "RULE OF THUMB villa durations (BUA ~ 400 m2): site setup 1 wk; excavation + blinding 1-2 wks; foundations 3-4 wks; each floor frame (columns, beams, slab) 3-4 wks; masonry 4-6 wks (overlaps with 2nd floor); MEP first fix 4-6 wks; plaster 4-6 wks; second fix + finishes 12-18 wks; external works 4-6 wks; testing/handover 2-3 wks; total 10-14 months.",
+    "RULE OF THUMB productivity (per crew/day): concrete pour 40-60 m3 with a pump; formwork 12-18 m2/carpenter-day; steel fixing 250-400 kg/steel-fixer-day; blockwork (25 cm) 8-12 m2/mason-day; plaster 20-30 m2/plasterer-day; tiling 8-15 m2/tiler-day. Replace with the contractor's real data."
+   ],
+   "mistakes": [
+    "Schedule without logic (all dates typed)",
+    "No curing/strip time between pours",
+    "Plaster before MEP first fix",
+    "Ignoring Ramadan/holiday productivity",
+    "Cash flow ignoring retention and payment delays"
+   ],
+   "duration": "1-2 weeks (before construction starts)",
+   "demo": "P.X chapter exists (ch2 'sched'); add: calendar choice, template insertion, xf_p6 from quantities, critical path highlight, monthly cash flow.",
+   "coverage": {
+    "Y": 6,
+    "P": 3,
+    "M": 0,
+    "F": 0
+   }
+  },
+  {
+   "id": 9,
+   "title_en": "Construction in true order, with inspections and hold points",
+   "title_ar": "التنفيذ بالترتيب الصحيح مع الفحوصات ونقاط الإيقاف",
+   "purpose": "Build the house in the only order that works, and prove quality at each stage before the next one covers it.",
+   "inputs": [
+    "Approved drawings/specs/BOQ",
+    "Baseline programme",
+    "Method statements and ITPs (inspection and test plans)",
+    "Permits",
+    "Crews, equipment, suppliers"
+   ],
+   "stages": [
+    {
+     "n": "9.1",
+     "t": "Site setup and set-out",
+     "ar": "تجهيز الموقع والتوقيع",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Hoarding/fence, site office, store, toilets, temporary water and power (distribution board with RCD), signboard, safety signs, neighbours' condition photos."
+      },
+      {
+       "n": 2,
+       "text": "Surveyor sets out grid lines and benchmark; offsets kept outside excavation; verify against plot boundary."
+      }
+     ],
+     "crews": "Site engineer, surveyor + chainman, foreman, 2-4 labourers, security",
+     "equip": "Total station/level, string line, hand tools, water tank",
+     "hold": "HOLD: set-out checked by the consultant before excavation. Record: set-out sheet.",
+     "tox": "P: o_sheet, lb_ox (daily report/checklist), rc_open (stakeout points CSV) ; no set-out tool"
+    },
+    {
+     "n": "9.2",
+     "t": "Excavation and shoring",
+     "ar": "الحفر والسند",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Strip topsoil; excavate to founding level (leave last 10-20 cm for hand finish); side slopes or shoring near neighbours/roads; dewatering if the water table is above the base; keep spoil away from the edge."
+      },
+      {
+       "n": 2,
+       "text": "Check level, dimensions, soil type against the report; geotechnical engineer confirms bearing stratum (plate test or proof by inspection)."
+      }
+     ],
+     "crews": "Excavator operator, truck drivers, 4-6 labourers, safety officer",
+     "equip": "Excavator, loader, tipper trucks, dewatering pump, shoring/trench boxes",
+     "hold": "HOLD: founding level and soil acceptance (consultant + geotech). Record: excavation approval form with level readings.",
+     "tox": "P: rc_qty (volume), env_gr (dewatering estimate), dc_soil; no excavation-inspection form"
+    },
+    {
+     "n": "9.3",
+     "t": "Blinding and waterproofing of foundations",
+     "ar": "الخرسانة العادية وعزل الأساسات",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Compact base; lay polyethylene sheet if specified; pour lean concrete 5-10 cm (C10-C15) to level; anti-termite treatment of soil where specified; apply bituminous/membrane protection to footing and tie-beam sides below ground if specified."
+      }
+     ],
+     "crews": "Concrete gang 6-8, mason, waterproofing applicator",
+     "equip": "Mixer or ready-mix truck, vibrator, level",
+     "hold": "HOLD: blinding level and dimensions; waterproofing continuity. Record: blinding approval.",
+     "tox": "P: lb_ox checklist; no spec/ITP library"
+    },
+    {
+     "n": "9.4",
+     "t": "Footings, neck columns and tie beams",
+     "ar": "القواعد ورقاب الأعمدة والسملات",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Mark footing positions on blinding; fix bottom mat reinforcement with cover blocks (spacers 50-75 mm); column starter bars with correct lap length and tie position; formwork for neck columns/tie beams; pour footing, then columns to underside of tie beam, then beams (or per design)."
+      },
+      {
+       "n": 2,
+       "text": "Backfill in 20-30 cm layers, compact (typ. >= 95 % modified Proctor - per spec) after concrete reaches strength."
+      }
+     ],
+     "crews": "Steel fixers 4-6, carpenters 3-4, concrete gang 6-8, foreman, QC engineer",
+     "equip": "Rebar cutter/bender, vibrator, concrete pump or crane bucket, ready-mix trucks, compaction roller/plate",
+     "hold": "HOLD 1: rebar inspection before pour (diameter, spacing, cover, laps, starters, cleanliness, formwork). HOLD 2: pour with approved mix, slump test, cubes. Records: rebar inspection request (IR), pour record, cube register.",
+     "tox": "P: lb_ox (IR, MIR, checklist) + dc_reg + rq follow-up; no cube/slump statistics tool"
+    },
+    {
+     "n": "9.5",
+     "t": "Ground slab / plinth beams and DPC",
+     "ar": "أرضية الدور الأرضي والعزل الأفقي",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Sub-base fill + compaction, PE sheet, reinforcement mesh/bars, services sleeves cast in (drains, conduits), pour slab on grade or suspended ground slab; plinth DPC (horizontal damp-proof course) under first masonry course; termite barrier."
+      }
+     ],
+     "crews": "Steel fixers 3, concrete gang 6-8, finisher",
+     "equip": "Compactor, vibrator, screed, laser/level",
+     "hold": "HOLD: sleeves/embedded services inspected BEFORE pour (MEP + QC). Record: embedded works checklist.",
+     "tox": "P: nv_clash + R.X Plumbing Fixture/Device boxes (for sleeve positions); no sleeve schedule"
+    },
+    {
+     "n": "9.6",
+     "t": "Columns, beams and slabs - each floor",
+     "ar": "الأعمدة والكمرات والبلاطات لكل دور",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Cycle per floor: column reinforcement + formwork -> pour columns; beam and slab formwork + props (shores) -> beam/slab reinforcement incl. top steel, stirrups, openings, edge beams -> MEP sleeves and conduits embedded -> inspection -> pour slab and beams monolithically (continuous, 'cold joint' avoided) -> curing >= 7 days (wet burlap / curing compound) -> strip side forms 1-2 days, soffits and props by strength/time per spec (typ. >= 14-21 days for spans, re-propping) -> repeat for next floor; stair cast with the slab."
+      },
+      {
+       "n": 2,
+       "text": "Level and plumb checks on columns; deflection and cracks watched after strip."
+      }
+     ],
+     "crews": "Steel fixers 8-10, carpenters 8-12, concrete gang 8-10, electricians/plumbers (sleeves), foreman, QC",
+     "equip": "Concrete pump, ready-mix trucks, poker vibrators, props + scaffolding, hoist/crane, rebar bender, level, plumb bob",
+     "hold": "HOLD 1: formwork and props inspection. HOLD 2: rebar inspection (incl. top steel, stirrups, cover, laps, openings). HOLD 3: MEP embedded works. HOLD 4: pour permit with mix design, slump, temperature, cubes (set of 3 per pour / per 50 m3 or as spec; test 7 and 28 days), curing record. HOLD 5: strip permit.",
+     "tox": "P: lb_ox, dc_reg, mom_open, is_open, ct_cal; P.X activity chain (p6, xf_p6); no cube-test record/strength acceptance tool"
+    },
+    {
+     "n": "9.7",
+     "t": "Roof slab, parapet, roof waterproofing and tanks",
+     "ar": "سقف الدور الأخير والبرابيت وعزل الأسطح",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Slab as 9.6 + parapet, drains, slope screed (1-2 %), thermal insulation, waterproofing membrane with upturns, protection screed and tiles, water tank supports, AC outdoor platforms, flood test (24-48 h) before protection."
+      }
+     ],
+     "crews": "Waterproofing crew 4-6, masons, tilers",
+     "equip": "Torch/roller, level, water for flood test",
+     "hold": "HOLD: flood test pass (no leaks after 24-48 h). Record: flood test report.",
+     "tox": "P: lb_ox checklist; no ITP library"
+    },
+    {
+     "n": "9.8",
+     "t": "Masonry (external and internal walls)",
+     "ar": "المباني (الطوب الخارجي والداخلي)",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Set out walls from grids; first course on DPC; courses with mortar joints 10-12 mm; lintels over openings; tie to columns; chases for conduits/pipes cut after masonry (not through columns); stop 2-3 cm below beam soffit and fill later; control joints; wet bricks before laying."
+      }
+     ],
+     "crews": "Masons 6-10 + helpers, foreman",
+     "equip": "Mixer, scaffolds, level, plumb",
+     "hold": "HOLD: opening sizes, verticality, lintels, chase depth. Record: masonry inspection.",
+     "tox": "Y: R.X walls drive quantities; P: rv_dim, rv_sched"
+    },
+    {
+     "n": "9.9",
+     "t": "MEP first fix (rough-in)",
+     "ar": "أعمال الكهروميكانيكا الأولى (داخل الحوائط)",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Electrical: conduits and back boxes in walls/ceilings, pulling wire after plaster rough; earth electrode and bonding; panel boxes. Plumbing: water supply pipes (PPR) in chases, drain stacks/branches with correct slope, vent pipes, floor drains, pressure test. HVAC: refrigerant copper lines and condensate drains in walls/ceilings, duct frames; Low-current: conduits for data/CCTV/TV/fire alarm. Fire: pipe/detector conduits."
+      }
+     ],
+     "crews": "Electricians 4-6, plumbers 3-5, HVAC fitters 3-4, low-current techs 2",
+     "equip": "Pipe benders, press tools, pressure-test pump, megger",
+     "hold": "HOLD: pressure test water pipes (typ. 1.5 x working pressure, 2-24 h per spec), drain water/air test, conduit continuity and earth continuity BEFORE plaster. Records: test certificates.",
+     "tox": "P: ace_*, du_*, nv_clash; no test-certificate register"
+    },
+    {
+     "n": "9.10",
+     "t": "Plaster (internal and external)",
+     "ar": "المحارة الداخلية والخارجية",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Prepare surface (clean, wet, mesh over junction of masonry and concrete), 3 coats typical (rough, second, finish) with screeds as guides, corners, cement-sand ratio per spec, curing; external work in shade/curing; check flatness and plumb (typ. 3-5 mm in 2 m)."
+      }
+     ],
+     "crews": "Plasterers 8-12 + helpers",
+     "equip": "Mixer, scaffolds, straightedge",
+     "hold": "HOLD: MEP first fix tested and closed before plaster. Record: plaster inspection.",
+     "tox": "P: BOQ items; no inspection form"
+    },
+    {
+     "n": "9.11",
+     "t": "Floors, wall finishes, ceilings, doors/windows, paint",
+     "ar": "الأرضيات وتشطيبات الحوائط والأسقف والأبواب والدهانات",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Screed under floor finishes -> waterproofing in wet rooms + flood test -> wall/floor tiling -> false ceilings/gypsum -> door frames/aluminium windows (often earlier, before plaster) -> joinery -> paint primer + putty + 2 coats -> kitchen units, sanitary ware."
+      }
+     ],
+     "crews": "Tilers 6-10, gypsum 3-5, carpenters, aluminium fitters, painters 6-10",
+     "equip": "Tile cutter, level, spray",
+     "hold": "HOLD: wet-area waterproofing flood test; tile sampling approval; colour approvals.",
+     "tox": "P: hx_mat (materials), hx_fur, lb_rx families; no finishes schedule per room"
+    },
+    {
+     "n": "9.12",
+     "t": "MEP second fix (trim)",
+     "ar": "أعمال الكهروميكانيكا الثانية (التركيبات النهائية)",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Wires pulled, sockets/switches/fixtures, panels terminated and labelled; sanitary fixtures and taps; AC indoor/outdoor units installed, refrigerant vacuum and charge; low-current devices, CCTV cameras, intercom, fire alarm devices."
+      }
+     ],
+     "crews": "Electricians, plumbers, HVAC technicians, low-current techs",
+     "equip": "Meggers, multimeter, vacuum pump, gauges",
+     "hold": "HOLD: insulation resistance (megger), earth resistance, RCD trip test, polarity before energising.",
+     "tox": "P: ace_*; no test form"
+    },
+    {
+     "n": "9.13",
+     "t": "External works",
+     "ar": "الأعمال الخارجية",
+     "steps": [
+      {
+       "n": 1,
+       "text": "Boundary wall, gate, paving, drainage connections to sewer/septic, manholes, landscaping, external lighting, gas/water/electric meters rooms, final site clean."
+      }
+     ],
+     "crews": "Masons, pavers, landscapers, electricians",
+     "equip": "Paver compactor, mixers",
+     "hold": "HOLD: manholes and drainage test, sewer connection approved.",
+     "tox": "P: rc_open/ S.X for levels; S.X pipe lib"
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Run construction as stages 9.1-9.13 (below), each with its inspection request, pass/fail and photo.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "rq_open",
+       "label": "rq_open",
+       "check": "ok"
+      },
+      {
+       "id": "ct_tg",
+       "label": "ct_tg",
+       "check": "ok"
+      },
+      {
+       "id": "ct_col",
+       "label": "ct_col",
+       "check": "ok"
+      },
+      {
+       "id": "cde_open",
+       "label": "cde_open",
+       "check": "ok"
+      }
+     ],
+     "note": "Documents + register + Telegram photo logger + collection tool exist; hold points are not linked to activities."
+    },
+    {
+     "n": 2,
+     "text": "Track progress: weekly/daily report, percent complete by activity, 4D comparison planned vs actual.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "p6",
+       "label": "p6",
+       "check": "ok"
+      },
+      {
+       "id": "ct_rep",
+       "label": "ct_rep",
+       "check": "ok"
+      },
+      {
+       "id": "p_sched",
+       "label": "p_sched",
+       "check": "ok"
+      },
+      {
+       "id": "recsch",
+       "label": "recsch",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    },
+    {
+     "n": 3,
+     "text": "Material approvals: samples, test certificates (steel mill certificate + tensile/bend tests, cement, aggregate sieve, bricks, tiles), delivery notes; MIR (material inspection request).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      }
+     ],
+     "note": "MIR template exists."
+    },
+    {
+     "n": 4,
+     "text": "Variations and claims: variation order, time extension, daily records.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "dc_ipc",
+       "label": "dc_ipc",
+       "check": "ok"
+      }
+     ],
+     "note": "Variation order template; IPC."
+    },
+    {
+     "n": 5,
+     "text": "Payment: monthly IPC with progress, retention, advance recovery.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "dc_ipc",
+       "label": "dc_ipc",
+       "check": "ok"
+      }
+     ],
+     "note": ""
+    },
+    {
+     "n": 6,
+     "text": "Non-conformance: NCR with root cause, corrective action, closure.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      },
+      {
+       "id": "is_new",
+       "label": "is_new",
+       "check": "ok"
+      }
+     ],
+     "note": "NCR template + issues."
+    }
+   ],
+   "outputs": [
+    "Daily/weekly reports",
+    "Inspection requests and approvals (set-out, excavation, rebar, pour, embedded, tests)",
+    "Cube/test records",
+    "IPC certificates",
+    "NCRs",
+    "Progress photos",
+    "Updated programme"
+   ],
+   "checks": [
+    "Concrete: cube compressive strength acceptance per ECP 203 / spec - typical rule: average of consecutive results >= fcu + margin and no single result below a lower limit (CHECK the clause; do not quote numbers without it)",
+    "Slump within spec (typical pumpable 100-150 mm, +/-25 mm); no water added on site; temperature limits; pour continuity (no cold joint within initial set time)",
+    "Rebar: diameter, spacing +/- tolerance, cover (spacer blocks), laps/hooks, steel certificates; no oil/loose rust",
+    "Formwork: dimensions +/- 5-10 mm, plumb, props braced, camber on long spans if spec",
+    "Curing >= 7 days; strike times respected",
+    "Pressure/leak tests documented BEFORE concealment",
+    "As-built deviations recorded for the as-built set"
+   ],
+   "rules": [
+    "RULE OF THUMB cube sampling: 1 set (3 cubes) per pour per day or per 50 m3 (spec decides); test 7 days (about 65-70 % of 28-day strength expected) and 28 days.",
+    "RULE OF THUMB cover blocks: footings 50-75 mm, slabs/beams/columns 20-30 mm (spec decides).",
+    "RULE OF THUMB strike: vertical forms 24-48 h, slab soffits 7-14 days with props kept, long spans 21-28 days (spec decides).",
+    "RULE OF THUMB crews for a villa: ~25-40 workers at peak (structure phase 20-30, finishing phase 40-60)."
+   ],
+   "mistakes": [
+    "Pouring without rebar inspection",
+    "Adding water to concrete on site",
+    "Short curing in Egyptian summer heat (cracks)",
+    "Cutting columns/beams for pipes after concrete",
+    "Plastering before pressure test",
+    "No cube samples kept -> no proof of strength",
+    "Removing props early"
+   ],
+   "duration": "10-14 months total (see durations rules in phase 8)",
+   "demo": "Highest 'show' value: 4D animation by stage plus a single hold-point example (rebar inspection IR -> pass -> pour). Needs a small hold-point/inspection register tool tied to P.X activities (gap 9).",
+   "coverage": {
+    "Y": 3,
+    "P": 3,
+    "M": 0,
+    "F": 0
+   }
+  },
+  {
+   "id": 10,
+   "title_en": "Testing, commissioning, snagging, handover, as-built, O&M and close-out",
+   "title_ar": "الاختبارات والتشغيل التجريبي والملاحظات والتسليم والرسومات التنفيذية وكتيبات التشغيل والإغلاق",
+   "purpose": "Prove the building works, fix what does not, hand over complete records and close the contract.",
+   "inputs": [
+    "Completed works",
+    "Test procedures",
+    "Punch (snag) list from the consultant and owner",
+    "Supplier warranties"
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "text": "Testing: electrical (insulation resistance, continuity, earth resistance, RCD trip, polarity, loop impedance), plumbing (pressure test repeat, flow at fixtures, hot water), drainage (flow test), HVAC (air flow at diffusers, temperature drop, condensate), fire alarm (every detector tested), low-current (cable test certification).",
+     "status": "P",
+     "ids": [
+      {
+       "id": "wf:mep",
+       "label": "wf:mep",
+       "check": "ok"
+      },
+      {
+       "id": "lb_ox",
+       "label": "lb_ox",
+       "check": "ok"
+      }
+     ],
+     "note": "wf_mep + checklist templates; no test-certificate register."
+    },
+    {
+     "n": 2,
+     "text": "Commissioning: energise and run all systems 24-72 h; balance air and water; set controls; train the owner (operation, emergency shutoffs, filters).",
+     "status": "F",
+     "ids": [],
+     "note": ""
+    },
+    {
+     "n": 3,
+     "text": "Snagging: walk-through with owner and consultant room by room, photograph defects, list with location, trade, due date; contractor fixes; re-inspect; closure.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "is_new",
+       "label": "is_new",
+       "check": "ok"
+      },
+      {
+       "id": "is_open",
+       "label": "is_open",
+       "check": "ok"
+      },
+      {
+       "id": "ct_tg",
+       "label": "ct_tg",
+       "check": "ok"
+      },
+      {
+       "id": "ct_col",
+       "label": "ct_col",
+       "check": "ok"
+      },
+      {
+       "id": "dc_reg",
+       "label": "dc_reg",
+       "check": "ok"
+      }
+     ],
+     "note": "BCF-shaped issues from the 3D model with viewpoint and snapshot = a good snag tool for model-located defects; no room-by-room snag sheet."
+    },
+    {
+     "n": 4,
+     "text": "Handover rules check: all permits closed, tests passed, snags closed or agreed, documents delivered, retention terms understood.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "wf:hand",
+       "label": "wf:hand",
+       "check": "ok"
+      },
+      {
+       "id": "wf_hand",
+       "label": "wf_hand",
+       "check": "ok"
+      },
+      {
+       "id": "ct_pulse",
+       "label": "ct_pulse",
+       "check": "ok"
+      }
+     ],
+     "note": "Handover rules + project pulse."
+    },
+    {
+     "n": 5,
+     "text": "As-built: update drawings and the R.X model with every change (site instructions, MEP routes); issue as-built DWG/PDF/IFC.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "rv_wall",
+       "label": "rv_wall",
+       "check": "ok"
+      },
+      {
+       "id": "tab:model",
+       "label": "tab:model",
+       "check": "ok"
+      },
+      {
+       "id": "e_ifc",
+       "label": "e_ifc",
+       "check": "ok"
+      },
+      {
+       "id": "e_pdf",
+       "label": "e_pdf",
+       "check": "ok"
+      },
+      {
+       "id": "e_dxf",
+       "label": "e_dxf",
+       "check": "ok"
+      },
+      {
+       "id": "pack",
+       "label": "pack",
+       "check": "ok"
+      },
+      {
+       "id": "ifc_open",
+       "label": "ifc_open",
+       "check": "ok"
+      },
+      {
+       "id": "pdf_open",
+       "label": "pdf_open",
+       "check": "ok"
+      }
+     ],
+     "note": "Edit the model and export; no as-built redline/versioning workflow."
+    },
+    {
+     "n": 6,
+     "text": "O&M manuals and asset register: equipment list (make, model, serial, warranty dates), maintenance intervals, spare parts, supplier contacts, emergency procedures, warranty certificates.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "ct_ast",
+       "label": "ct_ast",
+       "check": "ok"
+      },
+      {
+       "id": "dc_file",
+       "label": "dc_file",
+       "check": "ok"
+      },
+      {
+       "id": "o_report",
+       "label": "o_report",
+       "check": "ok"
+      },
+      {
+       "id": "dc_rep",
+       "label": "dc_rep",
+       "check": "ok"
+      }
+     ],
+     "note": "Asset register for operation and maintenance exists (`ct_ast`)."
+    },
+    {
+     "n": 7,
+     "text": "Final account: measured quantities vs contract, variations, final IPC, release of retention after the defects period, performance bond return.",
+     "status": "P",
+     "ids": [
+      {
+       "id": "dc_ipc",
+       "label": "dc_ipc",
+       "check": "ok"
+      },
+      {
+       "id": "dc_tnd",
+       "label": "dc_tnd",
+       "check": "ok"
+      },
+      {
+       "id": "qx_open",
+       "label": "qx_open",
+       "check": "ok"
+      }
+     ],
+     "note": "IPC and BOQ tools; no final-account comparison sheet."
+    },
+    {
+     "n": 8,
+     "text": "Occupancy / completion certificate from the authority (as-built permit); utilities meters in the owner's name (electricity, water, gas).",
+     "status": "F",
+     "ids": [],
+     "note": "Authority procedure."
+    },
+    {
+     "n": 9,
+     "text": "Close-out: lessons learned, archive the project package (ZIP), update the cost per m2 database.",
+     "status": "Y",
+     "ids": [
+      {
+       "id": "pack",
+       "label": "pack",
+       "check": "ok"
+      },
+      {
+       "id": "out_open",
+       "label": "out_open",
+       "check": "ok"
+      },
+      {
+       "id": "dc_file",
+       "label": "dc_file",
+       "check": "ok"
+      },
+      {
+       "id": "ct_life",
+       "label": "ct_life",
+       "check": "ok"
+      }
+     ],
+     "note": "Package ZIP, output centre, filing index, project cycle view."
+    }
+   ],
+   "outputs": [
+    "Test and commissioning certificates",
+    "Snag list closed",
+    "As-built drawings and model",
+    "O&M manuals + asset register",
+    "Handover certificate; final account",
+    "Archive package"
+   ],
+   "checks": [
+    "All tests pass with recorded values; any failure re-tested",
+    "Zero open Category A snags; B-snags agreed in writing",
+    "As-built set matches site (spot check 10 %)",
+    "Warranty dates start at handover date",
+    "Retention release date calculated from handover"
+   ],
+   "rules": [
+    "RULE OF THUMB defects liability period 6-12 months; retention 5-10 % held until it ends.",
+    "RULE OF THUMB snag list: 100-300 items for a villa at first walk-through; 2-3 rounds to close."
+   ],
+   "mistakes": [
+    "Handover without as-built and O&M",
+    "Snags not located (which room?)",
+    "Warranty start dates not recorded",
+    "Owner not trained on shut-off valves and breaker panel"
+   ],
+   "duration": "3-6 weeks + defects period",
+   "demo": "Show: 4D finish -> issue a snag with viewpoint -> wf_hand 'handover possible?' -> pack ZIP. These all exist today.",
+   "coverage": {
+    "Y": 3,
+    "P": 4,
+    "M": 0,
+    "F": 2
+   }
+  }
+ ],
+ "gaps": [
+  {
+   "rank": 1,
+   "gap": "RC skeleton missing in the house template and in the demo: no footings, tie beams, columns on a grid, beams, slabs-on-grade",
+   "why": "The owner said walls were wrong. house2 is a masonry-only box (16 walls, 0 columns/beams/footings); BOQ shows 6 rows; every later phase (structure, quantities, schedule) starves.",
+   "have": "R.X tools rv_col, rv_beam, rv_found, rv_fslab, rv_floor exist and work (default col 0.4x0.4).",
+   "build": "New template `villa_rc` (or extend house2) + a demo script that places grid > footings > tie beams > columns > beams > slabs > walls > openings in the correct order. SMALL-MEDIUM (data + demo steps, no new engine)."
+  },
+  {
+   "rank": 2,
+   "gap": "Structural design engine for building elements: slabs (one/two-way), beams (flexure+shear+deflection+crack), columns (axial+biaxial), footings (bearing, one-way shear, punching, flexure), stairs",
+   "why": "Phase 4 is the heart of 'reinforcement design and checks' the owner asked for. Only one strip/beam sheet exists.",
+   "have": "`flex` (ACI form, simplified, cylinder f'c) and `bear` (W/A vs qa).",
+   "build": "Sheets with pass/fail rows in the existing p_calc format. Use ACI 318 / Eurocode 2 forms first (formulas public), label ECP 203 as 'compare with your licensed copy' until the formula set is verified. MEDIUM-LARGE."
+  },
+  {
+   "rank": 3,
+   "gap": "ECP 203 / ECP 201 / ECP 202 method itself (cube strength fcu, gamma_c 1.5 / gamma_s 1.15, ECP load combinations, ECP seismic zones and spectra, ECP wind chapter)",
+   "why": "The target practice is Egyptian; today the sheet explicitly refuses ECP 203. A reviewer in Egypt will ask for it.",
+   "have": "`p_codes` titles only; `env_eq` uses the Eurocode-8 form 'used by ECP 201'; wind panel says ECP 201 wind is not applied.",
+   "build": "Needs the owner's licensed copy to verify every formula and table before coding (clause numbers must be read, not recalled). Plan: ship ACI/EC2 first, then ECP module with a 'verified against: edition/clause' column. LARGE and legal/licence-gated."
+  },
+  {
+   "rank": 4,
+   "gap": "Reinforcement detailing and bar bending schedule from the model: R.X rebar (Area, Path, Cover, Fabric, Couplers are stubs), ld / lap length calculator, BBS with weights, rebar in BOQ",
+   "why": "'Structural reinforcement design and checks' needs bars, laps, stirrups and a schedule. The Rebar ribbon button only opens the lift-station rebar viewer.",
+   "have": "`rb`/`p_rebar` (station rebar only), `dc_rb` take-off tab, bar-weight rule d^2/162 can be shown in O.X sheet.",
+   "build": "Rebar layout generator for column/beam/slab/footing from the designed As + BBS table + steel kg row into getItems. MEDIUM-LARGE."
+  },
+  {
+   "rank": 5,
+   "gap": "Unit price library and specification library (rates ship empty by policy; no spec text)",
+   "why": "Phase 6 cannot show a cost estimate or cost per m2; the demo BOQ would show zeros. 'Specs, unit prices, library items' were explicitly requested by the owner.",
+   "have": "Q.X Cost summary, dc_tnd (overhead/profit/contingency/VAT), p_scen price comparison; `lib:txspec` placeholder spec classes (pipes).",
+   "build": "A SAMPLE price book (EGP, labelled 'sample - replace with your own', with date/source column) + a short spec book (concrete grades, steel, masonry, plaster, waterproofing, MEP) as editable O.X docs. SMALL-MEDIUM, owner must approve the sample figures."
+  },
+  {
+   "rank": 6,
+   "gap": "Load take-down and frame analysis (member forces): tributary loads, column axial per floor, continuous-beam and slab moments, combinations ECP 201 style",
+   "why": "Without forces there is nothing to design; the demo would type numbers by hand.",
+   "have": "R.X 'Load Combinations' (floor loads, EN 1990 6.10 / ASCE 7); Boundary Conditions tags; no solver.",
+   "build": "Coefficient-method solver for continuous beams/slabs + column take-down table; optional 2D frame matrix solver. MEDIUM."
+  },
+  {
+   "rank": 7,
+   "gap": "Plumbing and drainage design for buildings: fixture-unit demand, supply pipe sizing, drain/vent sizing and slopes, tank volume, septic / soakaway or sewer connection, rainwater",
+   "why": "Owner listed plumbing supply/drainage, fixture units, slopes, septic/sewer explicitly.",
+   "have": "`hw`, `man`, `mot`, `env_qc`, T.X pipe runs (plant), S.X pipe catalogue, `Plumbing Fixture` box; R.X Pipe / Pipe Fitting / Pipe Sizing / Check Pipe Systems are stubs.",
+   "build": "Sheets: fixture units -> flow -> diameter; drain slope/capacity table; septic sizing; plus R.X Pipe tool or a riser diagram. MEDIUM."
+  },
+  {
+   "rank": 8,
+   "gap": "Electrical design beyond AC units: load schedule with demand/diversity, circuit sizing with ampacity + derating, short-circuit, earthing/lightning calc, lighting (lux/lumen method), single-line diagram",
+   "why": "Owner listed load schedule, cable and breaker sizing, earthing, lighting.",
+   "have": "`ace_*` (AC unit circuits; ampacity table pasted by user), `env_qc` (motor/transformer/VD), Panel Schedules (connected watts), Electrical Equipment/Device/Lighting Fixture boxes; Wire/Conduit/Cable Tray/Check Circuits are stubs.",
+   "build": "Load-schedule sheet + circuit sizer + lighting sheet + SLD generator. MEDIUM."
+  },
+  {
+   "rank": 9,
+   "gap": "Construction QA/QC: hold-point / inspection register tied to P.X activities; cube-test results with acceptance statistics; rebar/pour/test records; snag list by room",
+   "why": "Owner asked for inspections, hold points, cube tests per stage. Today these are only free templates (IR, MIR, NCR, checklist) without logic.",
+   "have": "O.X templates (IR, MIR, NCR, daily report, checklist 4 variants), register, follow-up dashboard, issues (BCF-shaped).",
+   "build": "ITP table per stage (data in this document, phase 9) + register with status pass/fail/waived linked to activity id + cube sheet (3 cubes, mean, min, flag). MEDIUM."
+  },
+  {
+   "rank": 10,
+   "gap": "Low-current design (data, CCTV, fire alarm, intercom): device schedule, riser diagram, cable lengths, NVR storage, battery sizing",
+   "why": "Owner listed low-current systems; demo chapter `lowc` only places symbols.",
+   "have": "C.X block library has electrical, fire and HVAC symbols; no device data.",
+   "build": "Device schedule from placed symbols + riser diagram + 3 small calcs. SMALL-MEDIUM."
+  },
+  {
+   "rank": 11,
+   "gap": "Duct and pipe as 3D geometry in R.X (Duct, Duct Fitting, Pipe, Check Duct/Pipe/Circuit stubs)",
+   "why": "Clash detection (phase 6) is only convincing if MEP has real routes; today MEP is boxes.",
+   "have": "V.X duct plan (2D tables), T.X pipe runs, R.X equipment boxes, nv_clash.",
+   "build": "R.X Duct + Pipe polylines with size and elevation, feed to clash. MEDIUM."
+  },
+  {
+   "rank": 12,
+   "gap": "Settlement, layered soil, ECP 202 method, retaining/basement wall design",
+   "why": "Foundations (phase 4) and level changes (phase 1) need them; today Terzaghi only.",
+   "have": "`dc_soil` Terzaghi + FS, `env_gr`, liquefaction screening, `float`.",
+   "build": "Settlement sheet (elastic + consolidation, user soil data), retaining wall sheet (Rankine/Coulomb). MEDIUM."
+  },
+  {
+   "rank": 13,
+   "gap": "Deflection, crack width and vibration (serviceability) checks",
+   "why": "Required pass/fail criteria in phase 4; absent.",
+   "have": "none",
+   "build": "Add to the element sheets (gap 2). SMALL once gap 2 exists."
+  },
+  {
+   "rank": 14,
+   "gap": "Planning-rule checks for the plot: setbacks, coverage, floors, height, parking; building-permit checklist (Egypt)",
+   "why": "Phase 0/2 realism; permit is a gate before construction.",
+   "have": "none (G.X draws polygons; area/perimeter tools exist).",
+   "build": "Rule sheet + polygon-offset setback overlay on the plot. SMALL. Local rules must come from the district technical office."
+  },
+  {
+   "rank": 15,
+   "gap": "Programme / cash-flow link: S-curve and monthly cash flow generated from P.X activities x rates; resource levelling",
+   "why": "Phase 8 'cash flow' and 'resources'.",
+   "have": "p_scen 5D, O.X cash-flow and S-curve sheet templates (manual), resource role assignment.",
+   "build": "Generate S-curve from activity cost; check levelling feature exists. SMALL-MEDIUM."
+  },
+  {
+   "rank": 16,
+   "gap": "Finishes schedule per room (floor, skirting, wall, ceiling, paint, door/window mark) and quantities from it",
+   "why": "Finishes are 30-40 % of cost; BOQ today covers walls/floors/doors/windows/roofs only.",
+   "have": "R.X Room tool, H.X materials (floors/walls/ceilings), rv_sched.",
+   "build": "Room finish schedule table linked to rooms + BOQ lines. SMALL-MEDIUM."
+  },
+  {
+   "rank": 17,
+   "gap": "Site logistics and temporary works (access, crane/pump position, hoarding, formwork/props design)",
+   "why": "Phase 9.1 and 9.6.",
+   "have": "none (draw on C.X).",
+   "build": "Optional: site-layout template + props/shuttering checklist. SMALL."
+  },
+  {
+   "rank": 18,
+   "gap": "Tender documents / contract template and bid-normalisation sheet",
+   "why": "Phase 7 deliverables.",
+   "have": "O.X letters/forms; p_scen price comparison.",
+   "build": "Templates + comparison sheet. SMALL."
+  },
+  {
+   "rank": 19,
+   "gap": "As-built workflow (redlines, change log, version of model), O&M manual template, final-account comparison",
+   "why": "Phase 10 deliverables.",
+   "have": "tm_vers (versions), ct_ast (assets), dc_ipc, pack ZIP.",
+   "build": "Templates + comparison. SMALL."
+  },
+  {
+   "rank": 20,
+   "gap": "Hot water, ventilation/extract, rainwater and fire-fighting design sheets",
+   "why": "Completeness of MEP phase.",
+   "have": "none",
+   "build": "Small sheets each. SMALL."
+  }
+ ],
+ "data_inventory": [
+  {
+   "item": "Villa template with full RC skeleton (grid, footings, columns, beams, slabs, stair, roof, walls, openings)",
+   "status": "MISSING",
+   "where": "TEMPLATES has blank/sewage/house2/office3. house2 = masonry box only (see gap 1). Demo registers `sample6868` (= same starter as house2)."
+  },
+  {
+   "item": "R.X family types and layered assemblies (45 types, 12 assemblies)",
+   "status": "EXISTS (placeholder sizes)",
+   "where": "`lib:rxfam`, `lib:rxasm` (c_lb_rvsx.js), command `lb_rx`. Sizes are generic placeholders, not a manufacturer catalogue."
+  },
+  {
+   "item": "Materials and furniture for interiors",
+   "status": "EXISTS",
+   "where": "H.X assets `hx_mat`, `hx_fur` (vendor/hx-assets, 9.7 MB, licences in CREDITS.md; notes in incoming3/hxassets.md)."
+  },
+  {
+   "item": "CAD blocks (arch 28, elec 19, plumb 9, fire 8, HVAC 13), hatches 32, linetypes, title blocks A1-A4",
+   "status": "EXISTS",
+   "where": "`lib:cxblk`, `lib:cxhat`, `lib:cxlt`, `lib:cxds` (c_lb_cad.js)."
+  },
+  {
+   "item": "P.X calendars (9), activity templates (4 templates / 62 activities), resource/role/cost-account lists (43, rates 0)",
+   "status": "EXISTS (rates 0, durations placeholder)",
+   "where": "`lib:pxcal`, `lib:pxact`, `lib:pxres` (c_lb_px.js). Egyptian holidays not preloaded."
+  },
+  {
+   "item": "Sample unit-price book (EGP) with date/source",
+   "status": "MISSING (by policy rates ship empty)",
+   "where": "Would live in Q.X sheet or an O.X xlsx template; Q.X rate cells empty; dc_tnd rate0 = 0."
+  },
+  {
+   "item": "Specification book (concrete, steel, masonry, plaster, waterproofing, finishes, MEP)",
+   "status": "MISSING",
+   "where": "`lib:txspec` has pipe spec classes only. Write as O.X documents; ship as sample text."
+  },
+  {
+   "item": "Soil data sample (borehole log, SPT, c, phi, gamma, water table)",
+   "status": "PARTIAL",
+   "where": "`DC.soil` structure exists (bh[], c, phi, gam, B, Df, fs, shape); demo must type a sample log. Lift-station soil data exist in the station project only."
+  },
+  {
+   "item": "Survey sample (points for a 20x30 m plot)",
+   "status": "PARTIAL",
+   "where": "S.X point import (CSV/PNEZD); lift-station survey exists; a villa-plot point set must be generated (30-60 points)."
+  },
+  {
+   "item": "Code references (titles only): ECP 201/202/203, ACI 318-19, ASCE 7, SBC 301/304, ISO 19650, IEC 61439-1, ISO 45001 ...",
+   "status": "EXISTS",
+   "where": "`CODES` (37 entries) in c_codes.js; clause numbers deliberately not reproduced."
+  },
+  {
+   "item": "Seismic / wind parameters",
+   "status": "PARTIAL",
+   "where": "`SIM.eq`, `SIM.wd` defaults (Ss 0.3, S1 0.1, V 40 m/s) flagged as defaults by wf_struct; user types zone values."
+  },
+  {
+   "item": "HVAC cooling load inputs (U-values, glass, people, lights), AC electrical table, duct tables",
+   "status": "EXISTS (editable placeholders)",
+   "where": "V.X (`c_hvac.js`, `c_hvac2.js`, `c_duct.js`, `c_duct2.js`); equipment `lib:vxeq` (10 items)."
+  },
+  {
+   "item": "Document templates: letter, RFI, IR, MIR, MOM, transmittal, NCR, daily report, payment certificate, variation order, checklist (4 variants) x EN/AR/both; sheets: BOQ, cash flow 12 months, S-curve, risk register, procurement log",
+   "status": "EXISTS",
+   "where": "`lib:oxdoc`, `lib:oxxls` (c_lb_ox.js), command `lb_ox`."
+  },
+  {
+   "item": "Inspection and test plan (ITP) per construction stage, with hold points",
+   "status": "MISSING as data",
+   "where": "Phase 9 of this document gives the first draft (stages 9.1-9.13) ready to become a table; acceptance numbers must come from the project spec / ECP 203 (check the clause)."
+  },
+  {
+   "item": "Network sample data (sewer, storm, water, fire) with profiles",
+   "status": "EXISTS (lift-station sample only)",
+   "where": "`NETS` (c_nets_data.js), notes networks_data_register.md; not a house plot."
+  },
+  {
+   "item": "Reality-capture / earthworks sample",
+   "status": "EXISTS",
+   "where": "F.X `rc_*` commands (TIN, cut and fill) with incoming9/rc_note.md."
+  }
+ ],
+ "demo_plan": [
+  {
+   "seq": "1",
+   "chapter": "welcome + project (ch1)",
+   "phase": "0",
+   "exists": "yes",
+   "needs": "Add 1 caption about brief + budget; keep fast."
+  },
+  {
+   "seq": "2",
+   "chapter": "NEW site: map, survey points, TIN, boundary, soil log, seismic/wind inputs",
+   "phase": "1",
+   "exists": "partly (ch2 `site` = survey/excavation/cost)",
+   "needs": "Sample villa-plot points, borehole log; show dc_soil bearing + env_eq. Demo asserts: surface created, bearing qa number."
+  },
+  {
+   "seq": "3",
+   "chapter": "R.X architecture: levels > grids > walls (t 0.25) > openings > floors > stair > roof > rooms > sheets",
+   "phase": "2",
+   "exists": "partly (ch1 `rx`: 3 walls, floor, door, window, column)",
+   "needs": "Proper order and slower pace; section/elevation/plan views; render still."
+  },
+  {
+   "seq": "4",
+   "chapter": "NEW structural system + preliminary sizing",
+   "phase": "3",
+   "exists": "no",
+   "needs": "Template villa_rc (gap 1); take-down table (gap 6); show rv_props sizes."
+  },
+  {
+   "seq": "5",
+   "chapter": "Structure: footings > tie beams > columns > beams > slabs; design checks",
+   "phase": "4",
+   "exists": "partly (ch2 `struct`: concrete quantities + one bending check)",
+   "needs": "Gaps 2, 4: element sheets, rebar, BBS. Until built: honest 'screening' caption using `flex`, `bear`."
+  },
+  {
+   "seq": "6",
+   "chapter": "MEP: electrical (load schedule, AC circuits), HVAC (cooling load, ducts), plumbing, low-current",
+   "phase": "5",
+   "exists": "yes (ch2 `elec`, `hvac`; ch3 `lowc`, `plumb`)",
+   "needs": "Gaps 7, 8, 10 for real design; HVAC chain is the strongest today."
+  },
+  {
+   "seq": "7",
+   "chapter": "N.X coordination and clashes",
+   "phase": "6",
+   "exists": "yes (ch3 `clash`)",
+   "needs": "MEP geometry (gap 11) to make clashes real."
+  },
+  {
+   "seq": "8",
+   "chapter": "BOQ, specs, unit prices, estimate",
+   "phase": "6",
+   "exists": "partly (ch3 `boq`)",
+   "needs": "Gap 5 sample price + spec books."
+  },
+  {
+   "seq": "9",
+   "chapter": "NEW tender and contract (comparison of 3 sample bids, contract admin set-up)",
+   "phase": "7",
+   "exists": "no",
+   "needs": "Sample bid data, gap 18."
+  },
+  {
+   "seq": "10",
+   "chapter": "P.X planning: WBS, logic, cash flow, risk, safety plan",
+   "phase": "8",
+   "exists": "partly (ch2 `sched`)",
+   "needs": "Template insertion, calendar, xf_p6, S-curve (gap 15)."
+  },
+  {
+   "seq": "11",
+   "chapter": "NEW construction by stage with hold points (4D by stage)",
+   "phase": "9",
+   "exists": "no",
+   "needs": "ITP register (gap 9); 4D video exists."
+  },
+  {
+   "seq": "12",
+   "chapter": "NEW handover: tests, snags, wf_hand, as-built, O&M, pack",
+   "phase": "10",
+   "exists": "partly (ch3 `out`)",
+   "needs": "Snag from 3D viewpoint, wf_hand, ct_ast, pack - all exist."
+  },
+  {
+   "seq": "13",
+   "chapter": "outputs (sheets, ZIP, vector, render)",
+   "phase": "10",
+   "exists": "yes (ch3 `out`)",
+   "needs": "None."
+  }
+ ],
+ "uncertain": [
+  "Standards: ECP 203 (concrete), ECP 201 (loads), ECP 202 (soil/foundations) are named from memory of their titles. NO clause number, load value, safety factor or limit is quoted as code text; where the document mentions typical values (gamma_c 1.5, gamma_s 1.15, 1.4 D + 1.6 L, cover, deflection and crack limits, min column size) they are the well-known textbook / Egyptian-practice values marked 'check the clause' - verify against the licensed edition (2018 for ECP 203 is expected, confirm).",
+  "Egyptian steel grades (24/35, 36/52, 40/60), cube strength convention (fcu), local standards (ES numbers), Law 119 of 2008 and its regulations, civil-defence and utility rules: stated from general knowledge of Egyptian practice; the editions and current numbers were not looked up (no network research was done for this task).",
+  "Every RULE OF THUMB figure (kg steel per m3, W/m2 loads, productivities, durations, cost shares, septic per-capita, velocity ranges) is an order-of-magnitude planning aid from general engineering practice, not from a cited source and not for design.",
+  "T.O X state was read from the built page `vx_wired.html` (scratchpad, 2026-11-21 09:12) plus the c_*.js sources; the demo session may have changed chunks since. The registry dump counts 1608 commands (1462 non-stub). Stub flags are runtime values, not guesses. What a 'built' command does in detail was taken from the module notes (rvx.md, qx.md, p2tog.md, mod_cxsx.md, px2.md, lb.md, hxassets.md) and code headers; I did NOT click through each of the ~1400 working commands. Statements like 'no ... tool' mean: nothing found by registry, XDESC and grep for the topic - a quick re-grep is advisable before building.",
+  "Libraries (`lib:*`) load their items lazily; the counts (45 R.X types, 12 assemblies, 91 CAD blocks...) are from lb.md, not from the live registry.",
+  "Not checked: whether P.X has automatic resource levelling; the exact content of the R.X 'Rebar' button behaviour in a house project (ribbon impl is `p_rebar` = lift-station rebar viewer per c_rebar.js header); Arabic UI strings.",
+  "No numbers were validated by running design calculations; the doc defines what the demo should show, not that T.O X computes it correctly beyond what its own tests claim (see the module notes)."
+ ]
+}

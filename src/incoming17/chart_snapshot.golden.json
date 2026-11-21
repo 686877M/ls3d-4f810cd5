@@ -1,0 +1,1849 @@
+{
+ "q-bar-1s": {
+  "raw": "f2e85829b3361a78",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 7,
+    "text": 18,
+    "rect": 6,
+    "title": 6
+   },
+   "texts": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes: 120",
+    "120",
+    "Concrete: 80",
+    "80",
+    "Steel: 45.5",
+    "45.5",
+    "Finish: 10",
+    "10",
+    "Cable: 0",
+    "0",
+    "Pump: 33",
+    "33"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2720
+ },
+ "q-bar-3s-title": {
+  "raw": "7a66e9446ce438e0",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 16,
+    "rect": 21,
+    "line": 7,
+    "title": 18
+   },
+   "texts": [
+    "Cost by &lt;Cat&gt; &amp; &quot;x&quot;",
+    "Cost",
+    "Qty",
+    "Big",
+    "0",
+    "500k",
+    "1.0M",
+    "1.5M",
+    "2.0M",
+    "2.5M",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes · Cost: 120",
+    "Pipes · Qty: 30",
+    "Pipes · Big: 1.0M",
+    "Concrete · Cost: 80",
+    "Concrete · Qty: 60",
+    "Concrete · Big: 2.5M",
+    "Steel · Cost: 45.5",
+    "Steel · Qty: 15",
+    "Steel · Big: 300k",
+    "Finish · Cost: 10",
+    "Finish · Qty: 5",
+    "Finish · Big: 40k",
+    "Cable · Cost: 0",
+    "Cable · Qty: 12",
+    "Cable · Big: 9000",
+    "Pump · Cost: 33",
+    "Pump · Qty: 8",
+    "Pump · Big: 500"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 4215
+ },
+ "q-bar-size": {
+  "raw": "02f599a024dd4090",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 13,
+    "line": 7,
+    "rect": 3,
+    "title": 3
+   },
+   "texts": [
+    "t",
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Pipes: 120",
+    "120",
+    "Concrete: 80",
+    "80",
+    "Steel: 45.5",
+    "45.5"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  },
+  "rtl": false,
+  "len": 2028
+ },
+ "q-stacked-1s": {
+  "raw": "d60b50dddd6cb755",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 7,
+    "text": 18,
+    "rect": 6,
+    "title": 6
+   },
+   "texts": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes: 120",
+    "120",
+    "Concrete: 80",
+    "80",
+    "Steel: 45.5",
+    "45.5",
+    "Finish: 10",
+    "10",
+    "Cable: 0",
+    "0",
+    "Pump: 33",
+    "33"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2724
+ },
+ "q-stacked-3s-title": {
+  "raw": "5edf5b9c4febca02",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 14,
+    "rect": 21,
+    "line": 5,
+    "title": 18
+   },
+   "texts": [
+    "Cost by &lt;Cat&gt; &amp; &quot;x&quot;",
+    "Cost",
+    "Qty",
+    "Big",
+    "0",
+    "1.0M",
+    "2.0M",
+    "3.0M",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes · Cost: 120",
+    "Pipes · Qty: 30",
+    "Pipes · Big: 1.0M",
+    "Concrete · Cost: 80",
+    "Concrete · Qty: 60",
+    "Concrete · Big: 2.5M",
+    "Steel · Cost: 45.5",
+    "Steel · Qty: 15",
+    "Steel · Big: 300k",
+    "Finish · Cost: 10",
+    "Finish · Qty: 5",
+    "Finish · Big: 40k",
+    "Cable · Cost: 0",
+    "Cable · Qty: 12",
+    "Cable · Big: 9000",
+    "Pump · Cost: 33",
+    "Pump · Qty: 8",
+    "Pump · Big: 500"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 3912
+ },
+ "q-stacked-size": {
+  "raw": "c8a93e56ce45ab3a",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 13,
+    "line": 7,
+    "rect": 3,
+    "title": 3
+   },
+   "texts": [
+    "t",
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Pipes: 120",
+    "120",
+    "Concrete: 80",
+    "80",
+    "Steel: 45.5",
+    "45.5"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  },
+  "rtl": false,
+  "len": 2028
+ },
+ "q-line-1s": {
+  "raw": "ff8b3eefd5975618",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 7,
+    "text": 13,
+    "polyline": 1,
+    "circle": 6,
+    "title": 6
+   },
+   "texts": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes: 120",
+    "Concrete: 80",
+    "Steel: 45.5",
+    "Finish: 10",
+    "Cable: 0",
+    "Pump: 33",
+    "33"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2598
+ },
+ "q-line-3s-title": {
+  "raw": "4e866cf3c9b4facd",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 19,
+    "rect": 3,
+    "line": 7,
+    "polyline": 3,
+    "circle": 18,
+    "title": 18
+   },
+   "texts": [
+    "Cost by &lt;Cat&gt; &amp; &quot;x&quot;",
+    "Cost",
+    "Qty",
+    "Big",
+    "0",
+    "500k",
+    "1.0M",
+    "1.5M",
+    "2.0M",
+    "2.5M",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes · Cost: 120",
+    "Concrete · Cost: 80",
+    "Steel · Cost: 45.5",
+    "Finish · Cost: 10",
+    "Cable · Cost: 0",
+    "Pump · Cost: 33",
+    "Cost 33",
+    "Pipes · Qty: 30",
+    "Concrete · Qty: 60",
+    "Steel · Qty: 15",
+    "Finish · Qty: 5",
+    "Cable · Qty: 12",
+    "Pump · Qty: 8",
+    "Qty 8",
+    "Pipes · Big: 1.0M",
+    "Concrete · Big: 2.5M",
+    "Steel · Big: 300k",
+    "Finish · Big: 40k",
+    "Cable · Big: 9000",
+    "Pump · Big: 500",
+    "Big 500"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 5210
+ },
+ "q-line-size": {
+  "raw": "b4e6cb9fce4ce095",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 11,
+    "line": 7,
+    "polyline": 1,
+    "circle": 3,
+    "title": 3
+   },
+   "texts": [
+    "t",
+    "0",
+    "25",
+    "50",
+    "75",
+    "100",
+    "125",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Pipes: 120",
+    "Concrete: 80",
+    "Steel: 45.5",
+    "45.5"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  },
+  "rtl": false,
+  "len": 2046
+ },
+ "q-scurve-1s": {
+  "raw": "3e642025e74cf42a",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 5,
+    "text": 11,
+    "polyline": 1,
+    "circle": 6,
+    "title": 6
+   },
+   "texts": [
+    "0",
+    "100",
+    "200",
+    "300",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes: 120 (cumulative)",
+    "Concrete: 200 (cumulative)",
+    "Steel: 246 (cumulative)",
+    "Finish: 256 (cumulative)",
+    "Cable: 256 (cumulative)",
+    "Pump: 289 (cumulative)",
+    "289"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2378
+ },
+ "q-scurve-3s-title": {
+  "raw": "f2ea92e6bebfb62e",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 18,
+    "rect": 3,
+    "line": 6,
+    "polyline": 3,
+    "circle": 18,
+    "title": 18
+   },
+   "texts": [
+    "Cost by &lt;Cat&gt; &amp; &quot;x&quot;",
+    "Cost",
+    "Qty",
+    "Big",
+    "0",
+    "1.0M",
+    "2.0M",
+    "3.0M",
+    "4.0M",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Cable",
+    "Pump",
+    "Pipes · Cost: 120 (cumulative)",
+    "Concrete · Cost: 200 (cumulative)",
+    "Steel · Cost: 246 (cumulative)",
+    "Finish · Cost: 256 (cumulative)",
+    "Cable · Cost: 256 (cumulative)",
+    "Pump · Cost: 289 (cumulative)",
+    "Cost 289",
+    "Pipes · Qty: 30 (cumulative)",
+    "Concrete · Qty: 90 (cumulative)",
+    "Steel · Qty: 105 (cumulative)",
+    "Finish · Qty: 110 (cumulative)",
+    "Cable · Qty: 122 (cumulative)",
+    "Pump · Qty: 130 (cumulative)",
+    "Qty 130",
+    "Pipes · Big: 1.0M (cumulative)",
+    "Concrete · Big: 3.5M (cumulative)",
+    "Steel · Big: 3.8M (cumulative)",
+    "Finish · Big: 3.8M (cumulative)",
+    "Cable · Big: 3.8M (cumulative)",
+    "Pump · Big: 3.8M (cumulative)",
+    "Big 3.8M"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 5301
+ },
+ "q-scurve-size": {
+  "raw": "d53068ed452e0479",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 11,
+    "line": 7,
+    "polyline": 1,
+    "circle": 3,
+    "title": 3
+   },
+   "texts": [
+    "t",
+    "0",
+    "50",
+    "100",
+    "150",
+    "200",
+    "250",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Pipes: 120 (cumulative)",
+    "Concrete: 200 (cumulative)",
+    "Steel: 246 (cumulative)",
+    "246"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  },
+  "rtl": false,
+  "len": 2083
+ },
+ "q-pie-1s": {
+  "raw": "525dc1bd7ce3695c",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "path": 5,
+    "title": 5,
+    "rect": 6,
+    "text": 12
+   },
+   "texts": [
+    "Pipes: 120 (41.6%)",
+    "Pipes",
+    "41.6%",
+    "Concrete: 80 (27.7%)",
+    "Concrete",
+    "27.7%",
+    "Steel: 45.5 (15.8%)",
+    "Steel",
+    "15.8%",
+    "Pump: 33 (11.4%)",
+    "Pump",
+    "11.4%",
+    "Finish: 10 (3.5%)",
+    "Finish",
+    "3.5%",
+    "Cable",
+    "0.0%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qs5)",
+    "var(--qs6)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2086
+ },
+ "q-pie-3s-title": {
+  "raw": "7ad73bbd16303046",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 13,
+    "path": 5,
+    "title": 5,
+    "rect": 6
+   },
+   "texts": [
+    "Cost by &lt;Cat&gt; &amp; &quot;x&quot;",
+    "Pipes: 120 (41.6%)",
+    "Pipes",
+    "41.6%",
+    "Concrete: 80 (27.7%)",
+    "Concrete",
+    "27.7%",
+    "Steel: 45.5 (15.8%)",
+    "Steel",
+    "15.8%",
+    "Pump: 33 (11.4%)",
+    "Pump",
+    "11.4%",
+    "Finish: 10 (3.5%)",
+    "Finish",
+    "3.5%",
+    "Cable",
+    "0.0%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qs5)",
+    "var(--qs6)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2238
+ },
+ "q-pie-size": {
+  "raw": "19eb7b4408c0f1d0",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 13,
+    "path": 5,
+    "title": 5,
+    "rect": 6
+   },
+   "texts": [
+    "t",
+    "Pipes: 120 (41.6%)",
+    "Pipes",
+    "41.6%",
+    "Concrete: 80 (27.7%)",
+    "Concrete",
+    "27.7%",
+    "Steel: 45.5 (15.8%)",
+    "Steel",
+    "15.8%",
+    "undefined: 33 (11.4%)",
+    "undefined",
+    "11.4%",
+    "undefined: 10 (3.5%)",
+    "undefined",
+    "3.5%",
+    "undefined",
+    "0.0%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qs5)",
+    "var(--qs6)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  },
+  "rtl": false,
+  "len": 2182
+ },
+ "q-bar-neg": {
+  "raw": "4e9995414d1d2c43",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 5,
+    "text": 12,
+    "rect": 4,
+    "title": 4
+   },
+   "texts": [
+    "-20",
+    "-10",
+    "0",
+    "10",
+    "Pipes",
+    "Concrete",
+    "Steel",
+    "Finish",
+    "Pipes: -5",
+    "-5",
+    "Concrete: 10",
+    "10",
+    "Steel: -20",
+    "-20",
+    "Finish: 3",
+    "3"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 1903
+ },
+ "q-line-30": {
+  "raw": "af0317d5655020f0",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "line": 6,
+    "text": 12,
+    "polyline": 1,
+    "circle": 30,
+    "title": 30
+   },
+   "texts": [
+    "0",
+    "5",
+    "10",
+    "15",
+    "20",
+    "C0",
+    "C5",
+    "C10",
+    "C15",
+    "C20",
+    "C25",
+    "C0: 0",
+    "C1: 1",
+    "C2: 4",
+    "C3: 9",
+    "C4: 16",
+    "C5: 8",
+    "C6: 2",
+    "C7: 15",
+    "C8: 13",
+    "C9: 13",
+    "C10: 15",
+    "C11: 2",
+    "C12: 8",
+    "C13: 16",
+    "C14: 9",
+    "C15: 4",
+    "C16: 1",
+    "C17: 0",
+    "C18: 1",
+    "C19: 4",
+    "C20: 9",
+    "C21: 16",
+    "C22: 8",
+    "C23: 2",
+    "C24: 15",
+    "C25: 13",
+    "C26: 13",
+    "C27: 15",
+    "C28: 2",
+    "C29: 8",
+    "8"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 5580
+ },
+ "q-pie-12": {
+  "raw": "14c4a33fef5c082e",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "path": 8,
+    "title": 8,
+    "rect": 8,
+    "text": 16
+   },
+   "texts": [
+    "P11: 12 (15.4%)",
+    "P11",
+    "15.4%",
+    "P10: 11 (14.1%)",
+    "P10",
+    "14.1%",
+    "P9: 10 (12.8%)",
+    "P9",
+    "12.8%",
+    "P8: 9 (11.5%)",
+    "P8",
+    "11.5%",
+    "P7: 8 (10.3%)",
+    "P7",
+    "10.3%",
+    "P6: 7 (9.0%)",
+    "P6",
+    "9.0%",
+    "P5: 6 (7.7%)",
+    "P5",
+    "7.7%",
+    "Other: 15 (19.2%)",
+    "Other",
+    "19.2%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qs5)",
+    "var(--qs6)",
+    "var(--qs7)",
+    "var(--qs8)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 2876
+ },
+ "q-pie-zero": {
+  "raw": "681459d9fa8a7e26",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 1
+   },
+   "texts": [
+    "All values are zero"
+   ],
+   "cols": [
+    "var(--qt2)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 246
+ },
+ "q-pie-one": {
+  "raw": "1ae035409ea3241e",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "circle": 1,
+    "title": 1,
+    "rect": 1,
+    "text": 2
+   },
+   "texts": [
+    "a: 5",
+    "a",
+    "100.0%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 449
+ },
+ "q-empty": {
+  "raw": "08a5824a41fe41e6",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 1
+   },
+   "texts": [
+    "No data to chart"
+   ],
+   "cols": [
+    "var(--qt2)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 243
+ },
+ "q-9series": {
+  "raw": "f903219b23251a13",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "rect": 24,
+    "text": 15,
+    "line": 6,
+    "title": 16
+   },
+   "texts": [
+    "s0",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "a",
+    "b",
+    "a · s0: 1",
+    "a · s1: 2",
+    "a · s2: 3",
+    "a · s3: 4",
+    "a · s4: 5",
+    "a · s5: 6",
+    "a · s6: 7",
+    "a · s7: 8",
+    "b · s0: 2",
+    "b · s1: 2",
+    "b · s2: 2",
+    "b · s3: 2",
+    "b · s4: 2",
+    "b · s5: 2",
+    "b · s6: 2",
+    "b · s7: 2"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qs5)",
+    "var(--qs6)",
+    "var(--qs7)",
+    "var(--qs8)",
+    "var(--qt2)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": false,
+  "len": 3924
+ },
+ "q-bar-ar": {
+  "raw": "ad812cd180259cd6",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 12,
+    "rect": 10,
+    "line": 6,
+    "title": 8
+   },
+   "texts": [
+    "التكلفة حسب الفئة",
+    "تكلفة",
+    "كمية",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "مواسير",
+    "خرسانة",
+    "حديد",
+    "تشطيبات",
+    "مواسير · تكلفة: 4",
+    "مواسير · كمية: 1",
+    "خرسانة · تكلفة: 3",
+    "خرسانة · كمية: 2",
+    "حديد · تكلفة: 2",
+    "حديد · كمية: 3",
+    "تشطيبات · تكلفة: 1",
+    "تشطيبات · كمية: 4"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": true,
+  "len": 2592
+ },
+ "q-stacked-ar": {
+  "raw": "26429c8a7f1382b2",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 13,
+    "rect": 10,
+    "line": 7,
+    "title": 8
+   },
+   "texts": [
+    "التكلفة حسب الفئة",
+    "تكلفة",
+    "كمية",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "مواسير",
+    "خرسانة",
+    "حديد",
+    "تشطيبات",
+    "مواسير · تكلفة: 4",
+    "مواسير · كمية: 1",
+    "خرسانة · تكلفة: 3",
+    "خرسانة · كمية: 2",
+    "حديد · تكلفة: 2",
+    "حديد · كمية: 3",
+    "تشطيبات · تكلفة: 1",
+    "تشطيبات · كمية: 4"
+   ],
+   "cols": [
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": true,
+  "len": 2733
+ },
+ "q-line-ar": {
+  "raw": "a244d75173e60e32",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 14,
+    "rect": 2,
+    "line": 6,
+    "polyline": 2,
+    "circle": 8,
+    "title": 8
+   },
+   "texts": [
+    "التكلفة حسب الفئة",
+    "تكلفة",
+    "كمية",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "مواسير",
+    "خرسانة",
+    "حديد",
+    "تشطيبات",
+    "مواسير · تكلفة: 4",
+    "خرسانة · تكلفة: 3",
+    "حديد · تكلفة: 2",
+    "تشطيبات · تكلفة: 1",
+    "تكلفة 1",
+    "مواسير · كمية: 1",
+    "خرسانة · كمية: 2",
+    "حديد · كمية: 3",
+    "تشطيبات · كمية: 4",
+    "كمية 4"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": true,
+  "len": 3133
+ },
+ "q-pie-ar": {
+  "raw": "826e3cf55b22b3da",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 9,
+    "path": 4,
+    "title": 4,
+    "rect": 4
+   },
+   "texts": [
+    "التكلفة حسب الفئة",
+    "مواسير: 4 (40.0%)",
+    "مواسير",
+    "40.0%",
+    "خرسانة: 3 (30.0%)",
+    "خرسانة",
+    "30.0%",
+    "حديد: 2 (20.0%)",
+    "حديد",
+    "20.0%",
+    "تشطيبات: 1 (10.0%)",
+    "تشطيبات",
+    "10.0%"
+   ],
+   "cols": [
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qs4)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 560 300"
+  },
+  "rtl": true,
+  "len": 1654
+ },
+ "o-column": {
+  "raw": "c17edded263a8957",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 6,
+    "path": 1,
+    "rect": 4
+   },
+   "texts": [
+    "column A1:B4",
+    "a",
+    "b",
+    "c",
+    "d",
+    "40"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 975
+ },
+ "o-column-neg": {
+  "raw": "32fa31b02c45decc",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 1,
+    "rect": 3
+   },
+   "texts": [
+    "x  y>",
+    "long lab",
+    "b",
+    "c",
+    "1234.568"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 816
+ },
+ "o-column-one": {
+  "raw": "8f2a814f8e181a37",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 3,
+    "path": 1,
+    "rect": 1
+   },
+   "texts": [
+    "A1:B1",
+    "a",
+    "9"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 453
+ },
+ "o-column-ar": {
+  "raw": "cb6e4f0a9ef21b55",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 1,
+    "rect": 3
+   },
+   "texts": [
+    "مخطط",
+    "مواسير",
+    "خرسانة",
+    "حديد",
+    "5"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": true,
+  "len": 804
+ },
+ "o-line": {
+  "raw": "dc674602758f07ec",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 6,
+    "path": 1,
+    "polyline": 1,
+    "circle": 4
+   },
+   "texts": [
+    "line A1:B4",
+    "a",
+    "b",
+    "c",
+    "d",
+    "40"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 1018
+ },
+ "o-line-neg": {
+  "raw": "0673f8a4d2c1a65a",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 1,
+    "polyline": 1,
+    "circle": 3
+   },
+   "texts": [
+    "x  y>",
+    "long lab",
+    "b",
+    "c",
+    "1234.568"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 872
+ },
+ "o-line-one": {
+  "raw": "10efee4d63cc3ecd",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 3,
+    "path": 1,
+    "polyline": 1,
+    "circle": 1
+   },
+   "texts": [
+    "A1:B1",
+    "a",
+    "9"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 520
+ },
+ "o-line-ar": {
+  "raw": "8028f908684815ee",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 1,
+    "polyline": 1,
+    "circle": 3
+   },
+   "texts": [
+    "مخطط",
+    "مواسير",
+    "خرسانة",
+    "حديد",
+    "5"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": true,
+  "len": 855
+ },
+ "o-pie": {
+  "raw": "75ac6f76e127d9ae",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 4,
+    "tspan": 4
+   },
+   "texts": [
+    "pie A1:B4",
+    "■ a 10.0%",
+    "■ b 20.0%",
+    "■ c 30.0%",
+    "■ d 40.0%"
+   ],
+   "cols": [
+    "#222",
+    "#4e79a7",
+    "#76b7b2",
+    "#e15759",
+    "#f28e2b"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 956
+ },
+ "o-pie-neg": {
+  "raw": "705d07f71d28e68a",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 4,
+    "path": 3,
+    "tspan": 3
+   },
+   "texts": [
+    "x  y>",
+    "■ long label here 0.4%",
+    "■ b 0.6%",
+    "■ c 99.0%"
+   ],
+   "cols": [
+    "#222",
+    "#4e79a7",
+    "#e15759",
+    "#f28e2b"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 776
+ },
+ "o-pie-one": {
+  "raw": "1c52752452cfeba2",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 2,
+    "circle": 1,
+    "tspan": 1
+   },
+   "texts": [
+    "A1:B1",
+    "■ a 100.0%"
+   ],
+   "cols": [
+    "#222",
+    "#4e79a7"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 329
+ },
+ "o-pie-ar": {
+  "raw": "ea286f956ec86aca",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 4,
+    "path": 3,
+    "tspan": 3
+   },
+   "texts": [
+    "مخطط",
+    "■ مواسير 25.0%",
+    "■ خرسانة 33.3%",
+    "■ حديد 41.7%"
+   ],
+   "cols": [
+    "#222",
+    "#4e79a7",
+    "#e15759",
+    "#f28e2b"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": true,
+  "len": 767
+ },
+ "o-many": {
+  "raw": "97ab825248e21a64",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 17,
+    "path": 1,
+    "rect": 15
+   },
+   "texts": [
+    "A1:B15",
+    "k0",
+    "k1",
+    "k2",
+    "k3",
+    "k4",
+    "k5",
+    "k6",
+    "k7",
+    "k8",
+    "k9",
+    "k10",
+    "k11",
+    "k12",
+    "k13",
+    "k14",
+    "11"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 2863
+ },
+ "o-multi-col": {
+  "raw": "508cba7419a06300",
+  "sig": {
+   "tags": {
+    "svg": 1,
+    "text": 5,
+    "path": 1,
+    "rect": 3
+   },
+   "texts": [
+    "A1:C3",
+    "a",
+    "b",
+    "c",
+    "7"
+   ],
+   "cols": [
+    "#222",
+    "#444",
+    "#4e79a7",
+    "#888",
+    "none"
+   ],
+   "vb": "0 0 420 190"
+  },
+  "rtl": false,
+  "len": 793
+ },
+ "o-nonum": {
+  "raw": "da39a3ee5e6b4b0d",
+  "sig": {
+   "tags": {},
+   "texts": [],
+   "cols": [],
+   "vb": null
+  },
+  "rtl": false,
+  "len": 0
+ },
+ "o-inapp": {
+  "inapp": [
+   [
+    "p2ch",
+    "column",
+    2
+   ],
+   [
+    "p2ch",
+    "pie",
+    2
+   ]
+  ]
+ },
+ "dash-app": {
+  "raw": "020708cca209b45d",
+  "svgs": 6,
+  "sig": {
+   "tags": {
+    "h2": 1,
+    "div": 14,
+    "b": 1,
+    "button": 2,
+    "small": 4,
+    "strong": 4,
+    "svg": 6,
+    "text": 62,
+    "line": 29,
+    "rect": 12,
+    "title": 18,
+    "path": 3,
+    "polyline": 2,
+    "circle": 6,
+    "table": 1,
+    "thead": 1,
+    "tr": 4,
+    "th": 4,
+    "tbody": 1,
+    "td": 12
+   },
+   "texts": [
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "7",
+    "A: 6",
+    "6",
+    "C: 2",
+    "2",
+    "Val by Cat",
+    "B: 7 (46.7%)",
+    "B",
+    "46.7%",
+    "A: 6 (40.0%)",
+    "A",
+    "40.0%",
+    "C: 2 (13.3%)",
+    "C",
+    "13.3%",
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "A: 6",
+    "C: 2",
+    "2",
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "7",
+    "A: 6",
+    "6",
+    "C: 2",
+    "2",
+    "Cumulative Val by Cat",
+    "0",
+    "5",
+    "10",
+    "15",
+    "B",
+    "A",
+    "C",
+    "B: 7 (cumulative)",
+    "A: 13 (cumulative)",
+    "C: 15 (cumulative)",
+    "15",
+    "Rows by Cat",
+    "0",
+    "0.5",
+    "1",
+    "1.5",
+    "2",
+    "A",
+    "B",
+    "C",
+    "A: 2",
+    "2",
+    "B: 1",
+    "1",
+    "C: 1",
+    "1"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  }
+ },
+ "dash-file": {
+  "svgs": 6,
+  "errs": [],
+  "htmlSig": {
+   "tags": {
+    "h2": 1,
+    "div": 14,
+    "b": 1,
+    "button": 2,
+    "small": 4,
+    "strong": 4,
+    "svg": 6,
+    "text": 62,
+    "line": 29,
+    "rect": 12,
+    "title": 18,
+    "path": 3,
+    "polyline": 2,
+    "circle": 6,
+    "table": 1,
+    "thead": 1,
+    "tr": 4,
+    "th": 4,
+    "tbody": 1,
+    "td": 12
+   },
+   "texts": [
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "7",
+    "A: 6",
+    "6",
+    "C: 2",
+    "2",
+    "Val by Cat",
+    "B: 7 (46.7%)",
+    "B",
+    "46.7%",
+    "A: 6 (40.0%)",
+    "A",
+    "40.0%",
+    "C: 2 (13.3%)",
+    "C",
+    "13.3%",
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "A: 6",
+    "C: 2",
+    "2",
+    "Val by Cat",
+    "0",
+    "2",
+    "4",
+    "6",
+    "8",
+    "B",
+    "A",
+    "C",
+    "B: 7",
+    "7",
+    "A: 6",
+    "6",
+    "C: 2",
+    "2",
+    "Cumulative Val by Cat",
+    "0",
+    "5",
+    "10",
+    "15",
+    "B",
+    "A",
+    "C",
+    "B: 7 (cumulative)",
+    "A: 13 (cumulative)",
+    "C: 15 (cumulative)",
+    "15",
+    "Rows by Cat",
+    "0",
+    "0.5",
+    "1",
+    "1.5",
+    "2",
+    "A",
+    "B",
+    "C",
+    "A: 2",
+    "2",
+    "B: 1",
+    "1",
+    "C: 1",
+    "1"
+   ],
+   "cols": [
+    "none",
+    "var(--qgr)",
+    "var(--qs1)",
+    "var(--qs2)",
+    "var(--qs3)",
+    "var(--qsf)",
+    "var(--qt2)",
+    "var(--qtx)"
+   ],
+   "vb": "0 0 520 280"
+  }
+ }
+}

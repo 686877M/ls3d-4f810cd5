@@ -1,0 +1,103 @@
+# Phases 0-3. Step = (text, status, ids, note). status: Y=real tool, P=partial, M=missing, F=field/human step (no software needed)
+# ids: plain XC command id | calc:ID | wf:ID | tpl:ID | lib:ID | tab:TYPE | R:type|tab|panel|name (ribbon entry, resolved at build)
+PH = []
+
+PH.append(dict(
+ id=0, title_en="Brief, feasibility and budget", title_ar="الفكرة والبرنامج وجدوى الميزانية",
+ purpose="Turn 'I want a house' into a written brief, a first budget and a go / no-go decision before any design money is spent.",
+ inputs=["Owner wishes: family size, number of bedrooms, parking, garden, future extension (third floor?)",
+         "Plot (owned or candidate), approximate area and location",
+         "Money available (own funds, loan), target handover date",
+         "Local planning rules for the district (permitted height, setbacks, coverage) - from the district technical office, not guessed"],
+ steps=[
+  ("Interview the owner and write the design brief (rooms, areas, adjacencies, finish level A/B/C, special needs).", "P", ["o_report","lb_ox"], "O.X report editor + document templates can hold the brief; no brief/room-programme tool."),
+  ("Fix the areas: net room programme, then gross built-up area (BUA) = net / efficiency (0.80-0.85 for a villa incl. walls, stair, void).", "P", ["o_sheet","qx_open"], "A spreadsheet does it; no dedicated programme sheet."),
+  ("Check plot rules: setbacks, max coverage %, number of floors, max height, parking count, easements.", "M", [], "No zoning / setback checker. Demo can only type the numbers into the project notes."),
+  ("Order-of-magnitude budget = BUA x cost per m2 for the finish level (rule of thumb, from recent local tenders, NOT a design figure); add design fees, permit fees, utilities connection, contingency 10-15 %.", "P", ["dc_tnd","dc_fs","o_sheet"], "dc_tnd prices a BOQ (overhead, profit, contingency, VAT); dc_fs does NPV/IRR/payback. Neither ships a cost-per-m2 benchmark."),
+  ("Feasibility if it is an investment (sell/rent): NPV, IRR, payback, sensitivity. Skip for an owner-occupied house.", "Y", ["dc_fs"], "Inputs are the owner's own numbers."),
+  ("Risk list at idea stage (soil unknown, permit delay, price escalation, owner changes) with a first mitigation each.", "Y", ["p_scen"], "Risk register + Monte Carlo schedule risk."),
+  ("Choose delivery route: design-bid-build with separate consultant and contractor (recommended for a house), or design-build, or owner-managed with labour-only crews.", "F", [], "Decision; affects phase 7."),
+  ("Go / no-go and sign the brief; open the project file and the document register.", "Y", ["new_from_template","setup","dc_reg","tpl:house2"], "tpChooser creates the project; setup stores name/client/number/currency. Template house2 is the R.X starter (see data inventory)."),
+ ],
+ outputs=["Signed design brief (1-3 pages)", "Room programme and BUA estimate", "Budget range and funding plan", "Go/no-go record", "Project number and folder / register opened"],
+ checks=["Brief signed by owner (date on it)", "Budget >= low estimate x 1.1 or scope reduced", "BUA within plot rules (coverage x floors)", "Every wish has either a room, a budget line or a written 'not now'"],
+ rules=["RULE OF THUMB: villa BUA ~ 1.2-1.4 x net living area.", "RULE OF THUMB: contingency 10 % at brief stage, 5 % at tender, 3-5 % at construction.", "RULE OF THUMB: soft costs (design, supervision, permits, utilities) 8-15 % of construction cost."],
+ mistakes=["Starting design before the plot rules are known", "Budget without utilities connection, landscaping, boundary wall, furniture", "Forgetting the owner's future extension (column and footing sizes then change)"],
+ duration="1-3 weeks",
+ demo="Fast: ch1 'project' already does the template + setup. Add a 20-second 'brief' caption and a dc_fs sample; do not spend long here.",
+))
+
+PH.append(dict(
+ id=1, title_en="Site: survey, soil, boundary, utilities, access", title_ar="الموقع: الرفع المساحي والتربة والحدود والمرافق والوصول",
+ purpose="Know the ground (levels, boundary, soil, water table) and what the plot connects to, before the structure and the drainage are designed.",
+ inputs=["Plot title / cadastral sheet (حيازة / عقد / كروكي)", "Candidate plot coordinates", "Neighbours' building heights and foundation levels (adjacent excavation risk)"],
+ steps=[
+  ("Locate the plot on the map, record coordinates (WGS84 and the local grid), north direction, nearby roads.", "Y", ["p_geo","gis_setproj","gis_id","gis_conv","xf_gis"], "G.X map + converter + 'Set project location'. Imagery needs internet."),
+  ("Order a topographic survey: total station / GNSS, grid of spot levels (every 5-10 m on a small plot + all break lines), boundary pegs, neighbours' walls, road kerb levels, manhole/pole positions.", "F", [], "Field work. T.O X receives the result."),
+  ("Import survey points (PNEZD/CSV), build TIN surface, contours (0.25-0.5 m for a plot), spot-check against raw points.", "Y", ["p_survey","R:survey|Insert|Import|Import points","R:survey|Home|Create Ground Data|Create TIN surface"], "S.X (Civil 3D-like): points, TIN, contours, volumes, traverse with Bowditch (mod_cxsx), LandXML import/export."),
+  ("Draw the boundary as a closed polyline from the survey; compute area and compare with the title area (difference tolerance per authority).", "P", ["c_pl","c_area","m_dist"], "CAD polyline + area. No 'compare with title' check."),
+  ("Soil investigation: 2-3 boreholes (or 1 per ~150-200 m2) to 6-10 m or to firm layer; SPT every 1-1.5 m; sampling; water table; lab tests (grain size, Atterberg, unit weight, shear strength / consolidation, chemical tests: sulphates, chlorides, pH). Geotechnical report with recommended foundation type, allowable bearing, settlement, aggressive-soil advice.", "F", [], "Field + lab. Egyptian reference: ECP 202 (soil mechanics and foundations; check edition/clauses)."),
+  ("Enter the borehole log and compute a preliminary bearing capacity (Terzaghi) as a screening check of the geotechnical report.", "Y", ["dc_soil","fn:dcBearing","env_gr"], "dcBearing = Terzaghi qu with shape factors, FS. No settlement, no layered soil, no ECP 202 method."),
+  ("Seismic and wind site data: seismic zone / design ground acceleration from the code map, site class from the boreholes, basic wind speed; liquefaction screening if loose saturated sand.", "P", ["env_eq","env_wind","gis_seis","gis_windrep","gis_soil"], "Eurocode-8-form spectrum (the form ECP 201 uses) and ASCE 7 base shear; wind panel says ECP 201 has its own chapter and does NOT apply it. Zone values must be typed from the code map."),
+  ("Sun path and orientation study for the building mass and glazing (shade, summer sun).", "Y", ["env_sun","gis_sunrep","env_en"], "Sun path, shadows on the model, energy."),
+  ("Utilities survey: electricity (nearest transformer / LV pole, available kVA), water (main DN, pressure), sewer (invert level of the nearest manhole - decides gravity vs septic), gas, telecom, storm. Written statement from each utility.", "P", ["gis_import","lib:sxpipe","R:survey|Home|Create Design|Pipe Network"], "Can draw/import the lines as layers; S.X pipe catalogue exists (placeholder sizes). No utility-capacity check."),
+  ("Access and logistics: road width for concrete trucks/pump, crane or no crane, material storage, neighbours, working hours.", "M", [], "No site-logistics tool; draw on the C.X plan."),
+  ("Earthworks estimate: existing vs finished ground levels, cut/fill volume, disposal; excavation volume of foundations later (phase 6).", "Y", ["rc_open","rc_qty","rc_tin","rc_ter","R:survey|Analyze|Ground Data|Volumes"], "F.X reality capture: TIN, cut and fill; S.X volumes."),
+  ("Site report: summary of constraints and design implications (soil, level, utilities, orientation).", "Y", ["o_report","dc_rep","dc_soil"], "Report templates incl. technical and site visit."),
+ ],
+ outputs=["Topographic drawing (DWG/PDF) with boundary, levels, contours", "Soil report with allowable bearing and foundation advice", "Utilities letters / connection points", "Site constraints summary", "Seismic/wind inputs"],
+ checks=["Survey closes: control points tie within tolerance (typical total-station traverse closure 1:10 000, per spec)", "Boundary area vs title within the authority's tolerance", "Soil report signed by a geotechnical consultant / accredited lab; borehole depth >= 1.5 x footing width below founding level (rule of thumb) or reaches firm layer", "Water table known; aggressive soil classified (sulphate / chloride)", "Every utility has a written connection point"],
+ rules=["RULE OF THUMB: 1 borehole per 150-200 m2 of footprint, minimum 2; depth 6-10 m for a 2-storey house on normal soil.", "RULE OF THUMB: allowable bearing of 100-200 kPa is common for Egyptian normal soils; weak clays / fill / high water table are common exceptions - the soil report decides, not this figure.", "RULE OF THUMB: spot levels every 5-10 m on a small plot; contour interval 0.25-0.5 m."],
+ mistakes=["Designing foundations without a soil report", "Taking levels from the road only (plot is lower than the street -> flooding, and sewer cannot be gravity)", "Ignoring neighbour's foundation depth (needs shoring or underpinning)", "Using a wrong datum between survey and drawings"],
+ duration="2-4 weeks (survey 3-5 days, boreholes + lab 1-3 weeks, report 1 week)",
+ demo="Today ch2 'site' only does survey/excavation/cost on the sample site. Add: borehole log typed into dc_soil -> bearing result; env_eq inputs typed; utilities shown as GIS layers.",
+))
+
+PH.append(dict(
+ id=2, title_en="Concept and architectural design", title_ar="التصميم المعماري: الفكرة ثم المخطط ثم الواجهات والقطاعات",
+ purpose="Turn the brief and plot into a buildable plan: layout, facades, sections, openings - the geometry the structure and MEP will follow.",
+ inputs=["Approved brief and BUA", "Survey (levels, boundary)", "Plot rules (setbacks, height)", "Soil/orientation constraints"],
+ steps=[
+  ("Mass and site plan: footprint inside setbacks, parking, entrance, garden, orientation (living towards north/breeze, minimum west glass).", "P", ["site","tab:draft","R:model|Massing & Site|Model Site|Toposurface"], "Site plan view in R.X is station-specific data; massing tools partly present."),
+  ("Concept plans by hand or CAD: bubble diagram -> block plan with room areas.", "P", ["tab:draft","cad","lb_cx","hm_sample","hm_room"], "H.X home plan: drag rooms; C.X blocks library (arch 28, elec 19, plumb 9, fire 8, HVAC 13)."),
+  ("Set levels and grids in R.X. Ground floor level +0.00 = chosen vs road kerb (usually +0.45 to +1.0 m above road, per local rule); floor-to-floor 3.0-3.2 m; parapet 1.0 m.", "Y", ["R:model|Architecture|Datum|Level","R:model|Architecture|Datum|Grid","rv_level","rv_grid"], "Template house2 has levels Ground 0 / First 3 / Roof 6 and 4 grids."),
+  ("Draw external and internal walls (structure grid first, then 25 cm external / 12 cm internal masonry, per Egyptian practice), doors, windows, columns positions coincide with grid.", "Y", ["rv_wall","rv_door","rv_window","rv_col","lb_rx","lib:rxfam","lib:rxasm"], "R.X walls/doors/windows (hosted openings). 45 family types + 12 layered assemblies; assembly sets wall thickness only, 3D stays a single box. NOTE: template house2 has 16 walls, 0 columns, 0 beams (see gaps)."),
+  ("Floors, stair (riser 15-17 cm, tread 28-30 cm, width >= 1.0 m; headroom >= 2.2 m), roof (flat with parapet and slope 1-2 % to drains), rooms with area tags.", "Y", ["rv_floor","rv_stair","rv_roof","rv_room","rv_rail","rv_ramp","rv_ceil"], "All present as R.X tools."),
+  ("Check areas and clearances: room areas, net/gross, stair geometry, door widths (0.9 m main, 0.8 m rooms, 0.7 m bath), window sills.", "Y", ["rv_room","rv_props","R:model|Architecture|Room & Area|Area"], "Room area tags and Area (Gross/Rentable)."),
+  ("Elevations (4), sections (2, through stair and wet areas), plan with dims.", "Y", ["rv_plan","rv_elevN","rv_elevS","rv_elevE","rv_elevW","rv_secX","rv_secZ","rv_dim","rv_plancad","rv_sec2cad"], "SVG, no WebGL; 'to CAD' puts them on layers for PDF/DXF."),
+  ("Interior layout and finishes: materials, furniture, lights.", "Y", ["hx_mat","hx_fur","hx_light","xf_hx","xf_rx"], "H.X materials (floors 19, walls 9, ...) and furniture models."),
+  ("Render and walkthrough images for the owner approval.", "Y", ["render","rs_open","rs_still","rs_turntable","shot2","vx_export"], "Render Studio (stills up to 8K, turntable video) and true-vector SVG export of the view."),
+  ("Owner review round(s) and freeze; issue 'architectural design freeze' drawing set (plans, elevations, sections, door/window schedule).", "P", ["sheet","e_pdf","e_dxf","R:model|View|Create|Schedules","dc_new"], "Sheet composer exists; door/window schedule via R.X schedule (rv_sched). No design-freeze status workflow."),
+  ("Submit for the building permit (authority forms: architectural + structural + soil report + title). Egypt: unified building law (Law 119 of 2008 and its executive regulations - verify current text).", "F", [], "Outside the software; tracked in the register (dc_new / dc_reg)."),
+ ],
+ outputs=["Architectural drawing set (site plan, plans, 4 elevations, 2 sections, schedules)", "R.X model Level of Development ~ LOD 200-300 (walls, openings, floors, stair, roof)", "Renders", "Permit submission file"],
+ checks=["Plan inside setbacks and coverage limits", "Stair rise/tread comply, headroom >= 2.2 m", "Every room has window/ventilation (or mechanical vent) and every wet area stacks over wet area where possible", "Grid spacing realistic for RC (spans 3.5-5.5 m, avoid > 6 m without extra beam)", "Owner signature on the freeze set"],
+ rules=["RULE OF THUMB: keep slab spans <= 5 m for economical solid slab+beam; align walls above walls; stack wet rooms.", "RULE OF THUMB: floor-to-floor 3.0-3.2 m; clear height 2.7-2.9 m after finishes.", "RULE OF THUMB: external masonry 25 cm, internal 12 cm; wall self-weight ~ 2.0-3.5 kN/m2 of wall face - the load figure comes from ECP 201 / the materials, not from this."],
+ mistakes=["Drawing walls first and columns later (columns end up in the middle of doors)", "Wet areas not stacked -> long drains", "No room for ducts / shafts (MEP riser 40x60 cm each)", "Stair with wrong rise/tread because floor height changed"],
+ duration="1-3 months including owner changes",
+ demo="Current ch1 'rx' + ch2 start. Needed: explicit grid + level first, then perimeter walls (thickness 0.25), then columns on the grid, then openings; sections after. The template house2 has no columns: demo must place them or the template must be extended.",
+))
+
+PH.append(dict(
+ id=3, title_en="Structural system choice, loads and preliminary sizing", title_ar="النظام الإنشائي والأحمال والأبعاد المبدئية",
+ purpose="Pick the frame system and foundation type, define the loads, and size members roughly so the architect and MEP can reserve space.",
+ inputs=["Architectural plans and sections (freeze set)", "Soil report (allowable bearing, depth, water table)", "Codes chosen: ECP 201 loads, ECP 203 concrete, ECP 202 foundations (or Eurocode 1/2/7, or ACI 318 + ASCE 7)", "Material grades"],
+ steps=[
+  ("Choose the system: RC skeleton (columns + beams + solid slab) = default for a villa; flat slab / hollow-block (ribbed) alternatives; masonry fill, not load-bearing.", "F", [], "Engineering decision."),
+  ("Choose the foundation type from the soil report and column loads: isolated footings + tie beams (default on good soil), strap/combined footings near boundary, raft if footings cover > ~40-50 % of the footprint or soil is weak/water high, piles only if the report requires.", "F", [], "Engineering decision; revisit after load take-down."),
+  ("Fix materials: concrete grade (Egypt uses cube strength fcu: typical C25-C30 for a villa frame; check ECP 203 exposure and durability for foundations in sulphate soil), reinforcing steel grade (common Egyptian grades 24/35 mild, 36/52 high-yield, 40/60 high-strength - verify with the supplier and ES standard), cover, cement type (sulphate-resisting where the soil report says so).", "P", ["p_codes","lib:rxfam"], "p_codes lists the codes (titles only, clause numbers deliberately not reproduced). No material-grade table."),
+  ("Define loads per ECP 201 (check clauses): dead (self weight + finishes + partitions), live by occupancy (residential rooms ~2 kN/m2, balconies/stairs higher - from the code table), roof live/maintenance, wind, seismic zone, earth pressure, water. Typical finishes allowance ~1.5-2.0 kN/m2 on floors; masonry wall line loads.", "P", ["R:model|Structure|Analytical Model|Load Combinations","p_calc","env_wind","env_eq"], "R.X Load Combinations (floor loads, EN 1990 6.10 / ASCE 7 / characteristic) exists but no ECP 201 table and no wall line loads."),
+  ("Load combinations: ECP 203 ultimate (typical 1.4 D + 1.6 L, plus wind/seismic combinations - check the clause) and service combination for deflection/cracking/bearing.", "P", ["R:model|Structure|Analytical Model|Load Combinations"], "EN/ASCE/characteristic forms only."),
+  ("Preliminary sizing by span/depth: slab t >= span/30-35 (one-way) or span/35-40 (two-way continuous); beam depth span/10-12 (simply supported to continuous), width 20-30 cm; column from load: Ac ~ N / (0.35-0.45 x fcu) as first guess; footing area = service load / allowable bearing x 1.1.", "M", [], "Rules of thumb only; no pre-sizing tool. Demo can type them into the R.X Properties (rv_props)."),
+  ("Layout the structure on the grid: column positions (also at stair corners, around shafts), beam lines under walls, slab panels, cantilevers/balconies, expansion/construction joints, lift pit if any.", "P", ["rv_col","rv_beam","rv_floor","rv_found","rv_fslab","R:model|Structure|Structure|Beam System","R:model|Structure|Structure|Brace"], "R.X elements exist; no automatic framing from walls."),
+  ("Check column load take-down (tributary area x total load x floors) and footing area once; revise sizes; fix final grid and dimensions with the architect.", "M", [], "No load take-down tool. p_calc sheets 'bear' (bearing pressure under base) can check one footing."),
+  ("Coordination meeting: structure vs architecture vs MEP (beam depth under ducts, column vs door, slab openings for shafts).", "Y", ["clash","p_coord","coord_nv1","nv_clash","mom_new"], "N.X clash + MOM tool."),
+  ("Write the structural design basis (1-2 pages): codes, loads, materials, foundation type, assumptions, software/method.", "Y", ["o_report","dc_rep","p_codes"], "Report editor; no design-basis template."),
+ ],
+ outputs=["Structural design basis document", "Structural layout drawings (column grid + beam layout + slab panels + foundation type) - preliminary", "Updated R.X model with columns/beams/slabs/foundations at preliminary sizes", "Load table"],
+ checks=["Column continuity from foundation to roof (no column ends on a beam unless designed)", "Total preliminary concrete within the rule-of-thumb range (see phase 6)", "Footing areas fit inside the plot and clear neighbours", "All spans <= limits used in the span/depth table", "Design basis signed by the engineer in charge"],
+ rules=["RULE OF THUMB: total concrete in a villa skeleton ~ 0.30-0.40 m3 per m2 of BUA incl. foundations; reinforcing steel 90-130 kg per m3 of concrete (~ 35-50 kg/m2 BUA). A quantity far outside this range = recheck.", "RULE OF THUMB: villa column grid 4-5.5 m, columns 25x60 to 30x70 cm in Egyptian practice (long side along the wall), beams 25x60 cm typical; footing 1.2-2.2 m square for 400-900 kN service load on 150 kPa soil.", "RULE OF THUMB: the 1st trial footing area = service load x 1.1 / allowable bearing."],
+ mistakes=["Choosing isolated footings when they almost touch -> should be a raft", "Forgetting the tie beams / grade beams and the ground slab", "Using live loads from habit instead of the code table", "Changing the architectural plan after the structure is fixed"],
+ duration="2-4 weeks",
+ demo="Highlight: place columns on the grid, beams on the wall lines, foundation pads under columns, show the 'load take-down' table (needs a small build - see gaps).",
+))

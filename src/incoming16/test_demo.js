@@ -9,7 +9,8 @@ const b=await chromium.launch({executablePath:"/Applications/Google Chrome.app/C
 const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true});
 const entry=SC==='entry';
 await ctx.addInitScript(e=>{ try{ ['xto-tabs','xto-dc','xto-cdeaud'].forEach(k=>localStorage.removeItem(k)); if(!e)sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(x){} },entry);
-const pg=await ctx.newPage(), er=[], dl=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('')); pg.on('download',d=>dl.push(d.suggestedFilename()));
+await ctx.addInitScript(()=>{ addEventListener('error',e=>{ try{ const D=__lsv.ev('DMX.api&&DMX.api.D'); (window.__errs=window.__errs||[]).push((e.message||'')+' | ch='+(D?D.cur+' step='+D.stepNo+' op='+(D.last&&D.last.op)+' '+(D.last&&(D.last.en||D.last.cmd||'').slice(0,40)):'-')); }catch(x){ (window.__errs=window.__errs||[]).push(String(e.message)); } }); });
+const pg=await ctx.newPage(), er=[], dl=[]; pg.on('pageerror',x=>er.push(x.message+' @'+String(x.stack||'').split('\n').slice(1,4).join(' < '))); pg.on('dialog',d=>d.accept('')); pg.on('download',d=>dl.push(d.suggestedFilename()));
 const E=s=>pg.evaluate(s=>{ const r=__lsv.ev(s); return Promise.resolve(r).then(v=>v===undefined?null:JSON.parse(JSON.stringify(v))); },s);
 const shot=async n=>{ try{ await pg.screenshot({path:OUT+'/'+n+'.png'}); }catch(e){} };
 const T0=Date.now(); const log=m=>console.log('['+Math.round((Date.now()-T0)/1000)+'s] '+m);
@@ -63,6 +64,7 @@ if(SC==='entry'){
  await pg.click('#xLogin .xdemo'); ok(await wait("!!document.getElementById('xDemoBar')",60000,500),'entry button opens the app and starts the demo (confirm card)'); await shot('entry_confirm');
  ok(await E("!document.getElementById('xLogin')||document.getElementById('xLogin').classList.contains('out')"),'entry screen closed');
 }
+try{ console.log('PAGE ERRS',JSON.stringify(await pg.evaluate(()=>window.__errs||[])).slice(0,1500)); }catch(e){}
 const real=er.filter(m=>!/ResizeObserver|Failed to load resource|net::/.test(m)); ok(real.length===0,'no page errors'+(real.length?': '+real.slice(0,5).join(' | '):''));
 console.log('FAILS',fails); await b.close(); process.exit(fails?1:0);
 })();

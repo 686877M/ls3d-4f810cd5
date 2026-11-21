@@ -15,6 +15,6 @@ function lazyGL(){
   render:(s,c)=>{ if(!real&&!rt&&!cv.clientWidth)return; const r=mk(); if(r)r.render(s,c); }};
  return new Proxy(own,{
   get(o,k){ if(k in o)return o[k]; if(k==='isSoft')return undefined; if(k==='shadowMap'&&!real)return shadow; const r=mk(); if(!r)return undefined; const v=r[k]; return typeof v==='function'?v.bind(r):v; },
-  set(o,k,v){ if(real)real[k]=v; else pend[k]=v; return true; },
+  set(o,k,v){ if(k in o){ o[k]=v; return true; } if(real)real[k]=v; else pend[k]=v; return true; },
   has(o,k){ return k in o||(real?k in real:true); }});
 }
