@@ -363,3 +363,6 @@ c_xdesc2.js: bilingual hover descriptions for the 85 ribbon commands that had no
 
 ## 2026-11-21 login + auto-update
 Login accepts Arabic-Indic digits, spaces, empty user. c_upd.js polls build.txt every 60s and shows a refresh banner.
+
+## 2026-11-21 Render Studio merged
+rs_core/rs_out/rs_ui in chain before c_xdesc2. Stills (to 8K tiled), turntable/walk/fly/timelapse/section/day video as WebM or PNG zip. Own test 52/52 in session; after merge parity 126, px2 149, freeai 88, link 43. Not tested: real GPU, MP4, audio.
