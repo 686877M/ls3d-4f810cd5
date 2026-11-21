@@ -357,3 +357,6 @@ freeai_data.js + freeai.js after c_orb.js (28 presets with Free badges, free cha
 
 ## 2026-11-20 — audit: explainer graphics + resize guard merged
 c_ui2.js/c_ind.js: one picture set (21 pictures, 0 fallbacks) shared by hover, Guide, part card; 4 tab descriptions + 2 icon aliases added; resize guard (GL setSize 5->1 at startup). Tests: parity 126, px2 149, rc 330, freeai 88, link 43. Open: 113 ribbon buttons have no description (need bilingual wording); two chart renderers (Q.X, O.X) not merged; window.__lsv.ev eval hook should be removed from public build; no CPU gain proven (machine overloaded).
+
+## 2026-11-21 ribbon hover text
+c_xdesc2.js: bilingual hover descriptions for the 85 ribbon commands that had none (0 left). Public build has no __lsv.ev; tests use site/index.test.html.
