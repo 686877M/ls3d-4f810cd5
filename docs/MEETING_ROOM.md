@@ -372,3 +372,6 @@ tox_bridge.py: /proxy (allow-listed, no redirects, public IPs only), /mcp (strea
 
 ## 2026-11-21 vector 3D export merged
 vx.js: current/saved view as SVG, PDF, DXF (true vectors); ribbon vx_export; Render Studio Stills tab block. Test 34/35 in session (35th screenshot timeout), parity 126, px2 149. Not opened in Illustrator/Inkscape/AutoCAD.
+
+## 2026-11-21 perf merged
+Login first (early script), main script and three.js started after first frame, lazy WebGL (lazygl.js), jsPDF lazy, resize never to 0. Login frame 3.2s->0.52s, CPU to ribbon 10.7s->2.2s (SwiftShader, loaded Mac, median of 5; real GPU not measured). parity 126, px2 149, freeai 88, link 43.

@@ -57,6 +57,13 @@ s=s.replace("const PD=[['conc',","/* ########## PROJECT BLOCK 4/4: part specific
 s=s.replace('<div class="row lang"','<div class="row lang" title="Template BVT-1"',1)
 a0="function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight; renderer.setSize(w,h,false);"
 assert a0 in s
-s=s.replace(a0,"function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight, key=w+'x'+h+'@'+(renderer.getPixelRatio?renderer.getPixelRatio():1); if(resize.k===key)return; resize.k=key; renderer.setSize(w,h,false);",1)
+s=s.replace(a0,"function resize(){if(!renderer)return; const w=host.clientWidth,h=host.clientHeight; if(!w||!h)return; /*perf: never resize the GL canvas to 0 (hidden host)*/ const key=w+'x'+h+'@'+(renderer.getPixelRatio?renderer.getPixelRatio():1); if(resize.k===key)return; resize.k=key; renderer.setSize(w,h,false);",1)
+# perf: lazy WebGL context (chunk lazygl.js)
+a="renderer=new T.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio||1,2)); renderer.localClippingEnabled=true; host.insertBefore"
+assert s.count(a)==1
+s=s.replace(a,"renderer=lazyGL(); host.insertBefore",1)
+b="try{ if(softWanted())throw new Error('soft'); renderer=lazyGL();"
+assert s.count(b)==1
+s=s.replace(b,rd('lazygl.js')+"\n"+b,1)
 s=s.replace("':'+e.lineno+')';}","':'+e.lineno+':'+e.colno+')'+((e.error&&e.error.stack)?' | '+String(e.error.stack).split('\\n').slice(1,4).map(function(x){return x.trim().replace(/^at /,'')}).join(' < '):'');}",1)
 open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')
