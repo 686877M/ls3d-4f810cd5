@@ -17,8 +17,17 @@ Two doors, same tools:
 The page connects OUT to this process (Bridge pane in T.O X, command "Connect an agent"), so nothing in the page
 is exposed to the network. Listens on 127.0.0.1 only. A random token is printed on start (or set TOX_TOKEN);
 the page and every HTTP call must present it. Standard library only.
+
+Optional: --isolate adds COOP same-origin + COEP credentialless to the --serve pages, so crossOriginIsolated is true and
+multithreaded WASM (SharedArrayBuffer, e.g. Whisper wasm threads) works. OFF by default: the page embeds cross-origin
+iframes (YouTube, OpenStreetMap) that a COEP page blocks. Chrome/Edge/Firefox only (Safari ignores credentialless).
+
+Also on the same port (token required, 127.0.0.1 only):
+  POST /proxy  local CORS proxy for free-model providers (see "proxy" below). Body {url, method, headers, body, stream}.
+  POST /mcp    MCP over streamable HTTP (JSON replies) with the same tools, for n8n's MCP Client Tool:
+               URL http://127.0.0.1:8766/mcp  header  Authorization: Bearer TOKEN   (or x-tox-token: TOKEN)
 """
-import json, mimetypes, os, queue, secrets, sys, tempfile, threading, time, uuid
+import http.client, ipaddress, json, mimetypes, os, queue, re, secrets, socket, ssl, sys, tempfile, threading, time, uuid
 from email.parser import BytesParser
 from email.policy import default as _mailpolicy
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -26,6 +35,7 @@ from urllib.parse import urlparse, parse_qs
 
 PORT = int(os.environ.get("TOX_PORT", "8766"))
 ROOT = None                    # set by --serve: folder with index.html (the site)
+ISOLATE = False                # --isolate: COOP/COEP on the served pages (cross-origin isolation for WASM threads)
 mimetypes.add_type("application/wasm", ".wasm")
 mimetypes.add_type("video/mp4", ".mp4")
 TOKEN = os.environ.get("TOX_TOKEN") or secrets.token_urlsafe(12)
@@ -133,16 +143,172 @@ def page_online():
     return time.time() - last_poll[0] < 40
 
 
+# ---------------------------------------------------------------- /proxy (local CORS proxy for free-model providers)
+# Allow-list = the provider hosts in freeai_data.js (exact host match, https, port 443). Extend with TOX_PROXY_HOSTS="a.com,b.com".
+# The API key arrives in the request headers from the page, is used for that one upstream call and is never logged or stored.
+PROXY_HOSTS = {h.strip().lower() for h in (
+    "api.baichuan-ai.com api.cerebras.ai api.cloudflare.com api.cohere.ai api.deepseek.com api.groq.com "
+    "api.hunyuan.cloud.tencent.com api.lingyiwanwu.com api.minimax.io api.mistral.ai api.moonshot.ai api.sambanova.ai "
+    "api.siliconflow.com api.together.xyz api.z.ai ark.cn-beijing.volces.com dashscope-intl.aliyuncs.com "
+    "generativelanguage.googleapis.com integrate.api.nvidia.com models.github.ai open.bigmodel.cn openrouter.ai "
+    "router.huggingface.co").split()}
+PROXY_HOSTS |= {h.strip().lower() for h in os.environ.get("TOX_PROXY_HOSTS", "").split(",") if h.strip()}
+# only the OpenAI-compatible calls the page makes: .../models, .../models/<id>, .../chat/completions, .../completions, .../embeddings
+PROXY_PATH = re.compile(r"^(/[A-Za-z0-9._~@:%-]+)*/(models(/[A-Za-z0-9._~@:%/-]+)?|chat/completions|completions|embeddings)$")
+PROXY_REQ_HEADERS = {"authorization", "content-type", "accept", "x-api-key", "api-key", "x-goog-api-key", "anthropic-version",
+                     "openai-organization", "http-referer", "x-title"}
+PROXY_RESP_HEADERS = ("content-type", "retry-after", "x-request-id", "request-id", "date")   # plus x-ratelimit-* / ratelimit-*
+PROXY_MAX_REQ = 2 * 1024 * 1024          # request body from the page
+PROXY_MAX_RESP = 16 * 1024 * 1024        # response body (buffered or streamed)
+PROXY_CONNECT_T, PROXY_IDLE_T, PROXY_TOTAL_T = 10, 60, 180
+_ssl_ctx = ssl.create_default_context()  # tests may replace this with a context that trusts a fake CA
+UPSTREAM_PORT = 443                      # tests only: the fake provider listens elsewhere
+
+
+class ProxyErr(Exception):
+    def __init__(self, code, msg):
+        Exception.__init__(self, msg)
+        self.code, self.msg = code, msg
+
+
+def _resolve(host):
+    """All addresses of host (module-level so tests can map a fake name to a local server)."""
+    return sorted({ai[4][0] for ai in socket.getaddrinfo(host, 443, type=socket.SOCK_STREAM)})
+
+
+def _is_public(ip):
+    a = ipaddress.ip_address(ip)
+    if a.version == 6 and a.ipv4_mapped:
+        a = a.ipv4_mapped
+    return a.is_global and not (a.is_multicast or a.is_loopback or a.is_private or a.is_link_local or a.is_reserved or a.is_unspecified)
+
+
+def proxy_check_url(url):
+    """Validate and return (host, path_with_query). Raises ProxyErr. No network access here."""
+    if not isinstance(url, str) or len(url) > 2048 or any(c in url for c in "\r\n\t \\") or not url.isascii():
+        raise ProxyErr(400, "bad url")
+    u = urlparse(url)
+    if u.scheme != "https":
+        raise ProxyErr(403, "https only")
+    if u.username or u.password or "@" in u.netloc:
+        raise ProxyErr(403, "credentials in url not allowed")
+    try:
+        port = u.port
+    except ValueError:
+        raise ProxyErr(400, "bad port")
+    if port not in (None, 443):
+        raise ProxyErr(403, "port not allowed")
+    host = (u.hostname or "").lower()
+    if host not in PROXY_HOSTS:   # exact match: also rejects IP literals, trailing dot, sub/parent domains
+        raise ProxyErr(403, "host not in the provider allow-list: " + host)
+    if u.fragment or "%2e" in u.path.lower() or "%2f" in u.path.lower() or "/./" in u.path or "/../" in u.path or "//" in u.path or not PROXY_PATH.match(u.path):
+        raise ProxyErr(403, "path not allowed (only .../models, .../chat/completions, .../completions, .../embeddings)")
+    return host, u.path + ("?" + u.query if u.query else "")
+
+
+class _PinnedHTTPS(http.client.HTTPSConnection):
+    """Connects to an already vetted IP, but verifies the certificate and sends SNI for the real host name."""
+    def __init__(self, host, ip, **kw):
+        http.client.HTTPSConnection.__init__(self, host, 443, context=_ssl_ctx, **kw)
+        self._ip = ip
+
+    def connect(self):
+        sock = socket.create_connection((self._ip, UPSTREAM_PORT), self.timeout)
+        self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+
+
+def proxy_open(host, path, method, headers, body):
+    """Resolve, refuse non-public addresses, connect to the vetted address. Never follows redirects."""
+    try:
+        ips = _resolve(host)
+    except OSError:
+        raise ProxyErr(502, "cannot resolve " + host)
+    if not ips or not all(_is_public(i) for i in ips):
+        raise ProxyErr(403, "host resolves to a private or reserved address")
+    last, c = None, None
+    for ip in ips:          # only the CONNECT may fall back to the next address; once the request is sent it is never repeated
+        c = _PinnedHTTPS(host, ip, timeout=PROXY_CONNECT_T)
+        try:
+            c.connect()
+            break
+        except (OSError, ssl.SSLError) as e:
+            last = e
+            c.close()
+            c = None
+    if c is None:
+        raise ProxyErr(504 if isinstance(last, socket.timeout) else 502, "upstream connection failed: " + type(last).__name__)
+    try:
+        c.sock.settimeout(PROXY_IDLE_T)
+        c.request(method, path, body=body, headers=headers)
+        return c, c.getresponse()
+    except socket.timeout:
+        c.close()
+        raise ProxyErr(504, "upstream timed out")
+    except (OSError, ssl.SSLError, http.client.HTTPException) as e:
+        c.close()
+        raise ProxyErr(502, "upstream request failed: " + type(e).__name__)
+
+
+def proxy_headers_in(h):
+    out = {}
+    for k, v in (h or {}).items():
+        k = str(k).lower()
+        if k in PROXY_REQ_HEADERS and isinstance(v, str) and len(v) < 4096 and not re.search(r"[\r\n\x00]", v):
+            out[k] = v
+    out["accept-encoding"] = "identity"
+    out["user-agent"] = "tox-bridge-proxy/1"
+    return out
+
+
+def proxy_headers_out(resp):
+    out = []
+    for k, v in resp.getheaders():
+        kl = k.lower()
+        if kl in PROXY_RESP_HEADERS or kl.startswith("x-ratelimit-") or kl.startswith("ratelimit-"):
+            out.append((k, v))
+    return out
+
+
+# ---------------------------------------------------------------- MCP (shared by stdio and HTTP)
+def mcp_handle(m):
+    """One JSON-RPC message -> response dict, or None for notifications."""
+    mid, meth = m.get("id"), m.get("method")
+    out = None
+    if meth == "initialize":
+        out = {"protocolVersion": m.get("params", {}).get("protocolVersion", "2024-11-05"), "capabilities": {"tools": {}}, "serverInfo": {"name": "tox", "version": "1"}}
+    elif meth == "tools/list":
+        out = {"tools": [{"name": n, "description": d, "inputSchema": schema(a)} for n, d, a in TOOLS]}
+    elif meth == "tools/call":
+        pr = m.get("params", {})
+        if pr.get("name") not in [t[0] for t in TOOLS]:
+            return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32602, "message": "unknown tool"}} if mid is not None else None
+        c, err = result_content(call_page(pr.get("name"), pr.get("arguments")))
+        out = {"content": c, "isError": err}
+    elif meth == "ping":
+        out = {}
+    if mid is None:
+        return None
+    resp = {"jsonrpc": "2.0", "id": mid}
+    if out is None:
+        resp["error"] = {"code": -32601, "message": "method not found"}
+    else:
+        resp["result"] = out
+    return resp
+
+
+
 class H(BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
-    def _send(self, code, obj=None):
+    def _send(self, code, obj=None, extra=None):
         body = b"" if obj is None else json.dumps(obj, ensure_ascii=False).encode()
         self.send_response(code)
+        for k, v in (extra or {}).items():
+            self.send_header(k, v)
         self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Headers", "content-type,x-tox-token")
-        self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "content-type,x-tox-token,authorization,mcp-session-id,mcp-protocol-version,accept")
+        self.send_header("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS")
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -155,6 +321,138 @@ class H(BaseHTTPRequestHandler):
 
     def do_OPTIONS(self):
         self._send(204)
+
+    def _local_only(self):
+        """DNS-rebinding guard for /proxy and /mcp: Host must be loopback; a browser Origin must be loopback or null (file://)."""
+        host = (self.headers.get("host") or "").rsplit(":", 1)[0].strip("[]").lower()
+        if host not in ("127.0.0.1", "localhost", "::1"):
+            return False
+        o = self.headers.get("origin")
+        if o and o != "null":
+            oh = (urlparse(o).hostname or "").lower()
+            if oh not in ("127.0.0.1", "localhost", "::1"):
+                return False
+        return True
+
+    def _auth_header(self):
+        """Token from x-tox-token or Authorization: Bearer (never from the query string)."""
+        t = self.headers.get("x-tox-token") or (self.headers.get("authorization") or "").replace("Bearer ", "", 1)
+        return secrets.compare_digest(t, TOKEN)
+
+    def _body(self, limit):
+        n = int(self.headers.get("content-length") or 0)
+        if n < 0 or n > limit:
+            return None
+        return self.rfile.read(n)
+
+    def _do_mcp(self):
+        if not self._local_only():
+            return self._send(403, {"error": "local only"})
+        if not self._auth_header():
+            return self._send(401, {"error": "bad token"})
+        raw = self._body(4 * 1024 * 1024)
+        try:
+            m = json.loads(raw)
+        except Exception:
+            return self._send(400, {"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
+        batch = isinstance(m, list)
+        outs = [r for r in (mcp_handle(x) for x in (m if batch else [m]) if isinstance(x, dict)) if r is not None]
+        if not outs:
+            return self._send(202)          # only notifications / responses: accepted, no body
+        hdr = {"Mcp-Session-Id": uuid.uuid4().hex} if (not batch and m.get("method") == "initialize") else {}
+        self._send(200, outs if batch else outs[0], hdr)
+
+    def _do_proxy(self):
+        if not self._local_only():
+            return self._perr(403, "local only")
+        if not self._auth_header():       # header only; the page keeps the token out of URLs
+            return self._perr(401, "bad token")
+        raw = self._body(PROXY_MAX_REQ + 65536)
+        if raw is None:
+            self.close_connection = True
+            return self._perr(413, "request too large")
+        try:
+            d = json.loads(raw)
+            assert isinstance(d, dict)
+        except Exception:
+            return self._perr(400, "bad json")
+        try:
+            method = str(d.get("method") or "GET").upper()
+            if method not in ("GET", "POST"):
+                raise ProxyErr(405, "method not allowed")
+            host, path = proxy_check_url(d.get("url"))
+            body = d.get("body")
+            if body is not None:
+                if not isinstance(body, str) or method != "POST":
+                    raise ProxyErr(400, "body must be a string and only for POST")
+                body = body.encode("utf-8")
+                if len(body) > PROXY_MAX_REQ:
+                    raise ProxyErr(413, "request too large")
+            hdrs = proxy_headers_in(d.get("headers"))
+            conn, resp = proxy_open(host, path, method, hdrs, body)
+        except ProxyErr as e:
+            return self._perr(e.code, e.msg)
+        stream = bool(d.get("stream"))
+        t0 = time.time()
+        key = hdrs.get("authorization", "")[7:] or hdrs.get("x-api-key") or hdrs.get("api-key") or hdrs.get("x-goog-api-key") or ""
+        try:
+            data = None
+            if not stream:      # read everything first, so a failure can still become a clean error reply
+                buf, total = [], 0
+                try:
+                    while True:
+                        if time.time() - t0 > PROXY_TOTAL_T:
+                            raise ProxyErr(504, "upstream too slow")
+                        chunk = resp.read(65536)
+                        if not chunk:
+                            break
+                        total += len(chunk)
+                        if total > PROXY_MAX_RESP:
+                            raise ProxyErr(502, "response too large")
+                        buf.append(chunk)
+                except (OSError, http.client.HTTPException):
+                    raise ProxyErr(504, "upstream read failed or timed out")
+                data = b"".join(buf)
+                if len(key) >= 8:   # an upstream error page that echoes the key must not hand it back
+                    data = data.replace(key.encode("utf-8", "ignore"), b"***")
+            self.send_response(resp.status)
+            for k, v in proxy_headers_out(resp):
+                self.send_header(k, v)
+            self.send_header("x-tox-proxy", "ok")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Expose-Headers", "*")
+            if resp.status in (301, 302, 303, 307, 308):
+                self.send_header("x-tox-proxy-note", "redirect not followed")
+            if stream:
+                self.send_header("Cache-Control", "no-cache")
+                self.send_header("X-Accel-Buffering", "no")
+                self.send_header("Connection", "close")
+                self.close_connection = True
+                self.end_headers()
+                total = 0
+                try:
+                    while time.time() - t0 < PROXY_TOTAL_T and total < PROXY_MAX_RESP:
+                        chunk = resp.read1(8192)
+                        if not chunk:
+                            break
+                        total += len(chunk)
+                        self.wfile.write(chunk)
+                        self.wfile.flush()
+                except (OSError, http.client.HTTPException):
+                    pass            # upstream or browser went away mid-stream: just end it
+            else:
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+        except ProxyErr as e:
+            return self._perr(e.code, e.msg)
+        except (BrokenPipeError, ConnectionResetError):
+            self.close_connection = True
+        finally:
+            conn.close()
+
+    def _perr(self, code, msg):
+        self._send(code, {"error": msg, "tox_proxy": True}, {"x-tox-proxy-error": "1", "Access-Control-Expose-Headers": "*"})
 
     def _static(self, p):
         rel = "index.html" if p in ("", "/") else p.lstrip("/")
@@ -175,6 +473,9 @@ class H(BaseHTTPRequestHandler):
         self.send_header("Content-Type", mimetypes.guess_type(f)[0] or "application/octet-stream")
         self.send_header("Accept-Ranges", "bytes")
         self.send_header("Cache-Control", "no-cache")
+        if ISOLATE:
+            self.send_header("Cross-Origin-Opener-Policy", "same-origin")
+            self.send_header("Cross-Origin-Embedder-Policy", "credentialless")
         if code == 206:
             self.send_header("Content-Range", "bytes %d-%d/%d" % (a, b, size))
         self.send_header("Content-Length", str(n))
@@ -203,10 +504,12 @@ class H(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             return self.wfile.write(body)
+        if p == "/mcp":     # no server-initiated stream: allowed by the streamable HTTP spec
+            return self._send(405, {"error": "POST only"}, {"Allow": "POST"})
         if ROOT and p not in ("/ping", "/poll"):
             return self._static(p)
         if p == "/ping":
-            return self._send(200, {"ok": True, "page": page_online(), "whisper": WH["name"]})
+            return self._send(200, {"ok": True, "page": page_online(), "whisper": WH["name"], "proxy": True, "mcp": True, "isolate": ISOLATE})
         if not self._auth():
             return self._send(401, {"error": "bad token"})
         if p == "/poll":
@@ -217,8 +520,17 @@ class H(BaseHTTPRequestHandler):
                 return self._send(204)
         self._send(404, {"error": "unknown"})
 
+    def do_DELETE(self):    # MCP session end: sessions are stateless here, so just acknowledge
+        if urlparse(self.path).path == "/mcp":
+            return self._send(200, {"ok": True}) if (self._local_only() and self._auth_header()) else self._send(401, {"error": "bad token"})
+        self._send(404, {"error": "unknown"})
+
     def do_POST(self):
         pth = urlparse(self.path).path
+        if pth == "/proxy":
+            return self._do_proxy()
+        if pth == "/mcp":
+            return self._do_mcp()
         if pth == "/v1/audio/transcriptions":   # OpenAI-compatible, used by the page's REC button
             tok = (self.headers.get("authorization") or "").replace("Bearer ", "") or self.headers.get("x-tox-token") or ""
             if not secrets.compare_digest(tok, TOKEN):
@@ -295,24 +607,8 @@ def mcp():
             m = json.loads(line)
         except Exception:
             continue
-        mid, meth = m.get("id"), m.get("method")
-        out = None
-        if meth == "initialize":
-            out = {"protocolVersion": m.get("params", {}).get("protocolVersion", "2024-11-05"), "capabilities": {"tools": {}}, "serverInfo": {"name": "tox", "version": "1"}}
-        elif meth == "tools/list":
-            out = {"tools": [{"name": n, "description": d, "inputSchema": schema(a)} for n, d, a in TOOLS]}
-        elif meth == "tools/call":
-            pr = m.get("params", {})
-            c, err = result_content(call_page(pr.get("name"), pr.get("arguments")))
-            out = {"content": c, "isError": err}
-        elif meth == "ping":
-            out = {}
-        if mid is not None:
-            resp = {"jsonrpc": "2.0", "id": mid}
-            if out is None:
-                resp["error"] = {"code": -32601, "message": "method not found"}
-            else:
-                resp["result"] = out
+        resp = mcp_handle(m)
+        if resp is not None:
             sys.stdout.write(json.dumps(resp, ensure_ascii=False) + "\n")
             sys.stdout.flush()
 
@@ -321,6 +617,8 @@ if __name__ == "__main__":
     if "--whisper" in sys.argv:
         i = sys.argv.index("--whisper")
         whisper_start(sys.argv[i + 1] if i + 1 < len(sys.argv) and not sys.argv[i + 1].startswith("--") else "auto")
+    if "--isolate" in sys.argv:
+        ISOLATE = True
     if "--serve" in sys.argv:
         i = sys.argv.index("--serve")
         d = sys.argv[i + 1] if i + 1 < len(sys.argv) and not sys.argv[i + 1].startswith("--") else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")

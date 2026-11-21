@@ -366,3 +366,6 @@ Login accepts Arabic-Indic digits, spaces, empty user. c_upd.js polls build.txt 
 
 ## 2026-11-21 Render Studio merged
 rs_core/rs_out/rs_ui in chain before c_xdesc2. Stills (to 8K tiled), turntable/walk/fly/timelapse/section/day video as WebM or PNG zip. Own test 52/52 in session; after merge parity 126, px2 149, freeai 88, link 43. Not tested: real GPU, MP4, audio.
+
+## 2026-11-21 bridge proxy merged
+tox_bridge.py: /proxy (allow-listed, no redirects, public IPs only), /mcp (streamable HTTP for n8n), --isolate opt-in. freeai.js retries blocked providers through /proxy. Tests: 94 bridge, 22 chrome, 88 freeai. Not tested: real providers, n8n.
