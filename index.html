@@ -3432,7 +3432,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H18M64 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="39.2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7.6" font-weight="300" letter-spacing="2.4" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
 function xtoTagSvg(fill,op,y){ y=y||44.5; return '<g fill="'+fill+'" stroke="none" opacity="'+op+'" font-family="Segoe UI,Arial,sans-serif"><text x="2" y="'+y+'" textLength="78" lengthAdjust="spacing" font-size="3.4" font-weight="300">TECHNICAL OFFICE <tspan font-size="5.2" font-weight="400">X</tspan></text><text x="28" y="'+(y+5.6)+'" textLength="26" lengthAdjust="spacing" font-size="3.6" font-weight="200">6868</text></g>'; }
-XTO.build='20261122-011152';
+XTO.build='20261122-012305';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -13277,6 +13277,355 @@ XCMD('gm_layers','layer','Map layers catalogue (imagery, thermal, history, statu
 setTimeout(()=>Object.assign(XDESC,{gm_layers:['Opens the layer catalogue: streets, aerial, Wayback history, Sentinel-2 by year, NASA GIBS daily imagery, thermal (land and sea surface temperature), night lights, vegetation, land cover, water, forest, radar, with licence flags, tested status and a live Test button.','بتفتح كتالوج الطبقات: شوارع وصور جوية وتاريخ Wayback وSentinel-2 بالسنة وصور NASA GIBS اليومية وحراري (حرارة الأرض والبحر) وأضواء الليل والنبات والغطاء الأرضي والمياه والغابات والرادار، بعلامات الترخيص والحالة المختبرة وزرار اختبار حي.']}),0);
 try{ const ids=['gm_layers']; RIBM.gm_layers={type:'gis',tab:'Map',tabAr:'الخريطة',panel:'Places',panelAr:'الأماكن',en:'Layers catalogue',ar:'كتالوج الطبقات',impl:'gm_layers'}; const t=RIBP.gis&&RIBP.gis.tabs.find(t=>t[0]==='map'); const g=t&&t[2].find(g=>g[0][0]==='Places'); if(g)g[1].push('gm_layers'); }catch(e){}
 window.GMC=GMC; window.gmcApply=gmcApply; window.gmcRaw=gmcRaw; window.gmcTest=gmcTest; window.gmcStatus=gmcStatus;
+/* ====== ag5_widget: the floating agent widget "Jarvis" (prefix AG5 / ag5). One small window on top of everything that stays with you across tabs and
+   windows: a LARGE editable transcript (grows, scrolls, edit before sending), the step plan with live status (listening / thinking / doing k of n /
+   done / failed + reason), push-to-talk or hands-free with end-of-speech detection (silence timeout, default 1.2 s, max 20 s), learned-phrase chips.
+   Lazy: nothing is built and no listener is attached until first use (command ag5_open, Alt+J, the agent mic, or any agent request).
+   Wraps xaVoice (the agent panel mic) without editing c_agent2.js. Settings key xto-ag5ui (UI only, no project data). ====== */
+const AG5={w:null,st:'idle',why:'',plan:[],run:null,queue:[],ctx:{},log:[],mem:null,listening:false,lis:null,cd:null,ask:null,
+ cfg:{mode:'ptt',sil:1200,max:20000,auto:true,corner:'br',min:false},tmo:{step:15000,tab:8000,geo:20000,old:90000}};
+try{ const o=JSON.parse(localStorage.getItem('xto-ag5ui')||'null'); if(o&&typeof o==='object'){ if(o.mode==='free'||o.mode==='ptt')AG5.cfg.mode=o.mode; if(/^(tl|tr|bl|br)$/.test(o.corner))AG5.cfg.corner=o.corner; if(isFinite(+o.sil))AG5.cfg.sil=Math.max(400,Math.min(5000,+o.sil)); if(isFinite(+o.max))AG5.cfg.max=Math.max(3000,Math.min(60000,+o.max)); AG5.cfg.auto=o.auto!==false; AG5.cfg.min=!!o.min; } }catch(e){}
+function ag5Save(){ try{ localStorage.setItem('xto-ag5ui',JSON.stringify(AG5.cfg)); }catch(e){} }
+const ag5B=(en,ar)=>(typeof lang!=='undefined'&&lang==='ar')?ar:en;
+function ag5E(tag,p,kids){ const d=document.createElement(tag); if(p)for(const k in p){ if(k==='text')d.textContent=p[k]; else if(k==='html')d.innerHTML=p[k]; else if(k.slice(0,2)==='on')d.addEventListener(k.slice(2),p[k]); else d.setAttribute(k,p[k]); } (kids||[]).forEach(c=>c&&d.appendChild(c)); return d; }
+function ag5Css(){ if(document.getElementById('ag5css'))return; const s=document.createElement('style'); s.id='ag5css'; s.textContent=
+ '#ag5w{position:fixed;z-index:99980;width:min(400px,calc(100vw - 24px));max-height:calc(100vh - 24px);display:flex;flex-direction:column;background:#1f2227;color:#e9eef3;border:1px solid #3c444d;border-radius:10px;box-shadow:0 10px 32px rgba(0,0,0,.55);font:14px "Segoe UI",Tahoma,Arial,sans-serif;resize:horizontal;overflow:hidden;min-width:280px}'+
+ '#ag5w .h{display:flex;align-items:center;gap:6px;padding:6px 8px;background:#2a2f36;cursor:grab;user-select:none;touch-action:none}#ag5w .h b{font-size:13px;letter-spacing:.3px}#ag5w .h .sp{flex:1}'+
+ '#ag5w button{background:#343b44;color:#e9eef3;border:1px solid #4a535e;border-radius:6px;padding:4px 9px;font:inherit;font-size:12.5px;cursor:pointer}#ag5w button:hover{background:#3f4852}#ag5w button.on{background:#2f6fb2;border-color:#4b8fd6}'+
+ '#ag5w .st{font-size:12px;padding:2px 8px;border-radius:99px;background:#3a4048;white-space:nowrap;max-width:190px;overflow:hidden;text-overflow:ellipsis}#ag5w .st.listening{background:#a8322d;animation:ag5p 1s infinite}#ag5w .st.thinking{background:#9a6b12}#ag5w .st.doing{background:#2f6fb2}#ag5w .st.done{background:#2e7d4f}#ag5w .st.failed{background:#a8322d}'+
+ '@keyframes ag5p{50%{opacity:.6}}#ag5w .b{padding:8px;display:flex;flex-direction:column;gap:7px;overflow:auto}'+
+ '#ag5txt{width:100%;box-sizing:border-box;min-height:72px;max-height:40vh;resize:vertical;font:16px/1.55 "Segoe UI",Tahoma,Arial,sans-serif;background:#14171b;color:#fff;border:1px solid #4a535e;border-radius:8px;padding:8px 10px;overflow-y:auto}#ag5txt.live{border-color:#d9534f}'+
+ '#ag5w .row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}#ag5w .mic.live{background:#a8322d;border-color:#d9534f}#ag5w .cd{font-size:12px;color:#f0b35a}'+
+ '#ag5w ol{margin:0;padding:0 0 0 4px;list-style:none;max-height:30vh;overflow:auto}#ag5w ol li{display:flex;gap:7px;padding:3px 4px;border-radius:5px;font-size:13px;align-items:flex-start}#ag5w ol li.run{background:#24344a}#ag5w ol li.fail{color:#ff9a94}#ag5w ol li.ok{color:#a8e0b5}#ag5w ol li i{font-style:normal;width:16px;flex:none;text-align:center}#ag5w ol li small{display:block;color:#b8c0c8;font-size:12px}'+
+ '#ag5w .sug span{display:inline-block;margin:2px;padding:2px 9px;border:1px solid #4b8fd6;border-radius:99px;font-size:12px;cursor:pointer}#ag5w .msg{font-size:12.5px;color:#cfd6dd;white-space:pre-wrap}#ag5w .attr{font-size:11px;color:#9aa4ae}#ag5w .attr a{color:#9cc7f0}'+
+ '#ag5w .ask{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px;color:#f0b35a}#ag5w .set{display:grid;grid-template-columns:auto 1fr;gap:5px 8px;font-size:12.5px;align-items:center}#ag5w .set input[type=number]{width:70px}'+
+ '#ag5w.min .b{display:none}#ag5cur{position:fixed;left:0;top:0;z-index:99996;pointer-events:none;will-change:transform;display:none}#ag5cur span{position:absolute;left:16px;top:16px;font:600 11px "Segoe UI",Arial;padding:2px 8px;border-radius:99px;background:#4fc3f7;color:#0b1a22;white-space:nowrap}'+
+ '.ag5rip{position:fixed;z-index:99995;width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid #4fc3f7;border-radius:50%;pointer-events:none;animation:ag5r .6s ease-out forwards}@keyframes ag5r{from{transform:scale(.3);opacity:1}to{transform:scale(1.6);opacity:0}}';
+ document.head.appendChild(s); }
+function ag5Build(){ if(AG5.w)return AG5.w; ag5Css(); const L=k=>ag5B(k[0],k[1]);
+ const st=ag5E('span',{class:'st',id:'ag5st',text:L(['Ready','جاهز'])}), mode=ag5E('button',{id:'ag5mode',title:L(['Push-to-talk (one request) or hands-free (keeps listening after each request)','اضغط واتكلم (طلب واحد) أو بدون إيدين (يفضل يسمع بعد كل طلب)']),onclick:()=>{ AG5.cfg.mode=AG5.cfg.mode==='free'?'ptt':'free'; ag5Save(); ag5Paint(); if(AG5.cfg.mode==='free'&&!AG5.listening&&!AG5.run)ag5Listen(); }});
+ const h=ag5E('div',{class:'h'},[ag5E('span',{text:'●',style:'color:#4fc3f7'}),ag5E('b',{text:'Jarvis'}),st,ag5E('span',{class:'sp'}),mode,
+  ag5E('button',{text:'⚙',title:L(['Settings','الإعدادات']),onclick:()=>{ const s=AG5.w.querySelector('.set'); s.hidden=!s.hidden; }}),
+  ag5E('button',{text:'–',title:L(['Minimise','تصغير']),onclick:()=>{ AG5.cfg.min=!AG5.cfg.min; ag5Save(); ag5Paint(); }}),
+  ag5E('button',{text:'×',title:L(['Close (the agent keeps working; Alt+J opens it again)','اقفل (الوكيل بيكمل شغل؛ Alt+J يفتحه تاني)']),onclick:()=>ag5Close()})]);
+ const tx=ag5E('textarea',{id:'ag5txt',rows:'2',dir:'auto',placeholder:L(['Say or type: open G.X, go to Egypt, Maadi, street 9, then zoom in','قول أو اكتب: افتح G.X وروح على مصر، المعادي، شارع 9 وبعدين كبّر']),
+  oninput:()=>{ ag5Grow(); ag5CdStop(); ag5Suggest(tx.value); },onfocus:()=>ag5CdStop(),onkeydown:e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); ag5Send(); } }});
+ const mic=ag5E('button',{class:'mic',id:'ag5mic',text:'🎤 '+L(['Talk','اتكلم']),title:L(['Click: listen once, stops by itself when you stop talking. Hold: talk while held.','اضغط: يسمع مرة ويقف لوحده لما تسكت. اضغط مطولاً: يسمع طول ما انت ضاغط.'])});
+ let held=0; mic.addEventListener('pointerdown',()=>{ held=Date.now(); if(!AG5.listening)ag5Listen({hold:true}); }); mic.addEventListener('pointerup',()=>{ if(AG5.listening&&AG5.lis&&AG5.lis.hold&&Date.now()-held>600)ag5StopListen(true); else if(AG5.lis)AG5.lis.hold=false; });
+ const row=ag5E('div',{class:'row'},[mic,ag5E('button',{id:'ag5go',text:L(['Send ▶','نفّذ ▶']),title:L(['Run the text in the box','نفّذ النص اللي في الصندوق']),onclick:()=>ag5Send()}),
+  ag5E('button',{id:'ag5stop',text:L(['Stop ■','وقّف ■']),title:L(['Stop listening and stop the running steps','وقّف السمع ووقّف الخطوات الشغالة']),onclick:()=>{ ag5StopListen(false); ag5Cancel(); }}),ag5E('span',{class:'cd'})]);
+ const num=(k,lab,mul)=>ag5E('input',{type:'number',step:'0.1',min:'0.4',value:String(AG5.cfg[k]/mul),title:lab,onchange:e=>{ const v=+e.target.value*mul; if(isFinite(v)&&v>0){ AG5.cfg[k]=k==='sil'?Math.max(400,Math.min(5000,v)):Math.max(3000,Math.min(60000,v)); ag5Save(); } }});
+ const auto=ag5E('input',{type:'checkbox',onchange:e=>{ AG5.cfg.auto=e.target.checked; ag5Save(); }}); auto.checked=AG5.cfg.auto;
+ const set=ag5E('div',{class:'set'},[ag5E('span',{text:L(['Stop after silence (s)','يقف بعد سكوت (ث)'])}),num('sil','silence',1000),ag5E('span',{text:L(['Max listening (s)','أقصى مدة سمع (ث)'])}),num('max','max',1000),
+  ag5E('span',{text:L(['Send by itself after speech','ينفّذ لوحده بعد الكلام'])}),auto,ag5E('span',{text:L(['Learned phrases','العبارات المتعلمة'])}),
+  ag5E('button',{id:'ag5forget',text:L(['Forget all','امسحها كلها']),title:L(['Delete the phrase memory kept on this computer','امسح ذاكرة العبارات المحفوظة على الجهاز ده']),onclick:async()=>{ await ag5MemWipe(); ag5Msg(ag5B('Learned phrases deleted.','العبارات المتعلمة اتمسحت.')); ag5Suggest(''); }}),
+  ag5E('span',{class:'attr',style:'grid-column:1/3',text:L(['Voice text and phrases stay on this computer. Place search uses OpenStreetMap Nominatim (blocked in Sensitive mode unless you allow it).','نص الكلام والعبارات بتفضل على الجهاز. البحث عن الأماكن من OpenStreetMap Nominatim (ممنوع في الوضع الحساس إلا لو سمحت).'])})]); set.hidden=true;
+ const b=ag5E('div',{class:'b'},[tx,row,ag5E('div',{class:'sug'}),ag5E('ol',{class:'plan'}),ag5E('div',{class:'ask'}),ag5E('div',{class:'msg'}),ag5E('div',{class:'attr',id:'ag5attr'}),set]);
+ const w=AG5.w=ag5E('div',{id:'ag5w',role:'dialog','aria-label':'Jarvis'},[h,b]); document.body.appendChild(w);
+ /* drag anywhere, snap (dock) to the nearest corner on release */
+ h.addEventListener('pointerdown',e=>{ if(e.target.closest('button'))return; const r=w.getBoundingClientRect(), dx=e.clientX-r.left, dy=e.clientY-r.top; h.setPointerCapture(e.pointerId); h.style.cursor='grabbing';
+  const mv=ev=>{ w.style.left=Math.max(0,Math.min(innerWidth-40,ev.clientX-dx))+'px'; w.style.top=Math.max(0,Math.min(innerHeight-30,ev.clientY-dy))+'px'; w.style.right=w.style.bottom='auto'; };
+  const up=ev=>{ h.releasePointerCapture(e.pointerId); h.style.cursor=''; h.removeEventListener('pointermove',mv); h.removeEventListener('pointerup',up); const q=w.getBoundingClientRect(); AG5.cfg.corner=(q.top+q.height/2<innerHeight/2?'t':'b')+(q.left+q.width/2<innerWidth/2?'l':'r'); ag5Save(); ag5Place(); };
+  h.addEventListener('pointermove',mv); h.addEventListener('pointerup',up); });
+ addEventListener('resize',()=>{ if(AG5.w)ag5Place(); });
+ document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&AG5.run&&AG5.w&&AG5.w.contains(document.activeElement))ag5Cancel(); });
+ ag5Place(); ag5Paint(); ag5MemLoad().then(()=>ag5Suggest('')); return w; }
+function ag5Place(){ const w=AG5.w; if(!w)return; const c=AG5.cfg.corner, m=12; w.style.left=w.style.right=w.style.top=w.style.bottom='auto'; if(c[1]==='l')w.style.left=m+'px'; else w.style.right=m+'px'; if(c[0]==='t')w.style.top=(m+40)+'px'; else w.style.bottom=(m+26)+'px'; }
+function ag5Open(){ const w=ag5Build(); w.hidden=false; w.style.display='flex'; ag5Front(); return w; }
+function ag5Close(){ if(AG5.w){ AG5.w.style.display='none'; } ag5StopListen(false); }
+function ag5Front(){ if(AG5.w&&AG5.w.parentNode!==document.body)document.body.appendChild(AG5.w); if(AG5.w&&AG5.w.nextSibling)document.body.appendChild(AG5.w); }
+function ag5Grow(){ const t=document.getElementById('ag5txt'); if(!t)return; t.style.height='auto'; t.style.height=Math.min(Math.max(72,t.scrollHeight+2),Math.round(innerHeight*.4))+'px'; }
+function ag5Text(t,fin){ ag5Open(); const x=document.getElementById('ag5txt'); x.value=t; x.classList.toggle('live',!fin); ag5Grow(); x.scrollTop=x.scrollHeight; }
+function ag5Msg(t){ if(!AG5.w)return; AG5.w.querySelector('.msg').textContent=t||''; }
+function ag5Attr(html){ if(!AG5.w)return; document.getElementById('ag5attr').innerHTML=html||''; }
+/* status: idle | listening | thinking | doing | done | failed */
+function ag5Status(st,txt){ AG5.st=st; AG5.why=txt||''; ag5Paint(); }
+function ag5Paint(){ const w=AG5.w; if(!w)return; w.dir=(typeof lang!=='undefined'&&lang==='ar')?'rtl':'ltr'; w.classList.toggle('min',AG5.cfg.min); const s=w.querySelector('#ag5st');
+ const T={idle:['Ready','جاهز'],listening:['Listening…','بسمع…'],thinking:['Thinking…','بفكر…'],doing:['Doing','بنفّذ'],done:['Done','تم'],failed:['Failed','فشل']}[AG5.st]||['',''];
+ s.className='st '+AG5.st; s.textContent=ag5B(T[0],T[1])+(AG5.why?': '+AG5.why:''); s.title=s.textContent;
+ const m=w.querySelector('#ag5mode'); m.textContent=AG5.cfg.mode==='free'?ag5B('Hands-free','بدون إيدين'):ag5B('Push-to-talk','اضغط واتكلم'); m.classList.toggle('on',AG5.cfg.mode==='free');
+ const mic=w.querySelector('#ag5mic'); mic.classList.toggle('live',AG5.listening); mic.textContent=(AG5.listening?'■ ':'🎤 ')+(AG5.listening?ag5B('Listening','بسمع'):ag5B('Talk','اتكلم'));
+ const ol=w.querySelector('.plan'); ol.innerHTML=''; AG5.plan.forEach((p,i)=>{ const ic={wait:'·',run:'◐',ok:'✓',fail:'✗',skip:'–'}[p.st||'wait']; const li=ag5E('li',{class:p.st||'wait'},[ag5E('i',{text:ic}),ag5E('div',{},[ag5E('span',{text:(i+1)+'. '+p.label}),p.res||p.why?ag5E('small',{text:p.why||p.res}):null])]); ol.appendChild(li); }); }
+function ag5CdStop(){ if(AG5.cd){ clearInterval(AG5.cd); AG5.cd=null; } const c=AG5.w&&AG5.w.querySelector('.cd'); if(c)c.textContent=''; }
+function ag5Send(){ ag5CdStop(); const x=document.getElementById('ag5txt'); const t=(x&&x.value||'').trim(); if(!t)return; x.value=''; x.classList.remove('live'); ag5Grow(); try{ say2(t,'u'); }catch(e){} AG5.fromWidget=true; return Promise.resolve(xaHandle(t)).finally(()=>{ AG5.fromWidget=false; }); }
+/* after speech: put the text in the box, then send it after a short countdown that any edit cancels */
+function ag5Heard(t){ t=String(t||'').trim(); ag5Status('idle'); if(!t){ ag5Msg(ag5B('I did not hear anything.','ماسمعتش حاجة.')); if(AG5.cfg.mode==='free'&&!AG5.run)ag5Relisten(); return; } ag5Text(t,true);
+ if(!AG5.cfg.auto){ ag5Msg(ag5B('Check the text, then press Send.','راجع الكلام وبعدين دوس نفّذ.')); return; } let n=15; const c=AG5.w.querySelector('.cd'); ag5CdStop();
+ AG5.cd=setInterval(()=>{ n--; c.textContent=ag5B('Sending in ','هيتنفذ بعد ')+(n/10).toFixed(1)+ag5B(' s (click the text to edit)',' ث (اضغط على النص عشان تعدّل)'); if(n<=0){ ag5CdStop(); ag5Send(); } },100); }
+function ag5Relisten(){ setTimeout(()=>{ if(AG5.cfg.mode!=='free'||AG5.listening||AG5.run||!AG5.w||AG5.w.style.display==='none')return; if(window.speechSynthesis&&speechSynthesis.speaking){ ag5Relisten(); return; } ag5Listen(); },500); }
+/* listening: browser speech recognition with interim text, or the configured speech-to-text (bridge Whisper, local Whisper, server) with a level VAD */
+function ag5Listen(o){ ag5Open(); if(AG5.listening){ ag5StopListen(true); return; } ag5CdStop(); o=o||{};
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition, srv=(typeof AI!=='undefined'&&AI.stt&&AI.stt!=='webspeech'&&typeof aiTranscribe==='function');
+ const L=AG5.lis={hold:!!o.hold,t0:Date.now(),last:0,txt:'',iv:0,stop:null}; AG5.listening=true; ag5Status('listening'); ag5Text('',false);
+ const end=(why)=>{ if(AG5.lis!==L)return; clearInterval(L.iv); AG5.lis=null; AG5.listening=false; ag5Paint(); xaLog('ag5','listen end: '+why); };
+ L.tick=()=>{ const now=Date.now(); if(L.hold)return; if(L.last&&now-L.last>AG5.cfg.sil)L.stop('silence'); else if(now-L.t0>AG5.cfg.max)L.stop('max'); else if(!L.last&&now-L.t0>8000)L.stop('nothing'); };
+ if(SR&&!srv){ const r=new SR(); L.r=r; r.lang=(typeof lang!=='undefined'&&lang==='en')?'en-US':'ar-EG'; r.continuous=true; r.interimResults=true; let fin='';
+  r.onresult=e=>{ let it=''; for(let i=e.resultIndex;i<e.results.length;i++){ const x=e.results[i]; if(x.isFinal)fin+=(fin?' ':'')+x[0].transcript.trim(); else it+=x[0].transcript; } L.txt=(fin+(it?' '+it:'')).trim(); L.last=Date.now(); ag5Text(L.txt,false); };
+  L.stop=(why)=>{ if(L.done)return; L.done=why||'stop'; try{ r.stop(); }catch(e){} setTimeout(()=>{ if(AG5.lis===L){ end(L.done); if(why!=='cancel')ag5Heard(L.txt); } },700); };
+  r.onend=()=>{ if(AG5.lis!==L)return; end(L.done||'ended'); if(L.done!=='cancel')ag5Heard(L.txt); }; r.onerror=e=>{ if(e&&e.error==='not-allowed'){ end('denied'); ag5Status('failed',ag5B('microphone blocked','المايك ممنوع')); } };
+  try{ r.start(); }catch(e){ end('start'); ag5Status('failed',ag5B('speech recognition did not start','التعرف على الكلام مابدأش')); return; } L.iv=setInterval(L.tick,150); return; }
+ if(!navigator.mediaDevices||!window.MediaRecorder){ end('none'); ag5Status('failed',ag5B('no speech input in this browser: type instead','مفيش إدخال صوت في المتصفح ده: اكتب')); return; }
+ navigator.mediaDevices.getUserMedia({audio:true}).then(stm=>{ if(AG5.lis!==L){ stm.getTracks().forEach(t=>t.stop()); return; } const ac=new (window.AudioContext||window.webkitAudioContext)(), an=ac.createAnalyser(); an.fftSize=1024; ac.createMediaStreamSource(stm).connect(an); const buf=new Float32Array(an.fftSize), rec=new MediaRecorder(stm), ch=[]; rec.ondataavailable=e=>{ if(e.data.size)ch.push(e.data); };
+  const close=()=>{ try{ stm.getTracks().forEach(t=>t.stop()); ac.close(); }catch(e){} };
+  rec.onstop=async()=>{ close(); if(L.done==='cancel'||!L.last){ end(L.done||'nothing'); if(L.done!=='cancel')ag5Heard(''); return; } end(L.done); ag5Status('thinking',ag5B('transcribing','بحوّل الكلام لنص')); try{ ag5Heard(await aiTranscribe(new Blob(ch,{type:rec.mimeType||'audio/webm'}))); }catch(e){ ag5Status('failed',ag5B('speech-to-text error: ','خطأ تحويل الكلام: ')+e.message); } };
+  L.stop=(why)=>{ if(L.done)return; L.done=why||'stop'; try{ rec.state!=='inactive'?rec.stop():close(); }catch(e){} };
+  const vad=()=>{ if(AG5.lis!==L)return; an.getFloatTimeDomainData(buf); let s=0; for(const v of buf)s+=v*v; if(Math.sqrt(s/buf.length)>.02){ L.last=Date.now(); ag5Text(ag5B('(speaking…)','(بتتكلم…)'),false); } L.tick(); };
+  rec.start(250); L.iv=setInterval(vad,100); }).catch(()=>{ end('denied'); ag5Status('failed',ag5B('microphone blocked','المايك ممنوع')); }); }
+function ag5StopListen(send){ const L=AG5.lis; if(!L)return; if(L.stop)L.stop(send?'user':'cancel'); else { clearInterval(L.iv); AG5.lis=null; AG5.listening=false; ag5Paint(); } }
+/* learned-phrase chips (memory lives in ag5_exec.js) */
+function ag5Suggest(t){ if(!AG5.w)return; const box=AG5.w.querySelector('.sug'); box.innerHTML=''; const hits=ag5MemSuggest(t,3); if(!hits.length)return; box.appendChild(ag5E('span',{text:ag5B('Learned:','متعلّم:'),style:'border:0;cursor:default;padding-left:0'}));
+ hits.forEach(h=>box.appendChild(ag5E('span',{text:h.p.slice(0,60),title:ag5B('Run it again: ','نفّذها تاني: ')+h.steps.map(ag5Label).join(' → '),onclick:()=>{ const x=document.getElementById('ag5txt'); x.value=h.p; ag5Grow(); ag5Send(); }}))); }
+/* entry points: command, Alt+J, the agent panel mic */
+XCMD('ag5_open','agent','Agent widget (Jarvis): talk or type, it works across tabs','ويدجت الوكيل (جارفيس): اتكلم أو اكتب، وبيشتغل معاك في كل التابات',()=>{ ag5Open(); document.getElementById('ag5txt').focus(); });
+XCMD('ag5_listen','mic','Agent: listen now (stops by itself when you stop talking)','الوكيل: اسمع دلوقتي (بيقف لوحده لما تسكت)',()=>ag5Listen());
+XCMD('ag5_forget','trash','Agent: forget learned phrases','الوكيل: امسح العبارات المتعلمة',async()=>{ await ag5MemWipe(); try{ xSt(ag5B('Learned phrases deleted.','العبارات المتعلمة اتمسحت.')); }catch(e){} });
+XDESC.ag5_open=['Opens the floating agent window. It stays on top while you change tabs, shows what it heard in a large box you can edit, the plan of steps and what it is doing now. Alt+J opens and closes it.','بيفتح نافذة الوكيل العائمة. بتفضل فوق وانت بتغيّر التابات، وبتعرض اللي سمعه في صندوق كبير تقدر تعدّله، وخطة الخطوات وبيعمل إيه دلوقتي. Alt+J بيفتحها ويقفلها.'];
+XDESC.ag5_listen=['Starts listening for one request. Stops after about 1.2 s of silence or 20 s at most (change in the widget settings).','بيبدأ يسمع طلب واحد. بيقف بعد حوالي 1.2 ثانية سكوت أو 20 ثانية بالأكتر (تقدر تغيّرها من إعدادات الويدجت).'];
+XDESC.ag5_forget=['Deletes the phrases the agent learned from your past requests. They are kept only on this computer.','بيمسح العبارات اللي الوكيل اتعلمها من طلباتك. محفوظة على الجهاز ده بس.'];
+document.addEventListener('keydown',e=>{ if(e.altKey&&!e.ctrlKey&&!e.metaKey&&e.code==='KeyJ'){ e.preventDefault(); if(AG5.w&&AG5.w.style.display!=='none')ag5Close(); else ag5Open(); } });
+if(typeof xaVoice==='function'){ xaVoice=function(){ if(AG5.listening){ ag5StopListen(true); return; } ag5Listen(); }; }
+/* ====== ag5_exec: request -> explicit step plan -> steps run one after another with a visible cursor, each awaited until it really finished
+   (tab opened and drawn, place found and shown, command returned) with a timeout. A step that fails says why and the rest go on (or the agent
+   asks: retry / skip / stop). Never blocks the page: cursor = requestAnimationFrame tween with a timer fallback, cancelable; no busy waits.
+   Session context (AG5.ctx: last tab, last object, last place) lets follow-ups refer back ("now zoom in", "make it vertical", "measure it").
+   Phrase memory: successful requests -> steps, in IndexedDB "xto-ag5" on this computer only (not in the project package; deleted by the
+   "Forget" button and by the privacy close-out wipe). Wraps xaHandle; questions (XAS.q) and anything it does not understand go to the old chain. ====== */
+const AG5OURS=new Set(['tab','close','geo','zoom','zoomsel','line','wall','marker','del','orient','rot','move','len','height','measure','undo','stop']);
+const ag5Sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ag5TabNow=()=>{ try{ return (WTAB.tabs.find(t=>t.id===WTAB.cur)||{}).type||''; }catch(e){ return ''; } };
+function ag5Err(en,ar){ const e=new Error(ag5B(en,ar)); e.ag5=1; return e; }
+function ag5Race(p,ms,why){ let t; return Promise.race([Promise.resolve(p),new Promise((_,j)=>{ t=setTimeout(()=>j(why instanceof Error?why:ag5Err('timed out: '+why,'المهلة خلصت: '+why)),ms); })]).finally(()=>clearTimeout(t)); }
+function ag5Until(cond,ms,en,ar,R){ const t0=Date.now(); return new Promise((ok,no)=>{ const f=()=>{ let v=false; try{ v=cond(); }catch(e){} if(v)return ok(v); if(R&&R.cancel)return no(ag5Err('stopped','اتوقف')); if(Date.now()-t0>ms)return no(ag5Err(en,ar)); setTimeout(f,50); }; f(); }); }
+/* ---------- cursor: rAF tween, timer fallback (background tabs pause rAF), cancel token ---------- */
+function ag5CurEl(){ let c=document.getElementById('ag5cur'); if(c)return c; ag5Css(); c=ag5E('div',{id:'ag5cur',html:'<svg width="22" height="22" viewBox="0 0 20 20"><path d="M2 2l14 6-6 2-2 6z" fill="#4fc3f7" stroke="#0b1a22" stroke-width="1.2"/></svg><span>Jarvis</span>'}); document.body.appendChild(c); c._x=innerWidth-140; c._y=innerHeight-140; return c; }
+function ag5Point(target,R,click){ const c=ag5CurEl(); let x,y; if(target&&target.getBoundingClientRect&&target.isConnected){ const r=target.getBoundingClientRect(); if(r.width||r.height){ x=r.left+Math.min(r.width/2,80); y=r.top+r.height/2; } } else if(Array.isArray(target)){ x=target[0]; y=target[1]; } if(x===undefined){ x=innerWidth/2; y=innerHeight/2; }
+ c.style.display='block'; const x0=c._x, y0=c._y, d=Math.max(180,Math.min(650,Math.hypot(x-x0,y-y0)*.9)), t0=performance.now(); const set=(px,py)=>{ c._x=px; c._y=py; c.style.transform='translate('+Math.round(px)+'px,'+Math.round(py)+'px)'; };
+ return new Promise(res=>{ let done=false; const fin=()=>{ if(done)return; done=true; set(x,y); if(click!==false){ const rp=ag5E('div',{class:'ag5rip',style:'left:'+x+'px;top:'+y+'px'}); document.body.appendChild(rp); setTimeout(()=>rp.remove(),650); } res(); };
+  if(document.hidden){ fin(); return; } const fb=setTimeout(fin,d+250);
+  const step=now=>{ if(done)return; if(R&&R.cancel){ clearTimeout(fb); fin(); return; } const k=Math.min(1,(now-t0)/d), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; set(x0+(x-x0)*e,y0+(y-y0)*e); if(k<1)requestAnimationFrame(step); else { clearTimeout(fb); fin(); } };
+  requestAnimationFrame(step); }); }
+/* ---------- parsing ---------- */
+const AG5VERB='(?:افتح|اقفل|سكر|روح|وديني|خدني|ابحث|دور|اعمل|ارسم|قيس|قيسه|قيسها|كبر|صغر|قرب|زوم|زووم|حرك|حركه|حركها|انقل|لف|خلي|خليه|خليها|اجعل|حط|ضيف|امسح|احذف|شيل|طول|open|close|go|show|search|find|fly|zoom|measure|move|rotate|make|set|place|put|add|delete|remove|erase|draw|run|switch)';
+function ag5Split(text){ const t=String(text||'').replace(/\s+/g,' ').trim(), n=norm(t), out=[];
+ const re=new RegExp('\\s*(?:[;؛\\n]|(?:^|\\s)(?:ثم|بعدين|وبعدين|وبعد كده|وبعد كدا|بعد كده|بعد كدا|بعد ما تخلص|then|and then|after that|next)(?=\\s|$|[,،]))\\s*[,،]?\\s*|\\s*[,،]?\\s+(?:و\\s*|and\\s+)(?='+AG5VERB+'(?:\\s|$|[,،.]))|\\s*[,،]\\s*(?='+AG5VERB+'(?:\\s|$))','gi');
+ let i=0, m; while((m=re.exec(n))){ if(m[0]===''){ re.lastIndex++; continue; } out.push(t.slice(i,m.index)); i=m.index+m[0].length; } out.push(t.slice(i));
+ return out.map(x=>x.replace(/^[\s,،.]+|[\s,،.]+$/g,'')).filter(x=>x.length>0); }
+const AG5U=[[/^(مم|ملي|مللي|ملليمتر|mm|millimet(er|re)s?)$/,.001],[/^(سم|سنتي|سنتيمتر|cm|centimet(er|re)s?)$/,.01],[/^(م|متر|مترا|امتار|meters?|metres?|m)$/,1],[/^(قدم|ft|feet|foot)$/,.3048],[/^(كم|كيلو|km)$/,1000]];
+function ag5Num(s){ const n=norm(s).replace(/٫/g,'.'); let m=n.match(/(-?\d+(?:[.,]\d+)?)\s*([a-z؀-ۿ]+)?/); let v=null,u='';
+ if(m){ v=+m[1].replace(',','.'); u=m[2]||''; } else if(typeof XAW!=='undefined'){ const w=n.split(/\s+/); for(let i=0;i<w.length;i++){ const k=w[i].replace(/^و/,''); if(XAW[k]!=null){ v=XAW[k]; u=w[i+1]||''; break; } } }
+ if(v===null)return null; let k=1, unit='m'; for(const [re,f] of AG5U)if(re.test(u)){ k=f; unit=u; break; } if(/(ونص|و نص|and a half)/.test(n))v+=.5; return {v:v*k,raw:v,unit}; }
+function ag5Deg(s){ const m=norm(s).match(/(-?\d+(?:\.\d+)?)\s*(درجه|درجات|deg|degrees?|°)/); return m?+m[1]:null; }
+function ag5Dir(s){ if(/(يمين|right|شرق|east)/.test(s))return [1,0]; if(/(يسار|شمال|left|غرب|west)/.test(s)&&!/(ناحيه الشمال|للشمال|north)/.test(s))return [-1,0]; if(/(فوق|لفوق|up|north|للشمال|ناحيه الشمال)/.test(s))return [0,1]; if(/(تحت|لتحت|down|جنوب|south)/.test(s))return [0,-1]; return null; }
+const AG5MAPW=/(?:^|\s)(خريط\S*|الخريط\S*|map|maps|gis|جي اي اس|g\.?x|جي اكس)(?=\s|$|[,،])/;
+const AG5PLACEV=/(?:^|\s)(روح|رح|وديني|خدني|ابحث|دور علي|دور عن|go to|fly to|take me|find|search|locate|show me|zoom to)(?=\s|$)/;
+const AG5PLACEH=/(مصر|egypt|القاهره|cairo|الجيزه|giza|اسكندريه|alexandria|شارع|street|st\.|حي|district|منطقه|مدينه|city|طريق|road|ميدان|square|كمبوند|compound|محافظه)/;
+const AG5STOPW=/^(و?(افتح|روح|رح|وديني|خدني|ابحث|دور|علي|على|عن|لـ?|الي|الى|خريطه|خريطة|الخريطه|الخريطة|خريطت|تاب|التاب|تبويب|جي|اي|اس|اكس|gis|g\.?x|map|maps|the|open|go|to|fly|take|me|find|search|locate|show|tab|of|on|a|an|please|لو|سمحت|هات|وريني|ورينى))$/i;
+function ag5Query(clause){ const toks=String(clause).replace(/[،]/g,', ').split(/\s+/), out=[]; toks.forEach(w=>{ const p=w.match(/[,.]+$/), core=w.replace(/[,.]+$/,''); if(/^(في|فى|in|بـ)$/i.test(core)){ out.push(','); return; } if(core&&!AG5STOPW.test(norm(core)))out.push(core); if(p&&out.length)out[out.length-1]+=','; }); return out.join(' ').replace(/\s*,\s*/g,', ').replace(/^[,\s]+|[,\s]+$/g,'').replace(/(,\s*)+/g,', ').trim(); }
+function ag5TabOf(s){ if(/(?:^|\s)(map|maps)(?=\s|$)/.test(s))return 'gis'; try{ for(const k of TABK)if(k[0].test(s))return k[1]; }catch(e){}
+ const AL={'جي':'G','ار':'R','سي':'C','اس':'S','بي':'P','ان':'N','كيو':'Q','اتش':'H','اي':'E','ام':'M','ال':'L','دي':'D','اف':'F','او':'O'}; let L=null; const m=s.match(/(?:^|[^a-z])([a-z])\s?\.\s?x(?![a-z])|(?:^|[^a-z])([a-z])x(?![a-z])/); if(m)L=(m[1]||m[2]).toUpperCase(); else { const m2=s.match(/(?:^|\s)(جي|ار|سي|اس|بي|ان|كيو|اتش|اي|ام|ال|دي|اف|او)\s?\.?\s?اكس(?=\s|$)/); if(m2)L=AL[m2[1]]; }
+ if(L){ try{ for(const k in WTYPES){ const c=String(WTYPES[k].n[0]||'').split(' ')[0]; if(c===L+'.X')return k; } }catch(e){} } return null; }
+/* one clause -> steps. tab0 = tab that will be current when this clause runs */
+function ag5Clause(c,tab0){ const s=norm(c).replace(/[ًٌٍَُِّْـ]/g,''), num=ag5Num(s), has=re=>re.test(s);
+ if(/^(وقف|بطل|خلاص|الغي|كفايه|stop|cancel|abort)( كده| خلاص| دلوقتي)?[.!]*$/.test(s))return [{k:'stop'}];
+ const mem=ag5MemGet(c); if(mem)return mem.steps.map(x=>Object.assign({},x,{mem:1}));
+ if(/^(تراجع|ارجع خطوه|undo)/.test(s))return [{k:'undo'}];
+ if(has(/(?:^|\s)(اقفل|سكر|close)(?=\s|$)/)){ const ty=ag5TabOf(s); return [{k:'close',type:ty||''}]; }
+ if(has(/(ارسم|draw|اعمل|create|ضيف|add)/)&&has(/(?:^|\s)(خط|line)(?=\s|$)/))return [{k:'line',v:num?num.v:5}];
+ if(has(/(ارسم|draw|اعمل|create|ضيف|add)/)&&has(/(حيطه|حيط|حائط|جدار|wall)/))return [{k:'wall',v:num?num.v:5}];
+ if(has(/(حط|ضيف|place|put|add|drop|mark|علم)/)&&has(/(علامه|نقطه|marker|pin|point|دبوس|ماركر)/))return [{k:'marker'}];
+ if(has(/(?:^|\s)(امسح|احذف|شيل|delete|remove|erase)(?=\s|$|ه|ها)/)||/^(امسحه|امسحها|احذفه|احذفها|شيله|شيلها)/.test(s))return [{k:'del'}];
+ if(has(/(راسي|عمودي|vertical|واقف)/))return [{k:'orient',v:'v'}]; if(has(/(افقي|horizontal|نايم)/))return [{k:'orient',v:'h'}];
+ const deg=ag5Deg(s); if(deg!==null&&has(/(لف|دور|rotate|turn)/))return [{k:'rot',v:deg}];
+ if(has(/(حرك|انقل|زق|move|shift)/)){ const d=ag5Dir(s); return [{k:'move',v:num?num.v:1,d:d||[1,0]}]; }
+ if(num&&has(/(ارتفاع|ارتفاعه|ارتفاعها|height|high|tall|طلع|عالي)/))return [{k:'height',v:num.v}];
+ if(num&&(has(/(طول|طوله|طولها|length|long)/)||has(/(قيس|measure)/)||has(/(خلي|خليه|خليها|اجعل|make|set)/)))return [{k:'len',v:num.v}];
+ if(has(/(قيس|قيسه|قيسها|measure|مسافه|distance|كام متر|how long|how far)/))return [{k:'measure'}];
+ if(has(/(زوم علي المحدد|zoom (to )?(the )?sel|زوم على المحدد|زوم علي العنصر|zoom to it|zoom on it)/))return [{k:'zoomsel'}];
+ if(has(/(?:^|\s)(كبر|قرب|زوم ان|زووم ان|zoom in|closer|enlarge|zoom)(?=\s|$)/)&&!has(/(zoom out|صغر|ابعد)/))return [{k:'zoom',v:has(/(كمان|more|اكتر|اوي)/)?2:1}];
+ if(has(/(صغر|ابعد|zoom out|farther)/))return [{k:'zoom',v:has(/(كمان|more|اكتر|اوي)/)?-2:-1}];
+ const mapw=AG5MAPW.test(s), pv=AG5PLACEV.test(s), q=ag5Query(c), preset=ag5Preset(q);
+ if(q&&q.length>1&&(mapw||preset||(pv&&(tab0==='gis'||AG5PLACEH.test(norm(q))))||AG5PLACEH.test(norm(q))&&has(/(افتح|open|show)/))){ const qt=ag5TabOf(norm(q)); if(!qt||qt==='gis'||AG5PLACEH.test(norm(q)))return [{k:'geo',q}]; }
+ const ty=ag5TabOf(s); if(ty&&(has(/(افتح|روح|رح|open|go|show|switch|وريني)/)||s.split(' ').length<=3))return [{k:'tab',type:ty}];
+ try{ const hit=xaFind(c); if(hit)return [{k:'cmd',id:hit.id}]; }catch(e){}
+ return [{k:'old',text:c}]; }
+const AG5NEED={geo:'gis',marker:'gis',line:'draft',wall:'model'};
+function ag5Plan(text){ const whole=ag5MemGet(text), cl=whole?[text]:ag5Split(text), steps=[]; let tab=ag5TabNow();
+ cl.forEach(c=>{ (whole?whole.steps.map(x=>Object.assign({},x,{mem:1})):ag5Clause(c,tab)).forEach(st=>{ const need=AG5NEED[st.k]; if(need&&tab!==need&&!(st.k==='line'&&typeof CS!=='undefined'&&CS.open)){ steps.push({k:'tab',type:need,auto:1}); tab=need; } if(st.k==='tab')tab=st.type; st.src=c; steps.push(st); }); });
+ steps.forEach(ag5Label); const take=steps.some(s=>AG5OURS.has(s.k))&&!(steps.length===1&&(steps[0].k==='cmd'||steps[0].k==='old'||(steps[0].k==='stop'&&!AG5.run)));
+ return {steps,take}; }
+function ag5Label(st){ const tn=t=>{ try{ return xfTypeName(t); }catch(e){ return t; } }, m=v=>(+v).toFixed(2).replace(/\.00$/,'')+ag5B(' m',' م');
+ const T={tab:()=>[ag5B('Open ','افتح ')+tn(st.type)],close:()=>[ag5B('Close ','اقفل ')+(st.type?tn(st.type):ag5B('this tab','التاب ده'))],geo:()=>[ag5B('Find on the map: ','دوّر على الخريطة: ')+st.q],
+  zoom:()=>[st.v>0?ag5B('Zoom in','قرّب')+(st.v>1?' ×'+st.v:''):ag5B('Zoom out','بعّد')+(st.v<-1?' ×'+(-st.v):'')],zoomsel:()=>[ag5B('Zoom to it','زوم عليه')],line:()=>[ag5B('Draw a line ','ارسم خط ')+m(st.v)],wall:()=>[ag5B('Draw a wall ','ارسم حيطة ')+m(st.v)],
+  marker:()=>[ag5B('Place a marker','حط علامة')],del:()=>[ag5B('Delete it','امسحه')],orient:()=>[st.v==='v'?ag5B('Make it vertical','خليه رأسي'):ag5B('Make it horizontal','خليه أفقي')],rot:()=>[ag5B('Rotate ','لف ')+st.v+'°'],
+  move:()=>[ag5B('Move ','حرّك ')+m(st.v)],len:()=>[ag5B('Set length ','خلي الطول ')+m(st.v)],height:()=>[ag5B('Set height ','خلي الارتفاع ')+m(st.v)],measure:()=>[ag5B('Measure it','قيسه')],undo:()=>[ag5B('Undo','تراجع')],stop:()=>[ag5B('Stop','وقّف')],
+  cmd:()=>{ const c=XC[st.id]; return [c?c.t[(typeof lang!=='undefined'&&lang==='ar')?1:0]:st.id]; },old:()=>[ag5B('Ask the agent: ','اسأل الوكيل: ')+String(st.text).slice(0,50)]}[st.k];
+ st.label=(T?T()[0]:st.k)+(st.mem?ag5B(' (learned)',' (متعلّم)'):''); return st.label; }
+/* ---------- run ---------- */
+let AG5RID=0;
+function ag5Cancel(){ const R=AG5.run; if(R){ R.cancel=true; if(R.ac)try{ R.ac.abort(); }catch(e){} } AG5.queue.length=0; if(AG5.ask){ AG5.ask('stop'); } }
+function ag5Ask(R,q,opts){ const box=AG5.w.querySelector('.ask'); box.innerHTML=''; box.appendChild(ag5E('span',{text:q})); return new Promise(res=>{ AG5.ask=v=>{ AG5.ask=null; box.innerHTML=''; res(v); }; opts.forEach(o=>box.appendChild(ag5E('button',{text:o[0],onclick:()=>AG5.ask&&AG5.ask(o[1])}))); }); }
+async function ag5Start(text,steps){ if(steps.length&&steps[0].k==='stop'){ ag5Cancel(); ag5StopListen(false); ag5Status('idle',ag5B('stopped','اتوقف')); return; }
+ if(AG5.run){ return new Promise(res=>{ AG5.queue.push({text,steps,res}); ag5Msg(ag5B('Queued after the current request.','في الطابور بعد الطلب الحالي.')); }); }
+ return ag5Exec(text,steps); }
+async function ag5Exec(text,steps){ ag5Open(); if(!AG5.fromWidget)ag5Text(text,true); const R=AG5.run={id:++AG5RID,text,steps,cancel:false,k:0,t0:Date.now()}; AG5.plan=steps; steps.forEach(s=>{ s.st='wait'; s.res=s.why=''; });
+ ag5Status('thinking'); ag5Paint(); ag5Msg(''); ag5Attr(''); xaLog('ag5','plan: '+steps.map(s=>s.label).join(' | ')); let fails=0, first='';
+ try{ for(let k=0;k<steps.length;k++){ const st=steps[k]; if(R.cancel){ steps.slice(k).forEach(x=>x.st='skip'); break; } R.k=k; st.st='run'; ag5Status('doing',(k+1)+' / '+steps.length+' · '+st.label);
+   try{ const tmo=st.k==='geo'?AG5.tmo.geo:st.k==='old'?AG5.tmo.old:st.k==='tab'?AG5.tmo.tab+2000:AG5.tmo.step; R.ac=(typeof AbortController!=='undefined')?new AbortController():null;
+    st.res=String(await ag5Race(ag5Do(st,R),tmo,ag5Err('timed out after '+Math.round(tmo/1000)+' s','المهلة خلصت بعد '+Math.round(tmo/1000)+' ث'))||''); st.st='ok'; ag5Log(st,true,st.res);
+   }catch(e){ if(R.ac)try{ R.ac.abort(); }catch(x){} if(R.cancel){ st.st='skip'; steps.slice(k+1).forEach(x=>x.st='skip'); break; } st.st='fail'; st.why=String(e&&e.message||e); fails++; if(!first)first=st.why; ag5Log(st,false,st.why);
+    const dep=steps.slice(k+1).some(x=>(st.k==='tab'&&AG5NEED[x.k]===st.type)||(st.k==='geo'&&(x.k==='marker'||x.k==='zoomsel')));
+    if(dep){ ag5Paint(); const a=await ag5Ask(R,ag5B('Step '+(k+1)+' failed: ','الخطوة '+(k+1)+' فشلت: ')+st.why,[[ag5B('Retry','حاول تاني'),'retry'],[ag5B('Skip it','كمّل من غيرها'),'skip'],[ag5B('Stop','وقّف'),'stop']]); if(a==='retry'){ fails--; st.why=''; k--; continue; } if(a==='stop'){ steps.slice(k+1).forEach(x=>x.st='skip'); break; } } }
+   ag5Paint(); }
+ }finally{ AG5.run=null; try{ const c=document.getElementById('ag5cur'); if(c)setTimeout(()=>{ if(!AG5.run)c.style.display='none'; },2500); }catch(e){} }
+ const ok=steps.filter(s=>s.st==='ok').length; if(R.cancel)ag5Status('idle',ag5B('stopped','اتوقف')); else if(fails)ag5Status('failed',first); else ag5Status('done',ok+' / '+steps.length);
+ const sum=R.cancel?ag5B('Stopped.','وقفت.'):fails?ag5B('Done '+ok+' of '+steps.length+'. Failed: ','خلصت '+ok+' من '+steps.length+'. فشل: ')+first:ag5B('Done: ','تمام: ')+steps.map(s=>s.res||s.label).filter(Boolean).slice(-2).join(' · ');
+ ag5Msg(sum); try{ say2(sum,'a'); }catch(e){}
+ if(!fails&&!R.cancel&&steps.every(s=>s.k!=='old'&&s.k!=='stop')&&steps.some(s=>AG5OURS.has(s.k)&&!s.mem))ag5MemPut(text,steps);
+ const nx=AG5.queue.shift(); if(nx){ ag5Exec(nx.text,nx.steps).then(nx.res); } else if(AG5.cfg.mode==='free')ag5Relisten(); return {ok:!fails&&!R.cancel,fails,steps}; }
+function ag5Log(st,ok,msg){ const o={t:new Date().toISOString(),k:st.k,label:st.label,ok,msg:String(msg).slice(0,200)}; AG5.log.push(o); if(AG5.log.length>200)AG5.log.shift(); try{ xaLog('ag5',(ok?'ok ':'FAIL ')+st.label+(msg?' -> '+msg:'')); }catch(e){} }
+async function ag5Do(st,R){ const f=AG5OPS[st.k]; if(!f)throw ag5Err('no handler for '+st.k,'مفيش منفّذ لـ '+st.k); return await f(st,R); }
+const AG5OPS={};
+/* ---------- phrase memory (IndexedDB xto-ag5 / mem, this computer only) ---------- */
+const ag5Key=t=>norm(String(t||'')).replace(/[ًٌٍَُِّْـ.,،!?؟]/g,' ').replace(/\s+/g,' ').trim();
+function ag5Idb(){ return new Promise((ok,no)=>{ try{ const r=indexedDB.open('xto-ag5',1); r.onupgradeneeded=()=>r.result.createObjectStore('mem',{keyPath:'k'}); r.onsuccess=()=>ok(r.result); r.onerror=()=>no(r.error); }catch(e){ no(e); } }); }
+async function ag5MemLoad(){ if(AG5.mem)return AG5.mem; AG5.mem=new Map(); try{ const db=await ag5Idb(); await new Promise(ok=>{ const q=db.transaction('mem').objectStore('mem').getAll(); q.onsuccess=()=>{ (q.result||[]).forEach(x=>AG5.mem.set(x.k,x)); ok(); }; q.onerror=ok; }); db.close(); }catch(e){} return AG5.mem; }
+const AG5KEEP=['k','type','q','v','d','id'];
+async function ag5MemPut(text,steps){ await ag5MemLoad(); const k=ag5Key(text); if(k.length<3)return; const o=AG5.mem.get(k)||{k,p:String(text).trim().slice(0,200),n:0}; o.n++; o.t=Date.now(); o.steps=steps.filter(s=>!s.auto).map(s=>{ const x={}; AG5KEEP.forEach(f=>{ if(s[f]!==undefined)x[f]=s[f]; }); return x; }); AG5.mem.set(k,o);
+ if(AG5.mem.size>200){ [...AG5.mem.values()].sort((a,b)=>a.t-b.t).slice(0,AG5.mem.size-200).forEach(x=>AG5.mem.delete(x.k)); }
+ try{ const db=await ag5Idb(); await new Promise(ok=>{ const tx=db.transaction('mem','readwrite'), st=tx.objectStore('mem'); st.clear(); AG5.mem.forEach(v=>st.put(v)); tx.oncomplete=ok; tx.onerror=ok; }); db.close(); }catch(e){} }
+function ag5MemGet(t){ if(!AG5.mem)return null; const o=AG5.mem.get(ag5Key(t)); return o&&o.steps&&o.steps.length?o:null; }
+function ag5MemSuggest(t,n){ if(!AG5.mem)return []; const k=ag5Key(t), w=new Set(k.split(' ').filter(x=>x.length>1)); const all=[...AG5.mem.values()].filter(o=>o.steps&&o.steps.length);
+ if(!k)return all.sort((a,b)=>b.t-a.t).slice(0,n);
+ return all.map(o=>{ const ow=new Set(o.k.split(' ')); let i=0; w.forEach(x=>{ if(ow.has(x))i++; }); const sc=o.k.indexOf(k)===0?2:i/Math.max(1,new Set([...w,...ow]).size); return [sc,o]; }).filter(x=>x[0]>=.34).sort((a,b)=>b[0]-a[0]||b[1].t-a[1].t).slice(0,n).map(x=>x[1]); }
+async function ag5MemWipe(){ AG5.mem=new Map(); try{ await new Promise(ok=>{ const r=indexedDB.deleteDatabase('xto-ag5'); r.onsuccess=r.onerror=r.onblocked=()=>ok(); }); }catch(e){} }
+/* ---------- hook: every agent request (typed, widget, always-on listener, bridge) comes through xaHandle ---------- */
+{ const _h=xaHandle; AG5.old=_h; xaHandle=async function(t){ if((typeof XAS!=='undefined'&&XAS.q)||AG5.pass)return _h.apply(this,arguments); let P; try{ await ag5MemLoad(); P=ag5Plan(String(t||'')); }catch(e){ return _h.apply(this,arguments); } if(!P.take)return _h.apply(this,arguments); return ag5Start(String(t),P.steps); }; }
+{ const _ws=wtSwitch; wtSwitch=function(){ const r=_ws.apply(this,arguments); try{ if(AG5.w&&AG5.w.style.display!=='none')ag5Front(); }catch(e){} return r; }; }
+/* ====== ag5_geo: "open Egypt, Maadi, street 9" -> G.X flies there with a marker. Order: local demo places (gm_ui.js GMPLOTS, no network),
+   typed coordinates, then OpenStreetMap Nominatim under its usage policy: one request at a time and at least 1.1 s apart, results cached
+   (memory + this browser tab's sessionStorage), no search-as-you-type, no bulk, attribution shown, at most 3 tries per request (drops the most
+   specific part when nothing is found, and says so). Arabic and English names work (accept-language ar,en). Sensitive project mode
+   (privacy.js): blocked unless the user allows map search (PRIV.cfg.geo, the same switch as the privacy panel). Requests go through
+   window.fetch, i.e. the privacy.js gate still applies. ====== */
+const AG5G={cache:null,last:0,chain:Promise.resolve(),host:'nominatim.openstreetmap.org',n:0,base:'https://nominatim.openstreetmap.org/search'};
+function ag5GeoCache(){ if(AG5G.cache)return AG5G.cache; AG5G.cache=new Map(); try{ const o=JSON.parse(sessionStorage.getItem('xto-ag5geo')||'null'); if(o&&typeof o==='object')Object.keys(o).slice(-100).forEach(k=>AG5G.cache.set(k,o[k])); }catch(e){} return AG5G.cache; }
+function ag5GeoKeep(k,v){ const c=ag5GeoCache(); c.set(k,v); if(c.size>100)c.delete(c.keys().next().value); try{ const o={}; c.forEach((x,y)=>o[y]=x); sessionStorage.setItem('xto-ag5geo',JSON.stringify(o)); }catch(e){} }
+const ag5GeoSens=()=>{ try{ return !!(PRIV&&PRIV.cfg&&PRIV.cfg.sensitive&&!PRIV.cfg.geo); }catch(e){ return false; } };
+function ag5GeoAllow(){ try{ PRIV.cfg.geo=true; PRIV.save(); xaLog('ag5','user allowed map search ('+AG5G.host+') in Sensitive mode'); }catch(e){} }
+/* local demo places: id, English or Arabic name, or a well-known district word in it */
+function ag5Preset(q){ if(!q||typeof GMPLOTS==='undefined')return null; const n=norm(q).replace(/[,،]/g,' ').replace(/\s+/g,' ').trim(); if(!n)return null;
+ const m=n.match(/(?:^|\s)(?:plot|قطعه)?\s*(nc1|nc2|nc3|sz|alx)(?=\s|$)/); if(m)return GMPLOTS.find(p=>p.id===m[1])||null;
+ const keys=[['nc2',/(new cairo a|التجمع الخامس|fifth settlement|التجمع)/],['nc1',/(new cairo c|التسعين)/],['sz',/(sheikh zayed|الشيخ زايد|زايد)/],['alx',/(smouha|سموحه)/]];
+ for(const [id,re] of keys)if(re.test(n))return GMPLOTS.find(p=>p.id===id)||null; return null; }
+/* parts ordered from the most specific to the most general; duplicates ("Maadi, Maadi district") merged */
+function ag5GeoParts(q){ let p=String(q).split(/[,،]/).map(x=>x.trim()).filter(Boolean); const g=/^(مصر|egypt|جمهوريه مصر العربيه|القاهره|cairo|الجيزه|giza)$/; if(p.length>1&&g.test(norm(p[0]))&&!g.test(norm(p[p.length-1])))p.reverse();
+ const out=[]; p.forEach(x=>{ const nx=norm(x).replace(/^(حي|منطقه|district of)\s+/,''); const j=out.findIndex(y=>{ const ny=norm(y).replace(/^(حي|منطقه|district of)\s+/,''); return ny===nx||ny.indexOf(nx)>=0||nx.indexOf(ny)>=0; }); if(j<0)out.push(x); else if(x.length>out[j].length)out[j]=x; }); return out; }
+function ag5GeoWait(R){ const run=async()=>{ const w=AG5G.last+1100-Date.now(); if(w>0)await ag5Sleep(w); if(R&&R.cancel)throw ag5Err('stopped','اتوقف'); }; const p=AG5G.chain.then(run,run); AG5G.chain=p.catch(()=>{}); return p; }
+async function ag5GeoAsk(parts,R){ const eg=parts.some(x=>/^(مصر|egypt)$/.test(norm(x))), q=parts.filter(x=>!(eg&&/^(مصر|egypt)$/.test(norm(x)))).join(', ')||parts.join(', '); const key=(eg?'eg|':'')+norm(q); const c=ag5GeoCache();
+ if(c.has(key))return {q,list:c.get(key),cached:1};
+ await ag5GeoWait(R); AG5G.last=Date.now(); AG5G.n++;
+ const url=AG5G.base+'?format=jsonv2&limit=3&addressdetails=0&accept-language=ar,en'+(eg?'&countrycodes=eg':'')+'&q='+encodeURIComponent(q); let r;
+ try{ r=await fetch(url,{signal:R&&R.ac?R.ac.signal:undefined,headers:{accept:'application/json'}}); }catch(e){ if(/Sensitive/i.test(String(e&&e.message)))throw ag5Err('blocked by Sensitive project mode','ممنوع بسبب وضع المشروع الحساس'); if(R&&R.cancel)throw ag5Err('stopped','اتوقف'); throw ag5Err('map search not reachable (needs internet)','البحث في الخريطة مش متاح (محتاج إنترنت)'); }
+ AG5G.last=Date.now(); if(r.status===429)throw ag5Err('the map search service asked to slow down: try again in a minute','خدمة البحث طلبت نهدّى: جرّب بعد دقيقة'); if(!r.ok)throw ag5Err('map search error '+r.status,'خطأ في البحث '+r.status);
+ let j; try{ j=await r.json(); }catch(e){ throw ag5Err('map search answer unreadable','رد البحث مش مفهوم'); } const list=(Array.isArray(j)?j:[]).slice(0,3).map(x=>({lat:+x.lat,lon:+x.lon,name:String(x.display_name||x.name||q).slice(0,160),bb:Array.isArray(x.boundingbox)?x.boundingbox.map(Number):null,type:x.type||'',cls:x.category||x.class||''})).filter(x=>isFinite(x.lat)&&isFinite(x.lon));
+ ag5GeoKeep(key,list); return {q,list}; }
+async function ag5Geocode(q,R){ const pre=ag5Preset(q); if(pre)return {lat:pre.c[0],lon:pre.c[1],name:ag5B(pre.en,pre.ar),src:'preset',plot:pre.id,z:19};
+ try{ const c=typeof parseCoord==='function'?parseCoord(q):null; if(c&&/\d/.test(q)&&Math.abs(c[0])<=90&&Math.abs(c[1])<=180&&!/[a-zA-Z؀-ۿ]{3,}/.test(q.replace(/[NSEWnsew°dms]/g,'')))return {lat:c[0],lon:c[1],name:c[0].toFixed(6)+', '+c[1].toFixed(6),src:'coord',z:17}; }catch(e){}
+ if(ag5GeoSens()){ const e=ag5Err('map search is blocked by Sensitive project mode','البحث في الخريطة ممنوع في وضع المشروع الحساس'); e.sens=1; throw e; }
+ let parts=ag5GeoParts(q); const want=parts.slice(); let dropped=[]; for(let i=0;i<3&&parts.length;i++){ const a=await ag5GeoAsk(parts,R); if(a.list.length){ const t=a.list[0]; let z=16; if(t.bb){ const sp=Math.max(t.bb[1]-t.bb[0],t.bb[3]-t.bb[2]); z=Math.max(4,Math.min(18,Math.round(Math.log2(360/Math.max(sp,1e-4))-1))); }
+   return Object.assign(t,{src:'osm',z,dropped,asked:want.join(', '),cached:a.cached}); }
+  if(parts.length<2)break; dropped.push(parts[0]); parts=parts.slice(1); }
+ throw ag5Err('no place found for "'+want.join(', ')+'"','مالقيتش مكان اسمه "'+want.join('، ')+'"'); }
+function ag5GisLayer(){ let L=GM.layers.find(l=>l.id==='LAG5'); if(!L){ L={id:'LAG5',n:ag5B('Agent places','أماكن الوكيل'),vis:1,op:1,feat:[]}; GM.layers.push(L); } return L; }
+function ag5GisHas(f){ try{ return GM.layers.some(l=>l.feat.includes(f)); }catch(e){ return false; } }
+function ag5MapReady(){ try{ return !!(GM.cv&&GM.cv.isConnected&&GM.cv.width>0&&GM.cv.getBoundingClientRect().width>0); }catch(e){ return false; } }
+async function ag5EnsureMap(R){ if(ag5MapReady())return; try{ wxOpen('pane:gismap',[0,0,.68,1]); }catch(e){} await ag5Until(ag5MapReady,AG5.tmo.tab,'the map did not open','الخريطة ماتفتحتش',R); }
+function ag5ShowAttr(r){ if(r.src==='osm')ag5Attr(ag5B('Place search: ','البحث عن الأماكن: ')+'<a href="https://nominatim.openstreetmap.org/" target="_blank" rel="noopener">Nominatim</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> '+ag5B('contributors (ODbL)','contributors (ODbL)')); else if(r.src==='preset')ag5Attr(ag5B('Demo place: approximate, not a surveyed plot.','مكان ديمو: تقريبي، مش قطعة مرفوعة.')); }
+AG5OPS.geo=async(st,R)=>{ await ag5EnsureMap(R); let r; try{ r=await ag5Geocode(st.q,R); }catch(e){
+  if(e.sens&&AG5.w){ const box=AG5.w.querySelector('.ask'); box.innerHTML=''; box.appendChild(ag5E('span',{text:ag5B('Allow place search on '+AG5G.host+' for this project?','تسمح بالبحث عن الأماكن على '+AG5G.host+' للمشروع ده؟')})); box.appendChild(ag5E('button',{id:'ag5allowgeo',text:ag5B('Allow and retry','اسمح وحاول تاني'),onclick:()=>{ box.innerHTML=''; ag5GeoAllow(); xaHandle(st.src||st.q); }})); box.appendChild(ag5E('button',{text:ag5B('No','لا'),onclick:()=>{ box.innerHTML=''; }})); }
+  throw e; }
+ if(R.cancel)throw ag5Err('stopped','اتوقف'); const cv=GM.cv; await ag5Point(cv,R);
+ if(r.plot&&typeof gmxGoPlot==='function'){ gmxGoPlot(r.plot,r.z); await ag5Until(()=>Math.abs(GM.lat-r.lat)<1e-4&&Math.abs(GM.lon-r.lon)<1e-4,4000,'the map did not move','الخريطة ماتحركتش',R); }
+ else { gmGo(r.lat,r.lon,r.z); GM.msg=r.name; }
+ const f={t:'pt',g:[r.lat,r.lon],n:String(r.name).split(',')[0].slice(0,60)||st.q,c:'#4fc3f7',ag5:1}; ag5GisLayer().feat.push(f); try{ gmDraw(); }catch(e){}
+ await ag5Until(()=>Math.abs(GM.lat-r.lat)<1e-4&&Math.abs(GM.lon-r.lon)<1e-4,3000,'the map did not move','الخريطة ماتحركتش',R);
+ AG5.ctx.place=r; AG5.ctx.obj={kind:'gis',f}; AG5.ctx.tab='gis'; ag5ShowAttr(r);
+ const note=r.dropped&&r.dropped.length?ag5B(' (not found: '+r.dropped.join(', ')+'; showing the nearest bigger area)',' (مالقيتش: '+r.dropped.join('، ')+'؛ بعرض أقرب منطقة أكبر)'):'';
+ return r.name.slice(0,90)+note; };
+/* ====== ag5_ops: what each step does, on the existing tools only (tabs WTAB/wtNew/wtSwitch/wtClose, C.X cadD/CS/cadCommit, R.X RV/rvChanged,
+   G.X GM/gmGo/gmDraw, commands XC: zin, zout, zsel, undo, c_dim, m_dist, rv_del, gis_layers ...). Every op waits for its visible result.
+   "It" = the last object the agent made or touched (AG5.ctx.obj) unless you selected another one yourself (your selection wins).
+   C.X: drawing units are taken as metres (1 unit = 1 m), said in the result. Each change is one undo step (xaTxn from c_mission.js). ====== */
+const ag5Tx=f=>(typeof xaTxn==='function')?xaTxn(f):Promise.resolve().then(f);
+const ag5M=v=>(Math.round(v*100)/100).toFixed(2)+ag5B(' m',' م');
+function ag5TabRendered(type){ if(type==='gis')return ag5MapReady(); try{ return Object.values(WX.lay).some(l=>l.open); }catch(e){ return true; } }
+AG5OPS.tab=async(st,R)=>{ const type=st.type; if(!WTYPES[type])throw ag5Err('unknown tab "'+type+'"','تاب مش معروف "'+type+'"'); const t=WTAB.tabs.find(x=>x.type===type);
+ await ag5Point(t?xaTabEl(type):(document.querySelector('#xDocTabs .plus')||document.getElementById('xDocTabs')),R); if(R.cancel)throw ag5Err('stopped','اتوقف');
+ if(!t)wtNew(type); else if(WTAB.cur!==t.id)wtSwitch(t.id);
+ await ag5Until(()=>ag5TabNow()===type&&ag5TabRendered(type),AG5.tmo.tab,'the tab did not open in time','التاب ماتفتحش في الوقت',R);
+ if(type==='draft'&&typeof cadShow==='function'&&!CS.open)cadShow(true);
+ await ag5Point(xaTabEl(type),R,false); AG5.ctx.tab=type; return ag5B('Opened ','فتحت ')+xfTypeName(type); };
+AG5OPS.close=async(st,R)=>{ const type=st.type||ag5TabNow(); const t=WTAB.tabs.find(x=>x.type===type); if(!t||type==='start')throw ag5Err('that tab is not open','التاب ده مش مفتوح'); await ag5Point(xaTabEl(type),R);
+ if(type==='draft'&&typeof cadShow==='function'&&CS.open)cadShow(false); wtClose(t.id); await ag5Until(()=>!WTAB.tabs.includes(t),3000,'the tab did not close','التاب ماتقفلش',R); AG5.ctx.tab=ag5TabNow(); return ag5B('Closed ','قفلت ')+xfTypeName(type); };
+AG5OPS.undo=async(st,R)=>{ if(!XC.undo)throw ag5Err('undo is not available','التراجع مش متاح'); await ag5Point(xaBtn('undo'),R); XC.undo.run(); await ag5Sleep(150); return ag5B('Undone','اتراجعت'); };
+AG5OPS.stop=async(st,R)=>{ R.cancel=true; return ''; };
+AG5OPS.cmd=async(st,R)=>{ const c=XC[st.id]; if(!c)throw ag5Err('unknown command '+st.id,'أمر مش معروف '+st.id); if(c.stub)throw ag5Err('"'+c.t[0]+'" is not built yet','"'+c.t[1]+'" لسه متبناش'); await ag5Point(xaBtn(st.id),R);
+ const r=c.run(); if(r&&typeof r.then==='function')await r; await ag5Sleep(150); return ag5B('Ran: ','شغّلت: ')+c.t[(typeof lang!=='undefined'&&lang==='ar')?1:0]; };
+AG5OPS.old=async(st,R)=>{ await AG5.old(st.text); return ag5B('Passed to the agent (see its answer in the chat)','اتبعت للوكيل (شوف رده في الشات)'); };
+/* ---------- the object "it" ---------- */
+function ag5Obj(){ const c=AG5.ctx.obj, tab=ag5TabNow();
+ try{ if(typeof CS!=='undefined'&&CS.open&&CS.sel.size===1){ const e=cadD().ents[[...CS.sel][0]]; if(e&&!(c&&c.e===e))return AG5.ctx.obj={kind:'cad',e}; } }catch(x){}
+ try{ if(tab==='model'&&RV.sel){ const e=RV.els.find(x=>x.id===RV.sel); if(e&&!(c&&c.e===e))return AG5.ctx.obj={kind:'rv',e}; } }catch(x){}
+ if(c){ try{ if(c.kind==='cad'&&cadD().ents.includes(c.e))return c; if(c.kind==='rv'&&RV.els.includes(c.e))return c; if(c.kind==='gis'&&ag5GisHas(c.f))return c; }catch(x){} }
+ return null; }
+function ag5Need(){ const o=ag5Obj(); if(!o)throw ag5Err('nothing to act on: select an object or ask me to draw one first','مفيش حاجة أشتغل عليها: اختار عنصر أو اطلب مني أرسم واحد الأول'); return o; }
+/* segment view of a line-like object: a, b as [x,y] in metres; set(a,b) writes back */
+function ag5Seg(o){ const e=o.e; if(o.kind==='cad'&&(e.t==='l'||e.t==='dim'))return {a:[e.x1,e.y1],b:[e.x2,e.y2],set:(a,b)=>{ e.x1=a[0]; e.y1=a[1]; e.x2=b[0]; e.y2=b[1]; }};
+ if(o.kind==='rv'&&e.a&&e.b)return {a:e.a.slice(),b:e.b.slice(),set:(a,b)=>{ e.a=a; e.b=b; }}; return null; }
+function ag5Commit(o){ if(o.kind==='cad'){ cadCommit(); } else if(o.kind==='rv'){ rvChanged(); } else if(o.kind==='gis'){ try{ gmDraw(); }catch(e){} } }
+function ag5Where(o){ if(o.kind==='cad')return CW.querySelector('svg'); if(o.kind==='gis')return GM.cv; try{ return document.querySelector('#xWin_view3d,canvas'); }catch(e){ return null; } }
+const ag5KindName=o=>o.kind==='cad'?ag5B('C.X line','خط C.X'):o.kind==='rv'?(o.e.k==='wall'?ag5B('wall','الحيطة'):ag5B(o.e.k,o.e.k)):ag5B('map marker','علامة الخريطة');
+/* ---------- drawing ---------- */
+AG5OPS.line=async(st,R)=>{ if(!CS.open)cadShow(true); await ag5Until(()=>CS.open&&CW.querySelector('svg'),3000,'C.X did not open','C.X ماتفتحش',R); const sv=CW.querySelector('svg'); await ag5Point(sv,R);
+ const V=CS.V, cx=V.x+V.w/2, cy=V.y+V.h/2, L=st.v; let e; await ag5Tx(()=>{ e={t:'l',x1:+(cx-L/2).toFixed(3),y1:+cy.toFixed(3),x2:+(cx+L/2).toFixed(3),y2:+cy.toFixed(3)}; cadAdd(e); CS.sel=new Set([cadD().ents.length-1]); cadCommit(); });
+ if(L>V.w*.9){ CS.V={x:cx-L*.65,y:cy-L*.4,w:L*1.3,h:L*.8}; cadRender(); } AG5.ctx.obj={kind:'cad',e}; AG5.ctx.tab='draft'; return ag5B('Line ','خط ')+ag5M(L)+ag5B(' (drawing units as metres)',' (وحدات الرسم بالمتر)'); };
+AG5OPS.wall=async(st,R)=>{ await ag5Point(document.querySelector('canvas'),R); let e; await ag5Tx(()=>{ rvPush(); const d=RV.def.wall; e={id:rvId(),k:'wall',a:[0,0],b:[+st.v.toFixed(3),0],h:d.h,t:d.t,lv:RV.lv}; RV.els.push(e); RV.sel=e.id; rvChanged(); });
+ AG5.ctx.obj={kind:'rv',e}; AG5.ctx.tab='model'; return ag5B('Wall ','حيطة ')+ag5M(st.v)+ag5B(', height ',' بارتفاع ')+ag5M(e.h); };
+AG5OPS.marker=async(st,R)=>{ await ag5EnsureMap(R); await ag5Point(GM.cv,R); const f={t:'pt',g:[GM.lat,GM.lon],n:ag5B('Pin ','علامة ')+(ag5GisLayer().feat.length+1),c:'#4fc3f7',ag5:1};
+ ag5GisLayer().feat.push(f); gmDraw(); AG5.ctx.obj={kind:'gis',f}; return ag5B('Marker at ','علامة عند ')+GM.lat.toFixed(5)+', '+GM.lon.toFixed(5); };
+AG5OPS.del=async(st,R)=>{ const o=ag5Need(); await ag5Point(ag5Where(o),R); const nm=ag5KindName(o);
+ await ag5Tx(()=>{ if(o.kind==='cad'){ const D=cadD(), i=D.ents.indexOf(o.e); if(i>=0)D.ents.splice(i,1); CS.sel.clear(); cadCommit(); } else if(o.kind==='rv'){ rvPush(); RV.els=RV.els.filter(x=>x!==o.e); RV.sel=null; rvChanged(); } else { GM.layers.forEach(l=>{ l.feat=l.feat.filter(x=>x!==o.f); }); gmDraw(); } });
+ AG5.ctx.obj=null; return ag5B('Deleted the ','مسحت ')+nm; };
+/* ---------- geometry edits ---------- */
+async function ag5SegEdit(st,R,fn,okMsg){ const o=ag5Need(), s=ag5Seg(o); if(!s)throw ag5Err('this works on a line or a wall, not on a '+(o.kind==='gis'?'map marker':(o.e.t||o.e.k)),'ده بيشتغل على خط أو حيطة، مش على '+(o.kind==='gis'?'علامة خريطة':(o.e.t||o.e.k)));
+ await ag5Point(ag5Where(o),R); await ag5Tx(()=>{ if(o.kind==='rv')rvPush(); const r=fn(s.a,s.b,Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1])); s.set(r[0].map(v=>+v.toFixed(4)),r[1].map(v=>+v.toFixed(4))); ag5Commit(o); }); AG5.ctx.obj=o; return okMsg(o); }
+AG5OPS.orient=(st,R)=>ag5SegEdit(st,R,(a,b,L)=>[a,st.v==='v'?[a[0],a[1]+(b[1]>=a[1]?L:-L)]:[a[0]+(b[0]>=a[0]?L:-L),a[1]]],o=>ag5KindName(o)+' '+(st.v==='v'?ag5B('is vertical now','بقى رأسي'):ag5B('is horizontal now','بقى أفقي')));
+AG5OPS.rot=(st,R)=>ag5SegEdit(st,R,(a,b)=>{ const c=[(a[0]+b[0])/2,(a[1]+b[1])/2], r=st.v*Math.PI/180, f=q=>[c[0]+(q[0]-c[0])*Math.cos(r)-(q[1]-c[1])*Math.sin(r),c[1]+(q[0]-c[0])*Math.sin(r)+(q[1]-c[1])*Math.cos(r)]; return [f(a),f(b)]; },o=>ag5KindName(o)+ag5B(' rotated ',' اتلف ')+st.v+'°');
+AG5OPS.len=(st,R)=>{ if(!(st.v>0))return Promise.reject(ag5Err('length must be more than 0','الطول لازم يكون أكبر من صفر')); return ag5SegEdit(st,R,(a,b,L)=>{ const k=L>1e-9?st.v/L:1, d=L>1e-9?[b[0]-a[0],b[1]-a[1]]:[st.v,0]; return [a,[a[0]+d[0]*(L>1e-9?k:1),a[1]+d[1]*(L>1e-9?k:1)]]; },o=>ag5KindName(o)+ag5B(' length ',' طولها ')+ag5M(st.v)); };
+AG5OPS.move=async(st,R)=>{ const o=ag5Need(), dx=st.d[0]*st.v, dy=st.d[1]*st.v; await ag5Point(ag5Where(o),R);
+ await ag5Tx(()=>{ if(o.kind==='cad'){ if(cadD().ents.indexOf(o.e)<0)throw ag5Err('the line is gone','الخط مش موجود'); const n=mapE(o.e,q=>[q[0]+dx,q[1]+dy]); Object.keys(o.e).forEach(k=>delete o.e[k]); Object.assign(o.e,n); cadCommit(); }
+  else if(o.kind==='rv'){ rvPush(); const e=o.e; ['a','b','p'].forEach(k=>{ if(Array.isArray(e[k]))e[k]=[e[k][0]+dx,e[k][1]+dy]; }); rvChanged(); }
+  else { const m=gmxM(o.f.g[0]); o.f.g=[o.f.g[0]+dy/m[0],o.f.g[1]+dx/m[1]]; gmDraw(); } });
+ return ag5KindName(o)+ag5B(' moved ',' اتحرك ')+ag5M(st.v); };
+AG5OPS.height=async(st,R)=>{ const o=ag5Need(); if(o.kind!=='rv'||!('h' in o.e))throw ag5Err('height works on R.X walls and columns (a C.X line or a map marker has no height)','الارتفاع للحيطان والأعمدة في R.X (خط C.X أو علامة الخريطة ملهمش ارتفاع)'); if(!(st.v>0))throw ag5Err('height must be more than 0','الارتفاع لازم يكون أكبر من صفر');
+ await ag5Point(ag5Where(o),R); await ag5Tx(()=>{ rvPush(); o.e.h=+st.v.toFixed(3); rvChanged(); }); return ag5KindName(o)+ag5B(' height ',' ارتفاعها ')+ag5M(st.v); };
+const ag5Hav=(p,q)=>{ const R=6371008.8, t=Math.PI/180, a=Math.sin((q[0]-p[0])*t/2)**2+Math.cos(p[0]*t)*Math.cos(q[0]*t)*Math.sin((q[1]-p[1])*t/2)**2; return 2*R*Math.asin(Math.min(1,Math.sqrt(a))); };
+AG5OPS.measure=async(st,R)=>{ const o=ag5Obj();
+ if(!o){ const tab=ag5TabNow(); if(tab==='gis'&&typeof gmTool==='function'){ await ag5Point(GM.cv,R); gmTool('measure'); gmDraw(); return ag5B('Map measure tool on: click the points','أداة القياس شغالة: اضغط على النقط'); }
+  if(typeof CS!=='undefined'&&CS.open&&XC.c_dim){ XC.c_dim.run(); return ag5B('C.X dimension tool on','أداة الأبعاد في C.X شغالة'); } if(XC.m_dist){ await ag5Point(xaBtn('m_dist'),R); XC.m_dist.run(); return ag5B('Distance tool on: pick two points','أداة المسافة شغالة: اختار نقطتين'); } throw ag5Err('nothing to measure','مفيش حاجة أقيسها'); }
+ await ag5Point(ag5Where(o),R);
+ if(o.kind==='gis'){ const pts=ag5GisLayer().feat.filter(f=>f.t==='pt'); if(pts.length<2)throw ag5Err('a single map marker has no length: place a second marker, then say "measure"','علامة واحدة ملهاش طول: حط علامة تانية وقول "قيس"'); const a=pts[pts.length-2], b=pts[pts.length-1]; return ag5B('Distance between the last two markers: ','المسافة بين آخر علامتين: ')+ag5M(ag5Hav(a.g,b.g)); }
+ const s=ag5Seg(o); if(!s)throw ag5Err('I can measure lines and walls','بقيس الخطوط والحيطان'); const L=Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1]); AG5.ctx.lastLen=L;
+ return ag5KindName(o)+ag5B(': length ',': الطول ')+ag5M(L)+(o.kind==='rv'&&o.e.h?ag5B(', height ','، الارتفاع ')+ag5M(o.e.h):'')+(o.kind==='cad'?ag5B(' (drawing units as metres)',' (وحدات الرسم بالمتر)'):''); };
+/* ---------- view ---------- */
+AG5OPS.zoom=async(st,R)=>{ const tab=ag5TabNow();
+ if(tab==='gis'||(AG5.ctx.tab==='gis'&&ag5MapReady())){ await ag5EnsureMap(R); await ag5Point(GM.cv,R); const z0=GM.z; gmGo(GM.lat,GM.lon,GM.z+st.v); await ag5Until(()=>GM.z!==z0||GM.z>=19||GM.z<=1,2000,'the map did not zoom','الخريطة مازوّمتش',R); return ag5B('Map zoom ','زوم الخريطة ')+GM.z; }
+ if(typeof CS!=='undefined'&&CS.open){ const sv=CW.querySelector('svg'); await ag5Point(sv,R); const V=CS.V, k=Math.pow(2,-st.v), cx=V.x+V.w/2, cy=V.y+V.h/2; CS.V={x:cx-V.w*k/2,y:cy-V.h*k/2,w:V.w*k,h:V.h*k}; cadRender(); return ag5B('C.X view width ','عرض منظر C.X ')+ag5M(CS.V.w); }
+ const id=st.v>0?'zin':'zout'; if(!XC[id])throw ag5Err('zoom is not available here','الزوم مش متاح هنا'); await ag5Point(xaBtn(id),R); for(let i=0;i<Math.abs(st.v);i++)XC[id].run(); await ag5Sleep(120); return XC[id].t[(typeof lang!=='undefined'&&lang==='ar')?1:0]; };
+AG5OPS.zoomsel=async(st,R)=>{ const o=ag5Obj();
+ if(o&&o.kind==='gis'){ await ag5EnsureMap(R); await ag5Point(GM.cv,R); gmGo(o.f.g[0],o.f.g[1],Math.max(GM.z,18)); return ag5B('Map centred on the marker','الخريطة اتوسطت على العلامة'); }
+ if(o&&o.kind==='cad'){ const b=ebox(o.e), w=Math.max(b[2]-b[0],b[3]-b[1],1)*1.6, cx=(b[0]+b[2])/2, cy=(b[1]+b[3])/2; CS.V={x:cx-w/2,y:cy-w*.31,w,h:w*.62}; cadRender(); await ag5Point(CW.querySelector('svg'),R); return ag5B('C.X zoomed to the line','C.X زوّم على الخط'); }
+ if(o&&o.kind==='rv')RV.sel=o.e.id; if(!XC.zsel)throw ag5Err('nothing selected','مفيش حاجة متحددة'); await ag5Point(xaBtn('zsel'),R); XC.zsel.run(); await ag5Sleep(120); return XC.zsel.t[(typeof lang!=='undefined'&&lang==='ar')?1:0]; };
 /* c_ribfix.js - ribbon layout: the "Commands reference" button and the "Working x of y" counter sat (sticky) on top of the
    ribbon groups and hid icons; the ribbon could grow and cover the document tabs. Now: both live at the end of the ribbon
    TAB row, the groups row has a fixed height and scrolls sideways instead of wrapping or growing. */

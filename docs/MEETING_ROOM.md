@@ -405,3 +405,6 @@ c_ribfix.js: Commands reference button and Working x/y counter moved into the ri
 
 ## 2026-11-21 demo stage 3 merged, demo hold removed
 16 phase chapters on house_rc (welcome, project, site, arch, sys, design, elec, hvac, plumb, lowc, clash, boq, tender, sched, build, handover, out). Runs in an isolated temporary project: storage writes go to an in-memory shadow, every opened tab is closed, the previous workspace is restored (clean-exit test x4 in session; early cycle + smoke rerun here). Still to do: per-state progress bar, why-captions, info cards, step log/repeat, popup suppression, site chapter with wall/gate/garden/drainage.
+
+## 2026-11-22 Jarvis agent merged
+ag5_widget/exec/geo/ops: floating agent widget across tabs, big editable transcript, VAD end-of-speech, step plan executor that never freezes, Nominatim place search (1 req/s, cached, Sensitive-mode gated), spatial commands, local phrase memory. Tests: ag5 64, parity 126, privacy 109 (session: 7 suites). Not tested: real mic, real Nominatim.
