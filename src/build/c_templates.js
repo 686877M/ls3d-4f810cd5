@@ -67,9 +67,12 @@ function tpEmptyScene(){
   keep.forEach(g=>{ while(g.children.length){ const c=g.children[0]; dis(c); g.remove(c); } });
   parts={}; if(G)G.GY=0;                               /* R.X levels sit on G.GY, so the ground is y = 0 */
   const gr=new T.GridHelper(60,60,0x888888,0x888888); gr.material.transparent=true; gr.material.opacity=.22; groundG.add(gr);
+  try{ SP.on=false; SP.master=false; spG.visible=false; }catch(e){}   /* the site-plan overlay is sample content */
   TRIS=null; trisVer++; try{ applyFlags(); applyAnim(true); }catch(e){}
 }
 const tpBM=buildModel; buildModel=function(){ tpBM.apply(this,arguments); if(!tpStation())tpEmptyScene(); };
+const tpSC=setCap; setCap=function(){ if(tpStation())return tpSC.apply(this,arguments); cap.textContent=''; };   /* the camera-view caption describes the station */
+const tpNR=notesReg; notesReg=function(){ return tpStation()?tpNR.apply(this,arguments):[]; };   /* notes register: pump capacity conflict, assumptions and limits are the sample's */
 const tpBI=baseItems; baseItems=function(){ return tpStation()?tpBI.apply(this,arguments):[]; };
 const tpRS=renderSteps; renderSteps=function(){ if(tpStation())return tpRS.apply(this,arguments); stepsBox.innerHTML=''; stepB=[]; };
 const tpDS=drawSheetPrev; drawSheetPrev=function(){ if(tpStation())return tpDS.apply(this,arguments); clearTimeout(shTimer); shTimer=setTimeout(()=>{ if(curTab==='sheet')shPrev.textContent=b2('No lift-station sheet in this project.','مفيش لوحة محطة رفع في المشروع ده.'); },150); };
@@ -83,12 +86,18 @@ function tpSetBase(kind){
   try{ buildSite(); }catch(e){}
 }
 
+/* ---------- panes that only describe the pump-station sample (camera views, parameters, parts, assembly animation, lift-station rebar, sample site plan, hazard register, section presets, sheet composer) ---------- */
+const TP_GATED=['views','edit','parts','anim','rebar','site','safety','sec','sheet'];
+{ const st=document.createElement('style'); st.textContent='.tpOff>*:not(.tpNote){display:none!important}'; document.head.appendChild(st); }
+function tpGate(){ const on=tpStation(); TP_GATED.forEach(k=>{ const p=document.getElementById('p-'+k); if(!p)return; p.classList.toggle('tpOff',!on); let n=null; for(const c of p.children)if(c.classList&&c.classList.contains('tpNote'))n=c;
+  if(!on&&!n){ n=document.createElement('div'); n.className='tpNote small'; n.style.padding='14px'; p.insertBefore(n,p.firstChild); } if(n){ n.textContent=b2('This panel belongs to the pump-station sample. Load it from New project > Pump station sample (mechanical).','اللوحة دي خاصة بعيّنة محطة الطلمبات. حمّلها من مشروع جديد > عيّنة محطة طلمبات (ميكانيكا).'); n.style.display=on?'none':''; } }); if(on&&!tpGate.u){ tpGate.u=1; return; } tpGate.u=1; /* boot as the sample: touch nothing */ try{ setCap(); }catch(e){} try{ geoPanel(); }catch(e){} }
 /* ---------- save / load: template id rides in DATA.tpl; the stores that live outside DATA ride in "tp" ---------- */
 function tpBlob(){ return { id:tpId(), rv:{levels:RV.levels,grids:RV.grids,els:RV.els,def:RV.def}, gm:{layers:GM.layers,cur:GM.cur}, is:{list:IS.list,sel:IS.sel}, mm:{mt:MM.mt,sel:MM.sel}, rx:ACT.filter(a=>a.src==='rx') }; }
 const tpPJ=projectJson; projectJson=function(){ const j=tpPJ.apply(this,arguments), i=j.lastIndexOf('}'); return j.slice(0,i)+',"tp":'+JSON.stringify(tpBlob())+'\n}'; };
 function tpApply(tp){
   const kind=tpStation()?'sewage':'blank';
   if(kind!==tpBase)tpSetBase(kind);
+  tpGate();
   if(!tp)return;                                       /* an old file: leave the other stores as they are */
   ACT.splice(0,ACT.length,...ACT.filter(a=>a.src!=='rx')); (tp.rx||[]).forEach(a=>ACT.push(a)); if(tp.rx&&tp.rx.length&&!WBSN['5'])WBSN['5']=['R.X building','مبنى R.X'];
   if(tp.rv){ RV.levels=tp.rv.levels; RV.grids=tp.rv.grids||[]; RV.els=tp.rv.els||[]; Object.assign(RV.def,tp.rv.def||{}); RV.sel=null; RV.pts=[]; RV.lv=Math.min(RV.lv,RV.levels.length-1); RV.hist=[]; }
@@ -103,6 +112,9 @@ const tpLP=loadProject; loadProject=function(t){ tpLP.apply(this,arguments); let
 /* every R.X / GIS / issues / MOM change is one toolbar-undo entry (CAD + schedule already do it: cadCommit and p6Save call persist -> hiSnap) */
 [['rvChanged'],['gmSave'],['isSave'],['mmSave']].forEach(([n])=>{ const f=eval(n); if(typeof f!=='function')return; const w=function(){ const r=f.apply(this,arguments); try{ hiSnap(); }catch(e){} return r; }; eval(n+'=w'); });
 
+const tpCleanSh=sh=>{ Object.keys(sh).forEach(k=>{ if(Array.isArray(sh[k])&&/notes|legend|callouts/.test(k))sh[k]=[]; else if(typeof sh[k]==='string'&&k==='notes')sh[k]=''; }); return sh; };
+/* boot: the page constants still hold the sample's title and sheet text, so a clean project must not show them */
+if(!tpStation()){ const T0=TEMPLATES[tpId()]||TEMPLATES.blank; DR.title=T0.title[0]; tpCleanSh(SH); }
 /* ---------- create a project from a template ---------- */
 function tpNew(id,o){
   o=o||{}; if(typeof id!=='string'||!tpHas(TEMPLATES,id))throw new Error('unknown template '+id);
@@ -112,7 +124,7 @@ function tpNew(id,o){
   try{ localStorage.setItem('lsv3-prev',old); }catch(e){}   /* ... and in the same slot the Open command uses */
   if(o.download)out('LiftStation_previous_project.json',old);
   const j=JSON.parse(old), today=new Date().toISOString().slice(0,10), st=T0.base==='sewage';
-  const sh=tpSnap(tpS.sh); if(!st)Object.keys(sh).forEach(k=>{ if(Array.isArray(sh[k])&&/notes|legend|callouts/.test(k))sh[k]=[]; else if(typeof sh[k]==='string'&&k==='notes')sh[k]=''; });
+  const sh=tpSnap(tpS.sh); if(!st)tpCleanSh(sh);
   j.P=Object.assign({},P0); j.SH=sh; j.DR=Object.assign({},tpS.dr,{title}); Object.keys(DR).forEach(k=>{ if(!tpHas(tpS.dr,k))delete DR[k]; });
   j.data={items:{},fams:{},cur:'SAR',tpl:id,proj:{name:j.DR.title,no:'',client:'',loc:'',rev:'A',date:today,notes:''}};
   j.tp={id,rv:T0.rv?T0.rv():tpEmptyRv(),gm:tpEmptyGm(),is:{list:[],sel:null},mm:{mt:[],sel:null},rx:[]};
@@ -146,7 +158,12 @@ if(typeof XDESC!=='undefined')XDESC.new_from_template=['Start a new project from
 { const h=HXM.find(x=>x[0]==='new'); if(h){ h[3]='Pick a template or a blank project, then describe what to add; agents build it with the real tools.'; h[4]='اختار قالب أو مشروع فاضي، وبعدين وصّف المطلوب والوكلاء يبنوه بالأدوات الحقيقية.'; h[5]=()=>XC.new_from_template.run(); try{ hxPanel(); }catch(e){} } }
 const tpXH=xaHandle; xaHandle=function(t){ try{ const s=norm(t); if(tpStation()&&(/^(مشروع جديد|new project)/.test(s)||/(ابني|ابنى|اعمل|انشئ|عاوز|عايز|create|build|make).*(فيلا|بيت|منزل|مبني|مبنى|شقه|house|villa|flat|building|office|مكتب)/.test(s)))tpNew('blank'); }catch(e){} return tpXH.apply(this,arguments); };
 TOXAPI.templates=()=>Object.keys(TEMPLATES).map(id=>({id,name:TEMPLATES[id].n[0],ar:TEMPLATES[id].n[1],description:TEMPLATES[id].d[0],base:TEMPLATES[id].base,current:id===tpId()}));
+/* hook for other chunks (apartment-building demo, RC skeleton ...): tpRegister({id,n:[en,ar],title:[en,ar],d:[en,ar],rv:()=>({levels,grids,els,def}) , base:'blank'}) adds a chooser card.
+   base 'blank' = empty scene + start-milestone schedule + R.X data from rv(); only the id 'sewage' (base 'sewage') brings the pump-station sample back. */
+function tpRegister(def){ if(!def||typeof def.id!=='string'||!/^[a-z0-9_]+$/.test(def.id)||tpHas(TEMPLATES,def.id)&&def.id==='sewage'||!Array.isArray(def.n)||!Array.isArray(def.title)||!Array.isArray(def.d))throw new Error('bad template definition'); def.base='blank'; TEMPLATES[def.id]=def; return def.id; }
+TOXAPI.registerTemplate=tpRegister;
 TOXAPI.newProject=id=>tpNew(id===undefined?'blank':id);
 window.TOX=Object.freeze(Object.assign({version:'1'},TOXAPI));
 /* page reload on a non-station project: persist() kept DATA.tpl, the constants above still hold the station, so swap now */
+tpGate();
 setTimeout(()=>{ try{ if(!tpStation()){ tpSetBase('blank'); try{ restoreSched(); }catch(e){} rebuild(); computeSched(); renderSched(); } }catch(e){ console.error('tp boot',e); } },0);

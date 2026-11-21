@@ -1,0 +1,62 @@
+{
+ "state": {
+  "tpl": null,
+  "title": "Sample project (demo)",
+  "root": 61,
+  "parts": 36,
+  "items": 46,
+  "act": 24,
+  "cap": "عام: المحطة كلها: البئر وغرفة المخرج والونش ووحدة الرائحة.",
+  "geo": {
+   "sys": "utm",
+   "zone": 31,
+   "north": 1,
+   "E": 500000,
+   "N": 10000,
+   "lat": "",
+   "lon": "",
+   "gl": 104.95,
+   "rot": 0,
+   "note": "Sample project: fictitious origin and datum (well centre at E 500000, N 10000, UTM 31N; levels relative to B.L +100.00). It is not a real location. Replace with the approved survey values for a real project."
+  },
+  "outs": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   11,
+   11,
+   12,
+   13
+  ],
+  "notes": 31,
+  "paneOff": [],
+  "siteVis": 3,
+  "sps": 40,
+  "boq": 8
+ },
+ "textHash": {
+  "start": "5d24067f5be8",
+  "model": "6a86c17ccb80",
+  "survey": "2c4d635cb01b",
+  "sched": "92de337a9353",
+  "pane_views": "9ad581870eb4",
+  "pane_edit": "ca97fe5a3b66",
+  "pane_parts": "d2451b995e71",
+  "pane_anim": "73934ac5fb29",
+  "pane_safety": "91370870654d",
+  "pane_sec": "efbbfc2ebfeb",
+  "pane_sheet": "fd018e95072b",
+  "pane_site": "c19bdd1a2673",
+  "pane_rebar": "aa12c03c76a6"
+ },
+ "errs": []
+}

@@ -396,3 +396,6 @@ open index.html?reset=1 : stops saving, removes lsv3-* project keys and the xto-
 
 ## 2026-11-21 reset + role fixes
 ?reset=1 now removes ALL project keys (everything not in the privacy KEEP/SECRET lists: xto-rv R.X data, xto-dc, xto-gis, xto-mom...), not only lsv3-*. c_hubx.js: Missions panel crashed when xto-role was not one of owner/contractor/consultant (settings buttons store dev/res...): falls back to owner.
+
+## 2026-11-21 separation (incoming30) + smaller labels
+Default stays the pump-station sample; any other template shows none of its content (4D site objects, site plan, N.X checks, outputs, pack, geo defaults, notes, caption, station panes). R.X text/room tags 0.45 -> 0.2 m. Tests: separation 32, parity 126, px2 149, privacy 109.

@@ -1,0 +1,43 @@
+/* separation_test.js: the pump-station sample is the DEFAULT project (unchanged) and every other template shows none of it.
+   Usage: NODE_PATH=<dir with playwright-core> node separation_test.js file:///.../index.test.html   (opened with NO preloaded state) */
+const {chromium}=require('playwright-core');
+let pass=0,fail=0; const ok=(c,m)=>{ if(c){pass++;console.log('  ok   '+m);}else{fail++;console.log('  FAIL '+m);} };
+const GATED=['views','edit','parts','anim','rebar','site','safety','sec','sheet'];
+(async()=>{
+ const b=await chromium.launch({executablePath:process.env.CHROME||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true});
+ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+ const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('1'));
+ await pg.goto(process.argv[2],{waitUntil:'domcontentloaded',timeout:240000}); await pg.waitForTimeout(8000);
+ const E=s=>pg.evaluate(s=>__lsv.ev(s),s), J=async s=>JSON.parse(await E('JSON.stringify('+s+')'));
+ const FP="({tpl:DATA.tpl||null,title:DR.title,parts:Object.keys(parts).length,items:getItems().length,act:ACT.length,root:root.children.length,off:"+JSON.stringify(GATED)+".filter(k=>document.getElementById('p-'+k).classList.contains('tpOff')),cap:cap.textContent.length>0,geoNote:geoD().note.length>0,gl:geoD().gl,siteVis:siteG.children.filter(c=>c.visible).length,outs:OUTL.filter(outOk).length,notes:notesReg().length})";
+ let OUT0=0; const clean=async(m)=>{ const s=await J(FP); ok(s.parts===0&&s.act===1&&s.items<46&&s.siteVis===0&&s.root<=5,m+': no parts, no sample items, 1 activity, no 4D pit/fence/gate '+JSON.stringify([s.parts,s.items,s.act,s.siteVis,s.root]));
+   ok(s.off.length===GATED.length,m+': all '+GATED.length+' sample-only panes are off');
+   ok(!s.cap&&!s.geoNote&&s.gl===0&&s.notes===0&&s.outs===OUT0-4,m+': caption, geo note/datum, notes register and sample outputs are clear '+JSON.stringify([s.cap,s.geoNote,s.gl,s.notes,s.outs]));
+   ok(!(await J("spG.visible||SP.on"))&&await J("spLab.children.length")===0,m+': no site-plan overlay or labels');
+   await E("coRun();1"); ok(!(await J("CO.issues.map(i=>i.rule)")).some(r=>/^(SITE-01|CIV-01|MEP-03)$/.test(r)),m+': N.X runs no sample site/pipe/station checks'); };
+ console.log('== 1. default project is the sample, exactly as before');
+ const d0=await J(FP); OUT0=d0.outs;
+ ok(d0.tpl===null&&d0.parts>=30&&d0.items===46&&d0.act>=20&&d0.root>=50,'default boots the sample '+JSON.stringify([d0.parts,d0.items,d0.act,d0.root]));
+ ok(/Sample project/.test(d0.title),'title as before: '+d0.title);
+ ok(d0.off.length===0&&d0.cap&&d0.geoNote&&d0.gl===104.95&&d0.notes>0&&d0.outs>=10,'no pane is gated, caption / geo note / datum 104.95 / notes / all outputs present '+JSON.stringify([d0.off.length,d0.cap,d0.geoNote,d0.gl,d0.notes,d0.outs]));
+ ok(await E("localStorage.getItem('lsv3-data-pre-sep')")===null,'no session copy is made');
+ await E("coRun();1"); const sIss=(await J("CO.issues.map(i=>i.rule)")); ok(sIss.some(r=>/^(SITE-01|CIV-01|MEP-03)$/.test(r)),'N.X sample checks run on the sample '+JSON.stringify(sIss.slice(0,6)));
+ console.log('== 2. house2 shows none of it');
+ await E("tpNew('house2',{download:false});1"); await pg.waitForTimeout(3000);
+ let s=await J(FP); ok(s.tpl==='house2'&&/villa/i.test(s.title),'house2 is current, title '+s.title); await clean('house2');
+ console.log('== 3. round trip house2 -> sample -> house2');
+ await E("tpNew('sewage',{download:false});1"); await pg.waitForTimeout(3000);
+ s=await J(FP); ok(s.tpl==='sewage'&&s.parts===d0.parts&&s.items===46&&s.act===d0.act&&s.off.length===0&&s.cap&&s.geoNote&&s.gl===104.95&&s.notes>0&&s.outs===OUT0,'sample is fully back '+JSON.stringify([s.parts,s.items,s.act,s.off.length,s.gl]));
+ ok(s.siteVis>=0&&await E("siteG.children.some(c=>c.userData&&c.userData.info&&c.userData.info.k==='gate'&&c.visible)"),'the 4D gate is visible again');
+ await E("tpNew('house2',{download:false});1"); await pg.waitForTimeout(3000); await clean('house2 (second time)');
+ console.log('== 4. blank and a registered template');
+ await E("tpNew('blank',{download:false});1"); await pg.waitForTimeout(2500); await clean('blank');
+ await E("tpRegister({id:'demo_hook',n:['Hook test','x'],title:['Hook','x'],d:['d','d'],rv:()=>tpEmptyRv()});1");
+ ok(await J("TOX.templates().some(t=>t.id==='demo_hook')"),'tpRegister adds a chooser entry');
+ await E("tpNew('demo_hook',{download:false});1"); await pg.waitForTimeout(2500); await clean('registered template');
+ ok(await E("TEMPLATES.sewage.n[0]")==='Pump station sample (mechanical)','chooser card is "Pump station sample (mechanical)"');
+ let thrown=false; try{ await E("tpRegister({id:'sewage',n:['a','a'],title:['a','a'],d:['a','a']});1"); }catch(e){ thrown=true; } ok(thrown,'tpRegister cannot replace the sample');
+ ok(er.length===0,'no page errors '+JSON.stringify(er.slice(0,2)));
+ console.log('\nseparation: '+pass+' passed, '+fail+' failed'); await b.close(); process.exit(fail?1:0);
+})().catch(e=>{console.log('CRASH',e.message);process.exit(2);});

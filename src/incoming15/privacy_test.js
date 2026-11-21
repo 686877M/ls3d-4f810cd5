@@ -31,7 +31,7 @@ const K1='sk-TESTONLY_abcdefghijklmnop1234', K2='gsk_TESTONLYabcdefghij12345678'
  ok(tb.s==='SH-01'&&tb.d==='DWG-01'&&tb.sub===''&&/Untitled/.test(tb.t),'blank title block is neutral '+JSON.stringify(tb));
  await E("tpNew('sewage',{download:false});1");
  ok(/Sample project/.test(await E("DR.title")),'the station is labelled "Sample project (demo)"');
- ok(/Sample project/.test(await E("TEMPLATES.sewage.n[0]")),'template card says Sample project');
+ ok(/^Pump station sample \(mechanical\)$/.test(await E("TEMPLATES.sewage.n[0]"))&&/Sample project/.test(await E("TEMPLATES.sewage.title[0]")),'template card says Pump station sample (mechanical); project title says Sample project'); /*separate: card renamed*/
  /* file names of real downloads */
  const cmds=['e_boq','e_csv','e_dxf3','e_ifc','e_obj','xml','xlsxs','csvs','xlsx','e_boq'].filter((x,i,a)=>a.indexOf(x)===i);
  for(const c of cmds){ try{ await E("XC['"+c+"']&&XC['"+c+"'].run();1"); await pg.waitForTimeout(150); }catch(e){} }

@@ -1,0 +1,10 @@
+const {chromium}=require('playwright-core');
+exports.open=async function(url,opts){opts=opts||{};
+ const b=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860}});
+ await ctx.addInitScript(O=>{try{ if(O.init)localStorage.setItem('lsv3-data',JSON.stringify({data:{items:{},fams:{},cur:'SAR',tpl:'sewage'}})); sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}},{init:!!opts.init});
+ const p=await ctx.newPage(); const errs=[]; p.on('pageerror',e=>errs.push(String(e.message).slice(0,200))); p.on('dialog',d=>d.accept('1'));
+ await p.goto(url,{waitUntil:'domcontentloaded',timeout:240000}); await p.waitForTimeout(opts.wait||9000);
+ const E=s=>p.evaluate(s=>__lsv.ev(s),s);
+ return {b,p,E,errs};
+};

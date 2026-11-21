@@ -34,7 +34,7 @@ rep("q('Lift Station')", "q('Building')", 1)
 rep("2026-11-19T00:00:00", "1970-01-01T00:00:00", 1)
 # ---- 4. sample project is explicit: card + header strings say 'Sample project' ----
 rep("n:['Sewage lift station','محطة رفع صرف'],title:['Sewage Lift Station','Sewage Lift Station']",
-    "n:['Sample project: pump station (demo)','مشروع تجريبي: محطة طلمبات (عيّنة)'],title:['Sample project (demo)','مشروع تجريبي (عيّنة)']", 1)
+    "n:['Pump station sample (mechanical)','عيّنة: محطة طلمبات (ميكانيكا)'],title:['Sample project (demo)','مشروع تجريبي (عيّنة)']", 1)
 rep("d('title','Sewage Lift Station: 3D model','محطة طلمبات الصرف: موديل 3D')", "d('title','Sample project: pump station 3D model','مشروع تجريبي: موديل 3D لمحطة طلمبات')", 1)
 rep("<title>Lift Station 3D Model</title>", "<title>T.O X</title>", 1)
 rep("b2('Lift Station 3D Model','موديل 3D لمحطة الصرف')", "b2('T.O X','T.O X')", 1)
@@ -45,16 +45,15 @@ rep("Blank, Sewage lift station, House, Office", "Blank, Sample project, House, 
 rep('BIS-ME-LST-0', 'SMP-ME-0')
 rep('ME-GLY-01', 'SMP-SITE-01')
 rep('SEWEGE TANK CALCULATIONS REV 01.pdf (Drive TOX / Lift Station)', 'structural calculation summary (sample)', 1)
-rep('Mecra Boru HDPE', 'HDPE pipe', 1)
-rep('Mecra Pompa', 'Pump', 1)
-rep('LIFT STATION (2)', 'STRUCTURE (2)')
+rep('Mecra Boru HDPE', 'HDPE pipe', None, 0)
+rep('Mecra Pompa', 'Pump', None, 0)
+rep('LIFT STATION (2)', 'STRUCTURE (2)', None, 0)
 rep('["SEWAGE LIFT STATION",', '["PUMP STATION",', 1)
 rep('SEWAGE PUMPSTATION', 'PUMP STATION', 2, 1)
-m = re.search(r'"src":\{"sew":"SewerGEMS.*?\}', s)
-assert m, 'NETS.src not found'
-s = s[:m.start()] + ('"src":{"sew":"Sewer network model (sample data), checked against sample profile sheets","storm":"Storm network model (sample data)",'
+m = re.search(r'"src":\{"sew":"SewerGEMS.*?\}', s)   # incoming18: the chunk is already neutral, so this is optional now
+if m: s = s[:m.start()] + ('"src":{"sew":"Sewer network model (sample data), checked against sample profile sheets","storm":"Storm network model (sample data)",'
     '"water":"Water network model (sample data). Node elevation is the model junction elevation; pipe cover is not in the model.",'
-    '"fireb":"Fire-fighting network model (sample data, buildings loop)","fireh":"Fire-fighting network model (sample data, hangars loop)"}') + s[m.end():]
+    '"fireb":"Fire-fighting network model (sample data, buildings loop)","fireh":"Fire-fighting network model (sample data, zone B loop)"}') + s[m.end():]
 # ---- 6. AI context: agentBrief must not carry project title / share URL / full state when privacy mode is on ----
 # (the wrapper itself lives in privacy.js; here we only make XAGSAFE never offer the wipe command to a model)
 rep("'w_reset','rec','recdis','recasm','recsch']", "'w_reset','rec','recdis','recasm','recsch','wipe_project','privacy_panel']", 1)

@@ -1,0 +1,8 @@
+7a82a9561b2a6223358f4da95c3e28829f22e4fa  c_templates.js
+e598859bb6015a71648e7c7d05d63ba859642d99  c_4d.js
+eceff2597530c822da7ff8320661f4a1eefd59d9  c_coord.js
+2d9f7d602ffee696bf2c1e912b140fddda78c240  c_outputs.js
+f4a0a72509e5b2cc3907f0dea7b6dc90cdd45b63  c_pack.js
+34a5dfe572ed5013e8e27564793b46f2faae14b9  c_geo.js
+ba096e7d6de43682304002c1e8e6ad9d86e44135  privacy_patch.py
+c37b8e7fca6c40899f2603c7d67005f44166726d  site/src/incoming15/privacy_test.js

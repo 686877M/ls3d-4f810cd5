@@ -1,0 +1,79 @@
+{
+ "state": {
+  "tpl": "house2",
+  "title": "Two-floor villa",
+  "root": 4,
+  "parts": 0,
+  "siteVis": 0,
+  "spOn": false,
+  "spG": false,
+  "spLab": 0,
+  "act": 1,
+  "items": 6,
+  "cap": ""
+ },
+ "panes": {
+  "views": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "anim": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "safety": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "sec": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "rebar": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "codes": [
+   "Rotodynamic pumps: hydraulic performance acceptance tests",
+   "Technical specifications for centrifugal pumps (Class II)",
+   "Gully tops and manhole tops"
+  ],
+  "help": [
+   "Submersible pump installation"
+  ],
+  "calc": [
+   "Structural · Flotation (uplift) of the wet well",
+   "Hydraulics · Wet well working volume (cycle-time method)"
+  ],
+  "site": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "edit": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "parts": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "sheet": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ]
+ },
+ "tabTypes": {
+  "model": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "draft": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "detect": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "levels": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ],
+  "analysis": [
+   "Rotodynamic pumps: hydraulic performance acceptance tests",
+   "Technical specifications for centrifugal pumps (Class II)",
+   "Gully tops and manhole tops"
+  ],
+  "plant": [
+   "This panel belongs to the pump-station sample. Load it from New project > Pump s"
+  ]
+ },
+ "errs": []
+}
