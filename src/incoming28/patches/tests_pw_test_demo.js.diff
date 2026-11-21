@@ -1,0 +1,11 @@
+--- a/pw/test_demo.js
++++ b/pw/test_demo.js
+@@ -8,7 +8,7 @@
+ const b=await chromium.launch({executablePath:"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--autoplay-policy=no-user-gesture-required']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true});
+ const entry=SC==='entry';
+-await ctx.addInitScript(e=>{ try{ ['xto-tabs','xto-dc','xto-cdeaud'].forEach(k=>localStorage.removeItem(k)); if(!e)sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(x){} },entry);
++await ctx.addInitScript(e=>{ try{ ['xto-tabs','xto-dc','xto-cdeaud'].forEach(k=>localStorage.removeItem(k)); if(!e)sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(x){} },entry);
+ const pg=await ctx.newPage(), er=[], dl=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('')); pg.on('download',d=>dl.push(d.suggestedFilename()));
+ const E=s=>pg.evaluate(s=>{ const r=__lsv.ev(s); return Promise.resolve(r).then(v=>v===undefined?null:JSON.parse(JSON.stringify(v))); },s);
+ const shot=async n=>{ try{ await pg.screenshot({path:OUT+'/'+n+'.png'}); }catch(e){} };

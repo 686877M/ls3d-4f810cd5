@@ -1,0 +1,11 @@
+--- a/site/src/incoming2/px2_test.js
++++ b/site/src/incoming2/px2_test.js
+@@ -3,7 +3,7 @@
+ const HTML=process.argv[2], WHICH=process.argv[3]||'all', CHROME='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+ let pass=0, fail=0; const ok=(c,m,x)=>{ if(c){pass++; console.log('PASS',m,x===undefined?'':x);} else {fail++; console.log('FAIL',m,x===undefined?'':x);} };
+ (async()=>{ const b=await chromium.launch({executablePath:CHROME});
+- const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true}); await ctx.addInitScript(()=>{ try{ ['xto-tabs'].forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('lsv2-views'); sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true}); await ctx.addInitScript(()=>{ try{ ['xto-tabs'].forEach(k=>localStorage.removeItem(k)); localStorage.removeItem('lsv2-views'); sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(), er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+  await pg.goto('file://'+HTML,{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+  const idOf=async(type,tab,panel,en)=>E("Object.keys(RIBM).find(k=>{const m=RIBM[k];return m.type==='"+type+"'&&m.tab==='"+tab+"'&&m.panel==='"+panel+"'&&m.en==='"+en+"';})");

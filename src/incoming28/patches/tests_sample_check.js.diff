@@ -1,0 +1,20 @@
+--- a/site/src/incoming18/sample_check.js
++++ b/site/src/incoming18/sample_check.js
+@@ -25,7 +25,7 @@
+   for(let i=0;i<tk.length;i++){ const a=tk[i], ha=h20(a); if(a.length>=4&&H_WD.has(ha))hits.add('word#'+ha);
+     if(!H_FT.has(ha))continue;                               // only a token that starts a known phrase is extended to 2..4-grams
+     if(H_PH.has(ha))hits.add('phrase#'+ha);
+-    let k=a; for(let n=1;n<4&&i+n<tk.length;n++){ k+='-'+tk[i+n]; if(H_PH.has(h20(k))&&h20(k)!=='9aa8269ac99f3023297e')hits.add('phrase#'+h20(k)); /* 9aa8...: generic 2-token phrase that collides with the JS property `r.windows` in ps_core/ps_ui (false positive, checked 2026-11-21) */ } }
++    let k=a; for(let n=1;n<4&&i+n<tk.length;n++){ k+='-'+tk[i+n]; if(H_PH.has(h20(k)))hits.add('phrase#'+h20(k)); } }
+   return [...hits];
+ }
+ const rdf=f=>fs.readFileSync(f,'utf8');
+@@ -51,7 +51,7 @@
+  if(OLDF&&fs.existsSync(OLDF)){ const r=scan(rdf(OLDF)); ok(r.length>=20,'detector fires on the old build ('+r.length+' hits)'); } else console.log('  (no old build given: negative control on synthetic values only)');
+ 
+  const b=await chromium.launch({executablePath:CHROME}); const ctx=await b.newContext({viewport:{width:1500,height:900},acceptDownloads:true});
+- await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('1'));
+  await pg.goto(URLP,{waitUntil:'domcontentloaded',timeout:120000}); await pg.waitForTimeout(6000);
+  const E=s=>pg.evaluate(s=>__lsv.ev(s),s); await E("lang='en';1"); await pg.evaluate(PAGE_HELP);

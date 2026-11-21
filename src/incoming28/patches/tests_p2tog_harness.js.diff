@@ -1,0 +1,11 @@
+--- a/site/src/incoming2/p2tog_harness.js
++++ b/site/src/incoming2/p2tog_harness.js
+@@ -6,7 +6,7 @@
+ const near=(a,b,t)=>Math.abs(a-b)<=(t===undefined?1e-6:t);
+ async function open(URL){
+  const b=await chromium.launch({executablePath:CHROME}); const ctx=await b.newContext({viewport:{width:1500,height:900},acceptDownloads:true});
+- await ctx.addInitScript(()=>{ try{ ['xto-tabs','xto-dc','xto-cdeaud','xto-rv','xto-gis','lsv3-data'].forEach(k=>localStorage.removeItem(k)); sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ await ctx.addInitScript(()=>{ try{ ['xto-tabs','xto-dc','xto-cdeaud','xto-rv','xto-gis','lsv3-data'].forEach(k=>localStorage.removeItem(k)); sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept(Q.length?Q.shift():d.defaultValue()));
+  await pg.goto(URL,{waitUntil:'domcontentloaded',timeout:90000}); await pg.waitForTimeout(5000);
+  const E=s=>pg.evaluate(s=>__lsv.ev(s),s);

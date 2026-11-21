@@ -1,0 +1,11 @@
+--- a/site/src/incoming17/chart_snapshot_test.js
++++ b/site/src/incoming17/chart_snapshot_test.js
+@@ -17,7 +17,7 @@
+ const sig=s=>{ const tags={}; (s.match(/<(\w+)[\s>\/]/g)||[]).forEach(t=>{ t=t.slice(1,-1).replace(/[\s>\/]/g,''); tags[t]=(tags[t]||0)+1; }); const texts=[...s.matchAll(/<(?:text|title)[^>]*>(.*?)<\/(?:text|title)>/g)].map(m=>m[1].replace(/<[^>]*>/g,'')); const cols=[...new Set([...s.matchAll(/(?:fill|stroke)="([^"]+)"/g)].map(m=>m[1]))].sort(); const vb=(s.match(/viewBox="([^"]+)"/)||[])[1]||null; return {tags,texts,cols,vb}; };
+ const h=s=>crypto.createHash('sha1').update(s).digest('hex').slice(0,16);
+ (async()=>{ const b=await chromium.launch({executablePath:chrome}); const ctx=await b.newContext({viewport:{width:1400,height:860}});
+- await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(), er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept(d.type()==='prompt'?d.defaultValue():undefined)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+  await pg.goto('file://'+path.resolve(page),{waitUntil:'domcontentloaded',timeout:240000}); await pg.waitForTimeout(6000);
+  ok('page loads without script error',er.slice(0,3),[]);

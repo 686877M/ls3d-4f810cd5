@@ -1,0 +1,11 @@
+--- a/privacy_patch.py
++++ b/privacy_patch.py
+@@ -34,7 +34,7 @@
+ rep("2026-11-19T00:00:00", "1970-01-01T00:00:00", 1)
+ # ---- 4. sample project is explicit: card + header strings say 'Sample project' ----
+ rep("n:['Sewage lift station','محطة رفع صرف'],title:['Sewage Lift Station','Sewage Lift Station']",
+-    "n:['Sample project: pump station (demo)','مشروع تجريبي: محطة طلمبات (عيّنة)'],title:['Sample project (demo)','مشروع تجريبي (عيّنة)']", 1)
++    "n:['Pump station sample (mechanical)','عيّنة: محطة طلمبات (ميكانيكا)'],title:['Sample project (demo)','مشروع تجريبي (عيّنة)']", 1)
+ rep("d('title','Sewage Lift Station: 3D model','محطة طلمبات الصرف: موديل 3D')", "d('title','Sample project: pump station 3D model','مشروع تجريبي: موديل 3D لمحطة طلمبات')", 1)
+ rep("<title>Lift Station 3D Model</title>", "<title>T.O X</title>", 1)
+ rep("b2('Lift Station 3D Model','موديل 3D لمحطة الصرف')", "b2('T.O X','T.O X')", 1)

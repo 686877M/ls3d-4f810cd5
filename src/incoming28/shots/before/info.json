@@ -1,0 +1,131 @@
+{
+ "info": {
+  "start": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "model": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "draft": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "sched": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "survey": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "coord": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "detect": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "takeoff": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "levels": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "sim": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "analysis": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "office": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "plant": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "hx": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "hv": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "gis": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "hub": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  },
+  "capture": {
+   "root": 61,
+   "parts": 36,
+   "tpl": null,
+   "act": 24,
+   "rvEls": 0
+  }
+ },
+ "errs": []
+}

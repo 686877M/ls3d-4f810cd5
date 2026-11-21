@@ -1,0 +1,11 @@
+--- a/site/src/incoming8/qx_test.js
++++ b/site/src/incoming8/qx_test.js
+@@ -5,7 +5,7 @@
+ const page=process.argv[2], chrome=process.argv[3]||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', outDir=path.resolve(process.argv[4]||'/tmp');
+ let pass=0, fail=0; const ok=(n,got,exp)=>{ const g=typeof exp==='number'&&typeof got==='number'?Math.abs(got-exp)<1e-6:JSON.stringify(got)===JSON.stringify(exp); g?pass++:fail++; console.log((g?'ok   ':'FAIL ')+n+(g?'':'  -> got '+JSON.stringify(got)+' expected '+JSON.stringify(exp))); };
+ (async()=>{ const b=await chromium.launch({executablePath:chrome}); const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true});
+- await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(), er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept(d.type()==='prompt'?d.defaultValue():undefined)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+  await pg.goto('file://'+path.resolve(page),{waitUntil:'domcontentloaded',timeout:120000}); await pg.waitForTimeout(5000);
+  const errs0=er.length; ok('page loads with no script error',er.slice(0,3),[]);

@@ -1,0 +1,11 @@
+--- a/site/src/incoming17/chart_merge_test.js
++++ b/site/src/incoming17/chart_merge_test.js
+@@ -3,7 +3,7 @@
+ const {chromium}=require('playwright-core'), path=require('path');
+ let pass=0, fail=0; const ok=(n,g,e)=>{ const x=JSON.stringify(g)===JSON.stringify(e); x?pass++:fail++; console.log((x?'ok   ':'FAIL ')+n+(x?'':'  -> got '+JSON.stringify(g)+' expected '+JSON.stringify(e))); };
+ (async()=>{ const b=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}); const ctx=await b.newContext({viewport:{width:1400,height:860}});
+- await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
++ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); localStorage.setItem('lsv3-data','{"data":{"items":{},"fams":{},"cur":"SAR","tpl":"sewage"}}'); /*separate: explicitly load the pump-station sample*/  sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+  const pg=await ctx.newPage(), er=[]; pg.on('pageerror',x=>er.push(x.message)); const E=s=>pg.evaluate(s=>__lsv.ev(s),s);
+  await pg.goto('file://'+path.resolve(process.argv[2]),{waitUntil:'domcontentloaded',timeout:240000}); await pg.waitForTimeout(6000);
+  ok('no script error',er.slice(0,3),[]);

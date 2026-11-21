@@ -1,0 +1,50 @@
+/* separation_test.js: the pump-station sample is opt-in. Usage: NODE_PATH=<dir with playwright-core> node separation_test.js file:///.../index.test.html
+   (the page is opened WITHOUT any preloaded sample: this is the clean default boot) */
+const {chromium}=require('playwright-core');
+let pass=0,fail=0; const ok=(c,m)=>{ if(c){pass++;console.log('  ok   '+m);}else{fail++;console.log('  FAIL '+m);} };
+(async()=>{
+ const b=await chromium.launch({executablePath:process.env.CHROME||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ const ctx=await b.newContext({viewport:{width:1500,height:860},acceptDownloads:true});
+ await ctx.addInitScript(()=>{ try{ sessionStorage.setItem('xto-auth','1'); sessionStorage.setItem('xto-intro-seen','1'); sessionStorage.setItem('xto-hub','1'); localStorage.setItem('xto-test','1'); }catch(e){} });
+ const pg=await ctx.newPage(); const er=[]; pg.on('pageerror',x=>er.push(x.message)); pg.on('dialog',d=>d.accept('1'));
+ await pg.goto(process.argv[2],{waitUntil:'domcontentloaded',timeout:240000}); await pg.waitForTimeout(8000);
+ const E=s=>pg.evaluate(s=>__lsv.ev(s),s), J=async s=>JSON.parse(await E('JSON.stringify('+s+')'));
+ console.log('== 1. clean default boot');
+ ok(await E("DATA.tpl")==='blank','default project is the blank template');
+ ok(/Untitled/.test(await E("DR.title")),'project title is neutral: '+await E("DR.title"));
+ let s=await J("({parts:Object.keys(parts).length,root:root.children.length,items:getItems().length,act:ACT.length,rv:RV.els.length,siteG:siteG.children.filter(c=>c.visible).length,sp:spG.visible})");
+ ok(s.parts===0&&s.items===0&&s.act===1&&s.rv===0,'no parts, no items, only the start milestone, no R.X elements '+JSON.stringify(s));
+ ok(s.siteG===0&&!s.sp,'no visible 4D site objects (pit, fence, gate) and no site-plan overlay');
+ ok(s.root<=5,'3D root holds only the ground helpers ('+s.root+' children)');
+ ok((await J("geoD()")).note===''&&(await J("geoD().gl"))===0,'geo defaults carry no sample note or datum');
+ ok(await J("OUTL.filter(outOk).map(x=>x[0])").then(a=>[1,2,6,8].every(i=>a.indexOf(i)<0)),'Output Center hides the sample-only outputs 1, 2, 6, 8');
+ ok((await J("notesReg()")).length===0,'notes register is empty');
+ await E("coRun();1"); const iss=await J("CO.issues.map(i=>i.rule)");
+ ok(!iss.some(r=>/^(SITE-01|CIV-01|MEP-03)$/.test(r)),'N.X coordination runs no sample site / pipe / station checks '+JSON.stringify(iss));
+ ok(await pg.evaluate(()=>['edit','parts','anim','rebar','site','views'].every(k=>document.getElementById('p-'+k).classList.contains('tpOff'))),'sample-only panes are switched off with a note');
+ ok(await E("XC.new_from_template!==undefined&&Object.keys(TEMPLATES).indexOf('sewage')>=0&&TEMPLATES.sewage.n[0]")==='Pump station sample (mechanical)','sample is registered in the template chooser as "Pump station sample (mechanical)"');
+ console.log('== 2. every tab type starts clean');
+ const types=await J("Object.keys(WTYPES)"); let bad=[];
+ for(const t of types){ await E("wtNew('"+t+"');1"); await pg.waitForTimeout(700); const r=await J("({p:Object.keys(parts).length,r:root.children.length,a:ACT.length})"); if(r.p||r.a!==1||r.r>5)bad.push(t); }
+ ok(bad.length===0,'no tab type shows sample geometry or activities ('+types.length+' tabs) '+JSON.stringify(bad));
+ console.log('== 3. the sample loads on purpose and unloads cleanly');
+ await E("tpNew('sewage',{download:false});1"); await pg.waitForTimeout(2500);
+ s=await J("({tpl:DATA.tpl,parts:Object.keys(parts).length,items:getItems().length,act:ACT.length,title:DR.title,gate:siteG.children.some(c=>c.visible===true||c.userData&&c.userData.info&&c.userData.info.k==='gate'),off:document.getElementById('p-parts').classList.contains('tpOff')})");
+ ok(s.tpl==='sewage'&&s.parts>=30&&s.items===46&&s.act>10&&!s.off,'sample: parts, 46 items, activities and panes are back '+JSON.stringify(s));
+ ok(/Sample project/.test(s.title),'sample title: '+s.title);
+ await E("tpNew('house2',{download:false});1"); await pg.waitForTimeout(2500);
+ s=await J("({tpl:DATA.tpl,parts:Object.keys(parts).length,items:getItems().length,act:ACT.length,rv:RV.els.length,off:document.getElementById('p-parts').classList.contains('tpOff'),note:geoD().note})");
+ ok(s.tpl==='house2'&&s.parts===0&&s.items<46&&s.act===1&&s.rv>0&&s.off&&s.note==='','loading another template removes the sample completely '+JSON.stringify(s));
+ console.log('== 4. registration hook and legacy files');
+ await E("tpRegister({id:'demo_hook',n:['Hook test','x'],title:['Hook','x'],d:['d','d'],rv:()=>tpEmptyRv()});1");
+ ok(await J("TOX.templates().some(t=>t.id==='demo_hook')"),'tpRegister adds a chooser entry');
+ await E("tpNew('demo_hook',{download:false});1"); await pg.waitForTimeout(1500);
+ ok(await E("DATA.tpl")==='demo_hook'&&await E("Object.keys(parts).length")===0,'a registered template starts on the clean base');
+ await E("tpNew('sewage',{download:false});1"); await pg.waitForTimeout(1500);
+ const legacy=await E("(()=>{ const j=JSON.parse(projectJson()); delete j.tp; delete j.data.tpl; return JSON.stringify(j); })()");
+ await E("tpNew('blank',{download:false});1"); await pg.waitForTimeout(1500);
+ await pg.evaluate(t=>__lsv.ev('hiApply('+JSON.stringify(t)+');1'),legacy); await pg.waitForTimeout(2000);
+ ok(await E("DATA.tpl")==='sewage'&&await E("Object.keys(parts).length")>=30,'an old project file (no template flag), opened like the Open command (loadProject + rebuild), loads as the pump-station sample');
+ ok(er.length===0,'no page errors '+JSON.stringify(er.slice(0,2)));
+ console.log('\nseparation: '+pass+' passed, '+fail+' failed'); await b.close(); process.exit(fail?1:0);
+})().catch(e=>{console.log('CRASH',e.message);process.exit(2);});
