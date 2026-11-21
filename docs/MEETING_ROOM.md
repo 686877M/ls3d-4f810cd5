@@ -360,3 +360,6 @@ c_ui2.js/c_ind.js: one picture set (21 pictures, 0 fallbacks) shared by hover, G
 
 ## 2026-11-21 ribbon hover text
 c_xdesc2.js: bilingual hover descriptions for the 85 ribbon commands that had none (0 left). Public build has no __lsv.ev; tests use site/index.test.html.
+
+## 2026-11-21 login + auto-update
+Login accepts Arabic-Indic digits, spaces, empty user. c_upd.js polls build.txt every 60s and shows a refresh banner.

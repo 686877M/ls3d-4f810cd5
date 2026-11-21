@@ -3085,7 +3085,7 @@ const LOGIN={done:false,user:'6868',pass:'6868',after:null};
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ draw(performance.now()); cancelAnimationFrame(raf); } else raf=requestAnimationFrame(draw);
  const U=d.querySelector('#xlU'), P=d.querySelector('#xlP'), B=d.querySelector('#xlG'); [U,P].forEach(i=>i.addEventListener('focus',()=>{ try{ INTRO.warm(); }catch(e){} },{once:true}));
  const open=()=>{ if(LOGIN.done)return; LOGIN.done=true; try{sessionStorage.setItem('xto-auth','1');}catch(e){} d.classList.add('out'); setTimeout(()=>{alive=false; cancelAnimationFrame(raf); d.remove();},1100); if(LOGIN.after){const f=LOGIN.after; LOGIN.after=null; setTimeout(f,350);} };
- const tryIn=(enter)=>{ if(U.value.trim()===LOGIN.user&&P.value===LOGIN.pass)open(); else if(enter){P.classList.add('bad'); setTimeout(()=>P.classList.remove('bad'),450); P.value='';} };
+ const nz=v=>String(v).replace(/[\u0660-\u0669]/g,c=>c.charCodeAt(0)-0x660).replace(/[\u06F0-\u06F9]/g,c=>c.charCodeAt(0)-0x6F0).replace(/[\s\u200e\u200f]/g,''); const tryIn=(enter)=>{ const u=nz(U.value), p=nz(P.value); if((u===LOGIN.user||u==='')&&p===LOGIN.pass)open(); else if(enter){P.classList.add('bad'); setTimeout(()=>P.classList.remove('bad'),450); P.value='';} };
  P.addEventListener('input',()=>tryIn(false)); U.addEventListener('input',()=>tryIn(false)); [U,P].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')tryIn(true);})); B.onclick=()=>tryIn(true); setTimeout(()=>P.focus(),900);
 })();
 /* ====== T.X Plant: piping, equipment and the final isometric sheets (AutoCAD Plant 3D style). Uses the model, the parts and BOQ lists and the sheet maker; system colours are our own classification of the model's pipe parts. ====== */
@@ -8636,6 +8636,12 @@ w_reset:['Put the windows back to the default layout','رجّع النوافذ �
 w_add:['Add a new widget to the workspace','ضيف ويدجت جديد لمساحة الشغل'],
 w_dash:['Add a dashboard widget','ضيف ويدجت لوحة معلومات']
 };for(const k in D)if(!XDESC[k])XDESC[k]=D[k];},0);
+/* c_upd.js - checks build.txt on the server every 60 s and when the tab comes back; offers a one-click refresh (never reloads by itself, so no work is lost). */
+(function(){ if(location.protocol==='file:')return; let shown=false;
+ const chk=async()=>{ if(shown||document.hidden)return; try{ const r=await fetch('build.txt?'+Date.now(),{cache:'no-store'}); if(!r.ok)return; const t=(await r.text()).trim(); if(!t||t===XTO.build||!/^\d{8}-\d{6}$/.test(t))return; shown=true;
+   const b=document.createElement('div'); b.style.cssText='position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9999;background:#1b1714;color:#e8dcc8;border:1px solid #e0643a;border-radius:10px;padding:10px 16px;font:13px "Segoe UI",system-ui,sans-serif;display:flex;gap:12px;align-items:center;box-shadow:0 6px 24px #0008';
+   b.innerHTML='<span>'+(document.documentElement.lang==='ar'?'في نسخة أحدث':'A newer version is ready')+'</span>'; const g=document.createElement('button'); g.textContent=document.documentElement.lang==='ar'?'حدّث دلوقتي':'Refresh now'; g.style.cssText='background:#e0643a;color:#fff;border:0;border-radius:6px;padding:5px 12px;cursor:pointer'; g.onclick=()=>location.reload(); const x=document.createElement('button'); x.textContent='×'; x.style.cssText='background:none;border:0;color:#e8dcc8;cursor:pointer;font-size:16px'; x.onclick=()=>b.remove(); b.append(g,x); document.body.appendChild(b); }catch(e){} };
+ setInterval(chk,60000); document.addEventListener('visibilitychange',chk); setTimeout(chk,15000); })();
 
 /* ====================== language, sync, loop ====================== */
 function syncUI(){for(const k in togB)togB[k].classList.toggle('on',!!state[k]); document.querySelector('[data-tool="tl_wire"]').classList.toggle('on',state.wire); document.querySelector('[data-tool="tl_meas"]').classList.toggle('on',state.measure);}

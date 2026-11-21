@@ -21,6 +21,6 @@ const LOGIN={done:false,user:'6868',pass:'6868',after:null};
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ draw(performance.now()); cancelAnimationFrame(raf); } else raf=requestAnimationFrame(draw);
  const U=d.querySelector('#xlU'), P=d.querySelector('#xlP'), B=d.querySelector('#xlG'); [U,P].forEach(i=>i.addEventListener('focus',()=>{ try{ INTRO.warm(); }catch(e){} },{once:true}));
  const open=()=>{ if(LOGIN.done)return; LOGIN.done=true; try{sessionStorage.setItem('xto-auth','1');}catch(e){} d.classList.add('out'); setTimeout(()=>{alive=false; cancelAnimationFrame(raf); d.remove();},1100); if(LOGIN.after){const f=LOGIN.after; LOGIN.after=null; setTimeout(f,350);} };
- const tryIn=(enter)=>{ if(U.value.trim()===LOGIN.user&&P.value===LOGIN.pass)open(); else if(enter){P.classList.add('bad'); setTimeout(()=>P.classList.remove('bad'),450); P.value='';} };
+ const nz=v=>String(v).replace(/[\u0660-\u0669]/g,c=>c.charCodeAt(0)-0x660).replace(/[\u06F0-\u06F9]/g,c=>c.charCodeAt(0)-0x6F0).replace(/[\s\u200e\u200f]/g,''); const tryIn=(enter)=>{ const u=nz(U.value), p=nz(P.value); if((u===LOGIN.user||u==='')&&p===LOGIN.pass)open(); else if(enter){P.classList.add('bad'); setTimeout(()=>P.classList.remove('bad'),450); P.value='';} };
  P.addEventListener('input',()=>tryIn(false)); U.addEventListener('input',()=>tryIn(false)); [U,P].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')tryIn(true);})); B.onclick=()=>tryIn(true); setTimeout(()=>P.focus(),900);
 })();
