@@ -69,7 +69,7 @@ ul.l{margin:6px 0;padding-inline-start:18px}ul.l li{margin:3px 0}
 </style>
 <body>
 <div id="errbar" hidden></div>
-<script>window.addEventListener('error',function(e){var b=document.getElementById('errbar');if(b){b.hidden=false;b.textContent='Script error: '+(e.message||e.error)+' ('+String(e.filename||'').split('/').pop()+':'+e.lineno+')';}});</script>
+<script>window.addEventListener('error',function(e){var b=document.getElementById('errbar');if(b){b.hidden=false;b.textContent='Script error: '+(e.message||e.error)+' ('+String(e.filename||'').split('/').pop()+':'+e.lineno+':'+e.colno+')'+((e.error&&e.error.stack)?' | '+String(e.error.stack).split('\n').slice(1,4).map(function(x){return x.trim().replace(/^at /,'')}).join(' < '):'');}});</script>
 <noscript><p style="padding:20px">JavaScript is required.</p></noscript>
 <div class="app">
  <header>
