@@ -6776,7 +6776,7 @@ function tpChooser(){
   const old=document.getElementById('tpDlg'); if(old)old.remove(); const L=lang==='ar'?'ar':'en';
   const ov=el('div',{id:'tpDlg',style:'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center'}), close=()=>ov.remove();
   const box=el('div',{style:'background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:16px;width:min(720px,94vw);max-height:88vh;overflow:auto'});
-  const dl=el('input',{type:'checkbox',id:'tpDl'}); dl.checked=true;
+  const dl=el('input',{type:'checkbox',id:'tpDl'}); dl.checked=false;   /* owner: New must not download a file unless asked (the previous project stays in undo + 'lsv3-prev') */
   const pick=id=>{ const dn=dl.checked; close(); try{ tpNew(id,{download:dn}); }catch(e){ xSt(String(e.message||e)); } };
   box.append(el('b',{text:b2('New project','مشروع جديد'),style:'font-size:16px'}),el('div',{class:'small',text:b2('Your current project stays in the undo history. Pick a starting point:','مشروعك الحالي هيفضل في سجل التراجع. اختار نقطة البداية:')}));
   const grid=el('div',{style:'display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0'});

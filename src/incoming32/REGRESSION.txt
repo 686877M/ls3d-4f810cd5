@@ -1,0 +1,29 @@
+Build: work_agentux/make.sh (private copy of patch_v3.py + build.py, shared chunks read-only). Page: work_agentux/out/index.test.html
+Shared base sha1 (unchanged by this work):
+99b2342518e221232a9a7bef24be89c2c77022b9  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/patch_v3.py
+3dda12834cedb4730e76df96251fc7b62280bd4c  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/build.py
+6b6bcbffdf3be2589f6ec01826841af27011214f  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/privacy.js
+
+### ag5 21:31:59
+exit 0 ag5 21:32:41
+ALL PASS 64 passed, 0 failed
+### parity 21:32:41
+exit 0 parity 21:33:48
+126 passed, 0 failed
+### px2 21:33:48
+exit 0 px2 21:34:33
+149 passed, 0 failed
+### freeai 21:34:33
+exit 0 freeai 21:34:54
+freeai: 88 passed, 0 failed
+### privacy 21:34:54
+exit 0 privacy 21:36:02
+109 passed, 0 failed
+### separation 21:36:02
+exit 0 separation 21:36:34
+separation: 32 passed, 0 failed
+### gm 21:36:34
+exit 0 gm 21:37:36
+  ok   55 layers carry a passed real-tile test
+66 passed, 0 failed
+ALLDONE

@@ -1,0 +1,3 @@
+99b2342518e221232a9a7bef24be89c2c77022b9  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/patch_v3.py
+3dda12834cedb4730e76df96251fc7b62280bd4c  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/build.py
+6b6bcbffdf3be2589f6ec01826841af27011214f  /private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/privacy.js
