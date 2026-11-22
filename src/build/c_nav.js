@@ -1,5 +1,5 @@
 /* ====== Navigation: compass with north, view buttons, orbit / pan / walk, perspective / orthographic-like, display styles ====== */
-const NAV={rot:6.5,walk:false,keys:{},ortho:false};
+const NAV={rot:0,walk:false,keys:{},ortho:false};
 const navCmp=el('div',{style:'position:absolute;top:8px;right:46px;width:70px;pointer-events:none;z-index:5'}); navCmp.innerHTML='<svg viewBox="-35 -35 70 70" width="70" height="70"><circle r="31" fill="rgba(20,24,28,.55)" stroke="#8d97a3" stroke-width=".8"/><g id="navArr"><path d="M0 -26 L5 0 L0 -5 L-5 0Z" fill="#d9962b"/><path d="M0 26 L4 4 L0 7 L-4 4Z" fill="#8d97a3" opacity=".7"/><text y="-12" x="0" text-anchor="middle" font-size="9" font-weight="700" fill="#101316" font-family="Segoe UI,Arial">N</text></g></svg>'; host.appendChild(navCmp);
 const navBar=el('div',{style:'position:absolute;top:8px;left:46px;display:flex;gap:1px;z-index:5'}); host.appendChild(navBar);
 function navView(dx,dy,dz){ const d=camera.position.distanceTo(controls.target)||14, v=new T.Vector3(dx,dy,dz).normalize().multiplyScalar(d); camera.position.copy(controls.target).add(v); camera.lookAt(controls.target); controls.update(); }
