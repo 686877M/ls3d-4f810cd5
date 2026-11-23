@@ -1,0 +1,18 @@
+=== site/src/incoming/parity_test.js
+exit 0
+126 passed, 0 failed
+=== pw/ag5_test.js
+exit 0
+  ok   hanging place search -> step failed with a timeout reason
+  ok   status = failed with reason: المهلة خلصت بعد 3 ث
+  ok   Sensitive mode: step failed with the reason
+ALL PASS 64 passed, 0 failed
+=== pw/separation_test.js
+exit 0
+separation: 32 passed, 0 failed
+=== pw/cadimp_test.js
+exit 0
+cadimp: 11 passed, 0 failed
+=== pw/hxt_test.js
+exit 0
+hxt: 45 passed, 0 failed

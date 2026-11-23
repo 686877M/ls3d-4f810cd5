@@ -1,0 +1,19 @@
+--- patch_v3.py	2026-11-23 09:30:43
++++ work_split/patch_v3.py	2026-11-23 10:02:01
+@@ -77,4 +77,16 @@
+ demo_src='\n'.join(rd(f) for f in ['demo_core.js','demo_ch1.js']+[f for f in ['demo_ch2.js','demo_ch3.js','demo_voice.js'] if os.path.exists(SP+f)])
+ assert '</script' not in demo_src
+ _i=s.rindex('</body>'); s=s[:_i]+'<script type="text/plain" id="xDemoSrc">\n'+demo_src+'\n</script>'+s[_i:]  # lazy source: evaluated on first click, not at start
++# lazy program groups: top-level functions of these chunks move to <script type="text/plain" data-xg="name"> blocks and run on first use (see xsplit.py)
++XG_GROUPS={'rc':['c_rc_core.js','c_rc_import.js','c_rc_terrain.js','c_rc_bld.js','c_rc_ui.js'],
++ 'qa':['qa_core.js','qa_wbs.js','qa_hold.js','qa_cash.js','qa_perm.js','qa_logi.js','qa_close.js','qa_ui.js'],
++ 'se':['se_codes.js','se_loads.js','se_members.js','se_members2.js','se_api.js','se_ui.js'],
++ 'hxt':['hxt_core.js','hxt_place.js','hxt_xform.js','hxt_mesh.js','hxt_tools.js','hxt_ext.js'],
++ 'nv':['c_nv_core.js','c_nv_tl.js','c_nv_clash.js','c_nv_view.js'],
++ 'rs':['rs_core.js','rs_out.js','rs_ui.js'],
++ 'qx':['c_qx_calc.js','c_qx_grid.js','c_qx_tools.js','c_qx_bi.js'],
++ 'ph':['ph_core.js','ph_import.js','ph_ui.js']}
++import sys,json; _XD=os.environ.get('XSPLIT_DIR',SP); sys.path.insert(0,_XD); import xsplit
++if os.environ.get('XSPLIT_ONLY'): XG_GROUPS={k:v for k,v in XG_GROUPS.items() if k in os.environ['XSPLIT_ONLY'].split(',')}
++if os.environ.get('XSPLIT')!='0': s=xsplit.apply(s,XG_GROUPS,rd,hot=json.load(open(os.path.join(_XD,'xg_hot.json'))) if os.path.exists(os.path.join(_XD,'xg_hot.json')) else [])
+ open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')
