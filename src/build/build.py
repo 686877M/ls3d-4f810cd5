@@ -33,6 +33,10 @@ bi=html.index('<body>')+6
 html=html[:bi]+'<script>'+'(function(){try{var h=location.hash||\'\',q=location.search||\'\'; if(h.indexOf(\'reset\')<0&&q.indexOf(\'reset=1\')<0)return; Storage.prototype.setItem=function(){}; var KEEP=/^(xto-(theme|theme2|layout|preset|skin|role|ui2|noask|askclose|soft|glfb|intro|intro-seen|auth|ytinst|ytacct|ytsz|mediapos|tv|idle|radcustom|pray|orbauto|msstep|msspeed|ribc|ai|fa|news|vx|test|priv|agent|brurl|agent-key|aikey|aikey2|aikey3|aisttkey|fakeys|fakeys-l|brtok|hub|aimodel|tgtok)|lsv-lang)$/; Object.keys(localStorage).filter(function(k){return !KEEP.test(k)}).forEach(function(k){localStorage.removeItem(k)}); try{indexedDB.deleteDatabase(\'xto-hist\')}catch(e){} var u=location.pathname+(q.replace(/[?&]reset=1/,\'\').replace(/^&/,\'?\')||\'\'); setTimeout(function(){location.replace(u)},400); window.__xReset=1;}catch(e){}})();\n'+early+'</script>'+html[bi:]
 assert 'data-xd' in html and html.count('data-xd>')==3 and html.count('data-xl="jspdf">')==1
 assert 'src="https://cdn' not in html
+# installable app (Windows / Mac / Linux from Chrome or Edge) and offline start; the test build stays without a service worker
+PWA='<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1b1714"><script>if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol))addEventListener("load",function(){if(!window.__XSYNC)navigator.serviceWorker.register("sw.js").catch(function(){})});</script>'
+assert html.count('</head>')>=1
+html=html.replace('</head>',PWA+'</head>',1)
 open(SP+"/site/index.test.html","w",encoding="utf-8").write(html.replace("<script>(function(){var ran=0;","<script>window.__XSYNC=1;</script><script>(function(){var ran=0;",1))  # tests only (keeps __lsv.ev; boots synchronously so DOMContentLoaded is after the build, as before)
 hook="ev:s=>{ if(localStorage.getItem('xto-test')!=='1')throw new Error('test hook is off'); return eval(s); },"
 assert html.count(hook)==1
