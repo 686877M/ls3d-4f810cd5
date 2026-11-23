@@ -21,6 +21,8 @@ const pw=require('playwright-core');const CH='/Applications/Google Chrome.app/Co
  t(r.open&&r.svg>=1,'C.X opens and draws the imported circle');
  t(r.ownN>=0&&!r.sErr,'app-exported DXF parses back (own '+r.ownN+', sheet '+r.sN+')');
  t(!!r.binErr&&!!r.junk,'binary DXF and non-DXF give a clear error');
+ const rt=await p.evaluate(()=>window.__lsv.ev(`(()=>{ const D=cadD(); D.ents.push({t:'pl',ly:'WALLS',p:[[0,0],[5,0],[5,5]],cl:1},{t:'r',ly:'WALLS',x1:1,y1:1,x2:3,y2:2}); const r=cadDxfParse(cadExportDxf()); const pl=r.ents.filter(e=>e.t==='pl'); return {n:r.ents.length,src:D.ents.length,pl:pl.length,cl:pl.every(e=>e.cl===1),v:pl.map(e=>e.p.length).join(','),col:r.layers.WALLS&&r.layers.WALLS.c}; })()`));
+ console.log(JSON.stringify(rt)); t(rt.n===rt.src&&rt.pl===2&&rt.cl&&rt.v==='3,4'&&rt.col===1,'export then import round trip keeps every entity, closed polylines and layer colour');
  const rib=await p.evaluate(()=>window.__lsv.ev(`Object.keys(RIBM).filter(k=>RIBM[k].impl==='=cadImportPick'&&XC[k]).length===2`)).catch(()=>null); t(rib===true,'ribbon Import buttons run the importer');
  t(errs.length===0,'no page errors '+errs.slice(0,2).join(' | '));
  await p.screenshot({path:'recover/xb/cadimp.png'});console.log('\ncadimp: '+ok+' passed, '+bad+' failed');await b.close();})();
