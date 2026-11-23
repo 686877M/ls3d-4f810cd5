@@ -1,5 +1,7 @@
 # MEETING ROOM: agreements, decisions and status
 
+> **المحادثة الأساسية (Main conversation):** [MAIN_CONVERSATION.md](MAIN_CONVERSATION.md) — full log of the lead session (redacted). Work tree, build and test steps are in its last messages.
+
 Template used: **BVT-1 (BIM Viewer Template)**. See `template/BVT-1/README.md`. Any new project reuses the same idea: copy the source, edit only the PROJECT blocks.
 
 Project: Sewage Lift Station (sheets BIS-ME-LST-01 plan, 02 roof plan, 03 section A; scale 1:25).
