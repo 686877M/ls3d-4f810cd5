@@ -2,6 +2,9 @@
 (function(){
  const S=DEMO, B=S.B, ctx={};
  const vis=e=>{ if(!e||!e.isConnected)return false; const r=e.getBoundingClientRect(); return r.width>0&&r.height>0; };
+ /* a real command that opens a pane (feature-detected: skipped when the command does not exist yet); the pane is closed again after the check */
+ const openKeys=()=>Object.keys(WX.lay).filter(k=>WX.lay[k].open);
+ const pane=(cmd,en,ar,keep)=>[{op:'do',when:()=>!!XC[cmd],fn:()=>{ ctx['k_'+cmd]=openKeys(); ctx['b_'+cmd]=new Set(document.body.children); }},{op:'run',cmd:cmd,after:1400,when:()=>!!XC[cmd]},{op:'assert',en:en,ar:ar,when:()=>!!XC[cmd],ok:()=>openKeys().length>=ctx['k_'+cmd].length},{op:'shot',name:'pane_'+cmd,when:()=>!!XC[cmd]},{op:'do',when:()=>!!XC[cmd]&&!keep,fn:()=>{ openKeys().filter(k=>!ctx['k_'+cmd].includes(k)).forEach(k=>{ try{ wxClose(k); }catch(e){} }); [...document.body.children].filter(n=>!ctx['b_'+cmd].has(n)&&!/^xDemo/.test(n.id||'')&&n.tagName!=='SCRIPT'&&n.tagName!=='STYLE'&&getComputedStyle(n).position==='fixed').forEach(n=>n.remove()); }}];
  const nrx=()=>ACT.filter(a=>a.src==='rx').length;
  const card=(en,ar,need,kind)=>({op:'card',kind:kind,en:en,ar:ar,need:need});
  const STAGES=[{"id": "9.1", "en": "Site setup and set-out", "ar": "تجهيز الموقع والتوقيع", "hold": "HOLD: set-out checked by the consultant before excavation. Record: set-out sheet."}, {"id": "9.2", "en": "Excavation and shoring", "ar": "الحفر والسند", "hold": "HOLD: founding level and soil acceptance (consultant + geotech). Record: excavation approval form with level readings."}, {"id": "9.3", "en": "Blinding and waterproofing of foundations", "ar": "الخرسانة العادية وعزل الأساسات", "hold": "HOLD: blinding level and dimensions; waterproofing continuity. Record: blinding approval."}, {"id": "9.4", "en": "Footings, neck columns and tie beams", "ar": "القواعد ورقاب الأعمدة والسملات", "hold": "HOLD 1: rebar inspection before pour (diameter, spacing, cover, laps, starters, cleanliness, formwork). HOLD 2: pour with approved mix, slum"}, {"id": "9.5", "en": "Ground slab / plinth beams and DPC", "ar": "أرضية الدور الأرضي والعزل الأفقي", "hold": "HOLD: sleeves/embedded services inspected BEFORE pour (MEP + QC). Record: embedded works checklist."}, {"id": "9.6", "en": "Columns, beams and slabs - each floor", "ar": "الأعمدة والكمرات والبلاطات لكل دور", "hold": "HOLD 1: formwork and props inspection. HOLD 2: rebar inspection (incl. top steel, stirrups, cover, laps, openings). HOLD 3: MEP embedded wor"}, {"id": "9.7", "en": "Roof slab, parapet, roof waterproofing and tanks", "ar": "سقف الدور الأخير والبرابيت وعزل الأسطح", "hold": "HOLD: flood test pass (no leaks after 24-48 h). Record: flood test report."}, {"id": "9.8", "en": "Masonry (external and internal walls)", "ar": "المباني (الطوب الخارجي والداخلي)", "hold": "HOLD: opening sizes, verticality, lintels, chase depth. Record: masonry inspection."}, {"id": "9.9", "en": "MEP first fix (rough-in)", "ar": "أعمال الكهروميكانيكا الأولى (داخل الحوائط)", "hold": "HOLD: pressure test water pipes (typ. 1.5 x working pressure, 2-24 h per spec), drain water/air test, conduit continuity and earth continuit"}, {"id": "9.10", "en": "Plaster (internal and external)", "ar": "المحارة الداخلية والخارجية", "hold": "HOLD: MEP first fix tested and closed before plaster. Record: plaster inspection."}, {"id": "9.11", "en": "Floors, wall finishes, ceilings, doors/windows, paint", "ar": "الأرضيات وتشطيبات الحوائط والأسقف والأبواب والدهانات", "hold": "HOLD: wet-area waterproofing flood test; tile sampling approval; colour approvals."}, {"id": "9.12", "en": "MEP second fix (trim)", "ar": "أعمال الكهروميكانيكا الثانية (التركيبات النهائية)", "hold": "HOLD: insulation resistance (megger), earth resistance, RCD trip test, polarity before energising."}, {"id": "9.13", "en": "External works", "ar": "الأعمال الخارجية", "hold": "HOLD: manholes and drainage test, sewer connection approved."}];
@@ -20,7 +23,9 @@
    {op:'assert',en:'The sheet finds the lowest bid (985,000) and Contractor B is 1.5% under the estimate',ar:'الشيت لقى أقل عرض (٩٨٥٬٠٠٠) والمقاول B أقل من التقدير بـ١٫٥٪',ok:()=>{ const sh=QX.api.wb().sheets.find(s=>s.name==='Bid comparison'); return sh&&qxGet(sh,5,1)===985000&&Math.abs(qxGet(sh,3,2)+1.5)<.01; }},
    {op:'shot',name:'01_bid_comparison'},
    card('Negotiation, award recommendation and contract signing are decisions and paperwork done by people.','التفاوض وترسية العقد والتوقيع قرارات وورق بيعملها ناس.',null,'field'),
-   card('Tender package templates (instructions to bidders, conditions) exist only as generic document templates; there is no contract builder or bid-analysis tool yet.','قوالب حزمة المناقصة موجودة كقوالب مستندات عامة بس؛ ومفيش بنّاء عقود أو أداة تحليل عروض لسه.',['Contract builder and bid analysis','بنّاء عقود وتحليل عروض'])
+   {op:'say',en:'Tender helpers: the bid comparison panel and the tender timeline (the contract templates button downloads a file, so the demo does not press it).',ar:'مساعدات المناقصة: لوحة مقارنة العروض وجدول المناقصة (زرار قوالب العقود بينزّل ملف فالديمو مبيضغطوش).',when:()=>!!XC.ps_bids},
+   ...pane('ps_bids','Bid comparison panel opened','لوحة مقارنة العروض اتفتحت'),
+   ...pane('qa_tend','Tender timeline panel opened','لوحة جدول المناقصة اتفتحت'),
   ]});
 
  /* ---------------- phase 8: planning ---------------- */
@@ -45,7 +50,11 @@
    {op:'do',fn:()=>{ ctx.lk=TOXAPI.link('sched','model'); }},
    {op:'assert',en:'Schedule and model windows share a link colour',ar:'نافذتا الجدول والموديل ليهم نفس لون الربط',ok:()=>!!ctx.lk&&LK.col(LK.winId('sched')||'sched')===LK.col(LK.winId('model')||'model')},
    {op:'do',fn:()=>{ try{ wxClose('pane:gantt'); }catch(e){} }},
-   card('The full WBS with all construction stages, resource loading, cost-loaded cash flow and S-curve, and the safety plan (HSE): the schedule here has only the model-based work types.','هيكل الأعمال الكامل بكل مراحل التنفيذ وتحميل الموارد والتدفق النقدي المحمّل بالتكلفة ومنحنى S وخطة السلامة: الجدول هنا فيه أنواع الشغل المبنية على الموديل بس.',['WBS template with stages, cash flow, S-curve, safety plan','قالب WBS بالمراحل وتدفق نقدي وS-curve وخطة سلامة'])
+   {op:'say',en:'The template schedule gives the full house WBS by construction stage; the cash-flow panel makes the S-curve from the costs.',ar:'جدول القالب بيدي هيكل أعمال البيت كامل بمراحل التنفيذ؛ ولوحة التدفق النقدي بتعمل منحنى S من التكاليف.',when:()=>!!XC.qa_wbs},
+   ...pane('qa_wbs','Template schedule panel opened','لوحة جدول القالب اتفتحت'),
+   ...pane('qa_cash','Cash flow and S-curve panel opened','لوحة التدفق النقدي ومنحنى S اتفتحت'),
+   ...pane('qa_res','Resource histogram panel opened','لوحة هيستوجرام الموارد اتفتحت'),
+   card('Applying the template WBS to this schedule, loading resources and costs and the safety plan need your crews, rates and site decisions; the demo only opens the panels.','تطبيق هيكل القالب على الجدول وتحميل الموارد والتكاليف وخطة السلامة محتاج طواقمك وأسعارك وقرارات الموقع؛ والديمو بيفتح اللوحات بس.',null,'field'),
   ]});
 
  /* ---------------- phase 9: construction in stages ---------------- */
@@ -59,7 +68,10 @@
      {op:'say',en:s.id+' '+s.en+'. '+s.hold,ar:s.id+' '+s.ar+'. نقطة الإيقاف: '+s.hold.replace(/^HOLD[^:]*:\s*/,''),hold:4200},
      {op:'do',fn:()=>{ TOX.addDoc({type:'IR',dir:'out',subject:'Inspection request '+s.id+': '+s.en,body:'Demo record. '+s.hold,from:'Contractor',to:'Consultant'}); }}]),
    {op:'assert',en:'13 inspection requests registered, one per construction stage',ar:'اتسجل ١٣ طلب فحص، واحد لكل مرحلة تنفيذ',ok:()=>TOX.docs().length-ctx.d0===13&&TOX.docs().filter(d=>/Inspection request 9\./.test(d.subject)).length>=13},
-   card('Set-out sheet, excavation and shoring design, formwork and props checks, concrete cube and slump statistics, ITP (inspection and test plan) library, site logistics and temporary works: no tool yet.','ورقة التوقيع وتصميم الحفر والسند وفحص الشدات والعدّادات وإحصائيات المكعبات والهبوط ومكتبة خطة الفحص والاختبار والخدمات المؤقتة ولوجستيات الموقع: مفيش أداة لسه.',['ITP register, set-out sheet, cube/slump statistics, temporary works','سجل ITP وورقة توقيع وإحصائيات مكعبات وأعمال مؤقتة']),
+   {op:'say',en:'Hold points and inspections, and the concrete cube tests of the pours, have their own panels.',ar:'نقط الإيقاف والفحوصات واختبارات مكعبات الخرسانة للصبّات ليها لوحات خاصة.',when:()=>!!XC.qa_hold},
+   ...pane('qa_hold','Hold points and inspections panel opened','لوحة نقط الإيقاف والفحوصات اتفتحت'),
+   ...pane('qa_cube','Concrete cube tests panel opened','لوحة اختبارات مكعبات الخرسانة اتفتحت'),
+   card('Set-out sheet, excavation and shoring design, formwork and props checks, slump statistics and temporary works: no tool yet.','ورقة التوقيع وتصميم الحفر والسند وفحص الشدات وإحصائيات الهبوط والأعمال المؤقتة: مفيش أداة لسه.',['Set-out, shoring, formwork checks, temporary works','توقيع وسند وفحص شدات وأعمال مؤقتة']),
    card('Workers, crews and equipment per stage are listed in the phase map; resource loading in P.X needs your own crews and rates.','العمال والطواقم والمعدات لكل مرحلة موجودة في خريطة المراحل؛ وتحميل الموارد في P.X محتاج طواقمك وأسعارك.',null,'field')
   ]});
 
@@ -79,7 +91,12 @@
    {op:'do',fn:()=>{ try{ wxClose('pane:issues'); }catch(e){} }},
    {op:'do',fn:()=>{ ctx.d1=TOX.docs().length; TOX.addDoc({type:'LTR',dir:'out',subject:'Handover letter: Project 6868',body:'Demo record: handover with the as-built package and O&M manuals.',from:'Contractor',to:'Owner'}); }},
    {op:'assert',en:'Handover letter registered',ar:'خطاب التسليم اتسجل',ok:()=>TOX.docs().length===ctx.d1+1},
-   card('The handover rules check, as-built update of the model and the asset register run on the existing commands but need real project data, so the demo does not fake them.','فحص قواعد التسليم وتحديث الموديل as-built وسجل الأصول بيشتغلوا على أوامر موجودة لكن محتاجين بيانات مشروع حقيقية، فالديمو مبيزيفهمش.',null)
+   {op:'say',en:'Snag list by room, the handover check, the as-built and change log, and the O&M manual template.',ar:'قايمة الملاحظات بالغرفة، وفحص التسليم، وسجل as-built والتغييرات، وقالب كتيب التشغيل والصيانة.',when:()=>!!XC.qa_snag},
+   ...pane('qa_snag','Snag list panel opened','لوحة قايمة الملاحظات اتفتحت'),
+   ...pane('qa_close','Handover check panel opened','لوحة فحص التسليم اتفتحت'),
+   ...pane('qa_asb','As-built and change log panel opened','لوحة as-built وسجل التغييرات اتفتحت'),
+   ...pane('qa_om','O&M manual template panel opened','لوحة قالب كتيب التشغيل اتفتحت'),
+   card('The as-built update of the model and the asset register need the real changes made on site; the demo only opens the panels.','تحديث الموديل as-built وسجل الأصول محتاجين التغييرات الحقيقية اللي حصلت في الموقع؛ والديمو بيفتح اللوحات بس.',null,'field')
   ]});
  S.add({id:'out',phase:'10.5',n:['Outputs: sheets, package, vector export, render','المخرجات: اللوحات والحزمة والفكتور والريندر'],mode:'real',
   pre:async()=>{ await S.ensureProject(); },

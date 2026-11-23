@@ -55,7 +55,7 @@ if(SC==='run'||SC==='stop'||SC==='pause'){
   ok(await wait("DMX.api.D.restored===true",60000,300),'workspace restored automatically after Stop'); await pg.click('#xDemoBar button:has-text("Close"), #xDemoBar button:has-text("إغلاق")'); await pg.waitForTimeout(800);
   const after=await E("({name:dcProjName(),tpl:tpId()})"); ok(after.name===before.name&&after.tpl===before.tpl,'the previous project is back ('+JSON.stringify(after)+')');
  } else {
-  const fin=await wait("DMX.api.state().finished",1500000,3000); ok(fin,'demo finished'); await shot('run_end');
+  const fin=await wait("DMX.api.state().finished",+(process.env.WAITMS||1500000),3000); ok(fin,'demo finished'); if(!fin){ console.log('   STUCK at: '+await E("(()=>{ const D=DMX.api.D, l=D.last||{}; return 'ch='+D.cur+' step='+D.stepNo+' op='+l.op+' cmd='+(l.cmd||'')+' where='+D.where+' paused='+D.paused+' open='+Object.keys(WX.lay).filter(k=>WX.lay[k].open).join(); })()")); await shot('stuck'); } await shot('run_end');
   const st=await E("DMX.api.state()"); for(const c of st.chapters){ const r=st.results[c]; if(!r)continue; ok(r.fail===0&&r.done,'chapter '+c+': done='+r.done+' asserts ok='+r.okAsserts+' fail='+r.fail+(r.errors.length?' errors='+JSON.stringify(r.errors):'')); (r.notes||[]).forEach(n=>console.log('   note: '+n)); r.asserts.filter(a=>!a.ok).forEach(a=>console.log('   failed assert: '+a.en+' '+(a.err||'')+' INFO '+(a.info||''))); }
   if(SC==='run'){ const after=await E("({name:dcProjName(),tpl:tpId(),walls:RV.els.filter(e=>e.k==='wall').length,rv:RV.els.length,tool:RV.tool})"); log('after '+JSON.stringify(after));
    ok(after.name==='Project 6868'||true,'(project is restored by the demo itself)'); ok(!dl.length,'no file downloads triggered ('+dl.join()+')');

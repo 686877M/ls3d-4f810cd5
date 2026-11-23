@@ -11,9 +11,8 @@ def sub(a,b):
     if a in p: p=p.replace(a,b); n+=1
 sub("rd('demo_stub.js')","rd('demo/demo_stub.js')")
 sub("['demo_core.js','demo_ch1.js']+[f for f in ['demo_ch2.js','demo_ch3.js','demo_voice.js'] if os.path.exists(SP+f)]","['demo/demo_core.js','demo/demo_ch1.js','demo/demo_ch2.js','demo/demo_ch3.js']+[f for f in ['demo_voice.js'] if os.path.exists(SP+f)]")
-sub("rd('lazygl.js')","rd('demo/lazygl_fixed.js')")
 sub("+rd('c_demohold.js')","")  # the owner's temporary "demo is being rebuilt" notice replaces demoStart: not wanted in my test build
-assert n>=3,n
+assert n>=2,n
 open('demo/_patch.py','w').write(p)
 b=open('build.py').read()
 for k in ['lift_station_3d.html','build.txt','index.test.html','index.html']:
