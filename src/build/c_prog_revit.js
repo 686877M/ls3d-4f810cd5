@@ -23,7 +23,7 @@ progReg('model',[
  ['Mechanical','ميكانيكا',['Mechanical Settings|إعدادات ميكانيكية|gear','Pipe Sizing|مقاسات المواسير|gear','Duct Sizing|مقاسات المجاري|duct|=()=>wtNew("hv")']]]],
 ['ins','Insert','إدراج',[
  ['Link','ربط',['Link Revit|ربط Revit|link','Link IFC|ربط IFC|link','Link CAD|ربط CAD|link|open','Link Topography|ربط طبوغرافيا|terrain|p_survey','Decal|ملصق|rect','Point Cloud|سحابة نقاط|point','Coordination Model|نموذج تنسيق|link|p_coord']],
- ['Import','استيراد',['Import CAD|استيراد CAD|impt|open','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
+ ['Import','استيراد',['Import CAD|استيراد CAD|impt|=cadImportPick','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
  ['Load from Library','تحميل من المكتبة',['Load Family|تحميل عائلة|block|p_fam','Load as Group|تحميل كمجموعة|block','Insert Views from File|إدراج مناظير من ملف|impt']]]],
 ['ann','Annotate','التوضيح',[
  ['Dimension','الأبعاد',['Aligned|محاذٍ|dim|rv_dim','Linear|خطي|dim|m_dist','Angular|زاوي|dim|m_ang','Radial|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Spot Elevation|منسوب نقطة|level|m_lvl','Spot Coordinate|إحداثي نقطة|point','Spot Slope|ميل نقطة|line']],

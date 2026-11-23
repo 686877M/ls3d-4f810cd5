@@ -3432,7 +3432,7 @@ const ico=(n,sz)=>'<svg class="xi" viewBox="0 0 24 24" width="'+(sz||34)+'" heig
 const XTO_MARK='<defs><clipPath id="xtc"><rect x="-10" y="4" width="140" height="20"/></clipPath></defs><g transform="translate(-18.65 -6) scale(1.5)"><g transform="matrix(1 0 -.78 1 18.72 0)" fill="currentColor" stroke="none"><path d="M7.1 4H25V7H7.1a1.5 1.5 0 0 1 0-3z"/><path d="M21.2 4H25V24H21.2z"/><path fill-rule="evenodd" d="M28 4H38.6V24H28ZM31.8 7V21H34.8V7Z"/><g clip-path="url(#xtc)"><path d="M41.6 2H45.4V26H41.6z"/><path d="M41.6 14H45.4L64.12 26H60.32Z"/></g></g></g><path d="M2 36.5H18M64 36.5H80M2 35.2v2.6M80 35.2v2.6" stroke-width="1" fill="none"/><text x="41" y="39.2" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="7.6" font-weight="300" letter-spacing="2.4" fill="currentColor" stroke="none">6 8 6 8</text>';
 const XTO={on:false,name:'T.O X',tag:'TECHNICAL OFFICE X',short:'T.O X',ver:'2026.11'};
 function xtoTagSvg(fill,op,y){ y=y||44.5; return '<g fill="'+fill+'" stroke="none" opacity="'+op+'" font-family="Segoe UI,Arial,sans-serif"><text x="2" y="'+y+'" textLength="78" lengthAdjust="spacing" font-size="3.4" font-weight="300">TECHNICAL OFFICE <tspan font-size="5.2" font-weight="400">X</tspan></text><text x="28" y="'+(y+5.6)+'" textLength="26" lengthAdjust="spacing" font-size="3.6" font-weight="200">6868</text></g>'; }
-XTO.build='20261123-092408';
+XTO.build='20261123-093136';
 (function(){ try{ const m=XTO_MARK.split('<path d="M2 36.5')[0]; const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -26 96 92"><rect x="-8" y="-26" width="96" height="92" rx="18" fill="#1b1209"/><g style="color:#f6d58a" fill="#f6d58a" stroke="#f6d58a" stroke-width="0">'+m+'</g></svg>'; const u='data:image/svg+xml,'+encodeURIComponent(svg); document.querySelectorAll('link[rel~=icon],link[rel=apple-touch-icon]').forEach(l=>l.remove()); [['icon',''],['apple-touch-icon','']].forEach(r=>{ const l=document.createElement('link'); l.rel=r[0]; l.type='image/svg+xml'; l.href=u; document.head.appendChild(l); }); let th=document.querySelector('meta[name=theme-color]'); if(!th){ th=document.createElement('meta'); th.name='theme-color'; document.head.appendChild(th); } th.content='#1b1209'; }catch(e){} })();
 (function(){ if(!/^https?:/.test(location.protocol))return; const chk=()=>{ if(document.hidden)return; fetch('build.txt?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{ t=t&&t.trim(); if(!t||t===XTO.build||document.getElementById('xNewVer'))return; const d=document.createElement('div'); d.id='xNewVer'; d.style.cssText='position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;background:#e0a33a;color:#1b1209;padding:6px 14px;border-radius:8px;font:600 12px Segoe UI,Arial;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)'; d.textContent='نسخة جديدة متاحة — اضغط للتحميل / New version — click to reload'; d.onclick=()=>location.reload(); document.body.appendChild(d); }).catch(()=>{}); }; setTimeout(chk,4000); setInterval(chk,60000); })();
 (function(){const st=document.createElement('style'); st.textContent=`
@@ -6227,7 +6227,7 @@ progReg('model',[
  ['Mechanical','ميكانيكا',['Mechanical Settings|إعدادات ميكانيكية|gear','Pipe Sizing|مقاسات المواسير|gear','Duct Sizing|مقاسات المجاري|duct|=()=>wtNew("hv")']]]],
 ['ins','Insert','إدراج',[
  ['Link','ربط',['Link Revit|ربط Revit|link','Link IFC|ربط IFC|link','Link CAD|ربط CAD|link|open','Link Topography|ربط طبوغرافيا|terrain|p_survey','Decal|ملصق|rect','Point Cloud|سحابة نقاط|point','Coordination Model|نموذج تنسيق|link|p_coord']],
- ['Import','استيراد',['Import CAD|استيراد CAD|impt|open','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
+ ['Import','استيراد',['Import CAD|استيراد CAD|impt|=cadImportPick','Import gbXML|استيراد gbXML|impt','Image|صورة|rect','Import PDF|استيراد PDF|impt']],
  ['Load from Library','تحميل من المكتبة',['Load Family|تحميل عائلة|block|p_fam','Load as Group|تحميل كمجموعة|block','Insert Views from File|إدراج مناظير من ملف|impt']]]],
 ['ann','Annotate','التوضيح',[
  ['Dimension','الأبعاد',['Aligned|محاذٍ|dim|rv_dim','Linear|خطي|dim|m_dist','Angular|زاوي|dim|m_ang','Radial|نصف قطر|dim|m_circ','Diameter|قطر|dim','Arc Length|طول قوس|dim','Spot Elevation|منسوب نقطة|level|m_lvl','Spot Coordinate|إحداثي نقطة|point','Spot Slope|ميل نقطة|line']],
@@ -6292,7 +6292,7 @@ progReg('draft',[
 ['insert','Insert','إدراج',[
  ['Block','البلوك',['Insert|إدراج|block|c_binsert','Create Block|إنشاء بلوك|block|c_bcreate','Edit Block|تحرير بلوك|block']],
  ['Reference','المرجع',['Attach|إرفاق|xref','Clip|قص مرجع|trim','Underlay|خلفية|xref']],
- ['Import','استيراد',['Import|استيراد|impt|open','PDF Import|استيراد PDF|impt']],
+ ['Import','استيراد',['Import DXF|استيراد DXF|impt|=cadImportPick','PDF Import|استيراد PDF|impt']],
  ['Data','البيانات',['Data Extraction|استخراج بيانات|table|p_bom','Link Data|ربط بيانات|link']],
  ['Linking','الربط',['Hyperlink|رابط|link','Location|الموقع|point|p_geo']]]],
 ['annot','Annotate','التوضيح',[
@@ -13628,6 +13628,47 @@ AG5OPS.zoomsel=async(st,R)=>{ const o=ag5Obj();
  if(o&&o.kind==='gis'){ await ag5EnsureMap(R); await ag5Point(GM.cv,R); gmGo(o.f.g[0],o.f.g[1],Math.max(GM.z,18)); return ag5B('Map centred on the marker','الخريطة اتوسطت على العلامة'); }
  if(o&&o.kind==='cad'){ const b=ebox(o.e), w=Math.max(b[2]-b[0],b[3]-b[1],1)*1.6, cx=(b[0]+b[2])/2, cy=(b[1]+b[3])/2; CS.V={x:cx-w/2,y:cy-w*.31,w,h:w*.62}; cadRender(); await ag5Point(CW.querySelector('svg'),R); return ag5B('C.X zoomed to the line','C.X زوّم على الخط'); }
  if(o&&o.kind==='rv')RV.sel=o.e.id; if(!XC.zsel)throw ag5Err('nothing selected','مفيش حاجة متحددة'); await ag5Point(xaBtn('zsel'),R); XC.zsel.run(); await ag5Sleep(120); return XC.zsel.t[(typeof lang!=='undefined'&&lang==='ar')?1:0]; };
+/* ====== C.X: import an ASCII DXF drawing into the 2D editor (DATA.cad). Reads LINE, CIRCLE, ARC, ELLIPSE, LWPOLYLINE, POLYLINE, SPLINE, TEXT, MTEXT, DIMENSION and INSERT (blocks expanded), plus layer colours. Curves become polylines. DWG is a closed binary format: the user saves it as DXF first. Load after c_cad*.js and c_shell.js. Globals: cadDxfParse, cadImportDxf. ====== */
+const CADIMP_ACI={1:'#ef5350',2:'#ffd54f',3:'#66bb6a',4:'#4fc3f7',5:'#5c6bc0',6:'#ec407a',7:'#e8e8e8',8:'#9e9e9e',9:'#bdbdbd'};
+function cadDxfParse(t){
+ if(t.indexOf('AutoCAD Binary DXF')===0)throw new Error(b2('Binary DXF is not supported: save it as ASCII DXF.','DXF الثنائي مش مدعوم: احفظه ASCII DXF.'));
+ const R=t.split(/\r?\n/), pr=[]; for(let i=0;i+1<R.length;i+=2)pr.push([parseInt(R[i],10),R[i+1].trim()]);
+ if(!pr.some(p=>p[0]===0&&p[1]==='SECTION'))throw new Error(b2('This file is not a DXF drawing.','الملف ده مش لوحة DXF.'));
+ // group the pairs into records: one record per code-0 line
+ const rec=[]; let c=null; pr.forEach(p=>{ if(p[0]===0){ c={t:p[1],g:[]}; rec.push(c); } else if(c)c.g.push(p); });
+ const one=(r,k,d)=>{ const p=r.g.find(x=>x[0]===k); return p?p[1]:d; }, num=(r,k,d)=>{ const v=parseFloat(one(r,k,'')); return isFinite(v)?v:(d||0); }, all=(r,k)=>r.g.filter(x=>x[0]===k).map(x=>parseFloat(x[1])||0);
+ const layers={}, blocks={}, top=[], skip={}; let sec='', blk=null, pl=null, tgt=top;
+ const ent=(r)=>{ const ly=one(r,8,'0'), T=r.t;
+  if(T==='LINE')return {t:'l',ly,x1:num(r,10),y1:num(r,20),x2:num(r,11),y2:num(r,21)};
+  if(T==='CIRCLE')return {t:'c',ly,x:num(r,10),y:num(r,20),r:num(r,40)};
+  if(T==='ARC'){ const cx=num(r,10),cy=num(r,20),rad=num(r,40); let a=num(r,50)*Math.PI/180,b=num(r,51)*Math.PI/180; if(b<=a)b+=2*Math.PI; const n=Math.max(6,Math.ceil((b-a)/(Math.PI/18))), p=[]; for(let i=0;i<=n;i++){ const u=a+(b-a)*i/n; p.push([cx+rad*Math.cos(u),cy+rad*Math.sin(u)]); } return {t:'pl',ly,p}; }
+  if(T==='ELLIPSE'){ const cx=num(r,10),cy=num(r,20),mx=num(r,11),my=num(r,21),k=num(r,40,1),a=num(r,41,0); let b=num(r,42,2*Math.PI); if(b<=a)b+=2*Math.PI; const n=48,p=[]; for(let i=0;i<=n;i++){ const u=a+(b-a)*i/n; p.push([cx+mx*Math.cos(u)-my*k*Math.sin(u),cy+my*Math.cos(u)+mx*k*Math.sin(u)]); } return {t:'pl',ly,p}; }
+  if(T==='LWPOLYLINE'){ const xs=all(r,10),ys=all(r,20); if(xs.length<2)return null; return {t:'pl',ly,p:xs.map((x,i)=>[x,ys[i]||0]),cl:(num(r,70)&1)?1:0}; }
+  if(T==='SPLINE'){ let xs=all(r,11),ys=all(r,21); if(xs.length<2){ xs=all(r,10); ys=all(r,20); } if(xs.length<2)return null; return {t:'pl',ly,p:xs.map((x,i)=>[x,ys[i]||0]),cl:(num(r,70)&1)?1:0}; }
+  if(T==='TEXT'||T==='MTEXT'||T==='ATTRIB'){ let s=r.g.filter(x=>x[0]===3).map(x=>x[1]).join('')+one(r,1,''); s=s.replace(/\\P/g,' ').replace(/\\[A-Za-z][^;\\]*;/g,'').replace(/\\[LlOoKk]/g,'').replace(/[{}]/g,'').replace(/%%[cdpCDP]/g,'').trim(); if(!s)return null; return {t:'tx',ly,x:num(r,10),y:num(r,20),h:num(r,40,2.5)||2.5,s}; }
+  if(T==='INSERT'||T==='DIMENSION')return {t:'ins',ly,b:one(r,2,''),x:T==='INSERT'?num(r,10):0,y:T==='INSERT'?num(r,20):0,sx:T==='INSERT'?num(r,41,1)||1:1,sy:T==='INSERT'?num(r,42,1)||1:1,a:T==='INSERT'?num(r,50)*Math.PI/180:0};
+  if(!/^(POINT|ATTDEF|VIEWPORT|SEQEND)$/.test(T))skip[T]=(skip[T]||0)+1; return null; };
+ rec.forEach(r=>{
+  if(r.t==='SECTION'){ sec=one(r,2,''); return; } if(r.t==='ENDSEC'){ sec=''; return; }
+  if(sec==='TABLES'){ if(r.t==='LAYER'){ const n=one(r,2,''); if(n)layers[n]={c:Math.abs(parseInt(one(r,62,'7'),10))||7}; } return; }
+  if(sec!=='BLOCKS'&&sec!=='ENTITIES')return;
+  if(r.t==='BLOCK'){ blk={x:num(r,10),y:num(r,20),e:[]}; blocks[one(r,2,'')]=blk; tgt=blk.e; return; } if(r.t==='ENDBLK'){ blk=null; tgt=top; return; }
+  if(r.t==='POLYLINE'){ pl={t:'pl',ly:one(r,8,'0'),p:[],cl:(num(r,70)&1)?1:0}; return; } if(r.t==='VERTEX'){ if(pl)pl.p.push([num(r,10),num(r,20)]); return; } if(r.t==='SEQEND'){ if(pl&&pl.p.length>1)(sec==='BLOCKS'&&blk?blk.e:top).push(pl); pl=null; return; }
+  const e=ent(r); if(e)(sec==='BLOCKS'&&blk?blk.e:top).push(e); });
+ // expand block references into plain entities (nested up to 6 deep)
+ const out=[]; const xf=(e,f,k)=>{ const o=Object.assign({},e); if(o.t==='l'){ [o.x1,o.y1]=f([o.x1,o.y1]); [o.x2,o.y2]=f([o.x2,o.y2]); } else if(o.t==='pl')o.p=o.p.map(f); else { [o.x,o.y]=f([o.x,o.y]); if(o.t==='c')o.r*=k; if(o.t==='tx')o.h*=k; } return o; };
+ const put=(list,f,k,d,ly0)=>list.forEach(e=>{ if(e.t!=='ins'){ const o=f?xf(e,f,k):e; if(ly0&&o.ly==='0')o.ly=ly0; out.push(o); return; } const B=blocks[e.b]; if(!B||d>6)return; const ca=Math.cos(e.a),sa=Math.sin(e.a); const g=p=>{ const x=(p[0]-B.x)*e.sx,y=(p[1]-B.y)*e.sy, q=[e.x+x*ca-y*sa,e.y+x*sa+y*ca]; return f?f(q):q; }; put(B.e,g,(k||1)*Math.abs(e.sx),d+1,e.ly); });
+ put(top,null,1,0,''); return {ents:out,layers,skip};
+}
+function cadImportDxf(text,name){ const r=cadDxfParse(text); if(!r.ents.length)throw new Error(b2('No drawable entities found in this DXF.','مفيش عناصر تترسم في ملف الـDXF ده.'));
+ try{ hiSnap(); }catch(e){} const D=cadD(); r.ents.forEach(e=>{ const n=String(e.ly||'0'); if(!D.layers.some(l=>l.n===n))D.layers.push({n,c:CADIMP_ACI[(r.layers[n]||{}).c]||'#e8e8e8',on:1,lk:0}); e.ly=n; D.ents.push(e); });
+ persist(); try{ XC.cad.run(); }catch(e){} try{ cadLayers(); cadZoomExt(); cadRender(); }catch(e){}
+ const sk=Object.keys(r.skip).map(k=>k+' x'+r.skip[k]).join(', '); const msg=b2('Imported '+r.ents.length+' entities'+(name?' from '+name:'')+(sk?'. Not imported: '+sk:'')+'. Curves are drawn as polylines.','اتستورد '+r.ents.length+' عنصر'+(name?' من '+name:'')+(sk?'. ما اتستوردش: '+sk:'')+'. المنحنيات اترسمت بوليلاين.'); try{ say2(msg,'a'); }catch(e){} return {n:r.ents.length,skip:r.skip,msg}; }
+function cadImportPick(){ xfile('.dxf,.dwg',f=>{ if(/\.dwg$/i.test(f.name)){ alert(b2('DWG is a closed binary format and cannot be read in the browser. In AutoCAD use SAVEAS and choose DXF (or the free ODA File Converter), then import the DXF here.','DWG صيغة ثنائية مقفولة وما تتقريش في المتصفح. في أوتوكاد استخدم SAVEAS واختار DXF (أو برنامج ODA File Converter المجاني)، وبعدين استورد الـDXF هنا.')); return; } const rd=new FileReader(); rd.onload=()=>{ try{ const r=cadImportDxf(String(rd.result),f.name); alert(r.msg); }catch(e){ alert(b2('Import failed: ','الاستيراد فشل: ')+e.message); } }; rd.readAsText(f); }); }
+XCMD('c_dxfin','impt','Import DXF','استيراد DXF',cadImportPick);
+try{ XDESC.c_dxfin=['Import a DXF drawing (lines, arcs, polylines, text, blocks, layers) into C.X. DWG must be saved as DXF first.','استورد لوحة DXF (خطوط، أقواس، بوليلاين، نصوص، بلوكات، طبقات) جوه C.X. الـDWG لازم يتحفظ DXF الأول.']; }catch(e){}
+// self-check: a tiny DXF with a line, a closed polyline, an arc and a block inserted twice
+(function(){ const d='0\nSECTION\n2\nBLOCKS\n0\nBLOCK\n2\nB1\n10\n0\n20\n0\n0\nLINE\n8\n0\n10\n0\n20\n0\n11\n1\n21\n0\n0\nENDBLK\n0\nENDSEC\n0\nSECTION\n2\nENTITIES\n0\nLINE\n8\nA\n10\n0\n20\n0\n11\n5\n21\n5\n0\nLWPOLYLINE\n8\nA\n70\n1\n10\n0\n20\n0\n10\n2\n20\n0\n10\n2\n20\n2\n0\nARC\n8\nA\n10\n0\n20\n0\n40\n1\n50\n0\n51\n90\n0\nINSERT\n8\nW\n2\nB1\n10\n10\n20\n0\n41\n2\n50\n90\n0\nINSERT\n8\nW\n2\nB1\n10\n0\n20\n0\n0\nENDSEC\n0\nEOF\n'; const r=cadDxfParse(d), i=r.ents[3]; console.assert(r.ents.length===5&&r.ents[1].cl===1&&i.ly==='W'&&Math.abs(i.x2-10)<1e-9&&Math.abs(i.y2-2)<1e-9,'cadDxfParse self-check failed'); })();
 /* c_ribfix.js - ribbon layout: the "Commands reference" button and the "Working x of y" counter sat (sticky) on top of the
    ribbon groups and hid icons; the ribbon could grow and cover the document tabs. Now: both live at the end of the ribbon
    TAB row, the groups row has a fixed height and scrolls sideways instead of wrapping or growing. */

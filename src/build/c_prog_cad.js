@@ -13,7 +13,7 @@ progReg('draft',[
 ['insert','Insert','إدراج',[
  ['Block','البلوك',['Insert|إدراج|block|c_binsert','Create Block|إنشاء بلوك|block|c_bcreate','Edit Block|تحرير بلوك|block']],
  ['Reference','المرجع',['Attach|إرفاق|xref','Clip|قص مرجع|trim','Underlay|خلفية|xref']],
- ['Import','استيراد',['Import|استيراد|impt|open','PDF Import|استيراد PDF|impt']],
+ ['Import','استيراد',['Import DXF|استيراد DXF|impt|=cadImportPick','PDF Import|استيراد PDF|impt']],
  ['Data','البيانات',['Data Extraction|استخراج بيانات|table|p_bom','Link Data|ربط بيانات|link']],
  ['Linking','الربط',['Hyperlink|رابط|link','Location|الموقع|point|p_geo']]]],
 ['annot','Annotate','التوضيح',[
