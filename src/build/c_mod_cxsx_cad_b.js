@@ -23,15 +23,18 @@ function apply(c){ const E=c.r.map(byId); if(E.some(x=>!x))return 0; const [A,B]
  case 'ali': { res=Math.abs(len(A)-c.v); if(!fa){ const L=len(A)||1, k=c.v/L; A.x2=A.x1+(A.x2-A.x1)*k; A.y2=A.y1+(A.y2-A.y1)*k; } break; }
  case 'rad': res=Math.abs(A.r-c.v); if(!fa)A.r=c.v; break;
  case 'dia': res=Math.abs(2*A.r-c.v); if(!fa)A.r=c.v/2; break;
+ default: if(PCX.cx&&PCX.cx[c.k])res=PCX.cx[c.k](c,E,fa,fb);
  } return res; }
 function prune(){ const cs=C(); D().cons=cs.filter(c=>c.k==='fix'?c.r.every(byId):c.r.every(byId)); D().ents.forEach(e=>{ if(e.fx&&!D().cons.some(c=>c.k==='fix'&&c.r[0]===e.id))delete e.fx; }); }
 function solve(){ prune(); const cs=C(); if(!cs.length)return 0; let res=0; for(let it=0;it<60;it++){ res=0; cs.forEach(c=>{ res=Math.max(res,apply(c)); }); if(res<1e-9)break; } return res; }
 function resid(c){ const E=c.r.map(byId); if(E.some(x=>!x))return NaN; const snap=JSON.stringify(E), r=apply(c); E.forEach((e,i)=>Object.assign(e,JSON.parse(snap)[i])); return r; }
 PCX.cons={solve,resid,apply};
+PCX.capi={KN:null,eid,byId,C,isL,isC,len,ang,wrap,pt,setPt,rotMid,setLen,sel,done}; /* used by c_parity_cad2.js (Tangent, Smooth, Symmetric, Angular, Convert) */
 { const _cc=cadCommit; cadCommit=function(){ if(!PCX.busy&&D().cons&&D().cons.length){ PCX.busy=1; try{ solve(); }finally{ PCX.busy=0; } } _cc(); }; }
 
 /* ---- geometric commands: single-object (Horizontal, Vertical, Fix) and two-object (the FIRST selected is the reference; every other selected object is constrained to it) ---- */
 const KN={hor:['Horizontal','أفقي'],ver:['Vertical','رأسي'],fix:['Fix','تثبيت'],par:['Parallel','توازي'],perp:['Perpendicular','تعامد'],eq:['Equal','تساوي'],coin:['Coincident','تطابق'],col:['Collinear','على استقامة'],conc:['Concentric','متحدة المركز'],lin:['Linear','خطي'],ali:['Aligned','محاذي'],rad:['Radius','نصف قطر'],dia:['Diameter','قطر']};
+PCX.capi.KN=KN;
 function nearestPts(A,B){ const pa=isC(A)?['c']:[0,1], pb=isC(B)?['c']:[0,1]; let best=null; pa.forEach(a=>pb.forEach(b=>{ const p=pt(A,a), q=pt(B,b), d=Math.hypot(p[0]-q[0],p[1]-q[1]); if(!best||d<best.d)best={d,a,b}; })); return best; }
 function geo(k,en,tab,panel,need,okType){ ov('draft','Parametric',panel,en,()=>{ const ids=sel(); const bad=ids.some(i=>!okType(D().ents[i])); if(ids.length<need||bad){ xSt(b2(need===1?'Select lines'+(okType===isC?' (circles)':'')+' first.':'Select '+need+' or more objects of the right type (reference object first).','اختار '+(need===1?'عناصر':'عنصرين أو أكتر')+' من النوع المناسب (العنصر المرجعي الأول).')); return; }
   const ents=ids.map(i=>D().ents[i]); let n=0;
@@ -53,6 +56,6 @@ ov('draft','Parametric','Manage','Delete Constraints',()=>{ const ids=sel(), ent
 ov('draft','Parametric','Manage','Parameters Manager',()=>{ solve(); const cs=C(); const rows=cs.map(c=>[c.n,KN[c.k][0],c.r.map(r=>{ const e=byId(r); return e?(e.t==='c'?'circle':'line')+'@'+(e.t==='c'?e.x.toFixed(1)+','+e.y.toFixed(1):e.x1.toFixed(1)+','+e.y1.toFixed(1)):'(deleted)'; }).join(' + '),c.v===undefined?'':String(c.v),PCX.fmt(resid(c),6)]); PCX.rep(b2('Parameters Manager','مدير المعاملات'),['name','type','objects','value','residual'],rows,b2(cs.length+' constraint(s)','عدد القيود '+cs.length));
  const a=(ask('Set a parameter: name=value (empty = just list)','عدّل معامل: الاسم=القيمة (فاضي = عرض فقط)','')||'').trim(); if(!a)return; const m=a.match(/^(\w+)\s*=\s*(-?[\d.]+)$/), c=m&&cs.find(x=>x.n===m[1]&&x.v!==undefined); if(!c||!(+m[2]>0)){ xSt(b2('No such dimensional parameter, or value <= 0.','مفيش معامل بالاسم ده أو القيمة <= 0.')); return; } c.v=+m[2]; done(b2(c.n+' = '+c.v+', model re-solved','المعامل '+c.n+' = '+c.v+'، اتحل الموديل تاني')); });
 ov('draft','Parametric','Manage','Show/Hide',()=>{ D().cshow=!D().cshow; done(b2('Constraint glyphs '+(D().cshow?'shown':'hidden'),'رموز القيود '+(D().cshow?'ظاهرة':'مخفية'))); });
-{ const _es=cadEntSvg, GL={hor:'H',ver:'V',fix:'F',par:'//',perp:'⊥',eq:'=',coin:'●',col:'≡',conc:'◎',lin:'d',ali:'d',rad:'R',dia:'Ø'}; cadEntSvg=function(e,s,paper){ const r=_es(e,s,paper); if(!(e&&e.id&&D().cshow&&D().cons))return r; const g=D().cons.filter(c=>c.r.includes(e.id)).map(c=>GL[c.k]).join(' '); if(!g)return r; const x=e.t==='c'?e.x:(e.x1+e.x2)/2, y=e.t==='c'?e.y:(e.y1+e.y2)/2; return r+'<text x="'+x+'" y="'+(-y-(D().th||2.5)*.6)+'" font-size="'+(D().th||2.5)+'" font-family="Arial" fill="#ffb74d" data-cons="1">'+g+'</text>'; }; }
+{ const _es=cadEntSvg, GL={tan:'T',smo:'S',sym:'[]',ang:'∠',hor:'H',ver:'V',fix:'F',par:'//',perp:'⊥',eq:'=',coin:'●',col:'≡',conc:'◎',lin:'d',ali:'d',rad:'R',dia:'Ø'}; cadEntSvg=function(e,s,paper){ const r=_es(e,s,paper); if(!(e&&e.id&&D().cshow&&D().cons))return r; const g=D().cons.filter(c=>c.r.includes(e.id)).map(c=>GL[c.k]).join(' '); if(!g)return r; const x=e.t==='c'?e.x:(e.x1+e.x2)/2, y=e.t==='c'?e.y:(e.y1+e.y2)/2; return r+'<text x="'+x+'" y="'+(-y-(D().th||2.5)*.6)+'" font-size="'+(D().th||2.5)+'" font-family="Arial" fill="#ffb74d" data-cons="1">'+g+'</text>'; }; }
 try{ xRibbon(); }catch(e){}
 })();
