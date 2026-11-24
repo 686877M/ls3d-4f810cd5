@@ -1,0 +1,10 @@
+const pw=require('playwright-core');const CH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+(async()=>{const b=await pw.chromium.launch({executablePath:CH,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const c=await b.newContext({viewport:{width:1400,height:850}});
+ await c.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+ const p=await c.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+ await p.goto(process.argv[2]);await p.waitForTimeout(9000);const want=+process.argv[3];
+ const ev=s=>p.evaluate(x=>window.__lsv.ev(x),s);
+ const r=JSON.parse(await ev(`(()=>{ const n=(MSITE.masses||[]).length; const rows=SPS.filter(s=>/ASSUMED/.test(String(s[9]))&&/layout drawing/.test(String(s[9]))); let meshes=0; scene.traverse(o=>{ if(o.isMesh&&o.userData&&o.userData.spi!==undefined&&SPS[o.userData.spi]&&/layout drawing/.test(String(SPS[o.userData.spi][9])))meshes++; }); XC.ms_iso.run(); const a=camera.position.toArray().map(Math.round); XC.ms_side.run(); const s2=camera.position.toArray().map(Math.round); return JSON.stringify({n,rows:rows.length,meshes,a,s2,btn:[...document.querySelectorAll('#p-site button')].filter(b=>/Overview|نظرة عامة/.test(b.textContent)).length,h:rows.map(r=>r[7])}); })()`));
+ console.log(JSON.stringify(r));let ok=0,bad=0;const t=(c,n)=>{c?ok++:bad++;console.log((c?'  ok   ':'  FAIL ')+n);};
+ t(r.n===want&&r.rows===want,'mass rows match the data ('+want+')');t(r.meshes===want,'each mass is a 3D box in the scene');t(r.a[1]>1500&&r.s2[0]>3000,'whole-site overview and side views move the camera');t(r.btn>=1,'whole-site view buttons are in the site pane');t(errs.length===0,'no page errors '+errs.slice(0,2).join(' | '));
+ console.log('\nmass: '+ok+' passed, '+bad+' failed');await b.close();})();
