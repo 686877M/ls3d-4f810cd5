@@ -1312,7 +1312,7 @@ function followFrame(dt){ if(!renderer||!G)return; const playing=A.playing||(typ
  const mv=playing?fwMoving():null; if(!playing)FW_PREV.clear(); if(mv){ if(!fCur||fCur.id!==mv.id||fCur.i!==mv.i){fCur=mv; } fCur.t=0; } else if(fCur&&fCur.t!==undefined){fCur.t+=dt; if(fCur.t>1.2&&!playing)fCur=null;}
  let tgt=null; if(playing&&fCur&&FW.follow)tgt=fCur; else if(!playing&&FW.follow&&selSet&&selSet.length){const id=selSet[0]; tgt={id,i:0,g:(parts[id]||[])[0]};}
  fwCard(tgt,playing);
- if(!playing){ const sid=tgt?tgt.id:''; if(sid!==fSelId){fSelId=sid; fSelT=0;} fSelT+=dt; if(fPause>0)fSelT=99; if(fSelT>1.5)return; }
+ if(!playing){ const sid=tgt?tgt.id:''; if(sid&&sid!==fSelId){fSelId=sid; fSelT=performance.now();} if(fPause>0)fSelT=-1e9; if(performance.now()-fSelT>1500)return; }
  if((!tgt||!tgt.g)&&playing&&FW.orbit&&fPause<=0){const off=camera.position.clone().sub(controls.target), a=dt*FW.rate, c=Math.cos(a), s2=Math.sin(a); camera.position.set(controls.target.x+off.x*c+off.z*s2,camera.position.y,controls.target.z-off.x*s2+off.z*c); return;}
  if(!tgt||!tgt.g||(!FW.follow&&!FW.orbit)||fPause>0)return;
  FW_BOX.makeEmpty(); tgt.g.updateMatrixWorld(true); FW_BOX.expandByObject(tgt.g); if(FW_BOX.isEmpty())return; FW_BOX.getCenter(FW_FOC); const sz=FW_BOX.getSize(new T.Vector3()).length(), dist=Math.max(2.2,Math.min(14,sz*2.4+1.2));
@@ -1618,6 +1618,9 @@ const pSite=$('p-site'); if(pSite){ pSite.appendChild(li(el('h2'),'sp_h')); cons
   row(el('span',{class:'small',text:b2('Field of view','زاوية الرؤية')}),rng(20,90,1,()=>camera.fov,v=>{camera.fov=v; camera.updateProjectionMatrix();})),
   el('div',{class:'small',text:b2('Source: sample site plan, aligned to the well centre. Footprints are read from the linework; heights, depths and pipe depth are assumptions. Transformers and small buildings are probable identifications. Hover a mass for its data. Site parts are simple blocks; reinforcement is modelled only for the lift station (Rebar tab).','المصدر: لوحة موقع عام تجريبية، متوازية مع مركز البئر. المساقط من الخطوط؛ الارتفاعات والأعماق افتراضات. المحولات والمباني الصغيرة تحديد محتمل. مرر على الكتلة للبيانات. أجزاء الموقع كتل بسيطة؛ التسليح للمحطة بس (تاب التسليح).')}));
  let tb='<table><thead><tr><th>'+b2('Object','العنصر')+'</th><th class="n">m</th><th class="n">m³</th></tr></thead><tbody>'; SPS.forEach(s=>{const w=s[4]-s[2], d=s[5]-s[3]; tb+='<tr><td>'+s[L2()]+'</td><td class="n">'+w.toFixed(1)+'×'+d.toFixed(1)+'×'+s[7]+'</td><td class="n">'+(w*d*s[7]).toFixed(0)+'</td></tr>';}); bx.appendChild(el('div',{html:tb+'</tbody></table>'})); }
+
+/* start view: the whole site with the master plan on, camera over the site (not locked on the station). The demo and a shared view link keep their own camera. */
+(function(){ let n=0; const t=setInterval(()=>{ n++; if(n>40){clearInterval(t);return;} try{ if(!renderer||!G)return; clearInterval(t); if(typeof HASHCAM!=='undefined'&&HASHCAM)return; if(window.__xNoSiteStart)return; SP.master=true; spShow(true); try{ tw=null; }catch(e){} spPreset('site'); try{ pSite.querySelectorAll('input[type=checkbox]').forEach((c,i)=>{ if(i<2)c.checked=true; }); }catch(e){} }catch(e){} },500); })();
 /* ====== Reinforcement layout for the lift station only (from the structural calculation summary): bars at 150 mm, both faces, both directions ====== */
 const rbG=new T.Group(); rbG.visible=false; scene.add(rbG); const rbMats=[]; const RB={on:false,show:{base:1,wallV:1,wallH:1,top:1,cfloor:1,cwall:1,croof:1},rows:[]};
 const RBE={ /* key: [en, ar, diameter mm, colour] */

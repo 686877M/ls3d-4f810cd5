@@ -42,7 +42,7 @@ function followFrame(dt){ if(!renderer||!G)return; const playing=A.playing||(typ
  const mv=playing?fwMoving():null; if(!playing)FW_PREV.clear(); if(mv){ if(!fCur||fCur.id!==mv.id||fCur.i!==mv.i){fCur=mv; } fCur.t=0; } else if(fCur&&fCur.t!==undefined){fCur.t+=dt; if(fCur.t>1.2&&!playing)fCur=null;}
  let tgt=null; if(playing&&fCur&&FW.follow)tgt=fCur; else if(!playing&&FW.follow&&selSet&&selSet.length){const id=selSet[0]; tgt={id,i:0,g:(parts[id]||[])[0]};}
  fwCard(tgt,playing);
- if(!playing){ const sid=tgt?tgt.id:''; if(sid!==fSelId){fSelId=sid; fSelT=0;} fSelT+=dt; if(fPause>0)fSelT=99; if(fSelT>1.5)return; }
+ if(!playing){ const sid=tgt?tgt.id:''; if(sid&&sid!==fSelId){fSelId=sid; fSelT=performance.now();} if(fPause>0)fSelT=-1e9; if(performance.now()-fSelT>1500)return; }
  if((!tgt||!tgt.g)&&playing&&FW.orbit&&fPause<=0){const off=camera.position.clone().sub(controls.target), a=dt*FW.rate, c=Math.cos(a), s2=Math.sin(a); camera.position.set(controls.target.x+off.x*c+off.z*s2,camera.position.y,controls.target.z-off.x*s2+off.z*c); return;}
  if(!tgt||!tgt.g||(!FW.follow&&!FW.orbit)||fPause>0)return;
  FW_BOX.makeEmpty(); tgt.g.updateMatrixWorld(true); FW_BOX.expandByObject(tgt.g); if(FW_BOX.isEmpty())return; FW_BOX.getCenter(FW_FOC); const sz=FW_BOX.getSize(new T.Vector3()).length(), dist=Math.max(2.2,Math.min(14,sz*2.4+1.2));
