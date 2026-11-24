@@ -77,4 +77,7 @@ import os
 demo_src='\n'.join(rd(f) for f in ['demo_core.js','demo_ch1.js']+[f for f in ['demo_ch2.js','demo_ch3.js','demo_voice.js'] if os.path.exists(SP+f)])
 assert '</script' not in demo_src
 _i=s.rindex('</body>'); s=s[:_i]+'<script type="text/plain" id="xDemoSrc">\n'+demo_src+'\n</script>'+s[_i:]  # lazy source: evaluated on first click, not at start
+# zoom-out limit follows what is shown (master plan needs kilometres), instead of a fixed 80 m that locked the view after any view button
+assert s.count('controls.maxDistance=80')>=1
+s=s.replace('controls.maxDistance=80',"controls.maxDistance=((typeof SP!=='undefined'&&SP.on)?(SP.master?6000:700):80)")
 open(SP+'site/src/lift_station_3d.html','w',encoding='utf-8').write(s); print('assembled',len(s)//1024,'KB')

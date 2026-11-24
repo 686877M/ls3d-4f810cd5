@@ -36,12 +36,13 @@ const FW_SPEC={
  pvent:[['GRP vent pipes Ø100 on the well top, with insect screen. Material per vendor datasheet.','مواسير تهوية GRP قطر 100 على سطح البئر مع شبك حشرات. الخامة حسب المورد.']]
 };
 const FW_FOC=new T.Vector3(), FW_BOX=new T.Box3(), FW_PREV=new Map();
-let fCur=null, fAz=.8, fPause=0, fLastS=-1, fCard=null, fSelKey='';
+let fSelId='', fSelT=0; let fCur=null, fAz=.8, fPause=0, fLastS=-1, fCard=null, fSelKey='';
 function fwMoving(){let best=null,bd=1e-4; for(const id in parts){parts[id].forEach((g,i)=>{const k=id+'#'+i,p=g.position,q=FW_PREV.get(k); if(q){const d=Math.abs(p.x-q[0])+Math.abs(p.y-q[1])+Math.abs(p.z-q[2]); if(d>bd){bd=d;best={id,i,g};}} FW_PREV.set(k,[p.x,p.y,p.z]);});} return best;}
 function followFrame(dt){ if(!renderer||!G)return; const playing=A.playing||(typeof PLAYING!=='undefined'&&PLAYING)||(fLastS>=0&&A.s!==fLastS); fLastS=A.s; if(fPause>0)fPause-=dt;
  const mv=playing?fwMoving():null; if(!playing)FW_PREV.clear(); if(mv){ if(!fCur||fCur.id!==mv.id||fCur.i!==mv.i){fCur=mv; } fCur.t=0; } else if(fCur&&fCur.t!==undefined){fCur.t+=dt; if(fCur.t>1.2&&!playing)fCur=null;}
  let tgt=null; if(playing&&fCur&&FW.follow)tgt=fCur; else if(!playing&&FW.follow&&selSet&&selSet.length){const id=selSet[0]; tgt={id,i:0,g:(parts[id]||[])[0]};}
  fwCard(tgt,playing);
+ if(!playing){ const sid=tgt?tgt.id:''; if(sid!==fSelId){fSelId=sid; fSelT=0;} fSelT+=dt; if(fPause>0)fSelT=99; if(fSelT>1.5)return; }
  if((!tgt||!tgt.g)&&playing&&FW.orbit&&fPause<=0){const off=camera.position.clone().sub(controls.target), a=dt*FW.rate, c=Math.cos(a), s2=Math.sin(a); camera.position.set(controls.target.x+off.x*c+off.z*s2,camera.position.y,controls.target.z-off.x*s2+off.z*c); return;}
  if(!tgt||!tgt.g||(!FW.follow&&!FW.orbit)||fPause>0)return;
  FW_BOX.makeEmpty(); tgt.g.updateMatrixWorld(true); FW_BOX.expandByObject(tgt.g); if(FW_BOX.isEmpty())return; FW_BOX.getCenter(FW_FOC); const sz=FW_BOX.getSize(new T.Vector3()).length(), dist=Math.max(2.2,Math.min(14,sz*2.4+1.2));

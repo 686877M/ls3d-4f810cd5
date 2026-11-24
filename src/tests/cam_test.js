@@ -1,0 +1,20 @@
+const pw=require('playwright-core');const CH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+(async()=>{const b=await pw.chromium.launch({executablePath:CH,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const c=await b.newContext({viewport:{width:1400,height:850}});
+ await c.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');}catch(e){}});
+ const p=await c.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+ await p.goto(process.argv[2]);await p.waitForTimeout(5000);
+ let ok=0,bad=0;const t=(c,n)=>{c?ok++:bad++;console.log((c?'  ok   ':'  FAIL ')+n);};
+ const ev=s=>p.evaluate(x=>window.__lsv.ev(x),s);
+ // select a part, let the one-time focus finish, then move the camera far away and check it stays
+ const id=await ev(`(()=>{const id=Object.keys(parts)[0]; select(id); return id;})()`).catch(e=>'ERR '+e.message);
+ await p.waitForTimeout(2500);
+ await ev(`(()=>{tw=null; controls.target.set(40,0,40); camera.position.set(90,60,90); controls.update();})()`);
+ await p.waitForTimeout(6000);
+ const r=await ev(`JSON.stringify({t:controls.target.toArray().map(v=>+v.toFixed(1)),d:+camera.position.distanceTo(controls.target).toFixed(1),sel:selSet&&selSet[0]})`);
+ console.log(id,r);const j=JSON.parse(r);
+ t(j.sel===id,'part still selected');
+ t(Math.abs(j.t[0]-40)<1&&Math.abs(j.t[2]-40)<1&&j.d>50,'camera stays where the user put it (no pull back to the selected part)');
+ const m=await ev(`(()=>{try{SP.on=true; SP.master=true;}catch(e){return 'noSP'} const o=controls.maxDistance; go(views[0]); return controls.maxDistance;})()`).catch(e=>'ERR '+e.message);
+ t(m>=6000,'view button keeps the master-plan zoom-out range ('+m+')');
+ t(errs.length===0,'no page errors '+errs.slice(0,2).join(' | '));
+ console.log('\ncam: '+ok+' passed, '+bad+' failed');await b.close();})();
