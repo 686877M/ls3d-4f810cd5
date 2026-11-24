@@ -1,0 +1,380 @@
+[
+ {
+  "voice": "salma",
+  "n": 1,
+  "chars": 167,
+  "cps": 9.7,
+  "dur": 17.14,
+  "lufs": -17.0,
+  "maxgap": 1.006083
+ },
+ {
+  "voice": "shakir",
+  "n": 1,
+  "chars": 167,
+  "cps": 10.8,
+  "dur": 15.47,
+  "lufs": -17.1,
+  "maxgap": 1.017125
+ },
+ {
+  "voice": "zariyah",
+  "n": 1,
+  "chars": 167,
+  "cps": 10.1,
+  "dur": 16.53,
+  "lufs": -17.0,
+  "maxgap": 0.976458
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 1,
+  "chars": 167,
+  "cps": 9.1,
+  "dur": 18.38,
+  "lufs": -16.4,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 1,
+  "chars": 167,
+  "cps": 9.9,
+  "dur": 16.86,
+  "lufs": -17.1,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 2,
+  "chars": 78,
+  "cps": 8.6,
+  "dur": 9.12,
+  "lufs": -16.6,
+  "maxgap": 1.01875
+ },
+ {
+  "voice": "shakir",
+  "n": 2,
+  "chars": 78,
+  "cps": 9.5,
+  "dur": 8.18,
+  "lufs": -16.8,
+  "maxgap": 1.314917
+ },
+ {
+  "voice": "zariyah",
+  "n": 2,
+  "chars": 78,
+  "cps": 8.6,
+  "dur": 9.04,
+  "lufs": -16.3,
+  "maxgap": 0.975083
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 2,
+  "chars": 78,
+  "cps": 10.1,
+  "dur": 7.71,
+  "lufs": -16.2,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 2,
+  "chars": 78,
+  "cps": 11.2,
+  "dur": 6.99,
+  "lufs": -16.0,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 3,
+  "chars": 139,
+  "cps": 10.4,
+  "dur": 13.31,
+  "lufs": -16.6,
+  "maxgap": 1.028167
+ },
+ {
+  "voice": "shakir",
+  "n": 3,
+  "chars": 139,
+  "cps": 11.1,
+  "dur": 12.48,
+  "lufs": -17.0,
+  "maxgap": 1.022083
+ },
+ {
+  "voice": "zariyah",
+  "n": 3,
+  "chars": 139,
+  "cps": 10.5,
+  "dur": 13.2,
+  "lufs": -16.6,
+  "maxgap": 0.959833
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 3,
+  "chars": 139,
+  "cps": 10.8,
+  "dur": 12.84,
+  "lufs": -16.1,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 3,
+  "chars": 139,
+  "cps": 12.1,
+  "dur": 11.53,
+  "lufs": -17.0,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 4,
+  "chars": 68,
+  "cps": 10.0,
+  "dur": 6.79,
+  "lufs": -17.2,
+  "maxgap": 0
+ },
+ {
+  "voice": "shakir",
+  "n": 4,
+  "chars": 68,
+  "cps": 12.0,
+  "dur": 5.68,
+  "lufs": -16.8,
+  "maxgap": 0.760083
+ },
+ {
+  "voice": "zariyah",
+  "n": 4,
+  "chars": 68,
+  "cps": 10.3,
+  "dur": 6.61,
+  "lufs": -17.0,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 4,
+  "chars": 68,
+  "cps": 9.5,
+  "dur": 7.16,
+  "lufs": -16.6,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 4,
+  "chars": 68,
+  "cps": 8.8,
+  "dur": 7.69,
+  "lufs": -16.4,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 5,
+  "chars": 83,
+  "cps": 10.7,
+  "dur": 7.77,
+  "lufs": -16.7,
+  "maxgap": 0
+ },
+ {
+  "voice": "shakir",
+  "n": 5,
+  "chars": 83,
+  "cps": 12.2,
+  "dur": 6.79,
+  "lufs": -16.7,
+  "maxgap": 0
+ },
+ {
+  "voice": "zariyah",
+  "n": 5,
+  "chars": 83,
+  "cps": 10.9,
+  "dur": 7.59,
+  "lufs": -16.8,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 5,
+  "chars": 83,
+  "cps": 11.9,
+  "dur": 6.99,
+  "lufs": -16.1,
+  "maxgap": 0
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 5,
+  "chars": 83,
+  "cps": 11.6,
+  "dur": 7.18,
+  "lufs": -16.3,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 6,
+  "chars": 62,
+  "cps": 9.4,
+  "dur": 6.6,
+  "lufs": -17.0,
+  "maxgap": 0.99225
+ },
+ {
+  "voice": "shakir",
+  "n": 6,
+  "chars": 62,
+  "cps": 10.1,
+  "dur": 6.13,
+  "lufs": -16.4,
+  "maxgap": 1.02075
+ },
+ {
+  "voice": "zariyah",
+  "n": 6,
+  "chars": 62,
+  "cps": 9.8,
+  "dur": 6.32,
+  "lufs": -17.2,
+  "maxgap": 0.976583
+ },
+ {
+  "voice": "gemini_kore",
+  "n": 6,
+  "chars": 62,
+  "cps": 11.0,
+  "dur": 5.66,
+  "lufs": -16.5,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 7,
+  "chars": 66,
+  "cps": 10.3,
+  "dur": 6.41,
+  "lufs": -17.1,
+  "maxgap": 0
+ },
+ {
+  "voice": "shakir",
+  "n": 7,
+  "chars": 66,
+  "cps": 11.1,
+  "dur": 5.95,
+  "lufs": -17.5,
+  "maxgap": 0
+ },
+ {
+  "voice": "zariyah",
+  "n": 7,
+  "chars": 66,
+  "cps": 10.2,
+  "dur": 6.5,
+  "lufs": -17.0,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 8,
+  "chars": 47,
+  "cps": 10.3,
+  "dur": 4.58,
+  "lufs": -16.7,
+  "maxgap": 0
+ },
+ {
+  "voice": "shakir",
+  "n": 8,
+  "chars": 47,
+  "cps": 10.4,
+  "dur": 4.52,
+  "lufs": -16.8,
+  "maxgap": 0.723208
+ },
+ {
+  "voice": "zariyah",
+  "n": 8,
+  "chars": 47,
+  "cps": 10.3,
+  "dur": 4.58,
+  "lufs": -16.3,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 9,
+  "chars": 66,
+  "cps": 8.3,
+  "dur": 7.96,
+  "lufs": -16.7,
+  "maxgap": 1.008333
+ },
+ {
+  "voice": "shakir",
+  "n": 9,
+  "chars": 66,
+  "cps": 9.2,
+  "dur": 7.19,
+  "lufs": -16.9,
+  "maxgap": 0.994167
+ },
+ {
+  "voice": "zariyah",
+  "n": 9,
+  "chars": 66,
+  "cps": 8.7,
+  "dur": 7.57,
+  "lufs": -16.7,
+  "maxgap": 0.984625
+ },
+ {
+  "voice": "gemini_puck",
+  "n": 9,
+  "chars": 66,
+  "cps": 8.9,
+  "dur": 7.45,
+  "lufs": -18.3,
+  "maxgap": 0
+ },
+ {
+  "voice": "salma",
+  "n": 10,
+  "chars": 185,
+  "cps": 9.4,
+  "dur": 19.6,
+  "lufs": -16.8,
+  "maxgap": 0.98075
+ },
+ {
+  "voice": "shakir",
+  "n": 10,
+  "chars": 185,
+  "cps": 11.6,
+  "dur": 15.9,
+  "lufs": -16.7,
+  "maxgap": 1.022958
+ },
+ {
+  "voice": "zariyah",
+  "n": 10,
+  "chars": 185,
+  "cps": 9.8,
+  "dur": 18.93,
+  "lufs": -16.7,
+  "maxgap": 0.975458
+ }
+]

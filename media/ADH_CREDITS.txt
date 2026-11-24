@@ -1,0 +1,32 @@
+ADH_CREDITS - adhan interlude media (Masjid al-Haram), fetched 2026-11-20
+Edits made by T.O X: crop / resize / re-encode / 2x slow motion (exact frame doubling, no interpolation) only. Not endorsed by any author.
+
+== VIDEOS (Pexels Licence https://www.pexels.com/license/ : free use, no credit required, credit given anyway) ==
+adh_kaaba_day_wide.mp4    "Majestic View of the Kaaba in Mecca" - Ruveyda Akkaya - Pexels - https://www.pexels.com/video/majestic-view-of-the-kaaba-in-mecca-36592378/
+adh_kaaba_dusk_sky.mp4    "Pilgrims at Kaaba During Sunset in Mecca" - Yusuf Khan Afridi - Pexels - https://www.pexels.com/video/pilgrims-at-kaaba-during-sunset-in-mecca-38255864/
+adh_kaaba_dusk_wide.mp4   "Crowd at Kaaba in Mecca During Evening Prayer" - Earth Photart - Pexels - https://www.pexels.com/video/crowd-at-kaaba-in-mecca-during-evening-prayer-35098661/
+adh_ceiling_chandelier.mp4 "Majestic View of the Grand Mosque Interior" - Earth Photart - Pexels - https://www.pexels.com/video/majestic-view-of-the-grand-mosque-interior-35098709/
+adh_chandelier_pan.mp4    "Stunning Interior View of Masjid al-Haram" - Earth Photart - Pexels - https://www.pexels.com/video/stunning-interior-view-of-masjid-al-haram-35098710/
+
+== PHOTOS (Wikimedia Commons; licence read from Commons API extmetadata) ==
+adh_arcade_columns.jpg        "Inside Masjid Ul Harram, Makkah Mukarma - panoramio.jpg" - Najamuddin Shahwani - CC BY 3.0 (https://creativecommons.org/licenses/by/3.0) - https://commons.wikimedia.org/wiki/File:Inside_Masjid_Ul_Harram,_Makkah_Mukarma_-_panoramio.jpg
+   Credit line: "Najamuddin Shahwani, CC BY 3.0, via Wikimedia Commons"
+adh_facade_night_photo.jpg    "المسجد الحرام بوابة ١ المآذن.jpg" (cropped) - Fauzan - CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) - https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%84%D8%AD%D8%B1%D8%A7%D9%85_%D8%A8%D9%88%D8%A7%D8%A8%D8%A9_%D9%A1_%D8%A7%D9%84%D9%85%D8%A2%D8%B0%D9%86.jpg
+   Credit line: "Fauzan, CC BY 4.0, via Wikimedia Commons"
+adh_minarets_day_photo.jpg    "Al Masjid Al Haram - panoramio.jpg" (cropped) - Tevfik Teker - CC BY 3.0 (https://creativecommons.org/licenses/by/3.0) - https://commons.wikimedia.org/wiki/File:Al_Masjid_Al_Haram_-_panoramio.jpg
+   Credit line: "Tevfik Teker, CC BY 3.0, via Wikimedia Commons"
+adh_kaaba_dusk_photo.jpg      "Kaaba, Never still.jpg" - omar_chatriwala - CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) - https://commons.wikimedia.org/wiki/File:Kaaba,_Never_still.jpg
+   Credit line: "omar_chatriwala, CC BY 2.0, via Wikimedia Commons"
+adh_mataf_night_photo.jpg     "Masjid al-Haram, Tawaf 20092012 1130PM (8008466944).jpg" - Basheer Olakara - CC BY 2.0 (https://creativecommons.org/licenses/by/2.0) - https://commons.wikimedia.org/wiki/File:Masjid_al-Haram,_Tawaf_20092012_1130PM_(8008466944).jpg
+   Credit line: "Basheer Olakara, CC BY 2.0, via Wikimedia Commons"
+adh_aerial_night_photo.jpg    "Masjidul-HaramAerealView.jpg" (cropped) - Wurzelgnohm - CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/) - https://commons.wikimedia.org/wiki/File:Masjidul-HaramAerealView.jpg
+   Credit (optional): "Wurzelgnohm, CC0, via Wikimedia Commons"
+adh_ceiling_chandelier_photo.jpg "Masjidil Haram (Umroh Ramadhan 2023)-15.jpg" (cropped to remove people) - Indonesiagood - CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) - https://commons.wikimedia.org/wiki/File:Masjidil_Haram_(Umroh_Ramadhan_2023)-15.jpg
+   Credit line: "Indonesiagood, CC BY 4.0, via Wikimedia Commons"
+adh_arcade_ceiling_photo.jpg  "Masjidil Haram (Umroh Ramadhan 2023)-5.jpg" (cropped to remove people) - Indonesiagood - CC BY 4.0 (https://creativecommons.org/licenses/by/4.0) - https://commons.wikimedia.org/wiki/File:Masjidil_Haram_(Umroh_Ramadhan_2023)-5.jpg
+   Credit line: "Indonesiagood, CC BY 4.0, via Wikimedia Commons"
+
+== AUDIO ==
+adhan.m4a - extracted unchanged-content (AAC re-encoded 64 kbps mono) from the project's own azan_drone_1080p.mp4; source licence is the one recorded for that file elsewhere in the project.
+
+Note: Pexels uploader "Earth Photart" has no stated source for its other (aerial) clips; the interior / Kaaba clips used here look like ordinary handheld phone footage, but origin is not independently verified.
