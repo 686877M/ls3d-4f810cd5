@@ -1,0 +1,6 @@
+887a33a8059b81bbdbe07362259aac6722e596de  patch_v3.py
+1a8515c67e20b8f3b9f6e80403ef72d83329ce46  c_ai.js
+fab0bcccbdf17747dff1a44b13cdd690a3e9eb95  c_agent3.js
+0f2c48376f91a39bc09459cab228f26c6dbd6968  freeai.js
+baea30d0b91c0dd543a5c1b8b71be1dcbf8828ce  build.py
+6b6bcbffdf3be2589f6ec01826841af27011214f  privacy.js

@@ -7,7 +7,8 @@ fs.rmSync(SITE,{recursive:true,force:true}); fs.mkdirSync(path.join(SITE,'media/
 let fails=0; const ok=(c,m)=>{ console.log((c?'PASS ':'FAIL ')+m); if(!c)fails++; };
 /* --- fixture page: inject demo_voice.js into the plain-text demo source --- */
 let html=fs.readFileSync(PAGE,'utf8'); const i0=html.indexOf('id="xDemoSrc">'); if(i0<0)throw new Error('no xDemoSrc'); const i1=html.indexOf('\n</script>',i0);
-html=html.slice(0,i1)+'\n'+fs.readFileSync(VOICEJS,'utf8')+html.slice(i1); fs.writeFileSync(path.join(SITE,'index.test.html'),html);
+const mk=html.indexOf('/* ====== demo_voice.js',i0); const iv=mk>0&&mk<i1?mk:i1;   /* a build that already contains the voice module: replace it (never two copies) */
+html=html.slice(0,iv)+'\n'+fs.readFileSync(VOICEJS,'utf8')+html.slice(i1); fs.writeFileSync(path.join(SITE,'index.test.html'),html);
 /* --- fixture media: caption key identical to tools/make_voice.py (checked below against python) --- */
 function key(s){ s=String(s||'').normalize('NFC').trim(); let h1=0xdeadbeef,h2=0x41c6ce57; for(let i=0,c;i<s.length;i++){ c=s.charCodeAt(i); h1=Math.imul(h1^c,2654435761); h2=Math.imul(h2^c,1597334677); } h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909); h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909); return (4294967296*(2097151&h2)+(h1>>>0)).toString(16); }
 const caps=JSON.parse(cp.execFileSync('node',[path.join(__dirname,'..','tools','extract_captions.js'),CAPDIR],{maxBuffer:1e7}).toString()).filter(c=>c.op==='say');
@@ -74,7 +75,7 @@ await pg.evaluate(()=>{ window.__au.length=0; window.__spk=0; });
 ok(await E("DMX.api.vox.item({ar:'جملة مش متسجلة أبدًا'})")===null,'unknown caption -> no item'); ok(await E("(lang='en',DMX.api.vox.item({ar:"+JSON.stringify(caps[0].ar)+"}))")===null,'English UI -> captions only'); await E("(lang='ar',1)");
 await E("DMX.api.D.abort=null,DMX.api.D.on=true,DMX.api.D.paused=false,1"); const spk0=await pg.evaluate(()=>window.__spk);
 await E("DMX.api.ops.say({en:'x',ar:'جملة مش متسجلة أبدًا',hold:200})").catch(()=>{}); await pg.waitForTimeout(400); ok((await pg.evaluate(()=>window.__spk))===spk0,'missing recording: no speechSynthesis fallback by default');
-await E("DMX.api.vox.set({browser:true})"); await E("DMX.api.ops.say({en:'x',ar:'جملة مش متسجلة أبدًا',hold:200})").catch(()=>{}); await pg.waitForTimeout(600); ok((await pg.evaluate(()=>window.__spk))>spk0,'"Browser voice" ticked: speechSynthesis used for that line'); await E("DMX.api.D.on=false,1");
+await E("DMX.api.vox.set({browser:true})");  await pg.evaluate(async()=>{ window.__saye='pending'; const t0=performance.now(); try{ await Promise.race([__lsv.ev("DMX.api.ops.say({en:'x',ar:'جملة مش متسجلة أبدًا',hold:200})"),new Promise(r=>setTimeout(()=>r('TIMEOUT'),8000))]).then(v=>{ window.__saye='returned '+v+' after '+Math.round(performance.now()-t0)+'ms'; }); }catch(e){ window.__saye='threw '+String(e&&e.message||e); } }); for(let i=0;i<40&&(await pg.evaluate(()=>window.__spk))<=spk0;i++)await pg.waitForTimeout(250); log('say src: '+(await E("DMX.api.ops.say.toString().slice(0,60)"))+' | say error: '+await pg.evaluate(()=>window.__saye)+' vox='+await E("JSON.stringify(DMX.api.vox.state())")+' D='+await E("JSON.stringify({on:DMX.api.D.on,abort:DMX.api.D.abort,ff:DMX.api.D.ff,voice:DMX.api.D.voice})")); ok((await pg.evaluate(()=>window.__spk))>spk0,'"Browser voice" ticked: speechSynthesis used for that line'); await E("DMX.api.D.on=false,1");
 /* 6 Cache API is http-only: file:// plays directly */
 ok(await E("location.protocol")==='file:','(info) tested over file:// (direct audio URLs; Cache API path is for http/https)');
 ok(er.length===0,'no page errors'+(er.length?': '+er[0]:''));

@@ -13,7 +13,7 @@
  const rateNow=()=>Math.max(.9,Math.min(1.5,D.sp>1?1.5:V.rate));          /* 2x / 4x demo speed: narration at its fastest still-clear rate, the step waits for it */
  /* ---------- manifest (a <script>, so it also works from file://) ---------- */
  function loadMan(){ if(V.manP)return V.manP; V.manP=new Promise(res=>{ if(window.TOXVoiceManifest){ V.man=window.TOXVoiceManifest; return res(V.man); } const s=document.createElement('script'); s.src=base()+'manifest.js'; s.onload=()=>{ V.man=window.TOXVoiceManifest||null; res(V.man); }; s.onerror=()=>{ V.man=null; res(null); }; document.head.appendChild(s); }); return V.manP; }
- function item(st){ const m=V.man; if(!m||!m.items||!isAr())return null; const e=m.items[key(st.ar)]; const v=e&&e.v&&(e.v[V.g]||e.v.f||e.v.m); return v?{url:base()+v.file+'?v='+(v.sig||''),ms:v.ms}:null; }
+ function item(st){ const m=V.man; if(!m||!m.items||!isAr())return null; const e=m.items[key(typeof st.ar==='function'?st.ar():st.ar)]; const v=e&&e.v&&(e.v[V.g]||e.v.f||e.v.m); return v?{url:base()+v.file+'?v='+(v.sig||''),ms:v.ms}:null; }
  /* ---------- fetch + Cache API (http/https only; file:// plays straight from the file) ---------- */
  const cacheable=()=>/^https?:$/.test(location.protocol)&&typeof caches!=='undefined';
  function prep(it){ if(V.warm.has(it.url))return V.warm.get(it.url); const p=(async()=>{ if(!cacheable()){ const a=new Audio(); a.preload='auto'; a.src=it.url; return it.url; }

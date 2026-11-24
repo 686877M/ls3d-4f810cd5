@@ -21,4 +21,6 @@ chapters.forEach((c,ci)=>{
   const id=c.id||('ch'+ci);
   (c.steps||[]).forEach(st=>{ if(st&&(st.op==='say'||st.op==='cap')&&typeof st.ar==='string'&&st.ar.trim()) out.push({ch:id,op:st.op,en:st.en||'',ar:st.ar}); });
 });
+const dyn=chapters.reduce((n,c)=>n+(c.steps||[]).filter(st=>st&&(st.op==='say'||st.op==='cap')&&typeof st.ar==='function').length,0);
+if(dyn)console.error('extract: '+dyn+' caption(s) are computed at run time (function): not narrated, captions only');
 process.stdout.write(JSON.stringify(out));

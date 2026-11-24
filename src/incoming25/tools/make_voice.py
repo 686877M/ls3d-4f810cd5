@@ -117,8 +117,8 @@ class GeminiTTS(Provider):
                 'generationConfig': {'responseModalities': ['AUDIO'], 'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voice}}}}}
         for i in range(4):
             try: j = _post_json('https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent' % self.model, {'x-goog-api-key': key}, body); break
-            except RuntimeError as e:
-                if 'HTTP 429' not in str(e) and 'HTTP 5' not in str(e) or i == 3: raise
+            except (RuntimeError, urllib.error.URLError, TimeoutError) as e:
+                if 'HTTP 4' in str(e) and 'HTTP 429' not in str(e) or i == 3: raise      # retry 429 / 5xx / network blips
                 time.sleep(15 * (i + 1))                                  # free-tier rate limit: back off and retry
         return base64.b64decode(j['candidates'][0]['content']['parts'][0]['inlineData']['data'])
 
@@ -194,7 +194,7 @@ def parse_voices(spec):
         k, v = p.split('=', 1); prov, name = v.split(':', 1); out[k.strip()] = (prov.strip(), name.strip())
     return out
 
-def sig(spoken, prov, voice, fmt): return hashlib.sha1(json.dumps([spoken, prov, voice, fmt, SETTINGS], sort_keys=True).encode()).hexdigest()[:12]
+def sig(spoken, prov, voice, fmt): return hashlib.sha1(json.dumps([spoken, prov, voice, fmt, SETTINGS, GeminiTTS.model if prov == 'gemini' else ''], sort_keys=True).encode()).hexdigest()[:12]
 
 # ---------------------------------------------------------------- commands
 def cmd_render(a):
@@ -204,12 +204,12 @@ def cmd_render(a):
     mp = os.path.join(a.out, 'manifest.json')
     man = json.load(open(mp, encoding='utf-8')) if os.path.exists(mp) else {}
     man.setdefault('version', 1); man['lang'] = 'ar'; man['fmt'] = a.fmt; man.setdefault('items', {}); man.setdefault('voices', {})
-    for k, (prov, name) in voices.items(): man['voices'][k] = {'provider': prov, 'voice': name}
+    for k, (prov, name) in voices.items(): man['voices'][k] = {'provider': prov, 'voice': name, **({'model': GeminiTTS.model} if prov == 'gemini' else {})}
     def save():
         man['updated'] = time.strftime('%Y-%m-%d'); json.dump(man, open(mp, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
         slim = {'version': 1, 'lang': 'ar', 'fmt': man['fmt'], 'voices': man['voices'], 'items': {h: {'v': {k: {x: v[x] for x in ('file', 'ms', 'sig')} for k, v in e['v'].items()}} for h, e in man['items'].items()}}
         open(os.path.join(a.out, 'manifest.js'), 'w', encoding='utf-8').write('window.TOXVoiceManifest=' + json.dumps(slim, separators=(',', ':')) + ';')   # what the player loads (works from file:// too)
-    todo = 0; done = 0
+    todo = 0; done = 0; failed = []
     for it in items:
         spoken = clean_for_speech(it['text'], lex)
         e = man['items'].setdefault(it['hash'], {'v': {}}); e.update(text=it['text'], spoken=spoken, ch=it['ch'])
@@ -219,12 +219,14 @@ def cmd_render(a):
             if cur and cur.get('sig') == s and os.path.exists(fp): continue
             todo += 1
             if a.dry_run: print('would render', k, it['hash'], spoken[:50]); continue
-            raw = PROVIDERS[prov]().render(spoken, name); data = encode(raw, PROVIDERS[prov](), a.fmt)
+            try: raw = PROVIDERS[prov]().render(spoken, name); data = encode(raw, PROVIDERS[prov](), a.fmt)
+            except Exception as ex:                                          # keep going; failed lines are listed at the end and retried on the next run
+                e['v'].pop(k, None); failed.append((k, it['hash'], str(ex)[:120])); print('FAILED %s %s %s' % (k, it['hash'], str(ex)[:100]), flush=True); continue
             open(fp, 'wb').write(data)
             e['v'][k] = {'file': fn, 'ms': int(round(analyze(fp)['dur'] * 1000)), 'bytes': len(data), 'sig': s, 'voice': name}
             done += 1
             if done % 8 == 0: save()                                         # survive an interrupted run
-            print('rendered %s %s %5.1fs %s' % (k, it['hash'], e['v'][k]['ms'] / 1000, spoken[:40])); time.sleep(a.delay)
+            print('rendered %s %s %5.1fs %s' % (k, it['hash'], e['v'][k]['ms'] / 1000, spoken[:40]), flush=True); time.sleep(a.delay if prov == 'edge' else max(a.delay, 3))
     live = {i['hash'] for i in items}; orphans = [h for h in man['items'] if h not in live]
     if a.prune:
         for h in orphans:
@@ -234,7 +236,8 @@ def cmd_render(a):
             del man['items'][h]
     if not a.dry_run: save()
     tot = sum(v['bytes'] for e in man['items'].values() for v in e['v'].values())
-    print('captions %d | rendered %d | unchanged %d | orphans %d%s | total %.1f MB' % (len(items), done, len(items) * len(voices) - todo, len(orphans), ' (pruned)' if a.prune else '', tot / 1e6))
+    for f in failed: print('FAILED-LINE', *f)
+    print('captions %d | failed %d | rendered %d | unchanged %d | orphans %d%s | total %.1f MB' % (len(items), len(failed), done, len(items) * len(voices) - todo, len(orphans), ' (pruned)' if a.prune else '', tot / 1e6))
 
 def cmd_report_latin(a):
     lex = load_lexicon(a.lexicon); bad = {}

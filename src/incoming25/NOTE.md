@@ -1,0 +1,15 @@
+# Demo narration (Gemini Kore / Puck) - state 2026-11-24, partial
+
+**Rendered:** Kore (female, default) = **33 of 80** current caption lines, 377 s, **1.52 MB** (`media/voice/ar/<hash>.f.mp3`, mono 24 kHz MP3 32 kbps, -16 LUFS; `--check`: 33 files, 0 warnings). Model `gemini-3.1-flash-tts-preview`, voice `Kore`. **Puck (male): 0 of 80** (not started). Lines without a recording stay captions-only in the player (silent fallback; Browser voice is OFF by default).
+**Why partial:** the owner's Gemini key is on the free tier: `GenerateRequestsPerDayPerProject PerModel-FreeTier`, about 26-33 requests per model per day (HTTP 429, resets daily). gemini-2.5-flash-preview-tts ran out first (26 lines), the 3.1 model gave 33 more; I switched to 3.1 for the whole set so the voice is consistent (the model is in each file's signature and in `manifest.json`). gemini-2.5-pro-preview-tts has limit 0. Remaining: 47 Kore + 80 Puck = 127 requests.
+**To finish:** (a) enable billing on the Gemini key (the whole set is about 11 k characters per voice, cents) and re-run, or (b) re-run once a day (incremental, ~30 lines/day, ~4-5 days). Command (key from environment only, never written):
+```
+export GEMINI_API_KEY=...   # already in the shell env
+GEMINI_TTS_MODEL=gemini-3.1-flash-tts-preview ~/.local/venvs/voice_tts/bin/python tools/make_voice.py --demo-dir <scratchpad> --out <site>/media/voice --voices f=gemini:Kore,m=gemini:Puck --prune
+```
+Already-written lines are skipped by hash+signature; 429/network errors are retried with back-off, then the line is listed as `FAILED-LINE` and retried on the next run. `media/voice/missing_lines.json` lists the lines not yet rendered.
+**Changed lines:** the demo went 48 -> 67 -> 80 captions during this work; `--prune` removed the audio of lines that no longer exist. When the demo session changes captions, only those lines are re-rendered (count is printed: `rendered N`).
+**Size estimate when complete:** about 46 KB/line -> 80 lines = ~3.7 MB per voice, ~7.4 MB for both.
+**Player:** default voice = the manifest's `f` = Kore; `demo_voice.js` updated: caption text may be a function (new core `rs()`): handled; 1 caption (arch, the grid-lines step) is computed at run time, not narrated. NOTE: the HEAD build already contains my earlier `demo_voice.js`; this one replaces it (patch_v3 already lists it, nothing to change in `chain.diff`).
+**Tests run (this folder, build = site/index.test.html at HEAD, one Chrome):** `tests/test_voice.js` 32/32 PASS (the test now replaces an existing voice module instead of adding a second copy: that double copy was the cause of one false failure), parity 126/126, privacy 109/109. Not tested: real sound, real recordings in the player (tests use tones), Safari/Firefox, Cache API (http only), Puck, Azure/Google providers.
+**Fixed in tools:** `make_voice.py` no longer aborts on one failed line; retries 429/5xx/DNS blips; saves the manifest every 8 files; Gemini model is part of the signature. Key is only read from the environment, never printed or written.
