@@ -1,0 +1,23 @@
+const pw=require('playwright-core');const CH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+(async()=>{const b=await pw.chromium.launch({executablePath:CH,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});const c=await b.newContext({viewport:{width:1400,height:850},acceptDownloads:true});
+ await c.addInitScript(()=>{try{sessionStorage.setItem('xto-auth','1');sessionStorage.setItem('xto-intro-seen','1');sessionStorage.setItem('xto-hub','1');localStorage.setItem('xto-test','1');window.__pjForce=1;}catch(e){}});
+ const p=await c.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{ if(/self-check failed/.test(m.text()))errs.push(m.text()); });
+ await p.goto(process.argv[2]);await p.waitForTimeout(11000);
+ let ok=0,bad=0;const t=(c,n)=>{c?ok++:bad++;console.log((c?'  ok   ':'  FAIL ')+n);};
+ const ev=s=>p.evaluate(s=>window.__lsv.ev(s),s);
+ t(await p.$('#pjStart'),'start screen with project cards opens');
+ const cards=await p.$$eval('#pjStart [data-pj]',a=>a.map(x=>x.dataset.pj));t(cards.includes('continue')&&cards.includes('blank')&&cards.includes('sewage'),'cards: continue, blank, site project ('+cards.join(',')+')');
+ await p.click('#pjStart [data-pj=continue]');await p.waitForTimeout(800);
+ const m=JSON.parse(await ev(`JSON.stringify({on:document.body.classList.contains('pj-mask'),n:document.querySelectorAll('.pjm').length,names:pjNames().length,site:SP.on})`));
+ t(m.on&&m.n>0,'site names blurred ('+m.n+' elements, '+m.names+' names)');
+ // export of text that holds a real name asks first; "Hidden" replaces the names
+ await ev(`out('t.txt','a '+pjNames()[0]+' b')`);await p.waitForTimeout(300);t(await p.$('#pjDlg [data-pj=hidden]'),'export with a real name asks: with data or hidden');
+ const [d]=await Promise.all([p.waitForEvent('download'),p.click('#pjDlg [data-pj=hidden]')]);const fs=require('fs');const txt=fs.readFileSync(await d.path(),'utf8');
+ t(txt==='a HIDDEN-1 b','hidden export replaced the name ('+txt+')');
+ await ev(`window.__pr=0; pjPrint=()=>{window.__pr++}; window.print()`);await p.waitForTimeout(300);t(await p.$('#pjDlg'),'print asks first');
+ await p.click('#pjDlg [data-pj=with]');await p.waitForTimeout(200);t(await ev('window.__pr')===1,'print runs after the answer');
+ await ev(`XC.pj_mask.run(false)`);t(!(await ev(`document.body.classList.contains('pj-mask')`)),'switch turns the blur off');
+ await ev(`tpNew('blank')`);await p.waitForTimeout(800);const s=JSON.parse(await ev(`JSON.stringify({on:SP.on,st:tpStation()})`));t(!s.on&&!s.st,'blank project hides the master site');
+ await ev(`tpNew('sewage')`);await p.waitForTimeout(800);t(await ev('SP.on'),'site project brings the site back');
+ t(errs.length===0,'no page errors '+errs.slice(0,2).join(' | '));
+ console.log('\npj: '+ok+' passed, '+bad+' failed');await b.close();})();
