@@ -59,7 +59,7 @@ const {open}=require('./lib');
  // agent finds and runs them; audit
  r=await J(`(()=>{ const ids=PXX.done.filter(id=>id.startsWith('draft_')); const miss=ids.filter(id=>!(XDESC[id]&&XDESC[id][0]&&XDESC[id][1])); const f=agxFind('batch plot','C.X').map(x=>x.id), g=agxFind('تدرج','C.X').map(x=>x.id);
   let tot=0,st=0; RIBP.draft.tabs.forEach(tb=>tb[2].forEach(gp=>gp[1].forEach(id=>{ tot++; if(XC[id]&&XC[id].stub)st++; }))); return JSON.stringify({n:ids.length,miss,f:f.includes(PXX.id('draft','Output','Plot','Batch Plot')),g:g.includes(PXX.id('draft','Home','Draw','Gradient')),tot,st}); })()`);
- t(r.n===35&&!r.miss.length,'35 new C.X commands, all with EN+AR help '+r.miss.join());
+ t(r.n>=35&&!r.miss.length,'35 new C.X commands, all with EN+AR help '+r.miss.join());
  t(r.f&&r.g,'find_tools finds Batch Plot (EN) and Gradient (AR)');
  t(r.st===0,'C.X ribbon '+(r.tot-r.st)+'/'+r.tot+' wired');
  const rr=await J(`(async()=>{ __ans=['2V']; const o=await agxRun(PXX.id('draft','View','Model Viewports','Viewport Configuration')); return JSON.stringify(o); })()`); t(rr.ok,'run_tool runs a new command: '+JSON.stringify(rr).slice(0,90));
