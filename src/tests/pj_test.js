@@ -12,7 +12,7 @@ const pw=require('playwright-core');const CH='/Applications/Google Chrome.app/Co
  t(m.on&&m.n>0,'site names blurred ('+m.n+' elements, '+m.names+' names)');
  // export of text that holds a real name asks first; "Hidden" replaces the names
  await ev(`out('t.txt','a '+pjNames()[0]+' b')`);await p.waitForTimeout(300);t(await p.$('#pjDlg [data-pj=hidden]'),'export with a real name asks: with data or hidden');
- const [d]=await Promise.all([p.waitForEvent('download'),p.click('#pjDlg [data-pj=hidden]')]);const fs=require('fs');const txt=fs.readFileSync(await d.path(),'utf8');
+ const [d]=await Promise.all([p.waitForEvent('download'),p.$eval('#pjDlg [data-pj=hidden]',b=>b.click())]);const fs=require('fs');const txt=fs.readFileSync(await d.path(),'utf8');
  t(txt==='a HIDDEN-1 b','hidden export replaced the name ('+txt+')');
  await ev(`window.__pr=0; pjPrint=()=>{window.__pr++}; window.print()`);await p.waitForTimeout(300);t(await p.$('#pjDlg'),'print asks first');
  await p.click('#pjDlg [data-pj=with]');await p.waitForTimeout(200);t(await ev('window.__pr')===1,'print runs after the answer');
