@@ -1,5 +1,6 @@
 import re,sys
-SP="/private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad"
+import os
+SP=os.path.dirname(os.path.abspath(__file__))
 src=open(SP+"/site/src/lift_station_3d.html",encoding="utf-8").read()
 head,body=src.split('<body>',1)
 libs=[('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js','lib/three.min.js'),

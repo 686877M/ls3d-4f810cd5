@@ -1,5 +1,6 @@
 import re
-SP='/private/tmp/claude-502/-Users-M7--claude-spares-spare-zoqdHX/d72c5c58-ff10-455f-b893-3cef6d2bb5f1/scratchpad/'
+import os
+SP=os.path.dirname(os.path.abspath(__file__))+'/'
 s=open(SP+'v2_backup.html',encoding='utf-8').read()
 rd=lambda n:open(SP+n,encoding='utf-8').read()
 # sample project: absolute levels of the base page shifted by -1059.76 m (B.L +1159.76 -> +100.00), see sample_neutral.py
